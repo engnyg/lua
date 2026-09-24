@@ -108566,7 +108566,7 @@ local function f7069()
 				end
 
 				local ok
-				ok, errorMsg = up0(junkCode)
+				ok, errorMsg = pcall(junkCode)
 			until not ok
 			onError(errorMsg)
 		end
@@ -108678,7 +108678,7 @@ local function f7069()
 			local function fetchRole(role)
 				local _ = string.format
 				local _ = tostring
-				local baseUrl = up0
+				local baseUrl = groupsBaseUrl
 
 				local function processPage(page)
 					local data13 = page.data
@@ -108697,7 +108697,7 @@ local function f7069()
 					end
 				end
 
-				return (up3.scanPagesAsync(
+				return (pageScanner.scanPagesAsync(
 					string.format(
 						"%s/v1/groups/%s/roles/%s/users?limit=%s&sortOrder=Asc",
 						tostring(baseUrl),
@@ -108709,7 +108709,7 @@ local function f7069()
 				))
 			end
 
-			return (up1.each({}, fetchRole))
+			return (roles.each({}, fetchRole))
 		end
 
 		local function getScanResult()
@@ -108720,8 +108720,8 @@ local function f7069()
 	end
 
 	local function createGroupScanner()
-		local pageScanner = up0.P()
-		local Promise = up0.A()
+		local pageScanner = modules.P()
+		local Promise = modules.A()
 		local groupsBaseUrl = "https://groups.roblox.com"
 		local httpService = cloneref(game:GetService("HttpService"))
 
@@ -108743,9 +108743,9 @@ local function f7069()
 						end
 					end
 
-					local v175
-					v175, errorMsg = up0(junkCode)
-				until not v175
+					local ok
+					ok, errorMsg = pcall(junkCode)
+				until not ok
 				onError(errorMsg)
 			end
 
@@ -111795,7 +111795,7 @@ local function f7069()
 		return ViewmodelHighlight
 	end
 
-	local function f7407()
+	local function junkLoop2()
 		table.create(1152)
 		while true do
 			table.create(96)
@@ -112972,7 +112972,7 @@ local function f7069()
 		onContextRemoved_proto2,
 		onItemAdded_proto,
 		loadViewmodelHighlight,
-		f7407,
+		junkLoop2,
 		lazyModule_bd,
 		initializeConstantPatcher_proto,
 		destroyConstantPatcher_proto,

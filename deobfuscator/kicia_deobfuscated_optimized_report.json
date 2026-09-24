@@ -4098,6 +4098,12 @@
    "rule": "manual (upvalue)"
   },
   {
+   "line": 108723,
+   "old": "up0",
+   "new": "modules",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 108609,
    "old": "up0",
    "new": "seen",
@@ -4152,9 +4158,39 @@
    "rule": "manual (upvalue)"
   },
   {
+   "line": 108681,
+   "old": "up0",
+   "new": "groupsBaseUrl",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108700,
+   "old": "up3",
+   "new": "pageScanner",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 109942,
    "old": "up0",
    "new": "tostring_marker",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108569,
+   "old": "up0",
+   "new": "pcall",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108712,
+   "old": "up1",
+   "new": "roles",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108747,
+   "old": "up0",
+   "new": "pcall",
    "rule": "manual (upvalue)"
   },
   {
@@ -116628,6 +116664,12 @@
    "rule": "manual"
   },
   {
+   "line": 108746,
+   "old": "v175",
+   "new": "ok",
+   "rule": "manual"
+  },
+  {
    "line": 108755,
    "old": "v176",
    "new": "pageLimit",
@@ -119667,6 +119709,12 @@
    "line": 111779,
    "old": "v435",
    "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 111798,
+   "old": "f7407",
+   "new": "junkLoop2",
    "rule": "manual"
   },
   {
