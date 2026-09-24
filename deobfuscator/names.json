@@ -25424,9 +25424,7 @@
  "f7222": {
   "p118": "page",
   "v168": "index",
-  "t103": "userRecord",
-  "up0": "seenTable",
-  "up1": "callback"
+  "t103": "userRecord"
  },
  "f7225": {
   "p119": "groupId"
@@ -25442,9 +25440,7 @@
  "f7232": {
   "p121": "page",
   "v181": "index",
-  "t106": "userRecord",
-  "up0": "seenTable",
-  "up1": "callback"
+  "t106": "userRecord"
  },
  "f7294": {
   "up0": "tostring_marker"
