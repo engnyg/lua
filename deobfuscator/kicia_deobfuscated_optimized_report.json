@@ -4308,6 +4308,96 @@
    "rule": "manual (upvalue)"
   },
   {
+   "line": 142600,
+   "old": "up0",
+   "new": "toggleLabel",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 142616,
+   "old": "up1",
+   "new": "colorBindings",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 142626,
+   "old": "up0",
+   "new": "modules",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 142634,
+   "old": "up0",
+   "new": "toggleLabel",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 144492,
+   "old": "up0",
+   "new": "hookCheck",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 144493,
+   "old": "up1",
+   "new": "tamperResult",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 144496,
+   "old": "up2",
+   "new": "rootCallbackCheck",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 144500,
+   "old": "up3",
+   "new": "originalThreadCheck",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 144505,
+   "old": "up4",
+   "new": "debugInfo",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 144506,
+   "old": "up5",
+   "new": "expectedFuncName",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 144518,
+   "old": "up6",
+   "new": "fireServerRef",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 144524,
+   "old": "up7",
+   "new": "expectedFunc4",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 148035,
+   "old": "up1",
+   "new": "sentryClientName",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 148036,
+   "old": "up2",
+   "new": "sentryClientVersion",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 148040,
+   "old": "up3",
+   "new": "SentryClient",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 108569,
    "old": "up0",
    "new": "pcall",
@@ -146232,6 +146322,12 @@
    "rule": "manual"
   },
   {
+   "line": 142617,
+   "old": "f9483",
+   "new": "addColorWidget",
+   "rule": "manual"
+  },
+  {
    "line": 142618,
    "old": "t131",
    "new": "colorLabelConfig",
@@ -146307,6 +146403,12 @@
    "line": 142644,
    "old": "t137",
    "new": "friendsDropdownConfig",
+   "rule": "manual"
+  },
+  {
+   "line": 142651,
+   "old": "f9488",
+   "new": "addColorWidget",
    "rule": "manual"
   },
   {

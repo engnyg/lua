@@ -142597,7 +142597,7 @@ local function f9336()
 		local config = { Title = "Mod Detector", Side = "right" }
 		local modSection = AddSection(section, config)
 		local AddToggle = modSection.AddToggle
-		local toggleConfig = { Label = up0, Config = table.create(3) }
+		local toggleConfig = { Label = toggleLabel, Config = table.create(3) }
 		AddToggle(modSection, toggleConfig)
 		local AddMultiDropdown19 = modSection.AddMultiDropdown
 		local modDropdownConfig = {
@@ -142613,25 +142613,25 @@ local function f9336()
 			Config = table.create(3)
 		}
 		AddMultiDropdown20(modSection, friendsDropdownConfig)
-		local bindColor68 = up1.bindColor
-		local f9483 = modSection.AddColor
+		local bindColor68 = colorBindings.bindColor
+		local addColorWidget = modSection.AddColor
 		local colorLabelConfig = {}
 		local AddLabel61 = modSection.AddLabel
 		local colorLabel = { Label = "Text Color" }
 		colorLabelConfig.Row = AddLabel61(modSection, colorLabel).Row
-		bindColor68(f9483(modSection, colorLabelConfig), (table.create(3)))
+		bindColor68(addColorWidget(modSection, colorLabelConfig), (table.create(3)))
 	end
 
 	local function createModDetectorSectionFactory()
-		local colorBindings = up0.cJ()
-		up0.cI()
+		local colorBindings = modules.cJ()
+		modules.cI()
 
 		local function addSection(section)
 			local AddSection = section.AddSection
 			local config = { Title = "Mod Detector", Side = "right" }
 			local modSection = AddSection(section, config)
 			local AddToggle = modSection.AddToggle
-			local toggleConfig = { Label = up0, Config = table.create(3) }
+			local toggleConfig = { Label = toggleLabel, Config = table.create(3) }
 			AddToggle(modSection, toggleConfig)
 			local AddMultiDropdown21 = modSection.AddMultiDropdown
 			local modDropdownConfig = {
@@ -142648,12 +142648,12 @@ local function f9336()
 			}
 			AddMultiDropdown22(modSection, friendsDropdownConfig)
 			local bindColor69 = colorBindings.bindColor
-			local f9488 = modSection.AddColor
+			local addColorWidget = modSection.AddColor
 			local colorLabelConfig = {}
 			local AddLabel62 = modSection.AddLabel
 			local colorLabel = { Label = "Text Color" }
 			colorLabelConfig.Row = AddLabel62(modSection, colorLabel).Row
-			bindColor69(f9488(modSection, colorLabelConfig), (table.create(3)))
+			bindColor69(addColorWidget(modSection, colorLabelConfig), (table.create(3)))
 		end
 
 		return addSection
@@ -144489,42 +144489,42 @@ local function f9336()
 	end
 
 	local function tostring_tamperCheck()
-		if up0 and up0() then
-			up1 = "hook_thread"
+		if hookCheck and hookCheck() then
+			tamperResult = "hook_thread"
 			return ""
 		end
-		if up2 and up2() ~= nil then
-			up1 = "root_callback"
+		if rootCallbackCheck and rootCallbackCheck() ~= nil then
+			tamperResult = "root_callback"
 			return ""
 		end
-		if up3 and up3() ~= nil then
-			up1 = "original_thread"
+		if originalThreadCheck and originalThreadCheck() ~= nil then
+			tamperResult = "original_thread"
 			return ""
 		end
 		local isActive1, lineNum1, funcName1, _, _
-		_, _, funcName1, lineNum1, isActive1 = up4(1, "snfa")
-		if not (funcName1 == up5 and lineNum1 == 0 and isActive1 == true) then
-			up1 = "frame1"
+		_, _, funcName1, lineNum1, isActive1 = debugInfo(1, "snfa")
+		if not (funcName1 == expectedFuncName and lineNum1 == 0 and isActive1 == true) then
+			tamperResult = "frame1"
 			return ""
 		end
 		local isActive2, lineNum2, funcName2, source2, func2
-		func2, source2, funcName2, lineNum2, isActive2 = up4(2, "fsna")
+		func2, source2, funcName2, lineNum2, isActive2 = debugInfo(2, "fsna")
 		if not (func2 == tostring and source2 == "[C]" and (funcName2 == "tostring" and lineNum2 == 0) and isActive2 == true) then
-			up1 = "frame2"
+			tamperResult = "frame2"
 			return ""
 		end
 		local isActive3, lineNum3, funcName3, func3, source3
-		source3, func3, funcName3, lineNum3, isActive3 = up4(3, "sfna")
-		if not (source3 == "[C]" and func3 == up6 and (funcName3 == "FireServer" and lineNum3 == 0) and isActive3 == true) then
-			up1 = "frame3"
+		source3, func3, funcName3, lineNum3, isActive3 = debugInfo(3, "sfna")
+		if not (source3 == "[C]" and func3 == fireServerRef and (funcName3 == "FireServer" and lineNum3 == 0) and isActive3 == true) then
+			tamperResult = "frame3"
 			return ""
 		end
 		local isActive4, lineNum4, funcName4, func4, _
-		_, func4, funcName4, lineNum4, isActive4 = up4(4, "sfna")
-		if func4 == up7 and funcName4 == "" and (lineNum4 == 0 and isActive4 == true) then
+		_, func4, funcName4, lineNum4, isActive4 = debugInfo(4, "sfna")
+		if func4 == expectedFunc4 and funcName4 == "" and (lineNum4 == 0 and isActive4 == true) then
 			return ""
 		end
-		up1 = "frame4"
+		tamperResult = "frame4"
 		return ""
 	end
 
@@ -148032,12 +148032,12 @@ local function f9336()
 		selfObj._endpoint = formatFn(endpointTemplate, host, tostring((nil).projectId))
 		selfObj._authHeader = string.format(
 			"Sentry sentry_version=7, sentry_client=%s/%s, sentry_key=%s",
-			tostring(up1),
-			tostring(up2),
+			tostring(sentryClientName),
+			tostring(sentryClientVersion),
 			tostring((nil).key)
 		)
 		selfObj._userId = userId
-		return (setmetatable(selfObj, up3))
+		return (setmetatable(selfObj, SentryClient))
 	end
 
 	return 
