@@ -10314,6 +10314,11622 @@
    "rule": "manual"
   },
   {
+   "line": 20859,
+   "old": "f1547",
+   "new": "isOwned",
+   "rule": "manual"
+  },
+  {
+   "line": 20859,
+   "old": "p1",
+   "new": "catalog",
+   "rule": "manual"
+  },
+  {
+   "line": 20859,
+   "old": "p2",
+   "new": "query",
+   "rule": "manual"
+  },
+  {
+   "line": 20863,
+   "old": "v30",
+   "new": "owned",
+   "rule": "manual"
+  },
+  {
+   "line": 20868,
+   "old": "t13",
+   "new": "skinsForItem",
+   "rule": "manual"
+  },
+  {
+   "line": 20869,
+   "old": "v31",
+   "new": "owned2",
+   "rule": "manual"
+  },
+  {
+   "line": 20877,
+   "old": "f1548",
+   "new": "scaleNumberSequence",
+   "rule": "manual"
+  },
+  {
+   "line": 20877,
+   "old": "p3",
+   "new": "sequence",
+   "rule": "manual"
+  },
+  {
+   "line": 20877,
+   "old": "p4",
+   "new": "factor",
+   "rule": "manual"
+  },
+  {
+   "line": 20878,
+   "old": "Keypoints3",
+   "new": "keypoints",
+   "rule": "manual"
+  },
+  {
+   "line": 20879,
+   "old": "v32",
+   "new": "scaled",
+   "rule": "manual"
+  },
+  {
+   "line": 20880,
+   "old": "v33",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 20882,
+   "old": "t14",
+   "new": "keypoint",
+   "rule": "manual"
+  },
+  {
+   "line": 20898,
+   "old": "f1550",
+   "new": "isFeatureActive",
+   "rule": "manual"
+  },
+  {
+   "line": 20898,
+   "old": "p5",
+   "new": "settings",
+   "rule": "manual"
+  },
+  {
+   "line": 20899,
+   "old": "v34",
+   "new": "active",
+   "rule": "manual"
+  },
+  {
+   "line": 20907,
+   "old": "f1551",
+   "new": "isDashOnCooldown",
+   "rule": "manual"
+  },
+  {
+   "line": 20907,
+   "old": "p6",
+   "new": "fighter",
+   "rule": "manual"
+  },
+  {
+   "line": 20908,
+   "old": "v35",
+   "new": "cooldownEnd",
+   "rule": "manual"
+  },
+  {
+   "line": 20909,
+   "old": "v36",
+   "new": "onCooldown",
+   "rule": "manual"
+  },
+  {
+   "line": 20917,
+   "old": "f1552",
+   "new": "createCosmeticsServices",
+   "rule": "manual"
+  },
+  {
+   "line": 20917,
+   "old": "p7",
+   "new": "deps",
+   "rule": "manual"
+  },
+  {
+   "line": 20919,
+   "old": "Add17",
+   "new": "errorReporter",
+   "rule": "manual"
+  },
+  {
+   "line": 20920,
+   "old": "Add18",
+   "new": "catalog",
+   "rule": "manual"
+  },
+  {
+   "line": 20921,
+   "old": "Add19",
+   "new": "favoritedIntent",
+   "rule": "manual"
+  },
+  {
+   "line": 20922,
+   "old": "Add20",
+   "new": "favoritedResolver",
+   "rule": "manual"
+  },
+  {
+   "line": 20923,
+   "old": "Add21",
+   "new": "onlyUseFavoritesState",
+   "rule": "manual"
+  },
+  {
+   "line": 20924,
+   "old": "Add22",
+   "new": "rankCharm",
+   "rule": "manual"
+  },
+  {
+   "line": 20925,
+   "old": "Add23",
+   "new": "add",
+   "rule": "manual"
+  },
+  {
+   "line": 20926,
+   "old": "new",
+   "new": "newItems",
+   "rule": "manual"
+  },
+  {
+   "line": 20927,
+   "old": "t15",
+   "new": "itemsOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 20928,
+   "old": "t16",
+   "new": "itemsState",
+   "rule": "manual"
+  },
+  {
+   "line": 20929,
+   "old": "t17",
+   "new": "exemptLayers",
+   "rule": "manual"
+  },
+  {
+   "line": 20933,
+   "old": "t18",
+   "new": "itemsRuntime",
+   "rule": "manual"
+  },
+  {
+   "line": 20943,
+   "old": "v37",
+   "new": "items",
+   "rule": "manual"
+  },
+  {
+   "line": 20944,
+   "old": "Add24",
+   "new": "add2",
+   "rule": "manual"
+  },
+  {
+   "line": 20945,
+   "old": "new2",
+   "new": "newEmotes",
+   "rule": "manual"
+  },
+  {
+   "line": 20946,
+   "old": "t19",
+   "new": "emotesOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 20947,
+   "old": "v38",
+   "new": "emotes",
+   "rule": "manual"
+  },
+  {
+   "line": 20948,
+   "old": "Add25",
+   "new": "add3",
+   "rule": "manual"
+  },
+  {
+   "line": 20950,
+   "old": "v39",
+   "new": "userServerBridge",
+   "rule": "manual"
+  },
+  {
+   "line": 20951,
+   "old": "t20",
+   "new": "services",
+   "rule": "manual"
+  },
+  {
+   "line": 20952,
+   "old": "t21",
+   "new": "model",
+   "rule": "manual"
+  },
+  {
+   "line": 20962,
+   "old": "t22",
+   "new": "runtime",
+   "rule": "manual"
+  },
+  {
+   "line": 20967,
+   "old": "f1553",
+   "new": "getPresentedName",
+   "rule": "manual"
+  },
+  {
+   "line": 20967,
+   "old": "p8",
+   "new": "identities",
+   "rule": "manual"
+  },
+  {
+   "line": 20967,
+   "old": "p9",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 20976,
+   "old": "f1555",
+   "new": "getCloneModel",
+   "rule": "manual"
+  },
+  {
+   "line": 20976,
+   "old": "p10",
+   "new": "holder",
+   "rule": "manual"
+  },
+  {
+   "line": 20977,
+   "old": "_clone",
+   "new": "clone",
+   "rule": "manual"
+  },
+  {
+   "line": 20978,
+   "old": "v40",
+   "new": "model",
+   "rule": "manual"
+  },
+  {
+   "line": 20984,
+   "old": "f1556",
+   "new": "maskFavoriteWeapons_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 20984,
+   "old": "p11",
+   "new": "call",
+   "rule": "manual"
+  },
+  {
+   "line": 20988,
+   "old": "f1557",
+   "new": "newFavoriteWeaponsMask",
+   "rule": "manual"
+  },
+  {
+   "line": 20988,
+   "old": "p12",
+   "new": "store",
+   "rule": "manual"
+  },
+  {
+   "line": 20988,
+   "old": "p13",
+   "new": "binding",
+   "rule": "manual"
+  },
+  {
+   "line": 20989,
+   "old": "t23",
+   "new": "mask",
+   "rule": "manual"
+  },
+  {
+   "line": 20992,
+   "old": "f1558",
+   "new": "onRequest",
+   "rule": "manual"
+  },
+  {
+   "line": 20992,
+   "old": "p14",
+   "new": "call",
+   "rule": "manual"
+  },
+  {
+   "line": 21000,
+   "old": "f1559",
+   "new": "newEnsuredChildren",
+   "rule": "manual"
+  },
+  {
+   "line": 21000,
+   "old": "p15",
+   "new": "parent",
+   "rule": "manual"
+  },
+  {
+   "line": 21000,
+   "old": "p16",
+   "new": "className",
+   "rule": "manual"
+  },
+  {
+   "line": 21000,
+   "old": "p17",
+   "new": "createFallback",
+   "rule": "manual"
+  },
+  {
+   "line": 21001,
+   "old": "v41",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 21002,
+   "old": "t24",
+   "new": "ensured",
+   "rule": "manual"
+  },
+  {
+   "line": 21868,
+   "old": "f1635",
+   "new": "newScopeOverlay_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21869,
+   "old": "t61",
+   "new": "overlay",
+   "rule": "manual"
+  },
+  {
+   "line": 21878,
+   "old": "f1636",
+   "new": "setAimPercentage_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21878,
+   "old": "p64",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 21878,
+   "old": "p65",
+   "new": "percentage",
+   "rule": "manual"
+  },
+  {
+   "line": 21882,
+   "old": "f1637",
+   "new": "hookAddedItem_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21882,
+   "old": "p66",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 21886,
+   "old": "f1638",
+   "new": "forgetRemovedItem_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21886,
+   "old": "p67",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 21890,
+   "old": "f1639",
+   "new": "observeFighterItems_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21890,
+   "old": "p68",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 21890,
+   "old": "p69",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 21891,
+   "old": "fighterState5",
+   "new": "fighterState",
+   "rule": "manual"
+  },
+  {
+   "line": 21893,
+   "old": "f1640",
+   "new": "hookAddedItem",
+   "rule": "manual"
+  },
+  {
+   "line": 21893,
+   "old": "p70",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 21899,
+   "old": "f1641",
+   "new": "forgetRemovedItem",
+   "rule": "manual"
+  },
+  {
+   "line": 21899,
+   "old": "p71",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 21905,
+   "old": "v121",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 21905,
+   "old": "v122",
+   "new": "items",
+   "rule": "manual"
+  },
+  {
+   "line": 21908,
+   "old": "v123",
+   "new": "ownedItem",
+   "rule": "manual"
+  },
+  {
+   "line": 21917,
+   "old": "f1642",
+   "new": "revertOnContextRemoved_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21922,
+   "old": "f1643",
+   "new": "initializeEquipCooldown_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21922,
+   "old": "p72",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 21928,
+   "old": "f1644",
+   "new": "observeFighterItems",
+   "rule": "manual"
+  },
+  {
+   "line": 21928,
+   "old": "p73",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 21928,
+   "old": "p74",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 21929,
+   "old": "fighterState6",
+   "new": "fighterState",
+   "rule": "manual"
+  },
+  {
+   "line": 21931,
+   "old": "f1645",
+   "new": "hookAddedItem",
+   "rule": "manual"
+  },
+  {
+   "line": 21931,
+   "old": "p75",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 21937,
+   "old": "f1646",
+   "new": "forgetRemovedItem",
+   "rule": "manual"
+  },
+  {
+   "line": 21937,
+   "old": "p76",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 21943,
+   "old": "v124",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 21943,
+   "old": "v125",
+   "new": "items",
+   "rule": "manual"
+  },
+  {
+   "line": 21946,
+   "old": "v126",
+   "new": "ownedItem",
+   "rule": "manual"
+  },
+  {
+   "line": 21957,
+   "old": "f1647",
+   "new": "revertOnContextRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 21965,
+   "old": "f1648",
+   "new": "newEquipCooldownModifier_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21965,
+   "old": "p77",
+   "new": "playerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 21966,
+   "old": "t62",
+   "new": "modifier",
+   "rule": "manual"
+  },
+  {
+   "line": 21971,
+   "old": "t63",
+   "new": "aim",
+   "rule": "manual"
+  },
+  {
+   "line": 21977,
+   "old": "f1649",
+   "new": "equipCooldownNewIndex_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21977,
+   "old": "p78",
+   "new": "target",
+   "rule": "manual"
+  },
+  {
+   "line": 21977,
+   "old": "p79",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 21977,
+   "old": "p80",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 21982,
+   "old": "v127",
+   "new": "now",
+   "rule": "manual"
+  },
+  {
+   "line": 21987,
+   "old": "f1650",
+   "new": "hookEquipCooldown_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 21987,
+   "old": "p81",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 21987,
+   "old": "p82",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 21988,
+   "old": "f1651",
+   "new": "spoofedCooldown",
+   "rule": "manual"
+  },
+  {
+   "line": 21992,
+   "old": "v128",
+   "new": "oldMetatable",
+   "rule": "manual"
+  },
+  {
+   "line": 21994,
+   "old": "v129",
+   "new": "oldIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 21995,
+   "old": "t64",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 22004,
+   "old": "t65",
+   "new": "hookMetatable",
+   "rule": "manual"
+  },
+  {
+   "line": 22006,
+   "old": "p83",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 22016,
+   "old": "p84",
+   "new": "target",
+   "rule": "manual"
+  },
+  {
+   "line": 22016,
+   "old": "p85",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 22016,
+   "old": "p86",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 22021,
+   "old": "v130",
+   "new": "now",
+   "rule": "manual"
+  },
+  {
+   "line": 22030,
+   "old": "f1652",
+   "new": "revertAllHooks_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22030,
+   "old": "p87",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22031,
+   "old": "_hookRestores",
+   "new": "hookRestores",
+   "rule": "manual"
+  },
+  {
+   "line": 22032,
+   "old": "v131",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 22034,
+   "old": "t66",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 22044,
+   "old": "f1653",
+   "new": "destroyEquipCooldown_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22044,
+   "old": "p88",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22049,
+   "old": "f1654",
+   "new": "setAimEnabled_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22049,
+   "old": "p89",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22049,
+   "old": "p90",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 22056,
+   "old": "f1655",
+   "new": "loadEquipCooldownModifier",
+   "rule": "manual"
+  },
+  {
+   "line": 22059,
+   "old": "v132",
+   "new": "Trove",
+   "rule": "manual"
+  },
+  {
+   "line": 22060,
+   "old": "t67",
+   "new": "EquipCooldownModifier",
+   "rule": "manual"
+  },
+  {
+   "line": 22063,
+   "old": "p91",
+   "new": "playerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 22064,
+   "old": "t68",
+   "new": "modifier",
+   "rule": "manual"
+  },
+  {
+   "line": 22069,
+   "old": "t69",
+   "new": "aim",
+   "rule": "manual"
+  },
+  {
+   "line": 22075,
+   "old": "p92",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 22082,
+   "old": "p93",
+   "new": "percentage",
+   "rule": "manual"
+  },
+  {
+   "line": 22092,
+   "old": "f1656",
+   "new": "observeFighterItems",
+   "rule": "manual"
+  },
+  {
+   "line": 22092,
+   "old": "p94",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 22092,
+   "old": "p95",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 22093,
+   "old": "fighterState7",
+   "new": "fighterState",
+   "rule": "manual"
+  },
+  {
+   "line": 22095,
+   "old": "f1657",
+   "new": "hookAddedItem",
+   "rule": "manual"
+  },
+  {
+   "line": 22095,
+   "old": "p96",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 22101,
+   "old": "f1658",
+   "new": "forgetRemovedItem",
+   "rule": "manual"
+  },
+  {
+   "line": 22101,
+   "old": "p97",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 22107,
+   "old": "v133",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 22107,
+   "old": "v134",
+   "new": "items",
+   "rule": "manual"
+  },
+  {
+   "line": 22110,
+   "old": "v135",
+   "new": "ownedItem",
+   "rule": "manual"
+  },
+  {
+   "line": 22121,
+   "old": "f1659",
+   "new": "revertOnContextRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 22129,
+   "old": "p98",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 22130,
+   "old": "f1660",
+   "new": "spoofedCooldown",
+   "rule": "manual"
+  },
+  {
+   "line": 22134,
+   "old": "v136",
+   "new": "oldMetatable",
+   "rule": "manual"
+  },
+  {
+   "line": 22136,
+   "old": "v137",
+   "new": "oldIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 22137,
+   "old": "t70",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 22146,
+   "old": "t71",
+   "new": "hookMetatable",
+   "rule": "manual"
+  },
+  {
+   "line": 22148,
+   "old": "p99",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 22158,
+   "old": "p100",
+   "new": "target",
+   "rule": "manual"
+  },
+  {
+   "line": 22158,
+   "old": "p101",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 22158,
+   "old": "p102",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 22163,
+   "old": "v138",
+   "new": "now",
+   "rule": "manual"
+  },
+  {
+   "line": 22173,
+   "old": "_hookRestores2",
+   "new": "hookRestores",
+   "rule": "manual"
+  },
+  {
+   "line": 22174,
+   "old": "v139",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 22176,
+   "old": "t72",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 22203,
+   "old": "f1662",
+   "new": "getKeybindForFlag",
+   "rule": "manual"
+  },
+  {
+   "line": 22203,
+   "old": "p103",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22203,
+   "old": "p104",
+   "new": "flag",
+   "rule": "manual"
+  },
+  {
+   "line": 22204,
+   "old": "v140",
+   "new": "bindKey",
+   "rule": "manual"
+  },
+  {
+   "line": 22208,
+   "old": "t74",
+   "new": "keybind",
+   "rule": "manual"
+  },
+  {
+   "line": 22215,
+   "old": "f1663",
+   "new": "migrateColorSettings",
+   "rule": "manual"
+  },
+  {
+   "line": 22215,
+   "old": "p105",
+   "new": "settings",
+   "rule": "manual"
+  },
+  {
+   "line": 22224,
+   "old": "v141",
+   "new": "colorMode",
+   "rule": "manual"
+  },
+  {
+   "line": 22233,
+   "old": "f1664",
+   "new": "dissipateStep_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22234,
+   "old": "v142",
+   "new": "elapsed",
+   "rule": "manual"
+  },
+  {
+   "line": 22239,
+   "old": "v143",
+   "new": "progress",
+   "rule": "manual"
+  },
+  {
+   "line": 22254,
+   "old": "f1665",
+   "new": "dissipate",
+   "rule": "manual"
+  },
+  {
+   "line": 22254,
+   "old": "p106",
+   "new": "pulse",
+   "rule": "manual"
+  },
+  {
+   "line": 22254,
+   "old": "p107",
+   "new": "duration",
+   "rule": "manual"
+  },
+  {
+   "line": 22254,
+   "old": "p108",
+   "new": "expand",
+   "rule": "manual"
+  },
+  {
+   "line": 22261,
+   "old": "v144",
+   "new": "startTime",
+   "rule": "manual"
+  },
+  {
+   "line": 22265,
+   "old": "_parts3",
+   "new": "parts",
+   "rule": "manual"
+  },
+  {
+   "line": 22269,
+   "old": "v145",
+   "new": "duration2",
+   "rule": "manual"
+  },
+  {
+   "line": 22270,
+   "old": "v146",
+   "new": "targetTransparency",
+   "rule": "manual"
+  },
+  {
+   "line": 22271,
+   "old": "v147",
+   "new": "expand2",
+   "rule": "manual"
+  },
+  {
+   "line": 22274,
+   "old": "v148",
+   "new": "elapsed",
+   "rule": "manual"
+  },
+  {
+   "line": 22279,
+   "old": "v149",
+   "new": "progress",
+   "rule": "manual"
+  },
+  {
+   "line": 22297,
+   "old": "f1667",
+   "new": "buildColorCorrectionSection_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22297,
+   "old": "p109",
+   "new": "tab",
+   "rule": "manual"
+  },
+  {
+   "line": 22337,
+   "old": "f1668",
+   "new": "loadColorCorrectionSection",
+   "rule": "manual"
+  },
+  {
+   "line": 22338,
+   "old": "v150",
+   "new": "colorBinder",
+   "rule": "manual"
+  },
+  {
+   "line": 22341,
+   "old": "f1669",
+   "new": "buildColorCorrectionSection",
+   "rule": "manual"
+  },
+  {
+   "line": 22341,
+   "old": "p110",
+   "new": "tab",
+   "rule": "manual"
+  },
+  {
+   "line": 22387,
+   "old": "f1671",
+   "new": "onRealModelAdded_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22387,
+   "old": "p111",
+   "new": "character",
+   "rule": "manual"
+  },
+  {
+   "line": 22397,
+   "old": "f1673",
+   "new": "loadDataHooks_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22397,
+   "old": "p112",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22403,
+   "old": "f1674",
+   "new": "setEnabledAndReset_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22403,
+   "old": "p113",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 22408,
+   "old": "f1675",
+   "new": "tweenTextColor_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22409,
+   "old": "t91",
+   "new": "tween",
+   "rule": "manual"
+  },
+  {
+   "line": 22411,
+   "old": "v151",
+   "new": "tweenInfo",
+   "rule": "manual"
+  },
+  {
+   "line": 22412,
+   "old": "t92",
+   "new": "goal",
+   "rule": "manual"
+  },
+  {
+   "line": 22416,
+   "old": "f1676",
+   "new": "areWrapsEqual_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22416,
+   "old": "p114",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 22416,
+   "old": "p115",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 22423,
+   "old": "v152",
+   "new": "equal",
+   "rule": "manual"
+  },
+  {
+   "line": 22431,
+   "old": "f1677",
+   "new": "areSelectionsEqual_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22431,
+   "old": "p116",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 22431,
+   "old": "p117",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 22445,
+   "old": "f1678",
+   "new": "noneToNil_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22445,
+   "old": "p118",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 22452,
+   "old": "f1679",
+   "new": "wrapNoneToNil_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22452,
+   "old": "p119",
+   "new": "wrap",
+   "rule": "manual"
+  },
+  {
+   "line": 22459,
+   "old": "f1680",
+   "new": "areViewModelSelectionsEqual_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22459,
+   "old": "p120",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 22459,
+   "old": "p121",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 22463,
+   "old": "v153",
+   "new": "skinA",
+   "rule": "manual"
+  },
+  {
+   "line": 22466,
+   "old": "v154",
+   "new": "skinB",
+   "rule": "manual"
+  },
+  {
+   "line": 22472,
+   "old": "v155",
+   "new": "charmA",
+   "rule": "manual"
+  },
+  {
+   "line": 22475,
+   "old": "v156",
+   "new": "charmB",
+   "rule": "manual"
+  },
+  {
+   "line": 22481,
+   "old": "v157",
+   "new": "wrapA",
+   "rule": "manual"
+  },
+  {
+   "line": 22484,
+   "old": "v158",
+   "new": "wrapB",
+   "rule": "manual"
+  },
+  {
+   "line": 22490,
+   "old": "f1681",
+   "new": "loadSelectionEquality",
+   "rule": "manual"
+  },
+  {
+   "line": 22491,
+   "old": "t93",
+   "new": "cosmeticConstants",
+   "rule": "manual"
+  },
+  {
+   "line": 22493,
+   "old": "NONE_COSMETIC2",
+   "new": "NONE_COSMETIC",
+   "rule": "manual"
+  },
+  {
+   "line": 22495,
+   "old": "f1682",
+   "new": "areWrapsEqual",
+   "rule": "manual"
+  },
+  {
+   "line": 22495,
+   "old": "p122",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 22495,
+   "old": "p123",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 22502,
+   "old": "v159",
+   "new": "equal",
+   "rule": "manual"
+  },
+  {
+   "line": 22510,
+   "old": "f1683",
+   "new": "areSelectionsEqual",
+   "rule": "manual"
+  },
+  {
+   "line": 22510,
+   "old": "p124",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 22510,
+   "old": "p125",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 22524,
+   "old": "f1684",
+   "new": "noneToNil",
+   "rule": "manual"
+  },
+  {
+   "line": 22524,
+   "old": "p126",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 22531,
+   "old": "f1685",
+   "new": "wrapNoneToNil",
+   "rule": "manual"
+  },
+  {
+   "line": 22531,
+   "old": "p127",
+   "new": "wrap",
+   "rule": "manual"
+  },
+  {
+   "line": 22538,
+   "old": "f1686",
+   "new": "areViewModelSelectionsEqual",
+   "rule": "manual"
+  },
+  {
+   "line": 22538,
+   "old": "p128",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 22538,
+   "old": "p129",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 22542,
+   "old": "v160",
+   "new": "skinA",
+   "rule": "manual"
+  },
+  {
+   "line": 22545,
+   "old": "v161",
+   "new": "skinB",
+   "rule": "manual"
+  },
+  {
+   "line": 22551,
+   "old": "v162",
+   "new": "charmA",
+   "rule": "manual"
+  },
+  {
+   "line": 22554,
+   "old": "v163",
+   "new": "charmB",
+   "rule": "manual"
+  },
+  {
+   "line": 22560,
+   "old": "v164",
+   "new": "wrapA",
+   "rule": "manual"
+  },
+  {
+   "line": 22563,
+   "old": "v165",
+   "new": "wrapB",
+   "rule": "manual"
+  },
+  {
+   "line": 22569,
+   "old": "t94",
+   "new": "selectionEquality",
+   "rule": "manual"
+  },
+  {
+   "line": 22573,
+   "old": "f1687",
+   "new": "preRenderElimination_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22573,
+   "old": "p130",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22573,
+   "old": "p131",
+   "new": "deltaTime",
+   "rule": "manual"
+  },
+  {
+   "line": 22575,
+   "old": "v166",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 22587,
+   "old": "f1688",
+   "new": "destroyElimination_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22587,
+   "old": "p132",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22588,
+   "old": "_chams",
+   "new": "chams",
+   "rule": "manual"
+  },
+  {
+   "line": 22589,
+   "old": "v167",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 22591,
+   "old": "v168",
+   "new": "cham",
+   "rule": "manual"
+  },
+  {
+   "line": 22604,
+   "old": "f1689",
+   "new": "notifyMessage_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22608,
+   "old": "f1690",
+   "new": "handleKill_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22608,
+   "old": "p133",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22608,
+   "old": "p134",
+   "new": "victim",
+   "rule": "manual"
+  },
+  {
+   "line": 22619,
+   "old": "v169",
+   "new": "displayName",
+   "rule": "manual"
+  },
+  {
+   "line": 22619,
+   "old": "v170",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 22623,
+   "old": "t95",
+   "new": "placeholders",
+   "rule": "manual"
+  },
+  {
+   "line": 22624,
+   "old": "v171",
+   "new": "message",
+   "rule": "manual"
+  },
+  {
+   "line": 22626,
+   "old": "f1691",
+   "new": "notify",
+   "rule": "manual"
+  },
+  {
+   "line": 22638,
+   "old": "v172",
+   "new": "cham",
+   "rule": "manual"
+  },
+  {
+   "line": 22649,
+   "old": "f1692",
+   "new": "preloadSound_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22649,
+   "old": "p135",
+   "new": "soundName",
+   "rule": "manual"
+  },
+  {
+   "line": 22653,
+   "old": "f1693",
+   "new": "handleReplicate_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22653,
+   "old": "p136",
+   "new": "effect",
+   "rule": "manual"
+  },
+  {
+   "line": 22657,
+   "old": "f1694",
+   "new": "setEnabled_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22657,
+   "old": "p137",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 22661,
+   "old": "f1695",
+   "new": "newPlayerElimination_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22661,
+   "old": "p138",
+   "new": "replicator",
+   "rule": "manual"
+  },
+  {
+   "line": 22661,
+   "old": "p139",
+   "new": "playerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 22661,
+   "old": "p140",
+   "new": "enemyRegistry",
+   "rule": "manual"
+  },
+  {
+   "line": 22661,
+   "old": "p141",
+   "new": "customSounds",
+   "rule": "manual"
+  },
+  {
+   "line": 22662,
+   "old": "v173",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 22663,
+   "old": "v174",
+   "new": "errorReporter",
+   "rule": "manual"
+  },
+  {
+   "line": 22664,
+   "old": "Reserve10",
+   "new": "replicateBinding",
+   "rule": "manual"
+  },
+  {
+   "line": 22665,
+   "old": "t96",
+   "new": "elimination",
+   "rule": "manual"
+  },
+  {
+   "line": 22677,
+   "old": "f1696",
+   "new": "onReplicate",
+   "rule": "manual"
+  },
+  {
+   "line": 22677,
+   "old": "p142",
+   "new": "effect",
+   "rule": "manual"
+  },
+  {
+   "line": 22683,
+   "old": "f1697",
+   "new": "onEnabledChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 22683,
+   "old": "p143",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 22689,
+   "old": "f1698",
+   "new": "onSoundChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 22689,
+   "old": "p144",
+   "new": "soundName",
+   "rule": "manual"
+  },
+  {
+   "line": 22701,
+   "old": "f1699",
+   "new": "setReplicateEnabled_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22701,
+   "old": "p145",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22701,
+   "old": "p146",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 22705,
+   "old": "f1700",
+   "new": "handleReplicateEffect_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22705,
+   "old": "p147",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 22705,
+   "old": "p148",
+   "new": "effect",
+   "rule": "manual"
+  },
+  {
+   "line": 22706,
+   "old": "inner19",
+   "new": "fighter",
+   "rule": "manual"
+  },
+  {
+   "line": 22715,
+   "old": "GetByObjectId6",
+   "new": "enemy",
+   "rule": "manual"
+  },
+  {
+   "line": 22724,
+   "old": "t97",
+   "new": "killer",
+   "rule": "manual"
+  },
+  {
+   "line": 22728,
+   "old": "Character3",
+   "new": "character",
+   "rule": "manual"
+  },
+  {
+   "line": 22736,
+   "old": "f1701",
+   "new": "loadPlayerElimination",
+   "rule": "manual"
+  },
+  {
+   "line": 22737,
+   "old": "v175",
+   "new": "EliminationChams",
+   "rule": "manual"
+  },
+  {
+   "line": 22738,
+   "old": "v176",
+   "new": "settings",
+   "rule": "manual"
+  },
+  {
+   "line": 22741,
+   "old": "v177",
+   "new": "ErrorReporter",
+   "rule": "manual"
+  },
+  {
+   "line": 22742,
+   "old": "v178",
+   "new": "Notifier",
+   "rule": "manual"
+  },
+  {
+   "line": 22745,
+   "old": "v179",
+   "new": "KillFlash",
+   "rule": "manual"
+  },
+  {
+   "line": 22746,
+   "old": "v180",
+   "new": "Trove",
+   "rule": "manual"
+  },
+  {
+   "line": 22747,
+   "old": "v181",
+   "new": "playSound",
+   "rule": "manual"
+  },
+  {
+   "line": 22748,
+   "old": "v182",
+   "new": "getPlayerNames",
+   "rule": "manual"
+  },
+  {
+   "line": 22749,
+   "old": "LocalPlayer6",
+   "new": "localPlayer",
+   "rule": "manual"
+  },
+  {
+   "line": 22750,
+   "old": "t98",
+   "new": "PlayerElimination",
+   "rule": "manual"
+  },
+  {
+   "line": 22753,
+   "old": "p149",
+   "new": "replicator",
+   "rule": "manual"
+  },
+  {
+   "line": 22753,
+   "old": "p150",
+   "new": "playerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 22753,
+   "old": "p151",
+   "new": "enemyRegistry",
+   "rule": "manual"
+  },
+  {
+   "line": 22753,
+   "old": "p152",
+   "new": "customSounds",
+   "rule": "manual"
+  },
+  {
+   "line": 22754,
+   "old": "v183",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 22755,
+   "old": "v184",
+   "new": "errorReporter",
+   "rule": "manual"
+  },
+  {
+   "line": 22756,
+   "old": "Reserve11",
+   "new": "replicateBinding",
+   "rule": "manual"
+  },
+  {
+   "line": 22757,
+   "old": "t99",
+   "new": "elimination",
+   "rule": "manual"
+  },
+  {
+   "line": 22769,
+   "old": "f1702",
+   "new": "onReplicate",
+   "rule": "manual"
+  },
+  {
+   "line": 22769,
+   "old": "p153",
+   "new": "effect",
+   "rule": "manual"
+  },
+  {
+   "line": 22775,
+   "old": "f1703",
+   "new": "onEnabledChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 22775,
+   "old": "p154",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 22781,
+   "old": "f1704",
+   "new": "onSoundChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 22781,
+   "old": "p155",
+   "new": "soundName",
+   "rule": "manual"
+  },
+  {
+   "line": 22793,
+   "old": "p156",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 22797,
+   "old": "p157",
+   "new": "effect",
+   "rule": "manual"
+  },
+  {
+   "line": 22798,
+   "old": "inner20",
+   "new": "fighter",
+   "rule": "manual"
+  },
+  {
+   "line": 22807,
+   "old": "GetByObjectId7",
+   "new": "enemy",
+   "rule": "manual"
+  },
+  {
+   "line": 22816,
+   "old": "t100",
+   "new": "killer",
+   "rule": "manual"
+  },
+  {
+   "line": 22820,
+   "old": "Character4",
+   "new": "character",
+   "rule": "manual"
+  },
+  {
+   "line": 22828,
+   "old": "p158",
+   "new": "victim",
+   "rule": "manual"
+  },
+  {
+   "line": 22839,
+   "old": "v185",
+   "new": "displayName",
+   "rule": "manual"
+  },
+  {
+   "line": 22839,
+   "old": "v186",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 22843,
+   "old": "t101",
+   "new": "placeholders",
+   "rule": "manual"
+  },
+  {
+   "line": 22844,
+   "old": "v187",
+   "new": "message",
+   "rule": "manual"
+  },
+  {
+   "line": 22846,
+   "old": "f1705",
+   "new": "notify",
+   "rule": "manual"
+  },
+  {
+   "line": 22858,
+   "old": "v188",
+   "new": "cham",
+   "rule": "manual"
+  },
+  {
+   "line": 22869,
+   "old": "p159",
+   "new": "deltaTime",
+   "rule": "manual"
+  },
+  {
+   "line": 22871,
+   "old": "v189",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 22884,
+   "old": "_chams2",
+   "new": "chams",
+   "rule": "manual"
+  },
+  {
+   "line": 22885,
+   "old": "v190",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 22887,
+   "old": "v191",
+   "new": "cham",
+   "rule": "manual"
+  },
+  {
+   "line": 22912,
+   "old": "f1707",
+   "new": "preloadIfSignatureCurrent_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22918,
+   "old": "f1708",
+   "new": "addCustomSound_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22926,
+   "old": "f1709",
+   "new": "removeCustomSound_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22927,
+   "old": "Value21",
+   "new": "selectedName",
+   "rule": "manual"
+  },
+  {
+   "line": 22934,
+   "old": "f1710",
+   "new": "setSavedOptions_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22934,
+   "old": "p160",
+   "new": "names",
+   "rule": "manual"
+  },
+  {
+   "line": 22938,
+   "old": "f1711",
+   "new": "buildCustomSoundsSection",
+   "rule": "manual"
+  },
+  {
+   "line": 22938,
+   "old": "p161",
+   "new": "deps",
+   "rule": "manual"
+  },
+  {
+   "line": 22938,
+   "old": "p162",
+   "new": "tab",
+   "rule": "manual"
+  },
+  {
+   "line": 22965,
+   "old": "f1712",
+   "new": "setSavedOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 22965,
+   "old": "p163",
+   "new": "names",
+   "rule": "manual"
+  },
+  {
+   "line": 22974,
+   "old": "Value22",
+   "new": "selectedName",
+   "rule": "manual"
+  },
+  {
+   "line": 22984,
+   "old": "f1713",
+   "new": "scopeSetActiveHook_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 22984,
+   "old": "p164",
+   "new": "scope",
+   "rule": "manual"
+  },
+  {
+   "line": 22984,
+   "old": "p165",
+   "new": "active",
+   "rule": "manual"
+  },
+  {
+   "line": 22990,
+   "old": "v195",
+   "new": "circleFrame",
+   "rule": "manual"
+  },
+  {
+   "line": 22991,
+   "old": "v196",
+   "new": "blurFrame",
+   "rule": "manual"
+  },
+  {
+   "line": 22992,
+   "old": "v197",
+   "new": "visible",
+   "rule": "manual"
+  },
+  {
+   "line": 23001,
+   "old": "f1714",
+   "new": "ensureScopeHookLoaded_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23001,
+   "old": "p166",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23005,
+   "old": "v198",
+   "new": "originalSetActive",
+   "rule": "manual"
+  },
+  {
+   "line": 23010,
+   "old": "f1715",
+   "new": "setActiveHook",
+   "rule": "manual"
+  },
+  {
+   "line": 23010,
+   "old": "p167",
+   "new": "scope",
+   "rule": "manual"
+  },
+  {
+   "line": 23010,
+   "old": "p168",
+   "new": "active",
+   "rule": "manual"
+  },
+  {
+   "line": 23016,
+   "old": "v199",
+   "new": "circleFrame",
+   "rule": "manual"
+  },
+  {
+   "line": 23017,
+   "old": "v200",
+   "new": "blurFrame",
+   "rule": "manual"
+  },
+  {
+   "line": 23018,
+   "old": "v201",
+   "new": "visible",
+   "rule": "manual"
+  },
+  {
+   "line": 23028,
+   "old": "t110",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 23033,
+   "old": "f1716",
+   "new": "revertScopeHook_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23033,
+   "old": "p169",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23034,
+   "old": "_restore7",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 23042,
+   "old": "f1717",
+   "new": "destroyScopeOverlay_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23042,
+   "old": "p170",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23046,
+   "old": "f1718",
+   "new": "setReticleHidden_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23046,
+   "old": "p171",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23046,
+   "old": "p172",
+   "new": "hidden",
+   "rule": "manual"
+  },
+  {
+   "line": 23052,
+   "old": "f1719",
+   "new": "loadScopeOverlay",
+   "rule": "manual"
+  },
+  {
+   "line": 23054,
+   "old": "v202",
+   "new": "Result",
+   "rule": "manual"
+  },
+  {
+   "line": 23056,
+   "old": "t111",
+   "new": "ScopeOverlay",
+   "rule": "manual"
+  },
+  {
+   "line": 23060,
+   "old": "t112",
+   "new": "overlay",
+   "rule": "manual"
+  },
+  {
+   "line": 23069,
+   "old": "p173",
+   "new": "hidden",
+   "rule": "manual"
+  },
+  {
+   "line": 23075,
+   "old": "p174",
+   "new": "hidden",
+   "rule": "manual"
+  },
+  {
+   "line": 23085,
+   "old": "v203",
+   "new": "originalSetActive",
+   "rule": "manual"
+  },
+  {
+   "line": 23090,
+   "old": "f1720",
+   "new": "setActiveHook",
+   "rule": "manual"
+  },
+  {
+   "line": 23090,
+   "old": "p175",
+   "new": "scope",
+   "rule": "manual"
+  },
+  {
+   "line": 23090,
+   "old": "p176",
+   "new": "active",
+   "rule": "manual"
+  },
+  {
+   "line": 23096,
+   "old": "v204",
+   "new": "circleFrame",
+   "rule": "manual"
+  },
+  {
+   "line": 23097,
+   "old": "v205",
+   "new": "blurFrame",
+   "rule": "manual"
+  },
+  {
+   "line": 23098,
+   "old": "v206",
+   "new": "visible",
+   "rule": "manual"
+  },
+  {
+   "line": 23108,
+   "old": "t113",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 23114,
+   "old": "_restore8",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 23129,
+   "old": "f1721",
+   "new": "buildSoundVisualizerOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 23129,
+   "old": "p177",
+   "new": "section",
+   "rule": "manual"
+  },
+  {
+   "line": 23146,
+   "old": "f1722",
+   "new": "getHeaderHeight",
+   "rule": "manual"
+  },
+  {
+   "line": 23161,
+   "old": "f1724",
+   "new": "newSignalPair_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23165,
+   "old": "f1725",
+   "new": "loadJumpPowerHook_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23165,
+   "old": "p178",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23169,
+   "old": "v208",
+   "new": "hookFighter",
+   "rule": "manual"
+  },
+  {
+   "line": 23174,
+   "old": "v209",
+   "new": "localFighter",
+   "rule": "manual"
+  },
+  {
+   "line": 23179,
+   "old": "v210",
+   "new": "entityAddedCallback",
+   "rule": "manual"
+  },
+  {
+   "line": 23180,
+   "old": "t118",
+   "new": "handlerNode",
+   "rule": "manual"
+  },
+  {
+   "line": 23182,
+   "old": "v211",
+   "new": "handler",
+   "rule": "manual"
+  },
+  {
+   "line": 23183,
+   "old": "v212",
+   "new": "constant",
+   "rule": "manual"
+  },
+  {
+   "line": 23200,
+   "old": "v213",
+   "new": "protoIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 23201,
+   "old": "v214",
+   "new": "proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23219,
+   "old": "f1727",
+   "new": "buildTabPage",
+   "rule": "manual"
+  },
+  {
+   "line": 23219,
+   "old": "p179",
+   "new": "deps",
+   "rule": "manual"
+  },
+  {
+   "line": 23219,
+   "old": "p180",
+   "new": "theme",
+   "rule": "manual"
+  },
+  {
+   "line": 23219,
+   "old": "p181",
+   "new": "parent",
+   "rule": "manual"
+  },
+  {
+   "line": 23219,
+   "old": "p182",
+   "new": "searchOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 23219,
+   "old": "p183",
+   "new": "title",
+   "rule": "manual"
+  },
+  {
+   "line": 23219,
+   "old": "p184",
+   "new": "description",
+   "rule": "manual"
+  },
+  {
+   "line": 23220,
+   "old": "v215",
+   "new": "holder",
+   "rule": "manual"
+  },
+  {
+   "line": 23225,
+   "old": "v216",
+   "new": "top",
+   "rule": "manual"
+  },
+  {
+   "line": 23234,
+   "old": "v218",
+   "new": "divider",
+   "rule": "manual"
+  },
+  {
+   "line": 23240,
+   "old": "v219",
+   "new": "header",
+   "rule": "manual"
+  },
+  {
+   "line": 23246,
+   "old": "v220",
+   "new": "titleStack",
+   "rule": "manual"
+  },
+  {
+   "line": 23276,
+   "old": "v224",
+   "new": "searchBar",
+   "rule": "manual"
+  },
+  {
+   "line": 23277,
+   "old": "v225",
+   "new": "background",
+   "rule": "manual"
+  },
+  {
+   "line": 23307,
+   "old": "t120",
+   "new": "page",
+   "rule": "manual"
+  },
+  {
+   "line": 23318,
+   "old": "f1728",
+   "new": "removeButton_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23334,
+   "old": "f1730",
+   "new": "sameInstance",
+   "rule": "manual"
+  },
+  {
+   "line": 23334,
+   "old": "p185",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 23334,
+   "old": "p186",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 23335,
+   "old": "v229",
+   "new": "same",
+   "rule": "manual"
+  },
+  {
+   "line": 23346,
+   "old": "f1731",
+   "new": "isProposed",
+   "rule": "manual"
+  },
+  {
+   "line": 23346,
+   "old": "p187",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23346,
+   "old": "p188",
+   "new": "owner",
+   "rule": "manual"
+  },
+  {
+   "line": 23346,
+   "old": "p189",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 23347,
+   "old": "t122",
+   "new": "proposals",
+   "rule": "manual"
+  },
+  {
+   "line": 23348,
+   "old": "v230",
+   "new": "proposed",
+   "rule": "manual"
+  },
+  {
+   "line": 23356,
+   "old": "f1732",
+   "new": "setGradientRgb_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23356,
+   "old": "p190",
+   "new": "rgb",
+   "rule": "manual"
+  },
+  {
+   "line": 23357,
+   "old": "t123",
+   "new": "picker",
+   "rule": "manual"
+  },
+  {
+   "line": 23359,
+   "old": "t124",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 23363,
+   "old": "f1733",
+   "new": "downloadSound_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23367,
+   "old": "f1734",
+   "new": "loadSoundAsset_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23367,
+   "old": "p191",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23367,
+   "old": "p192",
+   "new": "reject",
+   "rule": "manual"
+  },
+  {
+   "line": 23368,
+   "old": "v231",
+   "new": "hash",
+   "rule": "manual"
+  },
+  {
+   "line": 23369,
+   "old": "v232",
+   "new": "extension",
+   "rule": "manual"
+  },
+  {
+   "line": 23370,
+   "old": "v233",
+   "new": "path",
+   "rule": "manual"
+  },
+  {
+   "line": 23372,
+   "old": "f1735",
+   "new": "download",
+   "rule": "manual"
+  },
+  {
+   "line": 23376,
+   "old": "v234",
+   "new": "data",
+   "rule": "manual"
+  },
+  {
+   "line": 23376,
+   "old": "v235",
+   "new": "ok",
+   "rule": "manual"
+  },
+  {
+   "line": 23385,
+   "old": "t125",
+   "new": "folderResult",
+   "rule": "manual"
+  },
+  {
+   "line": 23390,
+   "old": "v236",
+   "new": "writeError",
+   "rule": "manual"
+  },
+  {
+   "line": 23390,
+   "old": "v237",
+   "new": "written",
+   "rule": "manual"
+  },
+  {
+   "line": 23400,
+   "old": "v238",
+   "new": "asset",
+   "rule": "manual"
+  },
+  {
+   "line": 23400,
+   "old": "v239",
+   "new": "loaded",
+   "rule": "manual"
+  },
+  {
+   "line": 23413,
+   "old": "f1736",
+   "new": "getSoundAsset",
+   "rule": "manual"
+  },
+  {
+   "line": 23413,
+   "old": "p193",
+   "new": "url",
+   "rule": "manual"
+  },
+  {
+   "line": 23414,
+   "old": "f1737",
+   "new": "loadSoundAsset",
+   "rule": "manual"
+  },
+  {
+   "line": 23414,
+   "old": "p194",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23414,
+   "old": "p195",
+   "new": "reject",
+   "rule": "manual"
+  },
+  {
+   "line": 23415,
+   "old": "v240",
+   "new": "hash",
+   "rule": "manual"
+  },
+  {
+   "line": 23416,
+   "old": "v241",
+   "new": "extension",
+   "rule": "manual"
+  },
+  {
+   "line": 23417,
+   "old": "v242",
+   "new": "path",
+   "rule": "manual"
+  },
+  {
+   "line": 23419,
+   "old": "f1738",
+   "new": "download",
+   "rule": "manual"
+  },
+  {
+   "line": 23423,
+   "old": "v243",
+   "new": "data",
+   "rule": "manual"
+  },
+  {
+   "line": 23423,
+   "old": "v244",
+   "new": "ok",
+   "rule": "manual"
+  },
+  {
+   "line": 23432,
+   "old": "t126",
+   "new": "folderResult",
+   "rule": "manual"
+  },
+  {
+   "line": 23440,
+   "old": "v245",
+   "new": "writeError",
+   "rule": "manual"
+  },
+  {
+   "line": 23440,
+   "old": "v246",
+   "new": "written",
+   "rule": "manual"
+  },
+  {
+   "line": 23450,
+   "old": "v247",
+   "new": "asset",
+   "rule": "manual"
+  },
+  {
+   "line": 23450,
+   "old": "v248",
+   "new": "loaded",
+   "rule": "manual"
+  },
+  {
+   "line": 23466,
+   "old": "f1739",
+   "new": "lookup",
+   "rule": "manual"
+  },
+  {
+   "line": 23466,
+   "old": "p196",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 23470,
+   "old": "f1740",
+   "new": "getEditProfile_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23477,
+   "old": "f1741",
+   "new": "cancelEmote_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23503,
+   "old": "f1744",
+   "new": "syncSliderFromSource_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23507,
+   "old": "v249",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 23528,
+   "old": "f1747",
+   "new": "waitForAttachment",
+   "rule": "manual"
+  },
+  {
+   "line": 23528,
+   "old": "p197",
+   "new": "parent",
+   "rule": "manual"
+  },
+  {
+   "line": 23528,
+   "old": "p198",
+   "new": "attachmentName",
+   "rule": "manual"
+  },
+  {
+   "line": 23530,
+   "old": "f1748",
+   "new": "isOtherAttachment",
+   "rule": "manual"
+  },
+  {
+   "line": 23553,
+   "old": "f1749",
+   "new": "setInputEnabled_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23553,
+   "old": "p199",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23553,
+   "old": "p200",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 23559,
+   "old": "f1750",
+   "new": "callElevatedCached_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23559,
+   "old": "p201",
+   "new": "target",
+   "rule": "manual"
+  },
+  {
+   "line": 23559,
+   "old": "p202",
+   "new": "method",
+   "rule": "manual"
+  },
+  {
+   "line": 23559,
+   "old": "p203",
+   "new": "arg",
+   "rule": "manual"
+  },
+  {
+   "line": 23560,
+   "old": "v251",
+   "new": "cacheKey",
+   "rule": "manual"
+  },
+  {
+   "line": 23561,
+   "old": "v252",
+   "new": "cached",
+   "rule": "manual"
+  },
+  {
+   "line": 23565,
+   "old": "v253",
+   "new": "oldIdentity",
+   "rule": "manual"
+  },
+  {
+   "line": 23567,
+   "old": "v254",
+   "new": "result",
+   "rule": "manual"
+  },
+  {
+   "line": 23573,
+   "old": "f1751",
+   "new": "refreshAllScopes_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23574,
+   "old": "_entries3",
+   "new": "entries",
+   "rule": "manual"
+  },
+  {
+   "line": 23575,
+   "old": "v255",
+   "new": "scope",
+   "rule": "manual"
+  },
+  {
+   "line": 23586,
+   "old": "f1752",
+   "new": "extendTrove_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23586,
+   "old": "p204",
+   "new": "parent",
+   "rule": "manual"
+  },
+  {
+   "line": 23588,
+   "old": "t132",
+   "new": "child",
+   "rule": "manual"
+  },
+  {
+   "line": 23592,
+   "old": "v256",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 23593,
+   "old": "_objs",
+   "new": "objects",
+   "rule": "manual"
+  },
+  {
+   "line": 23594,
+   "old": "v257",
+   "new": "count",
+   "rule": "manual"
+  },
+  {
+   "line": 23600,
+   "old": "f1753",
+   "new": "newLoadoutPicker_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23600,
+   "old": "p205",
+   "new": "fighterState",
+   "rule": "manual"
+  },
+  {
+   "line": 23601,
+   "old": "t133",
+   "new": "picker",
+   "rule": "manual"
+  },
+  {
+   "line": 23605,
+   "old": "f1754",
+   "new": "forcePickLoadout_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23609,
+   "old": "f1755",
+   "new": "pickLoadoutAsync_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23609,
+   "old": "p206",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23609,
+   "old": "p207",
+   "new": "loadout",
+   "rule": "manual"
+  },
+  {
+   "line": 23621,
+   "old": "f1756",
+   "new": "forcePick",
+   "rule": "manual"
+  },
+  {
+   "line": 23628,
+   "old": "f1757",
+   "new": "disconnect_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23632,
+   "old": "f1758",
+   "new": "resolve_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23636,
+   "old": "f1759",
+   "new": "waitForItemAdded_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23636,
+   "old": "p208",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23637,
+   "old": "f1760",
+   "new": "onItemAdded",
+   "rule": "manual"
+  },
+  {
+   "line": 23644,
+   "old": "f1761",
+   "new": "forcePickLoadoutAsync_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23644,
+   "old": "p209",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23644,
+   "old": "p210",
+   "new": "loadout",
+   "rule": "manual"
+  },
+  {
+   "line": 23645,
+   "old": "f1762",
+   "new": "connection",
+   "rule": "manual"
+  },
+  {
+   "line": 23649,
+   "old": "f1763",
+   "new": "waitForItemAdded",
+   "rule": "manual"
+  },
+  {
+   "line": 23649,
+   "old": "p211",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23650,
+   "old": "f1764",
+   "new": "onItemAdded",
+   "rule": "manual"
+  },
+  {
+   "line": 23657,
+   "old": "f1765",
+   "new": "disconnect",
+   "rule": "manual"
+  },
+  {
+   "line": 23664,
+   "old": "f1766",
+   "new": "waitForItemRemoved_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23664,
+   "old": "p212",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23665,
+   "old": "f1767",
+   "new": "onItemRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 23669,
+   "old": "v258",
+   "new": "connection",
+   "rule": "manual"
+  },
+  {
+   "line": 23673,
+   "old": "f1768",
+   "new": "disconnectRemoved_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23677,
+   "old": "f1769",
+   "new": "trashRangeItemsAsync_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23677,
+   "old": "p213",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23678,
+   "old": "f1770",
+   "new": "connection",
+   "rule": "manual"
+  },
+  {
+   "line": 23682,
+   "old": "f1771",
+   "new": "waitForItemRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 23682,
+   "old": "p214",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23683,
+   "old": "f1772",
+   "new": "onItemRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 23687,
+   "old": "v259",
+   "new": "newConnection",
+   "rule": "manual"
+  },
+  {
+   "line": 23691,
+   "old": "f1773",
+   "new": "disconnect",
+   "rule": "manual"
+  },
+  {
+   "line": 23698,
+   "old": "f1774",
+   "new": "loadLoadoutPicker",
+   "rule": "manual"
+  },
+  {
+   "line": 23700,
+   "old": "v260",
+   "new": "Promise",
+   "rule": "manual"
+  },
+  {
+   "line": 23704,
+   "old": "v261",
+   "new": "callMethod",
+   "rule": "manual"
+  },
+  {
+   "line": 23705,
+   "old": "v262",
+   "new": "connectOnce",
+   "rule": "manual"
+  },
+  {
+   "line": 23706,
+   "old": "t134",
+   "new": "LoadoutPicker",
+   "rule": "manual"
+  },
+  {
+   "line": 23709,
+   "old": "p215",
+   "new": "fighterState",
+   "rule": "manual"
+  },
+  {
+   "line": 23710,
+   "old": "t135",
+   "new": "picker",
+   "rule": "manual"
+  },
+  {
+   "line": 23714,
+   "old": "p216",
+   "new": "loadout",
+   "rule": "manual"
+  },
+  {
+   "line": 23726,
+   "old": "f1775",
+   "new": "forcePick",
+   "rule": "manual"
+  },
+  {
+   "line": 23733,
+   "old": "p217",
+   "new": "loadout",
+   "rule": "manual"
+  },
+  {
+   "line": 23734,
+   "old": "f1776",
+   "new": "connection",
+   "rule": "manual"
+  },
+  {
+   "line": 23738,
+   "old": "f1777",
+   "new": "waitForItemAdded",
+   "rule": "manual"
+  },
+  {
+   "line": 23738,
+   "old": "p218",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23739,
+   "old": "f1778",
+   "new": "onItemAdded",
+   "rule": "manual"
+  },
+  {
+   "line": 23746,
+   "old": "f1779",
+   "new": "disconnect",
+   "rule": "manual"
+  },
+  {
+   "line": 23754,
+   "old": "f1780",
+   "new": "connection",
+   "rule": "manual"
+  },
+  {
+   "line": 23758,
+   "old": "f1781",
+   "new": "waitForItemRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 23758,
+   "old": "p219",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23759,
+   "old": "f1782",
+   "new": "onItemRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 23763,
+   "old": "v263",
+   "new": "newConnection",
+   "rule": "manual"
+  },
+  {
+   "line": 23767,
+   "old": "f1783",
+   "new": "disconnect",
+   "rule": "manual"
+  },
+  {
+   "line": 23777,
+   "old": "f1784",
+   "new": "forgetPlayer_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23777,
+   "old": "p220",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 23791,
+   "old": "f1786",
+   "new": "loadStateConfig_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23791,
+   "old": "p221",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23792,
+   "old": "v264",
+   "new": "failure",
+   "rule": "manual"
+  },
+  {
+   "line": 23792,
+   "old": "v265",
+   "new": "presetName",
+   "rule": "manual"
+  },
+  {
+   "line": 23797,
+   "old": "Load2",
+   "new": "loaded",
+   "rule": "manual"
+  },
+  {
+   "line": 23799,
+   "old": "t137",
+   "new": "success",
+   "rule": "manual"
+  },
+  {
+   "line": 23802,
+   "old": "t138",
+   "new": "failure2",
+   "rule": "manual"
+  },
+  {
+   "line": 23816,
+   "old": "f1788",
+   "new": "enemyHasSlingshot_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23816,
+   "old": "p222",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23818,
+   "old": "v266",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 23820,
+   "old": "t139",
+   "new": "enemy",
+   "rule": "manual"
+  },
+  {
+   "line": 23825,
+   "old": "EquippedItemAsGun2",
+   "new": "gun",
+   "rule": "manual"
+  },
+  {
+   "line": 23834,
+   "old": "f1789",
+   "new": "markDone_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23838,
+   "old": "f1790",
+   "new": "createHumanoidModel_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23842,
+   "old": "f1791",
+   "new": "createAndResolve_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23843,
+   "old": "f1792",
+   "new": "create",
+   "rule": "manual"
+  },
+  {
+   "line": 23847,
+   "old": "v267",
+   "new": "model",
+   "rule": "manual"
+  },
+  {
+   "line": 23852,
+   "old": "f1793",
+   "new": "createHumanoidModelExecutor_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23852,
+   "old": "p223",
+   "new": "resolveUnused",
+   "rule": "manual"
+  },
+  {
+   "line": 23852,
+   "old": "p224",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23852,
+   "old": "p225",
+   "new": "onCancel",
+   "rule": "manual"
+  },
+  {
+   "line": 23853,
+   "old": "v268",
+   "new": "cancelled",
+   "rule": "manual"
+  },
+  {
+   "line": 23855,
+   "old": "f1794",
+   "new": "cancel",
+   "rule": "manual"
+  },
+  {
+   "line": 23861,
+   "old": "f1795",
+   "new": "run",
+   "rule": "manual"
+  },
+  {
+   "line": 23862,
+   "old": "f1796",
+   "new": "create",
+   "rule": "manual"
+  },
+  {
+   "line": 23866,
+   "old": "v269",
+   "new": "model",
+   "rule": "manual"
+  },
+  {
+   "line": 23874,
+   "old": "f1797",
+   "new": "createHumanoidModelAsync",
+   "rule": "manual"
+  },
+  {
+   "line": 23874,
+   "old": "p226",
+   "new": "description",
+   "rule": "manual"
+  },
+  {
+   "line": 23874,
+   "old": "p227",
+   "new": "rigType",
+   "rule": "manual"
+  },
+  {
+   "line": 23875,
+   "old": "f1798",
+   "new": "executor",
+   "rule": "manual"
+  },
+  {
+   "line": 23875,
+   "old": "p228",
+   "new": "resolveUnused",
+   "rule": "manual"
+  },
+  {
+   "line": 23875,
+   "old": "p229",
+   "new": "resolve",
+   "rule": "manual"
+  },
+  {
+   "line": 23875,
+   "old": "p230",
+   "new": "onCancel",
+   "rule": "manual"
+  },
+  {
+   "line": 23876,
+   "old": "v270",
+   "new": "cancelled",
+   "rule": "manual"
+  },
+  {
+   "line": 23878,
+   "old": "f1799",
+   "new": "cancel",
+   "rule": "manual"
+  },
+  {
+   "line": 23884,
+   "old": "f1800",
+   "new": "run",
+   "rule": "manual"
+  },
+  {
+   "line": 23885,
+   "old": "f1801",
+   "new": "create",
+   "rule": "manual"
+  },
+  {
+   "line": 23889,
+   "old": "v271",
+   "new": "model",
+   "rule": "manual"
+  },
+  {
+   "line": 23909,
+   "old": "f1803",
+   "new": "destroyTrove_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23909,
+   "old": "p231",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23943,
+   "old": "f1808",
+   "new": "newIdentities_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23943,
+   "old": "p232",
+   "new": "players",
+   "rule": "manual"
+  },
+  {
+   "line": 23944,
+   "old": "v278",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 23945,
+   "old": "t144",
+   "new": "identities",
+   "rule": "manual"
+  },
+  {
+   "line": 23969,
+   "old": "f1810",
+   "new": "registerIdentity_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23969,
+   "old": "p233",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 23970,
+   "old": "t147",
+   "new": "identity",
+   "rule": "manual"
+  },
+  {
+   "line": 23975,
+   "old": "f1811",
+   "new": "removeIdentity_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23975,
+   "old": "p234",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 23980,
+   "old": "f1812",
+   "new": "initializeIdentities_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 23980,
+   "old": "p235",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 23980,
+   "old": "p236",
+   "new": "players",
+   "rule": "manual"
+  },
+  {
+   "line": 23981,
+   "old": "f1813",
+   "new": "registerIdentity",
+   "rule": "manual"
+  },
+  {
+   "line": 23981,
+   "old": "p237",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 23982,
+   "old": "t148",
+   "new": "identity",
+   "rule": "manual"
+  },
+  {
+   "line": 23987,
+   "old": "f1814",
+   "new": "removeIdentity",
+   "rule": "manual"
+  },
+  {
+   "line": 23987,
+   "old": "p238",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 24002,
+   "old": "f1816",
+   "new": "loadIdentities",
+   "rule": "manual"
+  },
+  {
+   "line": 24004,
+   "old": "v282",
+   "new": "Signal",
+   "rule": "manual"
+  },
+  {
+   "line": 24005,
+   "old": "v283",
+   "new": "Trove",
+   "rule": "manual"
+  },
+  {
+   "line": 24006,
+   "old": "t150",
+   "new": "Identities",
+   "rule": "manual"
+  },
+  {
+   "line": 24009,
+   "old": "p239",
+   "new": "players",
+   "rule": "manual"
+  },
+  {
+   "line": 24010,
+   "old": "v284",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 24011,
+   "old": "t151",
+   "new": "identities",
+   "rule": "manual"
+  },
+  {
+   "line": 24023,
+   "old": "p240",
+   "new": "players",
+   "rule": "manual"
+  },
+  {
+   "line": 24024,
+   "old": "f1817",
+   "new": "registerIdentity",
+   "rule": "manual"
+  },
+  {
+   "line": 24024,
+   "old": "p241",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 24025,
+   "old": "t152",
+   "new": "identity",
+   "rule": "manual"
+  },
+  {
+   "line": 24030,
+   "old": "f1818",
+   "new": "removeIdentity",
+   "rule": "manual"
+  },
+  {
+   "line": 24030,
+   "old": "p242",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 24099,
+   "old": "p243",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 24099,
+   "old": "p244",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 24124,
+   "old": "f1823",
+   "new": "onColorChanged_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24128,
+   "old": "f1824",
+   "new": "connectScopeSettings_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24128,
+   "old": "p245",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 24130,
+   "old": "v295",
+   "new": "scopeName",
+   "rule": "manual"
+  },
+  {
+   "line": 24132,
+   "old": "v296",
+   "new": "scope",
+   "rule": "manual"
+  },
+  {
+   "line": 24138,
+   "old": "v297",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 24145,
+   "old": "v298",
+   "new": "boundScope",
+   "rule": "manual"
+  },
+  {
+   "line": 24147,
+   "old": "f1827",
+   "new": "refreshAll",
+   "rule": "manual"
+  },
+  {
+   "line": 24148,
+   "old": "_entries4",
+   "new": "entries",
+   "rule": "manual"
+  },
+  {
+   "line": 24149,
+   "old": "v299",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 24163,
+   "old": "v300",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 24165,
+   "old": "v301",
+   "new": "part",
+   "rule": "manual"
+  },
+  {
+   "line": 24170,
+   "old": "v302",
+   "new": "boundScope2",
+   "rule": "manual"
+  },
+  {
+   "line": 24171,
+   "old": "v303",
+   "new": "boundPart",
+   "rule": "manual"
+  },
+  {
+   "line": 24173,
+   "old": "f1829",
+   "new": "onColorChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 24185,
+   "old": "f1831",
+   "new": "invokeWithArgs_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24185,
+   "old": "p246",
+   "new": "args",
+   "rule": "manual"
+  },
+  {
+   "line": 24190,
+   "old": "f1832",
+   "new": "onWorkspaceChild_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24190,
+   "old": "p247",
+   "new": "child",
+   "rule": "manual"
+  },
+  {
+   "line": 24196,
+   "old": "f1833",
+   "new": "watchDrops_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24196,
+   "old": "p248",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 24197,
+   "old": "f1834",
+   "new": "onChild",
+   "rule": "manual"
+  },
+  {
+   "line": 24197,
+   "old": "p249",
+   "new": "child",
+   "rule": "manual"
+  },
+  {
+   "line": 24203,
+   "old": "v304",
+   "new": "existingChild",
+   "rule": "manual"
+  },
+  {
+   "line": 24213,
+   "old": "f1836",
+   "new": "registerKeybind",
+   "rule": "manual"
+  },
+  {
+   "line": 24213,
+   "old": "p250",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 24213,
+   "old": "p251",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 24213,
+   "old": "p252",
+   "new": "bind",
+   "rule": "manual"
+  },
+  {
+   "line": 24214,
+   "old": "v305",
+   "new": "bindKey",
+   "rule": "manual"
+  },
+  {
+   "line": 24218,
+   "old": "t163",
+   "new": "binds",
+   "rule": "manual"
+  },
+  {
+   "line": 24223,
+   "old": "v306",
+   "new": "replaced",
+   "rule": "manual"
+  },
+  {
+   "line": 24230,
+   "old": "f1837",
+   "new": "activateSection_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24234,
+   "old": "f1838",
+   "new": "buildSectionTab",
+   "rule": "manual"
+  },
+  {
+   "line": 24234,
+   "old": "p253",
+   "new": "page",
+   "rule": "manual"
+  },
+  {
+   "line": 24234,
+   "old": "p254",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 24234,
+   "old": "p255",
+   "new": "parent",
+   "rule": "manual"
+  },
+  {
+   "line": 24234,
+   "old": "p256",
+   "new": "tabBar",
+   "rule": "manual"
+  },
+  {
+   "line": 24234,
+   "old": "p257",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 24235,
+   "old": "v307",
+   "new": "pane",
+   "rule": "manual"
+  },
+  {
+   "line": 24261,
+   "old": "v309",
+   "new": "accent",
+   "rule": "manual"
+  },
+  {
+   "line": 24272,
+   "old": "f1839",
+   "new": "onClick",
+   "rule": "manual"
+  },
+  {
+   "line": 24277,
+   "old": "t165",
+   "new": "tab",
+   "rule": "manual"
+  },
+  {
+   "line": 24286,
+   "old": "f1842",
+   "new": "destroyTrove2_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24286,
+   "old": "p258",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 24290,
+   "old": "f1843",
+   "new": "onMaxHealthChanged_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24301,
+   "old": "f1844",
+   "new": "onCharacterAdded_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24301,
+   "old": "p259",
+   "new": "character",
+   "rule": "manual"
+  },
+  {
+   "line": 24302,
+   "old": "Humanoid3",
+   "new": "humanoid",
+   "rule": "manual"
+  },
+  {
+   "line": 24306,
+   "old": "HumanoidRootPart3",
+   "new": "rootPart",
+   "rule": "manual"
+  },
+  {
+   "line": 24312,
+   "old": "f1845",
+   "new": "onHealthChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 24322,
+   "old": "f1846",
+   "new": "onMaxHealthChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 24334,
+   "old": "t166",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 24344,
+   "old": "t167",
+   "new": "targetParts",
+   "rule": "manual"
+  },
+  {
+   "line": 24357,
+   "old": "f1847",
+   "new": "onCharacterRemoving_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24358,
+   "old": "state7",
+   "new": "oldState",
+   "rule": "manual"
+  },
+  {
+   "line": 24367,
+   "old": "f1848",
+   "new": "initializeCharacterContext_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24367,
+   "old": "p260",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 24368,
+   "old": "Extend6",
+   "new": "characterTrove",
+   "rule": "manual"
+  },
+  {
+   "line": 24370,
+   "old": "f1849",
+   "new": "onCharacterRemoving",
+   "rule": "manual"
+  },
+  {
+   "line": 24371,
+   "old": "state8",
+   "new": "oldState",
+   "rule": "manual"
+  },
+  {
+   "line": 24380,
+   "old": "f1850",
+   "new": "onCharacterAdded",
+   "rule": "manual"
+  },
+  {
+   "line": 24380,
+   "old": "p261",
+   "new": "character",
+   "rule": "manual"
+  },
+  {
+   "line": 24381,
+   "old": "Humanoid4",
+   "new": "humanoid",
+   "rule": "manual"
+  },
+  {
+   "line": 24385,
+   "old": "HumanoidRootPart4",
+   "new": "rootPart",
+   "rule": "manual"
+  },
+  {
+   "line": 24386,
+   "old": "HitboxHead2",
+   "new": "hitboxHead",
+   "rule": "manual"
+  },
+  {
+   "line": 24387,
+   "old": "HitboxBody2",
+   "new": "hitboxBody",
+   "rule": "manual"
+  },
+  {
+   "line": 24388,
+   "old": "HitboxHeadSmall2",
+   "new": "hitboxHeadSmall",
+   "rule": "manual"
+  },
+  {
+   "line": 24389,
+   "old": "HitboxBodySmall2",
+   "new": "hitboxBodySmall",
+   "rule": "manual"
+  },
+  {
+   "line": 24391,
+   "old": "f1851",
+   "new": "onHealthChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 24401,
+   "old": "f1852",
+   "new": "onMaxHealthChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 24413,
+   "old": "t170",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 24423,
+   "old": "t171",
+   "new": "targetParts",
+   "rule": "manual"
+  },
+  {
+   "line": 24438,
+   "old": "Character5",
+   "new": "currentCharacter",
+   "rule": "manual"
+  },
+  {
+   "line": 24444,
+   "old": "f1853",
+   "new": "newCharacterContext_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24444,
+   "old": "p262",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 24445,
+   "old": "v313",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 24446,
+   "old": "t172",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 24456,
+   "old": "f1854",
+   "new": "loadCharacterContext",
+   "rule": "manual"
+  },
+  {
+   "line": 24457,
+   "old": "v314",
+   "new": "Signal",
+   "rule": "manual"
+  },
+  {
+   "line": 24458,
+   "old": "v315",
+   "new": "Trove",
+   "rule": "manual"
+  },
+  {
+   "line": 24459,
+   "old": "t173",
+   "new": "CharacterContext",
+   "rule": "manual"
+  },
+  {
+   "line": 24462,
+   "old": "p263",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 24463,
+   "old": "v316",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 24464,
+   "old": "t174",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 24475,
+   "old": "Extend7",
+   "new": "characterTrove",
+   "rule": "manual"
+  },
+  {
+   "line": 24477,
+   "old": "f1855",
+   "new": "onCharacterRemoving",
+   "rule": "manual"
+  },
+  {
+   "line": 24478,
+   "old": "state9",
+   "new": "oldState",
+   "rule": "manual"
+  },
+  {
+   "line": 24487,
+   "old": "f1856",
+   "new": "onCharacterAdded",
+   "rule": "manual"
+  },
+  {
+   "line": 24487,
+   "old": "p264",
+   "new": "character",
+   "rule": "manual"
+  },
+  {
+   "line": 24488,
+   "old": "Humanoid5",
+   "new": "humanoid",
+   "rule": "manual"
+  },
+  {
+   "line": 24492,
+   "old": "HumanoidRootPart5",
+   "new": "rootPart",
+   "rule": "manual"
+  },
+  {
+   "line": 24493,
+   "old": "HitboxHead3",
+   "new": "hitboxHead",
+   "rule": "manual"
+  },
+  {
+   "line": 24494,
+   "old": "HitboxBody3",
+   "new": "hitboxBody",
+   "rule": "manual"
+  },
+  {
+   "line": 24495,
+   "old": "HitboxHeadSmall3",
+   "new": "hitboxHeadSmall",
+   "rule": "manual"
+  },
+  {
+   "line": 24496,
+   "old": "HitboxBodySmall3",
+   "new": "hitboxBodySmall",
+   "rule": "manual"
+  },
+  {
+   "line": 24498,
+   "old": "f1857",
+   "new": "onHealthChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 24508,
+   "old": "f1858",
+   "new": "onMaxHealthChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 24520,
+   "old": "t176",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 24530,
+   "old": "t177",
+   "new": "targetParts",
+   "rule": "manual"
+  },
+  {
+   "line": 24545,
+   "old": "Character6",
+   "new": "currentCharacter",
+   "rule": "manual"
+  },
+  {
+   "line": 24571,
+   "old": "f1859",
+   "new": "observeFighterStates",
+   "rule": "manual"
+  },
+  {
+   "line": 24571,
+   "old": "p265",
+   "new": "registry",
+   "rule": "manual"
+  },
+  {
+   "line": 24571,
+   "old": "p266",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 24571,
+   "old": "p267",
+   "new": "onLocalSet",
+   "rule": "manual"
+  },
+  {
+   "line": 24571,
+   "old": "p268",
+   "new": "onLocalRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 24571,
+   "old": "p269",
+   "new": "onRemoteAdded",
+   "rule": "manual"
+  },
+  {
+   "line": 24571,
+   "old": "p270",
+   "new": "onRemoteRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 24572,
+   "old": "localState12",
+   "new": "localState",
+   "rule": "manual"
+  },
+  {
+   "line": 24579,
+   "old": "v320",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 24581,
+   "old": "v321",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 24592,
+   "old": "f1860",
+   "new": "sendInventory_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24592,
+   "old": "p271",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 24593,
+   "old": "v322",
+   "new": "payload",
+   "rule": "manual"
+  },
+  {
+   "line": 24606,
+   "old": "f1861",
+   "new": "importIntentState_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24606,
+   "old": "p272",
+   "new": "self_",
+   "rule": "manual"
+  },
+  {
+   "line": 24606,
+   "old": "p273",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 24606,
+   "old": "p274",
+   "new": "source",
+   "rule": "manual"
+  },
+  {
+   "line": 24611,
+   "old": "f1862",
+   "new": "newCharacterController_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24611,
+   "old": "p275",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 24612,
+   "old": "v323",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 24613,
+   "old": "t178",
+   "new": "controller",
+   "rule": "manual"
+  },
+  {
+   "line": 24619,
+   "old": "f1863",
+   "new": "resetCharacterController_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 24621,
+   "old": "_rootDesync",
+   "new": "rootDesync",
+   "rule": "manual"
+  },
+  {
+   "line": 68530,
+   "old": "f4736",
+   "new": "removeRequestBinding_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68531,
+   "old": "_requestBindings2",
+   "new": "bindings",
+   "rule": "manual"
+  },
+  {
+   "line": 68532,
+   "old": "v1",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 68534,
+   "old": "v2",
+   "new": "binding",
+   "rule": "manual"
+  },
+  {
+   "line": 68546,
+   "old": "f4737",
+   "new": "onOpenedOnce_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68546,
+   "old": "p1",
+   "new": "opened",
+   "rule": "manual"
+  },
+  {
+   "line": 68554,
+   "old": "f4738",
+   "new": "whenFirstOpened",
+   "rule": "manual"
+  },
+  {
+   "line": 68554,
+   "old": "p2",
+   "new": "tab",
+   "rule": "manual"
+  },
+  {
+   "line": 68554,
+   "old": "p3",
+   "new": "callback",
+   "rule": "manual"
+  },
+  {
+   "line": 68555,
+   "old": "_openedOnce",
+   "new": "openedOnce",
+   "rule": "manual"
+  },
+  {
+   "line": 68556,
+   "old": "v3",
+   "new": "connection",
+   "rule": "manual"
+  },
+  {
+   "line": 68563,
+   "old": "p4",
+   "new": "opened",
+   "rule": "manual"
+  },
+  {
+   "line": 68574,
+   "old": "f4740",
+   "new": "unbindKey",
+   "rule": "manual"
+  },
+  {
+   "line": 68574,
+   "old": "p5",
+   "new": "manager",
+   "rule": "manual"
+  },
+  {
+   "line": 68574,
+   "old": "p6",
+   "new": "flag",
+   "rule": "manual"
+  },
+  {
+   "line": 68575,
+   "old": "v4",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 68579,
+   "old": "v5",
+   "new": "bindings",
+   "rule": "manual"
+  },
+  {
+   "line": 68591,
+   "old": "f4741",
+   "new": "addStop_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68595,
+   "old": "t1",
+   "new": "activeStop",
+   "rule": "manual"
+  },
+  {
+   "line": 68596,
+   "old": "v6",
+   "new": "time",
+   "rule": "manual"
+  },
+  {
+   "line": 68604,
+   "old": "t2",
+   "new": "newStop",
+   "rule": "manual"
+  },
+  {
+   "line": 68610,
+   "old": "f4742",
+   "new": "validateConfigName",
+   "rule": "manual"
+  },
+  {
+   "line": 68610,
+   "old": "p7",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 68614,
+   "old": "t3",
+   "new": "failure",
+   "rule": "manual"
+  },
+  {
+   "line": 68618,
+   "old": "f4743",
+   "new": "onFontLoaded_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68619,
+   "old": "t4",
+   "new": "result",
+   "rule": "manual"
+  },
+  {
+   "line": 68626,
+   "old": "f4744",
+   "new": "initializeFonts",
+   "rule": "manual"
+  },
+  {
+   "line": 68626,
+   "old": "p8",
+   "new": "fonts",
+   "rule": "manual"
+  },
+  {
+   "line": 68631,
+   "old": "f4745",
+   "new": "nextBuiltinFont",
+   "rule": "manual"
+  },
+  {
+   "line": 68632,
+   "old": "v7",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 68634,
+   "old": "v8",
+   "new": "fontEnum",
+   "rule": "manual"
+  },
+  {
+   "line": 68642,
+   "old": "t5",
+   "new": "promises",
+   "rule": "manual"
+  },
+  {
+   "line": 68643,
+   "old": "f4746",
+   "new": "nextCustomFont",
+   "rule": "manual"
+  },
+  {
+   "line": 68644,
+   "old": "v9",
+   "new": "name2",
+   "rule": "manual"
+  },
+  {
+   "line": 68645,
+   "old": "v10",
+   "new": "allLoaded",
+   "rule": "manual"
+  },
+  {
+   "line": 68647,
+   "old": "v11",
+   "new": "source",
+   "rule": "manual"
+  },
+  {
+   "line": 68652,
+   "old": "v12",
+   "new": "capturedName",
+   "rule": "manual"
+  },
+  {
+   "line": 68654,
+   "old": "f4747",
+   "new": "onFontLoaded",
+   "rule": "manual"
+  },
+  {
+   "line": 68655,
+   "old": "t6",
+   "new": "result",
+   "rule": "manual"
+  },
+  {
+   "line": 68665,
+   "old": "v13",
+   "new": "result2",
+   "rule": "manual"
+  },
+  {
+   "line": 68670,
+   "old": "f4748",
+   "new": "waitForCharacterParts",
+   "rule": "manual"
+  },
+  {
+   "line": 68670,
+   "old": "p10",
+   "new": "character",
+   "rule": "manual"
+  },
+  {
+   "line": 68670,
+   "old": "p11",
+   "new": "timeout",
+   "rule": "manual"
+  },
+  {
+   "line": 68671,
+   "old": "v14",
+   "new": "promises",
+   "rule": "manual"
+  },
+  {
+   "line": 68673,
+   "old": "f4749",
+   "new": "nextLimbName",
+   "rule": "manual"
+  },
+  {
+   "line": 68674,
+   "old": "v15",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 68677,
+   "old": "v16",
+   "new": "partName",
+   "rule": "manual"
+  },
+  {
+   "line": 68687,
+   "old": "f4750",
+   "new": "addImage",
+   "rule": "manual"
+  },
+  {
+   "line": 68687,
+   "old": "p12",
+   "new": "list",
+   "rule": "manual"
+  },
+  {
+   "line": 68687,
+   "old": "p13",
+   "new": "image",
+   "rule": "manual"
+  },
+  {
+   "line": 68724,
+   "old": "f4754",
+   "new": "validateImport",
+   "rule": "manual"
+  },
+  {
+   "line": 68724,
+   "old": "p14",
+   "new": "data",
+   "rule": "manual"
+  },
+  {
+   "line": 68726,
+   "old": "t9",
+   "new": "failure",
+   "rule": "manual"
+  },
+  {
+   "line": 68733,
+   "old": "t10",
+   "new": "versionCheck",
+   "rule": "manual"
+  },
+  {
+   "line": 68735,
+   "old": "t11",
+   "new": "success",
+   "rule": "manual"
+  },
+  {
+   "line": 68738,
+   "old": "t12",
+   "new": "failure2",
+   "rule": "manual"
+  },
+  {
+   "line": 68742,
+   "old": "f4755",
+   "new": "resetAimState",
+   "rule": "manual"
+  },
+  {
+   "line": 68742,
+   "old": "p15",
+   "new": "aim",
+   "rule": "manual"
+  },
+  {
+   "line": 68745,
+   "old": "_innerContext8",
+   "new": "innerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 68753,
+   "old": "f4756",
+   "new": "onDragEnded_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68753,
+   "old": "p16",
+   "new": "input",
+   "rule": "manual"
+  },
+  {
+   "line": 68766,
+   "old": "f4757",
+   "new": "onMinDrag_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68766,
+   "old": "p17",
+   "new": "input",
+   "rule": "manual"
+  },
+  {
+   "line": 68774,
+   "old": "f4758",
+   "new": "setOptions_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68774,
+   "old": "p18",
+   "new": "options",
+   "rule": "manual"
+  },
+  {
+   "line": 68778,
+   "old": "f4759",
+   "new": "forgetClothing_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68782,
+   "old": "f4760",
+   "new": "stripClothing",
+   "rule": "manual"
+  },
+  {
+   "line": 68782,
+   "old": "p19",
+   "new": "outfit",
+   "rule": "manual"
+  },
+  {
+   "line": 68782,
+   "old": "p20",
+   "new": "clothing",
+   "rule": "manual"
+  },
+  {
+   "line": 68785,
+   "old": "v18",
+   "new": "clothingTrove",
+   "rule": "manual"
+  },
+  {
+   "line": 68791,
+   "old": "f4761",
+   "new": "forget",
+   "rule": "manual"
+  },
+  {
+   "line": 68798,
+   "old": "f4762",
+   "new": "finalizePromise",
+   "rule": "manual"
+  },
+  {
+   "line": 68798,
+   "old": "p21",
+   "new": "promise",
+   "rule": "manual"
+  },
+  {
+   "line": 68810,
+   "old": "f4763",
+   "new": "trapNoop",
+   "rule": "manual"
+  },
+  {
+   "line": 68820,
+   "old": "f4764",
+   "new": "realize",
+   "rule": "manual"
+  },
+  {
+   "line": 68820,
+   "old": "p22",
+   "new": "view",
+   "rule": "manual"
+  },
+  {
+   "line": 68820,
+   "old": "p23",
+   "new": "root",
+   "rule": "manual"
+  },
+  {
+   "line": 68820,
+   "old": "p24",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 68839,
+   "old": "f4766",
+   "new": "setRowVisible",
+   "rule": "manual"
+  },
+  {
+   "line": 68839,
+   "old": "p25",
+   "new": "control",
+   "rule": "manual"
+  },
+  {
+   "line": 68839,
+   "old": "p26",
+   "new": "visible",
+   "rule": "manual"
+  },
+  {
+   "line": 68843,
+   "old": "f4767",
+   "new": "selectStop_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68847,
+   "old": "f4768",
+   "new": "onStopDragged_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68847,
+   "old": "p27",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 68854,
+   "old": "f4769",
+   "new": "rebuildStopMarkers_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68857,
+   "old": "f4770",
+   "new": "nextMarker",
+   "rule": "manual"
+  },
+  {
+   "line": 68858,
+   "old": "v20",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 68860,
+   "old": "t14",
+   "new": "marker",
+   "rule": "manual"
+  },
+  {
+   "line": 68871,
+   "old": "Stops5",
+   "new": "stops",
+   "rule": "manual"
+  },
+  {
+   "line": 68872,
+   "old": "v21",
+   "new": "index2",
+   "rule": "manual"
+  },
+  {
+   "line": 68872,
+   "old": "v22",
+   "new": "accentSize",
+   "rule": "manual"
+  },
+  {
+   "line": 68872,
+   "old": "v23",
+   "new": "markerSize",
+   "rule": "manual"
+  },
+  {
+   "line": 68872,
+   "old": "v24",
+   "new": "isActive",
+   "rule": "manual"
+  },
+  {
+   "line": 68874,
+   "old": "t15",
+   "new": "stop",
+   "rule": "manual"
+  },
+  {
+   "line": 68906,
+   "old": "v27",
+   "new": "accent",
+   "rule": "manual"
+  },
+  {
+   "line": 68922,
+   "old": "new46",
+   "new": "newSequence",
+   "rule": "manual"
+  },
+  {
+   "line": 68923,
+   "old": "v29",
+   "new": "keypoints",
+   "rule": "manual"
+  },
+  {
+   "line": 68931,
+   "old": "t16",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 68933,
+   "old": "v30",
+   "new": "capturedIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 68935,
+   "old": "f4771",
+   "new": "onMarkerClicked",
+   "rule": "manual"
+  },
+  {
+   "line": 68940,
+   "old": "v31",
+   "new": "capturedIndex2",
+   "rule": "manual"
+  },
+  {
+   "line": 68942,
+   "old": "f4772",
+   "new": "onMarkerDragged",
+   "rule": "manual"
+  },
+  {
+   "line": 68942,
+   "old": "p28",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 68953,
+   "old": "f4773",
+   "new": "isSpoofTarget_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 68954,
+   "old": "v35",
+   "new": "player",
+   "rule": "manual"
+  },
+  {
+   "line": 68954,
+   "old": "PlayerSpoofer",
+   "new": "spooferSettings",
+   "rule": "manual"
+  },
+  {
+   "line": 68979,
+   "old": "f4776",
+   "new": "getPathSignal",
+   "rule": "manual"
+  },
+  {
+   "line": 68979,
+   "old": "p29",
+   "new": "adapter",
+   "rule": "manual"
+  },
+  {
+   "line": 68979,
+   "old": "p30",
+   "new": "path",
+   "rule": "manual"
+  },
+  {
+   "line": 68980,
+   "old": "v36",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 68981,
+   "old": "v37",
+   "new": "existing",
+   "rule": "manual"
+  },
+  {
+   "line": 68985,
+   "old": "Add79",
+   "new": "signal",
+   "rule": "manual"
+  },
+  {
+   "line": 68990,
+   "old": "f4777",
+   "new": "onValueChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 68991,
+   "old": "GetEditValue3",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 69016,
+   "old": "f4779",
+   "new": "resetToDefaults",
+   "rule": "manual"
+  },
+  {
+   "line": 69016,
+   "old": "p31",
+   "new": "store",
+   "rule": "manual"
+  },
+  {
+   "line": 69017,
+   "old": "v38",
+   "new": "data",
+   "rule": "manual"
+  },
+  {
+   "line": 69022,
+   "old": "f4780",
+   "new": "setAutoSavePreset",
+   "rule": "manual"
+  },
+  {
+   "line": 69022,
+   "old": "p32",
+   "new": "store",
+   "rule": "manual"
+  },
+  {
+   "line": 69022,
+   "old": "p33",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 69032,
+   "old": "f4783",
+   "new": "newInstalledHook_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69032,
+   "old": "p34",
+   "new": "target",
+   "rule": "manual"
+  },
+  {
+   "line": 69032,
+   "old": "p35",
+   "new": "replacement",
+   "rule": "manual"
+  },
+  {
+   "line": 69033,
+   "old": "t18",
+   "new": "hook",
+   "rule": "manual"
+  },
+  {
+   "line": 69051,
+   "old": "f4786",
+   "new": "onAlphaDrag_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69051,
+   "old": "p36",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 69052,
+   "old": "v39",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 69059,
+   "old": "f4787",
+   "new": "copySelection_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69059,
+   "old": "p37",
+   "new": "target",
+   "rule": "manual"
+  },
+  {
+   "line": 69059,
+   "old": "p38",
+   "new": "source",
+   "rule": "manual"
+  },
+  {
+   "line": 69060,
+   "old": "item15",
+   "new": "nextCosmeticType",
+   "rule": "manual"
+  },
+  {
+   "line": 69061,
+   "old": "v40",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 69063,
+   "old": "v41",
+   "new": "cosmeticType",
+   "rule": "manual"
+  },
+  {
+   "line": 69068,
+   "old": "v42",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 69075,
+   "old": "f4788",
+   "new": "destroyTrove_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69075,
+   "old": "p39",
+   "new": "object",
+   "rule": "manual"
+  },
+  {
+   "line": 69079,
+   "old": "f4789",
+   "new": "notifyRebuilt_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69079,
+   "old": "p40",
+   "new": "view",
+   "rule": "manual"
+  },
+  {
+   "line": 69083,
+   "old": "f4790",
+   "new": "loadRebuildNotifier",
+   "rule": "manual"
+  },
+  {
+   "line": 69085,
+   "old": "t20",
+   "new": "notifier",
+   "rule": "manual"
+  },
+  {
+   "line": 69087,
+   "old": "p41",
+   "new": "view",
+   "rule": "manual"
+  },
+  {
+   "line": 69094,
+   "old": "f4791",
+   "new": "measureTextWidth",
+   "rule": "manual"
+  },
+  {
+   "line": 69094,
+   "old": "p42",
+   "new": "text",
+   "rule": "manual"
+  },
+  {
+   "line": 69103,
+   "old": "f4792",
+   "new": "deleteEntry",
+   "rule": "manual"
+  },
+  {
+   "line": 69103,
+   "old": "p43",
+   "new": "store",
+   "rule": "manual"
+  },
+  {
+   "line": 69103,
+   "old": "p44",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 69109,
+   "old": "_Save3",
+   "new": "saveResult",
+   "rule": "manual"
+  },
+  {
+   "line": 69117,
+   "old": "f4794",
+   "new": "applyNoGameHitsound_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69117,
+   "old": "p45",
+   "new": "hook",
+   "rule": "manual"
+  },
+  {
+   "line": 69121,
+   "old": "v43",
+   "new": "original",
+   "rule": "manual"
+  },
+  {
+   "line": 69129,
+   "old": "f4795",
+   "new": "noop",
+   "rule": "manual"
+  },
+  {
+   "line": 69137,
+   "old": "f4796",
+   "new": "newNoGameHitsound_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69141,
+   "old": "f4797",
+   "new": "destroyNoGameHitsound_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69141,
+   "old": "p46",
+   "new": "hook",
+   "rule": "manual"
+  },
+  {
+   "line": 69145,
+   "old": "f4798",
+   "new": "revertNoGameHitsound_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69145,
+   "old": "p47",
+   "new": "hook",
+   "rule": "manual"
+  },
+  {
+   "line": 69146,
+   "old": "_restore22",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 69155,
+   "old": "f4799",
+   "new": "loadNoGameHitsound",
+   "rule": "manual"
+  },
+  {
+   "line": 69156,
+   "old": "v44",
+   "new": "Result",
+   "rule": "manual"
+  },
+  {
+   "line": 69157,
+   "old": "ClientViewModel4",
+   "new": "ClientViewModel",
+   "rule": "manual"
+  },
+  {
+   "line": 69158,
+   "old": "t22",
+   "new": "NoGameHitsound",
+   "rule": "manual"
+  },
+  {
+   "line": 69165,
+   "old": "p48",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69176,
+   "old": "v45",
+   "new": "original",
+   "rule": "manual"
+  },
+  {
+   "line": 69184,
+   "old": "f4800",
+   "new": "noop",
+   "rule": "manual"
+  },
+  {
+   "line": 69187,
+   "old": "t23",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 69193,
+   "old": "_restore23",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 69209,
+   "old": "f4801",
+   "new": "destroyTrove_proto2",
+   "rule": "manual"
+  },
+  {
+   "line": 69209,
+   "old": "p49",
+   "new": "object",
+   "rule": "manual"
+  },
+  {
+   "line": 69213,
+   "old": "f4802",
+   "new": "rebuildWaypointMarkers",
+   "rule": "manual"
+  },
+  {
+   "line": 69213,
+   "old": "p50",
+   "new": "waypoints",
+   "rule": "manual"
+  },
+  {
+   "line": 69213,
+   "old": "p51",
+   "new": "nextRecording",
+   "rule": "manual"
+  },
+  {
+   "line": 69218,
+   "old": "t24",
+   "new": "clusters",
+   "rule": "manual"
+  },
+  {
+   "line": 69219,
+   "old": "v46",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 69221,
+   "old": "t25",
+   "new": "recording",
+   "rule": "manual"
+  },
+  {
+   "line": 69226,
+   "old": "Position23",
+   "new": "startPos",
+   "rule": "manual"
+  },
+  {
+   "line": 69227,
+   "old": "v47",
+   "new": "cellKey",
+   "rule": "manual"
+  },
+  {
+   "line": 69230,
+   "old": "v48",
+   "new": "cluster",
+   "rule": "manual"
+  },
+  {
+   "line": 69237,
+   "old": "_mapAnchor",
+   "new": "mapAnchor",
+   "rule": "manual"
+  },
+  {
+   "line": 69238,
+   "old": "v49",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 69240,
+   "old": "f4803",
+   "new": "nextInCluster",
+   "rule": "manual"
+  },
+  {
+   "line": 69245,
+   "old": "v50",
+   "new": "sum",
+   "rule": "manual"
+  },
+  {
+   "line": 69246,
+   "old": "v51",
+   "new": "index2",
+   "rule": "manual"
+  },
+  {
+   "line": 69248,
+   "old": "t26",
+   "new": "recording2",
+   "rule": "manual"
+  },
+  {
+   "line": 69264,
+   "old": "f4804",
+   "new": "setHitFeedbackEnabled_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69264,
+   "old": "p52",
+   "new": "feedback",
+   "rule": "manual"
+  },
+  {
+   "line": 69264,
+   "old": "p53",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69268,
+   "old": "f4805",
+   "new": "handleDamageReplicate_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69268,
+   "old": "p54",
+   "new": "feedback",
+   "rule": "manual"
+  },
+  {
+   "line": 69268,
+   "old": "p55",
+   "new": "call",
+   "rule": "manual"
+  },
+  {
+   "line": 69272,
+   "old": "inner40",
+   "new": "inner",
+   "rule": "manual"
+  },
+  {
+   "line": 69279,
+   "old": "args4",
+   "new": "args",
+   "rule": "manual"
+  },
+  {
+   "line": 69280,
+   "old": "Parent6",
+   "new": "victim",
+   "rule": "manual"
+  },
+  {
+   "line": 69284,
+   "old": "v52",
+   "new": "damage",
+   "rule": "manual"
+  },
+  {
+   "line": 69285,
+   "old": "v53",
+   "new": "hitPart",
+   "rule": "manual"
+  },
+  {
+   "line": 69291,
+   "old": "f4806",
+   "new": "loadPlayerHitFeedback",
+   "rule": "manual"
+  },
+  {
+   "line": 69292,
+   "old": "v54",
+   "new": "ChamsEffect",
+   "rule": "manual"
+  },
+  {
+   "line": 69293,
+   "old": "v55",
+   "new": "settings",
+   "rule": "manual"
+  },
+  {
+   "line": 69295,
+   "old": "v56",
+   "new": "ErrorReporter",
+   "rule": "manual"
+  },
+  {
+   "line": 69296,
+   "old": "v57",
+   "new": "NoGameHitsound",
+   "rule": "manual"
+  },
+  {
+   "line": 69297,
+   "old": "v58",
+   "new": "notifications",
+   "rule": "manual"
+  },
+  {
+   "line": 69300,
+   "old": "v59",
+   "new": "HitFlash",
+   "rule": "manual"
+  },
+  {
+   "line": 69301,
+   "old": "v60",
+   "new": "Trove",
+   "rule": "manual"
+  },
+  {
+   "line": 69302,
+   "old": "v61",
+   "new": "playSound",
+   "rule": "manual"
+  },
+  {
+   "line": 69303,
+   "old": "v62",
+   "new": "getPlayerNames",
+   "rule": "manual"
+  },
+  {
+   "line": 69304,
+   "old": "t27",
+   "new": "PlayerHitFeedback",
+   "rule": "manual"
+  },
+  {
+   "line": 69307,
+   "old": "f4807",
+   "new": "formatDamage",
+   "rule": "manual"
+  },
+  {
+   "line": 69307,
+   "old": "p56",
+   "new": "damage",
+   "rule": "manual"
+  },
+  {
+   "line": 69311,
+   "old": "p57",
+   "new": "remoteHooks",
+   "rule": "manual"
+  },
+  {
+   "line": 69311,
+   "old": "p58",
+   "new": "playerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 69311,
+   "old": "p59",
+   "new": "customSounds",
+   "rule": "manual"
+  },
+  {
+   "line": 69312,
+   "old": "v63",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 69313,
+   "old": "v64",
+   "new": "errorReporter",
+   "rule": "manual"
+  },
+  {
+   "line": 69314,
+   "old": "Reserve13",
+   "new": "replicateBinding",
+   "rule": "manual"
+  },
+  {
+   "line": 69315,
+   "old": "t28",
+   "new": "feedback",
+   "rule": "manual"
+  },
+  {
+   "line": 69327,
+   "old": "f4808",
+   "new": "onReplicate",
+   "rule": "manual"
+  },
+  {
+   "line": 69327,
+   "old": "p60",
+   "new": "call",
+   "rule": "manual"
+  },
+  {
+   "line": 69333,
+   "old": "f4809",
+   "new": "setEnabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69333,
+   "old": "p61",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69339,
+   "old": "f4810",
+   "new": "setNoGameHitsound",
+   "rule": "manual"
+  },
+  {
+   "line": 69339,
+   "old": "p62",
+   "new": "disabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69345,
+   "old": "f4811",
+   "new": "preloadHeadSound",
+   "rule": "manual"
+  },
+  {
+   "line": 69345,
+   "old": "p63",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 69351,
+   "old": "f4812",
+   "new": "preloadBodySound",
+   "rule": "manual"
+  },
+  {
+   "line": 69351,
+   "old": "p64",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 69356,
+   "old": "PlayerHit3",
+   "new": "hitSettings",
+   "rule": "manual"
+  },
+  {
+   "line": 69368,
+   "old": "p65",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69372,
+   "old": "p66",
+   "new": "call",
+   "rule": "manual"
+  },
+  {
+   "line": 69376,
+   "old": "inner41",
+   "new": "inner",
+   "rule": "manual"
+  },
+  {
+   "line": 69383,
+   "old": "args5",
+   "new": "args",
+   "rule": "manual"
+  },
+  {
+   "line": 69384,
+   "old": "Parent7",
+   "new": "victim",
+   "rule": "manual"
+  },
+  {
+   "line": 69388,
+   "old": "v65",
+   "new": "damage",
+   "rule": "manual"
+  },
+  {
+   "line": 69389,
+   "old": "v66",
+   "new": "hitPart",
+   "rule": "manual"
+  },
+  {
+   "line": 69395,
+   "old": "p67",
+   "new": "damage",
+   "rule": "manual"
+  },
+  {
+   "line": 69395,
+   "old": "p68",
+   "new": "hitPart",
+   "rule": "manual"
+  },
+  {
+   "line": 69395,
+   "old": "p69",
+   "new": "victim",
+   "rule": "manual"
+  },
+  {
+   "line": 69396,
+   "old": "PlayerHit4",
+   "new": "hitSettings",
+   "rule": "manual"
+  },
+  {
+   "line": 69397,
+   "old": "Sound4",
+   "new": "sound",
+   "rule": "manual"
+  },
+  {
+   "line": 69398,
+   "old": "v67",
+   "new": "volume",
+   "rule": "manual"
+  },
+  {
+   "line": 69398,
+   "old": "v68",
+   "new": "soundName",
+   "rule": "manual"
+  },
+  {
+   "line": 69409,
+   "old": "GetSoundId4",
+   "new": "soundId",
+   "rule": "manual"
+  },
+  {
+   "line": 69423,
+   "old": "Notification4",
+   "new": "notification",
+   "rule": "manual"
+  },
+  {
+   "line": 69425,
+   "old": "v70",
+   "new": "displayName",
+   "rule": "manual"
+  },
+  {
+   "line": 69425,
+   "old": "v71",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 69427,
+   "old": "Text9",
+   "new": "template",
+   "rule": "manual"
+  },
+  {
+   "line": 69428,
+   "old": "gsub9",
+   "new": "gsub",
+   "rule": "manual"
+  },
+  {
+   "line": 69429,
+   "old": "t29",
+   "new": "replacements",
+   "rule": "manual"
+  },
+  {
+   "line": 69430,
+   "old": "v72",
+   "new": "message",
+   "rule": "manual"
+  },
+  {
+   "line": 69432,
+   "old": "f4813",
+   "new": "showNotification",
+   "rule": "manual"
+  },
+  {
+   "line": 69433,
+   "old": "t30",
+   "new": "notifier",
+   "rule": "manual"
+  },
+  {
+   "line": 69434,
+   "old": "Notify9",
+   "new": "notify",
+   "rule": "manual"
+  },
+  {
+   "line": 69435,
+   "old": "Template3",
+   "new": "fillTemplate",
+   "rule": "manual"
+  },
+  {
+   "line": 69436,
+   "old": "v73",
+   "new": "messageText",
+   "rule": "manual"
+  },
+  {
+   "line": 69437,
+   "old": "t31",
+   "new": "values",
+   "rule": "manual"
+  },
+  {
+   "line": 69443,
+   "old": "HitFlash2",
+   "new": "hitFlash",
+   "rule": "manual"
+  },
+  {
+   "line": 69447,
+   "old": "Chams4",
+   "new": "chams",
+   "rule": "manual"
+  },
+  {
+   "line": 69449,
+   "old": "v74",
+   "new": "cham",
+   "rule": "manual"
+  },
+  {
+   "line": 69460,
+   "old": "p70",
+   "new": "dt",
+   "rule": "manual"
+  },
+  {
+   "line": 69462,
+   "old": "v75",
+   "new": "i",
+   "rule": "manual"
+  },
+  {
+   "line": 69475,
+   "old": "_chams4",
+   "new": "chams",
+   "rule": "manual"
+  },
+  {
+   "line": 69476,
+   "old": "v76",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 69478,
+   "old": "v77",
+   "new": "cham",
+   "rule": "manual"
+  },
+  {
+   "line": 69497,
+   "old": "f4815",
+   "new": "setSkinOverrides",
+   "rule": "manual"
+  },
+  {
+   "line": 69497,
+   "old": "p71",
+   "new": "cosmetics",
+   "rule": "manual"
+  },
+  {
+   "line": 69497,
+   "old": "p72",
+   "new": "overrides",
+   "rule": "manual"
+  },
+  {
+   "line": 69498,
+   "old": "GetAll",
+   "new": "previous",
+   "rule": "manual"
+  },
+  {
+   "line": 69503,
+   "old": "v78",
+   "new": "itemName",
+   "rule": "manual"
+  },
+  {
+   "line": 69505,
+   "old": "v79",
+   "new": "selection",
+   "rule": "manual"
+  },
+  {
+   "line": 69514,
+   "old": "v80",
+   "new": "itemName2",
+   "rule": "manual"
+  },
+  {
+   "line": 69527,
+   "old": "f4816",
+   "new": "hasStatus_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69527,
+   "old": "p73",
+   "new": "match",
+   "rule": "manual"
+  },
+  {
+   "line": 69533,
+   "old": "f4817",
+   "new": "onPeerPayload_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69533,
+   "old": "p74",
+   "new": "peer",
+   "rule": "manual"
+  },
+  {
+   "line": 69533,
+   "old": "p75",
+   "new": "payload",
+   "rule": "manual"
+  },
+  {
+   "line": 69537,
+   "old": "f4818",
+   "new": "onPeerRemoved_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69537,
+   "old": "p76",
+   "new": "peer",
+   "rule": "manual"
+  },
+  {
+   "line": 69541,
+   "old": "f4819",
+   "new": "onShareSkinsChanged_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69541,
+   "old": "p77",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69545,
+   "old": "f4820",
+   "new": "onShowActivated_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69550,
+   "old": "f4821",
+   "new": "newCosmeticsBridge",
+   "rule": "manual"
+  },
+  {
+   "line": 69550,
+   "old": "p78",
+   "new": "userServer",
+   "rule": "manual"
+  },
+  {
+   "line": 69550,
+   "old": "p79",
+   "new": "errorReporter",
+   "rule": "manual"
+  },
+  {
+   "line": 69550,
+   "old": "p80",
+   "new": "items",
+   "rule": "manual"
+  },
+  {
+   "line": 69550,
+   "old": "p81",
+   "new": "emotesResolver",
+   "rule": "manual"
+  },
+  {
+   "line": 69551,
+   "old": "v82",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 69552,
+   "old": "t32",
+   "new": "fields",
+   "rule": "manual"
+  },
+  {
+   "line": 69562,
+   "old": "v83",
+   "new": "bridge",
+   "rule": "manual"
+  },
+  {
+   "line": 69564,
+   "old": "f4822",
+   "new": "onPeerPayload",
+   "rule": "manual"
+  },
+  {
+   "line": 69564,
+   "old": "p82",
+   "new": "peer",
+   "rule": "manual"
+  },
+  {
+   "line": 69564,
+   "old": "p83",
+   "new": "payload",
+   "rule": "manual"
+  },
+  {
+   "line": 69570,
+   "old": "f4823",
+   "new": "onPeerRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 69570,
+   "old": "p84",
+   "new": "peer",
+   "rule": "manual"
+  },
+  {
+   "line": 69576,
+   "old": "f4824",
+   "new": "onShowActivated",
+   "rule": "manual"
+  },
+  {
+   "line": 69583,
+   "old": "f4825",
+   "new": "onShareSkinsChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 69583,
+   "old": "p85",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69594,
+   "old": "f4826",
+   "new": "setChange",
+   "rule": "manual"
+  },
+  {
+   "line": 69594,
+   "old": "p86",
+   "new": "modifier",
+   "rule": "manual"
+  },
+  {
+   "line": 69594,
+   "old": "p87",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 69594,
+   "old": "p88",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 69599,
+   "old": "_ApplyNewChangesToAllItems",
+   "new": "apply",
+   "rule": "manual"
+  },
+  {
+   "line": 69600,
+   "old": "t33",
+   "new": "changedKeys",
+   "rule": "manual"
+  },
+  {
+   "line": 69604,
+   "old": "f4827",
+   "new": "fireSignal",
+   "rule": "manual"
+  },
+  {
+   "line": 69604,
+   "old": "p89",
+   "new": "signal",
+   "rule": "manual"
+  },
+  {
+   "line": 69605,
+   "old": "v84",
+   "new": "meta",
+   "rule": "manual"
+  },
+  {
+   "line": 69609,
+   "old": "v85",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 69613,
+   "old": "v86",
+   "new": "fire",
+   "rule": "manual"
+  },
+  {
+   "line": 69620,
+   "old": "f4828",
+   "new": "anyStatEnabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69620,
+   "old": "p90",
+   "new": "stats",
+   "rule": "manual"
+  },
+  {
+   "line": 69621,
+   "old": "Enabled",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69643,
+   "old": "f4829",
+   "new": "setSearchFilter_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69643,
+   "old": "p91",
+   "new": "query",
+   "rule": "manual"
+  },
+  {
+   "line": 69647,
+   "old": "f4830",
+   "new": "callWithoutTrack_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69647,
+   "old": "p92",
+   "new": "viewModel",
+   "rule": "manual"
+  },
+  {
+   "line": 69647,
+   "old": "p93",
+   "new": "trackName",
+   "rule": "manual"
+  },
+  {
+   "line": 69648,
+   "old": "t34",
+   "new": "tracks",
+   "rule": "manual"
+  },
+  {
+   "line": 69649,
+   "old": "v87",
+   "new": "original",
+   "rule": "manual"
+  },
+  {
+   "line": 69654,
+   "old": "v88",
+   "new": "err",
+   "rule": "manual"
+  },
+  {
+   "line": 69654,
+   "old": "v89",
+   "new": "ok",
+   "rule": "manual"
+  },
+  {
+   "line": 69662,
+   "old": "f4831",
+   "new": "playAnimationHook_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69662,
+   "old": "p94",
+   "new": "viewModel",
+   "rule": "manual"
+  },
+  {
+   "line": 69662,
+   "old": "p95",
+   "new": "animation",
+   "rule": "manual"
+  },
+  {
+   "line": 69675,
+   "old": "f4832",
+   "new": "installAnimationDisabler",
+   "rule": "manual"
+  },
+  {
+   "line": 69675,
+   "old": "p96",
+   "new": "disabler",
+   "rule": "manual"
+  },
+  {
+   "line": 69679,
+   "old": "v90",
+   "new": "playAnimation",
+   "rule": "manual"
+  },
+  {
+   "line": 69684,
+   "old": "f4833",
+   "new": "callWithoutTrack",
+   "rule": "manual"
+  },
+  {
+   "line": 69684,
+   "old": "p97",
+   "new": "viewModel",
+   "rule": "manual"
+  },
+  {
+   "line": 69684,
+   "old": "p98",
+   "new": "trackName",
+   "rule": "manual"
+  },
+  {
+   "line": 69685,
+   "old": "t35",
+   "new": "tracks",
+   "rule": "manual"
+  },
+  {
+   "line": 69686,
+   "old": "v91",
+   "new": "original",
+   "rule": "manual"
+  },
+  {
+   "line": 69691,
+   "old": "v92",
+   "new": "err",
+   "rule": "manual"
+  },
+  {
+   "line": 69691,
+   "old": "v93",
+   "new": "ok",
+   "rule": "manual"
+  },
+  {
+   "line": 69699,
+   "old": "v94",
+   "new": "redirect",
+   "rule": "manual"
+  },
+  {
+   "line": 69700,
+   "old": "Initialize",
+   "new": "initResult",
+   "rule": "manual"
+  },
+  {
+   "line": 69705,
+   "old": "f4834",
+   "new": "playAnimationHook",
+   "rule": "manual"
+  },
+  {
+   "line": 69705,
+   "old": "p99",
+   "new": "viewModel",
+   "rule": "manual"
+  },
+  {
+   "line": 69705,
+   "old": "p100",
+   "new": "animation",
+   "rule": "manual"
+  },
+  {
+   "line": 69723,
+   "old": "f4835",
+   "new": "removeGuard",
+   "rule": "manual"
+  },
+  {
+   "line": 69723,
+   "old": "p101",
+   "new": "manager",
+   "rule": "manual"
+  },
+  {
+   "line": 69723,
+   "old": "p102",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 69741,
+   "old": "f4838",
+   "new": "clearCharacterTrove",
+   "rule": "manual"
+  },
+  {
+   "line": 69741,
+   "old": "p105",
+   "new": "tracker",
+   "rule": "manual"
+  },
+  {
+   "line": 69742,
+   "old": "_characterTrove",
+   "new": "characterTrove",
+   "rule": "manual"
+  },
+  {
+   "line": 69750,
+   "old": "f4839",
+   "new": "buildDeviceSpoofSection_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69750,
+   "old": "p106",
+   "new": "column",
+   "rule": "manual"
+  },
+  {
+   "line": 69756,
+   "old": "t40",
+   "new": "deviceSpoofToggle",
+   "rule": "manual"
+  },
+  {
+   "line": 69762,
+   "old": "f4841",
+   "new": "loadDeviceSpoofSection",
+   "rule": "manual"
+  },
+  {
+   "line": 69764,
+   "old": "v95",
+   "new": "DeviceTypes",
+   "rule": "manual"
+  },
+  {
+   "line": 69765,
+   "old": "v96",
+   "new": "deviceOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 69767,
+   "old": "f4842",
+   "new": "buildDeviceSpoofSection",
+   "rule": "manual"
+  },
+  {
+   "line": 69767,
+   "old": "p107",
+   "new": "column",
+   "rule": "manual"
+  },
+  {
+   "line": 69773,
+   "old": "t45",
+   "new": "deviceSpoofToggle",
+   "rule": "manual"
+  },
+  {
+   "line": 69782,
+   "old": "f4844",
+   "new": "clearEnvironment_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69786,
+   "old": "f4845",
+   "new": "reportError_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69790,
+   "old": "f4846",
+   "new": "setFpsCounterRunning_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69790,
+   "old": "p108",
+   "new": "counter",
+   "rule": "manual"
+  },
+  {
+   "line": 69790,
+   "old": "p109",
+   "new": "running",
+   "rule": "manual"
+  },
+  {
+   "line": 69807,
+   "old": "_connection",
+   "new": "connection",
+   "rule": "manual"
+  },
+  {
+   "line": 69814,
+   "old": "f4848",
+   "new": "loadFpsCounter",
+   "rule": "manual"
+  },
+  {
+   "line": 69816,
+   "old": "t47",
+   "new": "FpsCounter",
+   "rule": "manual"
+  },
+  {
+   "line": 69819,
+   "old": "p110",
+   "new": "onDisplay",
+   "rule": "manual"
+  },
+  {
+   "line": 69820,
+   "old": "t48",
+   "new": "counter",
+   "rule": "manual"
+  },
+  {
+   "line": 69832,
+   "old": "v97",
+   "new": "interval",
+   "rule": "manual"
+  },
+  {
+   "line": 69833,
+   "old": "v98",
+   "new": "smoothing",
+   "rule": "manual"
+  },
+  {
+   "line": 69834,
+   "old": "v99",
+   "new": "scheduleTick",
+   "rule": "manual"
+  },
+  {
+   "line": 69836,
+   "old": "p111",
+   "new": "counter",
+   "rule": "manual"
+  },
+  {
+   "line": 69837,
+   "old": "_loopToken2",
+   "new": "token",
+   "rule": "manual"
+  },
+  {
+   "line": 69838,
+   "old": "v100",
+   "new": "startTime",
+   "rule": "manual"
+  },
+  {
+   "line": 69840,
+   "old": "f4849",
+   "new": "tick",
+   "rule": "manual"
+  },
+  {
+   "line": 69844,
+   "old": "v101",
+   "new": "elapsed",
+   "rule": "manual"
+  },
+  {
+   "line": 69846,
+   "old": "_frames3",
+   "new": "frames",
+   "rule": "manual"
+  },
+  {
+   "line": 69850,
+   "old": "v102",
+   "new": "fps",
+   "rule": "manual"
+  },
+  {
+   "line": 69861,
+   "old": "p112",
+   "new": "running",
+   "rule": "manual"
+  },
+  {
+   "line": 69878,
+   "old": "_connection2",
+   "new": "connection",
+   "rule": "manual"
+  },
+  {
+   "line": 69896,
+   "old": "f4852",
+   "new": "setDisabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69896,
+   "old": "p113",
+   "new": "patch",
+   "rule": "manual"
+  },
+  {
+   "line": 69896,
+   "old": "p114",
+   "new": "disabled",
+   "rule": "manual"
+  },
+  {
+   "line": 69914,
+   "old": "f4854",
+   "new": "getMode_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69918,
+   "old": "f4855",
+   "new": "buildTargetingTab_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69918,
+   "old": "p115",
+   "new": "column",
+   "rule": "manual"
+  },
+  {
+   "line": 69921,
+   "old": "v103",
+   "new": "secondSection",
+   "rule": "manual"
+  },
+  {
+   "line": 69921,
+   "old": "v104",
+   "new": "mainSection",
+   "rule": "manual"
+  },
+  {
+   "line": 69925,
+   "old": "v105",
+   "new": "perWeaponSection",
+   "rule": "manual"
+  },
+  {
+   "line": 69926,
+   "old": "v106",
+   "new": "result",
+   "rule": "manual"
+  },
+  {
+   "line": 69932,
+   "old": "f4856",
+   "new": "captureFighterPrototype_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69932,
+   "old": "p120",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 69933,
+   "old": "v107",
+   "new": "prototype",
+   "rule": "manual"
+  },
+  {
+   "line": 69941,
+   "old": "f4857",
+   "new": "exportLayer_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69941,
+   "old": "p121",
+   "new": "priority",
+   "rule": "manual"
+  },
+  {
+   "line": 69941,
+   "old": "p122",
+   "new": "selections",
+   "rule": "manual"
+  },
+  {
+   "line": 69942,
+   "old": "t52",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 69946,
+   "old": "f4858",
+   "new": "exportCosmeticState_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69946,
+   "old": "p123",
+   "new": "manager",
+   "rule": "manual"
+  },
+  {
+   "line": 69947,
+   "old": "t53",
+   "new": "exported",
+   "rule": "manual"
+  },
+  {
+   "line": 69948,
+   "old": "_states2",
+   "new": "states",
+   "rule": "manual"
+  },
+  {
+   "line": 69949,
+   "old": "v108",
+   "new": "itemName",
+   "rule": "manual"
+  },
+  {
+   "line": 69951,
+   "old": "t54",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 69956,
+   "old": "t55",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 69958,
+   "old": "f4859",
+   "new": "exportLayer",
+   "rule": "manual"
+  },
+  {
+   "line": 69958,
+   "old": "p124",
+   "new": "priority",
+   "rule": "manual"
+  },
+  {
+   "line": 69958,
+   "old": "p125",
+   "new": "selections",
+   "rule": "manual"
+  },
+  {
+   "line": 69959,
+   "old": "t56",
+   "new": "layerEntry",
+   "rule": "manual"
+  },
+  {
+   "line": 69969,
+   "old": "f4860",
+   "new": "destroyBundlePatch",
+   "rule": "manual"
+  },
+  {
+   "line": 69969,
+   "old": "p126",
+   "new": "patch",
+   "rule": "manual"
+  },
+  {
+   "line": 69970,
+   "old": "_restore24",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 69978,
+   "old": "f4861",
+   "new": "getTypeSet",
+   "rule": "manual"
+  },
+  {
+   "line": 69978,
+   "old": "p127",
+   "new": "filter",
+   "rule": "manual"
+  },
+  {
+   "line": 69982,
+   "old": "f4862",
+   "new": "onMaxDrag_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 69982,
+   "old": "p128",
+   "new": "input",
+   "rule": "manual"
+  },
+  {
+   "line": 69996,
+   "old": "f4864",
+   "new": "getMapName",
+   "rule": "manual"
+  },
+  {
+   "line": 69996,
+   "old": "p129",
+   "new": "match",
+   "rule": "manual"
+  },
+  {
+   "line": 69997,
+   "old": "t57",
+   "new": "map",
+   "rule": "manual"
+  },
+  {
+   "line": 69998,
+   "old": "v109",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 70023,
+   "old": "f4867",
+   "new": "newLocalBodyAppearance_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70023,
+   "old": "p130",
+   "new": "playerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 70023,
+   "old": "p131",
+   "new": "localBodyView",
+   "rule": "manual"
+  },
+  {
+   "line": 70024,
+   "old": "t59",
+   "new": "appearance",
+   "rule": "manual"
+  },
+  {
+   "line": 70033,
+   "old": "f4868",
+   "new": "getMeasurement",
+   "rule": "manual"
+  },
+  {
+   "line": 70033,
+   "old": "p132",
+   "new": "probe",
+   "rule": "manual"
+  },
+  {
+   "line": 70037,
+   "old": "f4869",
+   "new": "destroyUnlocker_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70037,
+   "old": "p133",
+   "new": "unlocker",
+   "rule": "manual"
+  },
+  {
+   "line": 70042,
+   "old": "f4870",
+   "new": "newCosmeticsUnlocker_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70042,
+   "old": "p134",
+   "new": "deps",
+   "rule": "manual"
+  },
+  {
+   "line": 70043,
+   "old": "v110",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 70044,
+   "old": "Add80",
+   "new": "interactions",
+   "rule": "manual"
+  },
+  {
+   "line": 70050,
+   "old": "Add81",
+   "new": "favoritedHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70051,
+   "old": "Add82",
+   "new": "inventoryHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70052,
+   "old": "t60",
+   "new": "unlocker",
+   "rule": "manual"
+  },
+  {
+   "line": 70064,
+   "old": "f4871",
+   "new": "syncUnlockerApplied_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70064,
+   "old": "p135",
+   "new": "unlocker",
+   "rule": "manual"
+  },
+  {
+   "line": 70065,
+   "old": "v111",
+   "new": "shouldApply",
+   "rule": "manual"
+  },
+  {
+   "line": 70084,
+   "old": "f4872",
+   "new": "setUnlockerMasterEnabled_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70084,
+   "old": "p136",
+   "new": "unlocker",
+   "rule": "manual"
+  },
+  {
+   "line": 70084,
+   "old": "p137",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 70092,
+   "old": "f4873",
+   "new": "setUnlockerLayerActive_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70092,
+   "old": "p138",
+   "new": "unlocker",
+   "rule": "manual"
+  },
+  {
+   "line": 70092,
+   "old": "p139",
+   "new": "active",
+   "rule": "manual"
+  },
+  {
+   "line": 70100,
+   "old": "f4874",
+   "new": "loadCosmeticsUnlocker",
+   "rule": "manual"
+  },
+  {
+   "line": 70103,
+   "old": "v112",
+   "new": "FavoritedHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70105,
+   "old": "v113",
+   "new": "InteractionsHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70106,
+   "old": "v114",
+   "new": "InventoryHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70109,
+   "old": "v115",
+   "new": "Trove",
+   "rule": "manual"
+  },
+  {
+   "line": 70110,
+   "old": "t61",
+   "new": "CosmeticsUnlocker",
+   "rule": "manual"
+  },
+  {
+   "line": 70113,
+   "old": "p140",
+   "new": "deps",
+   "rule": "manual"
+  },
+  {
+   "line": 70114,
+   "old": "v116",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 70115,
+   "old": "Add83",
+   "new": "interactions",
+   "rule": "manual"
+  },
+  {
+   "line": 70121,
+   "old": "Add84",
+   "new": "favoritedHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70122,
+   "old": "Add85",
+   "new": "inventoryHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70123,
+   "old": "t62",
+   "new": "unlocker",
+   "rule": "manual"
+  },
+  {
+   "line": 70136,
+   "old": "v117",
+   "new": "shouldApply",
+   "rule": "manual"
+  },
+  {
+   "line": 70155,
+   "old": "p141",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 70163,
+   "old": "p142",
+   "new": "active",
+   "rule": "manual"
+  },
+  {
+   "line": 70179,
+   "old": "f4875",
+   "new": "loadEffectsSection",
+   "rule": "manual"
+  },
+  {
+   "line": 70181,
+   "old": "v118",
+   "new": "buildAnimationControls",
+   "rule": "manual"
+  },
+  {
+   "line": 70185,
+   "old": "f4876",
+   "new": "buildEffectsSection",
+   "rule": "manual"
+  },
+  {
+   "line": 70185,
+   "old": "p143",
+   "new": "column",
+   "rule": "manual"
+  },
+  {
+   "line": 70185,
+   "old": "p144",
+   "new": "styleSource",
+   "rule": "manual"
+  },
+  {
+   "line": 70199,
+   "old": "f4877",
+   "new": "lcgRandom_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70199,
+   "old": "p145",
+   "new": "min",
+   "rule": "manual"
+  },
+  {
+   "line": 70199,
+   "old": "p146",
+   "new": "max",
+   "rule": "manual"
+  },
+  {
+   "line": 70200,
+   "old": "v121",
+   "new": "product",
+   "rule": "manual"
+  },
+  {
+   "line": 70201,
+   "old": "v122",
+   "new": "nextValue",
+   "rule": "manual"
+  },
+  {
+   "line": 70230,
+   "old": "f4882",
+   "new": "updateAutoStrafe_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70230,
+   "old": "p148",
+   "new": "strafe",
+   "rule": "manual"
+  },
+  {
+   "line": 70230,
+   "old": "p149",
+   "new": "dt",
+   "rule": "manual"
+  },
+  {
+   "line": 70231,
+   "old": "AutoStrafe",
+   "new": "strafeSettings",
+   "rule": "manual"
+  },
+  {
+   "line": 70238,
+   "old": "state19",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 70245,
+   "old": "rootPart4",
+   "new": "rootPart",
+   "rule": "manual"
+  },
+  {
+   "line": 70250,
+   "old": "f4883",
+   "new": "loadAutoStrafe",
+   "rule": "manual"
+  },
+  {
+   "line": 70252,
+   "old": "v123",
+   "new": "settings",
+   "rule": "manual"
+  },
+  {
+   "line": 70254,
+   "old": "PlayerModule2",
+   "new": "PlayerModule",
+   "rule": "manual"
+  },
+  {
+   "line": 70255,
+   "old": "v124",
+   "new": "UserInputService",
+   "rule": "manual"
+  },
+  {
+   "line": 70257,
+   "old": "f4884",
+   "new": "flatten",
+   "rule": "manual"
+  },
+  {
+   "line": 70257,
+   "old": "p150",
+   "new": "vector",
+   "rule": "manual"
+  },
+  {
+   "line": 70258,
+   "old": "t67",
+   "new": "flat",
+   "rule": "manual"
+  },
+  {
+   "line": 70259,
+   "old": "v125",
+   "new": "direction",
+   "rule": "manual"
+  },
+  {
+   "line": 70265,
+   "old": "v126",
+   "new": "getMoveDirection",
+   "rule": "manual"
+  },
+  {
+   "line": 70305,
+   "old": "t68",
+   "new": "AutoStrafe",
+   "rule": "manual"
+  },
+  {
+   "line": 70308,
+   "old": "p151",
+   "new": "characterContext",
+   "rule": "manual"
+  },
+  {
+   "line": 70309,
+   "old": "t69",
+   "new": "strafe",
+   "rule": "manual"
+  },
+  {
+   "line": 70313,
+   "old": "p152",
+   "new": "dt",
+   "rule": "manual"
+  },
+  {
+   "line": 70314,
+   "old": "AutoStrafe2",
+   "new": "strafeSettings",
+   "rule": "manual"
+  },
+  {
+   "line": 70321,
+   "old": "state20",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 70328,
+   "old": "rootPart5",
+   "new": "rootPart",
+   "rule": "manual"
+  },
+  {
+   "line": 70336,
+   "old": "f4885",
+   "new": "setUsername",
+   "rule": "manual"
+  },
+  {
+   "line": 70336,
+   "old": "p153",
+   "new": "watermark",
+   "rule": "manual"
+  },
+  {
+   "line": 70336,
+   "old": "p154",
+   "new": "name",
+   "rule": "manual"
+  },
+  {
+   "line": 70352,
+   "old": "f4888",
+   "new": "syncAnimationControls_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70352,
+   "old": "p155",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 70352,
+   "old": "p156",
+   "new": "speed",
+   "rule": "manual"
+  },
+  {
+   "line": 70355,
+   "old": "v127",
+   "new": "showBreathing",
+   "rule": "manual"
+  },
+  {
+   "line": 70362,
+   "old": "f4889",
+   "new": "realizeGroup",
+   "rule": "manual"
+  },
+  {
+   "line": 70362,
+   "old": "p157",
+   "new": "element",
+   "rule": "manual"
+  },
+  {
+   "line": 70362,
+   "old": "p158",
+   "new": "parent",
+   "rule": "manual"
+  },
+  {
+   "line": 70362,
+   "old": "p159",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 70362,
+   "old": "p160",
+   "new": "order",
+   "rule": "manual"
+  },
+  {
+   "line": 70368,
+   "old": "_rootFrame5",
+   "new": "rootFrame",
+   "rule": "manual"
+  },
+  {
+   "line": 70370,
+   "old": "_groupSpec",
+   "new": "groupSpec",
+   "rule": "manual"
+  },
+  {
+   "line": 70372,
+   "old": "f4890",
+   "new": "refreshVisibility",
+   "rule": "manual"
+  },
+  {
+   "line": 70382,
+   "old": "f4891",
+   "new": "onPlayed_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70386,
+   "old": "f4892",
+   "new": "destroyTrove_proto3",
+   "rule": "manual"
+  },
+  {
+   "line": 70386,
+   "old": "p161",
+   "new": "object",
+   "rule": "manual"
+  },
+  {
+   "line": 70390,
+   "old": "f4893",
+   "new": "removeLookItem_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70390,
+   "old": "p162",
+   "new": "look",
+   "rule": "manual"
+  },
+  {
+   "line": 70390,
+   "old": "p163",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70398,
+   "old": "f4894",
+   "new": "syncSurface_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70398,
+   "old": "p164",
+   "new": "look",
+   "rule": "manual"
+  },
+  {
+   "line": 70398,
+   "old": "p165",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70398,
+   "old": "p166",
+   "new": "surface",
+   "rule": "manual"
+  },
+  {
+   "line": 70399,
+   "old": "t71",
+   "new": "owners",
+   "rule": "manual"
+  },
+  {
+   "line": 70403,
+   "old": "v128",
+   "new": "desired",
+   "rule": "manual"
+  },
+  {
+   "line": 70404,
+   "old": "v129",
+   "new": "current",
+   "rule": "manual"
+  },
+  {
+   "line": 70421,
+   "old": "f4895",
+   "new": "onLookItemAdded_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70421,
+   "old": "p167",
+   "new": "look",
+   "rule": "manual"
+  },
+  {
+   "line": 70421,
+   "old": "p168",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70422,
+   "old": "v130",
+   "new": "parts",
+   "rule": "manual"
+  },
+  {
+   "line": 70429,
+   "old": "f4896",
+   "new": "samePartSets_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70429,
+   "old": "p169",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 70429,
+   "old": "p170",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 70430,
+   "old": "f4897",
+   "new": "nextSurface",
+   "rule": "manual"
+  },
+  {
+   "line": 70431,
+   "old": "v131",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 70433,
+   "old": "v132",
+   "new": "surface",
+   "rule": "manual"
+  },
+  {
+   "line": 70439,
+   "old": "t72",
+   "new": "listB",
+   "rule": "manual"
+  },
+  {
+   "line": 70443,
+   "old": "v133",
+   "new": "i",
+   "rule": "manual"
+  },
+  {
+   "line": 70445,
+   "old": "v134",
+   "new": "part",
+   "rule": "manual"
+  },
+  {
+   "line": 70458,
+   "old": "f4899",
+   "new": "applyLookItem_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70458,
+   "old": "p171",
+   "new": "look",
+   "rule": "manual"
+  },
+  {
+   "line": 70458,
+   "old": "p172",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70458,
+   "old": "p173",
+   "new": "parts",
+   "rule": "manual"
+  },
+  {
+   "line": 70464,
+   "old": "f4900",
+   "new": "nextSurface",
+   "rule": "manual"
+  },
+  {
+   "line": 70465,
+   "old": "v135",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 70467,
+   "old": "v136",
+   "new": "surface",
+   "rule": "manual"
+  },
+  {
+   "line": 70476,
+   "old": "f4901",
+   "new": "loadViewModelLook",
+   "rule": "manual"
+  },
+  {
+   "line": 70477,
+   "old": "v137",
+   "new": "ChamsRenderer",
+   "rule": "manual"
+  },
+  {
+   "line": 70478,
+   "old": "v138",
+   "new": "settings",
+   "rule": "manual"
+  },
+  {
+   "line": 70479,
+   "old": "v139",
+   "new": "HighlightRenderer",
+   "rule": "manual"
+  },
+  {
+   "line": 70482,
+   "old": "v140",
+   "new": "Trove",
+   "rule": "manual"
+  },
+  {
+   "line": 70484,
+   "old": "v141",
+   "new": "rebuildNotifier",
+   "rule": "manual"
+  },
+  {
+   "line": 70485,
+   "old": "v142",
+   "new": "WireframeRenderer",
+   "rule": "manual"
+  },
+  {
+   "line": 70486,
+   "old": "v143",
+   "new": "safeIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 70487,
+   "old": "t73",
+   "new": "ViewModelLook",
+   "rule": "manual"
+  },
+  {
+   "line": 70489,
+   "old": "v144",
+   "new": "surfaces",
+   "rule": "manual"
+  },
+  {
+   "line": 70491,
+   "old": "f4902",
+   "new": "getSurfaceMode",
+   "rule": "manual"
+  },
+  {
+   "line": 70491,
+   "old": "p174",
+   "new": "surface",
+   "rule": "manual"
+  },
+  {
+   "line": 70492,
+   "old": "t74",
+   "new": "wireframeSettings",
+   "rule": "manual"
+  },
+  {
+   "line": 70498,
+   "old": "t75",
+   "new": "chamsSettings",
+   "rule": "manual"
+  },
+  {
+   "line": 70507,
+   "old": "t76",
+   "new": "partNamesBySurface",
+   "rule": "manual"
+  },
+  {
+   "line": 70509,
+   "old": "f4903",
+   "new": "samePartSets",
+   "rule": "manual"
+  },
+  {
+   "line": 70509,
+   "old": "p175",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 70509,
+   "old": "p176",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 70510,
+   "old": "f4904",
+   "new": "nextSurface",
+   "rule": "manual"
+  },
+  {
+   "line": 70511,
+   "old": "v145",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 70513,
+   "old": "v146",
+   "new": "surface",
+   "rule": "manual"
+  },
+  {
+   "line": 70519,
+   "old": "t77",
+   "new": "listB",
+   "rule": "manual"
+  },
+  {
+   "line": 70523,
+   "old": "v147",
+   "new": "i",
+   "rule": "manual"
+  },
+  {
+   "line": 70525,
+   "old": "v148",
+   "new": "part",
+   "rule": "manual"
+  },
+  {
+   "line": 70538,
+   "old": "f4906",
+   "new": "collectParts",
+   "rule": "manual"
+  },
+  {
+   "line": 70538,
+   "old": "p177",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70539,
+   "old": "v149",
+   "new": "viewModel",
+   "rule": "manual"
+  },
+  {
+   "line": 70543,
+   "old": "t78",
+   "new": "itemModel",
+   "rule": "manual"
+  },
+  {
+   "line": 70547,
+   "old": "Parent8",
+   "new": "container",
+   "rule": "manual"
+  },
+  {
+   "line": 70548,
+   "old": "t79",
+   "new": "parts",
+   "rule": "manual"
+  },
+  {
+   "line": 70552,
+   "old": "f4907",
+   "new": "nextSurfaceNames",
+   "rule": "manual"
+  },
+  {
+   "line": 70553,
+   "old": "v150",
+   "new": "surface",
+   "rule": "manual"
+  },
+  {
+   "line": 70555,
+   "old": "f4908",
+   "new": "nextName",
+   "rule": "manual"
+  },
+  {
+   "line": 70560,
+   "old": "v151",
+   "new": "i",
+   "rule": "manual"
+  },
+  {
+   "line": 70562,
+   "old": "v152",
+   "new": "partName",
+   "rule": "manual"
+  },
+  {
+   "line": 70567,
+   "old": "FindFirstChild7",
+   "new": "part",
+   "rule": "manual"
+  },
+  {
+   "line": 70576,
+   "old": "p178",
+   "new": "playerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 70577,
+   "old": "v153",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 70578,
+   "old": "t80",
+   "new": "look",
+   "rule": "manual"
+  },
+  {
+   "line": 70593,
+   "old": "f4909",
+   "new": "onContext",
+   "rule": "manual"
+  },
+  {
+   "line": 70593,
+   "old": "p179",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 70593,
+   "old": "p180",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 70594,
+   "old": "fighterState20",
+   "new": "fighterState",
+   "rule": "manual"
+  },
+  {
+   "line": 70596,
+   "old": "f4910",
+   "new": "onItemAdded",
+   "rule": "manual"
+  },
+  {
+   "line": 70596,
+   "old": "p181",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70602,
+   "old": "f4911",
+   "new": "onItemRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 70602,
+   "old": "p182",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70608,
+   "old": "v154",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 70608,
+   "old": "v155",
+   "new": "items",
+   "rule": "manual"
+  },
+  {
+   "line": 70611,
+   "old": "v156",
+   "new": "existingItem",
+   "rule": "manual"
+  },
+  {
+   "line": 70621,
+   "old": "f4912",
+   "new": "nextSurface",
+   "rule": "manual"
+  },
+  {
+   "line": 70622,
+   "old": "v157",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 70624,
+   "old": "v158",
+   "new": "surface",
+   "rule": "manual"
+  },
+  {
+   "line": 70629,
+   "old": "f4913",
+   "new": "nextSetting",
+   "rule": "manual"
+  },
+  {
+   "line": 70630,
+   "old": "v159",
+   "new": "i",
+   "rule": "manual"
+  },
+  {
+   "line": 70637,
+   "old": "v160",
+   "new": "capturedSurface",
+   "rule": "manual"
+  },
+  {
+   "line": 70639,
+   "old": "f4914",
+   "new": "resyncSurface",
+   "rule": "manual"
+  },
+  {
+   "line": 70640,
+   "old": "_surfaceOwners3",
+   "new": "surfaceOwners",
+   "rule": "manual"
+  },
+  {
+   "line": 70641,
+   "old": "v161",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70656,
+   "old": "f4915",
+   "new": "onContextRemoved",
+   "rule": "manual"
+  },
+  {
+   "line": 70666,
+   "old": "f4916",
+   "new": "onRebuilt",
+   "rule": "manual"
+  },
+  {
+   "line": 70666,
+   "old": "p183",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70667,
+   "old": "v162",
+   "new": "parts",
+   "rule": "manual"
+  },
+  {
+   "line": 70671,
+   "old": "v163",
+   "new": "existing",
+   "rule": "manual"
+  },
+  {
+   "line": 70682,
+   "old": "p184",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70682,
+   "old": "p185",
+   "new": "parts",
+   "rule": "manual"
+  },
+  {
+   "line": 70688,
+   "old": "f4917",
+   "new": "nextSurface",
+   "rule": "manual"
+  },
+  {
+   "line": 70689,
+   "old": "v164",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 70691,
+   "old": "v165",
+   "new": "surface",
+   "rule": "manual"
+  },
+  {
+   "line": 70700,
+   "old": "p186",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70708,
+   "old": "p187",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70708,
+   "old": "p188",
+   "new": "surface",
+   "rule": "manual"
+  },
+  {
+   "line": 70709,
+   "old": "t81",
+   "new": "owners",
+   "rule": "manual"
+  },
+  {
+   "line": 70713,
+   "old": "v166",
+   "new": "desired",
+   "rule": "manual"
+  },
+  {
+   "line": 70714,
+   "old": "v167",
+   "new": "current",
+   "rule": "manual"
+  },
+  {
+   "line": 70731,
+   "old": "p189",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70732,
+   "old": "v168",
+   "new": "parts",
+   "rule": "manual"
+  },
+  {
+   "line": 70739,
+   "old": "p190",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 70750,
+   "old": "f4918",
+   "new": "addColorPicker",
+   "rule": "manual"
+  },
+  {
+   "line": 70750,
+   "old": "p191",
+   "new": "section",
+   "rule": "manual"
+  },
+  {
+   "line": 70750,
+   "old": "p192",
+   "new": "options",
+   "rule": "manual"
+  },
+  {
+   "line": 70751,
+   "old": "_rowFor6",
+   "new": "rowFor",
+   "rule": "manual"
+  },
+  {
+   "line": 70752,
+   "old": "t82",
+   "new": "rowOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 70758,
+   "old": "t83",
+   "new": "rowFlags",
+   "rule": "manual"
+  },
+  {
+   "line": 70762,
+   "old": "f4919",
+   "new": "cacheKey",
+   "rule": "manual"
+  },
+  {
+   "line": 70762,
+   "old": "p193",
+   "new": "text",
+   "rule": "manual"
+  },
+  {
+   "line": 70762,
+   "old": "p194",
+   "new": "style",
+   "rule": "manual"
+  },
+  {
+   "line": 70766,
+   "old": "f4920",
+   "new": "clearBoardProvider",
+   "rule": "manual"
+  },
+  {
+   "line": 70766,
+   "old": "p195",
+   "new": "board",
+   "rule": "manual"
+  },
+  {
+   "line": 70770,
+   "old": "f4921",
+   "new": "setTooltip",
+   "rule": "manual"
+  },
+  {
+   "line": 70770,
+   "old": "p196",
+   "new": "control",
+   "rule": "manual"
+  },
+  {
+   "line": 70770,
+   "old": "p197",
+   "new": "text",
+   "rule": "manual"
+  },
+  {
+   "line": 70784,
+   "old": "f4923",
+   "new": "bindReplicate",
+   "rule": "manual"
+  },
+  {
+   "line": 70784,
+   "old": "p198",
+   "new": "hook",
+   "rule": "manual"
+  },
+  {
+   "line": 70784,
+   "old": "p199",
+   "new": "enumNames",
+   "rule": "manual"
+  },
+  {
+   "line": 70785,
+   "old": "f4924",
+   "new": "encodedEnums",
+   "rule": "manual"
+  },
+  {
+   "line": 70786,
+   "old": "v169",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 70788,
+   "old": "v171",
+   "new": "enumName",
+   "rule": "manual"
+  },
+  {
+   "line": 70798,
+   "old": "f4925",
+   "new": "onEnabled",
+   "rule": "manual"
+  },
+  {
+   "line": 70798,
+   "old": "p200",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 70804,
+   "old": "f4926",
+   "new": "onDestroy",
+   "rule": "manual"
+  },
+  {
+   "line": 70805,
+   "old": "f4927",
+   "new": "nextEncoded",
+   "rule": "manual"
+  },
+  {
+   "line": 70806,
+   "old": "v172",
+   "new": "slot",
+   "rule": "manual"
+  },
+  {
+   "line": 70808,
+   "old": "v173",
+   "new": "encoded",
+   "rule": "manual"
+  },
+  {
+   "line": 70813,
+   "old": "f4928",
+   "new": "bindings",
+   "rule": "manual"
+  },
+  {
+   "line": 70815,
+   "old": "v174",
+   "new": "i",
+   "rule": "manual"
+  },
+  {
+   "line": 70817,
+   "old": "v175",
+   "new": "existing",
+   "rule": "manual"
+  },
+  {
+   "line": 70832,
+   "old": "v176",
+   "new": "index2",
+   "rule": "manual"
+  },
+  {
+   "line": 70834,
+   "old": "v177",
+   "new": "encoded2",
+   "rule": "manual"
+  },
+  {
+   "line": 70839,
+   "old": "v178",
+   "new": "list",
+   "rule": "manual"
+  },
+  {
+   "line": 70849,
+   "old": "f4929",
+   "new": "installReplicateHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70849,
+   "old": "p201",
+   "new": "hook",
+   "rule": "manual"
+  },
+  {
+   "line": 70853,
+   "old": "v179",
+   "new": "objectChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 70861,
+   "old": "_bindingsByEnum",
+   "new": "bindingsByEnum",
+   "rule": "manual"
+  },
+  {
+   "line": 70863,
+   "old": "f4930",
+   "new": "objectChangedHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70863,
+   "old": "p202",
+   "new": "objectId",
+   "rule": "manual"
+  },
+  {
+   "line": 70863,
+   "old": "p203",
+   "new": "enumCode",
+   "rule": "manual"
+  },
+  {
+   "line": 70864,
+   "old": "f4931",
+   "new": "bindings",
+   "rule": "manual"
+  },
+  {
+   "line": 70868,
+   "old": "t85",
+   "new": "call",
+   "rule": "manual"
+  },
+  {
+   "line": 70874,
+   "old": "v180",
+   "new": "previousIdentity",
+   "rule": "manual"
+  },
+  {
+   "line": 70876,
+   "old": "v181",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 70878,
+   "old": "t86",
+   "new": "binding",
+   "rule": "manual"
+  },
+  {
+   "line": 70898,
+   "old": "t87",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 70903,
+   "old": "f4932",
+   "new": "revertReplicateHook_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 70903,
+   "old": "p204",
+   "new": "hook",
+   "rule": "manual"
+  },
+  {
+   "line": 70904,
+   "old": "_restore25",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 70912,
+   "old": "f4933",
+   "new": "loadReplicateHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70913,
+   "old": "v182",
+   "new": "Binding",
+   "rule": "manual"
+  },
+  {
+   "line": 70915,
+   "old": "v183",
+   "new": "Result",
+   "rule": "manual"
+  },
+  {
+   "line": 70917,
+   "old": "v184",
+   "new": "remoteCodec",
+   "rule": "manual"
+  },
+  {
+   "line": 70918,
+   "old": "v185",
+   "new": "ErrorReporter",
+   "rule": "manual"
+  },
+  {
+   "line": 70919,
+   "old": "t88",
+   "new": "ReplicateHook",
+   "rule": "manual"
+  },
+  {
+   "line": 70923,
+   "old": "t89",
+   "new": "hook",
+   "rule": "manual"
+  },
+  {
+   "line": 70930,
+   "old": "p205",
+   "new": "enumNames",
+   "rule": "manual"
+  },
+  {
+   "line": 70931,
+   "old": "f4934",
+   "new": "encodedEnums",
+   "rule": "manual"
+  },
+  {
+   "line": 70932,
+   "old": "v186",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 70934,
+   "old": "v188",
+   "new": "enumName",
+   "rule": "manual"
+  },
+  {
+   "line": 70944,
+   "old": "f4935",
+   "new": "onEnabled",
+   "rule": "manual"
+  },
+  {
+   "line": 70944,
+   "old": "p206",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 70950,
+   "old": "f4936",
+   "new": "onDestroy",
+   "rule": "manual"
+  },
+  {
+   "line": 70951,
+   "old": "f4937",
+   "new": "nextEncoded",
+   "rule": "manual"
+  },
+  {
+   "line": 70952,
+   "old": "v189",
+   "new": "slot",
+   "rule": "manual"
+  },
+  {
+   "line": 70954,
+   "old": "v190",
+   "new": "encoded",
+   "rule": "manual"
+  },
+  {
+   "line": 70959,
+   "old": "f4938",
+   "new": "bindings",
+   "rule": "manual"
+  },
+  {
+   "line": 70961,
+   "old": "v191",
+   "new": "i",
+   "rule": "manual"
+  },
+  {
+   "line": 70963,
+   "old": "v192",
+   "new": "existing",
+   "rule": "manual"
+  },
+  {
+   "line": 70978,
+   "old": "v193",
+   "new": "index2",
+   "rule": "manual"
+  },
+  {
+   "line": 70980,
+   "old": "v194",
+   "new": "encoded2",
+   "rule": "manual"
+  },
+  {
+   "line": 70985,
+   "old": "v195",
+   "new": "list",
+   "rule": "manual"
+  },
+  {
+   "line": 70999,
+   "old": "v196",
+   "new": "objectChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 71007,
+   "old": "_bindingsByEnum2",
+   "new": "bindingsByEnum",
+   "rule": "manual"
+  },
+  {
+   "line": 71009,
+   "old": "f4939",
+   "new": "objectChangedHook",
+   "rule": "manual"
+  },
+  {
+   "line": 71009,
+   "old": "p207",
+   "new": "objectId",
+   "rule": "manual"
+  },
+  {
+   "line": 71009,
+   "old": "p208",
+   "new": "enumCode",
+   "rule": "manual"
+  },
+  {
+   "line": 71010,
+   "old": "f4940",
+   "new": "bindings2",
+   "rule": "manual"
+  },
+  {
+   "line": 71014,
+   "old": "t90",
+   "new": "call",
+   "rule": "manual"
+  },
+  {
+   "line": 71020,
+   "old": "v197",
+   "new": "previousIdentity",
+   "rule": "manual"
+  },
+  {
+   "line": 71022,
+   "old": "v198",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 71024,
+   "old": "t91",
+   "new": "binding",
+   "rule": "manual"
+  },
+  {
+   "line": 71044,
+   "old": "t92",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 71050,
+   "old": "_restore26",
+   "new": "restore",
+   "rule": "manual"
+  },
+  {
+   "line": 71087,
+   "old": "f4944",
+   "new": "setValueSilently_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71087,
+   "old": "p209",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 71091,
+   "old": "f4945",
+   "new": "setAnimationControlsVisible_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71091,
+   "old": "p210",
+   "new": "visible",
+   "rule": "manual"
+  },
+  {
+   "line": 71091,
+   "old": "p211",
+   "new": "allowBreathing",
+   "rule": "manual"
+  },
+  {
+   "line": 71094,
+   "old": "Value51",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 71099,
+   "old": "v199",
+   "new": "options",
+   "rule": "manual"
+  },
+  {
+   "line": 71106,
+   "old": "f4946",
+   "new": "onHueDrag_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71106,
+   "old": "p212",
+   "new": "input",
+   "rule": "manual"
+  },
+  {
+   "line": 71107,
+   "old": "v200",
+   "new": "height",
+   "rule": "manual"
+  },
+  {
+   "line": 71108,
+   "old": "v201",
+   "new": "hue",
+   "rule": "manual"
+  },
+  {
+   "line": 71116,
+   "old": "f4947",
+   "new": "onModeChosen_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71116,
+   "old": "p213",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 71122,
+   "old": "f4948",
+   "new": "onBreathingRangeChanged_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71122,
+   "old": "p214",
+   "new": "range",
+   "rule": "manual"
+  },
+  {
+   "line": 71129,
+   "old": "f4949",
+   "new": "onSpeedChanged_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71129,
+   "old": "p215",
+   "new": "speed",
+   "rule": "manual"
+  },
+  {
+   "line": 71136,
+   "old": "f4951",
+   "new": "selectStopAtPointer_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71142,
+   "old": "f4952",
+   "new": "applyHexInput_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71143,
+   "old": "v202",
+   "new": "color",
+   "rule": "manual"
+  },
+  {
+   "line": 71143,
+   "old": "v203",
+   "new": "ok",
+   "rule": "manual"
+  },
+  {
+   "line": 71150,
+   "old": "f4953",
+   "new": "makeIconButton",
+   "rule": "manual"
+  },
+  {
+   "line": 71150,
+   "old": "p216",
+   "new": "icon",
+   "rule": "manual"
+  },
+  {
+   "line": 71150,
+   "old": "p217",
+   "new": "alignRight",
+   "rule": "manual"
+  },
+  {
+   "line": 71196,
+   "old": "f4955",
+   "new": "onSatDrag_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71196,
+   "old": "p219",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 71197,
+   "old": "v211",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 71204,
+   "old": "f4956",
+   "new": "removeStop_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71208,
+   "old": "f4957",
+   "new": "onModeChanged_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71208,
+   "old": "p220",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 71209,
+   "old": "v212",
+   "new": "isGradient",
+   "rule": "manual"
+  },
+  {
+   "line": 71217,
+   "old": "f4958",
+   "new": "nearestStopIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 71217,
+   "old": "p221",
+   "new": "x",
+   "rule": "manual"
+  },
+  {
+   "line": 71218,
+   "old": "v213",
+   "new": "width",
+   "rule": "manual"
+  },
+  {
+   "line": 71219,
+   "old": "v214",
+   "new": "time",
+   "rule": "manual"
+  },
+  {
+   "line": 71220,
+   "old": "v215",
+   "new": "nearestIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 71221,
+   "old": "v216",
+   "new": "nearestDistance",
+   "rule": "manual"
+  },
+  {
+   "line": 71222,
+   "old": "Stops6",
+   "new": "stops",
+   "rule": "manual"
+  },
+  {
+   "line": 71223,
+   "old": "v217",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 71225,
+   "old": "t95",
+   "new": "stop",
+   "rule": "manual"
+  },
+  {
+   "line": 71230,
+   "old": "v218",
+   "new": "distance",
+   "rule": "manual"
+  },
+  {
+   "line": 71239,
+   "old": "f4959",
+   "new": "onStopDrag_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71239,
+   "old": "p222",
+   "new": "input",
+   "rule": "manual"
+  },
+  {
+   "line": 71240,
+   "old": "v219",
+   "new": "width",
+   "rule": "manual"
+  },
+  {
+   "line": 71248,
+   "old": "f4960",
+   "new": "layoutStopMarkers",
+   "rule": "manual"
+  },
+  {
+   "line": 71248,
+   "old": "p223",
+   "new": "instant",
+   "rule": "manual"
+  },
+  {
+   "line": 71249,
+   "old": "DragTweenInfo3",
+   "new": "tweenInfo",
+   "rule": "manual"
+  },
+  {
+   "line": 71250,
+   "old": "f4961",
+   "new": "nextMarker",
+   "rule": "manual"
+  },
+  {
+   "line": 71251,
+   "old": "v220",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 71251,
+   "old": "v221",
+   "new": "accentSize",
+   "rule": "manual"
+  },
+  {
+   "line": 71251,
+   "old": "v222",
+   "new": "markerSize",
+   "rule": "manual"
+  },
+  {
+   "line": 71253,
+   "old": "t96",
+   "new": "marker",
+   "rule": "manual"
+  },
+  {
+   "line": 71258,
+   "old": "t97",
+   "new": "stop",
+   "rule": "manual"
+  },
+  {
+   "line": 71261,
+   "old": "v224",
+   "new": "position",
+   "rule": "manual"
+  },
+  {
+   "line": 71286,
+   "old": "t98",
+   "new": "menu",
+   "rule": "manual"
+  },
+  {
+   "line": 71288,
+   "old": "Marker",
+   "new": "markerButton",
+   "rule": "manual"
+  },
+  {
+   "line": 71289,
+   "old": "t99",
+   "new": "goal",
+   "rule": "manual"
+  },
+  {
+   "line": 71291,
+   "old": "t100",
+   "new": "menu2",
+   "rule": "manual"
+  },
+  {
+   "line": 71293,
+   "old": "Accent6",
+   "new": "accent",
+   "rule": "manual"
+  },
+  {
+   "line": 71294,
+   "old": "t101",
+   "new": "goal2",
+   "rule": "manual"
+  },
+  {
+   "line": 71301,
+   "old": "f4964",
+   "new": "onBarDrag_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 71301,
+   "old": "p224",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 71311,
+   "old": "f4965",
+   "new": "addStop_proto2",
+   "rule": "manual"
+  },
+  {
+   "line": 71315,
+   "old": "f4966",
+   "new": "buildColorPanel",
+   "rule": "manual"
+  },
+  {
+   "line": 71315,
+   "old": "p225",
+   "new": "menu",
+   "rule": "manual"
+  },
+  {
+   "line": 71315,
+   "old": "p226",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 71315,
+   "old": "p227",
+   "new": "picker",
+   "rule": "manual"
+  },
+  {
+   "line": 71315,
+   "old": "p228",
+   "new": "options",
+   "rule": "manual"
+  },
+  {
+   "line": 71315,
+   "old": "p229",
+   "new": "callbacks",
+   "rule": "manual"
+  },
+  {
+   "line": 71316,
+   "old": "Trove",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 71317,
+   "old": "Batch9",
+   "new": "batch",
+   "rule": "manual"
+  },
+  {
+   "line": 71318,
+   "old": "Root4",
+   "new": "root",
+   "rule": "manual"
+  },
+  {
+   "line": 71319,
+   "old": "t102",
+   "new": "realizeContext",
+   "rule": "manual"
+  },
+  {
+   "line": 71330,
+   "old": "v227",
+   "new": "header",
+   "rule": "manual"
+  },
+  {
+   "line": 71350,
+   "old": "v230",
+   "new": "modeHolder",
+   "rule": "manual"
+  },
+  {
+   "line": 71366,
+   "old": "v233",
+   "new": "modeDropdown",
+   "rule": "manual"
+  },
+  {
+   "line": 71368,
+   "old": "new47",
+   "new": "newRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71370,
+   "old": "v234",
+   "new": "modeRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71371,
+   "old": "_new",
+   "new": "newDropdown",
+   "rule": "manual"
+  },
+  {
+   "line": 71372,
+   "old": "Extend27",
+   "new": "modeTrove",
+   "rule": "manual"
+  },
+  {
+   "line": 71373,
+   "old": "t104",
+   "new": "modeDropdownOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 71391,
+   "old": "v235",
+   "new": "body",
+   "rule": "manual"
+  },
+  {
+   "line": 71403,
+   "old": "v237",
+   "new": "svSquare",
+   "rule": "manual"
+  },
+  {
+   "line": 71411,
+   "old": "v239",
+   "new": "blackOverlay",
+   "rule": "manual"
+  },
+  {
+   "line": 71432,
+   "old": "v243",
+   "new": "whiteOverlay",
+   "rule": "manual"
+  },
+  {
+   "line": 71447,
+   "old": "v247",
+   "new": "svCursorArea",
+   "rule": "manual"
+  },
+  {
+   "line": 71457,
+   "old": "v249",
+   "new": "svCursor",
+   "rule": "manual"
+  },
+  {
+   "line": 71472,
+   "old": "v252",
+   "new": "sliders",
+   "rule": "manual"
+  },
+  {
+   "line": 71487,
+   "old": "v255",
+   "new": "hueBar",
+   "rule": "manual"
+  },
+  {
+   "line": 71498,
+   "old": "v258",
+   "new": "hueKeypoints",
+   "rule": "manual"
+  },
+  {
+   "line": 71511,
+   "old": "v259",
+   "new": "hueTrack",
+   "rule": "manual"
+  },
+  {
+   "line": 71518,
+   "old": "v260",
+   "new": "hueHandle",
+   "rule": "manual"
+  },
+  {
+   "line": 71533,
+   "old": "v263",
+   "new": "alphaBar",
+   "rule": "manual"
+  },
+  {
+   "line": 71553,
+   "old": "v267",
+   "new": "alphaFill",
+   "rule": "manual"
+  },
+  {
+   "line": 71569,
+   "old": "v271",
+   "new": "alphaTrack",
+   "rule": "manual"
+  },
+  {
+   "line": 71576,
+   "old": "v272",
+   "new": "alphaHandle",
+   "rule": "manual"
+  },
+  {
+   "line": 71591,
+   "old": "v275",
+   "new": "inputRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71608,
+   "old": "v277",
+   "new": "inputLeft",
+   "rule": "manual"
+  },
+  {
+   "line": 71621,
+   "old": "v280",
+   "new": "inputRight",
+   "rule": "manual"
+  },
+  {
+   "line": 71637,
+   "old": "t105",
+   "new": "panel",
+   "rule": "manual"
+  },
+  {
+   "line": 71640,
+   "old": "AlphaEnabled",
+   "new": "alphaEnabled",
+   "rule": "manual"
+  },
+  {
+   "line": 71642,
+   "old": "v283",
+   "new": "alphaBox",
+   "rule": "manual"
+  },
+  {
+   "line": 71648,
+   "old": "t107",
+   "new": "alphaRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71650,
+   "old": "f4967",
+   "new": "attachAlphaBox",
+   "rule": "manual"
+  },
+  {
+   "line": 71650,
+   "old": "p230",
+   "new": "row",
+   "rule": "manual"
+  },
+  {
+   "line": 71651,
+   "old": "v286",
+   "new": "box",
+   "rule": "manual"
+  },
+  {
+   "line": 71651,
+   "old": "v287",
+   "new": "frame",
+   "rule": "manual"
+  },
+  {
+   "line": 71667,
+   "old": "v288",
+   "new": "hexRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71669,
+   "old": "f4968",
+   "new": "attachHexBox",
+   "rule": "manual"
+  },
+  {
+   "line": 71669,
+   "old": "p231",
+   "new": "row",
+   "rule": "manual"
+  },
+  {
+   "line": 71670,
+   "old": "v289",
+   "new": "extra",
+   "rule": "manual"
+  },
+  {
+   "line": 71670,
+   "old": "v290",
+   "new": "box",
+   "rule": "manual"
+  },
+  {
+   "line": 71670,
+   "old": "v291",
+   "new": "frame",
+   "rule": "manual"
+  },
+  {
+   "line": 71680,
+   "old": "t109",
+   "new": "alphaInput",
+   "rule": "manual"
+  },
+  {
+   "line": 71682,
+   "old": "f4969",
+   "new": "onAlphaFocusLost",
+   "rule": "manual"
+  },
+  {
+   "line": 71683,
+   "old": "v292",
+   "new": "percent",
+   "rule": "manual"
+  },
+  {
+   "line": 71694,
+   "old": "t110",
+   "new": "hexInput",
+   "rule": "manual"
+  },
+  {
+   "line": 71696,
+   "old": "f4970",
+   "new": "onHexFocusLost",
+   "rule": "manual"
+  },
+  {
+   "line": 71697,
+   "old": "v293",
+   "new": "color",
+   "rule": "manual"
+  },
+  {
+   "line": 71697,
+   "old": "v294",
+   "new": "ok",
+   "rule": "manual"
+  },
+  {
+   "line": 71706,
+   "old": "v295",
+   "new": "gradientRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71708,
+   "old": "v296",
+   "new": "isGradient",
+   "rule": "manual"
+  },
+  {
+   "line": 71716,
+   "old": "v297",
+   "new": "gradientBar",
+   "rule": "manual"
+  },
+  {
+   "line": 71728,
+   "old": "v300",
+   "new": "stopsArea",
+   "rule": "manual"
+  },
+  {
+   "line": 71736,
+   "old": "f4971",
+   "new": "makeStopButton",
+   "rule": "manual"
+  },
+  {
+   "line": 71736,
+   "old": "p232",
+   "new": "icon",
+   "rule": "manual"
+  },
+  {
+   "line": 71736,
+   "old": "p233",
+   "new": "alignRight",
+   "rule": "manual"
+  },
+  {
+   "line": 71775,
+   "old": "v306",
+   "new": "removeStopButton",
+   "rule": "manual"
+  },
+  {
+   "line": 71776,
+   "old": "v307",
+   "new": "addStopButton",
+   "rule": "manual"
+  },
+  {
+   "line": 71777,
+   "old": "v308",
+   "new": "activeMarker",
+   "rule": "manual"
+  },
+  {
+   "line": 71787,
+   "old": "v309",
+   "new": "activeMarkerInner",
+   "rule": "manual"
+  },
+  {
+   "line": 71795,
+   "old": "v310",
+   "new": "activeAccent",
+   "rule": "manual"
+  },
+  {
+   "line": 71804,
+   "old": "v312",
+   "new": "keypoints",
+   "rule": "manual"
+  },
+  {
+   "line": 71809,
+   "old": "v313",
+   "new": "animationRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71827,
+   "old": "v315",
+   "new": "animationModeHolder",
+   "rule": "manual"
+  },
+  {
+   "line": 71838,
+   "old": "v317",
+   "new": "breathingRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71844,
+   "old": "v318",
+   "new": "showBreathing",
+   "rule": "manual"
+  },
+  {
+   "line": 71850,
+   "old": "v319",
+   "new": "animationModes",
+   "rule": "manual"
+  },
+  {
+   "line": 71852,
+   "old": "new61",
+   "new": "newAnimationRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71853,
+   "old": "t111",
+   "new": "rowFlags",
+   "rule": "manual"
+  },
+  {
+   "line": 71854,
+   "old": "v320",
+   "new": "animationModeRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71855,
+   "old": "_new2",
+   "new": "newDropdown2",
+   "rule": "manual"
+  },
+  {
+   "line": 71856,
+   "old": "Extend28",
+   "new": "animationTrove",
+   "rule": "manual"
+  },
+  {
+   "line": 71857,
+   "old": "t112",
+   "new": "animationModeOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 71867,
+   "old": "v321",
+   "new": "showBreathing2",
+   "rule": "manual"
+  },
+  {
+   "line": 71875,
+   "old": "v322",
+   "new": "animationModeDropdown",
+   "rule": "manual"
+  },
+  {
+   "line": 71877,
+   "old": "v323",
+   "new": "speedRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71885,
+   "old": "new62",
+   "new": "newSpeedRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71886,
+   "old": "t113",
+   "new": "speedRowOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 71887,
+   "old": "v324",
+   "new": "speedRowControl",
+   "rule": "manual"
+  },
+  {
+   "line": 71888,
+   "old": "_new3",
+   "new": "newSlider",
+   "rule": "manual"
+  },
+  {
+   "line": 71889,
+   "old": "Extend29",
+   "new": "speedTrove",
+   "rule": "manual"
+  },
+  {
+   "line": 71890,
+   "old": "t114",
+   "new": "speedSliderOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 71902,
+   "old": "v325",
+   "new": "speedSlider",
+   "rule": "manual"
+  },
+  {
+   "line": 71904,
+   "old": "v326",
+   "new": "breathingMinPercent",
+   "rule": "manual"
+  },
+  {
+   "line": 71905,
+   "old": "v327",
+   "new": "breathingMaxPercent",
+   "rule": "manual"
+  },
+  {
+   "line": 71909,
+   "old": "v328",
+   "new": "modeDropdownRef",
+   "rule": "manual"
+  },
+  {
+   "line": 71910,
+   "old": "v329",
+   "new": "rangeSlider",
+   "rule": "manual"
+  },
+  {
+   "line": 71918,
+   "old": "new63",
+   "new": "newRangeRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71919,
+   "old": "t115",
+   "new": "rangeRowOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 71920,
+   "old": "v330",
+   "new": "rangeRow",
+   "rule": "manual"
+  },
+  {
+   "line": 71921,
+   "old": "_new4",
+   "new": "newRangeSlider",
+   "rule": "manual"
+  },
+  {
+   "line": 71922,
+   "old": "Extend30",
+   "new": "rangeTrove",
+   "rule": "manual"
+  },
+  {
+   "line": 71923,
+   "old": "t116",
+   "new": "rangeSliderOptions",
+   "rule": "manual"
+  },
+  {
+   "line": 71924,
+   "old": "t117",
+   "new": "rangeDefault",
+   "rule": "manual"
+  },
+  {
+   "line": 71936,
+   "old": "t118",
+   "new": "markers",
+   "rule": "manual"
+  },
+  {
+   "line": 71940,
+   "old": "f4973",
+   "new": "nearestStop",
+   "rule": "manual"
+  },
+  {
+   "line": 71940,
+   "old": "p234",
+   "new": "x",
+   "rule": "manual"
+  },
+  {
+   "line": 71941,
+   "old": "v331",
+   "new": "width",
+   "rule": "manual"
+  },
+  {
+   "line": 71942,
+   "old": "v332",
+   "new": "time",
+   "rule": "manual"
+  },
+  {
+   "line": 71943,
+   "old": "v333",
+   "new": "nearestIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 71944,
+   "old": "v334",
+   "new": "nearestDistance",
+   "rule": "manual"
+  },
+  {
+   "line": 71945,
+   "old": "Stops7",
+   "new": "stops",
+   "rule": "manual"
+  },
+  {
+   "line": 71946,
+   "old": "v335",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 71948,
+   "old": "t119",
+   "new": "stop",
+   "rule": "manual"
+  },
+  {
+   "line": 71953,
+   "old": "v336",
+   "new": "distance",
+   "rule": "manual"
+  },
+  {
+   "line": 71962,
+   "old": "f4974",
+   "new": "onStopDragState",
+   "rule": "manual"
+  },
+  {
+   "line": 71962,
+   "old": "p235",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 71974,
+   "old": "f4975",
+   "new": "onStopDragMove",
+   "rule": "manual"
+  },
+  {
+   "line": 71974,
+   "old": "p236",
+   "new": "input",
+   "rule": "manual"
+  },
+  {
+   "line": 71975,
+   "old": "v337",
+   "new": "width",
+   "rule": "manual"
+  },
+  {
+   "line": 71983,
+   "old": "f4976",
+   "new": "rebuildMarkers",
+   "rule": "manual"
+  },
+  {
+   "line": 71986,
+   "old": "f4977",
+   "new": "nextMarker",
+   "rule": "manual"
+  },
+  {
+   "line": 71987,
+   "old": "v338",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 71989,
+   "old": "t120",
+   "new": "marker",
+   "rule": "manual"
+  },
+  {
+   "line": 72000,
+   "old": "Stops8",
+   "new": "stops",
+   "rule": "manual"
+  },
+  {
+   "line": 72001,
+   "old": "v339",
+   "new": "index2",
+   "rule": "manual"
+  },
+  {
+   "line": 72001,
+   "old": "v340",
+   "new": "accentSize",
+   "rule": "manual"
+  },
+  {
+   "line": 72001,
+   "old": "v341",
+   "new": "markerSize",
+   "rule": "manual"
+  },
+  {
+   "line": 72001,
+   "old": "v342",
+   "new": "isActive",
+   "rule": "manual"
+  },
+  {
+   "line": 72003,
+   "old": "t121",
+   "new": "stop",
+   "rule": "manual"
+  },
+  {
+   "line": 72028,
+   "old": "v344",
+   "new": "markerInner",
+   "rule": "manual"
+  },
+  {
+   "line": 72035,
+   "old": "v345",
+   "new": "accent",
+   "rule": "manual"
+  },
+  {
+   "line": 72051,
+   "old": "new64",
+   "new": "newSequence",
+   "rule": "manual"
+  },
+  {
+   "line": 72052,
+   "old": "v347",
+   "new": "keypoints2",
+   "rule": "manual"
+  },
+  {
+   "line": 72060,
+   "old": "t122",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 72062,
+   "old": "v348",
+   "new": "capturedIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 72064,
+   "old": "f4978",
+   "new": "onMarkerClicked",
+   "rule": "manual"
+  },
+  {
+   "line": 72069,
+   "old": "v349",
+   "new": "capturedIndex2",
+   "rule": "manual"
+  },
+  {
+   "line": 72071,
+   "old": "f4979",
+   "new": "onMarkerDragged",
+   "rule": "manual"
+  },
+  {
+   "line": 72071,
+   "old": "p237",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 72082,
+   "old": "f4980",
+   "new": "layoutMarkers",
+   "rule": "manual"
+  },
+  {
+   "line": 72082,
+   "old": "p238",
+   "new": "instant",
+   "rule": "manual"
+  },
+  {
+   "line": 72083,
+   "old": "DragTweenInfo4",
+   "new": "tweenInfo",
+   "rule": "manual"
+  },
+  {
+   "line": 72084,
+   "old": "f4981",
+   "new": "nextMarker2",
+   "rule": "manual"
+  },
+  {
+   "line": 72085,
+   "old": "v350",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 72085,
+   "old": "v351",
+   "new": "accentSize",
+   "rule": "manual"
+  },
+  {
+   "line": 72085,
+   "old": "v352",
+   "new": "markerSize",
+   "rule": "manual"
+  },
+  {
+   "line": 72087,
+   "old": "t123",
+   "new": "marker",
+   "rule": "manual"
+  },
+  {
+   "line": 72092,
+   "old": "t124",
+   "new": "stop",
+   "rule": "manual"
+  },
+  {
+   "line": 72095,
+   "old": "v354",
+   "new": "position",
+   "rule": "manual"
+  },
+  {
+   "line": 72120,
+   "old": "t125",
+   "new": "menuRef",
+   "rule": "manual"
+  },
+  {
+   "line": 72122,
+   "old": "Marker2",
+   "new": "markerButton",
+   "rule": "manual"
+  },
+  {
+   "line": 72123,
+   "old": "t126",
+   "new": "goal",
+   "rule": "manual"
+  },
+  {
+   "line": 72125,
+   "old": "t127",
+   "new": "menuRef2",
+   "rule": "manual"
+  },
+  {
+   "line": 72127,
+   "old": "Accent7",
+   "new": "accentFrame",
+   "rule": "manual"
+  },
+  {
+   "line": 72128,
+   "old": "t128",
+   "new": "goal2",
+   "rule": "manual"
+  },
+  {
+   "line": 72135,
+   "old": "f4984",
+   "new": "repaintGradient",
+   "rule": "manual"
+  },
+  {
+   "line": 72135,
+   "old": "p239",
+   "new": "instant",
+   "rule": "manual"
+  },
+  {
+   "line": 72137,
+   "old": "t129",
+   "new": "activeStop",
+   "rule": "manual"
+  },
+  {
+   "line": 72138,
+   "old": "v355",
+   "new": "activeColor",
+   "rule": "manual"
+  },
+  {
+   "line": 72139,
+   "old": "v356",
+   "new": "activePosition",
+   "rule": "manual"
+  },
+  {
+   "line": 72145,
+   "old": "v357",
+   "new": "activeSize",
+   "rule": "manual"
+  },
+  {
+   "line": 72158,
+   "old": "t130",
+   "new": "menuRef",
+   "rule": "manual"
+  },
+  {
+   "line": 72160,
+   "old": "t131",
+   "new": "goal",
+   "rule": "manual"
+  },
+  {
+   "line": 72165,
+   "old": "f4986",
+   "new": "onSvDrag",
+   "rule": "manual"
+  },
+  {
+   "line": 72165,
+   "old": "p240",
+   "new": "input",
+   "rule": "manual"
+  },
+  {
+   "line": 72166,
+   "old": "v358",
+   "new": "width",
+   "rule": "manual"
+  },
+  {
+   "line": 72167,
+   "old": "v359",
+   "new": "height",
+   "rule": "manual"
+  },
+  {
+   "line": 72168,
+   "old": "v360",
+   "new": "sat",
+   "rule": "manual"
+  },
+  {
+   "line": 72173,
+   "old": "v361",
+   "new": "inverseVal",
+   "rule": "manual"
+  },
+  {
+   "line": 72181,
+   "old": "f4987",
+   "new": "onSvDragState",
+   "rule": "manual"
+  },
+  {
+   "line": 72181,
+   "old": "p241",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 72182,
+   "old": "v362",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 72191,
+   "old": "f4988",
+   "new": "onHueDrag",
+   "rule": "manual"
+  },
+  {
+   "line": 72191,
+   "old": "p242",
+   "new": "input",
+   "rule": "manual"
+  },
+  {
+   "line": 72192,
+   "old": "v363",
+   "new": "height",
+   "rule": "manual"
+  },
+  {
+   "line": 72193,
+   "old": "v364",
+   "new": "hue",
+   "rule": "manual"
+  },
+  {
+   "line": 72201,
+   "old": "f4989",
+   "new": "onHueDragState",
+   "rule": "manual"
+  },
+  {
+   "line": 72201,
+   "old": "p243",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 72202,
+   "old": "v365",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 72211,
+   "old": "f4990",
+   "new": "onAlphaDrag",
+   "rule": "manual"
+  },
+  {
+   "line": 72211,
+   "old": "p244",
+   "new": "input",
+   "rule": "manual"
+  },
+  {
+   "line": 72212,
+   "old": "v366",
+   "new": "height",
+   "rule": "manual"
+  },
+  {
+   "line": 72213,
+   "old": "v367",
+   "new": "alpha",
+   "rule": "manual"
+  },
+  {
+   "line": 72221,
+   "old": "f4991",
+   "new": "onAlphaDragState",
+   "rule": "manual"
+  },
+  {
+   "line": 72221,
+   "old": "p245",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 72222,
+   "old": "v368",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 72231,
+   "old": "f4992",
+   "new": "onGradientBarClicked",
+   "rule": "manual"
+  },
+  {
+   "line": 72239,
+   "old": "f4993",
+   "new": "onGradientBarDragState",
+   "rule": "manual"
+  },
+  {
+   "line": 72239,
+   "old": "p246",
+   "new": "dragging",
+   "rule": "manual"
+  },
+  {
+   "line": 72252,
+   "old": "f4994",
+   "new": "onAddStop",
+   "rule": "manual"
+  },
+  {
+   "line": 72258,
+   "old": "f4995",
+   "new": "onRemoveStop",
+   "rule": "manual"
+  },
+  {
+   "line": 72263,
+   "old": "v369",
+   "new": "repaint",
+   "rule": "manual"
+  },
+  {
+   "line": 72314,
+   "old": "t132",
+   "new": "panelApi",
+   "rule": "manual"
+  },
+  {
+   "line": 72316,
+   "old": "p247",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 72317,
+   "old": "v370",
+   "new": "gradientVisible",
+   "rule": "manual"
+  },
+  {
+   "line": 72325,
+   "old": "p248",
+   "new": "mode",
+   "rule": "manual"
+  },
+  {
+   "line": 72325,
+   "old": "p249",
+   "new": "speed",
+   "rule": "manual"
+  },
+  {
+   "line": 72328,
+   "old": "v371",
+   "new": "breathingVisible",
+   "rule": "manual"
+  },
+  {
+   "line": 72335,
+   "old": "p250",
+   "new": "range",
+   "rule": "manual"
+  },
+  {
+   "line": 72339,
+   "old": "p251",
+   "new": "enabled",
+   "rule": "manual"
+  },
+  {
+   "line": 72339,
+   "old": "p252",
+   "new": "allowBreathing",
+   "rule": "manual"
+  },
+  {
+   "line": 72342,
+   "old": "Value52",
+   "new": "currentMode",
+   "rule": "manual"
+  },
+  {
+   "line": 72347,
+   "old": "v372",
+   "new": "modes",
+   "rule": "manual"
+  },
+  {
+   "line": 72366,
+   "old": "f4997",
+   "new": "clampAndRefresh_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72372,
+   "old": "f4998",
+   "new": "onEnemyChanged_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72372,
+   "old": "p253",
+   "new": "isEnemy",
+   "rule": "manual"
+  },
+  {
+   "line": 72373,
+   "old": "enemies2",
+   "new": "enemies",
+   "rule": "manual"
+  },
+  {
+   "line": 72374,
+   "old": "v373",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 72384,
+   "old": "f4999",
+   "new": "refreshRouteFulfillability",
+   "rule": "manual"
+  },
+  {
+   "line": 72384,
+   "old": "p254",
+   "new": "waypoints",
+   "rule": "manual"
+  },
+  {
+   "line": 72385,
+   "old": "t134",
+   "new": "ownedItems",
+   "rule": "manual"
+  },
+  {
+   "line": 72386,
+   "old": "inner42",
+   "new": "inner",
+   "rule": "manual"
+  },
+  {
+   "line": 72388,
+   "old": "t135",
+   "new": "behavior",
+   "rule": "manual"
+  },
+  {
+   "line": 72392,
+   "old": "_routesByRecording",
+   "new": "routesByRecording",
+   "rule": "manual"
+  },
+  {
+   "line": 72393,
+   "old": "v374",
+   "new": "recording",
+   "rule": "manual"
+  },
+  {
+   "line": 72395,
+   "old": "v375",
+   "new": "route",
+   "rule": "manual"
+  },
+  {
+   "line": 72404,
+   "old": "f5000",
+   "new": "newAimIndicators_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72404,
+   "old": "p255",
+   "new": "playerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 72404,
+   "old": "p256",
+   "new": "nextSource",
+   "rule": "manual"
+  },
+  {
+   "line": 72405,
+   "old": "t136",
+   "new": "sources",
+   "rule": "manual"
+  },
+  {
+   "line": 72406,
+   "old": "v376",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 72408,
+   "old": "v377",
+   "new": "source",
+   "rule": "manual"
+  },
+  {
+   "line": 72414,
+   "old": "t137",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 72415,
+   "old": "t138",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 72419,
+   "old": "t139",
+   "new": "indicators",
+   "rule": "manual"
+  },
+  {
+   "line": 72423,
+   "old": "f5001",
+   "new": "updateAimIndicators_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72423,
+   "old": "p257",
+   "new": "indicators",
+   "rule": "manual"
+  },
+  {
+   "line": 72423,
+   "old": "p258",
+   "new": "dt",
+   "rule": "manual"
+  },
+  {
+   "line": 72424,
+   "old": "_sources",
+   "new": "sources",
+   "rule": "manual"
+  },
+  {
+   "line": 72425,
+   "old": "v378",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 72427,
+   "old": "t140",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 72432,
+   "old": "state21",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 72433,
+   "old": "GetIndicatorState",
+   "new": "indicator",
+   "rule": "manual"
+  },
+  {
+   "line": 72443,
+   "old": "ring2",
+   "new": "customRing",
+   "rule": "manual"
+  },
+  {
+   "line": 72444,
+   "old": "UpdateTarget",
+   "new": "updateTarget",
+   "rule": "manual"
+  },
+  {
+   "line": 72453,
+   "old": "v379",
+   "new": "circle",
+   "rule": "manual"
+  },
+  {
+   "line": 72465,
+   "old": "v380",
+   "new": "origin",
+   "rule": "manual"
+  },
+  {
+   "line": 72466,
+   "old": "target2",
+   "new": "aimTarget",
+   "rule": "manual"
+  },
+  {
+   "line": 72470,
+   "old": "t141",
+   "new": "smoothed",
+   "rule": "manual"
+  },
+  {
+   "line": 72482,
+   "old": "f5002",
+   "new": "getIndicatorOrigin",
+   "rule": "manual"
+  },
+  {
+   "line": 72482,
+   "old": "p259",
+   "new": "indicators",
+   "rule": "manual"
+  },
+  {
+   "line": 72482,
+   "old": "p260",
+   "new": "fromMuzzle",
+   "rule": "manual"
+  },
+  {
+   "line": 72486,
+   "old": "inner43",
+   "new": "inner",
+   "rule": "manual"
+  },
+  {
+   "line": 72490,
+   "old": "GetEquipped5",
+   "new": "equipped",
+   "rule": "manual"
+  },
+  {
+   "line": 72494,
+   "old": "t142",
+   "new": "viewModel",
+   "rule": "manual"
+  },
+  {
+   "line": 72495,
+   "old": "v381",
+   "new": "muzzle",
+   "rule": "manual"
+  },
+  {
+   "line": 72496,
+   "old": "WorldToViewportPoint4",
+   "new": "screenPoint",
+   "rule": "manual"
+  },
+  {
+   "line": 72503,
+   "old": "f5003",
+   "new": "loadAimIndicators",
+   "rule": "manual"
+  },
+  {
+   "line": 72504,
+   "old": "v382",
+   "new": "CircleRing",
+   "rule": "manual"
+  },
+  {
+   "line": 72505,
+   "old": "v383",
+   "new": "Spring",
+   "rule": "manual"
+  },
+  {
+   "line": 72509,
+   "old": "v384",
+   "new": "screenCenter",
+   "rule": "manual"
+  },
+  {
+   "line": 72511,
+   "old": "t143",
+   "new": "AimIndicators",
+   "rule": "manual"
+  },
+  {
+   "line": 72513,
+   "old": "v386",
+   "new": "springSpeed",
+   "rule": "manual"
+  },
+  {
+   "line": 72514,
+   "old": "v387",
+   "new": "springDamping",
+   "rule": "manual"
+  },
+  {
+   "line": 72516,
+   "old": "p261",
+   "new": "playerContext",
+   "rule": "manual"
+  },
+  {
+   "line": 72516,
+   "old": "p262",
+   "new": "nextSource",
+   "rule": "manual"
+  },
+  {
+   "line": 72517,
+   "old": "t144",
+   "new": "sources",
+   "rule": "manual"
+  },
+  {
+   "line": 72518,
+   "old": "v388",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 72520,
+   "old": "v389",
+   "new": "source",
+   "rule": "manual"
+  },
+  {
+   "line": 72526,
+   "old": "t145",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 72527,
+   "old": "t146",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 72535,
+   "old": "t147",
+   "new": "indicators",
+   "rule": "manual"
+  },
+  {
+   "line": 72539,
+   "old": "v390",
+   "new": "smoothing",
+   "rule": "manual"
+  },
+  {
+   "line": 72541,
+   "old": "p263",
+   "new": "dt",
+   "rule": "manual"
+  },
+  {
+   "line": 72542,
+   "old": "_sources2",
+   "new": "sources",
+   "rule": "manual"
+  },
+  {
+   "line": 72543,
+   "old": "v391",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 72545,
+   "old": "t148",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 72550,
+   "old": "state22",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 72551,
+   "old": "GetIndicatorState2",
+   "new": "indicator",
+   "rule": "manual"
+  },
+  {
+   "line": 72552,
+   "old": "ring3",
+   "new": "ring",
+   "rule": "manual"
+  },
+  {
+   "line": 72561,
+   "old": "ring4",
+   "new": "customRing",
+   "rule": "manual"
+  },
+  {
+   "line": 72562,
+   "old": "UpdateTarget2",
+   "new": "updateTarget",
+   "rule": "manual"
+  },
+  {
+   "line": 72563,
+   "old": "target3",
+   "new": "target",
+   "rule": "manual"
+  },
+  {
+   "line": 72570,
+   "old": "properties2",
+   "new": "properties",
+   "rule": "manual"
+  },
+  {
+   "line": 72571,
+   "old": "v392",
+   "new": "circle",
+   "rule": "manual"
+  },
+  {
+   "line": 72583,
+   "old": "v393",
+   "new": "origin",
+   "rule": "manual"
+  },
+  {
+   "line": 72584,
+   "old": "target4",
+   "new": "aimTarget",
+   "rule": "manual"
+  },
+  {
+   "line": 72588,
+   "old": "t149",
+   "new": "smoothed",
+   "rule": "manual"
+  },
+  {
+   "line": 72600,
+   "old": "p264",
+   "new": "fromMuzzle",
+   "rule": "manual"
+  },
+  {
+   "line": 72604,
+   "old": "inner44",
+   "new": "inner",
+   "rule": "manual"
+  },
+  {
+   "line": 72608,
+   "old": "GetEquipped6",
+   "new": "equipped",
+   "rule": "manual"
+  },
+  {
+   "line": 72612,
+   "old": "t150",
+   "new": "viewModel",
+   "rule": "manual"
+  },
+  {
+   "line": 72613,
+   "old": "v394",
+   "new": "muzzle",
+   "rule": "manual"
+  },
+  {
+   "line": 72614,
+   "old": "WorldToViewportPoint5",
+   "new": "screenPoint",
+   "rule": "manual"
+  },
+  {
+   "line": 72627,
+   "old": "f5004",
+   "new": "unglue",
+   "rule": "manual"
+  },
+  {
+   "line": 72627,
+   "old": "p265",
+   "new": "glue",
+   "rule": "manual"
+  },
+  {
+   "line": 72627,
+   "old": "p266",
+   "new": "part",
+   "rule": "manual"
+  },
+  {
+   "line": 72628,
+   "old": "t151",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 72636,
+   "old": "weld2",
+   "new": "weld",
+   "rule": "manual"
+  },
+  {
+   "line": 72644,
+   "old": "f5005",
+   "new": "addSkyboxGuard",
+   "rule": "manual"
+  },
+  {
+   "line": 72644,
+   "old": "p267",
+   "new": "manager",
+   "rule": "manual"
+  },
+  {
+   "line": 72644,
+   "old": "p268",
+   "new": "lighting",
+   "rule": "manual"
+  },
+  {
+   "line": 72645,
+   "old": "v395",
+   "new": "guard",
+   "rule": "manual"
+  },
+  {
+   "line": 72647,
+   "old": "GetPreset",
+   "new": "preset",
+   "rule": "manual"
+  },
+  {
+   "line": 72662,
+   "old": "f5007",
+   "new": "destroyTrove_proto4",
+   "rule": "manual"
+  },
+  {
+   "line": 72662,
+   "old": "p270",
+   "new": "object",
+   "rule": "manual"
+  },
+  {
+   "line": 72732,
+   "old": "f5011",
+   "new": "invalidateBake",
+   "rule": "manual"
+  },
+  {
+   "line": 72732,
+   "old": "p271",
+   "new": "painter",
+   "rule": "manual"
+  },
+  {
+   "line": 72736,
+   "old": "f5012",
+   "new": "onEnvironmentChanged_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72742,
+   "old": "_realMaterial4",
+   "new": "realMaterial",
+   "rule": "manual"
+  },
+  {
+   "line": 72749,
+   "old": "f5013",
+   "new": "destroyRealMaterial_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72750,
+   "old": "_realMaterial5",
+   "new": "realMaterial",
+   "rule": "manual"
+  },
+  {
+   "line": 72757,
+   "old": "f5014",
+   "new": "onMaterialContext",
+   "rule": "manual"
+  },
+  {
+   "line": 72757,
+   "old": "p272",
+   "new": "painter",
+   "rule": "manual"
+  },
+  {
+   "line": 72757,
+   "old": "p273",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 72757,
+   "old": "p274",
+   "new": "trove",
+   "rule": "manual"
+  },
+  {
+   "line": 72758,
+   "old": "f5015",
+   "new": "onCharacterCreated",
+   "rule": "manual"
+  },
+  {
+   "line": 72758,
+   "old": "p275",
+   "new": "character",
+   "rule": "manual"
+  },
+  {
+   "line": 72765,
+   "old": "f5016",
+   "new": "onCharacterDied",
+   "rule": "manual"
+  },
+  {
+   "line": 72766,
+   "old": "_realMaterial6",
+   "new": "realMaterial",
+   "rule": "manual"
+  },
+  {
+   "line": 72773,
+   "old": "character4",
+   "new": "characterState",
+   "rule": "manual"
+  },
+  {
+   "line": 72777,
+   "old": "f5017",
+   "new": "onEnvironmentChanged",
+   "rule": "manual"
+  },
+  {
+   "line": 72783,
+   "old": "_realMaterial7",
+   "new": "realMaterial",
+   "rule": "manual"
+  },
+  {
+   "line": 72791,
+   "old": "state23",
+   "new": "state",
+   "rule": "manual"
+  },
+  {
+   "line": 72797,
+   "old": "f5018",
+   "new": "newGunItem_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72797,
+   "old": "p276",
+   "new": "inner",
+   "rule": "manual"
+  },
+  {
+   "line": 72797,
+   "old": "p277",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 72798,
+   "old": "v397",
+   "new": "info",
+   "rule": "manual"
+  },
+  {
+   "line": 72799,
+   "old": "v398",
+   "new": "data",
+   "rule": "manual"
+  },
+  {
+   "line": 72800,
+   "old": "t154",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72817,
+   "old": "f5019",
+   "new": "getAmmoReserve_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72817,
+   "old": "p278",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72818,
+   "old": "v399",
+   "new": "reserve",
+   "rule": "manual"
+  },
+  {
+   "line": 72825,
+   "old": "f5020",
+   "new": "isMagFull_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72825,
+   "old": "p279",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72826,
+   "old": "v400",
+   "new": "full",
+   "rule": "manual"
+  },
+  {
+   "line": 72831,
+   "old": "f5021",
+   "new": "shootEncoded_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72831,
+   "old": "p280",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72832,
+   "old": "t155",
+   "new": "shotArgs",
+   "rule": "manual"
+  },
+  {
+   "line": 72836,
+   "old": "v401",
+   "new": "payload",
+   "rule": "manual"
+  },
+  {
+   "line": 72846,
+   "old": "f5022",
+   "new": "isFullyAiming_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72846,
+   "old": "p285",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72847,
+   "old": "v402",
+   "new": "aiming",
+   "rule": "manual"
+  },
+  {
+   "line": 72848,
+   "old": "_aimScopePercent",
+   "new": "scopePercent",
+   "rule": "manual"
+  },
+  {
+   "line": 72849,
+   "old": "v403",
+   "new": "aimValue",
+   "rule": "manual"
+  },
+  {
+   "line": 72859,
+   "old": "f5023",
+   "new": "destroyItem_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72859,
+   "old": "p286",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72863,
+   "old": "f5024",
+   "new": "equip_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72863,
+   "old": "p287",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72867,
+   "old": "_clientFighter3",
+   "new": "clientFighter",
+   "rule": "manual"
+  },
+  {
+   "line": 72871,
+   "old": "f5025",
+   "new": "reload_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72871,
+   "old": "p288",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72875,
+   "old": "v404",
+   "new": "reloadCode",
+   "rule": "manual"
+  },
+  {
+   "line": 72876,
+   "old": "t156",
+   "new": "reloadArgs",
+   "rule": "manual"
+  },
+  {
+   "line": 72880,
+   "old": "f5026",
+   "new": "getAmmo_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72880,
+   "old": "p289",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72884,
+   "old": "f5027",
+   "new": "isEquipped_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72884,
+   "old": "p290",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72888,
+   "old": "f5028",
+   "new": "shootAt_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 72888,
+   "old": "p291",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72894,
+   "old": "f5029",
+   "new": "loadGunItem",
+   "rule": "manual"
+  },
+  {
+   "line": 72895,
+   "old": "v407",
+   "new": "partCodec",
+   "rule": "manual"
+  },
+  {
+   "line": 72896,
+   "old": "v408",
+   "new": "remoteCodec",
+   "rule": "manual"
+  },
+  {
+   "line": 72898,
+   "old": "v409",
+   "new": "ItemInterface",
+   "rule": "manual"
+  },
+  {
+   "line": 72900,
+   "old": "v410",
+   "new": "safeIndex",
+   "rule": "manual"
+  },
+  {
+   "line": 72901,
+   "old": "v411",
+   "new": "safeCall",
+   "rule": "manual"
+  },
+  {
+   "line": 72902,
+   "old": "UseItemRemote2",
+   "new": "UseItemRemote",
+   "rule": "manual"
+  },
+  {
+   "line": 72903,
+   "old": "v412",
+   "new": "encodeShot",
+   "rule": "manual"
+  },
+  {
+   "line": 72904,
+   "old": "t157",
+   "new": "GunItem",
+   "rule": "manual"
+  },
+  {
+   "line": 72907,
+   "old": "p295",
+   "new": "inner",
+   "rule": "manual"
+  },
+  {
+   "line": 72907,
+   "old": "p296",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 72908,
+   "old": "v413",
+   "new": "info",
+   "rule": "manual"
+  },
+  {
+   "line": 72909,
+   "old": "v414",
+   "new": "data",
+   "rule": "manual"
+  },
+  {
+   "line": 72910,
+   "old": "t158",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72935,
+   "old": "_clientFighter4",
+   "new": "clientFighter",
+   "rule": "manual"
+  },
+  {
+   "line": 72943,
+   "old": "p297",
+   "new": "item",
+   "rule": "manual"
+  },
+  {
+   "line": 72950,
+   "old": "t159",
+   "new": "shotArgs",
+   "rule": "manual"
+  },
+  {
+   "line": 72954,
+   "old": "v417",
+   "new": "payload",
+   "rule": "manual"
+  },
+  {
+   "line": 72965,
+   "old": "v418",
+   "new": "aiming",
+   "rule": "manual"
+  },
+  {
+   "line": 72966,
+   "old": "_aimScopePercent2",
+   "new": "scopePercent",
+   "rule": "manual"
+  },
+  {
+   "line": 72967,
+   "old": "v419",
+   "new": "aimValue",
+   "rule": "manual"
+  },
+  {
+   "line": 72981,
+   "old": "v420",
+   "new": "reloadCode",
+   "rule": "manual"
+  },
+  {
+   "line": 72982,
+   "old": "t160",
+   "new": "reloadArgs",
+   "rule": "manual"
+  },
+  {
+   "line": 72991,
+   "old": "v421",
+   "new": "reserve",
+   "rule": "manual"
+  },
+  {
+   "line": 72999,
+   "old": "v422",
+   "new": "now",
+   "rule": "manual"
+  },
+  {
+   "line": 73000,
+   "old": "v423",
+   "new": "reloadCooldownEnd",
+   "rule": "manual"
+  },
+  {
+   "line": 73004,
+   "old": "v424",
+   "new": "emptyCooldownEnd",
+   "rule": "manual"
+  },
+  {
+   "line": 73005,
+   "old": "v425",
+   "new": "onCooldown",
+   "rule": "manual"
+  },
+  {
+   "line": 73014,
+   "old": "v426",
+   "new": "full",
+   "rule": "manual"
+  },
+  {
+   "line": 73022,
+   "old": "f5030",
+   "new": "reparent_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 73026,
+   "old": "f5031",
+   "new": "restoreOriginalProps",
+   "rule": "manual"
+  },
+  {
+   "line": 73026,
+   "old": "p305",
+   "new": "nextEntry",
+   "rule": "manual"
+  },
+  {
+   "line": 73027,
+   "old": "v427",
+   "new": "instance",
+   "rule": "manual"
+  },
+  {
+   "line": 73029,
+   "old": "t161",
+   "new": "entry",
+   "rule": "manual"
+  },
+  {
+   "line": 73034,
+   "old": "OriginalProps",
+   "new": "originalProps",
+   "rule": "manual"
+  },
+  {
+   "line": 73035,
+   "old": "v428",
+   "new": "prop",
+   "rule": "manual"
+  },
+  {
+   "line": 73037,
+   "old": "v429",
+   "new": "value",
+   "rule": "manual"
+  },
+  {
+   "line": 73044,
+   "old": "OriginalChildren2",
+   "new": "originalChildren",
+   "rule": "manual"
+  },
+  {
+   "line": 73045,
+   "old": "v430",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 73047,
+   "old": "v431",
+   "new": "child",
+   "rule": "manual"
+  },
+  {
+   "line": 73052,
+   "old": "v432",
+   "new": "capturedChild",
+   "rule": "manual"
+  },
+  {
+   "line": 73053,
+   "old": "v433",
+   "new": "capturedParent",
+   "rule": "manual"
+  },
+  {
+   "line": 73055,
+   "old": "f5032",
+   "new": "restoreParent",
+   "rule": "manual"
+  },
+  {
+   "line": 73061,
+   "old": "Cleanup",
+   "new": "cleanup",
+   "rule": "manual"
+  },
+  {
+   "line": 73062,
+   "old": "v434",
+   "new": "key2",
+   "rule": "manual"
+  },
+  {
+   "line": 73064,
+   "old": "v435",
+   "new": "object",
+   "rule": "manual"
+  },
+  {
+   "line": 73075,
+   "old": "f5033",
+   "new": "flushViewAngles",
+   "rule": "manual"
+  },
+  {
+   "line": 73075,
+   "old": "p306",
+   "new": "context",
+   "rule": "manual"
+  },
+  {
+   "line": 73076,
+   "old": "v436",
+   "new": "characterController",
+   "rule": "manual"
+  },
+  {
+   "line": 73077,
+   "old": "inner45",
+   "new": "inner",
+   "rule": "manual"
+  },
+  {
+   "line": 73084,
+   "old": "f5034",
+   "new": "applyWrapTo_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 73084,
+   "old": "p307",
+   "new": "weapon",
+   "rule": "manual"
+  },
+  {
+   "line": 73085,
+   "old": "Value53",
+   "new": "selected",
+   "rule": "manual"
+  },
+  {
+   "line": 73087,
+   "old": "cosmetics4",
+   "new": "cosmetics",
+   "rule": "manual"
+  },
+  {
+   "line": 73088,
+   "old": "SetSkinChangerChoice4",
+   "new": "setChoice",
+   "rule": "manual"
+  },
+  {
+   "line": 73089,
+   "old": "t162",
+   "new": "choice",
+   "rule": "manual"
+  },
+  {
+   "line": 73093,
+   "old": "cosmetics5",
+   "new": "cosmetics2",
+   "rule": "manual"
+  },
+  {
+   "line": 73094,
+   "old": "SetSkinChangerChoice5",
+   "new": "setChoice2",
+   "rule": "manual"
+  },
+  {
+   "line": 73095,
+   "old": "t163",
+   "new": "choice2",
+   "rule": "manual"
+  },
+  {
+   "line": 73096,
+   "old": "t164",
+   "new": "wrap",
+   "rule": "manual"
+  },
+  {
+   "line": 73101,
+   "old": "f5035",
+   "new": "getDataField_proto",
+   "rule": "manual"
+  },
+  {
+   "line": 73102,
+   "old": "v437",
+   "new": "key",
+   "rule": "manual"
+  },
+  {
+   "line": 73102,
+   "old": "v438",
+   "new": "object",
+   "rule": "manual"
+  },
+  {
+   "line": 73107,
+   "old": "f5036",
+   "new": "attachRight",
+   "rule": "manual"
+  },
+  {
+   "line": 73107,
+   "old": "p308",
+   "new": "row",
+   "rule": "manual"
+  },
+  {
+   "line": 73107,
+   "old": "p309",
+   "new": "build",
+   "rule": "manual"
+  },
+  {
+   "line": 73107,
+   "old": "p310",
+   "new": "naturalWidth",
+   "rule": "manual"
+  },
+  {
+   "line": 73107,
+   "old": "p311",
+   "new": "leading",
+   "rule": "manual"
+  },
+  {
+   "line": 73108,
+   "old": "t165",
+   "new": "attachment",
+   "rule": "manual"
+  },
+  {
+   "line": 73110,
+   "old": "_ctx3",
+   "new": "ctx",
+   "rule": "manual"
+  },
+  {
+   "line": 73114,
+   "old": "_barePending",
+   "new": "barePending",
+   "rule": "manual"
+  },
+  {
+   "line": 73132,
+   "old": "f5038",
+   "new": "setShareActive",
+   "rule": "manual"
+  },
+  {
+   "line": 73132,
+   "old": "p312",
+   "new": "bridge",
+   "rule": "manual"
+  },
+  {
+   "line": 73132,
+   "old": "p313",
+   "new": "active",
+   "rule": "manual"
+  },
+  {
+   "line": 73142,
+   "old": "f5039",
+   "new": "destroyTrove_proto5",
+   "rule": "manual"
+  },
+  {
+   "line": 73142,
+   "old": "p314",
+   "new": "object",
+   "rule": "manual"
+  },
+  {
+   "line": 73146,
+   "old": "f5040",
+   "new": "bitwiseByTable",
+   "rule": "manual"
+  },
+  {
+   "line": 73146,
+   "old": "p315",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 73146,
+   "old": "p316",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
+   "line": 73147,
+   "old": "v439",
+   "new": "result",
+   "rule": "manual"
+  },
+  {
+   "line": 73148,
+   "old": "v440",
+   "new": "place",
+   "rule": "manual"
+  },
+  {
+   "line": 73158,
+   "old": "f5041",
+   "new": "mul32",
+   "rule": "manual"
+  },
+  {
+   "line": 73158,
+   "old": "p317",
+   "new": "a",
+   "rule": "manual"
+  },
+  {
+   "line": 73158,
+   "old": "p318",
+   "new": "b",
+   "rule": "manual"
+  },
+  {
    "line": 79025,
    "old": "f5397",
    "new": "trapLoop",
@@ -29028,6 +40644,12 @@
    "rule": "field"
   },
   {
+   "line": 69758,
+   "old": "t41",
+   "new": "deviceSpoofDropdownOptions",
+   "rule": "UI element label"
+  },
+  {
    "line": 69770,
    "old": "t43",
    "new": "deviceSpoofSection",
@@ -29038,6 +40660,12 @@
    "old": "f4843",
    "new": "addToggle",
    "rule": "field"
+  },
+  {
+   "line": 69775,
+   "old": "t46",
+   "new": "deviceSpoofDropdownOptions",
+   "rule": "UI element label"
   },
   {
    "line": 69799,
@@ -29382,18 +41010,6 @@
    "rule": "Instance.new"
   },
   {
-   "line": 71777,
-   "old": "v308",
-   "new": "imageLabel2",
-   "rule": "Instance.new"
-  },
-  {
-   "line": 71787,
-   "old": "v309",
-   "new": "imageLabel3",
-   "rule": "Instance.new"
-  },
-  {
    "line": 71801,
    "old": "v311",
    "new": "uiGradient6",
@@ -29415,12 +41031,6 @@
    "line": 72009,
    "old": "v343",
    "new": "imageButton",
-   "rule": "Instance.new"
-  },
-  {
-   "line": 72028,
-   "old": "v344",
-   "new": "imageLabel4",
    "rule": "Instance.new"
   },
   {

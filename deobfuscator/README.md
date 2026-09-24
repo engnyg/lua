@@ -78,11 +78,12 @@ python3 optimize.py kicia_deobfuscated.lua -o kicia_optimized.lua
 |---|---|---|
 | 1. 還原反編譯殘留 | `_G["table.create"]` → `table.create`、`_G["bit32.bxor"]` → `bit32.bxor`、`up3;(` → `up3(`，並補回解密器被弄壞的 4 位元組拆分 | 2,739 處；整份檔案第一次能被 Luau 解析器完整解析 |
 | 2. 不透明條件 | 列出全部 133 處 `V = not not C`，以及照字面解讀不會執行的程式碼，並判斷那段程式碼像陷阱還是像真實邏輯 | **只列報告，不刪除**（原因見 analysis.md 第 13 節） |
-| 3. 自動改名 | 依程式碼本身的線索替 `vN` / `tN` / `fN` 取名，例如 `Instance.new("UICorner")` → `uiCorner`、`:Connect(f)` → `onRenderStepped` | 3,461 個名稱；不動 Luarmor 的執行環境與載入器 |
+| 3. 自動改名 | 依程式碼本身的線索替 `vN` / `tN` / `fN` 取名，例如 `Instance.new("UICorner")` → `uiCorner`、`:Connect(f)` → `onRenderStepped`、`{ Label = "Auto Save" }` → `autoSaveToggle` | 6,147 個名稱；不動 Luarmor 的執行環境與載入器 |
+| 4. 手動改名 | 讀過程式碼後寫在 `names.json` 的名稱，目前涵蓋 `f588`、`f5396`、`f4735`、`f1518` 四個模組 | 4,832 個名稱；刻意不命名躲避偵測的程式碼（見 analysis.md 第 16 節） |
 
 `luau-tool` 是用 [full-moon](https://crates.io/crates/full_moon)（Luau 解析器）寫的小工具，提供 `check`（語法檢查）、`predicates`（不透明條件分析）、`resolve`（作用域解析）三個子命令。Python 只套用它回傳的位元組範圍修改，所以沒改到的地方格式完全不變。
 
-改名完成後會重新解析整份檔案，確認每一個變數引用指向的宣告都和改名前相同；如果有任何不同，就不會寫出檔案。
+`-n/--names` 可以指定其他對照表（預設 `names.json`）。改名完成後會重新解析整份檔案，確認每一個變數引用指向的宣告都和改名前相同；如果有任何不同，就不會寫出檔案。
 
 **注意：這份檔案是反編譯器把各個函式原型分別倒出來的結果，`up0`–`up101` 這些上值從來沒有被宣告，所以無法直接執行。** 詳見 analysis.md 第 12 節。
 
@@ -98,6 +99,7 @@ python3 -m unittest test_deobfuscator test_optimize   # test_optimize 的部分�
 deobfuscator/
 ├── deobfuscator.py                  第一階段：字串解密
 ├── optimize.py                      第二階段：可讀性優化
+├── names.json                       手動改名對照表
 ├── luau-tool/                       Rust 輔助工具（語法檢查、條件分析、作用域解析）
 ├── test_deobfuscator.py             第一階段的測試
 ├── test_optimize.py                 第二階段的測試

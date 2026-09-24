@@ -20856,162 +20856,162 @@ local function f1518()
 		return f1546
 	end
 
-	local function f1547(p1, p2)
-		if p2.cosmeticName:match("^" .. up0) or p2.cosmeticName == up1 then
+	local function isOwned(catalog, query)
+		if query.cosmeticName:match("^" .. up0) or query.cosmeticName == up1 then
 			return true
 		end
-		local v30
-		if p2.cosmeticType ~= "Skin" then
-			v30 = p1._lookupByType[p2.cosmeticType][p2.cosmeticName] == true
-			return v30
+		local owned
+		if query.cosmeticType ~= "Skin" then
+			owned = catalog._lookupByType[query.cosmeticType][query.cosmeticName] == true
+			return owned
 		end
-		local t13 = p1._lookupByType.Skin[p2.itemName]
-		local v31
-		v31 = not (t13 == nil)
-		if v31 then
-			v31 = t13[p2.cosmeticName] == true
+		local skinsForItem = catalog._lookupByType.Skin[query.itemName]
+		local owned2
+		owned2 = not (skinsForItem == nil)
+		if owned2 then
+			owned2 = skinsForItem[query.cosmeticName] == true
 		end
-		return v31
+		return owned2
 	end
 
-	local function f1548(p3, p4)
-		local Keypoints3 = p3.Keypoints
-		local v32 = table.create(#Keypoints3)
-		local v33 = nil
+	local function scaleNumberSequence(sequence, factor)
+		local keypoints = sequence.Keypoints
+		local scaled = table.create(#keypoints)
+		local index = nil
 		while true do
-			local t14
-			v33, t14 = Keypoints3(nil, v33)
-			if v33 == nil then
+			local keypoint
+			index, keypoint = keypoints(nil, index)
+			if index == nil then
 				break
 			end
 			table.insert(
-				v32,
-				NumberSequenceKeypoint.new(t14.Time, t14.Value * p4, t14.Envelope * p4)
+				scaled,
+				NumberSequenceKeypoint.new(keypoint.Time, keypoint.Value * factor, keypoint.Envelope * factor)
 			)
 		end
-		return (NumberSequence.new(v32))
+		return (NumberSequence.new(scaled))
 	end
 
 	local function f1549()
 	end
 
-	local function f1550(_, p5)
-		local v34
-		v34 = not (p5.Enabled == false)
-		if v34 then
-			v34 = not (p5.Keybind.State == false)
+	local function isFeatureActive(_, settings)
+		local active
+		active = not (settings.Enabled == false)
+		if active then
+			active = not (settings.Keybind.State == false)
 		end
-		return v34
+		return active
 	end
 
-	local function f1551(p6)
-		local v35 = up0(p6.inner, "_dash_cooldown")
-		local v36
-		v36 = not (v35 == nil)
-		if v36 then
-			v36 = tick() < v35
+	local function isDashOnCooldown(fighter)
+		local cooldownEnd = up0(fighter.inner, "_dash_cooldown")
+		local onCooldown
+		onCooldown = not (cooldownEnd == nil)
+		if onCooldown then
+			onCooldown = tick() < cooldownEnd
 		end
-		return v36
+		return onCooldown
 	end
 
-	local function f1552(p7)
-		local trove = p7.trove
-		local Add17 = trove:Add(up0.new())
-		local Add18 = trove:Add(up1.new())
-		local Add19 = trove:Add(up2.new())
-		local Add20 = trove:Add(up3.new(Add18, Add19))
-		local Add21 = trove:Add(up4.new())
-		local Add22 = trove:Add(up5.new())
-		local Add23 = trove.Add
-		local new = up6.new
-		local t15 = {}
-		local t16 = { catalog = Add18, favoritedResolver = Add20, onlyUseFavoritesState = Add21 }
-		local t17 = { [up7] = true }
-		t16.catalogExemptLayers = t17
-		t16.dataMaskingExemptLayers = {}
-		t15.state = t16
-		local t18 = {
-			playerContext = p7.playerContext,
-			fighters = p7.fighters,
-			characterAppearances = p7.characterAppearances,
-			dataHook = p7.dataHook,
-			rankCharm = Add22,
-			errorReporter = Add17,
-			requestBinding = p7.requestBinding
+	local function createCosmeticsServices(deps)
+		local trove = deps.trove
+		local errorReporter = trove:Add(up0.new())
+		local catalog = trove:Add(up1.new())
+		local favoritedIntent = trove:Add(up2.new())
+		local favoritedResolver = trove:Add(up3.new(catalog, favoritedIntent))
+		local onlyUseFavoritesState = trove:Add(up4.new())
+		local rankCharm = trove:Add(up5.new())
+		local add = trove.Add
+		local newItems = up6.new
+		local itemsOptions = {}
+		local itemsState = { catalog = catalog, favoritedResolver = favoritedResolver, onlyUseFavoritesState = onlyUseFavoritesState }
+		local exemptLayers = { [up7] = true }
+		itemsState.catalogExemptLayers = exemptLayers
+		itemsState.dataMaskingExemptLayers = {}
+		itemsOptions.state = itemsState
+		local itemsRuntime = {
+			playerContext = deps.playerContext,
+			fighters = deps.fighters,
+			characterAppearances = deps.characterAppearances,
+			dataHook = deps.dataHook,
+			rankCharm = rankCharm,
+			errorReporter = errorReporter,
+			requestBinding = deps.requestBinding
 		}
-		t15.runtime = t18
-		local v37 = Add23(trove, new(t15))
-		local Add24 = trove.Add
-		local new2 = up8.new
-		local t19 = { catalog = Add18, playerContext = p7.playerContext, dataHook = p7.dataHook }
-		local v38 = Add24(trove, new2(t19))
-		local Add25 = trove.Add
-		up9.new(p7.userServer, Add17, v37, v38:GetResolver())
-		local v39 = Add25()
-		local t20 = {}
-		local t21 = {
-			catalog = Add18,
-			favoritedIntent = Add19,
-			favoritedResolver = Add20,
-			onlyUseFavoritesState = Add21,
-			emotes = v38,
-			rankCharm = Add22,
-			items = v37
+		itemsOptions.runtime = itemsRuntime
+		local items = add(trove, newItems(itemsOptions))
+		local add2 = trove.Add
+		local newEmotes = up8.new
+		local emotesOptions = { catalog = catalog, playerContext = deps.playerContext, dataHook = deps.dataHook }
+		local emotes = add2(trove, newEmotes(emotesOptions))
+		local add3 = trove.Add
+		up9.new(deps.userServer, errorReporter, items, emotes:GetResolver())
+		local userServerBridge = add3()
+		local services = {}
+		local model = {
+			catalog = catalog,
+			favoritedIntent = favoritedIntent,
+			favoritedResolver = favoritedResolver,
+			onlyUseFavoritesState = onlyUseFavoritesState,
+			emotes = emotes,
+			rankCharm = rankCharm,
+			items = items
 		}
-		t20.model = t21
-		local t22 = { errorReporter = Add17, dataHook = p7.dataHook, userServerBridge = v39 }
-		t20.runtime = t22
-		return t20
+		services.model = model
+		local runtime = { errorReporter = errorReporter, dataHook = deps.dataHook, userServerBridge = userServerBridge }
+		services.runtime = runtime
+		return services
 	end
 
-	local function f1553(p8, p9)
-		if p8._identities[p9] == nil then
+	local function getPresentedName(identities, player)
+		if identities._identities[player] == nil then
 		end
-		return p9.DisplayName
+		return player.DisplayName
 	end
 
 	local function f1554()
 	end
 
-	local function f1555(p10)
-		local _clone = p10._clone
-		local v40
-		v40 = not (_clone == nil)
-		v40 = v40 and _clone:GetModel() or nil
-		return v40
+	local function getCloneModel(holder)
+		local clone = holder._clone
+		local model
+		model = not (clone == nil)
+		model = model and clone:GetModel() or nil
+		return model
 	end
 
-	local function f1556(p11)
-		up0:_MaskFavoriteWeapons(p11)
+	local function maskFavoriteWeapons_proto(call)
+		up0:_MaskFavoriteWeapons(call)
 	end
 
-	local function f1557(p12, p13)
-		local t23 = { _store = p12, _binding = p13 }
-		setmetatable(t23, up0)
+	local function newFavoriteWeaponsMask(store, binding)
+		local mask = { _store = store, _binding = binding }
+		setmetatable(mask, up0)
 
-		local function f1558(p14)
-			t23:_MaskFavoriteWeapons(p14)
+		local function onRequest(call)
+			mask:_MaskFavoriteWeapons(call)
 		end
 
-		p13:SetHandler(f1558)
-		return t23
+		binding:SetHandler(onRequest)
+		return mask
 	end
 
-	local function f1559(p15, p16, p17)
-		local v41 = up0.new("instance.EnsuredChildren")
-		local t24 = {
-			_trove = v41,
-			_parent = p15,
-			_className = p16,
-			_createFallback = p17,
+	local function newEnsuredChildren(parent, className, createFallback)
+		local trove = up0.new("instance.EnsuredChildren")
+		local ensured = {
+			_trove = trove,
+			_parent = parent,
+			_className = className,
+			_createFallback = createFallback,
 			_children = {},
 			_isCreating = false,
-			childAdded = v41:Add(up1.new()),
-			childRemoved = v41:Add(up1.new())
+			childAdded = trove:Add(up1.new()),
+			childRemoved = trove:Add(up1.new())
 		}
-		setmetatable(t24, up2)
-		t24:_Initialize()
-		return t24
+		setmetatable(ensured, up2)
+		ensured:_Initialize()
+		return ensured
 	end
 
 	local function f1560(p18)
@@ -21865,330 +21865,330 @@ local function f1518()
 		up0(up1, p63)
 	end
 
-	local function f1635()
-		local t61 = {
+	local function newScopeOverlay_proto()
+		local overlay = {
 			_overlayHidden = false,
 			_isOverlayDirty = false,
 			_reticleHidden = false,
 			_isReticleDirty = false
 		}
-		return (setmetatable(t61, up0))
+		return (setmetatable(overlay, up0))
 	end
 
-	local function f1636(p64, p65)
-		p64._aim.percentage = p65
+	local function setAimPercentage_proto(self_, percentage)
+		self_._aim.percentage = percentage
 	end
 
-	local function f1637(p66)
-		up0:_HookEquipCooldown(p66)
+	local function hookAddedItem_proto(item)
+		up0:_HookEquipCooldown(item)
 	end
 
-	local function f1638(p67)
-		up0._hookRestores[p67] = nil
+	local function forgetRemovedItem_proto(item)
+		up0._hookRestores[item] = nil
 	end
 
-	local function f1639(p68, p69)
-		local fighterState5 = p68.fighterState
+	local function observeFighterItems_proto(context, trove)
+		local fighterState = context.fighterState
 
-		local function f1640(p70)
-			up0:_HookEquipCooldown(p70)
+		local function hookAddedItem(item)
+			up0:_HookEquipCooldown(item)
 		end
 
-		p69:Add(fighterState5:OnItemAddedSignal(f1640))
+		trove:Add(fighterState:OnItemAddedSignal(hookAddedItem))
 
-		local function f1641(p71)
-			up0._hookRestores[p71] = nil
+		local function forgetRemovedItem(item)
+			up0._hookRestores[item] = nil
 		end
 
-		p69:Add(fighterState5:OnItemRemovedSignal(f1641))
+		trove:Add(fighterState:OnItemRemovedSignal(forgetRemovedItem))
 		local _ = next
-		local v121, v122
-		v122, v121 = fighterState5:GetItems()
+		local key, items
+		items, key = fighterState:GetItems()
 		while true do
-			local v123
-			v121, v123 = next(v122, v121)
-			if v121 == nil then
+			local ownedItem
+			key, ownedItem = next(items, key)
+			if key == nil then
 				break
 			end
-			up0:_HookEquipCooldown(v123)
+			up0:_HookEquipCooldown(ownedItem)
 		end
 	end
 
-	local function f1642()
+	local function revertOnContextRemoved_proto()
 		up0:_RevertAllHooks()
 		table.clear(up0._hookRestores)
 	end
 
-	local function f1643(p72)
-		if p72._isInitialized then
+	local function initializeEquipCooldown_proto(self_)
+		if self_._isInitialized then
 			return
 		end
-		p72._isInitialized = true
+		self_._isInitialized = true
 
-		local function f1644(p73, p74)
-			local fighterState6 = p73.fighterState
+		local function observeFighterItems(context, trove)
+			local fighterState = context.fighterState
 
-			local function f1645(p75)
-				p72:_HookEquipCooldown(p75)
+			local function hookAddedItem(item)
+				self_:_HookEquipCooldown(item)
 			end
 
-			p74:Add(fighterState6:OnItemAddedSignal(f1645))
+			trove:Add(fighterState:OnItemAddedSignal(hookAddedItem))
 
-			local function f1646(p76)
-				p72._hookRestores[p76] = nil
+			local function forgetRemovedItem(item)
+				self_._hookRestores[item] = nil
 			end
 
-			p74:Add(fighterState6:OnItemRemovedSignal(f1646))
+			trove:Add(fighterState:OnItemRemovedSignal(forgetRemovedItem))
 			local _ = next
-			local v124, v125
-			v125, v124 = fighterState6:GetItems()
+			local key, items
+			items, key = fighterState:GetItems()
 			while true do
-				local v126
-				v124, v126 = next(v125, v124)
-				if v124 == nil then
+				local ownedItem
+				key, ownedItem = next(items, key)
+				if key == nil then
 					break
 				end
-				p72:_HookEquipCooldown(v126)
+				self_:_HookEquipCooldown(ownedItem)
 			end
 		end
 
-		p72._trove:Add(p72._playerContext:ObserveContext("EquipCooldownModifier", f1644))
+		self_._trove:Add(self_._playerContext:ObserveContext("EquipCooldownModifier", observeFighterItems))
 
-		local function f1647()
-			p72:_RevertAllHooks()
-			table.clear(p72._hookRestores)
+		local function revertOnContextRemoved()
+			self_:_RevertAllHooks()
+			table.clear(self_._hookRestores)
 		end
 
-		p72._trove:Connect(p72._playerContext.contextRemoved, f1647)
+		self_._trove:Connect(self_._playerContext.contextRemoved, revertOnContextRemoved)
 	end
 
-	local function f1648(p77)
-		local t62 = {
+	local function newEquipCooldownModifier_proto(playerContext)
+		local modifier = {
 			_trove = up0.new("item_modifiers.EquipCooldownModifier"),
-			_playerContext = p77,
+			_playerContext = playerContext,
 			_isInitialized = false
 		}
-		local t63 = { enabled = false, percentage = 0 }
-		t62._aim = t63
-		t62._hookRestores = {}
-		return (setmetatable(t62, up1))
+		local aim = { enabled = false, percentage = 0 }
+		modifier._aim = aim
+		modifier._hookRestores = {}
+		return (setmetatable(modifier, up1))
 	end
 
-	local function f1649(p78, p79, p80)
-		if p79 ~= "_equip_cooldown" then
-			up3(p78, p79, p80)
+	local function equipCooldownNewIndex_proto(target, key, value)
+		if key ~= "_equip_cooldown" then
+			up3(target, key, value)
 			return
 		end
-		local v127 = tick()
-		up0 = v127 + (p80 - v127) * up1._aim.percentage
-		up2.equipCooldown = p80
+		local now = tick()
+		up0 = now + (value - now) * up1._aim.percentage
+		up2.equipCooldown = value
 	end
 
-	local function f1650(p81, p82)
-		local f1651 = nil
-		if p81._hookRestores[p82] ~= nil then
+	local function hookEquipCooldown_proto(self_, item)
+		local spoofedCooldown = nil
+		if self_._hookRestores[item] ~= nil then
 			return
 		end
-		local v128 = getmetatable(p82)
-		f1651 = "__index"
-		local v129 = up0(v128, f1651)
-		local t64 = {}
-		f1651 = up0
-		f1651 = f1651(p82, "_equip_cooldown")
-		t64.equipCooldown = f1651
-		t64.oldMetatable = v128
-		f1651 = p81._hookRestores
-		f1651[p82] = t64
-		f1651 = t64.equipCooldown
+		local oldMetatable = getmetatable(item)
+		spoofedCooldown = "__index"
+		local oldIndex = up0(oldMetatable, spoofedCooldown)
+		local restore = {}
+		spoofedCooldown = up0
+		spoofedCooldown = spoofedCooldown(item, "_equip_cooldown")
+		restore.equipCooldown = spoofedCooldown
+		restore.oldMetatable = oldMetatable
+		spoofedCooldown = self_._hookRestores
+		spoofedCooldown[item] = restore
+		spoofedCooldown = restore.equipCooldown
 		local _ = setmetatable
-		local t65 = {}
+		local hookMetatable = {}
 
-		function t65.__index(_, p83)
-			if p83 ~= "_equip_cooldown" then
-				return v129[p83]
+		function hookMetatable.__index(_, key)
+			if key ~= "_equip_cooldown" then
+				return oldIndex[key]
 			end
-			if p81._aim.enabled and debug.info(3, "n") == "StartAiming" then
-				return f1651
+			if self_._aim.enabled and debug.info(3, "n") == "StartAiming" then
+				return spoofedCooldown
 			end
-			return t64.equipCooldown
+			return restore.equipCooldown
 		end
 
-		function t65.__newindex(p84, p85, p86)
-			if p85 ~= "_equip_cooldown" then
-				up3(p84, p85, p86)
+		function hookMetatable.__newindex(target, key, value)
+			if key ~= "_equip_cooldown" then
+				up3(target, key, value)
 				return
 			end
-			local v130 = tick()
-			f1651 = v130 + (p86 - v130) * p81._aim.percentage
-			t64.equipCooldown = p86
+			local now = tick()
+			spoofedCooldown = now + (value - now) * self_._aim.percentage
+			restore.equipCooldown = value
 		end
 
-		setmetatable(p82, t65)
-		up1(p82, "_equip_cooldown", nil)
+		setmetatable(item, hookMetatable)
+		up1(item, "_equip_cooldown", nil)
 	end
 
-	local function f1652(p87)
-		local _hookRestores = p87._hookRestores
-		local v131 = nil
+	local function revertAllHooks_proto(self_)
+		local hookRestores = self_._hookRestores
+		local item = nil
 		while true do
-			local t66
-			v131, t66 = _hookRestores(nil, v131)
-			if v131 == nil then
+			local restore
+			item, restore = hookRestores(nil, item)
+			if item == nil then
 				break
 			end
-			setmetatable(v131, t66.oldMetatable)
-			up0(v131, "_equip_cooldown", t66.equipCooldown)
+			setmetatable(item, restore.oldMetatable)
+			up0(item, "_equip_cooldown", restore.equipCooldown)
 		end
 	end
 
-	local function f1653(p88)
-		p88:_RevertAllHooks()
-		p88._trove:Destroy()
+	local function destroyEquipCooldown_proto(self_)
+		self_:_RevertAllHooks()
+		self_._trove:Destroy()
 	end
 
-	local function f1654(p89, p90)
-		p89._aim.enabled = p90
-		if p90 then
-			p89:_Initialize()
+	local function setAimEnabled_proto(self_, enabled)
+		self_._aim.enabled = enabled
+		if enabled then
+			self_:_Initialize()
 		end
 	end
 
-	local function f1655()
+	local function loadEquipCooldownModifier()
 		up0.al()
 		up0.a4()
-		local v132 = up0.q()
-		local t67 = {}
-		t67.__index = t67
+		local Trove = up0.q()
+		local EquipCooldownModifier = {}
+		EquipCooldownModifier.__index = EquipCooldownModifier
 
-		function t67.new(p91)
-			local t68 = {
-				_trove = v132.new("item_modifiers.EquipCooldownModifier"),
-				_playerContext = p91,
+		function EquipCooldownModifier.new(playerContext)
+			local modifier = {
+				_trove = Trove.new("item_modifiers.EquipCooldownModifier"),
+				_playerContext = playerContext,
 				_isInitialized = false
 			}
-			local t69 = { enabled = false, percentage = 0 }
-			t68._aim = t69
-			t68._hookRestores = {}
-			return (setmetatable(t68, t67))
+			local aim = { enabled = false, percentage = 0 }
+			modifier._aim = aim
+			modifier._hookRestores = {}
+			return (setmetatable(modifier, EquipCooldownModifier))
 		end
 
-		function t67:SetAimEnabled(p92)
-			self._aim.enabled = p92
-			if p92 then
+		function EquipCooldownModifier:SetAimEnabled(enabled)
+			self._aim.enabled = enabled
+			if enabled then
 				self:_Initialize()
 			end
 		end
 
-		function t67:SetAimPercentage(p93)
-			self._aim.percentage = p93
+		function EquipCooldownModifier:SetAimPercentage(percentage)
+			self._aim.percentage = percentage
 		end
 
-		function t67:_Initialize()
+		function EquipCooldownModifier:_Initialize()
 			if self._isInitialized then
 				return
 			end
 			self._isInitialized = true
 
-			local function f1656(p94, p95)
-				local fighterState7 = p94.fighterState
+			local function observeFighterItems(context, trove)
+				local fighterState = context.fighterState
 
-				local function f1657(p96)
-					self:_HookEquipCooldown(p96)
+				local function hookAddedItem(item)
+					self:_HookEquipCooldown(item)
 				end
 
-				p95:Add(fighterState7:OnItemAddedSignal(f1657))
+				trove:Add(fighterState:OnItemAddedSignal(hookAddedItem))
 
-				local function f1658(p97)
-					self._hookRestores[p97] = nil
+				local function forgetRemovedItem(item)
+					self._hookRestores[item] = nil
 				end
 
-				p95:Add(fighterState7:OnItemRemovedSignal(f1658))
+				trove:Add(fighterState:OnItemRemovedSignal(forgetRemovedItem))
 				local _ = next
-				local v133, v134
-				v134, v133 = fighterState7:GetItems()
+				local key, items
+				items, key = fighterState:GetItems()
 				while true do
-					local v135
-					v133, v135 = next(v134, v133)
-					if v133 == nil then
+					local ownedItem
+					key, ownedItem = next(items, key)
+					if key == nil then
 						break
 					end
-					self:_HookEquipCooldown(v135)
+					self:_HookEquipCooldown(ownedItem)
 				end
 			end
 
-			self._trove:Add(self._playerContext:ObserveContext("EquipCooldownModifier", f1656))
+			self._trove:Add(self._playerContext:ObserveContext("EquipCooldownModifier", observeFighterItems))
 
-			local function f1659()
+			local function revertOnContextRemoved()
 				self:_RevertAllHooks()
 				table.clear(self._hookRestores)
 			end
 
-			self._trove:Connect(self._playerContext.contextRemoved, f1659)
+			self._trove:Connect(self._playerContext.contextRemoved, revertOnContextRemoved)
 		end
 
-		function t67:_HookEquipCooldown(p98)
-			local f1660 = nil
-			if self._hookRestores[p98] ~= nil then
+		function EquipCooldownModifier:_HookEquipCooldown(item)
+			local spoofedCooldown = nil
+			if self._hookRestores[item] ~= nil then
 				return
 			end
-			local v136 = getmetatable(p98)
-			f1660 = "__index"
-			local v137 = up0(v136, f1660)
-			local t70 = {}
-			f1660 = up0
-			f1660 = f1660(p98, "_equip_cooldown")
-			t70.equipCooldown = f1660
-			t70.oldMetatable = v136
-			f1660 = self._hookRestores
-			f1660[p98] = t70
-			f1660 = t70.equipCooldown
+			local oldMetatable = getmetatable(item)
+			spoofedCooldown = "__index"
+			local oldIndex = up0(oldMetatable, spoofedCooldown)
+			local restore = {}
+			spoofedCooldown = up0
+			spoofedCooldown = spoofedCooldown(item, "_equip_cooldown")
+			restore.equipCooldown = spoofedCooldown
+			restore.oldMetatable = oldMetatable
+			spoofedCooldown = self._hookRestores
+			spoofedCooldown[item] = restore
+			spoofedCooldown = restore.equipCooldown
 			local _ = setmetatable
-			local t71 = {}
+			local hookMetatable = {}
 
-			function t71.__index(_, p99)
-				if p99 ~= "_equip_cooldown" then
-					return v137[p99]
+			function hookMetatable.__index(_, key)
+				if key ~= "_equip_cooldown" then
+					return oldIndex[key]
 				end
 				if self._aim.enabled and debug.info(3, "n") == "StartAiming" then
-					return f1660
+					return spoofedCooldown
 				end
-				return t70.equipCooldown
+				return restore.equipCooldown
 			end
 
-			function t71.__newindex(p100, p101, p102)
-				if p101 ~= "_equip_cooldown" then
-					up3(p100, p101, p102)
+			function hookMetatable.__newindex(target, key, value)
+				if key ~= "_equip_cooldown" then
+					up3(target, key, value)
 					return
 				end
-				local v138 = tick()
-				f1660 = v138 + (p102 - v138) * self._aim.percentage
-				t70.equipCooldown = p102
+				local now = tick()
+				spoofedCooldown = now + (value - now) * self._aim.percentage
+				restore.equipCooldown = value
 			end
 
-			setmetatable(p98, t71)
-			up1(p98, "_equip_cooldown", nil)
+			setmetatable(item, hookMetatable)
+			up1(item, "_equip_cooldown", nil)
 		end
 
-		function t67:_RevertAllHooks()
-			local _hookRestores2 = self._hookRestores
-			local v139 = nil
+		function EquipCooldownModifier:_RevertAllHooks()
+			local hookRestores = self._hookRestores
+			local item = nil
 			while true do
-				local t72
-				v139, t72 = _hookRestores2(nil, v139)
-				if v139 == nil then
+				local restore
+				item, restore = hookRestores(nil, item)
+				if item == nil then
 					break
 				end
-				setmetatable(v139, t72.oldMetatable)
-				up0(v139, "_equip_cooldown", t72.equipCooldown)
+				setmetatable(item, restore.oldMetatable)
+				up0(item, "_equip_cooldown", restore.equipCooldown)
 			end
 		end
 
-		function t67:Destroy()
+		function EquipCooldownModifier:Destroy()
 			self:_RevertAllHooks()
 			self._trove:Destroy()
 		end
 
-		return t67
+		return EquipCooldownModifier
 	end
 
 	local function lazyModule_ae()
@@ -22200,46 +22200,46 @@ local function f1518()
 		return t73.c
 	end
 
-	local function f1662(p103, p104)
-		local v140 = p103._bindKeyByFlag[p104]
-		if not v140 then
+	local function getKeybindForFlag(self_, flag)
+		local bindKey = self_._bindKeyByFlag[flag]
+		if not bindKey then
 			return nil
 		end
-		local t74 = p103._keybinds[v140]
-		if t74 then
-			return t74[p104]
+		local keybind = self_._keybinds[bindKey]
+		if keybind then
+			return keybind[flag]
 		end
 		return nil
 	end
 
-	local function f1663(p105)
-		local StartColor = p105.StartColor
-		local EndColor = p105.EndColor
-		local Gradient = p105.Gradient
+	local function migrateColorSettings(settings)
+		local StartColor = settings.StartColor
+		local EndColor = settings.EndColor
+		local Gradient = settings.Gradient
 		if type(Gradient) == up0 and Gradient.Enabled == true and type(Gradient.Color) == up0 then
-			p105.Color = Gradient.Color
-			p105.ColorMode = "Gradient"
+			settings.Color = Gradient.Color
+			settings.ColorMode = "Gradient"
 		elseif type(StartColor) == up0 and type(EndColor) == up0 then
-			p105.Color = up1(StartColor, EndColor)
-			local v141 = up2(StartColor, EndColor)
-			v141 = v141 and "Solid" or "Reactive"
-			p105.ColorMode = v141
+			settings.Color = up1(StartColor, EndColor)
+			local colorMode = up2(StartColor, EndColor)
+			colorMode = colorMode and "Solid" or "Reactive"
+			settings.ColorMode = colorMode
 		end
-		p105.StartColor = nil
-		p105.EndColor = nil
-		p105.Gradient = nil
+		settings.StartColor = nil
+		settings.EndColor = nil
+		settings.Gradient = nil
 	end
 
-	local function f1664()
-		local v142 = os.clock() - up0
-		up1.minThicknessMultiplier = up2 + (-2 - up2) * v142 / up3
-		if v142 < up3 * 0.4 then
-			up1.minTransparency = up4 + (up5 - up4) * (v142 / (up3 * 0.4))
-		elseif v142 < up3 then
-			local v143 = (v142 - up3 * 0.4) / (up3 * 0.6)
-			up1.minTransparency = up5 + (up6 - up5) * v143
-			up1.maxRadius = up7 * (1 + up8 * v143)
-			up1.minRadius = up1.minRadius + (up1.maxRadius - up1.minRadius) * v143
+	local function dissipateStep_proto()
+		local elapsed = os.clock() - up0
+		up1.minThicknessMultiplier = up2 + (-2 - up2) * elapsed / up3
+		if elapsed < up3 * 0.4 then
+			up1.minTransparency = up4 + (up5 - up4) * (elapsed / (up3 * 0.4))
+		elseif elapsed < up3 then
+			local progress = (elapsed - up3 * 0.4) / (up3 * 0.6)
+			up1.minTransparency = up5 + (up6 - up5) * progress
+			up1.maxRadius = up7 * (1 + up8 * progress)
+			up1.minRadius = up1.minRadius + (up1.maxRadius - up1.minRadius) * progress
 		else
 			if os.clock() - up1._startT < (up1.pulseLength + 1) / up1.pulseSpeed then
 				up1:Destroy()
@@ -22251,53 +22251,53 @@ local function f1518()
 		end
 	end
 
-	local function f1665(p106, p107, p108)
-		if not p107 then
-			p107 = 0.2
+	local function dissipate(pulse, duration, expand)
+		if not duration then
+			duration = 0.2
 		end
-		if not p108 then
-			p108 = 0.5
+		if not expand then
+			expand = 0.5
 		end
-		local v144 = os.clock()
-		local minTransparency = p106.minTransparency
-		local contractFrom = p106.contractFrom
-		local contractFrom2 = p106.contractFrom
-		local _parts3 = p106._parts
-		local fadeLength = p106.fadeLength
-		local maxRadius = p106.maxRadius
-		local minThicknessMultiplier = p106.minThicknessMultiplier
-		local v145 = p107
-		local v146 = contractFrom2 + 1 / (#_parts3 * fadeLength)
-		local v147 = p108
+		local startTime = os.clock()
+		local minTransparency = pulse.minTransparency
+		local contractFrom = pulse.contractFrom
+		local contractFrom2 = pulse.contractFrom
+		local parts = pulse._parts
+		local fadeLength = pulse.fadeLength
+		local maxRadius = pulse.maxRadius
+		local minThicknessMultiplier = pulse.minThicknessMultiplier
+		local duration2 = duration
+		local targetTransparency = contractFrom2 + 1 / (#parts * fadeLength)
+		local expand2 = expand
 
 		local function onHeartbeat()
-			local v148 = os.clock() - v144
-			p106.minThicknessMultiplier = minThicknessMultiplier + (-2 - minThicknessMultiplier) * v148 / v145
-			if v148 < v145 * 0.4 then
-				p106.minTransparency = minTransparency + (contractFrom - minTransparency) * (v148 / (v145 * 0.4))
-			elseif v148 < v145 then
-				local v149 = (v148 - v145 * 0.4) / (v145 * 0.6)
-				p106.minTransparency = contractFrom + (v146 - contractFrom) * v149
-				p106.maxRadius = maxRadius * (1 + v147 * v149)
-				p106.minRadius = p106.minRadius + (p106.maxRadius - p106.minRadius) * v149
+			local elapsed = os.clock() - startTime
+			pulse.minThicknessMultiplier = minThicknessMultiplier + (-2 - minThicknessMultiplier) * elapsed / duration2
+			if elapsed < duration2 * 0.4 then
+				pulse.minTransparency = minTransparency + (contractFrom - minTransparency) * (elapsed / (duration2 * 0.4))
+			elseif elapsed < duration2 then
+				local progress = (elapsed - duration2 * 0.4) / (duration2 * 0.6)
+				pulse.minTransparency = contractFrom + (targetTransparency - contractFrom) * progress
+				pulse.maxRadius = maxRadius * (1 + expand2 * progress)
+				pulse.minRadius = pulse.minRadius + (pulse.maxRadius - pulse.minRadius) * progress
 			else
-				if os.clock() - p106._startT < (p106.pulseLength + 1) / p106.pulseSpeed then
-					p106:Destroy()
+				if os.clock() - pulse._startT < (pulse.pulseLength + 1) / pulse.pulseSpeed then
+					pulse:Destroy()
 				end
-				if p106._dissipateConnection then
-					p106._dissipateConnection:Disconnect()
+				if pulse._dissipateConnection then
+					pulse._dissipateConnection:Disconnect()
 				end
-				p106._dissipateConnection = nil
+				pulse._dissipateConnection = nil
 			end
 		end
 
-		p106._dissipateConnection = up0.Heartbeat:Connect(onHeartbeat)
+		pulse._dissipateConnection = up0.Heartbeat:Connect(onHeartbeat)
 	end
 
-	local function f1667(p109)
-		local AddSection25 = p109.AddSection
+	local function buildColorCorrectionSection_proto(tab)
+		local AddSection25 = tab.AddSection
 		local t75 = { Title = "Color Correction", Side = "left" }
-		local colorCorrectionSection = AddSection25(p109, t75)
+		local colorCorrectionSection = AddSection25(tab, t75)
 		local AddToggle54 = colorCorrectionSection.AddToggle
 		local t77 = { Label = up0, Config = table.create(2) }
 		local t78 = AddToggle54(colorCorrectionSection, t77)
@@ -22334,18 +22334,18 @@ local function f1518()
 		AddSlider40(colorCorrectionSection, contrastSliderOptions)
 	end
 
-	local function f1668()
-		local v150 = up0.cJ()
+	local function loadColorCorrectionSection()
+		local colorBinder = up0.cJ()
 		up0.cI()
 
-		local function f1669(p110)
-			local AddSection26 = p110.AddSection
+		local function buildColorCorrectionSection(tab)
+			local AddSection26 = tab.AddSection
 			local t83 = { Title = "Color Correction", Side = "left" }
-			local colorCorrectionSection = AddSection26(p110, t83)
+			local colorCorrectionSection = AddSection26(tab, t83)
 			local AddToggle55 = colorCorrectionSection.AddToggle
 			local t85 = { Label = up0, Config = table.create(2) }
 			local t86 = AddToggle55(colorCorrectionSection, t85)
-			local bindColor3 = v150.bindColor
+			local bindColor3 = colorBinder.bindColor
 			local AddColor6 = colorCorrectionSection.AddColor
 			local t87 = { Row = t86.Row }
 			bindColor3(AddColor6(colorCorrectionSection, t87), (table.create(2)))
@@ -22378,14 +22378,14 @@ local function f1518()
 			AddSlider43(colorCorrectionSection, contrastSliderOptions)
 		end
 
-		return f1669
+		return buildColorCorrectionSection
 	end
 
 	local function f1670()
 	end
 
-	local function f1671(p111)
-		up0._realMaterial = up1.new(p111.model)
+	local function onRealModelAdded_proto(character)
+		up0._realMaterial = up1.new(character.model)
 		if not (up0._replicaMaterial == nil and not up0:_ShouldPaintRealDirectly()) then
 			up0:_ApplyToReal()
 		end
@@ -22394,460 +22394,460 @@ local function f1518()
 	local function f1672()
 	end
 
-	local function f1673(p112)
-		p112._errorReporter:ReportResult(p112._itemDataHook:Load())
-		p112._errorReporter:ReportResult(p112._seasonInfoHook:Load())
-		p112._errorReporter:ReportResult(p112._favoriteItemsHook:Load())
+	local function loadDataHooks_proto(self_)
+		self_._errorReporter:ReportResult(self_._itemDataHook:Load())
+		self_._errorReporter:ReportResult(self_._seasonInfoHook:Load())
+		self_._errorReporter:ReportResult(self_._favoriteItemsHook:Load())
 	end
 
-	local function f1674(p113)
-		up0:SetEnabled(p113)
+	local function setEnabledAndReset_proto(enabled)
+		up0:SetEnabled(enabled)
 		up0:_Reset()
 	end
 
-	local function f1675()
-		local t91 = up0
-		local Tween10 = t91.Tween
-		local v151 = up1
-		local t92 = { TextColor3 = up2.get("TextColor") }
-		Tween10(t91, v151, t92)
+	local function tweenTextColor_proto()
+		local tween = up0
+		local Tween10 = tween.Tween
+		local tweenInfo = up1
+		local goal = { TextColor3 = up2.get("TextColor") }
+		Tween10(tween, tweenInfo, goal)
 	end
 
-	local function f1676(p114, p115)
-		if p114 == p115 then
+	local function areWrapsEqual_proto(a, b)
+		if a == b then
 			return true
 		end
-		if p114 == nil or p115 == nil then
+		if a == nil or b == nil then
 			return false
 		end
-		local v152
-		v152 = p114.name == p115.name
-		if v152 then
-			v152 = p114.inverted == p115.inverted
+		local equal
+		equal = a.name == b.name
+		if equal then
+			equal = a.inverted == b.inverted
 		end
-		return v152
+		return equal
 	end
 
-	local function f1677(p116, p117)
-		if p116 == p117 then
+	local function areSelectionsEqual_proto(a, b)
+		if a == b then
 			return true
 		end
-		if p116 == nil or p117 == nil then
+		if a == nil or b == nil then
 			return false
 		end
-		if p116.skin == p117.skin and p116.charm == p117.charm and
-			p116.finisher == p117.finisher then
-			return (up0(p116.wrap, p117.wrap))
+		if a.skin == b.skin and a.charm == b.charm and
+			a.finisher == b.finisher then
+			return (up0(a.wrap, b.wrap))
 		end
 		return false
 	end
 
-	local function f1678(p118)
-		if p118 == up0 then
+	local function noneToNil_proto(value)
+		if value == up0 then
 			return nil
 		end
-		return p118
+		return value
 	end
 
-	local function f1679(p119)
-		if p119 == nil or p119.name == up0 then
+	local function wrapNoneToNil_proto(wrap)
+		if wrap == nil or wrap.name == up0 then
 			return nil
 		end
-		return p119
+		return wrap
 	end
 
-	local function f1680(p120, p121)
-		if p120 == p121 then
+	local function areViewModelSelectionsEqual_proto(a, b)
+		if a == b then
 			return true
 		end
-		local v153
-		v153 = not (p120 == nil)
-		v153 = v153 and up0(p120.skin) or nil
-		local v154
-		v154 = not (p121 == nil)
-		v154 = v154 and up0(p121.skin) or nil
-		if v153 ~= v154 then
+		local skinA
+		skinA = not (a == nil)
+		skinA = skinA and up0(a.skin) or nil
+		local skinB
+		skinB = not (b == nil)
+		skinB = skinB and up0(b.skin) or nil
+		if skinA ~= skinB then
 			return false
 		end
-		local v155
-		v155 = not (p120 == nil)
-		v155 = v155 and up0(p120.charm) or nil
-		local v156
-		v156 = not (p121 == nil)
-		v156 = v156 and up0(p121.charm) or nil
-		if v155 ~= v156 then
+		local charmA
+		charmA = not (a == nil)
+		charmA = charmA and up0(a.charm) or nil
+		local charmB
+		charmB = not (b == nil)
+		charmB = charmB and up0(b.charm) or nil
+		if charmA ~= charmB then
 			return false
 		end
-		local v157
-		v157 = not (p120 == nil)
-		v157 = v157 and up1(p120.wrap) or nil
-		local v158
-		v158 = not (p121 == nil)
-		v158 = v158 and up1(p121.wrap) or nil
-		return (up2(v157, v158))
+		local wrapA
+		wrapA = not (a == nil)
+		wrapA = wrapA and up1(a.wrap) or nil
+		local wrapB
+		wrapB = not (b == nil)
+		wrapB = wrapB and up1(b.wrap) or nil
+		return (up2(wrapA, wrapB))
 	end
 
-	local function f1681()
-		local t93 = up0.cQ()
+	local function loadSelectionEquality()
+		local cosmeticConstants = up0.cQ()
 		up0.c5()
-		local NONE_COSMETIC2 = t93.NONE_COSMETIC
+		local NONE_COSMETIC = cosmeticConstants.NONE_COSMETIC
 
-		local function f1682(p122, p123)
-			if p122 == p123 then
+		local function areWrapsEqual(a, b)
+			if a == b then
 				return true
 			end
-			if p122 == nil or p123 == nil then
+			if a == nil or b == nil then
 				return false
 			end
-			local v159
-			v159 = p122.name == p123.name
-			if v159 then
-				v159 = p122.inverted == p123.inverted
+			local equal
+			equal = a.name == b.name
+			if equal then
+				equal = a.inverted == b.inverted
 			end
-			return v159
+			return equal
 		end
 
-		local function f1683(p124, p125)
-			if p124 == p125 then
+		local function areSelectionsEqual(a, b)
+			if a == b then
 				return true
 			end
-			if p124 == nil or p125 == nil then
+			if a == nil or b == nil then
 				return false
 			end
-			if p124.skin == p125.skin and p124.charm == p125.charm and
-				p124.finisher == p125.finisher then
-				return (f1682(p124.wrap, p125.wrap))
+			if a.skin == b.skin and a.charm == b.charm and
+				a.finisher == b.finisher then
+				return (areWrapsEqual(a.wrap, b.wrap))
 			end
 			return false
 		end
 
-		local function f1684(p126)
-			if p126 == NONE_COSMETIC2 then
+		local function noneToNil(value)
+			if value == NONE_COSMETIC then
 				return nil
 			end
-			return p126
+			return value
 		end
 
-		local function f1685(p127)
-			if p127 == nil or p127.name == NONE_COSMETIC2 then
+		local function wrapNoneToNil(wrap)
+			if wrap == nil or wrap.name == NONE_COSMETIC then
 				return nil
 			end
-			return p127
+			return wrap
 		end
 
-		local function f1686(p128, p129)
-			if p128 == p129 then
+		local function areViewModelSelectionsEqual(a, b)
+			if a == b then
 				return true
 			end
-			local v160
-			v160 = not (p128 == nil)
-			v160 = v160 and f1684(p128.skin) or nil
-			local v161
-			v161 = not (p129 == nil)
-			v161 = v161 and f1684(p129.skin) or nil
-			if v160 ~= v161 then
+			local skinA
+			skinA = not (a == nil)
+			skinA = skinA and noneToNil(a.skin) or nil
+			local skinB
+			skinB = not (b == nil)
+			skinB = skinB and noneToNil(b.skin) or nil
+			if skinA ~= skinB then
 				return false
 			end
-			local v162
-			v162 = not (p128 == nil)
-			v162 = v162 and f1684(p128.charm) or nil
-			local v163
-			v163 = not (p129 == nil)
-			v163 = v163 and f1684(p129.charm) or nil
-			if v162 ~= v163 then
+			local charmA
+			charmA = not (a == nil)
+			charmA = charmA and noneToNil(a.charm) or nil
+			local charmB
+			charmB = not (b == nil)
+			charmB = charmB and noneToNil(b.charm) or nil
+			if charmA ~= charmB then
 				return false
 			end
-			local v164
-			v164 = not (p128 == nil)
-			v164 = v164 and f1685(p128.wrap) or nil
-			local v165
-			v165 = not (p129 == nil)
-			v165 = v165 and f1685(p129.wrap) or nil
-			return (f1682(v164, v165))
+			local wrapA
+			wrapA = not (a == nil)
+			wrapA = wrapA and wrapNoneToNil(a.wrap) or nil
+			local wrapB
+			wrapB = not (b == nil)
+			wrapB = wrapB and wrapNoneToNil(b.wrap) or nil
+			return (areWrapsEqual(wrapA, wrapB))
 		end
 
-		local t94 = { areSelectionsEqual = f1683, areViewModelSelectionsEqual = f1686 }
-		return t94
+		local selectionEquality = { areSelectionsEqual = areSelectionsEqual, areViewModelSelectionsEqual = areViewModelSelectionsEqual }
+		return selectionEquality
 	end
 
-	local function f1687(p130, p131)
-		p130._killFlash:Update(p131)
-		local v166 = #p130._chams - -1
+	local function preRenderElimination_proto(self_, deltaTime)
+		self_._killFlash:Update(deltaTime)
+		local index = #self_._chams - -1
 		while true do
-			v166 = v166 + -1
-			if not (1 <= v166) then
+			index = index + -1
+			if not (1 <= index) then
 				break
 			end
-			if not p130._chams[v166]:Step(p131) then
-				table.remove(p130._chams, v166)
+			if not self_._chams[index]:Step(deltaTime) then
+				table.remove(self_._chams, index)
 			end
 		end
 	end
 
-	local function f1688(p132)
-		local _chams = p132._chams
-		local v167 = nil
+	local function destroyElimination_proto(self_)
+		local chams = self_._chams
+		local key = nil
 		while true do
-			local v168
-			v167, v168 = _chams(nil, v167)
-			if v167 == nil then
+			local cham
+			key, cham = chams(nil, key)
+			if key == nil then
 				break
 			end
-			v168:Destroy()
+			cham:Destroy()
 		end
-		table.clear(p132._chams)
-		p132._errorReporter:Destroy()
-		p132._trove:Destroy()
-		p132._replicateBinding:Destroy()
+		table.clear(self_._chams)
+		self_._errorReporter:Destroy()
+		self_._trove:Destroy()
+		self_._replicateBinding:Destroy()
 	end
 
-	local function f1689()
+	local function notifyMessage_proto()
 		up0.Get():Notify(up1)
 	end
 
-	local function f1690(p133, p134)
+	local function handleKill_proto(self_, victim)
 		local PlayerElimination = up0.data.PlayerElimination
 		local Sound = PlayerElimination.Sound
 		if Sound.Enabled then
-			local GetSoundId = p133._customSounds:GetSoundId(Sound.Name)
+			local GetSoundId = self_._customSounds:GetSoundId(Sound.Name)
 			if GetSoundId ~= nil then
 				up1(GetSoundId, Sound.Volume, Sound.Pitch)
 			end
 		end
 		local Notification = PlayerElimination.Notification
 		if Notification.Enabled then
-			local v169, v170
-			v170, v169 = up2(p134)
+			local displayName, name
+			name, displayName = up2(victim)
 			local Text2 = Notification.Text
 			local gsub4 = Text2.gsub
-			local t95 = { NAME = v170, DNAME = v169 }
-			local v171 = gsub4(Text2, "%%(%w+)%%", t95)
+			local placeholders = { NAME = name, DNAME = displayName }
+			local message = gsub4(Text2, "%%(%w+)%%", placeholders)
 
-			local function f1691()
-				up0.Get():Notify(v171)
+			local function notify()
+				up0.Get():Notify(message)
 			end
 
-			task.spawn(f1691)
+			task.spawn(notify)
 		end
 		local KillFlash = PlayerElimination.KillFlash
 		if KillFlash.Enabled then
-			p133._killFlash:Play(KillFlash.Color, KillFlash.Duration)
+			self_._killFlash:Play(KillFlash.Color, KillFlash.Duration)
 		end
 		local Chams = PlayerElimination.Chams
 		if Chams.Enabled then
-			local v172 = up4.new(
-				p134,
+			local cham = up4.new(
+				victim,
 				Chams.Color,
 				Chams.Transparency,
 				Chams.Duration,
 				Chams.Material
 			)
-			table.insert(p133._chams, v172)
+			table.insert(self_._chams, cham)
 		end
 	end
 
-	local function f1692(p135)
-		up0._customSounds:Preload(p135)
+	local function preloadSound_proto(soundName)
+		up0._customSounds:Preload(soundName)
 	end
 
-	local function f1693(p136)
-		up0:_HandleReplicate(p136)
+	local function handleReplicate_proto(effect)
+		up0:_HandleReplicate(effect)
 	end
 
-	local function f1694(p137)
-		up0:_SetEnabled(p137)
+	local function setEnabled_proto(enabled)
+		up0:_SetEnabled(enabled)
 	end
 
-	local function f1695(p138, p139, p140, p141)
-		local v173 = up0.new("combat_feedback.PlayerElimination")
-		local v174 = up1.new()
-		local Reserve10 = p138:Reserve((table.create(2)))
-		local t96 = {
-			_trove = v173,
-			_errorReporter = v174,
-			_replicateBinding = Reserve10,
-			_playerContext = p139,
-			_customSounds = p141,
-			_enemyRegistry = p140,
-			_killFlash = v173:Add(up2.new()),
+	local function newPlayerElimination_proto(replicator, playerContext, enemyRegistry, customSounds)
+		local trove = up0.new("combat_feedback.PlayerElimination")
+		local errorReporter = up1.new()
+		local replicateBinding = replicator:Reserve((table.create(2)))
+		local elimination = {
+			_trove = trove,
+			_errorReporter = errorReporter,
+			_replicateBinding = replicateBinding,
+			_playerContext = playerContext,
+			_customSounds = customSounds,
+			_enemyRegistry = enemyRegistry,
+			_killFlash = trove:Add(up2.new()),
 			_chams = {}
 		}
-		setmetatable(t96, up3)
+		setmetatable(elimination, up3)
 
-		local function f1696(p142)
-			t96:_HandleReplicate(p142)
+		local function onReplicate(effect)
+			elimination:_HandleReplicate(effect)
 		end
 
-		Reserve10:SetHandler(f1696)
+		replicateBinding:SetHandler(onReplicate)
 
-		local function f1697(p143)
-			t96:_SetEnabled(p143)
+		local function onEnabledChanged(enabled)
+			elimination:_SetEnabled(enabled)
 		end
 
-		t96._trove:Connect(up4:GetPropertyChangedSignal((table.create(2))), f1697)
+		elimination._trove:Connect(up4:GetPropertyChangedSignal((table.create(2))), onEnabledChanged)
 
-		local function f1698(p144)
-			t96._customSounds:Preload(p144)
+		local function onSoundChanged(soundName)
+			elimination._customSounds:Preload(soundName)
 		end
 
-		t96._trove:Connect(up4:GetPropertyChangedSignal((table.create(3))), f1698)
+		elimination._trove:Connect(up4:GetPropertyChangedSignal((table.create(3))), onSoundChanged)
 		if up4.data.PlayerElimination.Enabled then
-			t96:_SetEnabled(true)
+			elimination:_SetEnabled(true)
 		end
-		t96._customSounds:Preload(up4.data.PlayerElimination.Sound.Name)
-		return t96
+		elimination._customSounds:Preload(up4.data.PlayerElimination.Sound.Name)
+		return elimination
 	end
 
-	local function f1699(p145, p146)
-		p145._replicateBinding:SetEnabled(p146)
+	local function setReplicateEnabled_proto(self_, enabled)
+		self_._replicateBinding:SetEnabled(enabled)
 	end
 
-	local function f1700(p147, p148)
-		local inner19 = p147._playerContext.inner
-		if inner19 == nil then
+	local function handleReplicateEffect_proto(self_, effect)
+		local fighter = self_._playerContext.inner
+		if fighter == nil then
 			return
 		end
-		local enumName = p148.enumName
+		local enumName = effect.enumName
 		if enumName == "FinisherEffect" then
-			if p148.args[3] ~= up0 then
+			if effect.args[3] ~= up0 then
 				return
 			end
-			local GetByObjectId6 = p147._enemyRegistry:GetByObjectId(p148.objectId)
-			if GetByObjectId6 == nil then
+			local enemy = self_._enemyRegistry:GetByObjectId(effect.objectId)
+			if enemy == nil then
 				return
 			end
-			p147:_HandleKill(GetByObjectId6)
+			self_:_HandleKill(enemy)
 		elseif enumName == "EliminationEffect" then
-			if p148.objectId ~= inner19.fighterState.objectId then
+			if effect.objectId ~= fighter.fighterState.objectId then
 				return
 			end
-			local t97 = p148.args[1]
-			if t97 == nil or t97 == up0 then
+			local killer = effect.args[1]
+			if killer == nil or killer == up0 then
 				return
 			end
-			local Character3 = t97.Character
-			if Character3 == nil then
+			local character = killer.Character
+			if character == nil then
 				return
 			end
-			p147:_HandleKill(Character3)
+			self_:_HandleKill(character)
 		end
 	end
 
-	local function f1701()
-		local v175 = up0.ff()
-		local v176 = up0.y()
+	local function loadPlayerElimination()
+		local EliminationChams = up0.ff()
+		local settings = up0.y()
 		up0.ef()
 		up0.bl()
-		local v177 = up0.ac()
-		local v178 = up0.O()
+		local ErrorReporter = up0.ac()
+		local Notifier = up0.O()
 		up0.a4()
 		up0.bD()
-		local v179 = up0.fg()
-		local v180 = up0.q()
-		local v181 = up0.fh()
-		local v182 = up0.fi()
-		local LocalPlayer6 = cloneref(game:GetService("Players")).LocalPlayer
-		local t98 = {}
-		t98.__index = t98
+		local KillFlash = up0.fg()
+		local Trove = up0.q()
+		local playSound = up0.fh()
+		local getPlayerNames = up0.fi()
+		local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
+		local PlayerElimination = {}
+		PlayerElimination.__index = PlayerElimination
 
-		function t98.new(p149, p150, p151, p152)
-			local v183 = v180.new("combat_feedback.PlayerElimination")
-			local v184 = v177.new()
-			local Reserve11 = p149:Reserve((table.create(2)))
-			local t99 = {
-				_trove = v183,
-				_errorReporter = v184,
-				_replicateBinding = Reserve11,
-				_playerContext = p150,
-				_customSounds = p152,
-				_enemyRegistry = p151,
-				_killFlash = v183:Add(v179.new()),
+		function PlayerElimination.new(replicator, playerContext, enemyRegistry, customSounds)
+			local trove = Trove.new("combat_feedback.PlayerElimination")
+			local errorReporter = ErrorReporter.new()
+			local replicateBinding = replicator:Reserve((table.create(2)))
+			local elimination = {
+				_trove = trove,
+				_errorReporter = errorReporter,
+				_replicateBinding = replicateBinding,
+				_playerContext = playerContext,
+				_customSounds = customSounds,
+				_enemyRegistry = enemyRegistry,
+				_killFlash = trove:Add(KillFlash.new()),
 				_chams = {}
 			}
-			setmetatable(t99, t98)
+			setmetatable(elimination, PlayerElimination)
 
-			local function f1702(p153)
-				t99:_HandleReplicate(p153)
+			local function onReplicate(effect)
+				elimination:_HandleReplicate(effect)
 			end
 
-			Reserve11:SetHandler(f1702)
+			replicateBinding:SetHandler(onReplicate)
 
-			local function f1703(p154)
-				t99:_SetEnabled(p154)
+			local function onEnabledChanged(enabled)
+				elimination:_SetEnabled(enabled)
 			end
 
-			t99._trove:Connect(v176:GetPropertyChangedSignal((table.create(2))), f1703)
+			elimination._trove:Connect(settings:GetPropertyChangedSignal((table.create(2))), onEnabledChanged)
 
-			local function f1704(p155)
-				t99._customSounds:Preload(p155)
+			local function onSoundChanged(soundName)
+				elimination._customSounds:Preload(soundName)
 			end
 
-			t99._trove:Connect(v176:GetPropertyChangedSignal((table.create(3))), f1704)
-			if v176.data.PlayerElimination.Enabled then
-				t99:_SetEnabled(true)
+			elimination._trove:Connect(settings:GetPropertyChangedSignal((table.create(3))), onSoundChanged)
+			if settings.data.PlayerElimination.Enabled then
+				elimination:_SetEnabled(true)
 			end
-			t99._customSounds:Preload(v176.data.PlayerElimination.Sound.Name)
-			return t99
+			elimination._customSounds:Preload(settings.data.PlayerElimination.Sound.Name)
+			return elimination
 		end
 
-		function t98:_SetEnabled(p156)
-			self._replicateBinding:SetEnabled(p156)
+		function PlayerElimination:_SetEnabled(enabled)
+			self._replicateBinding:SetEnabled(enabled)
 		end
 
-		function t98:_HandleReplicate(p157)
-			local inner20 = self._playerContext.inner
-			if inner20 == nil then
+		function PlayerElimination:_HandleReplicate(effect)
+			local fighter = self._playerContext.inner
+			if fighter == nil then
 				return
 			end
-			local enumName2 = p157.enumName
+			local enumName2 = effect.enumName
 			if enumName2 == "FinisherEffect" then
-				if p157.args[3] ~= LocalPlayer6 then
+				if effect.args[3] ~= localPlayer then
 					return
 				end
-				local GetByObjectId7 = self._enemyRegistry:GetByObjectId(p157.objectId)
-				if GetByObjectId7 == nil then
+				local enemy = self._enemyRegistry:GetByObjectId(effect.objectId)
+				if enemy == nil then
 					return
 				end
-				self:_HandleKill(GetByObjectId7)
+				self:_HandleKill(enemy)
 			elseif enumName2 == "EliminationEffect" then
-				if p157.objectId ~= inner20.fighterState.objectId then
+				if effect.objectId ~= fighter.fighterState.objectId then
 					return
 				end
-				local t100 = p157.args[1]
-				if t100 == nil or t100 == LocalPlayer6 then
+				local killer = effect.args[1]
+				if killer == nil or killer == localPlayer then
 					return
 				end
-				local Character4 = t100.Character
-				if Character4 == nil then
+				local character = killer.Character
+				if character == nil then
 					return
 				end
-				self:_HandleKill(Character4)
+				self:_HandleKill(character)
 			end
 		end
 
-		function t98:_HandleKill(p158)
-			local PlayerElimination2 = v176.data.PlayerElimination
+		function PlayerElimination:_HandleKill(victim)
+			local PlayerElimination2 = settings.data.PlayerElimination
 			local Sound2 = PlayerElimination2.Sound
 			if Sound2.Enabled then
 				local GetSoundId2 = self._customSounds:GetSoundId(Sound2.Name)
 				if GetSoundId2 ~= nil then
-					v181(GetSoundId2, Sound2.Volume, Sound2.Pitch)
+					playSound(GetSoundId2, Sound2.Volume, Sound2.Pitch)
 				end
 			end
 			local Notification2 = PlayerElimination2.Notification
 			if Notification2.Enabled then
-				local v185, v186
-				v186, v185 = v182(p158)
+				local displayName, name
+				name, displayName = getPlayerNames(victim)
 				local Text3 = Notification2.Text
 				local gsub5 = Text3.gsub
-				local t101 = { NAME = v186, DNAME = v185 }
-				local v187 = gsub5(Text3, "%%(%w+)%%", t101)
+				local placeholders = { NAME = name, DNAME = displayName }
+				local message = gsub5(Text3, "%%(%w+)%%", placeholders)
 
-				local function f1705()
-					v178.Get():Notify(v187)
+				local function notify()
+					Notifier.Get():Notify(message)
 				end
 
-				task.spawn(f1705)
+				task.spawn(notify)
 			end
 			local KillFlash2 = PlayerElimination2.KillFlash
 			if KillFlash2.Enabled then
@@ -22855,41 +22855,41 @@ local function f1518()
 			end
 			local Chams2 = PlayerElimination2.Chams
 			if Chams2.Enabled then
-				local v188 = v175.new(
-					p158,
+				local cham = EliminationChams.new(
+					victim,
 					Chams2.Color,
 					Chams2.Transparency,
 					Chams2.Duration,
 					Chams2.Material
 				)
-				table.insert(self._chams, v188)
+				table.insert(self._chams, cham)
 			end
 		end
 
-		function t98:PreRender(p159)
-			self._killFlash:Update(p159)
-			local v189 = #self._chams - -1
+		function PlayerElimination:PreRender(deltaTime)
+			self._killFlash:Update(deltaTime)
+			local index = #self._chams - -1
 			while true do
-				v189 = v189 + -1
-				if not (1 <= v189) then
+				index = index + -1
+				if not (1 <= index) then
 					break
 				end
-				if not self._chams[v189]:Step(p159) then
-					table.remove(self._chams, v189)
+				if not self._chams[index]:Step(deltaTime) then
+					table.remove(self._chams, index)
 				end
 			end
 		end
 
-		function t98:Destroy()
-			local _chams2 = self._chams
-			local v190 = nil
+		function PlayerElimination:Destroy()
+			local chams = self._chams
+			local key = nil
 			while true do
-				local v191
-				v190, v191 = _chams2(nil, v190)
-				if v190 == nil then
+				local cham
+				key, cham = chams(nil, key)
+				if key == nil then
 					break
 				end
-				v191:Destroy()
+				cham:Destroy()
 			end
 			table.clear(self._chams)
 			self._errorReporter:Destroy()
@@ -22897,7 +22897,7 @@ local function f1518()
 			self._replicateBinding:Destroy()
 		end
 
-		return t98
+		return PlayerElimination
 	end
 
 	local function lazyModule_eD()
@@ -22909,13 +22909,13 @@ local function f1518()
 		return t102.c
 	end
 
-	local function f1707()
+	local function preloadIfSignatureCurrent_proto()
 		if up0._bakeSignature == up1 then
 			up0:_PreloadTextures()
 		end
 	end
 
-	local function f1708()
+	local function addCustomSound_proto()
 		if not up0:Add(up1.Value, up2.Value).ok then
 			return
 		end
@@ -22923,23 +22923,23 @@ local function f1518()
 		up2:Set("")
 	end
 
-	local function f1709()
-		local Value21 = up0.Value
-		if type(Value21) ~= "string" then
+	local function removeCustomSound_proto()
+		local selectedName = up0.Value
+		if type(selectedName) ~= "string" then
 			return
 		end
-		up1:Remove(Value21)
+		up1:Remove(selectedName)
 	end
 
-	local function f1710(p160)
-		up0:SetOptions(p160)
+	local function setSavedOptions_proto(names)
+		up0:SetOptions(names)
 	end
 
-	local function f1711(p161, p162)
-		local customSounds = p161.customSounds
-		local AddSection27 = p162.AddSection
+	local function buildCustomSoundsSection(deps, tab)
+		local customSounds = deps.customSounds
+		local AddSection27 = tab.AddSection
 		local t103 = { Title = "Custom Sounds", Side = "left" }
-		local customSoundsSection = AddSection27(p162, t103)
+		local customSoundsSection = AddSection27(tab, t103)
 		local AddTextBox8 = customSoundsSection.AddTextBox
 		local nameTextBoxOptions = { Label = "Name" }
 		local nameTextBox = AddTextBox8(customSoundsSection, nameTextBoxOptions)
@@ -22962,188 +22962,188 @@ local function f1518()
 		local savedDropdownOptions = { Label = "Saved", Options = customSounds:GetNames(), CloseOnSelect = true }
 		local savedDropdown = AddDropdown22(customSoundsSection, savedDropdownOptions)
 
-		local function f1712(p163)
-			savedDropdown:SetOptions(p163)
+		local function setSavedOptions(names)
+			savedDropdown:SetOptions(names)
 		end
 
-		savedDropdown:Connect(customSounds.changed, f1712)
+		savedDropdown:Connect(customSounds.changed, setSavedOptions)
 		local AddButton18 = customSoundsSection.AddButton
 		local removeButtonOptions = { Label = "Remove" }
 
 		function removeButtonOptions.OnClick()
-			local Value22 = savedDropdown.Value
-			if type(Value22) ~= "string" then
+			local selectedName = savedDropdown.Value
+			if type(selectedName) ~= "string" then
 				return
 			end
-			customSounds:Remove(Value22)
+			customSounds:Remove(selectedName)
 		end
 
 		AddButton18(customSoundsSection, removeButtonOptions)
 	end
 
-	local function f1713(p164, p165)
-		coroutine.wrap(up0)(p164, p165)
-		if not up1(p164, "_is_scope_active") then
+	local function scopeSetActiveHook_proto(scope, active)
+		coroutine.wrap(up0)(scope, active)
+		if not up1(scope, "_is_scope_active") then
 			return
 		end
 		if up2._isOverlayDirty then
-			local v195 = up1(p164, "CircleFrame")
-			local v196 = up1(p164, "BlurFrame")
-			local v197 = not up2._overlayHidden
-			v195.Visible = v197
-			v196.Visible = v197
+			local circleFrame = up1(scope, "CircleFrame")
+			local blurFrame = up1(scope, "BlurFrame")
+			local visible = not up2._overlayHidden
+			circleFrame.Visible = visible
+			blurFrame.Visible = visible
 		end
 		if up2._isReticleDirty then
-			up1(p164, "ReticleContainer").Visible = not up2._reticleHidden
+			up1(scope, "ReticleContainer").Visible = not up2._reticleHidden
 		end
 	end
 
-	local function f1714(p166)
-		if not (p166._restore == nil and (p166._overlayHidden or p166._reticleHidden)) then
+	local function ensureScopeHookLoaded_proto(self_)
+		if not (self_._restore == nil and (self_._overlayHidden or self_._reticleHidden)) then
 			return up0.VOID_OK
 		end
-		local v198 = up1(up2, "SetActive")
-		if v198 == nil then
+		local originalSetActive = up1(up2, "SetActive")
+		if originalSetActive == nil then
 			return (up0.err("ScopeOverride", "function_lookup", "Scope.SetActive not found"))
 		end
 
-		local function f1715(p167, p168)
-			coroutine.wrap(v198)(p167, p168)
-			if not up1(p167, "_is_scope_active") then
+		local function setActiveHook(scope, active)
+			coroutine.wrap(originalSetActive)(scope, active)
+			if not up1(scope, "_is_scope_active") then
 				return
 			end
-			if p166._isOverlayDirty then
-				local v199 = up1(p167, "CircleFrame")
-				local v200 = up1(p167, "BlurFrame")
-				local v201 = not p166._overlayHidden
-				v199.Visible = v201
-				v200.Visible = v201
+			if self_._isOverlayDirty then
+				local circleFrame = up1(scope, "CircleFrame")
+				local blurFrame = up1(scope, "BlurFrame")
+				local visible = not self_._overlayHidden
+				circleFrame.Visible = visible
+				blurFrame.Visible = visible
 			end
-			if p166._isReticleDirty then
-				up1(p167, "ReticleContainer").Visible = not p166._reticleHidden
+			if self_._isReticleDirty then
+				up1(scope, "ReticleContainer").Visible = not self_._reticleHidden
 			end
 		end
 
-		up3(up2, "SetActive", f1715)
-		local t110 = { original = v198 }
-		p166._restore = t110
+		up3(up2, "SetActive", setActiveHook)
+		local restore = { original = originalSetActive }
+		self_._restore = restore
 		return up0.VOID_OK
 	end
 
-	local function f1716(p169)
-		local _restore7 = p169._restore
-		if _restore7 == nil then
+	local function revertScopeHook_proto(self_)
+		local restore = self_._restore
+		if restore == nil then
 			return
 		end
-		p169._restore = nil
-		up0(up1, "SetActive", _restore7.original)
+		self_._restore = nil
+		up0(up1, "SetActive", restore.original)
 	end
 
-	local function f1717(p170)
-		p170:_Revert()
+	local function destroyScopeOverlay_proto(self_)
+		self_:_Revert()
 	end
 
-	local function f1718(p171, p172)
-		p171._reticleHidden = p172
-		p171._isReticleDirty = true
-		return (p171:_EnsureLoaded())
+	local function setReticleHidden_proto(self_, hidden)
+		self_._reticleHidden = hidden
+		self_._isReticleDirty = true
+		return (self_:_EnsureLoaded())
 	end
 
-	local function f1719()
+	local function loadScopeOverlay()
 		up0.al()
-		local v202 = up0.b()
+		local Result = up0.b()
 		local Scope = up0.ao().Scope
-		local t111 = {}
-		t111.__index = t111
+		local ScopeOverlay = {}
+		ScopeOverlay.__index = ScopeOverlay
 
-		function t111.new()
-			local t112 = {
+		function ScopeOverlay.new()
+			local overlay = {
 				_overlayHidden = false,
 				_isOverlayDirty = false,
 				_reticleHidden = false,
 				_isReticleDirty = false
 			}
-			return (setmetatable(t112, t111))
+			return (setmetatable(overlay, ScopeOverlay))
 		end
 
-		function t111:SetOverlayHidden(p173)
-			self._overlayHidden = p173
+		function ScopeOverlay:SetOverlayHidden(hidden)
+			self._overlayHidden = hidden
 			self._isOverlayDirty = true
 			return (self:_EnsureLoaded())
 		end
 
-		function t111:SetReticleHidden(p174)
-			self._reticleHidden = p174
+		function ScopeOverlay:SetReticleHidden(hidden)
+			self._reticleHidden = hidden
 			self._isReticleDirty = true
 			return (self:_EnsureLoaded())
 		end
 
-		function t111:_EnsureLoaded()
+		function ScopeOverlay:_EnsureLoaded()
 			if not (self._restore == nil and (self._overlayHidden or self._reticleHidden)) then
-				return v202.VOID_OK
+				return Result.VOID_OK
 			end
-			local v203 = up1(Scope, "SetActive")
-			if v203 == nil then
-				return (v202.err("ScopeOverride", "function_lookup", "Scope.SetActive not found"))
+			local originalSetActive = up1(Scope, "SetActive")
+			if originalSetActive == nil then
+				return (Result.err("ScopeOverride", "function_lookup", "Scope.SetActive not found"))
 			end
 
-			local function f1720(p175, p176)
-				coroutine.wrap(v203)(p175, p176)
-				if not up1(p175, "_is_scope_active") then
+			local function setActiveHook(scope, active)
+				coroutine.wrap(originalSetActive)(scope, active)
+				if not up1(scope, "_is_scope_active") then
 					return
 				end
 				if self._isOverlayDirty then
-					local v204 = up1(p175, "CircleFrame")
-					local v205 = up1(p175, "BlurFrame")
-					local v206 = not self._overlayHidden
-					v204.Visible = v206
-					v205.Visible = v206
+					local circleFrame = up1(scope, "CircleFrame")
+					local blurFrame = up1(scope, "BlurFrame")
+					local visible = not self._overlayHidden
+					circleFrame.Visible = visible
+					blurFrame.Visible = visible
 				end
 				if self._isReticleDirty then
-					up1(p175, "ReticleContainer").Visible = not self._reticleHidden
+					up1(scope, "ReticleContainer").Visible = not self._reticleHidden
 				end
 			end
 
-			up3(Scope, "SetActive", f1720)
-			local t113 = { original = v203 }
-			self._restore = t113
-			return v202.VOID_OK
+			up3(Scope, "SetActive", setActiveHook)
+			local restore = { original = originalSetActive }
+			self._restore = restore
+			return Result.VOID_OK
 		end
 
-		function t111:_Revert()
-			local _restore8 = self._restore
-			if _restore8 == nil then
+		function ScopeOverlay:_Revert()
+			local restore = self._restore
+			if restore == nil then
 				return
 			end
 			self._restore = nil
-			up0(Scope, "SetActive", _restore8.original)
+			up0(Scope, "SetActive", restore.original)
 		end
 
-		function t111:Destroy()
+		function ScopeOverlay:Destroy()
 			self:_Revert()
 		end
 
-		return t111
+		return ScopeOverlay
 	end
 
-	local function f1721(p177, _)
-		local AddDropdown23 = p177.AddDropdown
+	local function buildSoundVisualizerOptions(section, _)
+		local AddDropdown23 = section.AddDropdown
 		local modeDropdownOptions = {
 			Label = "Mode",
 			Options = table.create(2),
 			Config = table.create(3)
 		}
-		AddDropdown23(p177, modeDropdownOptions)
-		local AddToggle56 = p177.AddToggle
+		AddDropdown23(section, modeDropdownOptions)
+		local AddToggle56 = section.AddToggle
 		local loudnessColorToggleOptions = { Label = "Loudness Color", Config = table.create(3) }
-		AddToggle56(p177, loudnessColorToggleOptions)
+		AddToggle56(section, loudnessColorToggleOptions)
 		local bindColor4 = up0.bindColor
-		local AddColor7 = p177.AddColor
+		local AddColor7 = section.AddColor
 		local t116 = { Label = "Color" }
-		bindColor4(AddColor7(p177, t116), (table.create(3)))
+		bindColor4(AddColor7(section, t116), (table.create(3)))
 	end
 
-	local function f1722()
+	local function getHeaderHeight()
 		local v207 = up0.IsMobile()
 		v207 = v207 and 60 or 50
 		return v207
@@ -23158,37 +23158,37 @@ local function f1518()
 		return t117.c
 	end
 
-	local function f1724()
+	local function newSignalPair_proto()
 		return (up0(table.create(1), up1))
 	end
 
-	local function f1725(p178)
-		if p178._isHookLoaded then
+	local function loadJumpPowerHook_proto(self_)
+		if self_._isHookLoaded then
 			return up0.VOID_OK
 		end
-		local v208 = up1(up1(getmetatable(up2), "__index"), "_HookFighter")
-		if v208 == nil then
+		local hookFighter = up1(up1(getmetatable(up2), "__index"), "_HookFighter")
+		if hookFighter == nil then
 			return (up0.err("JumpPower", "function_lookup", "Failed to find `HookFighter`"))
 		end
-		p178:_ReplaceConstantsWithProxy(v208)
-		local v209 = up1(up2, "LocalFighter")
-		if v209 == nil then
-			p178._isHookLoaded = true
+		self_:_ReplaceConstantsWithProxy(hookFighter)
+		local localFighter = up1(up2, "LocalFighter")
+		if localFighter == nil then
+			self_._isHookLoaded = true
 			return up0.VOID_OK
 		end
-		local v210 = nil
-		local t118 = up1(up1(v209, "EntityAdded"), "_handlerListHead")
-		while t118 and v210 == nil do
-			local v211 = up1(t118, "_fn")
-			for _, v212 in debug.getconstants(v211) do
-				if v212 == "CustomGravity" then
-					v210 = v211
+		local entityAddedCallback = nil
+		local handlerNode = up1(up1(localFighter, "EntityAdded"), "_handlerListHead")
+		while handlerNode and entityAddedCallback == nil do
+			local handler = up1(handlerNode, "_fn")
+			for _, constant in debug.getconstants(handler) do
+				if constant == "CustomGravity" then
+					entityAddedCallback = handler
 					break
 				end
 			end
-			t118 = t118._next
+			handlerNode = handlerNode._next
 		end
-		if v210 == nil then
+		if entityAddedCallback == nil then
 			game:GetService("Players").LocalPlayer:Kick("JumpPower error: ent")
 			return (up0.err(
 				"JumpPower",
@@ -23196,14 +23196,14 @@ local function f1518()
 				"Failed to find `EntityAdded` callback"
 			))
 		end
-		p178:_ReplaceConstantsWithProxy(v210)
-		for v213, _ in debug.getprotos(v210) do
-			local v214 = debug.getproto(v210, v213, true)[1]
-			if v214 ~= nil then
-				p178:_ReplaceConstantsWithProxy(v214)
+		self_:_ReplaceConstantsWithProxy(entityAddedCallback)
+		for protoIndex, _ in debug.getprotos(entityAddedCallback) do
+			local proto = debug.getproto(entityAddedCallback, protoIndex, true)[1]
+			if proto ~= nil then
+				self_:_ReplaceConstantsWithProxy(proto)
 			end
 		end
-		p178._isHookLoaded = true
+		self_._isHookLoaded = true
 		return up0.VOID_OK
 	end
 
@@ -23216,75 +23216,75 @@ local function f1518()
 		return t119.c
 	end
 
-	local function f1727(p179, p180, p181, p182, p183, p184)
-		local v215 = Instance.new(up0)
-		v215.BackgroundTransparency = 1
-		v215.Size = UDim2.fromScale(1, 1)
-		v215.BorderSizePixel = 0
-		v215.Parent = p181
-		local v216 = Instance.new(up0)
-		v216.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		v216.Size = UDim2.new(1, 0, 0, 85)
-		v216.BorderSizePixel = 0
-		v216.Parent = v215
+	local function buildTabPage(deps, theme, parent, searchOptions, title, description)
+		local holder = Instance.new(up0)
+		holder.BackgroundTransparency = 1
+		holder.Size = UDim2.fromScale(1, 1)
+		holder.BorderSizePixel = 0
+		holder.Parent = parent
+		local top = Instance.new(up0)
+		top.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		top.Size = UDim2.new(1, 0, 0, 85)
+		top.BorderSizePixel = 0
+		top.Parent = holder
 		local uiGradient = Instance.new("UIGradient")
 		uiGradient.Rotation = 90
-		p180:BindGradient(uiGradient, (table.create(2)))
-		uiGradient.Parent = v216
-		local v218 = Instance.new(up0)
-		v218.Position = UDim2.new(0, 1, 1, -1)
-		v218.Size = UDim2.new(1, -1, 0, 1)
-		v218.BorderSizePixel = 0
-		p180:Bind(v218, "BackgroundColor3", "Outline")
-		v218.Parent = v216
-		local v219 = Instance.new(up0)
-		v219.BackgroundTransparency = 1
-		v219.Position = UDim2.fromOffset(17, 0)
-		v219.Size = UDim2.new(1, -17, 0, 85)
-		v219.BorderSizePixel = 0
-		v219.Parent = v216
-		local v220 = Instance.new(up0)
-		v220.BackgroundTransparency = 1
-		v220.AnchorPoint = Vector2.new(0, 0.5)
-		v220.Position = UDim2.fromScale(0, 0.5)
-		v220.BorderSizePixel = 0
-		v220.AutomaticSize = Enum.AutomaticSize.XY
-		v220.Parent = v219
+		theme:BindGradient(uiGradient, (table.create(2)))
+		uiGradient.Parent = top
+		local divider = Instance.new(up0)
+		divider.Position = UDim2.new(0, 1, 1, -1)
+		divider.Size = UDim2.new(1, -1, 0, 1)
+		divider.BorderSizePixel = 0
+		theme:Bind(divider, "BackgroundColor3", "Outline")
+		divider.Parent = top
+		local header = Instance.new(up0)
+		header.BackgroundTransparency = 1
+		header.Position = UDim2.fromOffset(17, 0)
+		header.Size = UDim2.new(1, -17, 0, 85)
+		header.BorderSizePixel = 0
+		header.Parent = top
+		local titleStack = Instance.new(up0)
+		titleStack.BackgroundTransparency = 1
+		titleStack.AnchorPoint = Vector2.new(0, 0.5)
+		titleStack.Position = UDim2.fromScale(0, 0.5)
+		titleStack.BorderSizePixel = 0
+		titleStack.AutomaticSize = Enum.AutomaticSize.XY
+		titleStack.Parent = header
 		local uiListLayout = Instance.new("UIListLayout")
 		uiListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 		uiListLayout.Padding = UDim.new(0, 2)
 		uiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-		uiListLayout.Parent = v220
+		uiListLayout.Parent = titleStack
 		local textLabel = Instance.new("TextLabel")
 		textLabel.TextSize = 18
 		textLabel.FontFace = up1
-		textLabel.Text = p183
+		textLabel.Text = title
 		textLabel.BackgroundTransparency = 1
 		textLabel.BorderSizePixel = 0
 		textLabel.AutomaticSize = Enum.AutomaticSize.XY
-		p180:Bind(textLabel, "TextColor3", "TextColor")
-		textLabel.Parent = v220
+		theme:Bind(textLabel, "TextColor3", "TextColor")
+		textLabel.Parent = titleStack
 		local textLabel2 = Instance.new("TextLabel")
 		textLabel2.TextSize = 13
 		textLabel2.FontFace = up2
-		textLabel2.Text = p184
+		textLabel2.Text = description
 		textLabel2.BackgroundTransparency = 1
 		textLabel2.BorderSizePixel = 0
 		textLabel2.AutomaticSize = Enum.AutomaticSize.XY
-		p180:Bind(textLabel2, "TextColor3", "Unselected")
-		textLabel2.Parent = v220
-		local v224 = up3(p179, p180, v219, p182)
-		local v225 = Instance.new(up0)
-		v225.Position = UDim2.fromOffset(0, 85)
-		v225.Size = UDim2.new(1, 0, 1, -85)
-		v225.BorderSizePixel = 0
-		v225.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		v225.ZIndex = 0
-		v225.Parent = v215
+		theme:Bind(textLabel2, "TextColor3", "Unselected")
+		textLabel2.Parent = titleStack
+		local searchBar = up3(deps, theme, header, searchOptions)
+		local background = Instance.new(up0)
+		background.Position = UDim2.fromOffset(0, 85)
+		background.Size = UDim2.new(1, 0, 1, -85)
+		background.BorderSizePixel = 0
+		background.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		background.ZIndex = 0
+		background.Parent = holder
 		local uiGradient2 = Instance.new("UIGradient")
 		uiGradient2.Rotation = 90
-		p180:BindGradient(uiGradient2, (table.create(2)))
-		uiGradient2.Parent = v225
+		theme:BindGradient(uiGradient2, (table.create(2)))
+		uiGradient2.Parent = background
 		local scrollingFrame = Instance.new("ScrollingFrame")
 		scrollingFrame.BackgroundTransparency = 1
 		scrollingFrame.Position = UDim2.fromOffset(17, 85)
@@ -23296,26 +23296,26 @@ local function f1518()
 		scrollingFrame.ScrollBarThickness = 0
 		scrollingFrame.ScrollingDirection = Enum.ScrollingDirection.X
 		scrollingFrame.ElasticBehavior = Enum.ElasticBehavior.Never
-		p180:Bind(scrollingFrame, "ScrollBarImageColor3", "Accent")
-		scrollingFrame.Parent = v216
+		theme:Bind(scrollingFrame, "ScrollBarImageColor3", "Accent")
+		scrollingFrame.Parent = top
 		local uiListLayout2 = Instance.new("UIListLayout")
 		uiListLayout2.VerticalAlignment = Enum.VerticalAlignment.Center
 		uiListLayout2.FillDirection = Enum.FillDirection.Horizontal
 		uiListLayout2.Padding = UDim.new(0, 4)
 		uiListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
 		uiListLayout2.Parent = scrollingFrame
-		local t120 = {
-			Holder = v215,
-			Top = v216,
+		local page = {
+			Holder = holder,
+			Top = top,
 			Subtabs = scrollingFrame,
 			TitleLabel = textLabel,
 			DescriptionLabel = textLabel2,
-			SearchBar = v224
+			SearchBar = searchBar
 		}
-		return t120
+		return page
 	end
 
-	local function f1728()
+	local function removeButton_proto()
 		if up0._buttons[up1] == up2 then
 			up0._buttons[up1] = nil
 		end
@@ -23331,150 +23331,150 @@ local function f1518()
 		return t121.c
 	end
 
-	local function f1730(p185, p186)
-		local v229
-		v229 = not (compareinstances == nil)
-		if v229 then
-			v229 = compareinstances(p185, p186)
+	local function sameInstance(a, b)
+		local same
+		same = not (compareinstances == nil)
+		if same then
+			same = compareinstances(a, b)
 		end
-		if not v229 then
-			v229 = p185 == p186
+		if not same then
+			same = a == b
 		end
-		return v229
+		return same
 	end
 
-	local function f1731(p187, p188, p189)
-		local t122 = p187._proposed[p188]
-		local v230
-		v230 = not (t122 == nil)
-		if v230 then
-			v230 = t122[p189] == true
+	local function isProposed(self_, owner, key)
+		local proposals = self_._proposed[owner]
+		local proposed
+		proposed = not (proposals == nil)
+		if proposed then
+			proposed = proposals[key] == true
 		end
-		return v230
+		return proposed
 	end
 
-	local function f1732(p190)
-		local t123 = up0
-		local Set7 = t123.Set
-		local t124 = { Rgb = p190, Alpha = up0.Alpha, Stops = up0.Value.Stops }
-		Set7(t123, t124, false)
+	local function setGradientRgb_proto(rgb)
+		local picker = up0
+		local Set7 = picker.Set
+		local value = { Rgb = rgb, Alpha = up0.Alpha, Stops = up0.Value.Stops }
+		Set7(picker, value, false)
 	end
 
-	local function f1733()
+	local function downloadSound_proto()
 		return (game:HttpGet(up0))
 	end
 
-	local function f1734(p191, p192)
-		local v231 = string.format("%08x", up0.str(up1))
-		local v232 = up2(up1, up3, ".ogg")
-		local v233 = string.format("%s/%s", tostring(up4), tostring(v231 .. v232))
-		if not isfile(v233) then
-			local function f1735()
+	local function loadSoundAsset_proto(resolve, reject)
+		local hash = string.format("%08x", up0.str(up1))
+		local extension = up2(up1, up3, ".ogg")
+		local path = string.format("%s/%s", tostring(up4), tostring(hash .. extension))
+		if not isfile(path) then
+			local function download()
 				return (game:HttpGet(up0))
 			end
 
-			local v234, v235
-			v235, v234 = up5(f1735)
-			if not (v235 and type(v234) == "string") then
+			local data, ok
+			ok, data = up5(download)
+			if not (ok and type(data) == "string") then
 				local _ = string.format
 				tostring(up1)
-				tostring(tostring(v234))
+				tostring(tostring(data))
 				string.format()
-				return (p192())
+				return (reject())
 			end
-			local t125 = up6(up4)
-			if not t125.ok then
-				string.format("ensureFolderPath failed: %s", tostring(t125.error.detail))
-				return (p192())
+			local folderResult = up6(up4)
+			if not folderResult.ok then
+				string.format("ensureFolderPath failed: %s", tostring(folderResult.error.detail))
+				return (reject())
 			end
-			local v236, v237
-			v237, v236 = up5(writefile, v233, v234)
-			if not v237 then
+			local writeError, written
+			written, writeError = up5(writefile, path, data)
+			if not written then
 				local _ = string.format
-				tostring(v233)
-				tostring(tostring(v236))
+				tostring(path)
+				tostring(tostring(writeError))
 				string.format()
-				return (p192())
+				return (reject())
 			end
 		end
-		local v238, v239
-		v239, v238 = up5(getcustomasset, v233)
-		if v239 and type(v238) == "string" then
-			p191(v238)
+		local asset, loaded
+		loaded, asset = up5(getcustomasset, path)
+		if loaded and type(asset) == "string" then
+			resolve(asset)
 			return
 		end
 		local _ = string.format
-		tostring(v233)
-		tostring(tostring(v238))
+		tostring(path)
+		tostring(tostring(asset))
 		string.format()
-		return (p192())
+		return (reject())
 	end
 
-	local function f1736(p193)
-		local function f1737(p194, p195)
-			local v240 = string.format("%08x", up0.str(p193))
-			local v241 = up2(p193, up3, ".ogg")
-			local v242 = string.format("%s/%s", tostring(up4), tostring(v240 .. v241))
-			if not isfile(v242) then
-				local function f1738()
-					return (game:HttpGet(p193))
+	local function getSoundAsset(url)
+		local function loadSoundAsset(resolve, reject)
+			local hash = string.format("%08x", up0.str(url))
+			local extension = up2(url, up3, ".ogg")
+			local path = string.format("%s/%s", tostring(up4), tostring(hash .. extension))
+			if not isfile(path) then
+				local function download()
+					return (game:HttpGet(url))
 				end
 
-				local v243, v244
-				v244, v243 = up5(f1738)
-				if not (v244 and type(v243) == "string") then
+				local data, ok
+				ok, data = up5(download)
+				if not (ok and type(data) == "string") then
 					local _ = string.format
-					tostring(p193)
-					tostring(tostring(v243))
+					tostring(url)
+					tostring(tostring(data))
 					string.format()
-					return (p195())
+					return (reject())
 				end
-				local t126 = up6(up4)
-				if not t126.ok then
+				local folderResult = up6(up4)
+				if not folderResult.ok then
 					string.format(
 						"ensureFolderPath failed: %s",
-						tostring(t126.error.detail)
+						tostring(folderResult.error.detail)
 					)
-					return (p195())
+					return (reject())
 				end
-				local v245, v246
-				v246, v245 = up5(writefile, v242, v243)
-				if not v246 then
+				local writeError, written
+				written, writeError = up5(writefile, path, data)
+				if not written then
 					local _ = string.format
-					tostring(v242)
-					tostring(tostring(v245))
+					tostring(path)
+					tostring(tostring(writeError))
 					string.format()
-					return (p195())
+					return (reject())
 				end
 			end
-			local v247, v248
-			v248, v247 = up5(getcustomasset, v242)
-			if v248 and type(v247) == "string" then
-				p194(v247)
+			local asset, loaded
+			loaded, asset = up5(getcustomasset, path)
+			if loaded and type(asset) == "string" then
+				resolve(asset)
 				return
 			end
 			local _ = string.format
-			tostring(v242)
-			tostring(tostring(v247))
+			tostring(path)
+			tostring(tostring(asset))
 			string.format()
-			return (p195())
+			return (reject())
 		end
 
-		return (up0.new(f1737))
+		return (up0.new(loadSoundAsset))
 	end
 
-	local function f1739(p196)
-		return up0[p196]
+	local function lookup(key)
+		return up0[key]
 	end
 
-	local function f1740()
+	local function getEditProfile_proto()
 		if up0:Get(up1, true) == false then
 			return nil
 		end
 		return (up0:GetEditProfile())
 	end
 
-	local function f1741()
+	local function cancelEmote_proto()
 		up0(
 			up1(getmetatable(getmetatable(up2).__index).__index, "CancelEmote"),
 			up2,
@@ -23500,13 +23500,13 @@ local function f1518()
 		return t128.c
 	end
 
-	local function f1744()
+	local function syncSliderFromSource_proto()
 		if up0 or up1.Dragging then
 			return
 		end
-		local v249 = up2.read()
-		if v249 ~= nil then
-			up1:Set(v249, true)
+		local value = up2.read()
+		if value ~= nil then
+			up1:Set(value, true)
 		end
 	end
 
@@ -23525,17 +23525,17 @@ local function f1518()
 		return false
 	end
 
-	local function f1747(p197, p198, _)
-		if up0(p197, p198) == nil then
-			local function f1748(...)
+	local function waitForAttachment(parent, attachmentName, _)
+		if up0(parent, attachmentName) == nil then
+			local function isOtherAttachment(...)
 				repeat
 					local t131 = ...
-				until t131:IsA("Attachment") and t131.Name ~= p198
+				until t131:IsA("Attachment") and t131.Name ~= attachmentName
 				return false
 			end
 
-			local timeout = up1.fromEvent(p197.DescendantAdded, f1748).timeout
-			string.format("timed out waiting for attachment %s", tostring(p198))
+			local timeout = up1.fromEvent(parent.DescendantAdded, isOtherAttachment).timeout
+			string.format("timed out waiting for attachment %s", tostring(attachmentName))
 			return (timeout())
 		end
 		local v250
@@ -23550,233 +23550,233 @@ local function f1518()
 		end
 	end
 
-	local function f1749(p199, p200)
-		p199._enabled = p200
-		p199._inputBinding:SetEnabled(p200)
+	local function setInputEnabled_proto(self_, enabled)
+		self_._enabled = enabled
+		self_._inputBinding:SetEnabled(enabled)
 		return up0.VOID_OK
 	end
 
-	local function f1750(p201, p202, p203)
-		local v251 = up0(p201, p202)
-		local v252 = up1[v251]
-		if v252 ~= nil then
-			return v252
+	local function callElevatedCached_proto(target, method, arg)
+		local cacheKey = up0(target, method)
+		local cached = up1[cacheKey]
+		if cached ~= nil then
+			return cached
 		end
-		local v253 = getthreadidentity()
+		local oldIdentity = getthreadidentity()
 		setthreadidentity(8)
-		local v254 = up2(p201, p202, p203)
-		setthreadidentity(v253)
-		up1[v251] = v254
-		return v254
+		local result = up2(target, method, arg)
+		setthreadidentity(oldIdentity)
+		up1[cacheKey] = result
+		return result
 	end
 
-	local function f1751()
-		local _entries3 = up0._entries
-		local v255 = nil
+	local function refreshAllScopes_proto()
+		local entries = up0._entries
+		local scope = nil
 		while true do
 			local _
-			v255, _ = _entries3(nil, v255)
-			if v255 == nil then
+			scope, _ = entries(nil, scope)
+			if scope == nil then
 				break
 			end
-			up0:_RefreshScope(v255, up1)
+			up0:_RefreshScope(scope, up1)
 		end
 	end
 
-	local function f1752(p204)
+	local function extendTrove_proto(parent)
 		local _ = setmetatable
-		local t132 = {
+		local child = {
 			_objs = {},
-			_name = p204._name
+			_name = parent._name
 		}
-		local v256 = setmetatable(t132, up0)
-		local _objs = p204._objs
-		local v257 = #_objs
-		_objs[v257 + 1] = v256
-		_objs[v257 + 2] = "Destroy"
-		return v256
+		local trove = setmetatable(child, up0)
+		local objects = parent._objs
+		local count = #objects
+		objects[count + 1] = trove
+		objects[count + 2] = "Destroy"
+		return trove
 	end
 
-	local function f1753(p205)
-		local t133 = { _fighterState = p205 }
-		return (setmetatable(t133, up0))
+	local function newLoadoutPicker_proto(fighterState)
+		local picker = { _fighterState = fighterState }
+		return (setmetatable(picker, up0))
 	end
 
-	local function f1754()
+	local function forcePickLoadout_proto()
 		return (up0:_ForcePickLoadoutAsync(up1))
 	end
 
-	local function f1755(p206, p207)
-		if not (up0(p206._fighterState.inner, "CanPickWeapons") and
-			p206._fighterState.character.state.alive) then
+	local function pickLoadoutAsync_proto(self_, loadout)
+		if not (up0(self_._fighterState.inner, "CanPickWeapons") and
+			self_._fighterState.character.state.alive) then
 			return (up1.reject())
 		end
-		if #p206._fighterState:GetItems() < 4 then
-			return (p206:_ForcePickLoadoutAsync(p207))
+		if #self_._fighterState:GetItems() < 4 then
+			return (self_:_ForcePickLoadoutAsync(loadout))
 		end
-		if not up0(p206._fighterState.inner, "IsInShootingRange") then
+		if not up0(self_._fighterState.inner, "IsInShootingRange") then
 			return (up1.reject())
 		end
 
-		local function f1756()
-			return (p206:_ForcePickLoadoutAsync(p207))
+		local function forcePick()
+			return (self_:_ForcePickLoadoutAsync(loadout))
 		end
 
-		return (p206:_TrashRangeItemsAsync():andThen(f1756))
+		return (self_:_TrashRangeItemsAsync():andThen(forcePick))
 	end
 
-	local function f1757()
+	local function disconnect_proto()
 		up0:Disconnect()
 	end
 
-	local function f1758()
+	local function resolve_proto()
 		up0()
 	end
 
-	local function f1759(p208)
-		local function f1760()
-			p208()
+	local function waitForItemAdded_proto(resolve)
+		local function onItemAdded()
+			resolve()
 		end
 
-		up0 = up1(up2._fighterState.inner.ItemAdded, f1760)
+		up0 = up1(up2._fighterState.inner.ItemAdded, onItemAdded)
 	end
 
-	local function f1761(p209, p210)
-		local f1762 = up0
-		f1762(up1, p210)
-		f1762 = nil
+	local function forcePickLoadoutAsync_proto(self_, loadout)
+		local connection = up0
+		connection(up1, loadout)
+		connection = nil
 
-		local function f1763(p211)
-			local function f1764()
-				p211()
+		local function waitForItemAdded(resolve)
+			local function onItemAdded()
+				resolve()
 			end
 
-			f1762 = up1(p209._fighterState.inner.ItemAdded, f1764)
+			connection = up1(self_._fighterState.inner.ItemAdded, onItemAdded)
 		end
 
-		local function f1765()
-			f1762:Disconnect()
+		local function disconnect()
+			connection:Disconnect()
 		end
 
-		return (up2.new(f1763):timeout(1.5):finally(f1765))
+		return (up2.new(waitForItemAdded):timeout(1.5):finally(disconnect))
 	end
 
-	local function f1766(p212)
-		local function f1767()
-			p212()
+	local function waitForItemRemoved_proto(resolve)
+		local function onItemRemoved()
+			resolve()
 		end
 
-		local v258 = up1(up2._fighterState.inner.ItemRemoved, f1767)
-		up0 = v258
+		local connection = up1(up2._fighterState.inner.ItemRemoved, onItemRemoved)
+		up0 = connection
 	end
 
-	local function f1768()
+	local function disconnectRemoved_proto()
 		up0:Disconnect()
 	end
 
-	local function f1769(p213)
-		local f1770 = up0
-		f1770(up1)
-		f1770 = nil
+	local function trashRangeItemsAsync_proto(self_)
+		local connection = up0
+		connection(up1)
+		connection = nil
 
-		local function f1771(p214)
-			local function f1772()
-				p214()
+		local function waitForItemRemoved(resolve)
+			local function onItemRemoved()
+				resolve()
 			end
 
-			local v259 = up1(p213._fighterState.inner.ItemRemoved, f1772)
-			f1770 = v259
+			local newConnection = up1(self_._fighterState.inner.ItemRemoved, onItemRemoved)
+			connection = newConnection
 		end
 
-		local function f1773()
-			f1770:Disconnect()
+		local function disconnect()
+			connection:Disconnect()
 		end
 
-		return (up2.new(f1771):timeout(1.5):finally(f1773))
+		return (up2.new(waitForItemRemoved):timeout(1.5):finally(disconnect))
 	end
 
-	local function f1774()
+	local function loadLoadoutPicker()
 		up0.aT()
-		local v260 = up0.A()
+		local Promise = up0.A()
 		local PickWeaponsRemote = up0.ao().PickWeaponsRemote
 		local ShootingRangeTrashItemsEvent = up0.ao().ShootingRangeTrashItemsEvent
 		up0.t()
-		local v261 = up0.aJ()
-		local v262 = up0.a2()
-		local t134 = {}
-		t134.__index = t134
+		local callMethod = up0.aJ()
+		local connectOnce = up0.a2()
+		local LoadoutPicker = {}
+		LoadoutPicker.__index = LoadoutPicker
 
-		function t134.new(p215)
-			local t135 = { _fighterState = p215 }
-			return (setmetatable(t135, t134))
+		function LoadoutPicker.new(fighterState)
+			local picker = { _fighterState = fighterState }
+			return (setmetatable(picker, LoadoutPicker))
 		end
 
-		function t134:PickLoadoutAsync(p216)
-			if not (v261(self._fighterState.inner, "CanPickWeapons") and
+		function LoadoutPicker:PickLoadoutAsync(loadout)
+			if not (callMethod(self._fighterState.inner, "CanPickWeapons") and
 				self._fighterState.character.state.alive) then
-				return (v260.reject())
+				return (Promise.reject())
 			end
 			if #self._fighterState:GetItems() < 4 then
-				return (self:_ForcePickLoadoutAsync(p216))
+				return (self:_ForcePickLoadoutAsync(loadout))
 			end
-			if not v261(self._fighterState.inner, "IsInShootingRange") then
-				return (v260.reject())
-			end
-
-			local function f1775()
-				return (self:_ForcePickLoadoutAsync(p216))
+			if not callMethod(self._fighterState.inner, "IsInShootingRange") then
+				return (Promise.reject())
 			end
 
-			return (self:_TrashRangeItemsAsync():andThen(f1775))
+			local function forcePick()
+				return (self:_ForcePickLoadoutAsync(loadout))
+			end
+
+			return (self:_TrashRangeItemsAsync():andThen(forcePick))
 		end
 
-		function t134:_ForcePickLoadoutAsync(p217)
-			local f1776 = up0
-			f1776(PickWeaponsRemote, p217)
-			f1776 = nil
+		function LoadoutPicker:_ForcePickLoadoutAsync(loadout)
+			local connection = up0
+			connection(PickWeaponsRemote, loadout)
+			connection = nil
 
-			local function f1777(p218)
-				local function f1778()
-					p218()
+			local function waitForItemAdded(resolve)
+				local function onItemAdded()
+					resolve()
 				end
 
-				f1776 = v262(self._fighterState.inner.ItemAdded, f1778)
+				connection = connectOnce(self._fighterState.inner.ItemAdded, onItemAdded)
 			end
 
-			local function f1779()
-				f1776:Disconnect()
+			local function disconnect()
+				connection:Disconnect()
 			end
 
-			return (v260.new(f1777):timeout(1.5):finally(f1779))
+			return (Promise.new(waitForItemAdded):timeout(1.5):finally(disconnect))
 		end
 
-		function t134:_TrashRangeItemsAsync()
-			local f1780 = up0
-			f1780(ShootingRangeTrashItemsEvent)
-			f1780 = nil
+		function LoadoutPicker:_TrashRangeItemsAsync()
+			local connection = up0
+			connection(ShootingRangeTrashItemsEvent)
+			connection = nil
 
-			local function f1781(p219)
-				local function f1782()
-					p219()
+			local function waitForItemRemoved(resolve)
+				local function onItemRemoved()
+					resolve()
 				end
 
-				local v263 = v262(self._fighterState.inner.ItemRemoved, f1782)
-				f1780 = v263
+				local newConnection = connectOnce(self._fighterState.inner.ItemRemoved, onItemRemoved)
+				connection = newConnection
 			end
 
-			local function f1783()
-				f1780:Disconnect()
+			local function disconnect()
+				connection:Disconnect()
 			end
 
-			return (v260.new(f1781):timeout(1.5):finally(f1783))
+			return (Promise.new(waitForItemRemoved):timeout(1.5):finally(disconnect))
 		end
 
-		return t134
+		return LoadoutPicker
 	end
 
-	local function f1784(p220)
-		up0._notified[p220] = nil
-		up0._speedTimers[p220] = nil
+	local function forgetPlayer_proto(player)
+		up0._notified[player] = nil
+		up0._speedTimers[player] = nil
 	end
 
 	local function lazyModule_d2()
@@ -23788,113 +23788,113 @@ local function f1518()
 		return t136.c
 	end
 
-	local function f1786(p221)
-		local v264, v265
-		v265, v264 = p221:_GetSelectedPresetName("load state config")
-		if v264 ~= nil then
-			return v264
+	local function loadStateConfig_proto(self_)
+		local failure, presetName
+		presetName, failure = self_:_GetSelectedPresetName("load state config")
+		if failure ~= nil then
+			return failure
 		end
-		local Load2 = p221._stateConfig:Load(v265)
-		if Load2.success then
-			local t137 = { success = true }
-			return t137
+		local loaded = self_._stateConfig:Load(presetName)
+		if loaded.success then
+			local success = { success = true }
+			return success
 		end
-		local t138 = {
+		local failure2 = {
 			success = false,
 			message = string.format(
 				"Failed to load state config: %s",
-				tostring(Load2.message)
+				tostring(loaded.message)
 			)
 		}
-		return t138
+		return failure2
 	end
 
 	local function f1787()
 		return 0
 	end
 
-	local function f1788(p222)
-		local enemies = p222._fighters.enemies
-		local v266 = nil
+	local function enemyHasSlingshot_proto(self_)
+		local enemies = self_._fighters.enemies
+		local key = nil
 		while true do
-			local t139
-			v266, t139 = enemies(nil, v266)
-			if v266 == nil then
+			local enemy
+			key, enemy = enemies(nil, key)
+			if key == nil then
 				break
 			end
-			local EquippedItemAsGun2 = t139.itemObserver:EquippedItemAsGun()
-			if not (EquippedItemAsGun2 == nil or EquippedItemAsGun2.isRaycast or
-				EquippedItemAsGun2.name ~= "Slingshot") then
+			local gun = enemy.itemObserver:EquippedItemAsGun()
+			if not (gun == nil or gun.isRaycast or
+				gun.name ~= "Slingshot") then
 				return true
 			end
 		end
 		return false
 	end
 
-	local function f1789()
+	local function markDone_proto()
 		up0 = true
 	end
 
-	local function f1790()
+	local function createHumanoidModel_proto()
 		return (up0:CreateHumanoidModelFromDescriptionAsync(up1, up2))
 	end
 
-	local function f1791()
-		local function f1792()
+	local function createAndResolve_proto()
+		local function create()
 			return (up0:CreateHumanoidModelFromDescriptionAsync(up1, up2))
 		end
 
-		local v267, _
-		_, v267 = up0(f1792)
-		up4(v267)
+		local model, _
+		_, model = up0(create)
+		up4(model)
 	end
 
-	local function f1793(p223, p224, p225)
-		local v268 = false
+	local function createHumanoidModelExecutor_proto(resolveUnused, resolve, onCancel)
+		local cancelled = false
 
-		local function f1794()
-			v268 = true
+		local function cancel()
+			cancelled = true
 		end
 
-		p225(f1794)
+		onCancel(cancel)
 
-		local function f1795()
-			local function f1796()
+		local function run()
+			local function create()
 				return (up0:CreateHumanoidModelFromDescriptionAsync(up1, up2))
 			end
 
-			local v269, _
-			_, v269 = up0(f1796)
-			p224(v269)
+			local model, _
+			_, model = up0(create)
+			resolve(model)
 		end
 
-		task.spawn(f1795)
+		task.spawn(run)
 	end
 
-	local function f1797(p226, p227)
-		local function f1798(p228, p229, p230)
-			local v270 = false
+	local function createHumanoidModelAsync(description, rigType)
+		local function executor(resolveUnused, resolve, onCancel)
+			local cancelled = false
 
-			local function f1799()
-				v270 = true
+			local function cancel()
+				cancelled = true
 			end
 
-			p230(f1799)
+			onCancel(cancel)
 
-			local function f1800()
-				local function f1801()
-					return (up0:CreateHumanoidModelFromDescriptionAsync(p226, p227))
+			local function run()
+				local function create()
+					return (up0:CreateHumanoidModelFromDescriptionAsync(description, rigType))
 				end
 
-				local v271, _
-				_, v271 = up0(f1801)
-				p229(v271)
+				local model, _
+				_, model = up0(create)
+				resolve(model)
 			end
 
-			task.spawn(f1800)
+			task.spawn(run)
 		end
 
-		return (up0.new(f1798))
+		return (up0.new(executor))
 	end
 
 	local function lazyModule_f_()
@@ -23906,8 +23906,8 @@ local function f1518()
 		return t140.c
 	end
 
-	local function f1803(p231)
-		p231._trove:Destroy()
+	local function destroyTrove_proto(self_)
+		self_._trove:Destroy()
 	end
 
 	local function f1804(...)
@@ -23940,18 +23940,18 @@ local function f1518()
 		until t143._identities[v277].presentedDisplayName == v276
 	end
 
-	local function f1808(p232)
-		local v278 = up0.new("identities")
-		local t144 = {
-			_trove = v278,
+	local function newIdentities_proto(players)
+		local trove = up0.new("identities")
+		local identities = {
+			_trove = trove,
 			_identities = {},
-			identityRegistered = v278:Add(up1.new()),
-			identityChanged = v278:Add(up1.new()),
-			identityRemoved = v278:Add(up1.new())
+			identityRegistered = trove:Add(up1.new()),
+			identityChanged = trove:Add(up1.new()),
+			identityRemoved = trove:Add(up1.new())
 		}
-		setmetatable(t144, up2)
-		t144:_Initialize(p232)
-		return t144
+		setmetatable(identities, up2)
+		identities:_Initialize(players)
+		return identities
 	end
 
 	local function f1809(...)
@@ -23966,30 +23966,30 @@ local function f1518()
 		return
 	end
 
-	local function f1810(p233)
-		local t147 = { name = p233.Name, displayName = p233.DisplayName }
-		up0._identities[p233] = t147
-		up0.identityRegistered:Fire(p233, t147)
+	local function registerIdentity_proto(player)
+		local identity = { name = player.Name, displayName = player.DisplayName }
+		up0._identities[player] = identity
+		up0.identityRegistered:Fire(player, identity)
 	end
 
-	local function f1811(p234)
-		up0.identityRemoved:Fire(p234)
-		up0._identities[p234] = nil
+	local function removeIdentity_proto(player)
+		up0.identityRemoved:Fire(player)
+		up0._identities[player] = nil
 	end
 
-	local function f1812(p235, p236)
-		local function f1813(p237)
-			local t148 = { name = p237.Name, displayName = p237.DisplayName }
-			p235._identities[p237] = t148
-			p235.identityRegistered:Fire(p237, t148)
+	local function initializeIdentities_proto(self_, players)
+		local function registerIdentity(player)
+			local identity = { name = player.Name, displayName = player.DisplayName }
+			self_._identities[player] = identity
+			self_.identityRegistered:Fire(player, identity)
 		end
 
-		local function f1814(p238)
-			p235.identityRemoved:Fire(p238)
-			p235._identities[p238] = nil
+		local function removeIdentity(player)
+			self_.identityRemoved:Fire(player)
+			self_._identities[player] = nil
 		end
 
-		p236:ObservePlayers(p235._trove, f1813, f1814)
+		players:ObservePlayers(self_._trove, registerIdentity, removeIdentity)
 	end
 
 	local function f1815(...)
@@ -23999,57 +23999,57 @@ local function f1518()
 		end
 	end
 
-	local function f1816()
+	local function loadIdentities()
 		up0.E()
-		local v282 = up0.t()
-		local v283 = up0.q()
-		local t150 = {}
-		t150.__index = t150
+		local Signal = up0.t()
+		local Trove = up0.q()
+		local Identities = {}
+		Identities.__index = Identities
 
-		function t150.new(p239)
-			local v284 = v283.new("identities")
-			local t151 = {
-				_trove = v284,
+		function Identities.new(players)
+			local trove = Trove.new("identities")
+			local identities = {
+				_trove = trove,
 				_identities = {},
-				identityRegistered = v284:Add(v282.new()),
-				identityChanged = v284:Add(v282.new()),
-				identityRemoved = v284:Add(v282.new())
+				identityRegistered = trove:Add(Signal.new()),
+				identityChanged = trove:Add(Signal.new()),
+				identityRemoved = trove:Add(Signal.new())
 			}
-			setmetatable(t151, t150)
-			t151:_Initialize(p239)
-			return t151
+			setmetatable(identities, Identities)
+			identities:_Initialize(players)
+			return identities
 		end
 
-		function t150:_Initialize(p240)
-			local function f1817(p241)
-				local t152 = { name = p241.Name, displayName = p241.DisplayName }
-				self._identities[p241] = t152
-				self.identityRegistered:Fire(p241, t152)
+		function Identities:_Initialize(players)
+			local function registerIdentity(player)
+				local identity = { name = player.Name, displayName = player.DisplayName }
+				self._identities[player] = identity
+				self.identityRegistered:Fire(player, identity)
 			end
 
-			local function f1818(p242)
-				self.identityRemoved:Fire(p242)
-				self._identities[p242] = nil
+			local function removeIdentity(player)
+				self.identityRemoved:Fire(player)
+				self._identities[player] = nil
 			end
 
-			p240:ObservePlayers(self._trove, f1817, f1818)
+			players:ObservePlayers(self._trove, registerIdentity, removeIdentity)
 		end
 
-		function t150.SetPresented(...)
+		function Identities.SetPresented(...)
 			local v285, v286, t153
 			t153, v286, v285 = ...
 			while t153._identities[v286].presentedName ~= v285 do
 			end
 		end
 
-		function t150.SetPresentedDisplay(...)
+		function Identities.SetPresentedDisplay(...)
 			repeat
 				local v287, v288, t154
 				t154, v288, v287 = ...
 			until t154._identities[v288].presentedDisplayName == v287
 		end
 
-		function t150.ClearPresented(...)
+		function Identities.ClearPresented(...)
 			local f1819 = bit32.countlz
 			local f1820 = bit32.bxor
 			local t155
@@ -24072,7 +24072,7 @@ local function f1518()
 			return
 		end
 
-		function t150.ClearPresentedDisplay(...)
+		function Identities.ClearPresentedDisplay(...)
 			local t157
 			repeat
 				repeat
@@ -24084,7 +24084,7 @@ local function f1518()
 			return
 		end
 
-		function t150.GetPresented(...)
+		function Identities.GetPresented(...)
 			local t159
 			local v294
 			repeat
@@ -24096,17 +24096,17 @@ local function f1518()
 			return t159.Name
 		end
 
-		function t150.GetPresentedDisplay(p243, p244)
-			if p243._identities[p244] == nil then
+		function Identities.GetPresentedDisplay(self_, player)
+			if self_._identities[player] == nil then
 			end
-			return p244.DisplayName
+			return player.DisplayName
 		end
 
-		function t150:Destroy()
+		function Identities:Destroy()
 			self._trove:Destroy()
 		end
 
-		return t150
+		return Identities
 	end
 
 	local function f1821()
@@ -24121,60 +24121,60 @@ local function f1518()
 		return t162.c
 	end
 
-	local function f1823()
+	local function onColorChanged_proto()
 		up0:_OnColorOrTransparencyChanged(up1, up2)
 	end
 
-	local function f1824(p245)
+	local function connectScopeSettings_proto(self_)
 		local f1825 = up0
-		local v295 = nil
+		local scopeName = nil
 		while true do
-			local v296
-			v295, v296 = f1825(nil, v295)
-			if v295 == nil then
+			local scope
+			scopeName, scope = f1825(nil, scopeName)
+			if scopeName == nil then
 				break
 			end
 			local f1826 = table.create(2)
-			local v297 = nil
+			local key = nil
 			while true do
 				local _
-				v297, _ = f1826(nil, v297)
-				if v297 == nil then
+				key, _ = f1826(nil, key)
+				if key == nil then
 					break
 				end
-				local v298 = v296
+				local boundScope = scope
 
-				local function f1827()
-					local _entries4 = p245._entries
-					local v299 = nil
+				local function refreshAll()
+					local entries = self_._entries
+					local entry = nil
 					while true do
 						local _
-						v299, _ = _entries4(nil, v299)
-						if v299 == nil then
+						entry, _ = entries(nil, entry)
+						if entry == nil then
 							break
 						end
-						p245:_RefreshScope(v299, v298)
+						self_:_RefreshScope(entry, boundScope)
 					end
 				end
 
-				p245._trove:Connect(up1:GetPropertyChangedSignal((table.create(3))), f1827)
+				self_._trove:Connect(up1:GetPropertyChangedSignal((table.create(3))), refreshAll)
 			end
 			local f1828 = table.create(2)
-			local v300 = nil
+			local index = nil
 			while true do
-				local v301
-				v300, v301 = f1828(nil, v300)
-				if v300 == nil then
+				local part
+				index, part = f1828(nil, index)
+				if index == nil then
 					break
 				end
-				local v302 = v296
-				local v303 = v301
+				local boundScope2 = scope
+				local boundPart = part
 
-				local function f1829()
-					p245:_OnColorOrTransparencyChanged(v302, v303)
+				local function onColorChanged()
+					self_:_OnColorOrTransparencyChanged(boundScope2, boundPart)
 				end
 
-				p245._trove:Connect(up1:GetPropertyChangedSignal((table.create(3))), f1829)
+				self_._trove:Connect(up1:GetPropertyChangedSignal((table.create(3))), onColorChanged)
 			end
 		end
 	end
@@ -24182,62 +24182,62 @@ local function f1518()
 	local function f1830()
 	end
 
-	local function f1831(_, p246)
-		up0(p246)
+	local function invokeWithArgs_proto(_, args)
+		up0(args)
 		return (up1.InvokeServer())
 	end
 
-	local function f1832(p247)
-		if p247.Name == "_drop" and p247:IsA("BasePart") then
-			up0:_OnDrop(p247)
+	local function onWorkspaceChild_proto(child)
+		if child.Name == "_drop" and child:IsA("BasePart") then
+			up0:_OnDrop(child)
 		end
 	end
 
-	local function f1833(p248)
-		local function f1834(p249)
-			if p249.Name == "_drop" and p249:IsA("BasePart") then
-				p248:_OnDrop(p249)
+	local function watchDrops_proto(self_)
+		local function onChild(child)
+			if child.Name == "_drop" and child:IsA("BasePart") then
+				self_:_OnDrop(child)
 			end
 		end
 
-		for _, v304 in workspace:GetChildren() do
-			task.spawn(f1834, v304)
+		for _, existingChild in workspace:GetChildren() do
+			task.spawn(onChild, existingChild)
 		end
-		p248._trove:Connect(workspace.ChildAdded, f1834)
+		self_._trove:Connect(workspace.ChildAdded, onChild)
 	end
 
 	local function f1835(...)
 		up0(...)
 	end
 
-	local function f1836(p250, p251, p252)
-		local v305 = up0(p251)
-		if not v305 then
+	local function registerKeybind(self_, key, bind)
+		local bindKey = up0(key)
+		if not bindKey then
 			return false
 		end
-		local t163 = p250._keybinds[v305]
-		if not t163 then
-			t163 = {}
-			p250._keybinds[v305] = t163
+		local binds = self_._keybinds[bindKey]
+		if not binds then
+			binds = {}
+			self_._keybinds[bindKey] = binds
 		end
-		local v306
-		v306 = not (t163[p252.flag] == nil)
-		t163[p252.flag] = p252
-		p250._bindKeyByFlag[p252.flag] = v305
-		return v306
+		local replaced
+		replaced = not (binds[bind.flag] == nil)
+		binds[bind.flag] = bind
+		self_._bindKeyByFlag[bind.flag] = bindKey
+		return replaced
 	end
 
-	local function f1837()
+	local function activateSection_proto()
 		up0:_setActive(up1)
 	end
 
-	local function f1838(p253, p254, p255, p256, p257)
-		local v307 = up0.elementsContainer(
-			p255,
+	local function buildSectionTab(page, index, parent, tabBar, context)
+		local pane = up0.elementsContainer(
+			parent,
 			UDim2.fromOffset(13, 57),
 			UDim2.new(1, -26, 0, 0)
 		)
-		v307.Visible = false
+		pane.Visible = false
 		local textButton = Instance.new("TextButton")
 		textButton.BackgroundTransparency = 1
 		textButton.Size = UDim2.fromScale(0, 1)
@@ -24245,11 +24245,11 @@ local function f1518()
 		textButton.AutomaticSize = Enum.AutomaticSize.X
 		textButton.Text = ""
 		textButton.AutoButtonColor = false
-		textButton.LayoutOrder = p254
-		textButton.Parent = p256
+		textButton.LayoutOrder = index
+		textButton.Parent = tabBar
 		local textLabel = Instance.new("TextLabel")
 		textLabel.FontFace = up1
-		textLabel.Text = p253.Sections[p254].Title
+		textLabel.Text = page.Sections[index].Title
 		textLabel.TextColor3 = up2.get("Unselected")
 		textLabel.AnchorPoint = Vector2.new(0, 0.5)
 		textLabel.BackgroundTransparency = 1
@@ -24258,24 +24258,24 @@ local function f1518()
 		textLabel.AutomaticSize = Enum.AutomaticSize.XY
 		textLabel.TextSize = 16
 		textLabel.Parent = textButton
-		local v309 = Instance.new(up3)
-		v309.BackgroundTransparency = 1
-		v309.Position = UDim2.new(0, 0, 1, -3)
-		v309.Size = UDim2.new(1, 0, 0, 10)
-		v309.BorderSizePixel = 0
-		p257.Batch:Bind(v309, "BackgroundColor3", "Accent")
-		v309.Parent = textButton
+		local accent = Instance.new(up3)
+		accent.BackgroundTransparency = 1
+		accent.Position = UDim2.new(0, 0, 1, -3)
+		accent.Size = UDim2.new(1, 0, 0, 10)
+		accent.BorderSizePixel = 0
+		context.Batch:Bind(accent, "BackgroundColor3", "Accent")
+		accent.Parent = textButton
 		local uiCorner = Instance.new("UICorner")
 		uiCorner.CornerRadius = UDim.new(0, 3)
-		uiCorner.Parent = v309
+		uiCorner.Parent = accent
 
-		local function f1839()
-			p253:_setActive(p254)
+		local function onClick()
+			page:_setActive(index)
 		end
 
-		p257.Trove:Connect(textButton.MouseButton1Click, f1839)
-		local t165 = { Label = textLabel, Accent = v309, Pane = v307 }
-		return t165
+		context.Trove:Connect(textButton.MouseButton1Click, onClick)
+		local tab = { Label = textLabel, Accent = accent, Pane = pane }
+		return tab
 	end
 
 	local function f1840()
@@ -24283,11 +24283,11 @@ local function f1518()
 	local function f1841()
 	end
 
-	local function f1842(p258)
-		p258._trove:Destroy()
+	local function destroyTrove2_proto(self_)
+		self_._trove:Destroy()
 	end
 
-	local function f1843()
+	local function onMaxHealthChanged_proto()
 		local MaxHealth
 		repeat
 			MaxHealth = up0.MaxHealth
@@ -24298,18 +24298,18 @@ local function f1518()
 		return
 	end
 
-	local function f1844(p259)
-		local Humanoid3 = p259:WaitForChild("Humanoid", math.huge)
-		if Humanoid3.Health <= 0 then
+	local function onCharacterAdded_proto(character)
+		local humanoid = character:WaitForChild("Humanoid", math.huge)
+		if humanoid.Health <= 0 then
 			return
 		end
-		local HumanoidRootPart3 = p259:WaitForChild("HumanoidRootPart", math.huge)
-		local HitboxHead = p259:WaitForChild("HitboxHead", math.huge)
-		local HitboxBody = p259:WaitForChild("HitboxBody", math.huge)
-		local HitboxHeadSmall = p259:WaitForChild("HitboxHeadSmall", math.huge)
-		local HitboxBodySmall = p259:WaitForChild("HitboxBodySmall", math.huge)
+		local rootPart = character:WaitForChild("HumanoidRootPart", math.huge)
+		local HitboxHead = character:WaitForChild("HitboxHead", math.huge)
+		local HitboxBody = character:WaitForChild("HitboxBody", math.huge)
+		local HitboxHeadSmall = character:WaitForChild("HitboxHeadSmall", math.huge)
+		local HitboxBodySmall = character:WaitForChild("HitboxBodySmall", math.huge)
 
-		local function f1845()
+		local function onHealthChanged()
 			local v311
 			repeat
 				v311 = not not false
@@ -24317,12 +24317,12 @@ local function f1518()
 			return
 		end
 
-		up0:Connect(Humanoid3:GetPropertyChangedSignal("Health"), f1845)
+		up0:Connect(humanoid:GetPropertyChangedSignal("Health"), onHealthChanged)
 
-		local function f1846()
+		local function onMaxHealthChanged()
 			local MaxHealth2
 			repeat
-				MaxHealth2 = Humanoid3.MaxHealth
+				MaxHealth2 = humanoid.MaxHealth
 				while not up1.state.alive do
 				end
 			until 0 < MaxHealth2
@@ -24330,65 +24330,65 @@ local function f1518()
 			return
 		end
 
-		up0:Connect(Humanoid3:GetPropertyChangedSignal("MaxHealth"), f1846)
-		local t166 = {
+		up0:Connect(humanoid:GetPropertyChangedSignal("MaxHealth"), onMaxHealthChanged)
+		local state = {
 			alive = true,
-			health = Humanoid3.Health,
-			maxHealth = Humanoid3.MaxHealth,
-			model = p259,
-			humanoid = Humanoid3,
-			rootPart = HumanoidRootPart3,
+			health = humanoid.Health,
+			maxHealth = humanoid.MaxHealth,
+			model = character,
+			humanoid = humanoid,
+			rootPart = rootPart,
 			hitboxHead = HitboxHead,
 			hitboxBody = HitboxBody
 		}
-		local t167 = {
+		local targetParts = {
 			HitboxHead = HitboxHead,
 			HitboxBody = HitboxBody,
 			HitboxHeadSmall = HitboxHeadSmall,
 			HitboxBodySmall = HitboxBodySmall
 		}
-		t166.targetPartsByName = t167
-		t166._lastPosition = nil
-		t166.velocity = Vector3.zero
-		up1.state = t166
-		up1.created:Fire(t166)
+		state.targetPartsByName = targetParts
+		state._lastPosition = nil
+		state.velocity = Vector3.zero
+		up1.state = state
+		up1.created:Fire(state)
 	end
 
-	local function f1847()
-		local state7 = up0.state
-		if state7.alive then
+	local function onCharacterRemoving_proto()
+		local oldState = up0.state
+		if oldState.alive then
 			up1:Clean()
 			local t168 = { alive = false }
 			up0.state = t168
-			up0.died:Fire(state7)
+			up0.died:Fire(oldState)
 		end
 	end
 
-	local function f1848(p260)
-		local Extend6 = p260._trove:Extend()
+	local function initializeCharacterContext_proto(self_)
+		local characterTrove = self_._trove:Extend()
 
-		local function f1849()
-			local state8 = p260.state
-			if state8.alive then
-				Extend6:Clean()
+		local function onCharacterRemoving()
+			local oldState = self_.state
+			if oldState.alive then
+				characterTrove:Clean()
 				local t169 = { alive = false }
-				p260.state = t169
-				p260.died:Fire(state8)
+				self_.state = t169
+				self_.died:Fire(oldState)
 			end
 		end
 
-		local function f1850(p261)
-			local Humanoid4 = p261:WaitForChild("Humanoid", math.huge)
-			if Humanoid4.Health <= 0 then
+		local function onCharacterAdded(character)
+			local humanoid = character:WaitForChild("Humanoid", math.huge)
+			if humanoid.Health <= 0 then
 				return
 			end
-			local HumanoidRootPart4 = p261:WaitForChild("HumanoidRootPart", math.huge)
-			local HitboxHead2 = p261:WaitForChild("HitboxHead", math.huge)
-			local HitboxBody2 = p261:WaitForChild("HitboxBody", math.huge)
-			local HitboxHeadSmall2 = p261:WaitForChild("HitboxHeadSmall", math.huge)
-			local HitboxBodySmall2 = p261:WaitForChild("HitboxBodySmall", math.huge)
+			local rootPart = character:WaitForChild("HumanoidRootPart", math.huge)
+			local hitboxHead = character:WaitForChild("HitboxHead", math.huge)
+			local hitboxBody = character:WaitForChild("HitboxBody", math.huge)
+			local hitboxHeadSmall = character:WaitForChild("HitboxHeadSmall", math.huge)
+			local hitboxBodySmall = character:WaitForChild("HitboxBodySmall", math.huge)
 
-			local function f1851()
+			local function onHealthChanged()
 				local v312
 				repeat
 					v312 = not not false
@@ -24396,106 +24396,106 @@ local function f1518()
 				return
 			end
 
-			Extend6:Connect(Humanoid4:GetPropertyChangedSignal("Health"), f1851)
+			characterTrove:Connect(humanoid:GetPropertyChangedSignal("Health"), onHealthChanged)
 
-			local function f1852()
+			local function onMaxHealthChanged()
 				local MaxHealth3
 				repeat
-					MaxHealth3 = Humanoid4.MaxHealth
-					while not p260.state.alive do
+					MaxHealth3 = humanoid.MaxHealth
+					while not self_.state.alive do
 					end
 				until 0 < MaxHealth3
-				p260.state.maxHealth = MaxHealth3
+				self_.state.maxHealth = MaxHealth3
 				return
 			end
 
-			Extend6:Connect(Humanoid4:GetPropertyChangedSignal("MaxHealth"), f1852)
-			local t170 = {
+			characterTrove:Connect(humanoid:GetPropertyChangedSignal("MaxHealth"), onMaxHealthChanged)
+			local state = {
 				alive = true,
-				health = Humanoid4.Health,
-				maxHealth = Humanoid4.MaxHealth,
-				model = p261,
-				humanoid = Humanoid4,
-				rootPart = HumanoidRootPart4,
-				hitboxHead = HitboxHead2,
-				hitboxBody = HitboxBody2
+				health = humanoid.Health,
+				maxHealth = humanoid.MaxHealth,
+				model = character,
+				humanoid = humanoid,
+				rootPart = rootPart,
+				hitboxHead = hitboxHead,
+				hitboxBody = hitboxBody
 			}
-			local t171 = {
-				HitboxHead = HitboxHead2,
-				HitboxBody = HitboxBody2,
-				HitboxHeadSmall = HitboxHeadSmall2,
-				HitboxBodySmall = HitboxBodySmall2
+			local targetParts = {
+				HitboxHead = hitboxHead,
+				HitboxBody = hitboxBody,
+				HitboxHeadSmall = hitboxHeadSmall,
+				HitboxBodySmall = hitboxBodySmall
 			}
-			t170.targetPartsByName = t171
-			t170._lastPosition = nil
-			t170.velocity = Vector3.zero
-			p260.state = t170
-			p260.created:Fire(t170)
+			state.targetPartsByName = targetParts
+			state._lastPosition = nil
+			state.velocity = Vector3.zero
+			self_.state = state
+			self_.created:Fire(state)
 		end
 
-		p260._trove:Connect(p260._player.CharacterAdded, f1850)
-		p260._trove:Connect(p260._player.CharacterRemoving, f1849)
-		local Character5 = p260._player.Character
-		if Character5 ~= nil then
-			task.spawn(f1850, Character5)
+		self_._trove:Connect(self_._player.CharacterAdded, onCharacterAdded)
+		self_._trove:Connect(self_._player.CharacterRemoving, onCharacterRemoving)
+		local currentCharacter = self_._player.Character
+		if currentCharacter ~= nil then
+			task.spawn(onCharacterAdded, currentCharacter)
 		end
 	end
 
-	local function f1853(p262)
-		local v313 = up0.new("fighters.CharacterContext")
-		local t172 = { _trove = v313, _player = p262 }
+	local function newCharacterContext_proto(player)
+		local trove = up0.new("fighters.CharacterContext")
+		local context = { _trove = trove, _player = player }
 		;(nil).alive = false
-		t172.state = nil
-		t172.created = v313:Add(up1.new())
-		t172.died = v313:Add(up1.new())
-		setmetatable(t172, up2)
-		t172:_Initialize()
-		return t172
+		context.state = nil
+		context.created = trove:Add(up1.new())
+		context.died = trove:Add(up1.new())
+		setmetatable(context, up2)
+		context:_Initialize()
+		return context
 	end
 
-	local function f1854()
-		local v314 = up0.t()
-		local v315 = up0.q()
-		local t173 = {}
-		t173.__index = t173
+	local function loadCharacterContext()
+		local Signal = up0.t()
+		local Trove = up0.q()
+		local CharacterContext = {}
+		CharacterContext.__index = CharacterContext
 
-		function t173.new(p263)
-			local v316 = v315.new("fighters.CharacterContext")
-			local t174 = { _trove = v316, _player = p263 }
+		function CharacterContext.new(player)
+			local trove = Trove.new("fighters.CharacterContext")
+			local context = { _trove = trove, _player = player }
 			;(nil).alive = false
-			t174.state = nil
-			t174.created = v316:Add(v314.new())
-			t174.died = v316:Add(v314.new())
-			setmetatable(t174, t173)
-			t174:_Initialize()
-			return t174
+			context.state = nil
+			context.created = trove:Add(Signal.new())
+			context.died = trove:Add(Signal.new())
+			setmetatable(context, CharacterContext)
+			context:_Initialize()
+			return context
 		end
 
-		function t173:_Initialize()
-			local Extend7 = self._trove:Extend()
+		function CharacterContext:_Initialize()
+			local characterTrove = self._trove:Extend()
 
-			local function f1855()
-				local state9 = self.state
-				if state9.alive then
-					Extend7:Clean()
+			local function onCharacterRemoving()
+				local oldState = self.state
+				if oldState.alive then
+					characterTrove:Clean()
 					local t175 = { alive = false }
 					self.state = t175
-					self.died:Fire(state9)
+					self.died:Fire(oldState)
 				end
 			end
 
-			local function f1856(p264)
-				local Humanoid5 = p264:WaitForChild("Humanoid", math.huge)
-				if Humanoid5.Health <= 0 then
+			local function onCharacterAdded(character)
+				local humanoid = character:WaitForChild("Humanoid", math.huge)
+				if humanoid.Health <= 0 then
 					return
 				end
-				local HumanoidRootPart5 = p264:WaitForChild("HumanoidRootPart", math.huge)
-				local HitboxHead3 = p264:WaitForChild("HitboxHead", math.huge)
-				local HitboxBody3 = p264:WaitForChild("HitboxBody", math.huge)
-				local HitboxHeadSmall3 = p264:WaitForChild("HitboxHeadSmall", math.huge)
-				local HitboxBodySmall3 = p264:WaitForChild("HitboxBodySmall", math.huge)
+				local rootPart = character:WaitForChild("HumanoidRootPart", math.huge)
+				local hitboxHead = character:WaitForChild("HitboxHead", math.huge)
+				local hitboxBody = character:WaitForChild("HitboxBody", math.huge)
+				local hitboxHeadSmall = character:WaitForChild("HitboxHeadSmall", math.huge)
+				local hitboxBodySmall = character:WaitForChild("HitboxBodySmall", math.huge)
 
-				local function f1857()
+				local function onHealthChanged()
 					local v317
 					repeat
 						v317 = not not false
@@ -24503,12 +24503,12 @@ local function f1518()
 					return
 				end
 
-				Extend7:Connect(Humanoid5:GetPropertyChangedSignal("Health"), f1857)
+				characterTrove:Connect(humanoid:GetPropertyChangedSignal("Health"), onHealthChanged)
 
-				local function f1858()
+				local function onMaxHealthChanged()
 					local MaxHealth4
 					repeat
-						MaxHealth4 = Humanoid5.MaxHealth
+						MaxHealth4 = humanoid.MaxHealth
 						while not self.state.alive do
 						end
 					until 0 < MaxHealth4
@@ -24516,35 +24516,35 @@ local function f1518()
 					return
 				end
 
-				Extend7:Connect(Humanoid5:GetPropertyChangedSignal("MaxHealth"), f1858)
-				local t176 = {
+				characterTrove:Connect(humanoid:GetPropertyChangedSignal("MaxHealth"), onMaxHealthChanged)
+				local state = {
 					alive = true,
-					health = Humanoid5.Health,
-					maxHealth = Humanoid5.MaxHealth,
-					model = p264,
-					humanoid = Humanoid5,
-					rootPart = HumanoidRootPart5,
-					hitboxHead = HitboxHead3,
-					hitboxBody = HitboxBody3
+					health = humanoid.Health,
+					maxHealth = humanoid.MaxHealth,
+					model = character,
+					humanoid = humanoid,
+					rootPart = rootPart,
+					hitboxHead = hitboxHead,
+					hitboxBody = hitboxBody
 				}
-				local t177 = {
-					HitboxHead = HitboxHead3,
-					HitboxBody = HitboxBody3,
-					HitboxHeadSmall = HitboxHeadSmall3,
-					HitboxBodySmall = HitboxBodySmall3
+				local targetParts = {
+					HitboxHead = hitboxHead,
+					HitboxBody = hitboxBody,
+					HitboxHeadSmall = hitboxHeadSmall,
+					HitboxBodySmall = hitboxBodySmall
 				}
-				t176.targetPartsByName = t177
-				t176._lastPosition = nil
-				t176.velocity = Vector3.zero
-				self.state = t176
-				self.created:Fire(t176)
+				state.targetPartsByName = targetParts
+				state._lastPosition = nil
+				state.velocity = Vector3.zero
+				self.state = state
+				self.created:Fire(state)
 			end
 
-			self._trove:Connect(self._player.CharacterAdded, f1856)
-			self._trove:Connect(self._player.CharacterRemoving, f1855)
-			local Character6 = self._player.Character
-			if Character6 ~= nil then
-				task.spawn(f1856, Character6)
+			self._trove:Connect(self._player.CharacterAdded, onCharacterAdded)
+			self._trove:Connect(self._player.CharacterRemoving, onCharacterRemoving)
+			local currentCharacter = self._player.Character
+			if currentCharacter ~= nil then
+				task.spawn(onCharacterAdded, currentCharacter)
 			end
 		end
 
@@ -24552,75 +24552,75 @@ local function f1518()
 		local v318
 		v318 = 0 < #(89398)[3]
 		RK2(v318 and {})
-		function t173.Update()
+		function CharacterContext.Update()
 		end
 		local AK2 = AK
 		local v319
 		v319 = 0 < #(114159)[3]
 		AK2(v319 and {})
-		function t173._UpdateVelocity()
+		function CharacterContext._UpdateVelocity()
 		end
 
-		function t173:Destroy()
+		function CharacterContext:Destroy()
 			self._trove:Destroy()
 		end
 
-		return t173
+		return CharacterContext
 	end
 
-	local function f1859(p265, p266, p267, p268, p269, p270)
-		local localState12 = p265.localState
-		if localState12 then
-			p267(localState12)
+	local function observeFighterStates(registry, trove, onLocalSet, onLocalRemoved, onRemoteAdded, onRemoteRemoved)
+		local localState = registry.localState
+		if localState then
+			onLocalSet(localState)
 		end
-		p266:Connect(p265.onLocalStateSet, p267)
-		p266:Connect(p265.onLocalStateRemoved, p268)
-		local byPlayer = p265.byPlayer
-		local v320 = nil
+		trove:Connect(registry.onLocalStateSet, onLocalSet)
+		trove:Connect(registry.onLocalStateRemoved, onLocalRemoved)
+		local byPlayer = registry.byPlayer
+		local player = nil
 		while true do
-			local v321
-			v320, v321 = byPlayer(nil, v320)
-			if v320 == nil then
+			local state
+			player, state = byPlayer(nil, player)
+			if player == nil then
 				break
 			end
-			p269(v321)
+			onRemoteAdded(state)
 		end
-		p266:Connect(p265.onRemoteStateAdded, p269)
-		p266:Connect(p265.onRemoteStateRemoved, p270)
+		trove:Connect(registry.onRemoteStateAdded, onRemoteAdded)
+		trove:Connect(registry.onRemoteStateRemoved, onRemoteRemoved)
 	end
 
-	local function f1860(p271)
-		local v322 = up0.encodeInventory(
-			p271._errorReporter,
-			p271._items:GetResolvedAll(),
-			p271._emotesResolver:GetAll()
+	local function sendInventory_proto(self_)
+		local payload = up0.encodeInventory(
+			self_._errorReporter,
+			self_._items:GetResolvedAll(),
+			self_._emotesResolver:GetAll()
 		)
-		if v322 == p271._lastSentPayload then
+		if payload == self_._lastSentPayload then
 			return
 		end
-		if p271._userServer:Send(v322) then
-			p271._lastSentPayload = v322
+		if self_._userServer:Send(payload) then
+			self_._lastSentPayload = payload
 		end
 	end
 
-	local function f1861(p272, p273, p274)
-		p272._intent:ImportState(p273, p274)
-		p272._resolver:InvalidateAll()
+	local function importIntentState_proto(self_, state, source)
+		self_._intent:ImportState(state, source)
+		self_._resolver:InvalidateAll()
 	end
 
-	local function f1862(p275)
-		local v323 = up0.new("context.character_controller")
-		local t178 = { _trove = v323, _context = p275, _viewAngleDriver = v323:Add(up1.new()) }
-		setmetatable(t178, up2)
-		t178:_Initialize()
-		return t178
+	local function newCharacterController_proto(context)
+		local trove = up0.new("context.character_controller")
+		local controller = { _trove = trove, _context = context, _viewAngleDriver = trove:Add(up1.new()) }
+		setmetatable(controller, up2)
+		controller:_Initialize()
+		return controller
 	end
 
-	local function f1863()
+	local function resetCharacterController_proto()
 		up0._viewAngleDriver:ClearAll()
-		local _rootDesync = up0._rootDesync
-		if _rootDesync ~= nil then
-			up0._trove:Remove(_rootDesync)
+		local rootDesync = up0._rootDesync
+		if rootDesync ~= nil then
+			up0._trove:Remove(rootDesync)
 			up0._rootDesync = nil
 		end
 	end
@@ -24637,18 +24637,18 @@ local function f1518()
 		f1531,
 		f1532,
 		f1533,
-		f1547,
-		f1548,
+		isOwned,
+		scaleNumberSequence,
 		f1549,
-		f1550,
-		f1551,
-		f1552,
-		f1553,
+		isFeatureActive,
+		isDashOnCooldown,
+		createCosmeticsServices,
+		getPresentedName,
 		f1554,
-		f1555,
-		f1556,
-		f1557,
-		f1559,
+		getCloneModel,
+		maskFavoriteWeapons_proto,
+		newFavoriteWeaponsMask,
+		newEnsuredChildren,
 		f1560,
 		f1561,
 		f1563,
@@ -24684,148 +24684,148 @@ local function f1518()
 		f1606,
 		f1613,
 		f1634,
-		f1635,
-		f1636,
-		f1637,
-		f1638,
-		f1639,
-		f1642,
-		f1643,
-		f1648,
-		f1649,
-		f1650,
-		f1652,
-		f1653,
-		f1654,
-		f1655,
+		newScopeOverlay_proto,
+		setAimPercentage_proto,
+		hookAddedItem_proto,
+		forgetRemovedItem_proto,
+		observeFighterItems_proto,
+		revertOnContextRemoved_proto,
+		initializeEquipCooldown_proto,
+		newEquipCooldownModifier_proto,
+		equipCooldownNewIndex_proto,
+		hookEquipCooldown_proto,
+		revertAllHooks_proto,
+		destroyEquipCooldown_proto,
+		setAimEnabled_proto,
+		loadEquipCooldownModifier,
 		lazyModule_ae,
-		f1662,
-		f1663,
-		f1664,
-		f1665,
-		f1667,
-		f1668,
+		getKeybindForFlag,
+		migrateColorSettings,
+		dissipateStep_proto,
+		dissipate,
+		buildColorCorrectionSection_proto,
+		loadColorCorrectionSection,
 		f1670,
-		f1671,
+		onRealModelAdded_proto,
 		f1672,
-		f1673,
-		f1674,
-		f1675,
-		f1676,
-		f1677,
-		f1678,
-		f1679,
-		f1680,
-		f1681,
-		f1687,
-		f1688,
-		f1689,
-		f1690,
-		f1692,
-		f1693,
-		f1694,
-		f1695,
-		f1699,
-		f1700,
-		f1701,
+		loadDataHooks_proto,
+		setEnabledAndReset_proto,
+		tweenTextColor_proto,
+		areWrapsEqual_proto,
+		areSelectionsEqual_proto,
+		noneToNil_proto,
+		wrapNoneToNil_proto,
+		areViewModelSelectionsEqual_proto,
+		loadSelectionEquality,
+		preRenderElimination_proto,
+		destroyElimination_proto,
+		notifyMessage_proto,
+		handleKill_proto,
+		preloadSound_proto,
+		handleReplicate_proto,
+		setEnabled_proto,
+		newPlayerElimination_proto,
+		setReplicateEnabled_proto,
+		handleReplicateEffect_proto,
+		loadPlayerElimination,
 		lazyModule_eD,
-		f1707,
-		f1708,
-		f1709,
-		f1710,
-		f1711,
-		f1713,
-		f1714,
-		f1716,
-		f1717,
-		f1718,
-		f1719,
-		f1721,
-		f1722,
+		preloadIfSignatureCurrent_proto,
+		addCustomSound_proto,
+		removeCustomSound_proto,
+		setSavedOptions_proto,
+		buildCustomSoundsSection,
+		scopeSetActiveHook_proto,
+		ensureScopeHookLoaded_proto,
+		revertScopeHook_proto,
+		destroyScopeOverlay_proto,
+		setReticleHidden_proto,
+		loadScopeOverlay,
+		buildSoundVisualizerOptions,
+		getHeaderHeight,
 		lazyModule_e5,
-		f1724,
-		f1725,
+		newSignalPair_proto,
+		loadJumpPowerHook_proto,
 		lazyModule_bB,
-		f1727,
-		f1728,
+		buildTabPage,
+		removeButton_proto,
 		lazyModule_ib,
-		f1730,
-		f1731,
-		f1732,
-		f1733,
-		f1734,
-		f1736,
-		f1739,
-		f1740,
-		f1741,
+		sameInstance,
+		isProposed,
+		setGradientRgb_proto,
+		downloadSound_proto,
+		loadSoundAsset_proto,
+		getSoundAsset,
+		lookup,
+		getEditProfile_proto,
+		cancelEmote_proto,
 		lazyModule_ak,
 		lazyModule_eZ,
-		f1744,
+		syncSliderFromSource_proto,
 		f1745,
 		f1746,
-		f1747,
-		f1749,
-		f1750,
-		f1751,
-		f1752,
-		f1753,
-		f1754,
-		f1755,
-		f1757,
-		f1758,
-		f1759,
-		f1761,
-		f1766,
-		f1768,
-		f1769,
-		f1774,
-		f1784,
+		waitForAttachment,
+		setInputEnabled_proto,
+		callElevatedCached_proto,
+		refreshAllScopes_proto,
+		extendTrove_proto,
+		newLoadoutPicker_proto,
+		forcePickLoadout_proto,
+		pickLoadoutAsync_proto,
+		disconnect_proto,
+		resolve_proto,
+		waitForItemAdded_proto,
+		forcePickLoadoutAsync_proto,
+		waitForItemRemoved_proto,
+		disconnectRemoved_proto,
+		trashRangeItemsAsync_proto,
+		loadLoadoutPicker,
+		forgetPlayer_proto,
 		lazyModule_d2,
-		f1786,
+		loadStateConfig_proto,
 		f1787,
-		f1788,
-		f1789,
-		f1790,
-		f1791,
-		f1793,
-		f1797,
+		enemyHasSlingshot_proto,
+		markDone_proto,
+		createHumanoidModel_proto,
+		createAndResolve_proto,
+		createHumanoidModelExecutor_proto,
+		createHumanoidModelAsync,
 		lazyModule_f_,
-		f1803,
+		destroyTrove_proto,
 		f1804,
 		f1807,
-		f1808,
+		newIdentities_proto,
 		f1809,
-		f1810,
-		f1811,
-		f1812,
+		registerIdentity_proto,
+		removeIdentity_proto,
+		initializeIdentities_proto,
 		f1815,
-		f1816,
+		loadIdentities,
 		f1821,
 		lazyModule_ds,
-		f1823,
-		f1824,
+		onColorChanged_proto,
+		connectScopeSettings_proto,
 		f1830,
-		f1831,
-		f1832,
-		f1833,
+		invokeWithArgs_proto,
+		onWorkspaceChild_proto,
+		watchDrops_proto,
 		f1835,
-		f1836,
-		f1837,
-		f1838,
+		registerKeybind,
+		activateSection_proto,
+		buildSectionTab,
 		f1840,
 		f1841,
-		f1842,
-		f1843,
-		f1844,
-		f1847,
-		f1848,
-		f1853,
-		f1854,
-		f1859,
-		f1860,
-		f1861,
-		f1862,
-		f1863
+		destroyTrove2_proto,
+		onMaxHealthChanged_proto,
+		onCharacterAdded_proto,
+		onCharacterRemoving_proto,
+		initializeCharacterContext_proto,
+		newCharacterContext_proto,
+		loadCharacterContext,
+		observeFighterStates,
+		sendInventory_proto,
+		importIntentState_proto,
+		newCharacterController_proto,
+		resetCharacterController_proto
 	
 end
 
@@ -68527,170 +68527,170 @@ local function f4378()
 end
 
 local function f4735()
-	local function f4736()
-		local _requestBindings2 = up0._requestBindings
-		local v1 = nil
+	local function removeRequestBinding_proto()
+		local bindings = up0._requestBindings
+		local index = nil
 		while true do
-			local v2
-			v1, v2 = _requestBindings2(nil, v1)
-			if v1 == nil then
+			local binding
+			index, binding = bindings(nil, index)
+			if index == nil then
 				break
 			end
-			if v2 == up1 then
-				table.remove(up0._requestBindings, v1)
+			if binding == up1 then
+				table.remove(up0._requestBindings, index)
 				break
 			end
 		end
 	end
 
-	local function f4737(p1)
-		if p1 ~= true then
+	local function onOpenedOnce_proto(opened)
+		if opened ~= true then
 			return
 		end
 		up0:Disconnect()
 		up1()
 	end
 
-	local function f4738(p2, p3)
-		local _openedOnce = p2._openedOnce
-		local v3 = _openedOnce
-		if _openedOnce then
-			task.spawn(p3)
+	local function whenFirstOpened(tab, callback)
+		local openedOnce = tab._openedOnce
+		local connection = openedOnce
+		if openedOnce then
+			task.spawn(callback)
 			return
 		end
-		v3 = nil
+		connection = nil
 
-		local function onOpened(p4)
-			if p4 ~= true then
+		local function onOpened(opened)
+			if opened ~= true then
 				return
 			end
-			v3:Disconnect()
-			p3()
+			connection:Disconnect()
+			callback()
 		end
 
-		v3 = p2.Opened:Connect(onOpened)
+		connection = tab.Opened:Connect(onOpened)
 	end
 
-	local function f4740(p5, p6)
-		local v4 = p5._bindKeyByFlag[p6]
-		if not v4 then
+	local function unbindKey(manager, flag)
+		local key = manager._bindKeyByFlag[flag]
+		if not key then
 			return false
 		end
-		local v5 = p5._keybinds[v4]
-		if not v5 then
+		local bindings = manager._keybinds[key]
+		if not bindings then
 			return false
 		end
-		v5[p6] = nil
-		p5._bindKeyByFlag[p6] = nil
-		if not next(v5) then
-			p5._keybinds[v4] = nil
+		bindings[flag] = nil
+		manager._bindKeyByFlag[flag] = nil
+		if not next(bindings) then
+			manager._keybinds[key] = nil
 		end
 		return true
 	end
 
-	local function f4741()
+	local function addStop_proto()
 		if up0.Mode ~= "Gradient" then
 			up1(up0, "Gradient")
 		end
-		local t1 = up2(up0)
-		local v6 = 0.5
-		if t1 ~= nil then
+		local activeStop = up2(up0)
+		local time = 0.5
+		if activeStop ~= nil then
 			if up0.ActiveStopIndex < #up0.Stops then
-				v6 = (t1.Time + up0.Stops[up0.ActiveStopIndex + 1].Time) * 0.5
+				time = (activeStop.Time + up0.Stops[up0.ActiveStopIndex + 1].Time) * 0.5
 			elseif 1 < up0.ActiveStopIndex then
-				v6 = (up0.Stops[up0.ActiveStopIndex - 1].Time + t1.Time) * 0.5
+				time = (up0.Stops[up0.ActiveStopIndex - 1].Time + activeStop.Time) * 0.5
 			end
 		end
-		local t2 = { Time = v6, Value = up0.Color }
-		table.insert(up0.Stops, t2)
-		up0.ActiveStopIndex = up3.sort(up0.Stops, t2)
+		local newStop = { Time = time, Value = up0.Color }
+		table.insert(up0.Stops, newStop)
+		up0.ActiveStopIndex = up3.sort(up0.Stops, newStop)
 		up0:_applyState(false)
 	end
 
-	local function f4742(p7)
-		if p7 ~= "" then
+	local function validateConfigName(name)
+		if name ~= "" then
 			return nil
 		end
-		local t3 = { success = false, message = "expected a non-empty config name" }
-		return t3
+		local failure = { success = false, message = "expected a non-empty config name" }
+		return failure
 	end
 
-	local function f4743(...)
-		local t4
+	local function onFontLoaded_proto(...)
+		local result
 		repeat
-			t4 = ...
-		until t4.ok
-		up0._resolved[up1] = t4.value
+			result = ...
+		until result.ok
+		up0._resolved[up1] = result.value
 	end
 
-	local function f4744(p8, p9)
-		if p8._initialized then
+	local function initializeFonts(fonts, p9)
+		if fonts._initialized then
 			return up0.VOID_OK
 		end
-		p8._initialized = true
-		local f4745 = up1
-		local v7 = nil
+		fonts._initialized = true
+		local nextBuiltinFont = up1
+		local name = nil
 		while true do
-			local v8
-			v7, v8 = f4745(nil, v7)
-			if v7 == nil then
+			local fontEnum
+			name, fontEnum = nextBuiltinFont(nil, name)
+			if name == nil then
 				break
 			end
-			p8._resolved[v7] = Font.fromEnum(v8)
+			fonts._resolved[name] = Font.fromEnum(fontEnum)
 		end
 		up2(up3)
-		local t5 = {}
-		local f4746 = up4
-		local v9 = nil
-		local v10 = true
+		local promises = {}
+		local nextCustomFont = up4
+		local name2 = nil
+		local allLoaded = true
 		while true do
-			local v11
-			v9, v11 = f4746(nil, v9)
-			if v9 == nil then
+			local source
+			name2, source = nextCustomFont(nil, name2)
+			if name2 == nil then
 				break
 			end
-			local v12 = v9
+			local capturedName = name2
 
-			local function f4747(...)
-				local t6
+			local function onFontLoaded(...)
+				local result
 				repeat
-					t6 = ...
-				until t6.ok
-				p8._resolved[v12] = t6.value
+					result = ...
+				until result.ok
+				fonts._resolved[capturedName] = result.value
 			end
 
-			table.insert(t5, up5(v9, v11):andThen(f4747))
+			table.insert(promises, up5(name2, source):andThen(onFontLoaded))
 		end
-		up7.all(t5):await()
-		local v13 = v10
-		v13 = v13 and up0.VOID_OK or up0.err("Fonts", "Initialize", "Failed to load all fonts")
-		return v13
+		up7.all(promises):await()
+		local result2 = allLoaded
+		result2 = result2 and up0.VOID_OK or up0.err("Fonts", "Initialize", "Failed to load all fonts")
+		return result2
 	end
 
-	local function f4748(p10, p11)
-		local v14 = table.create(1)
-		up0(p10, "HumanoidRootPart", p11)
-		local f4749 = up1
-		local v15 = nil
-		up0(p10, "Humanoid", p11)
+	local function waitForCharacterParts(character, timeout)
+		local promises = table.create(1)
+		up0(character, "HumanoidRootPart", timeout)
+		local nextLimbName = up1
+		local index = nil
+		up0(character, "Humanoid", timeout)
 		while true do
-			local v16
-			v15, v16 = f4749(nil, v15)
-			if v15 == nil then
+			local partName
+			index, partName = nextLimbName(nil, index)
+			if index == nil then
 				break
 			end
-			table.insert(v14, up0(p10, v16, p11))
+			table.insert(promises, up0(character, partName, timeout))
 		end
-		return (up2.all(v14))
+		return (up2.all(promises))
 	end
 
-	local function f4750(p12, p13)
-		if p13 == nil then
+	local function addImage(list, image)
+		if image == nil then
 			return
 		end
 		local imageLabel = Instance.new("ImageLabel")
-		imageLabel.Image = p13
-		table.insert(p12, imageLabel)
+		imageLabel.Image = image
+		table.insert(list, imageLabel)
 	end
 
 	local function lazyModule_fT()
@@ -68721,40 +68721,40 @@ local function f4735()
 		return t8.c
 	end
 
-	local function f4754(p14)
-		if type(p14) ~= up0 then
-			local t9 = { success = false }
+	local function validateImport(data)
+		if type(data) ~= up0 then
+			local failure = { success = false }
 			local _ = string.format
-			tostring(type(p14))
-			t9.message = string.format()
-			t9.state = nil
-			return t9
+			tostring(type(data))
+			failure.message = string.format()
+			failure.state = nil
+			return failure
 		end
-		local t10 = up1.validateImportVersion(p14)
-		if t10.success then
-			local t11 = { success = true, message = "", state = up1._normalize(p14) }
-			return t11
+		local versionCheck = up1.validateImportVersion(data)
+		if versionCheck.success then
+			local success = { success = true, message = "", state = up1._normalize(data) }
+			return success
 		end
-		local t12 = { success = false, message = t10.message, state = nil }
-		return t12
+		local failure2 = { success = false, message = versionCheck.message, state = nil }
+		return failure2
 	end
 
-	local function f4755(p15)
-		p15._hitscanStrategy:ResetState()
-		p15._meleeStrategy:ResetState()
-		local _innerContext8 = p15._innerContext
-		if _innerContext8 == nil then
+	local function resetAimState(aim)
+		aim._hitscanStrategy:ResetState()
+		aim._meleeStrategy:ResetState()
+		local innerContext = aim._innerContext
+		if innerContext == nil then
 			return
 		end
-		_innerContext8.characterController:SetServerCFrame(nil)
-		_innerContext8.characterController:SendViewAngles(up0, nil)
+		innerContext.characterController:SetServerCFrame(nil)
+		innerContext.characterController:SendViewAngles(up0, nil)
 	end
 
-	local function f4756(p16)
+	local function onDragEnded_proto(input)
 		if up0 == nil then
 			return
 		end
-		if not up1.matchesPointerDrag(p16, up2, Enum.UserInputType.MouseButton1) then
+		if not up1.matchesPointerDrag(input, up2, Enum.UserInputType.MouseButton1) then
 			return
 		end
 		up0 = nil
@@ -68763,51 +68763,51 @@ local function f4735()
 		up4 = nil
 	end
 
-	local function f4757(p17)
+	local function onMinDrag_proto(input)
 		if up0 == nil then
 			up0 = "min"
 			up1(up2, true)
 		end
-		up3(p17.Position.X)
+		up3(input.Position.X)
 	end
 
-	local function f4758(p18)
-		up0:SetOptions(p18)
+	local function setOptions_proto(options)
+		up0:SetOptions(options)
 	end
 
-	local function f4759()
+	local function forgetClothing_proto()
 		up0._strippedClothing[up1] = nil
 	end
 
-	local function f4760(p19, p20)
-		p19._strippedClothing[p20] = true
-		p20.Parent = nil
-		local v18 = p19._clothingTrove
-		if v18 == nil then
-			v18 = p19._trove:Extend()
-			p19._clothingTrove = v18
+	local function stripClothing(outfit, clothing)
+		outfit._strippedClothing[clothing] = true
+		clothing.Parent = nil
+		local clothingTrove = outfit._clothingTrove
+		if clothingTrove == nil then
+			clothingTrove = outfit._trove:Extend()
+			outfit._clothingTrove = clothingTrove
 		end
 
-		local function f4761()
-			p19._strippedClothing[p20] = nil
+		local function forget()
+			outfit._strippedClothing[clothing] = nil
 		end
 
-		v18:Connect(p20.Destroying, f4761)
+		clothingTrove:Connect(clothing.Destroying, forget)
 	end
 
-	local function f4762(p21)
-		ipairs(p21._queuedFinally)
+	local function finalizePromise(promise)
+		ipairs(promise._queuedFinally)
 		repeat
-			p21._queuedFinally = nil
-			p21._queuedReject = nil
-			p21._queuedResolve = nil
+			promise._queuedFinally = nil
+			promise._queuedReject = nil
+			promise._queuedResolve = nil
 		until not up0.TEST
-		p21._parent = nil
-		p21._consumers = nil
-		task.defer(coroutine.close, p21._thread)
+		promise._parent = nil
+		promise._consumers = nil
+		task.defer(coroutine.close, promise._thread)
 	end
 
-	local function f4763(...)
+	local function trapNoop(...)
 		local v19
 		v19 = not not false
 		if not v19 then
@@ -68817,14 +68817,14 @@ local function f4735()
 		end
 	end
 
-	local function f4764(p22, p23, p24)
-		if p22._realized then
+	local function realize(view, root, context)
+		if view._realized then
 			return
 		end
-		p22._realized = true
-		p22._elements = p23
-		p22._rootFrame = p23
-		up0(p22, p24)
+		view._realized = true
+		view._elements = root
+		view._rootFrame = root
+		up0(view, context)
 	end
 
 	local function lazyModule_dP()
@@ -68836,47 +68836,47 @@ local function f4735()
 		return t13.c
 	end
 
-	local function f4766(p25, p26)
-		p25.Row:SetVisible(p26)
+	local function setRowVisible(control, visible)
+		control.Row:SetVisible(visible)
 	end
 
-	local function f4767()
+	local function selectStop_proto()
 		up0.SelectStop(up1)
 	end
 
-	local function f4768(p27)
-		if p27 then
+	local function onStopDragged_proto(dragging)
+		if dragging then
 			up0.SelectStop(up1)
 		end
-		up2(p27)
+		up2(dragging)
 	end
 
-	local function f4769()
+	local function rebuildStopMarkers_proto()
 		up0:Destroy()
 		up0 = up1:Extend()
-		local f4770 = up2
-		local v20 = nil
+		local nextMarker = up2
+		local index = nil
 		while true do
-			local t14
-			v20, t14 = f4770(nil, v20)
-			if v20 == nil then
+			local marker
+			index, marker = nextMarker(nil, index)
+			if index == nil then
 				break
 			end
-			t14.Marker:Destroy()
+			marker.Marker:Destroy()
 		end
 		table.clear(up2)
 		if up3.Mode ~= "Gradient" then
 			return
 		end
-		local Stops5 = up3.Stops
-		local v21, v22, v23, v24
+		local stops = up3.Stops
+		local index2, accentSize, markerSize, isActive
 		while true do
-			local t15
-			v21, t15 = Stops5(nil, v21)
-			if v21 == nil then
+			local stop
+			index2, stop = stops(nil, index2)
+			if index2 == nil then
 				break
 			end
-			v24 = v21 == up3.ActiveStopIndex
+			isActive = index2 == up3.ActiveStopIndex
 			local imageButton = Instance.new("ImageButton")
 			imageButton.Active = true
 			imageButton.AutoButtonColor = false
@@ -68884,16 +68884,16 @@ local function f4735()
 			imageButton.AnchorPoint = Vector2.new(0.5, 0)
 			imageButton.Image = up5
 			imageButton.BackgroundTransparency = 1
-			imageButton.Position = UDim2.new(t15.Time, -1, 0, -1)
-			if v24 then
-				v23 = UDim2.fromOffset(10, 29)
+			imageButton.Position = UDim2.new(stop.Time, -1, 0, -1)
+			if isActive then
+				markerSize = UDim2.fromOffset(10, 29)
 			else
-				v23 = v24
+				markerSize = isActive
 			end
-			if not v23 then
-				v23 = UDim2.fromOffset(8, 24)
+			if not markerSize then
+				markerSize = UDim2.fromOffset(8, 24)
 			end
-			imageButton.Size = v23
+			imageButton.Size = markerSize
 			imageButton.BorderSizePixel = 0
 			imageButton.Parent = up6
 			local imageLabel = Instance.new("ImageLabel")
@@ -68903,55 +68903,55 @@ local function f4735()
 			imageLabel.Position = UDim2.fromOffset(1, 1)
 			imageLabel.BorderSizePixel = 0
 			imageLabel.Parent = imageButton
-			local v27 = Instance.new(up7)
-			v27.Position = UDim2.fromOffset(1, 1)
-			if v24 then
-				v22 = UDim2.new(1, -2, 0, 19)
+			local accent = Instance.new(up7)
+			accent.Position = UDim2.fromOffset(1, 1)
+			if isActive then
+				accentSize = UDim2.new(1, -2, 0, 19)
 			else
-				v22 = v24
+				accentSize = isActive
 			end
-			if not v22 then
-				v22 = UDim2.new(1, -2, 0, 16)
+			if not accentSize then
+				accentSize = UDim2.new(1, -2, 0, 16)
 			end
-			v27.Size = v22
-			v27.BorderSizePixel = 0
-			v27.BackgroundColor3 = t15.Value
-			v27.Parent = imageLabel
+			accent.Size = accentSize
+			accent.BorderSizePixel = 0
+			accent.BackgroundColor3 = stop.Value
+			accent.Parent = imageLabel
 			local uiGradient = Instance.new("UIGradient")
 			uiGradient.Rotation = 90
-			local new46 = ColorSequence.new
-			local v29 = table.create(1)
+			local newSequence = ColorSequence.new
+			local keypoints = table.create(1)
 			ColorSequenceKeypoint.new(0, up8)
 			ColorSequenceKeypoint.new(1, Color3.fromRGB(211, 211, 211))
-			uiGradient.Color = new46(v29)
-			uiGradient.Parent = v27
-			if not v24 then
+			uiGradient.Color = newSequence(keypoints)
+			uiGradient.Parent = accent
+			if not isActive then
 				imageButton.ImageTransparency = 0.1
 			end
-			local t16 = { Marker = imageButton, Accent = v27 }
-			up2[v21] = t16
-			local v30 = v21
+			local entry = { Marker = imageButton, Accent = accent }
+			up2[index2] = entry
+			local capturedIndex = index2
 
-			local function f4771()
-				up0.SelectStop(v30)
+			local function onMarkerClicked()
+				up0.SelectStop(capturedIndex)
 			end
 
-			up9.connectClick(up0, imageButton, f4771)
-			local v31 = v21
+			up9.connectClick(up0, imageButton, onMarkerClicked)
+			local capturedIndex2 = index2
 
-			local function f4772(p28)
-				if p28 then
-					up0.SelectStop(v31)
+			local function onMarkerDragged(dragging)
+				if dragging then
+					up0.SelectStop(capturedIndex2)
 				end
-				up2(p28)
+				up2(dragging)
 			end
 
-			up9.connectDrag(up0, imageButton, up11, f4772)
+			up9.connectDrag(up0, imageButton, up11, onMarkerDragged)
 		end
 	end
 
-	local function f4773(...)
-		local v35, PlayerSpoofer
+	local function isSpoofTarget_proto(...)
+		local player, spooferSettings
 		local f4774 = bit32.lrotate
 		local v32 = 283
 		local v33, v34
@@ -68959,15 +68959,15 @@ local function f4735()
 			local _ = 2227 + f4774(v32, 2) + -3358
 			f4774 = nil
 			v32 = nil
-			v35 = ...
-			PlayerSpoofer = up0.data.Misc.PlayerSpoofer
-			v34 = v35 == up1
+			player = ...
+			spooferSettings = up0.data.Misc.PlayerSpoofer
+			v34 = player == up1
 		until not v34
-		v33 = v35 == up1.UserId
+		v33 = player == up1.UserId
 		if v33 then
-			if PlayerSpoofer.LocalPlayer then
+			if spooferSettings.LocalPlayer then
 			end
-			v33 = PlayerSpoofer.OtherPlayers
+			v33 = spooferSettings.OtherPlayers
 		end
 		return v33
 	end
@@ -68976,32 +68976,32 @@ local function f4735()
 		return up0
 	end
 
-	local function f4776(p29, p30)
-		local v36 = up0.NormalizePathKey(p30)
-		local v37 = p29._signals[v36]
-		if v37 then
-			return v37
+	local function getPathSignal(adapter, path)
+		local key = up0.NormalizePathKey(path)
+		local existing = adapter._signals[key]
+		if existing then
+			return existing
 		end
-		local Add79 = p29._trove:Add(up1.new())
-		p29._signals[v36] = Add79
-		p29._paths[v36] = table.clone(p30)
-		p29._lastValues[v36] = up2:GetEditValue(p30)
+		local signal = adapter._trove:Add(up1.new())
+		adapter._signals[key] = signal
+		adapter._paths[key] = table.clone(path)
+		adapter._lastValues[key] = up2:GetEditValue(path)
 
-		local function f4777()
-			local GetEditValue3 = up0:GetEditValue(p30)
-			if GetEditValue3 == p29._lastValues[v36] then
+		local function onValueChanged()
+			local value = up0:GetEditValue(path)
+			if value == adapter._lastValues[key] then
 				return
 			end
-			if not (up4(p30) or p29:_IsMenuVisible()) then
-				p29._isDirty = true
+			if not (up4(path) or adapter:_IsMenuVisible()) then
+				adapter._isDirty = true
 				return
 			end
-			p29._lastValues[v36] = GetEditValue3
-			Add79:Fire(GetEditValue3)
+			adapter._lastValues[key] = value
+			signal:Fire(value)
 		end
 
-		p29._trove:Connect(up2:GetPropertyChangedSignal(p30), f4777)
-		return Add79
+		adapter._trove:Connect(up2:GetPropertyChangedSignal(path), onValueChanged)
+		return signal
 	end
 
 	local function lazyModule_eJ()
@@ -69013,15 +69013,15 @@ local function f4735()
 		return t17.c
 	end
 
-	local function f4779(p31)
-		local v38 = up0(p31._defaultConfig)
-		p31.data = v38
-		return v38
+	local function resetToDefaults(store)
+		local data = up0(store._defaultConfig)
+		store.data = data
+		return data
 	end
 
-	local function f4780(p32, p33)
-		p32._data.autoSavePresetName = p33
-		return (p32:SaveCoreConfig())
+	local function setAutoSavePreset(store, name)
+		store._data.autoSavePresetName = name
+		return (store:SaveCoreConfig())
 	end
 
 	local function f4781()
@@ -69029,11 +69029,11 @@ local function f4735()
 	local function f4782()
 	end
 
-	local function f4783(p34, p35)
-		local t18 = { _errorReporter = up0.new(), _restore = nil }
-		setmetatable(t18, up1)
-		t18._errorReporter:ReportResult(t18:_Install(p34, p35))
-		return t18
+	local function newInstalledHook_proto(target, replacement)
+		local hook = { _errorReporter = up0.new(), _restore = nil }
+		setmetatable(hook, up1)
+		hook._errorReporter:ReportResult(hook:_Install(target, replacement))
+		return hook
 	end
 
 	local function f4784()
@@ -69048,439 +69048,439 @@ local function f4735()
 		return t19.c
 	end
 
-	local function f4786(p36)
-		local v39 = nil
-		if p36 then
-			v39 = "alpha"
+	local function onAlphaDrag_proto(dragging)
+		local mode = nil
+		if dragging then
+			mode = "alpha"
 		end
-		up0.SetDragMode(v39)
+		up0.SetDragMode(mode)
 	end
 
-	local function f4787(p37, p38)
-		local item15 = up0.item
-		local v40 = nil
+	local function copySelection_proto(target, source)
+		local nextCosmeticType = up0.item
+		local index = nil
 		while true do
-			local v41
-			v40, v41 = item15(nil, v40)
-			if v40 == nil then
+			local cosmeticType
+			index, cosmeticType = nextCosmeticType(nil, index)
+			if index == nil then
 				break
 			end
-			local v42 = up1.getSelectionValue(p38, v41)
-			if v42 ~= nil then
-				up1.setSelectionValue(p37, v41, v42)
+			local value = up1.getSelectionValue(source, cosmeticType)
+			if value ~= nil then
+				up1.setSelectionValue(target, cosmeticType, value)
 			end
 		end
 	end
 
-	local function f4788(p39)
-		p39._trove:Destroy()
+	local function destroyTrove_proto(object)
+		object._trove:Destroy()
 	end
 
-	local function f4789(p40)
-		up0.rebuilt:Fire(p40)
+	local function notifyRebuilt_proto(view)
+		up0.rebuilt:Fire(view)
 	end
 
-	local function f4790()
+	local function loadRebuildNotifier()
 		up0.al()
-		local t20 = { rebuilt = up0.t().new() }
+		local notifier = { rebuilt = up0.t().new() }
 
-		function t20.notifyRebuilt(p41)
-			t20.rebuilt:Fire(p41)
+		function notifier.notifyRebuilt(view)
+			notifier.rebuilt:Fire(view)
 		end
 
-		return t20
+		return notifier
 	end
 
-	local function f4791(p42)
+	local function measureTextWidth(text)
 		return up0:GetTextSize(
-			p42,
+			text,
 			up1,
 			Enum.Font.GothamMedium,
 			Vector2.new(10000, up2)
 		).X
 	end
 
-	local function f4792(p43, p44)
-		if p43._data[p44] == nil then
+	local function deleteEntry(store, name)
+		if store._data[name] == nil then
 			return up0.VOID_OK
 		end
-		p43._data[p44] = nil
-		p43:_RebuildIndexes()
-		local _Save3 = p43:_Save()
-		p43.changed:Fire(p43:GetNames())
-		return _Save3
+		store._data[name] = nil
+		store:_RebuildIndexes()
+		local saveResult = store:_Save()
+		store.changed:Fire(store:GetNames())
+		return saveResult
 	end
 
 	local function f4793()
 	end
 
-	local function f4794(p45)
-		if p45._restore ~= nil then
+	local function applyNoGameHitsound_proto(hook)
+		if hook._restore ~= nil then
 			return up0.VOID_OK
 		end
-		local v43 = up1(up2, "PlayHitmarkerSound")
-		if v43 == nil then
+		local original = up1(up2, "PlayHitmarkerSound")
+		if original == nil then
 			return (up0.err(
 				"NoGameHitsound",
 				"function_lookup",
 				"Failed to find PlayHitmarkerSound in ClientViewModel"
 			))
 		end
-		local function f4795()
+		local function noop()
 		end
-		up3(up2, "PlayHitmarkerSound", f4795)
-		local t21 = { method = v43 }
-		p45._restore = t21
+		up3(up2, "PlayHitmarkerSound", noop)
+		local t21 = { method = original }
+		hook._restore = t21
 		return up0.VOID_OK
 	end
 
-	local function f4796()
+	local function newNoGameHitsound_proto()
 		return (setmetatable({}, up0))
 	end
 
-	local function f4797(p46)
-		p46:_Revert()
+	local function destroyNoGameHitsound_proto(hook)
+		hook:_Revert()
 	end
 
-	local function f4798(p47)
-		local _restore22 = p47._restore
-		if _restore22 == nil then
+	local function revertNoGameHitsound_proto(hook)
+		local restore = hook._restore
+		if restore == nil then
 			return up0.VOID_OK
 		end
-		up1(up2, "PlayHitmarkerSound", _restore22.method)
-		p47._restore = nil
+		up1(up2, "PlayHitmarkerSound", restore.method)
+		hook._restore = nil
 		return up0.VOID_OK
 	end
 
-	local function f4799()
-		local v44 = up0.b()
-		local ClientViewModel4 = up0.ao().ClientViewModel
-		local t22 = {}
-		t22.__index = t22
+	local function loadNoGameHitsound()
+		local Result = up0.b()
+		local ClientViewModel = up0.ao().ClientViewModel
+		local NoGameHitsound = {}
+		NoGameHitsound.__index = NoGameHitsound
 
-		function t22.new()
-			return (setmetatable({}, t22))
+		function NoGameHitsound.new()
+			return (setmetatable({}, NoGameHitsound))
 		end
 
-		function t22:SetEnabled(p48)
-			if p48 then
+		function NoGameHitsound:SetEnabled(enabled)
+			if enabled then
 				return (self:_Apply())
 			end
 			return (self:_Revert())
 		end
 
-		function t22:_Apply()
+		function NoGameHitsound:_Apply()
 			if self._restore ~= nil then
-				return v44.VOID_OK
+				return Result.VOID_OK
 			end
-			local v45 = up1(ClientViewModel4, "PlayHitmarkerSound")
-			if v45 == nil then
-				return (v44.err(
+			local original = up1(ClientViewModel, "PlayHitmarkerSound")
+			if original == nil then
+				return (Result.err(
 					"NoGameHitsound",
 					"function_lookup",
 					"Failed to find PlayHitmarkerSound in ClientViewModel"
 				))
 			end
-			local function f4800()
+			local function noop()
 			end
-			up3(ClientViewModel4, "PlayHitmarkerSound", f4800)
-			local t23 = { method = v45 }
-			self._restore = t23
-			return v44.VOID_OK
+			up3(ClientViewModel, "PlayHitmarkerSound", noop)
+			local restore = { method = original }
+			self._restore = restore
+			return Result.VOID_OK
 		end
 
-		function t22:_Revert()
-			local _restore23 = self._restore
-			if _restore23 == nil then
-				return v44.VOID_OK
+		function NoGameHitsound:_Revert()
+			local restore = self._restore
+			if restore == nil then
+				return Result.VOID_OK
 			end
-			up1(ClientViewModel4, "PlayHitmarkerSound", _restore23.method)
+			up1(ClientViewModel, "PlayHitmarkerSound", restore.method)
 			self._restore = nil
-			return v44.VOID_OK
+			return Result.VOID_OK
 		end
 
-		function t22:Destroy()
+		function NoGameHitsound:Destroy()
 			self:_Revert()
 		end
 
-		return t22
+		return NoGameHitsound
 	end
 
-	local function f4801(p49)
-		p49._trove:Destroy()
+	local function destroyTrove_proto2(object)
+		object._trove:Destroy()
 	end
 
-	local function f4802(p50, p51)
-		p50:_Clear()
-		if p51 == nil then
+	local function rebuildWaypointMarkers(waypoints, nextRecording)
+		waypoints:_Clear()
+		if nextRecording == nil then
 			return
 		end
-		local t24 = {}
-		local v46 = nil
+		local clusters = {}
+		local index = nil
 		while true do
-			local t25
-			v46, t25 = p51(nil, v46)
-			if v46 == nil then
+			local recording
+			index, recording = nextRecording(nil, index)
+			if index == nil then
 				break
 			end
-			local Position23 = t25.startCFrame.Position
-			local v47 = math.floor(Position23.X / up0) ..
+			local startPos = recording.startCFrame.Position
+			local cellKey = math.floor(startPos.X / up0) ..
 				"," ..
-					math.floor(Position23.Y / up0) .. "," .. math.floor(Position23.Z / up0)
-			local v48 = t24[v47]
-			if v48 == nil then
-				v48 = {}
-				t24[v47] = v48
+					math.floor(startPos.Y / up0) .. "," .. math.floor(startPos.Z / up0)
+			local cluster = clusters[cellKey]
+			if cluster == nil then
+				cluster = {}
+				clusters[cellKey] = cluster
 			end
-			table.insert(v48, t25)
+			table.insert(cluster, recording)
 		end
-		local _mapAnchor = p50._mapAnchor
-		local v49 = nil
+		local mapAnchor = waypoints._mapAnchor
+		local key = nil
 		while true do
-			local f4803
-			v49, f4803 = t24(nil, v49)
-			if v49 == nil then
+			local nextInCluster
+			key, nextInCluster = clusters(nil, key)
+			if key == nil then
 				break
 			end
-			local v50 = Vector3.zero
-			local v51 = nil
+			local sum = Vector3.zero
+			local index2 = nil
 			while true do
-				local t26
-				v51, t26 = f4803(nil, v51)
-				if v51 == nil then
+				local recording2
+				index2, recording2 = nextInCluster(nil, index2)
+				if index2 == nil then
 					break
 				end
-				v50 = v50 + t26.startCFrame.Position
-				p50._routesByRecording[t26] = up1.new(_mapAnchor, t26)
+				sum = sum + recording2.startCFrame.Position
+				waypoints._routesByRecording[recording2] = up1.new(mapAnchor, recording2)
 			end
 			table.insert(
-				p50._markers,
-				up2.new(_mapAnchor:PointToWorldSpace(v50 / #f4803), f4803)
+				waypoints._markers,
+				up2.new(mapAnchor:PointToWorldSpace(sum / #nextInCluster), nextInCluster)
 			)
 		end
-		p50:_RefreshFulfillability()
+		waypoints:_RefreshFulfillability()
 	end
 
-	local function f4804(p52, p53)
-		p52._replicateBinding:SetEnabled(p53)
+	local function setHitFeedbackEnabled_proto(feedback, enabled)
+		feedback._replicateBinding:SetEnabled(enabled)
 	end
 
-	local function f4805(p54, p55)
-		if p55.enumName ~= "DamageNumberEffect" then
+	local function handleDamageReplicate_proto(feedback, call)
+		if call.enumName ~= "DamageNumberEffect" then
 			return
 		end
-		local inner40 = p54._playerContext.inner
-		if inner40 == nil then
+		local inner = feedback._playerContext.inner
+		if inner == nil then
 			return
 		end
-		if p55.objectId ~= inner40.fighterState.objectId then
+		if call.objectId ~= inner.fighterState.objectId then
 			return
 		end
-		local args4 = p55.args
-		local Parent6 = args4[1].Parent
-		if Parent6 == nil then
+		local args = call.args
+		local victim = args[1].Parent
+		if victim == nil then
 			return
 		end
-		local v52 = args4[2]
-		local v53
-		v53 = args4[3] == true
-		v53 = v53 and "Head" or "Body"
-		p54:_HandleHit(v52, v53, Parent6)
+		local damage = args[2]
+		local hitPart
+		hitPart = args[3] == true
+		hitPart = hitPart and "Head" or "Body"
+		feedback:_HandleHit(damage, hitPart, victim)
 	end
 
-	local function f4806()
-		local v54 = up0.ff()
-		local v55 = up0.y()
+	local function loadPlayerHitFeedback()
+		local ChamsEffect = up0.ff()
+		local settings = up0.y()
 		up0.ef()
-		local v56 = up0.ac()
-		local v57 = up0.fk()
-		local v58 = up0.O()
+		local ErrorReporter = up0.ac()
+		local NoGameHitsound = up0.fk()
+		local notifications = up0.O()
 		up0.a4()
 		up0.bD()
-		local v59 = up0.fg()
-		local v60 = up0.q()
-		local v61 = up0.fh()
-		local v62 = up0.fi()
-		local t27 = {}
-		t27.__index = t27
+		local HitFlash = up0.fg()
+		local Trove = up0.q()
+		local playSound = up0.fh()
+		local getPlayerNames = up0.fi()
+		local PlayerHitFeedback = {}
+		PlayerHitFeedback.__index = PlayerHitFeedback
 
-		local function f4807(p56)
-			return (tostring(math.round(p56 * 10) / 10))
+		local function formatDamage(damage)
+			return (tostring(math.round(damage * 10) / 10))
 		end
 
-		function t27.new(p57, p58, p59)
-			local v63 = v60.new("combat_feedback.PlayerHit")
-			local v64 = v56.new()
-			local Reserve13 = p57:Reserve((table.create(1)))
-			local t28 = {
-				_trove = v63,
-				_errorReporter = v64,
-				_replicateBinding = Reserve13,
-				_playerContext = p58,
-				_customSounds = p59,
-				_noGameHitsound = v63:Add(v57.new()),
-				_hitFlash = v63:Add(v59.new()),
+		function PlayerHitFeedback.new(remoteHooks, playerContext, customSounds)
+			local trove = Trove.new("combat_feedback.PlayerHit")
+			local errorReporter = ErrorReporter.new()
+			local replicateBinding = remoteHooks:Reserve((table.create(1)))
+			local feedback = {
+				_trove = trove,
+				_errorReporter = errorReporter,
+				_replicateBinding = replicateBinding,
+				_playerContext = playerContext,
+				_customSounds = customSounds,
+				_noGameHitsound = trove:Add(NoGameHitsound.new()),
+				_hitFlash = trove:Add(HitFlash.new()),
 				_chams = {}
 			}
-			setmetatable(t28, t27)
+			setmetatable(feedback, PlayerHitFeedback)
 
-			local function f4808(p60)
-				t28:_HandleReplicate(p60)
+			local function onReplicate(call)
+				feedback:_HandleReplicate(call)
 			end
 
-			Reserve13:SetHandler(f4808)
+			replicateBinding:SetHandler(onReplicate)
 
-			local function f4809(p61)
-				t28:_SetEnabled(p61)
+			local function setEnabled(enabled)
+				feedback:_SetEnabled(enabled)
 			end
 
-			t28._trove:Connect(v55:GetPropertyChangedSignal((table.create(2))), f4809)
+			feedback._trove:Connect(settings:GetPropertyChangedSignal((table.create(2))), setEnabled)
 
-			local function f4810(p62)
-				t28._errorReporter:ReportResult(t28._noGameHitsound:SetEnabled(p62))
+			local function setNoGameHitsound(disabled)
+				feedback._errorReporter:ReportResult(feedback._noGameHitsound:SetEnabled(disabled))
 			end
 
-			t28._trove:Connect(v55:GetPropertyChangedSignal((table.create(3))), f4810)
+			feedback._trove:Connect(settings:GetPropertyChangedSignal((table.create(3))), setNoGameHitsound)
 
-			local function f4811(p63)
-				t28._customSounds:Preload(p63)
+			local function preloadHeadSound(name)
+				feedback._customSounds:Preload(name)
 			end
 
-			t28._trove:Connect(v55:GetPropertyChangedSignal((table.create(3))), f4811)
+			feedback._trove:Connect(settings:GetPropertyChangedSignal((table.create(3))), preloadHeadSound)
 
-			local function f4812(p64)
-				t28._customSounds:Preload(p64)
+			local function preloadBodySound(name)
+				feedback._customSounds:Preload(name)
 			end
 
-			t28._trove:Connect(v55:GetPropertyChangedSignal((table.create(3))), f4812)
-			local PlayerHit3 = v55.data.PlayerHit
-			if PlayerHit3.Enabled then
-				t28:_SetEnabled(true)
+			feedback._trove:Connect(settings:GetPropertyChangedSignal((table.create(3))), preloadBodySound)
+			local hitSettings = settings.data.PlayerHit
+			if hitSettings.Enabled then
+				feedback:_SetEnabled(true)
 			end
-			if PlayerHit3.Sound.DisableGameSound then
-				t28._errorReporter:ReportResult(t28._noGameHitsound:SetEnabled(true))
+			if hitSettings.Sound.DisableGameSound then
+				feedback._errorReporter:ReportResult(feedback._noGameHitsound:SetEnabled(true))
 			end
-			t28._customSounds:Preload(PlayerHit3.Sound.HeadName)
-			t28._customSounds:Preload(PlayerHit3.Sound.BodyName)
-			return t28
+			feedback._customSounds:Preload(hitSettings.Sound.HeadName)
+			feedback._customSounds:Preload(hitSettings.Sound.BodyName)
+			return feedback
 		end
 
-		function t27:_SetEnabled(p65)
-			self._replicateBinding:SetEnabled(p65)
+		function PlayerHitFeedback:_SetEnabled(enabled)
+			self._replicateBinding:SetEnabled(enabled)
 		end
 
-		function t27:_HandleReplicate(p66)
-			if p66.enumName ~= "DamageNumberEffect" then
+		function PlayerHitFeedback:_HandleReplicate(call)
+			if call.enumName ~= "DamageNumberEffect" then
 				return
 			end
-			local inner41 = self._playerContext.inner
-			if inner41 == nil then
+			local inner = self._playerContext.inner
+			if inner == nil then
 				return
 			end
-			if p66.objectId ~= inner41.fighterState.objectId then
+			if call.objectId ~= inner.fighterState.objectId then
 				return
 			end
-			local args5 = p66.args
-			local Parent7 = args5[1].Parent
-			if Parent7 == nil then
+			local args = call.args
+			local victim = args[1].Parent
+			if victim == nil then
 				return
 			end
-			local v65 = args5[2]
-			local v66
-			v66 = args5[3] == true
-			v66 = v66 and "Head" or "Body"
-			self:_HandleHit(v65, v66, Parent7)
+			local damage = args[2]
+			local hitPart
+			hitPart = args[3] == true
+			hitPart = hitPart and "Head" or "Body"
+			self:_HandleHit(damage, hitPart, victim)
 		end
 
-		function t27:_HandleHit(p67, p68, p69)
-			local PlayerHit4 = v55.data.PlayerHit
-			local Sound4 = PlayerHit4.Sound
-			local v67, v68, v69
-			if Sound4.Enabled then
-				v69 = p68 == "Head"
+		function PlayerHitFeedback:_HandleHit(damage, hitPart, victim)
+			local hitSettings = settings.data.PlayerHit
+			local sound = hitSettings.Sound
+			local volume, soundName, v69
+			if sound.Enabled then
+				v69 = hitPart == "Head"
 				if v69 then
-					v68 = Sound4.HeadName
+					soundName = sound.HeadName
 				else
-					v68 = v69
+					soundName = v69
 				end
-				if not v68 then
-					v68 = Sound4.BodyName
+				if not soundName then
+					soundName = sound.BodyName
 				end
-				local GetSoundId4 = self._customSounds:GetSoundId(v68)
-				if GetSoundId4 ~= nil then
+				local soundId = self._customSounds:GetSoundId(soundName)
+				if soundId ~= nil then
 					if v69 then
-						v67 = Sound4.HeadVolume
+						volume = sound.HeadVolume
 					else
-						v67 = v69
+						volume = v69
 					end
-					if not v67 then
-						v67 = Sound4.BodyVolume
+					if not volume then
+						volume = sound.BodyVolume
 					end
-					v69 = v69 and Sound4.HeadPitch or Sound4.BodyPitch
-					v61(GetSoundId4, v67, v69)
+					v69 = v69 and sound.HeadPitch or sound.BodyPitch
+					playSound(soundId, volume, v69)
 				end
 			end
-			local Notification4 = PlayerHit4.Notification
-			if Notification4.Enabled then
-				local v70, v71
-				v71, v70 = v62(p69)
-				local Text9 = Notification4.Text
-				local gsub9 = Text9.gsub
-				local t29 = { NAME = v71, DNAME = v70, PART = p68 }
-				local v72 = gsub9(Text9, "%%(%w+)%%", t29)
+			local notification = hitSettings.Notification
+			if notification.Enabled then
+				local displayName, name
+				name, displayName = getPlayerNames(victim)
+				local template = notification.Text
+				local gsub = template.gsub
+				local replacements = { NAME = name, DNAME = displayName, PART = hitPart }
+				local message = gsub(template, "%%(%w+)%%", replacements)
 
-				local function f4813()
-					local t30 = v58.Get()
-					local Notify9 = t30.Notify
-					local Template3 = v58.Template
-					local v73 = v72
-					local t31 = { DMG = f4807(p67) }
-					Notify9(t30, Template3(v73, t31))
+				local function showNotification()
+					local notifier = notifications.Get()
+					local notify = notifier.Notify
+					local fillTemplate = notifications.Template
+					local messageText = message
+					local values = { DMG = formatDamage(damage) }
+					notify(notifier, fillTemplate(messageText, values))
 				end
 
-				task.spawn(f4813)
+				task.spawn(showNotification)
 			end
-			local HitFlash2 = PlayerHit4.HitFlash
-			if HitFlash2.Enabled then
-				self._hitFlash:Play(HitFlash2.Color, HitFlash2.Duration)
+			local hitFlash = hitSettings.HitFlash
+			if hitFlash.Enabled then
+				self._hitFlash:Play(hitFlash.Color, hitFlash.Duration)
 			end
-			local Chams4 = PlayerHit4.Chams
-			if Chams4.Enabled then
-				local v74 = v54.new(
-					p69,
-					Chams4.Color,
-					Chams4.Transparency,
-					Chams4.Duration,
-					Chams4.Material
+			local chams = hitSettings.Chams
+			if chams.Enabled then
+				local cham = ChamsEffect.new(
+					victim,
+					chams.Color,
+					chams.Transparency,
+					chams.Duration,
+					chams.Material
 				)
-				table.insert(self._chams, v74)
+				table.insert(self._chams, cham)
 			end
 		end
 
-		function t27:PreRender(p70)
-			self._hitFlash:Update(p70)
-			local v75 = #self._chams - -1
+		function PlayerHitFeedback:PreRender(dt)
+			self._hitFlash:Update(dt)
+			local i = #self._chams - -1
 			while true do
-				v75 = v75 + -1
-				if not (1 <= v75) then
+				i = i + -1
+				if not (1 <= i) then
 					break
 				end
-				if not self._chams[v75]:Step(p70) then
-					table.remove(self._chams, v75)
+				if not self._chams[i]:Step(dt) then
+					table.remove(self._chams, i)
 				end
 			end
 		end
 
-		function t27:Destroy()
-			local _chams4 = self._chams
-			local v76 = nil
+		function PlayerHitFeedback:Destroy()
+			local chams = self._chams
+			local index = nil
 			while true do
-				local v77
-				v76, v77 = _chams4(nil, v76)
-				if v76 == nil then
+				local cham
+				index, cham = chams(nil, index)
+				if index == nil then
 					break
 				end
-				v77:Destroy()
+				cham:Destroy()
 			end
 			table.clear(self._chams)
 			self._errorReporter:Destroy()
@@ -69488,241 +69488,241 @@ local function f4735()
 			self._replicateBinding:Destroy()
 		end
 
-		return t27
+		return PlayerHitFeedback
 	end
 
 	local function f4814()
 	end
 
-	local function f4815(p71, p72)
-		local GetAll = p71._store:GetAll(up0)
-		p71._store:SetItems(up0, p72)
-		if not (next(p72) == nil and next(p71._rankCharm:GetAllOverrides()) == nil) then
-			p71:_EnsureHooksLoaded()
+	local function setSkinOverrides(cosmetics, overrides)
+		local previous = cosmetics._store:GetAll(up0)
+		cosmetics._store:SetItems(up0, overrides)
+		if not (next(overrides) == nil and next(cosmetics._rankCharm:GetAllOverrides()) == nil) then
+			cosmetics:_EnsureHooksLoaded()
 		end
-		local v78 = nil
+		local itemName = nil
 		while true do
-			local v79
-			v78, v79 = p72(nil, v78)
-			if v78 == nil then
+			local selection
+			itemName, selection = overrides(nil, itemName)
+			if itemName == nil then
 				break
 			end
-			if not up1(GetAll[v78], v79) then
-				p71._viewModelReloader:ReloadAllWithCosmetics(v78, v79)
+			if not up1(previous[itemName], selection) then
+				cosmetics._viewModelReloader:ReloadAllWithCosmetics(itemName, selection)
 			end
 		end
-		local v80 = nil
+		local itemName2 = nil
 		while true do
 			local _
-			v80, _ = GetAll(nil, v80)
-			if v80 == nil then
+			itemName2, _ = previous(nil, itemName2)
+			if itemName2 == nil then
 				break
 			end
-			if p72[v80] == nil and not up1(GetAll[v80], nil) then
-				p71._viewModelReloader:ReloadAllWithCosmetics(v80)
+			if overrides[itemName2] == nil and not up1(previous[itemName2], nil) then
+				cosmetics._viewModelReloader:ReloadAllWithCosmetics(itemName2)
 			end
 		end
 	end
 
-	local function f4816(p73)
+	local function hasStatus_proto(match)
 		local v81
-		v81 = up0(p73._inner, "Status") == up1
+		v81 = up0(match._inner, "Status") == up1
 		return v81
 	end
 
-	local function f4817(p74, p75)
-		up0:_HandlePeerPayload(p74, p75)
+	local function onPeerPayload_proto(peer, payload)
+		up0:_HandlePeerPayload(peer, payload)
 	end
 
-	local function f4818(p76)
-		up0:ClearRemotePlayerOverrides(p76)
+	local function onPeerRemoved_proto(peer)
+		up0:ClearRemotePlayerOverrides(peer)
 	end
 
-	local function f4819(p77)
-		up0:SetShareActive(p77)
+	local function onShareSkinsChanged_proto(enabled)
+		up0:SetShareActive(enabled)
 	end
 
-	local function f4820()
+	local function onShowActivated_proto()
 		up0._lastSentPayload = nil
 		up0:NotifyStoresUpdated()
 	end
 
-	local function f4821(p78, p79, p80, p81)
-		local v82 = up0.new("cosmetics.Bridge")
-		local t32 = {
-			_trove = v82,
-			_userServer = p78,
-			_errorReporter = p79,
-			_items = p80,
-			_emotesResolver = p81,
+	local function newCosmeticsBridge(userServer, errorReporter, items, emotesResolver)
+		local trove = up0.new("cosmetics.Bridge")
+		local fields = {
+			_trove = trove,
+			_userServer = userServer,
+			_errorReporter = errorReporter,
+			_items = items,
+			_emotesResolver = emotesResolver,
 			_isSendQueued = false,
 			_shareActive = false,
 			_lastSentPayload = nil
 		}
-		local v83 = setmetatable(t32, up1)
+		local bridge = setmetatable(fields, up1)
 
-		local function f4822(p82, p83)
-			v83:_HandlePeerPayload(p82, p83)
+		local function onPeerPayload(peer, payload)
+			bridge:_HandlePeerPayload(peer, payload)
 		end
 
-		v82:Connect(p78.peerPayloadReceived, f4822)
+		trove:Connect(userServer.peerPayloadReceived, onPeerPayload)
 
-		local function f4823(p84)
-			p80:ClearRemotePlayerOverrides(p84)
+		local function onPeerRemoved(peer)
+			items:ClearRemotePlayerOverrides(peer)
 		end
 
-		v82:Connect(p78.peerRemoved, f4823)
+		trove:Connect(userServer.peerRemoved, onPeerRemoved)
 
-		local function f4824()
-			v83._lastSentPayload = nil
-			v83:NotifyStoresUpdated()
+		local function onShowActivated()
+			bridge._lastSentPayload = nil
+			bridge:NotifyStoresUpdated()
 		end
 
-		v82:Connect(p78.showActivated, f4824)
+		trove:Connect(userServer.showActivated, onShowActivated)
 
-		local function f4825(p85)
-			v83:SetShareActive(p85)
+		local function onShareSkinsChanged(enabled)
+			bridge:SetShareActive(enabled)
 		end
 
-		v82:Connect(up2:GetPropertyChangedSignal((table.create(2))), f4825)
+		trove:Connect(up2:GetPropertyChangedSignal((table.create(2))), onShareSkinsChanged)
 		if up2.data.UserServer.ShareSkins then
-			v83:SetShareActive(true)
+			bridge:SetShareActive(true)
 		end
-		return v83
+		return bridge
 	end
 
-	local function f4826(p86, p87, p88)
-		if p86._changes[p87] == p88 then
+	local function setChange(modifier, key, value)
+		if modifier._changes[key] == value then
 			return
 		end
-		p86._changes[p87] = p88
-		local _ApplyNewChangesToAllItems = p86._ApplyNewChangesToAllItems
-		local t33 = { [p87] = true }
-		_ApplyNewChangesToAllItems(p86, t33)
+		modifier._changes[key] = value
+		local apply = modifier._ApplyNewChangesToAllItems
+		local changedKeys = { [key] = true }
+		apply(modifier, changedKeys)
 	end
 
-	local function f4827(p89)
-		local v84 = getmetatable(p89)
-		if v84 == nil then
+	local function fireSignal(signal)
+		local meta = getmetatable(signal)
+		if meta == nil then
 			return
 		end
-		local v85 = up0(v84, "__index")
-		if type(v85) ~= up1 then
+		local index = up0(meta, "__index")
+		if type(index) ~= up1 then
 			return
 		end
-		local v86 = up0(v85, "Fire")
-		if v86 == nil then
+		local fire = up0(index, "Fire")
+		if fire == nil then
 			return
 		end
-		coroutine.wrap(v86)(p89)
+		coroutine.wrap(fire)(signal)
 	end
 
-	local function f4828(p90)
-		local Enabled = p90.Level.Enabled
-		if not Enabled then
-			Enabled = p90.CasualWins.Enabled
+	local function anyStatEnabled(stats)
+		local enabled = stats.Level.Enabled
+		if not enabled then
+			enabled = stats.CasualWins.Enabled
 		end
-		if not Enabled then
-			Enabled = p90.RankedWins.Enabled
+		if not enabled then
+			enabled = stats.RankedWins.Enabled
 		end
-		if not Enabled then
-			Enabled = p90.CasualWinPercent.Enabled
+		if not enabled then
+			enabled = stats.CasualWinPercent.Enabled
 		end
-		if not Enabled then
-			Enabled = p90.RankedWinPercent.Enabled
+		if not enabled then
+			enabled = stats.RankedWinPercent.Enabled
 		end
-		if not Enabled then
-			Enabled = p90.RankedElo.Enabled
+		if not enabled then
+			enabled = stats.RankedElo.Enabled
 		end
-		if not Enabled then
-			Enabled = p90.FavoriteMap.Enabled
+		if not enabled then
+			enabled = stats.FavoriteMap.Enabled
 		end
-		return Enabled
+		return enabled
 	end
 
-	local function f4829(p91)
-		up0:SetFilter(up1(p91))
+	local function setSearchFilter_proto(query)
+		up0:SetFilter(up1(query))
 	end
 
-	local function f4830(p92, p93)
-		local t34 = up0(p92, "_animation_tracks")
-		local v87 = t34[p93]
-		if v87 == nil then
+	local function callWithoutTrack_proto(viewModel, trackName)
+		local tracks = up0(viewModel, "_animation_tracks")
+		local original = tracks[trackName]
+		if original == nil then
 			return
 		end
-		t34[p93] = up1
-		local v88, v89
-		v89, v88 = up2()
-		t34[p93] = v87
-		if not v89 then
-			error(v88, 0)
+		tracks[trackName] = up1
+		local err, ok
+		ok, err = up2()
+		tracks[trackName] = original
+		if not ok then
+			error(err, 0)
 		end
 	end
 
-	local function f4831(p94, p95)
+	local function playAnimationHook_proto(viewModel, animation)
 		if not up0(
-			up0(up0(up0(p94, "ClientViewModel"), "ClientItem"), "ClientFighter"),
+			up0(up0(up0(viewModel, "ClientViewModel"), "ClientItem"), "ClientFighter"),
 			"IsLocalPlayer"
 		) then
 			return (coroutine.wrap(up1)())
 		end
-		if up2:_ShouldSuppress(p94, p95) then
+		if up2:_ShouldSuppress(viewModel, animation) then
 			return (up3())
 		end
 		return (coroutine.wrap(up1)())
 	end
 
-	local function f4832(p96)
-		if p96._callRedirect ~= nil then
+	local function installAnimationDisabler(disabler)
+		if disabler._callRedirect ~= nil then
 			return up0.VOID_OK
 		end
-		local v90 = up1(up2, "PlayAnimation")
-		if v90 == nil then
+		local playAnimation = up1(up2, "PlayAnimation")
+		if playAnimation == nil then
 			return (up0.err("AnimationDisabler", "function_lookup", "Failed to find PlayAnimation"))
 		end
 
-		local function f4833(p97, p98)
-			local t35 = up0(p97, "_animation_tracks")
-			local v91 = t35[p98]
-			if v91 == nil then
+		local function callWithoutTrack(viewModel, trackName)
+			local tracks = up0(viewModel, "_animation_tracks")
+			local original = tracks[trackName]
+			if original == nil then
 				return
 			end
-			t35[p98] = up1
-			local v92, v93
-			v93, v92 = up2()
-			t35[p98] = v91
-			if not v93 then
-				error(v92, 0)
+			tracks[trackName] = up1
+			local err, ok
+			ok, err = up2()
+			tracks[trackName] = original
+			if not ok then
+				error(err, 0)
 			end
 		end
 
-		local v94 = up5.new((table.create(5)))
-		local Initialize = v94:Initialize()
-		if not Initialize.ok then
-			return Initialize
+		local redirect = up5.new((table.create(5)))
+		local initResult = redirect:Initialize()
+		if not initResult.ok then
+			return initResult
 		end
 
-		local function f4834(p99, p100)
+		local function playAnimationHook(viewModel, animation)
 			if not up0(
-				up0(up0(up0(p99, "ClientViewModel"), "ClientItem"), "ClientFighter"),
+				up0(up0(up0(viewModel, "ClientViewModel"), "ClientItem"), "ClientFighter"),
 				"IsLocalPlayer"
 			) then
-				return (coroutine.wrap(v90)())
+				return (coroutine.wrap(playAnimation)())
 			end
-			if p96:_ShouldSuppress(p99, p100) then
-				return (f4833())
+			if disabler:_ShouldSuppress(viewModel, animation) then
+				return (callWithoutTrack())
 			end
-			return (coroutine.wrap(v90)())
+			return (coroutine.wrap(playAnimation)())
 		end
 
-		up8(up2, up6, f4834)
-		p96._callRedirect = v94
+		up8(up2, up6, playAnimationHook)
+		disabler._callRedirect = redirect
 		return up0.VOID_OK
 	end
 
-	local function f4835(p101, p102)
-		p101._guards[p102]:Destroy()
-		p101._guards[p102] = nil
+	local function removeGuard(manager, key)
+		manager._guards[key]:Destroy()
+		manager._guards[key] = nil
 	end
 
 	local function f4836(p103, p104)
@@ -69738,87 +69738,87 @@ local function f4735()
 		return t36.c
 	end
 
-	local function f4838(p105)
-		local _characterTrove = p105._characterTrove
-		if _characterTrove ~= nil then
-			p105._characterTrove = nil
-			_characterTrove:Destroy()
+	local function clearCharacterTrove(tracker)
+		local characterTrove = tracker._characterTrove
+		if characterTrove ~= nil then
+			tracker._characterTrove = nil
+			characterTrove:Destroy()
 		end
-		table.clear(p105._collidableParts)
+		table.clear(tracker._collidableParts)
 	end
 
-	local function f4839(p106)
-		local AddSection82 = p106.AddSection
+	local function buildDeviceSpoofSection_proto(column)
+		local AddSection82 = column.AddSection
 		local t37 = { Title = "Device Spoof", Side = "right" }
-		local deviceSpoofSection = AddSection82(p106, t37)
+		local deviceSpoofSection = AddSection82(column, t37)
 		local addToggle = deviceSpoofSection.AddToggle
 		local t39 = { Label = up0, Config = table.create(3) }
-		local t40 = addToggle(deviceSpoofSection, t39)
+		local deviceSpoofToggle = addToggle(deviceSpoofSection, t39)
 		local AddDropdown62 = deviceSpoofSection.AddDropdown
-		local t41 = { Row = t40.Row, Options = up1, Config = table.create(3) }
-		AddDropdown62(deviceSpoofSection, t41)
+		local deviceSpoofDropdownOptions = { Row = deviceSpoofToggle.Row, Options = up1, Config = table.create(3) }
+		AddDropdown62(deviceSpoofSection, deviceSpoofDropdownOptions)
 	end
 
-	local function f4841()
+	local function loadDeviceSpoofSection()
 		up0.cI()
-		local v95 = up0.n()
-		local v96 = up0.k()(v95)
+		local DeviceTypes = up0.n()
+		local deviceOptions = up0.k()(DeviceTypes)
 
-		local function f4842(p107)
-			local AddSection83 = p107.AddSection
+		local function buildDeviceSpoofSection(column)
+			local AddSection83 = column.AddSection
 			local t42 = { Title = "Device Spoof", Side = "right" }
-			local deviceSpoofSection = AddSection83(p107, t42)
+			local deviceSpoofSection = AddSection83(column, t42)
 			local addToggle = deviceSpoofSection.AddToggle
 			local t44 = { Label = up0, Config = table.create(3) }
-			local t45 = addToggle(deviceSpoofSection, t44)
+			local deviceSpoofToggle = addToggle(deviceSpoofSection, t44)
 			local AddDropdown63 = deviceSpoofSection.AddDropdown
-			local t46 = { Row = t45.Row, Options = v96, Config = table.create(3) }
-			AddDropdown63(deviceSpoofSection, t46)
+			local deviceSpoofDropdownOptions = { Row = deviceSpoofToggle.Row, Options = deviceOptions, Config = table.create(3) }
+			AddDropdown63(deviceSpoofSection, deviceSpoofDropdownOptions)
 		end
 
-		return f4842
+		return buildDeviceSpoofSection
 	end
 
-	local function f4844()
+	local function clearEnvironment_proto()
 		up0:_BindEnvironment(nil)
 	end
 
-	local function f4845()
+	local function reportError_proto()
 		up0:reportError(up1)
 	end
 
-	local function f4846(p108, p109)
-		if p108._running == p109 then
+	local function setFpsCounterRunning_proto(counter, running)
+		if counter._running == running then
 			return
 		end
-		p108._running = p109
-		p108._loopToken = p108._loopToken + 1
-		if p109 then
-			p108._frames = 0
+		counter._running = running
+		counter._loopToken = counter._loopToken + 1
+		if running then
+			counter._frames = 0
 
 			local function onRenderStepped()
-				p108._frames = p108._frames + 1
+				counter._frames = counter._frames + 1
 			end
 
-			p108._connection = up0.RenderStepped:Connect(onRenderStepped)
-			up1(p108)
+			counter._connection = up0.RenderStepped:Connect(onRenderStepped)
+			up1(counter)
 			return
 		end
-		local _connection = p108._connection
-		if _connection ~= nil then
-			_connection:Disconnect()
-			p108._connection = nil
+		local connection = counter._connection
+		if connection ~= nil then
+			connection:Disconnect()
+			counter._connection = nil
 		end
 	end
 
-	local function f4848()
+	local function loadFpsCounter()
 		local RunService = up0.L().RunService
-		local t47 = {}
-		t47.__index = t47
+		local FpsCounter = {}
+		FpsCounter.__index = FpsCounter
 
-		function t47.new(p110)
-			local t48 = {
-				_onDisplay = p110,
+		function FpsCounter.new(onDisplay)
+			local counter = {
+				_onDisplay = onDisplay,
 				_running = false,
 				_frames = 0,
 				_smooth = 60,
@@ -69826,45 +69826,45 @@ local function f4735()
 				_connection = nil,
 				_loopToken = 0
 			}
-			return (setmetatable(t48, t47))
+			return (setmetatable(counter, FpsCounter))
 		end
 
-		local v97 = 0.5
-		local v98 = 0.5
-		local v99
+		local interval = 0.5
+		local smoothing = 0.5
+		local scheduleTick
 
-		v99 = function(p111)
-			local _loopToken2 = p111._loopToken
-			local v100 = os.clock()
+		scheduleTick = function(counter)
+			local token = counter._loopToken
+			local startTime = os.clock()
 
-			local function f4849()
-				if p111._loopToken ~= _loopToken2 then
+			local function tick()
+				if counter._loopToken ~= token then
 					return
 				end
-				local v101 = os.clock() - v100
-				if 0 < v101 then
-					local _frames3 = p111._frames
-					p111._smooth = p111._smooth + (_frames3 / v101 - p111._smooth) * v98
+				local elapsed = os.clock() - startTime
+				if 0 < elapsed then
+					local frames = counter._frames
+					counter._smooth = counter._smooth + (frames / elapsed - counter._smooth) * smoothing
 				end
-				p111._frames = 0
-				local v102 = math.floor(p111._smooth + 0.5)
-				if v102 ~= p111._displayed then
-					p111._displayed = v102
-					p111._onDisplay(v102)
+				counter._frames = 0
+				local fps = math.floor(counter._smooth + 0.5)
+				if fps ~= counter._displayed then
+					counter._displayed = fps
+					counter._onDisplay(fps)
 				end
-				v99(p111)
+				scheduleTick(counter)
 			end
 
-			task.delay(v97, f4849)
+			task.delay(interval, tick)
 		end
 
-		function t47:SetRunning(p112)
-			if self._running == p112 then
+		function FpsCounter:SetRunning(running)
+			if self._running == running then
 				return
 			end
-			self._running = p112
+			self._running = running
 			self._loopToken = self._loopToken + 1
-			if p112 then
+			if running then
 				self._frames = 0
 
 				local function onRenderStepped()
@@ -69872,33 +69872,33 @@ local function f4735()
 				end
 
 				self._connection = RunService.RenderStepped:Connect(onRenderStepped)
-				v99(self)
+				scheduleTick(self)
 				return
 			end
-			local _connection2 = self._connection
-			if _connection2 ~= nil then
-				_connection2:Disconnect()
+			local connection = self._connection
+			if connection ~= nil then
+				connection:Disconnect()
 				self._connection = nil
 			end
 		end
 
-		function t47:Destroy()
+		function FpsCounter:Destroy()
 			self:SetRunning(false)
 		end
 
-		return t47
+		return FpsCounter
 	end
 
 	local function f4851()
 		return (table.create(2))
 	end
 
-	local function f4852(p113, p114)
-		p113._disabled = p114
-		if p114 then
-			p113:_SetupPatch()
+	local function setDisabled(patch, disabled)
+		patch._disabled = disabled
+		if disabled then
+			patch:_SetupPatch()
 		else
-			p113:_RevertPatch()
+			patch:_RevertPatch()
 		end
 	end
 
@@ -69911,80 +69911,80 @@ local function f4735()
 		return t49.c
 	end
 
-	local function f4854()
+	local function getMode_proto()
 		return up0.Value.Mode
 	end
 
-	local function f4855(p115, p116, p117, p118, p119)
-		local AddMultiSection3 = p115.AddMultiSection
+	local function buildTargetingTab_proto(column, p116, p117, p118, p119)
+		local AddMultiSection3 = column.AddMultiSection
 		local t50 = { Titles = table.create(2), Side = "right" }
-		local v103, v104
-		v104, v103 = AddMultiSection3(p115, t50)
-		local AddSection84 = p115.AddSection
+		local secondSection, mainSection
+		mainSection, secondSection = AddMultiSection3(column, t50)
+		local AddSection84 = column.AddSection
 		local t51 = { Title = "Per Weapon Settings", Side = "left" }
-		local v105 = AddSection84(p115, t51)
-		local v106 = up0(v104, p116, p117)
-		up1(v103, p116)
-		up2(v105, p116, p118, p119)
-		return v106
+		local perWeaponSection = AddSection84(column, t51)
+		local result = up0(mainSection, p116, p117)
+		up1(secondSection, p116)
+		up2(perWeaponSection, p116, p118, p119)
+		return result
 	end
 
-	local function f4856(p120)
-		local v107 = up0(getmetatable(p120.fighterState.inner), "__index")
-		if v107 == nil then
+	local function captureFighterPrototype_proto(context)
+		local prototype = up0(getmetatable(context.fighterState.inner), "__index")
+		if prototype == nil then
 			return
 		end
-		up1.prototype = v107
-		up1.acquired:Fire(v107)
+		up1.prototype = prototype
+		up1.acquired:Fire(prototype)
 	end
 
-	local function f4857(p121, p122)
-		local t52 = { priority = p121, selections = up0.cloneCosmeticsSelection(p122) }
-		return t52
+	local function exportLayer_proto(priority, selections)
+		local entry = { priority = priority, selections = up0.cloneCosmeticsSelection(selections) }
+		return entry
 	end
 
-	local function f4858(p123)
-		local t53 = {}
-		local _states2 = p123._states
-		local v108 = nil
+	local function exportCosmeticState_proto(manager)
+		local exported = {}
+		local states = manager._states
+		local itemName = nil
 		while true do
-			local t54
-			v108, t54 = _states2(nil, v108)
-			if v108 == nil then
+			local state
+			itemName, state = states(nil, itemName)
+			if itemName == nil then
 				break
 			end
-			local t55 = {}
+			local entry = {}
 
-			local function f4859(p124, p125)
-				local t56 = { priority = p124, selections = up0.cloneCosmeticsSelection(p125) }
-				return t56
+			local function exportLayer(priority, selections)
+				local layerEntry = { priority = priority, selections = up0.cloneCosmeticsSelection(selections) }
+				return layerEntry
 			end
 
-			t55.layers = up0.exportLayers(t54.layers, up1, f4859)
-			t53[v108] = t55
+			entry.layers = up0.exportLayers(state.layers, up1, exportLayer)
+			exported[itemName] = entry
 		end
-		return t53
+		return exported
 	end
 
-	local function f4860(p126)
-		local _restore24 = p126._restore
-		if _restore24 ~= nil then
-			p126._restore = nil
-			_restore24.bundle[_restore24.key] = _restore24.original
+	local function destroyBundlePatch(patch)
+		local restore = patch._restore
+		if restore ~= nil then
+			patch._restore = nil
+			restore.bundle[restore.key] = restore.original
 		end
-		p126._errorReporter:Destroy()
+		patch._errorReporter:Destroy()
 	end
 
-	local function f4861(p127)
-		return p127._typeSet
+	local function getTypeSet(filter)
+		return filter._typeSet
 	end
 
-	local function f4862(p128)
+	local function onMaxDrag_proto(input)
 		if up0 == nil then
 			up0 = "max"
 			up1(up2, true)
 		end
-		up3(p128.Position.X)
+		up3(input.Position.X)
 	end
 
 	local function f4863()
@@ -69993,12 +69993,12 @@ local function f4735()
 		return {}
 	end
 
-	local function f4864(p129)
-		local t57 = up0(p129._inner, "Map")
-		local v109
-		v109 = not (t57 == nil)
-		v109 = v109 and t57.Name or nil
-		return v109
+	local function getMapName(match)
+		local map = up0(match._inner, "Map")
+		local name
+		name = not (map == nil)
+		name = name and map.Name or nil
+		return name
 	end
 
 	local function f4865()
@@ -70020,128 +70020,128 @@ local function f4735()
 		return t58.c
 	end
 
-	local function f4867(p130, p131)
-		local t59 = {
+	local function newLocalBodyAppearance_proto(playerContext, localBodyView)
+		local appearance = {
 			_trove = up0.new("local_body_appearance"),
-			_playerContext = p130,
-			_localBodyView = p131,
+			_playerContext = playerContext,
+			_localBodyView = localBodyView,
 			_isInitialized = false
 		}
-		return (setmetatable(t59, up1))
+		return (setmetatable(appearance, up1))
 	end
 
-	local function f4868(p132)
-		return p132._measurement
+	local function getMeasurement(probe)
+		return probe._measurement
 	end
 
-	local function f4869(p133)
-		p133:SetMasterEnabled(false)
-		p133._trove:Destroy()
+	local function destroyUnlocker_proto(unlocker)
+		unlocker:SetMasterEnabled(false)
+		unlocker._trove:Destroy()
 	end
 
-	local function f4870(p134)
-		local v110 = up0.new("cosmetics.unlocker")
-		local Add80 = v110:Add(up1.new(
-			p134.dataHook,
-			p134.onlyUseFavoritesState,
-			p134.errorReporter,
-			p134.actions
+	local function newCosmeticsUnlocker_proto(deps)
+		local trove = up0.new("cosmetics.unlocker")
+		local interactions = trove:Add(up1.new(
+			deps.dataHook,
+			deps.onlyUseFavoritesState,
+			deps.errorReporter,
+			deps.actions
 		))
-		local Add81 = v110:Add(up2.new(p134.dataHook, p134.favoritedResolver))
-		local Add82 = v110:Add(up3.new(p134.catalog, p134.dataHook))
-		local t60 = {
-			_trove = v110,
-			_interactions = Add80,
-			_favoritedHook = Add81,
-			_inventoryHook = Add82,
+		local favoritedHook = trove:Add(up2.new(deps.dataHook, deps.favoritedResolver))
+		local inventoryHook = trove:Add(up3.new(deps.catalog, deps.dataHook))
+		local unlocker = {
+			_trove = trove,
+			_interactions = interactions,
+			_favoritedHook = favoritedHook,
+			_inventoryHook = inventoryHook,
 			_masterEnabled = false,
 			_layerActive = false,
 			_isApplied = false
 		}
-		return (setmetatable(t60, up4))
+		return (setmetatable(unlocker, up4))
 	end
 
-	local function f4871(p135)
-		local v111 = p135._masterEnabled
-		if v111 then
-			v111 = p135._layerActive
+	local function syncUnlockerApplied_proto(unlocker)
+		local shouldApply = unlocker._masterEnabled
+		if shouldApply then
+			shouldApply = unlocker._layerActive
 		end
-		if p135._isApplied == v111 then
+		if unlocker._isApplied == shouldApply then
 			return
 		end
-		p135._isApplied = v111
-		if v111 then
-			p135._interactions:Apply()
-			p135._favoritedHook:Apply()
-			p135._inventoryHook:Apply()
+		unlocker._isApplied = shouldApply
+		if shouldApply then
+			unlocker._interactions:Apply()
+			unlocker._favoritedHook:Apply()
+			unlocker._inventoryHook:Apply()
 		else
-			p135._interactions:Revert()
-			p135._favoritedHook:Revert()
-			p135._inventoryHook:Revert()
+			unlocker._interactions:Revert()
+			unlocker._favoritedHook:Revert()
+			unlocker._inventoryHook:Revert()
 		end
 	end
 
-	local function f4872(p136, p137)
-		if p136._masterEnabled == p137 then
+	local function setUnlockerMasterEnabled_proto(unlocker, enabled)
+		if unlocker._masterEnabled == enabled then
 			return
 		end
-		p136._masterEnabled = p137
-		p136:_SyncApplied()
+		unlocker._masterEnabled = enabled
+		unlocker:_SyncApplied()
 	end
 
-	local function f4873(p138, p139)
-		if p138._layerActive == p139 then
+	local function setUnlockerLayerActive_proto(unlocker, active)
+		if unlocker._layerActive == active then
 			return
 		end
-		p138._layerActive = p139
-		p138:_SyncApplied()
+		unlocker._layerActive = active
+		unlocker:_SyncApplied()
 	end
 
-	local function f4874()
+	local function loadCosmeticsUnlocker()
 		up0.cM()
 		up0.ac()
-		local v112 = up0.dB()
+		local FavoritedHook = up0.dB()
 		up0.c0()
-		local v113 = up0.dK()
-		local v114 = up0.dL()
+		local InteractionsHook = up0.dK()
+		local InventoryHook = up0.dL()
 		up0.c1()
 		up0.cU()
-		local v115 = up0.q()
-		local t61 = {}
-		t61.__index = t61
+		local Trove = up0.q()
+		local CosmeticsUnlocker = {}
+		CosmeticsUnlocker.__index = CosmeticsUnlocker
 
-		function t61.new(p140)
-			local v116 = v115.new("cosmetics.unlocker")
-			local Add83 = v116:Add(v113.new(
-				p140.dataHook,
-				p140.onlyUseFavoritesState,
-				p140.errorReporter,
-				p140.actions
+		function CosmeticsUnlocker.new(deps)
+			local trove = Trove.new("cosmetics.unlocker")
+			local interactions = trove:Add(InteractionsHook.new(
+				deps.dataHook,
+				deps.onlyUseFavoritesState,
+				deps.errorReporter,
+				deps.actions
 			))
-			local Add84 = v116:Add(v112.new(p140.dataHook, p140.favoritedResolver))
-			local Add85 = v116:Add(v114.new(p140.catalog, p140.dataHook))
-			local t62 = {
-				_trove = v116,
-				_interactions = Add83,
-				_favoritedHook = Add84,
-				_inventoryHook = Add85,
+			local favoritedHook = trove:Add(FavoritedHook.new(deps.dataHook, deps.favoritedResolver))
+			local inventoryHook = trove:Add(InventoryHook.new(deps.catalog, deps.dataHook))
+			local unlocker = {
+				_trove = trove,
+				_interactions = interactions,
+				_favoritedHook = favoritedHook,
+				_inventoryHook = inventoryHook,
 				_masterEnabled = false,
 				_layerActive = false,
 				_isApplied = false
 			}
-			return (setmetatable(t62, t61))
+			return (setmetatable(unlocker, CosmeticsUnlocker))
 		end
 
-		function t61:_SyncApplied()
-			local v117 = self._masterEnabled
-			if v117 then
-				v117 = self._layerActive
+		function CosmeticsUnlocker:_SyncApplied()
+			local shouldApply = self._masterEnabled
+			if shouldApply then
+				shouldApply = self._layerActive
 			end
-			if self._isApplied == v117 then
+			if self._isApplied == shouldApply then
 				return
 			end
-			self._isApplied = v117
-			if v117 then
+			self._isApplied = shouldApply
+			if shouldApply then
 				self._interactions:Apply()
 				self._favoritedHook:Apply()
 				self._inventoryHook:Apply()
@@ -70152,57 +70152,57 @@ local function f4735()
 			end
 		end
 
-		function t61:SetMasterEnabled(p141)
-			if self._masterEnabled == p141 then
+		function CosmeticsUnlocker:SetMasterEnabled(enabled)
+			if self._masterEnabled == enabled then
 				return
 			end
-			self._masterEnabled = p141
+			self._masterEnabled = enabled
 			self:_SyncApplied()
 		end
 
-		function t61:SetLayerActive(p142)
-			if self._layerActive == p142 then
+		function CosmeticsUnlocker:SetLayerActive(active)
+			if self._layerActive == active then
 				return
 			end
-			self._layerActive = p142
+			self._layerActive = active
 			self:_SyncApplied()
 		end
 
-		function t61:Destroy()
+		function CosmeticsUnlocker:Destroy()
 			self:SetMasterEnabled(false)
 			self._trove:Destroy()
 		end
 
-		return t61
+		return CosmeticsUnlocker
 	end
 
-	local function f4875()
+	local function loadEffectsSection()
 		up0.cI()
-		local v118 = up0.hb()
+		local buildAnimationControls = up0.hb()
 		local v119 = up0.hc()
 		local v120 = up0.hd()
 
-		local function f4876(p143, p144)
-			local AddSection85 = p143.AddSection
+		local function buildEffectsSection(column, styleSource)
+			local AddSection85 = column.AddSection
 			local t63 = { Title = "Effects", Side = "right" }
-			local effectsSection = AddSection85(p143, t63)
-			v120(effectsSection, p144)
+			local effectsSection = AddSection85(column, t63)
+			v120(effectsSection, styleSource)
 			local AddGroup47 = effectsSection.AddGroup
-			local t65 = { Source = p144, Option = "Lines" }
-			v118(AddGroup47(effectsSection, t65), table.create(2), table.create(3), "Animation")
+			local t65 = { Source = styleSource, Option = "Lines" }
+			buildAnimationControls(AddGroup47(effectsSection, t65), table.create(2), table.create(3), "Animation")
 			v119(effectsSection)
 		end
 
-		return f4876
+		return buildEffectsSection
 	end
 
-	local function f4877(p145, p146)
-		local v121 = up1 * up2 + up3
-		local v122 = v121 % up0 + up4
+	local function lcgRandom_proto(min, max)
+		local product = up1 * up2 + up3
+		local nextValue = product % up0 + up4
 		up4 = up4 + 1
-		up2 = v122
-		up3 = v121 % 4859 * nil
-		return p145 + v122 % p146 - p145 + 1
+		up2 = nextValue
+		up3 = product % 4859 * nil
+		return min + nextValue % max - min + 1
 	end
 
 	local function f4878()
@@ -70227,42 +70227,42 @@ local function f4735()
 	local function f4881()
 	end
 
-	local function f4882(p148, p149)
-		local AutoStrafe = up0.data.Movement.AutoStrafe
-		if not AutoStrafe.Enabled then
+	local function updateAutoStrafe_proto(strafe, dt)
+		local strafeSettings = up0.data.Movement.AutoStrafe
+		if not strafeSettings.Enabled then
 			return
 		end
-		if not AutoStrafe.Keybind.State then
+		if not strafeSettings.Keybind.State then
 			return
 		end
-		local state19 = p148._characterContext.state
-		if not state19.alive then
+		local state = strafe._characterContext.state
+		if not state.alive then
 			return
 		end
 		if not up1:IsKeyDown(Enum.KeyCode.Space) then
 			return
 		end
-		local rootPart4 = state19.rootPart
-		rootPart4.CFrame = rootPart4.CFrame + up2() * (AutoStrafe.Speed / 100) * p149 * 60
-		rootPart4.AssemblyLinearVelocity = rootPart4.AssemblyLinearVelocity * Vector3.new(0, 1, 0)
+		local rootPart = state.rootPart
+		rootPart.CFrame = rootPart.CFrame + up2() * (strafeSettings.Speed / 100) * dt * 60
+		rootPart.AssemblyLinearVelocity = rootPart.AssemblyLinearVelocity * Vector3.new(0, 1, 0)
 	end
 
-	local function f4883()
+	local function loadAutoStrafe()
 		up0.aC()
-		local v123 = up0.y()
+		local settings = up0.y()
 		up0.p()
-		local PlayerModule2 = up0.ao().PlayerModule
-		local v124 = cloneref(game:GetService("UserInputService"))
+		local PlayerModule = up0.ao().PlayerModule
+		local UserInputService = cloneref(game:GetService("UserInputService"))
 
-		local function f4884(p150)
-			local t67 = Vector3.new(p150.X, 0, p150.Z)
-			local v125
-			v125 = 0 < t67.Magnitude
-			v125 = v125 and t67.Unit or Vector3.zero
-			return v125
+		local function flatten(vector)
+			local flat = Vector3.new(vector.X, 0, vector.Z)
+			local direction
+			direction = 0 < flat.Magnitude
+			direction = direction and flat.Unit or Vector3.zero
+			return direction
 		end
 
-		local v126 = (function(c0,c1,c2)
+		local getMoveDirection = (function(c0,c1,c2)
 			return (function(T)
 			local U = T[0]
 			local c = T[1]
@@ -70301,40 +70301,40 @@ local function f4735()
 				return T
 			end
 		end)({[0]=c0,[1]=c1,[2]=c2})
-		end)(v124, f4884, PlayerModule2)
-		local t68 = {}
-		t68.__index = t68
+		end)(UserInputService, flatten, PlayerModule)
+		local AutoStrafe = {}
+		AutoStrafe.__index = AutoStrafe
 
-		function t68.new(p151)
-			local t69 = { _characterContext = p151 }
-			return (setmetatable(t69, t68))
+		function AutoStrafe.new(characterContext)
+			local strafe = { _characterContext = characterContext }
+			return (setmetatable(strafe, AutoStrafe))
 		end
 
-		function t68:Update(p152)
-			local AutoStrafe2 = v123.data.Movement.AutoStrafe
-			if not AutoStrafe2.Enabled then
+		function AutoStrafe:Update(dt)
+			local strafeSettings = settings.data.Movement.AutoStrafe
+			if not strafeSettings.Enabled then
 				return
 			end
-			if not AutoStrafe2.Keybind.State then
+			if not strafeSettings.Keybind.State then
 				return
 			end
-			local state20 = self._characterContext.state
-			if not state20.alive then
+			local state = self._characterContext.state
+			if not state.alive then
 				return
 			end
-			if not v124:IsKeyDown(Enum.KeyCode.Space) then
+			if not UserInputService:IsKeyDown(Enum.KeyCode.Space) then
 				return
 			end
-			local rootPart5 = state20.rootPart
-			rootPart5.CFrame = rootPart5.CFrame + v126() * (AutoStrafe2.Speed / 100) * p152 * 60
-			rootPart5.AssemblyLinearVelocity = rootPart5.AssemblyLinearVelocity * Vector3.new(0, 1, 0)
+			local rootPart = state.rootPart
+			rootPart.CFrame = rootPart.CFrame + getMoveDirection() * (strafeSettings.Speed / 100) * dt * 60
+			rootPart.AssemblyLinearVelocity = rootPart.AssemblyLinearVelocity * Vector3.new(0, 1, 0)
 		end
 
-		return t68
+		return AutoStrafe
 	end
 
-	local function f4885(p153, p154)
-		p153._username.Text = p154
+	local function setUsername(watermark, name)
+		watermark._username.Text = name
 	end
 
 	local function f4886()
@@ -70349,105 +70349,105 @@ local function f4735()
 		return t70.c
 	end
 
-	local function f4888(p155, p156)
-		up0:Set(p155, true)
-		up1:Set(p156, true)
-		local v127 = up3.Animatable
-		if v127 then
-			v127 = p155 == "Breathing"
+	local function syncAnimationControls_proto(mode, speed)
+		up0:Set(mode, true)
+		up1:Set(speed, true)
+		local showBreathing = up3.Animatable
+		if showBreathing then
+			showBreathing = mode == "Breathing"
 		end
-		up2.Visible = v127
+		up2.Visible = showBreathing
 	end
 
-	local function f4889(p157, p158, p159, p160)
-		if p157._realized then
+	local function realizeGroup(element, parent, context, order)
+		if element._realized then
 			return
 		end
-		p157._realized = true
-		up0(p157, p158)
-		local _rootFrame5 = p157._rootFrame
-		_rootFrame5.LayoutOrder = p160
-		local _groupSpec = p157._groupSpec
-		if _groupSpec ~= nil then
-			local function f4890()
-				_rootFrame5.Visible = _groupSpec.predicate(_groupSpec.source.Value)
+		element._realized = true
+		up0(element, parent)
+		local rootFrame = element._rootFrame
+		rootFrame.LayoutOrder = order
+		local groupSpec = element._groupSpec
+		if groupSpec ~= nil then
+			local function refreshVisibility()
+				rootFrame.Visible = groupSpec.predicate(groupSpec.source.Value)
 			end
 
-			p159.Trove:Connect(_groupSpec.source.ValueChanged, f4890)
-			f4890()
+			context.Trove:Connect(groupSpec.source.ValueChanged, refreshVisibility)
+			refreshVisibility()
 		end
-		up1(p157, p159)
+		up1(element, context)
 	end
 
-	local function f4891()
+	local function onPlayed_proto()
 		up0:_OnPlayed(up1)
 	end
 
-	local function f4892(p161)
-		p161._trove:Destroy()
+	local function destroyTrove_proto3(object)
+		object._trove:Destroy()
 	end
 
-	local function f4893(p162, p163)
-		p162._partsByItem[p163] = nil
-		p162._surfaceOwners[p163] = nil
-		p162._highlight:OnItemRemoved(p163)
-		p162._chams:OnItemRemoved(p163)
-		p162._wireframe:OnItemRemoved(p163)
+	local function removeLookItem_proto(look, item)
+		look._partsByItem[item] = nil
+		look._surfaceOwners[item] = nil
+		look._highlight:OnItemRemoved(item)
+		look._chams:OnItemRemoved(item)
+		look._wireframe:OnItemRemoved(item)
 	end
 
-	local function f4894(p164, p165, p166)
-		local t71 = p164._surfaceOwners[p165]
-		if t71 == nil then
+	local function syncSurface_proto(look, item, surface)
+		local owners = look._surfaceOwners[item]
+		if owners == nil then
 			return
 		end
-		local v128 = up0(p166)
-		local v129 = t71[p166]
-		if v129 == v128 then
+		local desired = up0(surface)
+		local current = owners[surface]
+		if current == desired then
 			return
 		end
-		if v129 == "Chams" then
-			p164._chams:ClearScope(p165, p166, true)
-		elseif v129 == "Wireframe" then
-			p164._wireframe:ClearScope(p165, p166, true)
+		if current == "Chams" then
+			look._chams:ClearScope(item, surface, true)
+		elseif current == "Wireframe" then
+			look._wireframe:ClearScope(item, surface, true)
 		end
-		t71[p166] = v128
-		if v128 == "Chams" then
-			p164._chams:ApplyScope(p165, p166)
-		elseif v128 == "Wireframe" then
-			p164._wireframe:ApplyScope(p165, p166)
+		owners[surface] = desired
+		if desired == "Chams" then
+			look._chams:ApplyScope(item, surface)
+		elseif desired == "Wireframe" then
+			look._wireframe:ApplyScope(item, surface)
 		end
 	end
 
-	local function f4895(p167, p168)
-		local v130 = up0(p168)
-		if v130 == nil then
+	local function onLookItemAdded_proto(look, item)
+		local parts = up0(item)
+		if parts == nil then
 			return
 		end
-		p167:_ApplyItem(p168, v130)
+		look:_ApplyItem(item, parts)
 	end
 
-	local function f4896(p169, p170)
-		local f4897 = up0
-		local v131 = nil
+	local function samePartSets_proto(a, b)
+		local nextSurface = up0
+		local index = nil
 		while true do
-			local v132
-			v131, v132 = f4897(nil, v131)
-			if v131 == nil then
+			local surface
+			index, surface = nextSurface(nil, index)
+			if index == nil then
 				break
 			end
-			local f4898 = p169[v132]
-			local t72 = p170[v132]
-			if #f4898 ~= #t72 then
+			local f4898 = a[surface]
+			local listB = b[surface]
+			if #f4898 ~= #listB then
 				return false
 			end
-			local v133 = nil
+			local i = nil
 			while true do
-				local v134
-				v133, v134 = f4898(nil, v133)
-				if v133 == nil then
+				local part
+				i, part = f4898(nil, i)
+				if i == nil then
 					break
 				end
-				if v134 ~= t72[v133] then
+				if part ~= listB[i] then
 					return false
 				end
 			end
@@ -70455,79 +70455,79 @@ local function f4735()
 		return true
 	end
 
-	local function f4899(p171, p172, p173)
-		p171._partsByItem[p172] = p173
-		p171._surfaceOwners[p172] = {}
-		p171._highlight:OnItemAdded(p172, p173)
-		p171._chams:OnItemAdded(p172, p173)
-		p171._wireframe:OnItemAdded(p172, p173)
-		local f4900 = up0
-		local v135 = nil
+	local function applyLookItem_proto(look, item, parts)
+		look._partsByItem[item] = parts
+		look._surfaceOwners[item] = {}
+		look._highlight:OnItemAdded(item, parts)
+		look._chams:OnItemAdded(item, parts)
+		look._wireframe:OnItemAdded(item, parts)
+		local nextSurface = up0
+		local index = nil
 		while true do
-			local v136
-			v135, v136 = f4900(nil, v135)
-			if v135 == nil then
+			local surface
+			index, surface = nextSurface(nil, index)
+			if index == nil then
 				break
 			end
-			p171:_SyncSurface(p172, v136)
+			look:_SyncSurface(item, surface)
 		end
 	end
 
-	local function f4901()
-		local v137 = up0.fF()
-		local v138 = up0.y()
-		local v139 = up0.fG()
+	local function loadViewModelLook()
+		local ChamsRenderer = up0.fF()
+		local settings = up0.y()
+		local HighlightRenderer = up0.fG()
 		up0.al()
 		up0.a4()
-		local v140 = up0.q()
+		local Trove = up0.q()
 		up0.fE()
-		local v141 = up0.dv()
-		local v142 = up0.fI()
-		local v143 = up0.ah()
-		local t73 = {}
-		t73.__index = t73
-		local v144 = table.create(2)
+		local rebuildNotifier = up0.dv()
+		local WireframeRenderer = up0.fI()
+		local safeIndex = up0.ah()
+		local ViewModelLook = {}
+		ViewModelLook.__index = ViewModelLook
+		local surfaces = table.create(2)
 
-		local function f4902(p174)
-			local t74
-			t74 = p174 == "Item"
-			t74 = t74 and v138.data.Wireframe.Item or v138.data.Wireframe.Arms
-			if t74.Enabled then
+		local function getSurfaceMode(surface)
+			local wireframeSettings
+			wireframeSettings = surface == "Item"
+			wireframeSettings = wireframeSettings and settings.data.Wireframe.Item or settings.data.Wireframe.Arms
+			if wireframeSettings.Enabled then
 				return "Wireframe"
 			end
-			local t75
-			t75 = p174 == "Item"
-			t75 = t75 and v138.data.Chams.Item or v138.data.Chams.Arms
-			if t75.Enabled then
+			local chamsSettings
+			chamsSettings = surface == "Item"
+			chamsSettings = chamsSettings and settings.data.Chams.Item or settings.data.Chams.Arms
+			if chamsSettings.Enabled then
 				return "Chams"
 			end
 			return nil
 		end
 
-		local t76 = { Item = table.create(1), Arms = table.create(2) }
+		local partNamesBySurface = { Item = table.create(1), Arms = table.create(2) }
 
-		local function f4903(p175, p176)
-			local f4904 = v144
-			local v145 = nil
+		local function samePartSets(a, b)
+			local nextSurface = surfaces
+			local index = nil
 			while true do
-				local v146
-				v145, v146 = f4904(nil, v145)
-				if v145 == nil then
+				local surface
+				index, surface = nextSurface(nil, index)
+				if index == nil then
 					break
 				end
-				local f4905 = p175[v146]
-				local t77 = p176[v146]
-				if #f4905 ~= #t77 then
+				local f4905 = a[surface]
+				local listB = b[surface]
+				if #f4905 ~= #listB then
 					return false
 				end
-				local v147 = nil
+				local i = nil
 				while true do
-					local v148
-					v147, v148 = f4905(nil, v147)
-					if v147 == nil then
+					local part
+					i, part = f4905(nil, i)
+					if i == nil then
 						break
 					end
-					if v148 ~= t77[v147] then
+					if part ~= listB[i] then
 						return false
 					end
 				end
@@ -70535,125 +70535,125 @@ local function f4735()
 			return true
 		end
 
-		local function f4906(p177)
-			local v149 = v143(p177, "ViewModel")
-			if v149 == nil then
+		local function collectParts(item)
+			local viewModel = safeIndex(item, "ViewModel")
+			if viewModel == nil then
 				return nil
 			end
-			local t78 = v143(v149, "ItemModel")
-			if t78 == nil or typeof(t78) ~= "Instance" or t78.Parent == nil then
+			local itemModel = safeIndex(viewModel, "ItemModel")
+			if itemModel == nil or typeof(itemModel) ~= "Instance" or itemModel.Parent == nil then
 				return nil
 			end
-			local Parent8 = t78.Parent
-			local t79 = {
+			local container = itemModel.Parent
+			local parts = {
 				Item = {},
 				Arms = {}
 			}
-			local f4907 = t76
-			local v150 = nil
+			local nextSurfaceNames = partNamesBySurface
+			local surface = nil
 			while true do
-				local f4908
-				v150, f4908 = f4907(nil, v150)
-				if v150 == nil then
+				local nextName
+				surface, nextName = nextSurfaceNames(nil, surface)
+				if surface == nil then
 					break
 				end
-				local v151 = nil
+				local i = nil
 				while true do
-					local v152
-					v151, v152 = f4908(nil, v151)
-					if v151 == nil then
+					local partName
+					i, partName = nextName(nil, i)
+					if i == nil then
 						break
 					end
-					local FindFirstChild7 = Parent8:FindFirstChild(v152)
-					if FindFirstChild7 ~= nil then
-						table.insert(t79[v150], FindFirstChild7)
+					local part = container:FindFirstChild(partName)
+					if part ~= nil then
+						table.insert(parts[surface], part)
 					end
 				end
 			end
-			return t79
+			return parts
 		end
 
-		function t73.new(p178)
-			local v153 = v140.new("viewmodel_look")
-			local t80 = {
-				_trove = v153,
-				_playerContext = p178,
-				_highlight = v153:Add(v139.new()),
-				_chams = v153:Add(v137.new()),
-				_wireframe = v153:Add(v142.new()),
+		function ViewModelLook.new(playerContext)
+			local trove = Trove.new("viewmodel_look")
+			local look = {
+				_trove = trove,
+				_playerContext = playerContext,
+				_highlight = trove:Add(HighlightRenderer.new()),
+				_chams = trove:Add(ChamsRenderer.new()),
+				_wireframe = trove:Add(WireframeRenderer.new()),
 				_partsByItem = {},
 				_surfaceOwners = {}
 			}
-			setmetatable(t80, t73)
-			t80:_Initialize()
-			return t80
+			setmetatable(look, ViewModelLook)
+			look:_Initialize()
+			return look
 		end
 
-		function t73:_Initialize()
-			local function f4909(p179, p180)
-				local fighterState20 = p179.fighterState
+		function ViewModelLook:_Initialize()
+			local function onContext(context, trove)
+				local fighterState = context.fighterState
 
-				local function f4910(p181)
-					self:_OnItemAdded(p181)
+				local function onItemAdded(item)
+					self:_OnItemAdded(item)
 				end
 
-				p180:Add(fighterState20:OnItemAddedSignal(f4910))
+				trove:Add(fighterState:OnItemAddedSignal(onItemAdded))
 
-				local function f4911(p182)
-					self:_OnItemRemoved(p182)
+				local function onItemRemoved(item)
+					self:_OnItemRemoved(item)
 				end
 
-				p180:Add(fighterState20:OnItemRemovedSignal(f4911))
+				trove:Add(fighterState:OnItemRemovedSignal(onItemRemoved))
 				local _ = next
-				local v154, v155
-				v155, v154 = fighterState20:GetItems()
+				local key, items
+				items, key = fighterState:GetItems()
 				while true do
-					local v156
-					v154, v156 = next(v155, v154)
-					if v154 == nil then
+					local existingItem
+					key, existingItem = next(items, key)
+					if key == nil then
 						break
 					end
-					self:_OnItemAdded(v156)
+					self:_OnItemAdded(existingItem)
 				end
 			end
 
-			self._trove:Add(self._playerContext:ObserveContext("viewmodel_look", f4909))
-			local f4912 = v144
-			local v157 = nil
+			self._trove:Add(self._playerContext:ObserveContext("viewmodel_look", onContext))
+			local nextSurface = surfaces
+			local index = nil
 			while true do
-				local v158
-				v157, v158 = f4912(nil, v157)
-				if v157 == nil then
+				local surface
+				index, surface = nextSurface(nil, index)
+				if index == nil then
 					break
 				end
-				local f4913 = table.create(2)
-				local v159 = nil
+				local nextSetting = table.create(2)
+				local i = nil
 				while true do
 					local _
-					v159, _ = f4913(nil, v159)
-					if v159 == nil then
+					i, _ = nextSetting(nil, i)
+					if i == nil then
 						break
 					end
-					local v160 = v158
+					local capturedSurface = surface
 
-					local function f4914()
-						local _surfaceOwners3 = self._surfaceOwners
-						local v161 = nil
+					local function resyncSurface()
+						local surfaceOwners = self._surfaceOwners
+						local item = nil
 						while true do
 							local _
-							v161, _ = _surfaceOwners3(nil, v161)
-							if v161 == nil then
+							item, _ = surfaceOwners(nil, item)
+							if item == nil then
 								break
 							end
-							self:_SyncSurface(v161, v160)
+							self:_SyncSurface(item, capturedSurface)
 						end
 					end
 
-					self._trove:Connect(v138:GetPropertyChangedSignal((table.create(3))), f4914)
+					self._trove:Connect(settings:GetPropertyChangedSignal((table.create(3))), resyncSurface)
 				end
 			end
 
-			local function f4915()
+			local function onContextRemoved()
 				table.clear(self._partsByItem)
 				table.clear(self._surfaceOwners)
 				self._highlight:OnContextRemoved()
@@ -70661,115 +70661,115 @@ local function f4735()
 				self._wireframe:OnContextRemoved()
 			end
 
-			self._trove:Connect(self._playerContext.contextRemoved, f4915)
+			self._trove:Connect(self._playerContext.contextRemoved, onContextRemoved)
 
-			local function f4916(p183)
-				local v162 = f4906(p183)
-				if v162 == nil then
+			local function onRebuilt(item)
+				local parts = collectParts(item)
+				if parts == nil then
 					return
 				end
-				local v163 = self._partsByItem[p183]
-				if not (v163 == nil or not f4903(v163, v162)) then
+				local existing = self._partsByItem[item]
+				if not (existing == nil or not samePartSets(existing, parts)) then
 					return
 				end
-				self:_RemoveItem(p183)
-				self:_ApplyItem(p183, v162)
+				self:_RemoveItem(item)
+				self:_ApplyItem(item, parts)
 			end
 
-			self._trove:Connect(v141.rebuilt, f4916)
+			self._trove:Connect(rebuildNotifier.rebuilt, onRebuilt)
 		end
 
-		function t73:_ApplyItem(p184, p185)
-			self._partsByItem[p184] = p185
-			self._surfaceOwners[p184] = {}
-			self._highlight:OnItemAdded(p184, p185)
-			self._chams:OnItemAdded(p184, p185)
-			self._wireframe:OnItemAdded(p184, p185)
-			local f4917 = v144
-			local v164 = nil
+		function ViewModelLook:_ApplyItem(item, parts)
+			self._partsByItem[item] = parts
+			self._surfaceOwners[item] = {}
+			self._highlight:OnItemAdded(item, parts)
+			self._chams:OnItemAdded(item, parts)
+			self._wireframe:OnItemAdded(item, parts)
+			local nextSurface = surfaces
+			local index = nil
 			while true do
-				local v165
-				v164, v165 = f4917(nil, v164)
-				if v164 == nil then
+				local surface
+				index, surface = nextSurface(nil, index)
+				if index == nil then
 					break
 				end
-				self:_SyncSurface(p184, v165)
+				self:_SyncSurface(item, surface)
 			end
 		end
 
-		function t73:_RemoveItem(p186)
-			self._partsByItem[p186] = nil
-			self._surfaceOwners[p186] = nil
-			self._highlight:OnItemRemoved(p186)
-			self._chams:OnItemRemoved(p186)
-			self._wireframe:OnItemRemoved(p186)
+		function ViewModelLook:_RemoveItem(item)
+			self._partsByItem[item] = nil
+			self._surfaceOwners[item] = nil
+			self._highlight:OnItemRemoved(item)
+			self._chams:OnItemRemoved(item)
+			self._wireframe:OnItemRemoved(item)
 		end
 
-		function t73:_SyncSurface(p187, p188)
-			local t81 = self._surfaceOwners[p187]
-			if t81 == nil then
+		function ViewModelLook:_SyncSurface(item, surface)
+			local owners = self._surfaceOwners[item]
+			if owners == nil then
 				return
 			end
-			local v166 = f4902(p188)
-			local v167 = t81[p188]
-			if v167 == v166 then
+			local desired = getSurfaceMode(surface)
+			local current = owners[surface]
+			if current == desired then
 				return
 			end
-			if v167 == "Chams" then
-				self._chams:ClearScope(p187, p188, true)
-			elseif v167 == "Wireframe" then
-				self._wireframe:ClearScope(p187, p188, true)
+			if current == "Chams" then
+				self._chams:ClearScope(item, surface, true)
+			elseif current == "Wireframe" then
+				self._wireframe:ClearScope(item, surface, true)
 			end
-			t81[p188] = v166
-			if v166 == "Chams" then
-				self._chams:ApplyScope(p187, p188)
-			elseif v166 == "Wireframe" then
-				self._wireframe:ApplyScope(p187, p188)
+			owners[surface] = desired
+			if desired == "Chams" then
+				self._chams:ApplyScope(item, surface)
+			elseif desired == "Wireframe" then
+				self._wireframe:ApplyScope(item, surface)
 			end
 		end
 
-		function t73:_OnItemAdded(p189)
-			local v168 = f4906(p189)
-			if v168 == nil then
+		function ViewModelLook:_OnItemAdded(item)
+			local parts = collectParts(item)
+			if parts == nil then
 				return
 			end
-			self:_ApplyItem(p189, v168)
+			self:_ApplyItem(item, parts)
 		end
 
-		function t73:_OnItemRemoved(p190)
-			self:_RemoveItem(p190)
+		function ViewModelLook:_OnItemRemoved(item)
+			self:_RemoveItem(item)
 		end
 
-		function t73:Destroy()
+		function ViewModelLook:Destroy()
 			self._trove:Destroy()
 		end
 
-		return t73
+		return ViewModelLook
 	end
 
-	local function f4918(p191, p192)
-		local _rowFor6 = p191._rowFor
-		local t82 = {
-			Label = p192.Label,
-			Tooltip = p192.Tooltip,
-			Row = p192.Row,
-			NoSeparator = p192.NoSeparator
+	local function addColorPicker(section, options)
+		local rowFor = section._rowFor
+		local rowOptions = {
+			Label = options.Label,
+			Tooltip = options.Tooltip,
+			Row = options.Row,
+			NoSeparator = options.NoSeparator
 		}
-		local t83 = { Bare = true }
-		return (up0._new(p191._menu, _rowFor6(p191, t82, t83), p191._trove:Extend(), p192))
+		local rowFlags = { Bare = true }
+		return (up0._new(section._menu, rowFor(section, rowOptions, rowFlags), section._trove:Extend(), options))
 	end
 
-	local function f4919(p193, p194)
-		return (string.format("%s|%.4f", p193, p194.width))
+	local function cacheKey(text, style)
+		return (string.format("%s|%.4f", text, style.width))
 	end
 
-	local function f4920(p195)
-		p195._boardEntryProvider = nil
+	local function clearBoardProvider(board)
+		board._boardEntryProvider = nil
 	end
 
-	local function f4921(p196, p197)
-		p196.Row:SetTooltip(p197)
-		return p196
+	local function setTooltip(control, text)
+		control.Row:SetTooltip(text)
+		return control
 	end
 
 	local function lazyModule_cg()
@@ -70781,46 +70781,46 @@ local function f4735()
 		return t84.c
 	end
 
-	local function f4923(p198, p199)
-		local f4924 = table.create(#p199)
-		local v169, v170
+	local function bindReplicate(hook, enumNames)
+		local encodedEnums = table.create(#enumNames)
+		local index, v170
 		while true do
-			local v171
-			v169, v171 = p199(nil, v169)
-			v170 = p199
-			if v169 == nil then
+			local enumName
+			index, enumName = enumNames(nil, index)
+			v170 = enumNames
+			if index == nil then
 				break
 			end
-			table.insert(f4924, up0.encode(v171))
+			table.insert(encodedEnums, up0.encode(enumName))
 		end
 		v170 = nil
 
-		local function f4925(p200)
-			if p200 then
-				p198._errorReporter:ReportResult(p198:_Load())
+		local function onEnabled(enabled)
+			if enabled then
+				hook._errorReporter:ReportResult(hook:_Load())
 			end
 		end
 
-		local function f4926()
-			local f4927 = f4924
-			local v172 = nil
+		local function onDestroy()
+			local nextEncoded = encodedEnums
+			local slot = nil
 			while true do
-				local v173
-				v172, v173 = f4927(nil, v172)
-				if v172 == nil then
+				local encoded
+				slot, encoded = nextEncoded(nil, slot)
+				if slot == nil then
 					break
 				end
-				local f4928 = p198._bindingsByEnum[v173]
-				if f4928 ~= nil then
-					local v174 = nil
+				local bindings = hook._bindingsByEnum[encoded]
+				if bindings ~= nil then
+					local i = nil
 					while true do
-						local v175
-						v174, v175 = f4928(nil, v174)
-						if v174 == nil then
+						local existing
+						i, existing = bindings(nil, i)
+						if i == nil then
 							break
 						end
-						if v175 == v170 then
-							table.remove(f4928, v174)
+						if existing == v170 then
+							table.remove(bindings, i)
 							break
 						end
 					end
@@ -70828,145 +70828,145 @@ local function f4735()
 			end
 		end
 
-		v170 = up1.new(f4925, f4926)
-		local v176 = nil
+		v170 = up1.new(onEnabled, onDestroy)
+		local index2 = nil
 		while true do
-			local v177
-			v176, v177 = f4924(nil, v176)
-			if v176 == nil then
+			local encoded2
+			index2, encoded2 = encodedEnums(nil, index2)
+			if index2 == nil then
 				break
 			end
-			local v178 = p198._bindingsByEnum[v177]
-			if v178 == nil then
-				v178 = {}
-				p198._bindingsByEnum[v177] = v178
+			local list = hook._bindingsByEnum[encoded2]
+			if list == nil then
+				list = {}
+				hook._bindingsByEnum[encoded2] = list
 			end
-			table.insert(v178, v170)
+			table.insert(list, v170)
 		end
 		return v170
 	end
 
-	local function f4929(p201)
-		if p201._restore ~= nil then
+	local function installReplicateHook(hook)
+		if hook._restore ~= nil then
 			return up0.VOID_OK
 		end
-		local v179 = up1(up2, "_ObjectChanged")
-		if v179 == nil then
+		local objectChanged = up1(up2, "_ObjectChanged")
+		if objectChanged == nil then
 			return (up0.err(
 				"ReplicateHook",
 				"function_lookup",
 				"Failed to find _ObjectChanged method"
 			))
 		end
-		local _bindingsByEnum = p201._bindingsByEnum
+		local bindingsByEnum = hook._bindingsByEnum
 
-		local function f4930(_, p202, p203, ...)
-			local f4931 = _bindingsByEnum[p203]
-			if f4931 == nil or type(p202) ~= "string" then
-				return (coroutine.wrap(v179)(...))
+		local function objectChangedHook(_, objectId, enumCode, ...)
+			local bindings = bindingsByEnum[enumCode]
+			if bindings == nil or type(objectId) ~= "string" then
+				return (coroutine.wrap(objectChanged)(...))
 			end
-			local t85 = {
+			local call = {
 				block = false,
-				objectId = p202,
-				enumName = up2.decode(p203),
+				objectId = objectId,
+				enumName = up2.decode(enumCode),
 				args = table.pack(...)
 			}
-			local v180 = getthreadidentity()
+			local previousIdentity = getthreadidentity()
 			setthreadidentity(8)
-			local v181 = nil
+			local index = nil
 			while true do
-				local t86
-				v181, t86 = f4931(nil, v181)
-				if v181 == nil then
+				local binding
+				index, binding = bindings(nil, index)
+				if index == nil then
 					break
 				end
-				if t86.enabled and t86.handler then
-					t86.handler(t85)
-					if t85.block then
+				if binding.enabled and binding.handler then
+					binding.handler(call)
+					if call.block then
 						break
 					end
 				end
 			end
-			setthreadidentity(v180)
-			if t85.block then
+			setthreadidentity(previousIdentity)
+			if call.block then
 				return
 			end
-			return (coroutine.wrap(v179)(...))
+			return (coroutine.wrap(objectChanged)(...))
 		end
 
-		up3(up2, "_ObjectChanged", f4930)
-		local t87 = { method = v179 }
-		p201._restore = t87
+		up3(up2, "_ObjectChanged", objectChangedHook)
+		local restore = { method = objectChanged }
+		hook._restore = restore
 		return up0.VOID_OK
 	end
 
-	local function f4932(p204)
-		local _restore25 = p204._restore
-		if _restore25 == nil then
+	local function revertReplicateHook_proto(hook)
+		local restore = hook._restore
+		if restore == nil then
 			return
 		end
-		p204._restore = nil
-		up0(up1, "_ObjectChanged", _restore25.method)
+		hook._restore = nil
+		up0(up1, "_ObjectChanged", restore.method)
 	end
 
-	local function f4933()
-		local v182 = up0.bC()
+	local function loadReplicateHook()
+		local Binding = up0.bC()
 		up0.am()
-		local v183 = up0.b()
+		local Result = up0.b()
 		local ReplicatedController = up0.ao().ReplicatedController
-		local v184 = up0.aU()
-		local v185 = up0.ac()
-		local t88 = {}
-		t88.__index = t88
+		local remoteCodec = up0.aU()
+		local ErrorReporter = up0.ac()
+		local ReplicateHook = {}
+		ReplicateHook.__index = ReplicateHook
 
-		function t88.new()
-			local t89 = {
-				_errorReporter = v185.new(),
+		function ReplicateHook.new()
+			local hook = {
+				_errorReporter = ErrorReporter.new(),
 				_bindingsByEnum = {}
 			}
-			return (setmetatable(t89, t88))
+			return (setmetatable(hook, ReplicateHook))
 		end
 
-		function t88:Reserve(p205)
-			local f4934 = table.create(#p205)
-			local v186, v187
+		function ReplicateHook:Reserve(enumNames)
+			local encodedEnums = table.create(#enumNames)
+			local index, v187
 			while true do
-				local v188
-				v186, v188 = p205(nil, v186)
-				v187 = p205
-				if v186 == nil then
+				local enumName
+				index, enumName = enumNames(nil, index)
+				v187 = enumNames
+				if index == nil then
 					break
 				end
-				table.insert(f4934, v184.encode(v188))
+				table.insert(encodedEnums, remoteCodec.encode(enumName))
 			end
 			v187 = nil
 
-			local function f4935(p206)
-				if p206 then
+			local function onEnabled(enabled)
+				if enabled then
 					self._errorReporter:ReportResult(self:_Load())
 				end
 			end
 
-			local function f4936()
-				local f4937 = f4934
-				local v189 = nil
+			local function onDestroy()
+				local nextEncoded = encodedEnums
+				local slot = nil
 				while true do
-					local v190
-					v189, v190 = f4937(nil, v189)
-					if v189 == nil then
+					local encoded
+					slot, encoded = nextEncoded(nil, slot)
+					if slot == nil then
 						break
 					end
-					local f4938 = self._bindingsByEnum[v190]
-					if f4938 ~= nil then
-						local v191 = nil
+					local bindings = self._bindingsByEnum[encoded]
+					if bindings ~= nil then
+						local i = nil
 						while true do
-							local v192
-							v191, v192 = f4938(nil, v191)
-							if v191 == nil then
+							local existing
+							i, existing = bindings(nil, i)
+							if i == nil then
 								break
 							end
-							if v192 == v187 then
-								table.remove(f4938, v191)
+							if existing == v187 then
+								table.remove(bindings, i)
 								break
 							end
 						end
@@ -70974,93 +70974,93 @@ local function f4735()
 				end
 			end
 
-			v187 = v182.new(f4935, f4936)
-			local v193 = nil
+			v187 = Binding.new(onEnabled, onDestroy)
+			local index2 = nil
 			while true do
-				local v194
-				v193, v194 = f4934(nil, v193)
-				if v193 == nil then
+				local encoded2
+				index2, encoded2 = encodedEnums(nil, index2)
+				if index2 == nil then
 					break
 				end
-				local v195 = self._bindingsByEnum[v194]
-				if v195 == nil then
-					v195 = {}
-					self._bindingsByEnum[v194] = v195
+				local list = self._bindingsByEnum[encoded2]
+				if list == nil then
+					list = {}
+					self._bindingsByEnum[encoded2] = list
 				end
-				table.insert(v195, v187)
+				table.insert(list, v187)
 			end
 			return v187
 		end
 
-		function t88:_Load()
+		function ReplicateHook:_Load()
 			if self._restore ~= nil then
-				return v183.VOID_OK
+				return Result.VOID_OK
 			end
-			local v196 = up1(ReplicatedController, "_ObjectChanged")
-			if v196 == nil then
-				return (v183.err(
+			local objectChanged = up1(ReplicatedController, "_ObjectChanged")
+			if objectChanged == nil then
+				return (Result.err(
 					"ReplicateHook",
 					"function_lookup",
 					"Failed to find _ObjectChanged method"
 				))
 			end
-			local _bindingsByEnum2 = self._bindingsByEnum
+			local bindingsByEnum = self._bindingsByEnum
 
-			local function f4939(_, p207, p208, ...)
-				local f4940 = _bindingsByEnum2[p208]
-				if f4940 == nil or type(p207) ~= "string" then
-					return (coroutine.wrap(v196)(...))
+			local function objectChangedHook(_, objectId, enumCode, ...)
+				local bindings2 = bindingsByEnum[enumCode]
+				if bindings2 == nil or type(objectId) ~= "string" then
+					return (coroutine.wrap(objectChanged)(...))
 				end
-				local t90 = {
+				local call = {
 					block = false,
-					objectId = p207,
-					enumName = v184.decode(p208),
+					objectId = objectId,
+					enumName = remoteCodec.decode(enumCode),
 					args = table.pack(...)
 				}
-				local v197 = getthreadidentity()
+				local previousIdentity = getthreadidentity()
 				setthreadidentity(8)
-				local v198 = nil
+				local index = nil
 				while true do
-					local t91
-					v198, t91 = f4940(nil, v198)
-					if v198 == nil then
+					local binding
+					index, binding = bindings2(nil, index)
+					if index == nil then
 						break
 					end
-					if t91.enabled and t91.handler then
-						t91.handler(t90)
-						if t90.block then
+					if binding.enabled and binding.handler then
+						binding.handler(call)
+						if call.block then
 							break
 						end
 					end
 				end
-				setthreadidentity(v197)
-				if t90.block then
+				setthreadidentity(previousIdentity)
+				if call.block then
 					return
 				end
-				return (coroutine.wrap(v196)(...))
+				return (coroutine.wrap(objectChanged)(...))
 			end
 
-			up3(ReplicatedController, "_ObjectChanged", f4939)
-			local t92 = { method = v196 }
-			self._restore = t92
-			return v183.VOID_OK
+			up3(ReplicatedController, "_ObjectChanged", objectChangedHook)
+			local restore = { method = objectChanged }
+			self._restore = restore
+			return Result.VOID_OK
 		end
 
-		function t88:_Revert()
-			local _restore26 = self._restore
-			if _restore26 == nil then
+		function ReplicateHook:_Revert()
+			local restore = self._restore
+			if restore == nil then
 				return
 			end
 			self._restore = nil
-			up0(ReplicatedController, "_ObjectChanged", _restore26.method)
+			up0(ReplicatedController, "_ObjectChanged", restore.method)
 		end
 
-		function t88:Destroy()
+		function ReplicateHook:Destroy()
 			self:_Revert()
 			self._errorReporter:Destroy()
 		end
 
-		return t88
+		return ReplicateHook
 	end
 
 	local function lazyModule_fP()
@@ -71084,77 +71084,77 @@ local function f4735()
 	local function f4943()
 	end
 
-	local function f4944(p209)
-		up0:Set(p209, true)
+	local function setValueSilently_proto(value)
+		up0:Set(value, true)
 	end
 
-	local function f4945(p210, p211)
-		up0.Visible = p210
-		up1.Visible = p210
-		local Value51 = up2.Value
-		if p210 then
-			p210 = Value51 == "Breathing"
+	local function setAnimationControlsVisible_proto(visible, allowBreathing)
+		up0.Visible = visible
+		up1.Visible = visible
+		local mode = up2.Value
+		if visible then
+			visible = mode == "Breathing"
 		end
-		up3.Visible = p210
-		local v199 = up4
-		if not p211 then
-			v199 = up5
+		up3.Visible = visible
+		local options = up4
+		if not allowBreathing then
+			options = up5
 		end
-		up2:SetOptions(v199)
+		up2:SetOptions(options)
 	end
 
-	local function f4946(p212)
-		local v200 = math.max(up0.AbsoluteSize.Y - 1, 1)
-		local v201 = math.clamp(
-			(p212.Position.Y - up0.AbsolutePosition.Y) / v200,
+	local function onHueDrag_proto(input)
+		local height = math.max(up0.AbsoluteSize.Y - 1, 1)
+		local hue = math.clamp(
+			(input.Position.Y - up0.AbsolutePosition.Y) / height,
 			0,
 			1
 		)
-		up1.SetHSVA(v201, up2.Sat, up2.Val, up2.Alpha)
+		up1.SetHSVA(hue, up2.Sat, up2.Val, up2.Alpha)
 	end
 
-	local function f4947(p213)
-		if type(p213) == "string" then
-			up0.SetMode(p213)
+	local function onModeChosen_proto(mode)
+		if type(mode) == "string" then
+			up0.SetMode(mode)
 		end
 	end
 
-	local function f4948(p214)
+	local function onBreathingRangeChanged_proto(range)
 		local SetAnimationBreathingRange = up0.SetAnimationBreathingRange
 		if SetAnimationBreathingRange ~= nil then
-			SetAnimationBreathingRange(p214)
+			SetAnimationBreathingRange(range)
 		end
 	end
 
-	local function f4949(p215)
-		up0.SetAnimationSpeed(p215)
+	local function onSpeedChanged_proto(speed)
+		up0.SetAnimationSpeed(speed)
 	end
 
 	local function f4950()
 	end
 
-	local function f4951()
+	local function selectStopAtPointer_proto()
 		if up0.Mode == "Gradient" then
 			up1.SelectStop(up2(up3.getPointerPosition().X))
 		end
 	end
 
-	local function f4952()
-		local v202, v203
-		v203, v202 = up0(Color3.fromHex, up1.Text)
-		if v203 then
-			up2.SetRgb(v202)
+	local function applyHexInput_proto()
+		local color, ok
+		ok, color = up0(Color3.fromHex, up1.Text)
+		if ok then
+			up2.SetRgb(color)
 		end
 	end
 
-	local function f4953(p216, p217)
+	local function makeIconButton(icon, alignRight)
 		local textButton = Instance.new("TextButton")
 		textButton.Active = true
 		textButton.Text = ""
 		textButton.Size = UDim2.fromOffset(22, 22)
 		textButton.BorderSizePixel = 0
 		textButton.AutoButtonColor = false
-		if p217 then
+		if alignRight then
 			textButton.AnchorPoint = Vector2.new(1, 0)
 			textButton.Position = UDim2.fromScale(1, 0)
 		end
@@ -71171,7 +71171,7 @@ local function f4735()
 		local textLabel = Instance.new("TextLabel")
 		textLabel.FontFace = up2
 		textLabel.TextColor3 = Color3.fromRGB(132, 133, 139)
-		textLabel.Text = p216
+		textLabel.Text = icon
 		textLabel.BackgroundTransparency = 1
 		textLabel.Size = UDim2.new(1, 1, 1, -2)
 		textLabel.BorderSizePixel = 0
@@ -71193,146 +71193,146 @@ local function f4735()
 		return v210
 	end
 
-	local function f4955(p219)
-		local v211 = nil
-		if p219 then
-			v211 = "sat"
+	local function onSatDrag_proto(dragging)
+		local mode = nil
+		if dragging then
+			mode = "sat"
 		end
-		up0.SetDragMode(v211)
+		up0.SetDragMode(mode)
 	end
 
-	local function f4956()
+	local function removeStop_proto()
 		up0.RemoveStop()
 	end
 
-	local function f4957(p220)
-		local v212
-		v212 = p220 == "Gradient"
-		up0.Visible = v212
+	local function onModeChanged_proto(mode)
+		local isGradient
+		isGradient = mode == "Gradient"
+		up0.Visible = isGradient
 		if up1 ~= nil then
-			up1:Set(p220, true)
+			up1:Set(mode, true)
 		end
 	end
 
-	local function f4958(p221)
-		local v213 = math.max(up0.AbsoluteSize.X - 1, 1)
-		local v214 = math.clamp((p221 - up0.AbsolutePosition.X) / v213, 0, 1)
-		local v215 = 1
-		local v216 = math.huge
-		local Stops6 = up1.Stops
-		local v217 = nil
+	local function nearestStopIndex(x)
+		local width = math.max(up0.AbsoluteSize.X - 1, 1)
+		local time = math.clamp((x - up0.AbsolutePosition.X) / width, 0, 1)
+		local nearestIndex = 1
+		local nearestDistance = math.huge
+		local stops = up1.Stops
+		local index = nil
 		while true do
-			local t95
-			v217, t95 = Stops6(nil, v217)
-			if v217 == nil then
+			local stop
+			index, stop = stops(nil, index)
+			if index == nil then
 				break
 			end
-			local v218 = math.abs(t95.Time - v214)
-			if v218 < v216 then
-				v215 = v217
-				v216 = v218
+			local distance = math.abs(stop.Time - time)
+			if distance < nearestDistance then
+				nearestIndex = index
+				nearestDistance = distance
 			end
 		end
-		return v215
+		return nearestIndex
 	end
 
-	local function f4959(p222)
-		local v219 = math.max(up0.AbsoluteSize.X - 1, 1)
+	local function onStopDrag_proto(input)
+		local width = math.max(up0.AbsoluteSize.X - 1, 1)
 		up1.MoveActiveStop(math.clamp(
-			(p222.Position.X - up0.AbsolutePosition.X) / v219,
+			(input.Position.X - up0.AbsolutePosition.X) / width,
 			0,
 			1
 		))
 	end
 
-	local function f4960(p223)
-		local DragTweenInfo3 = up0:DragTweenInfo()
-		local f4961 = up1
-		local v220, v221, v222, v223
+	local function layoutStopMarkers(instant)
+		local tweenInfo = up0:DragTweenInfo()
+		local nextMarker = up1
+		local index, accentSize, markerSize, v223
 		while true do
-			local t96
-			v220, t96 = f4961(nil, v220)
-			if v220 == nil then
+			local marker
+			index, marker = nextMarker(nil, index)
+			if index == nil then
 				break
 			end
-			local t97 = up2.Stops[v220]
-			if t97 ~= nil then
-				v223 = v220 == up2.ActiveStopIndex
-				local v224 = UDim2.new(t97.Time, -1, 0, -1)
+			local stop = up2.Stops[index]
+			if stop ~= nil then
+				v223 = index == up2.ActiveStopIndex
+				local position = UDim2.new(stop.Time, -1, 0, -1)
 				if v223 then
-					v222 = UDim2.fromOffset(10, 29)
+					markerSize = UDim2.fromOffset(10, 29)
 				else
-					v222 = v223
+					markerSize = v223
 				end
-				if not v222 then
-					v222 = UDim2.fromOffset(8, 24)
+				if not markerSize then
+					markerSize = UDim2.fromOffset(8, 24)
 				end
 				if v223 then
-					v221 = UDim2.new(1, -2, 0, 19)
+					accentSize = UDim2.new(1, -2, 0, 19)
 				else
-					v221 = v223
+					accentSize = v223
 				end
-				if not v221 then
-					v221 = UDim2.new(1, -2, 0, 16)
+				if not accentSize then
+					accentSize = UDim2.new(1, -2, 0, 16)
 				end
 				v223 = v223 and 0 or 0.1
-				if p223 then
-					t96.Marker.Position = v224
-					t96.Marker.Size = v222
-					t96.Marker.ImageTransparency = v223
-					t96.Accent.Size = v221
-					t96.Accent.BackgroundColor3 = t97.Value
+				if instant then
+					marker.Marker.Position = position
+					marker.Marker.Size = markerSize
+					marker.Marker.ImageTransparency = v223
+					marker.Accent.Size = accentSize
+					marker.Accent.BackgroundColor3 = stop.Value
 				else
-					local t98 = up0
-					local tween = t98.Tween
-					local Marker = t96.Marker
-					local t99 = { Position = v224, Size = v222, ImageTransparency = v223 }
-					tween(t98, Marker, t99, DragTweenInfo3)
-					local t100 = up0
-					local tween2 = t100.Tween
-					local Accent6 = t96.Accent
-					local t101 = { Size = v221, BackgroundColor3 = t97.Value }
-					tween2(t100, Accent6, t101, DragTweenInfo3)
+					local menu = up0
+					local tween = menu.Tween
+					local markerButton = marker.Marker
+					local goal = { Position = position, Size = markerSize, ImageTransparency = v223 }
+					tween(menu, markerButton, goal, tweenInfo)
+					local menu2 = up0
+					local tween2 = menu2.Tween
+					local accent = marker.Accent
+					local goal2 = { Size = accentSize, BackgroundColor3 = stop.Value }
+					tween2(menu2, accent, goal2, tweenInfo)
 				end
 			end
 		end
 	end
 
-	local function f4964(p224)
+	local function onBarDrag_proto(dragging)
 		if up0.Mode ~= "Gradient" then
 			return
 		end
-		if p224 then
+		if dragging then
 			up1.SelectStop(up2(up3.getPointerPosition().X))
 		end
-		up4(p224)
+		up4(dragging)
 	end
 
-	local function f4965()
+	local function addStop_proto2()
 		up0.AddStop()
 	end
 
-	local function f4966(p225, p226, p227, p228, p229)
-		local Trove = p226.Trove
-		local Batch9 = p226.Batch
-		local Root4 = p226.Root
-		local t102 = { Menu = p225, Trove = Trove, Batch = Batch9 }
+	local function buildColorPanel(menu, context, picker, options, callbacks)
+		local trove = context.Trove
+		local batch = context.Batch
+		local root = context.Root
+		local realizeContext = { Menu = menu, Trove = trove, Batch = batch }
 		local uiListLayout = Instance.new("UIListLayout")
 		uiListLayout.Padding = UDim.new(0, 9)
 		uiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-		uiListLayout.Parent = Root4
+		uiListLayout.Parent = root
 		local uiPadding = Instance.new("UIPadding")
 		uiPadding.PaddingTop = UDim.new(0, 9)
 		uiPadding.PaddingBottom = UDim.new(0, 10)
 		uiPadding.PaddingRight = UDim.new(0, 9)
 		uiPadding.PaddingLeft = UDim.new(0, 9)
-		uiPadding.Parent = Root4
-		local v227 = Instance.new(up0)
-		v227.LayoutOrder = -1
-		v227.BackgroundTransparency = 1
-		v227.Size = UDim2.new(1, 0, 0, 23)
-		v227.BorderSizePixel = 0
-		v227.Parent = Root4
+		uiPadding.Parent = root
+		local header = Instance.new(up0)
+		header.LayoutOrder = -1
+		header.BackgroundTransparency = 1
+		header.Size = UDim2.new(1, 0, 0, 23)
+		header.BorderSizePixel = 0
+		header.Parent = root
 		local textLabel = Instance.new("TextLabel")
 		textLabel.FontFace = up1
 		textLabel.Text = "Colorpicker"
@@ -71342,78 +71342,78 @@ local function f4735()
 		textLabel.BorderSizePixel = 0
 		textLabel.AutomaticSize = Enum.AutomaticSize.XY
 		textLabel.TextSize = 16
-		Batch9:Bind(textLabel, "TextColor3", "TextColor")
-		textLabel.Parent = v227
+		batch:Bind(textLabel, "TextColor3", "TextColor")
+		textLabel.Parent = header
 		local uiPadding2 = Instance.new("UIPadding")
 		uiPadding2.PaddingBottom = UDim.new(0, 2)
 		uiPadding2.Parent = textLabel
-		local v230 = Instance.new(up0)
-		v230.AnchorPoint = Vector2.new(1, 0)
-		v230.Position = UDim2.fromScale(1, 0)
-		v230.BackgroundTransparency = 1
-		v230.Size = UDim2.fromScale(0, 1)
-		v230.AutomaticSize = Enum.AutomaticSize.X
-		v230.BorderSizePixel = 0
-		v230.Parent = v227
+		local modeHolder = Instance.new(up0)
+		modeHolder.AnchorPoint = Vector2.new(1, 0)
+		modeHolder.Position = UDim2.fromScale(1, 0)
+		modeHolder.BackgroundTransparency = 1
+		modeHolder.Size = UDim2.fromScale(0, 1)
+		modeHolder.AutomaticSize = Enum.AutomaticSize.X
+		modeHolder.BorderSizePixel = 0
+		modeHolder.Parent = header
 		local uiListLayout2 = Instance.new("UIListLayout")
 		uiListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
-		uiListLayout2.Parent = v230
+		uiListLayout2.Parent = modeHolder
 		local uiPadding3 = Instance.new("UIPadding")
 		uiPadding3.PaddingTop = UDim.new(0, 1)
 		uiPadding3.PaddingRight = UDim.new(0, 1)
 		uiPadding3.PaddingLeft = UDim.new(0, 1)
-		uiPadding3.Parent = v230
-		local v233 = nil
-		if p228.Gradient == "editable" then
-			local new47 = up2.new
+		uiPadding3.Parent = modeHolder
+		local modeDropdown = nil
+		if options.Gradient == "editable" then
+			local newRow = up2.new
 			local t103 = { Bare = true }
-			local v234 = new47(p225, t103)
-			local _new = up3._new
-			local Extend27 = Trove:Extend()
-			local t104 = {
+			local modeRow = newRow(menu, t103)
+			local newDropdown = up3._new
+			local modeTrove = trove:Extend()
+			local modeDropdownOptions = {
 				Inline = true,
 				MaxWidth = 86,
 				Options = table.create(2),
-				Default = p227.Mode
+				Default = picker.Mode
 			}
 
-			function t104:OnChanged()
+			function modeDropdownOptions:OnChanged()
 				if type(self) == "string" then
-					p229.SetMode(self)
+					callbacks.SetMode(self)
 				end
 			end
 
-			v233 = _new(p225, v234, Extend27, t104)
-			v234:Realize(v230, t102, 0)
+			modeDropdown = newDropdown(menu, modeRow, modeTrove, modeDropdownOptions)
+			modeRow:Realize(modeHolder, realizeContext, 0)
 		else
-			v230.Visible = false
+			modeHolder.Visible = false
 		end
-		local v235 = Instance.new(up0)
-		v235.LayoutOrder = 0
-		v235.BackgroundTransparency = 1
-		v235.BorderSizePixel = 0
-		v235.AutomaticSize = Enum.AutomaticSize.XY
-		v235.Parent = Root4
+		local body = Instance.new(up0)
+		body.LayoutOrder = 0
+		body.BackgroundTransparency = 1
+		body.BorderSizePixel = 0
+		body.AutomaticSize = Enum.AutomaticSize.XY
+		body.Parent = root
 		local uiListLayout3 = Instance.new("UIListLayout")
 		uiListLayout3.FillDirection = Enum.FillDirection.Horizontal
 		uiListLayout3.HorizontalFlex = Enum.UIFlexAlignment.Fill
 		uiListLayout3.Padding = UDim.new(0, 15)
 		uiListLayout3.SortOrder = Enum.SortOrder.LayoutOrder
-		uiListLayout3.Parent = v235
-		local v237 = Instance.new(up0)
-		v237.Size = UDim2.fromOffset(241, 234)
-		v237.BorderSizePixel = 0
-		v237.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-		v237.Parent = v235
+		uiListLayout3.Parent = body
+		local svSquare = Instance.new(up0)
+		svSquare.Size = UDim2.fromOffset(241, 234)
+		svSquare.BorderSizePixel = 0
+		svSquare.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		svSquare.Parent = body
 		local uiCorner = Instance.new("UICorner")
 		uiCorner.CornerRadius = UDim.new(0, 10)
-		uiCorner.Parent = v237
-		local v239 = Instance.new(up0)
-		v239.Size = UDim2.fromScale(1, 1)
-		v239.ZIndex = 2
-		v239.BorderSizePixel = 0
-		v239.BackgroundColor3 = up4
-		v239.Parent = v237
+		uiCorner.Parent = svSquare
+		local blackOverlay = Instance.new(up0)
+		blackOverlay.Size = UDim2.fromScale(1, 1)
+		blackOverlay.ZIndex = 2
+		blackOverlay.BorderSizePixel = 0
+		blackOverlay.BackgroundColor3 = up4
+		blackOverlay.Parent = svSquare
 		local uiGradient = Instance.new("UIGradient")
 		uiGradient.Rotation = 270
 		local new48 = NumberSequence.new
@@ -71425,77 +71425,77 @@ local function f4735()
 		local new51 = Color3.new
 		new49(1, 1)
 		uiGradient.Color = new50(new51(0, 0, 0))
-		uiGradient.Parent = v239
+		uiGradient.Parent = blackOverlay
 		local uiCorner2 = Instance.new("UICorner")
 		uiCorner2.CornerRadius = UDim.new(0, 7)
-		uiCorner2.Parent = v239
-		local v243 = Instance.new(up0)
-		v243.Size = UDim2.fromScale(1, 1)
-		v243.BorderSizePixel = 0
-		v243.BackgroundColor3 = up4
-		v243.Parent = v237
+		uiCorner2.Parent = blackOverlay
+		local whiteOverlay = Instance.new(up0)
+		whiteOverlay.Size = UDim2.fromScale(1, 1)
+		whiteOverlay.BorderSizePixel = 0
+		whiteOverlay.BackgroundColor3 = up4
+		whiteOverlay.Parent = svSquare
 		local uiGradient2 = Instance.new("UIGradient")
 		local new52 = NumberSequence.new
 		local v245 = table.create(1)
 		NumberSequenceKeypoint.new(0, 0)
 		local new53 = NumberSequenceKeypoint.new
 		uiGradient2.Transparency = new52(v245)
-		uiGradient2.Parent = v243
+		uiGradient2.Parent = whiteOverlay
 		local uiCorner3 = Instance.new("UICorner")
 		uiCorner3.CornerRadius = UDim.new(0, 7)
-		uiCorner3.Parent = v243
-		local v247 = Instance.new(up0)
-		v247.BackgroundTransparency = 1
-		v247.Position = UDim2.fromOffset(7, 7)
-		v247.Size = UDim2.new(1, -14, 1, -14)
-		v247.ZIndex = 2
-		v247.BorderSizePixel = 0
-		v247.Parent = v237
+		uiCorner3.Parent = whiteOverlay
+		local svCursorArea = Instance.new(up0)
+		svCursorArea.BackgroundTransparency = 1
+		svCursorArea.Position = UDim2.fromOffset(7, 7)
+		svCursorArea.Size = UDim2.new(1, -14, 1, -14)
+		svCursorArea.ZIndex = 2
+		svCursorArea.BorderSizePixel = 0
+		svCursorArea.Parent = svSquare
 		local uiCorner4 = Instance.new("UICorner")
 		uiCorner4.CornerRadius = UDim.new(0, 7)
-		uiCorner4.Parent = v247
-		local v249 = Instance.new(up0)
-		v249.AnchorPoint = Vector2.new(0.5, 0.5)
-		v249.Position = UDim2.fromScale(0.5, 0.5)
-		v249.Size = UDim2.fromOffset(12, 12)
-		v249.ZIndex = 100
-		v249.BorderSizePixel = 0
-		v249.BackgroundColor3 = up4
-		v249.Parent = v247
+		uiCorner4.Parent = svCursorArea
+		local svCursor = Instance.new(up0)
+		svCursor.AnchorPoint = Vector2.new(0.5, 0.5)
+		svCursor.Position = UDim2.fromScale(0.5, 0.5)
+		svCursor.Size = UDim2.fromOffset(12, 12)
+		svCursor.ZIndex = 100
+		svCursor.BorderSizePixel = 0
+		svCursor.BackgroundColor3 = up4
+		svCursor.Parent = svCursorArea
 		local uiCorner5 = Instance.new("UICorner")
 		uiCorner5.CornerRadius = UDim.new(0, 7)
-		uiCorner5.Parent = v249
+		uiCorner5.Parent = svCursor
 		local uiStroke = Instance.new("UIStroke")
 		uiStroke.Color = up4
 		uiStroke.Thickness = 2
-		uiStroke.Parent = v249
-		local v252 = Instance.new(up0)
-		v252.BackgroundTransparency = 1
-		v252.Size = UDim2.fromOffset(0, 234)
-		v252.BorderSizePixel = 0
-		v252.AutomaticSize = Enum.AutomaticSize.XY
-		v252.Parent = v235
+		uiStroke.Parent = svCursor
+		local sliders = Instance.new(up0)
+		sliders.BackgroundTransparency = 1
+		sliders.Size = UDim2.fromOffset(0, 234)
+		sliders.BorderSizePixel = 0
+		sliders.AutomaticSize = Enum.AutomaticSize.XY
+		sliders.Parent = body
 		local uiListLayout4 = Instance.new("UIListLayout")
 		uiListLayout4.Padding = UDim.new(0, 23)
 		uiListLayout4.SortOrder = Enum.SortOrder.LayoutOrder
 		uiListLayout4.FillDirection = Enum.FillDirection.Horizontal
-		uiListLayout4.Parent = v252
+		uiListLayout4.Parent = sliders
 		local uiPadding4 = Instance.new("UIPadding")
 		uiPadding4.PaddingRight = UDim.new(0, 7)
 		uiPadding4.PaddingLeft = UDim.new(0, 5)
-		uiPadding4.Parent = v252
-		local v255 = Instance.new(up0)
-		v255.Size = UDim2.new(0, 8, 1, 0)
-		v255.BorderSizePixel = 0
-		v255.BackgroundColor3 = up4
-		v255.Parent = v252
+		uiPadding4.Parent = sliders
+		local hueBar = Instance.new(up0)
+		hueBar.Size = UDim2.new(0, 8, 1, 0)
+		hueBar.BorderSizePixel = 0
+		hueBar.BackgroundColor3 = up4
+		hueBar.Parent = sliders
 		local uiCorner6 = Instance.new("UICorner")
 		uiCorner6.CornerRadius = UDim.new(0, 3)
-		uiCorner6.Parent = v255
+		uiCorner6.Parent = hueBar
 		local uiGradient3 = Instance.new("UIGradient")
 		uiGradient3.Rotation = 90
 		local new54 = ColorSequence.new
-		local v258 = table.create(6)
+		local hueKeypoints = table.create(6)
 		local new55 = ColorSequenceKeypoint.new
 		local fromRGB = Color3.fromRGB
 		new53(1, 1)
@@ -71506,39 +71506,39 @@ local function f4735()
 		ColorSequenceKeypoint.new(0.67, Color3.fromRGB(0, 0, 255))
 		ColorSequenceKeypoint.new(0.83, Color3.fromRGB(255, 0, 255))
 		ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))
-		uiGradient3.Color = new54(v258)
-		uiGradient3.Parent = v255
-		local v259 = Instance.new(up0)
-		v259.BackgroundTransparency = 1
-		v259.Position = UDim2.fromOffset(0, 2)
-		v259.Size = UDim2.new(1, 0, 1, -8)
-		v259.ZIndex = 2
-		v259.BorderSizePixel = 0
-		v259.Parent = v255
-		local v260 = Instance.new(up0)
-		v260.AnchorPoint = Vector2.new(0.5, 0.5)
-		v260.Position = UDim2.fromScale(0.5, 0.5)
-		v260.Size = UDim2.fromOffset(16, 8)
-		v260.ZIndex = 100
-		v260.BorderSizePixel = 0
-		v260.BackgroundColor3 = up4
-		v260.Parent = v259
+		uiGradient3.Color = new54(hueKeypoints)
+		uiGradient3.Parent = hueBar
+		local hueTrack = Instance.new(up0)
+		hueTrack.BackgroundTransparency = 1
+		hueTrack.Position = UDim2.fromOffset(0, 2)
+		hueTrack.Size = UDim2.new(1, 0, 1, -8)
+		hueTrack.ZIndex = 2
+		hueTrack.BorderSizePixel = 0
+		hueTrack.Parent = hueBar
+		local hueHandle = Instance.new(up0)
+		hueHandle.AnchorPoint = Vector2.new(0.5, 0.5)
+		hueHandle.Position = UDim2.fromScale(0.5, 0.5)
+		hueHandle.Size = UDim2.fromOffset(16, 8)
+		hueHandle.ZIndex = 100
+		hueHandle.BorderSizePixel = 0
+		hueHandle.BackgroundColor3 = up4
+		hueHandle.Parent = hueTrack
 		local uiStroke2 = Instance.new("UIStroke")
 		uiStroke2.Color = up4
 		uiStroke2.Thickness = 2
-		uiStroke2.Parent = v260
+		uiStroke2.Parent = hueHandle
 		local uiCorner7 = Instance.new("UICorner")
 		uiCorner7.CornerRadius = UDim.new(1, 0)
-		uiCorner7.Parent = v260
-		local v263 = Instance.new(up0)
-		v263.Size = UDim2.fromOffset(8, 234)
-		v263.BorderSizePixel = 0
-		v263.BackgroundColor3 = up4
-		v263.Visible = p228.AlphaEnabled
-		v263.Parent = v252
+		uiCorner7.Parent = hueHandle
+		local alphaBar = Instance.new(up0)
+		alphaBar.Size = UDim2.fromOffset(8, 234)
+		alphaBar.BorderSizePixel = 0
+		alphaBar.BackgroundColor3 = up4
+		alphaBar.Visible = options.AlphaEnabled
+		alphaBar.Parent = sliders
 		local uiCorner8 = Instance.new("UICorner")
 		uiCorner8.CornerRadius = UDim.new(0, 3)
-		uiCorner8.Parent = v263
+		uiCorner8.Parent = alphaBar
 		local imageLabel = Instance.new("ImageLabel")
 		imageLabel.ScaleType = Enum.ScaleType.Tile
 		imageLabel.Image = up5
@@ -71546,18 +71546,18 @@ local function f4735()
 		imageLabel.Size = UDim2.fromScale(1, 1)
 		imageLabel.TileSize = UDim2.fromOffset(8, 8)
 		imageLabel.BorderSizePixel = 0
-		imageLabel.Parent = v263
+		imageLabel.Parent = alphaBar
 		local uiCorner9 = Instance.new("UICorner")
 		uiCorner9.CornerRadius = UDim.new(0, 3)
 		uiCorner9.Parent = imageLabel
-		local v267 = Instance.new(up0)
-		v267.Size = UDim2.fromScale(1, 1)
-		v267.BorderSizePixel = 0
-		v267.BackgroundColor3 = p227.Color
-		v267.Parent = v263
+		local alphaFill = Instance.new(up0)
+		alphaFill.Size = UDim2.fromScale(1, 1)
+		alphaFill.BorderSizePixel = 0
+		alphaFill.BackgroundColor3 = picker.Color
+		alphaFill.Parent = alphaBar
 		local uiCorner10 = Instance.new("UICorner")
 		uiCorner10.CornerRadius = UDim.new(0, 3)
-		uiCorner10.Parent = v267
+		uiCorner10.Parent = alphaFill
 		local uiGradient4 = Instance.new("UIGradient")
 		uiGradient4.Rotation = 90
 		local new56 = NumberSequence.new
@@ -71565,35 +71565,35 @@ local function f4735()
 		NumberSequenceKeypoint.new(0, 1)
 		local new57 = NumberSequenceKeypoint.new
 		uiGradient4.Transparency = new56(v270)
-		uiGradient4.Parent = v267
-		local v271 = Instance.new(up0)
-		v271.BackgroundTransparency = 1
-		v271.Position = UDim2.fromOffset(0, 4)
-		v271.Size = UDim2.new(1, 0, 1, -8)
-		v271.ZIndex = 2
-		v271.BorderSizePixel = 0
-		v271.Parent = v263
-		local v272 = Instance.new(up0)
-		v272.AnchorPoint = Vector2.new(0.5, 0.5)
-		v272.Position = UDim2.fromScale(0.5, 0.5)
-		v272.Size = UDim2.fromOffset(12, 12)
-		v272.ZIndex = 100
-		v272.BorderSizePixel = 0
-		v272.BackgroundColor3 = up4
-		v272.Parent = v271
+		uiGradient4.Parent = alphaFill
+		local alphaTrack = Instance.new(up0)
+		alphaTrack.BackgroundTransparency = 1
+		alphaTrack.Position = UDim2.fromOffset(0, 4)
+		alphaTrack.Size = UDim2.new(1, 0, 1, -8)
+		alphaTrack.ZIndex = 2
+		alphaTrack.BorderSizePixel = 0
+		alphaTrack.Parent = alphaBar
+		local alphaHandle = Instance.new(up0)
+		alphaHandle.AnchorPoint = Vector2.new(0.5, 0.5)
+		alphaHandle.Position = UDim2.fromScale(0.5, 0.5)
+		alphaHandle.Size = UDim2.fromOffset(12, 12)
+		alphaHandle.ZIndex = 100
+		alphaHandle.BorderSizePixel = 0
+		alphaHandle.BackgroundColor3 = up4
+		alphaHandle.Parent = alphaTrack
 		local uiStroke3 = Instance.new("UIStroke")
 		uiStroke3.Color = up4
 		uiStroke3.Thickness = 2
-		uiStroke3.Parent = v272
+		uiStroke3.Parent = alphaHandle
 		local uiCorner11 = Instance.new("UICorner")
 		uiCorner11.CornerRadius = UDim.new(1, 0)
-		uiCorner11.Parent = v272
-		local v275 = Instance.new(up0)
-		v275.LayoutOrder = 1
-		v275.BackgroundTransparency = 1
-		v275.Size = UDim2.new(1, 0, 0, 23)
-		v275.BorderSizePixel = 0
-		v275.Parent = Root4
+		uiCorner11.Parent = alphaHandle
+		local inputRow = Instance.new(up0)
+		inputRow.LayoutOrder = 1
+		inputRow.BackgroundTransparency = 1
+		inputRow.Size = UDim2.new(1, 0, 0, 23)
+		inputRow.BorderSizePixel = 0
+		inputRow.Parent = root
 		local textLabel2 = Instance.new("TextLabel")
 		textLabel2.FontFace = up1
 		textLabel2.Text = "Input"
@@ -71603,161 +71603,161 @@ local function f4735()
 		textLabel2.BorderSizePixel = 0
 		textLabel2.AutomaticSize = Enum.AutomaticSize.XY
 		textLabel2.TextSize = 16
-		Batch9:Bind(textLabel2, "TextColor3", "TextColor")
-		textLabel2.Parent = v275
-		local v277 = Instance.new(up0)
-		v277.BackgroundTransparency = 1
-		v277.Size = UDim2.fromScale(0, 1)
-		v277.AutomaticSize = Enum.AutomaticSize.X
-		v277.BorderSizePixel = 0
-		v277.Parent = v275
+		batch:Bind(textLabel2, "TextColor3", "TextColor")
+		textLabel2.Parent = inputRow
+		local inputLeft = Instance.new(up0)
+		inputLeft.BackgroundTransparency = 1
+		inputLeft.Size = UDim2.fromScale(0, 1)
+		inputLeft.AutomaticSize = Enum.AutomaticSize.X
+		inputLeft.BorderSizePixel = 0
+		inputLeft.Parent = inputRow
 		local uiListLayout5 = Instance.new("UIListLayout")
 		uiListLayout5.SortOrder = Enum.SortOrder.LayoutOrder
-		uiListLayout5.Parent = v277
+		uiListLayout5.Parent = inputLeft
 		local uiPadding5 = Instance.new("UIPadding")
 		uiPadding5.PaddingTop = UDim.new(0, 1)
 		uiPadding5.PaddingLeft = UDim.new(0, 1)
-		uiPadding5.Parent = v277
-		local v280 = Instance.new(up0)
-		v280.AnchorPoint = Vector2.new(1, 0)
-		v280.Position = UDim2.new(1, -1, 0, 0)
-		v280.BackgroundTransparency = 1
-		v280.Size = UDim2.fromScale(0, 1)
-		v280.AutomaticSize = Enum.AutomaticSize.X
-		v280.BorderSizePixel = 0
-		v280.Parent = v275
+		uiPadding5.Parent = inputLeft
+		local inputRight = Instance.new(up0)
+		inputRight.AnchorPoint = Vector2.new(1, 0)
+		inputRight.Position = UDim2.new(1, -1, 0, 0)
+		inputRight.BackgroundTransparency = 1
+		inputRight.Size = UDim2.fromScale(0, 1)
+		inputRight.AutomaticSize = Enum.AutomaticSize.X
+		inputRight.BorderSizePixel = 0
+		inputRight.Parent = inputRow
 		local uiListLayout6 = Instance.new("UIListLayout")
 		uiListLayout6.FillDirection = Enum.FillDirection.Horizontal
 		uiListLayout6.Padding = UDim.new(0, 7)
-		uiListLayout6.Parent = v280
+		uiListLayout6.Parent = inputRight
 		local uiPadding6 = Instance.new("UIPadding")
 		uiPadding6.PaddingTop = UDim.new(0, 1)
 		uiPadding6.PaddingLeft = UDim.new(0, 1)
-		uiPadding6.Parent = v280
-		local t105 = {}
-		function t105.Repaint()
+		uiPadding6.Parent = inputRight
+		local panel = {}
+		function panel.Repaint()
 		end
-		local AlphaEnabled = p228.AlphaEnabled
+		local alphaEnabled = options.AlphaEnabled
 		new57(1, 0)
-		local v283 = nil
-		local v284 = AlphaEnabled
+		local alphaBox = nil
+		local v284 = alphaEnabled
 		local v285 = nil
-		if AlphaEnabled then
+		if alphaEnabled then
 			local new58 = up2.new
 			local t106 = { Bare = true }
-			local t107 = new58(p225, t106)
+			local alphaRow = new58(menu, t106)
 
-			local function f4967(p230)
-				local v286, v287
-				v287, v286 = up0(p230, 49, false)
-				v283 = v286
-				return v287
+			local function attachAlphaBox(row)
+				local box, frame
+				frame, box = up0(row, 49, false)
+				alphaBox = box
+				return frame
 			end
 
-			t107:AttachRight(f4967)
-			local Realize = t107.Realize
-			Realize(t107, v280, t102, 0)
-			v284 = t107
+			alphaRow:AttachRight(attachAlphaBox)
+			local Realize = alphaRow.Realize
+			Realize(alphaRow, inputRight, realizeContext, 0)
+			v284 = alphaRow
 			v285 = Realize
 		end
 		v284 = nil
 		v285 = nil
 		local new59 = up2.new
 		local t108 = { Bare = true }
-		local v288 = new59(p225, t108)
+		local hexRow = new59(menu, t108)
 
-		local function f4968(p231)
-			local v289, v290, v291
-			v291, v290, v289 = up0(p231, 150, true)
-			v284 = v290
-			v285 = v289
-			return v291
+		local function attachHexBox(row)
+			local extra, box, frame
+			frame, box, extra = up0(row, 150, true)
+			v284 = box
+			v285 = extra
+			return frame
 		end
 
-		v288:AttachRight(f4968)
-		v288:Realize(v280, t102, 1)
-		if v283 ~= nil then
-			local t109 = v283
+		hexRow:AttachRight(attachHexBox)
+		hexRow:Realize(inputRight, realizeContext, 1)
+		if alphaBox ~= nil then
+			local alphaInput = alphaBox
 
-			local function f4969()
-				local v292 = tonumber((t109.Text:gsub("%%", "")))
-				if v292 == nil then
-					t105.Repaint(true)
+			local function onAlphaFocusLost()
+				local percent = tonumber((alphaInput.Text:gsub("%%", "")))
+				if percent == nil then
+					panel.Repaint(true)
 				else
-					p229.SetAlpha(1 - math.clamp(v292 / 100, 0, 1))
+					callbacks.SetAlpha(1 - math.clamp(percent / 100, 0, 1))
 				end
 			end
 
-			Trove:Connect(t109.FocusLost, f4969)
+			trove:Connect(alphaInput.FocusLost, onAlphaFocusLost)
 		end
 		if v284 ~= nil then
-			local t110 = v284
+			local hexInput = v284
 
-			local function f4970()
-				local v293, v294
-				v294, v293 = up0(Color3.fromHex, t110.Text)
-				if v294 then
-					p229.SetRgb(v293)
+			local function onHexFocusLost()
+				local color, ok
+				ok, color = up0(Color3.fromHex, hexInput.Text)
+				if ok then
+					callbacks.SetRgb(color)
 				end
 			end
 
-			Trove:Connect(t110.FocusLost, f4970)
+			trove:Connect(hexInput.FocusLost, onHexFocusLost)
 		end
-		local v295 = Instance.new(up0)
-		v295.LayoutOrder = 2
-		local v296
-		v296 = p227.Mode == "Gradient"
-		v295.Visible = v296
-		v295.BackgroundTransparency = 1
-		v295.Size = UDim2.fromScale(1, 0)
-		v295.BorderSizePixel = 0
-		v295.AutomaticSize = Enum.AutomaticSize.XY
-		v295.Parent = Root4
-		local v297 = Instance.new(up0)
-		v297.Active = true
-		v297.Position = UDim2.fromOffset(29, 0)
-		v297.Size = UDim2.new(1, -60, 0, 22)
-		v297.BorderSizePixel = 0
-		v297.BackgroundColor3 = up4
-		v297.Parent = v295
+		local gradientRow = Instance.new(up0)
+		gradientRow.LayoutOrder = 2
+		local isGradient
+		isGradient = picker.Mode == "Gradient"
+		gradientRow.Visible = isGradient
+		gradientRow.BackgroundTransparency = 1
+		gradientRow.Size = UDim2.fromScale(1, 0)
+		gradientRow.BorderSizePixel = 0
+		gradientRow.AutomaticSize = Enum.AutomaticSize.XY
+		gradientRow.Parent = root
+		local gradientBar = Instance.new(up0)
+		gradientBar.Active = true
+		gradientBar.Position = UDim2.fromOffset(29, 0)
+		gradientBar.Size = UDim2.new(1, -60, 0, 22)
+		gradientBar.BorderSizePixel = 0
+		gradientBar.BackgroundColor3 = up4
+		gradientBar.Parent = gradientRow
 		local uiGradient5 = Instance.new("UIGradient")
-		uiGradient5.Parent = v297
+		uiGradient5.Parent = gradientBar
 		local uiCorner12 = Instance.new("UICorner")
 		uiCorner12.CornerRadius = UDim.new(0, 5)
-		uiCorner12.Parent = v297
-		local v300 = Instance.new(up0)
-		v300.BackgroundTransparency = 1
-		v300.Size = UDim2.new(1, 0, 0, 29)
-		v300.Position = UDim2.fromOffset(0, -1)
-		v300.BorderSizePixel = 0
-		v300.ZIndex = 2
-		v300.Parent = v297
+		uiCorner12.Parent = gradientBar
+		local stopsArea = Instance.new(up0)
+		stopsArea.BackgroundTransparency = 1
+		stopsArea.Size = UDim2.new(1, 0, 0, 29)
+		stopsArea.Position = UDim2.fromOffset(0, -1)
+		stopsArea.BorderSizePixel = 0
+		stopsArea.ZIndex = 2
+		stopsArea.Parent = gradientBar
 
-		local function f4971(p232, p233)
+		local function makeStopButton(icon, alignRight)
 			local textButton = Instance.new("TextButton")
 			textButton.Active = true
 			textButton.Text = ""
 			textButton.Size = UDim2.fromOffset(22, 22)
 			textButton.BorderSizePixel = 0
 			textButton.AutoButtonColor = false
-			if p233 then
+			if alignRight then
 				textButton.AnchorPoint = Vector2.new(1, 0)
 				textButton.Position = UDim2.fromScale(1, 0)
 			end
-			Batch9:Bind(textButton, "BackgroundColor3", "Background")
-			textButton.Parent = v295
+			batch:Bind(textButton, "BackgroundColor3", "Background")
+			textButton.Parent = gradientRow
 			local uiCorner13 = Instance.new("UICorner")
 			uiCorner13.CornerRadius = UDim.new(0, 5)
 			uiCorner13.Parent = textButton
 			local uiStroke4 = Instance.new("UIStroke")
 			uiStroke4.BorderOffset = UDim.new(0, -1)
 			uiStroke4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-			Batch9:Bind(uiStroke4, "Color", "Outline")
+			batch:Bind(uiStroke4, "Color", "Outline")
 			uiStroke4.Parent = textButton
 			local textLabel3 = Instance.new("TextLabel")
 			textLabel3.FontFace = up2
 			textLabel3.TextColor3 = Color3.fromRGB(132, 133, 139)
-			textLabel3.Text = p232
+			textLabel3.Text = icon
 			textLabel3.BackgroundTransparency = 1
 			textLabel3.Size = UDim2.new(1, 1, 1, -2)
 			textLabel3.BorderSizePixel = 0
@@ -71772,47 +71772,47 @@ local function f4735()
 			return textButton
 		end
 
-		local v306 = f4971("-", false)
-		local v307 = f4971("+", true)
-		local imageLabel2 = Instance.new("ImageLabel")
-		imageLabel2.Active = true
-		imageLabel2.AnchorPoint = Vector2.new(0.5, 0)
-		imageLabel2.Image = up8
-		imageLabel2.BackgroundTransparency = 1
-		imageLabel2.Position = UDim2.new(0.5, -1, 0, -1)
-		imageLabel2.Size = UDim2.fromOffset(10, 29)
-		imageLabel2.BorderSizePixel = 0
-		Batch9:Bind(imageLabel2, "ImageColor3", "Outline")
-		imageLabel2.Parent = v297
-		local imageLabel3 = Instance.new("ImageLabel")
-		imageLabel3.Size = UDim2.new(1, -2, 0, 27)
-		imageLabel3.Image = up8
-		imageLabel3.BackgroundTransparency = 1
-		imageLabel3.Position = UDim2.fromOffset(1, 1)
-		imageLabel3.ZIndex = 2
-		imageLabel3.BorderSizePixel = 0
-		imageLabel3.Parent = imageLabel2
-		local v310 = Instance.new(up0)
-		v310.Position = UDim2.fromOffset(1, 1)
-		v310.Size = UDim2.new(1, -2, 0, 19)
-		v310.BorderSizePixel = 0
-		v310.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-		v310.Parent = imageLabel3
+		local removeStopButton = makeStopButton("-", false)
+		local addStopButton = makeStopButton("+", true)
+		local activeMarker = Instance.new("ImageLabel")
+		activeMarker.Active = true
+		activeMarker.AnchorPoint = Vector2.new(0.5, 0)
+		activeMarker.Image = up8
+		activeMarker.BackgroundTransparency = 1
+		activeMarker.Position = UDim2.new(0.5, -1, 0, -1)
+		activeMarker.Size = UDim2.fromOffset(10, 29)
+		activeMarker.BorderSizePixel = 0
+		batch:Bind(activeMarker, "ImageColor3", "Outline")
+		activeMarker.Parent = gradientBar
+		local activeMarkerInner = Instance.new("ImageLabel")
+		activeMarkerInner.Size = UDim2.new(1, -2, 0, 27)
+		activeMarkerInner.Image = up8
+		activeMarkerInner.BackgroundTransparency = 1
+		activeMarkerInner.Position = UDim2.fromOffset(1, 1)
+		activeMarkerInner.ZIndex = 2
+		activeMarkerInner.BorderSizePixel = 0
+		activeMarkerInner.Parent = activeMarker
+		local activeAccent = Instance.new(up0)
+		activeAccent.Position = UDim2.fromOffset(1, 1)
+		activeAccent.Size = UDim2.new(1, -2, 0, 19)
+		activeAccent.BorderSizePixel = 0
+		activeAccent.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		activeAccent.Parent = activeMarkerInner
 		local uiGradient6 = Instance.new("UIGradient")
 		uiGradient6.Rotation = 90
 		local new60 = ColorSequence.new
-		local v312 = table.create(1)
+		local keypoints = table.create(1)
 		ColorSequenceKeypoint.new(0, up4)
 		ColorSequenceKeypoint.new(1, Color3.fromRGB(211, 211, 211))
-		uiGradient6.Color = new60(v312)
-		uiGradient6.Parent = v310
-		local v313 = Instance.new(up0)
-		v313.LayoutOrder = 5
-		v313.BackgroundTransparency = 1
-		v313.Size = UDim2.new(1, 0, 0, 23)
-		v313.BorderSizePixel = 0
-		v313.Visible = p228.Animatable
-		v313.Parent = Root4
+		uiGradient6.Color = new60(keypoints)
+		uiGradient6.Parent = activeAccent
+		local animationRow = Instance.new(up0)
+		animationRow.LayoutOrder = 5
+		animationRow.BackgroundTransparency = 1
+		animationRow.Size = UDim2.new(1, 0, 0, 23)
+		animationRow.BorderSizePixel = 0
+		animationRow.Visible = options.Animatable
+		animationRow.Parent = root
 		local textLabel4 = Instance.new("TextLabel")
 		textLabel4.FontFace = up1
 		textLabel4.Text = "Animation"
@@ -71822,190 +71822,190 @@ local function f4735()
 		textLabel4.BorderSizePixel = 0
 		textLabel4.AutomaticSize = Enum.AutomaticSize.XY
 		textLabel4.TextSize = 16
-		Batch9:Bind(textLabel4, "TextColor3", "TextColor")
-		textLabel4.Parent = v313
-		local v315 = Instance.new(up0)
-		v315.AnchorPoint = Vector2.new(1, 0)
-		v315.Position = UDim2.fromScale(1, 0)
-		v315.BackgroundTransparency = 1
-		v315.Size = UDim2.fromScale(0, 1)
-		v315.AutomaticSize = Enum.AutomaticSize.X
-		v315.BorderSizePixel = 0
-		v315.Parent = v313
+		batch:Bind(textLabel4, "TextColor3", "TextColor")
+		textLabel4.Parent = animationRow
+		local animationModeHolder = Instance.new(up0)
+		animationModeHolder.AnchorPoint = Vector2.new(1, 0)
+		animationModeHolder.Position = UDim2.fromScale(1, 0)
+		animationModeHolder.BackgroundTransparency = 1
+		animationModeHolder.Size = UDim2.fromScale(0, 1)
+		animationModeHolder.AutomaticSize = Enum.AutomaticSize.X
+		animationModeHolder.BorderSizePixel = 0
+		animationModeHolder.Parent = animationRow
 		local uiListLayout7 = Instance.new("UIListLayout")
 		uiListLayout7.SortOrder = Enum.SortOrder.LayoutOrder
-		uiListLayout7.Parent = v315
-		local v317 = Instance.new(up0)
-		v317.LayoutOrder = 8
-		v317.BackgroundTransparency = 1
-		v317.Size = UDim2.fromScale(1, 0)
-		v317.AutomaticSize = Enum.AutomaticSize.Y
-		v317.BorderSizePixel = 0
-		local v318 = p228.Animatable
-		if v318 then
-			v318 = p228.AnimationMode == "Breathing"
+		uiListLayout7.Parent = animationModeHolder
+		local breathingRow = Instance.new(up0)
+		breathingRow.LayoutOrder = 8
+		breathingRow.BackgroundTransparency = 1
+		breathingRow.Size = UDim2.fromScale(1, 0)
+		breathingRow.AutomaticSize = Enum.AutomaticSize.Y
+		breathingRow.BorderSizePixel = 0
+		local showBreathing = options.Animatable
+		if showBreathing then
+			showBreathing = options.AnimationMode == "Breathing"
 		end
-		v317.Visible = v318
-		v317.Parent = Root4
-		local v319 = p228.AllowBreathing
-		v319 = v319 and up9 or up10
-		local new61 = up2.new
-		local t111 = { Bare = true }
-		local v320 = new61(p225, t111)
-		local _new2 = up3._new
-		local Extend28 = Trove:Extend()
-		local t112 = {
+		breathingRow.Visible = showBreathing
+		breathingRow.Parent = root
+		local animationModes = options.AllowBreathing
+		animationModes = animationModes and up9 or up10
+		local newAnimationRow = up2.new
+		local rowFlags = { Bare = true }
+		local animationModeRow = newAnimationRow(menu, rowFlags)
+		local newDropdown2 = up3._new
+		local animationTrove = trove:Extend()
+		local animationModeOptions = {
 			Inline = true,
 			MaxWidth = 100,
-			Options = v319,
-			Default = p228.AnimationMode
+			Options = animationModes,
+			Default = options.AnimationMode
 		}
 
-		function t112:OnChanged()
+		function animationModeOptions:OnChanged()
 			if type(self) == "string" then
-				p229.SetAnimationMode(self)
-				local v321 = p228.Animatable
-				if v321 then
-					v321 = self == "Breathing"
+				callbacks.SetAnimationMode(self)
+				local showBreathing2 = options.Animatable
+				if showBreathing2 then
+					showBreathing2 = self == "Breathing"
 				end
-				v317.Visible = v321
+				breathingRow.Visible = showBreathing2
 			end
 		end
 
-		local v322 = _new2(p225, v320, Extend28, t112)
-		v320:Realize(v315, t102, 0)
-		local v323 = Instance.new(up0)
-		v323.LayoutOrder = 6
-		v323.BackgroundTransparency = 1
-		v323.Size = UDim2.fromScale(1, 0)
-		v323.AutomaticSize = Enum.AutomaticSize.Y
-		v323.BorderSizePixel = 0
-		v323.Visible = p228.Animatable
-		v323.Parent = Root4
-		local new62 = up2.new
-		local t113 = { Label = "Speed", Height = 24, MediumTitle = true, RightOffset = -1 }
-		local v324 = new62(p225, t113)
-		local _new3 = up11._new
-		local Extend29 = Trove:Extend()
-		local t114 = {
+		local animationModeDropdown = newDropdown2(menu, animationModeRow, animationTrove, animationModeOptions)
+		animationModeRow:Realize(animationModeHolder, realizeContext, 0)
+		local speedRow = Instance.new(up0)
+		speedRow.LayoutOrder = 6
+		speedRow.BackgroundTransparency = 1
+		speedRow.Size = UDim2.fromScale(1, 0)
+		speedRow.AutomaticSize = Enum.AutomaticSize.Y
+		speedRow.BorderSizePixel = 0
+		speedRow.Visible = options.Animatable
+		speedRow.Parent = root
+		local newSpeedRow = up2.new
+		local speedRowOptions = { Label = "Speed", Height = 24, MediumTitle = true, RightOffset = -1 }
+		local speedRowControl = newSpeedRow(menu, speedRowOptions)
+		local newSlider = up11._new
+		local speedTrove = trove:Extend()
+		local speedSliderOptions = {
 			Label = "Speed",
 			Min = 0,
 			Max = 5,
 			Step = 0.1,
-			Default = p228.AnimationSpeed
+			Default = options.AnimationSpeed
 		}
 
-		function t114:OnChanged()
-			p229.SetAnimationSpeed(self)
+		function speedSliderOptions:OnChanged()
+			callbacks.SetAnimationSpeed(self)
 		end
 
-		local v325 = _new3(p225, v324, Extend29, t114)
-		v324:Realize(v323, t102, 0)
-		local v326 = 0
-		local v327 = 100
-		if p228.AnimationBreathingMin ~= nil then
-			v327 = math.floor((1 - p228.AnimationBreathingMin) * 100 + 0.5)
+		local speedSlider = newSlider(menu, speedRowControl, speedTrove, speedSliderOptions)
+		speedRowControl:Realize(speedRow, realizeContext, 0)
+		local breathingMinPercent = 0
+		local breathingMaxPercent = 100
+		if options.AnimationBreathingMin ~= nil then
+			breathingMaxPercent = math.floor((1 - options.AnimationBreathingMin) * 100 + 0.5)
 		end
-		local v328 = v233
-		local v329 = nil
-		local f4972 = v327
-		if p228.AnimationBreathingMax ~= nil then
-			v326 = math.floor((1 - p228.AnimationBreathingMax) * 100 + 0.5)
-			v328 = v233
-			v329 = nil
-			f4972 = v327
+		local modeDropdownRef = modeDropdown
+		local rangeSlider = nil
+		local f4972 = breathingMaxPercent
+		if options.AnimationBreathingMax ~= nil then
+			breathingMinPercent = math.floor((1 - options.AnimationBreathingMax) * 100 + 0.5)
+			modeDropdownRef = modeDropdown
+			rangeSlider = nil
+			f4972 = breathingMaxPercent
 		end
-		local new63 = up2.new
-		local t115 = { Label = "Alpha Range", Height = 24, MediumTitle = true, RightOffset = -1 }
-		local v330 = new63(p225, t115)
-		local _new4 = up12._new
-		local Extend30 = Trove:Extend()
-		local t116 = { Label = "Alpha Range", Min = 0, Max = 100, Step = 1 }
-		local t117 = { Min = v326, Max = f4972 }
-		t116.Default = t117
+		local newRangeRow = up2.new
+		local rangeRowOptions = { Label = "Alpha Range", Height = 24, MediumTitle = true, RightOffset = -1 }
+		local rangeRow = newRangeRow(menu, rangeRowOptions)
+		local newRangeSlider = up12._new
+		local rangeTrove = trove:Extend()
+		local rangeSliderOptions = { Label = "Alpha Range", Min = 0, Max = 100, Step = 1 }
+		local rangeDefault = { Min = breathingMinPercent, Max = f4972 }
+		rangeSliderOptions.Default = rangeDefault
 
-		function t116:OnChanged()
-			local SetAnimationBreathingRange2 = p229.SetAnimationBreathingRange
+		function rangeSliderOptions:OnChanged()
+			local SetAnimationBreathingRange2 = callbacks.SetAnimationBreathingRange
 			if SetAnimationBreathingRange2 ~= nil then
 				SetAnimationBreathingRange2(self)
 			end
 		end
 
-		v329 = _new4(p225, v330, Extend30, t116)
-		v330:Realize(v317, t102, 0)
-		local t118 = {}
-		f4972 = Trove.Extend
-		f4972 = f4972(Trove)
+		rangeSlider = newRangeSlider(menu, rangeRow, rangeTrove, rangeSliderOptions)
+		rangeRow:Realize(breathingRow, realizeContext, 0)
+		local markers = {}
+		f4972 = trove.Extend
+		f4972 = f4972(trove)
 
-		local function f4973(p234)
-			local v331 = math.max(v297.AbsoluteSize.X - 1, 1)
-			local v332 = math.clamp((p234 - v297.AbsolutePosition.X) / v331, 0, 1)
-			local v333 = 1
-			local v334 = math.huge
-			local Stops7 = p227.Stops
-			local v335 = nil
+		local function nearestStop(x)
+			local width = math.max(gradientBar.AbsoluteSize.X - 1, 1)
+			local time = math.clamp((x - gradientBar.AbsolutePosition.X) / width, 0, 1)
+			local nearestIndex = 1
+			local nearestDistance = math.huge
+			local stops = picker.Stops
+			local index = nil
 			while true do
-				local t119
-				v335, t119 = Stops7(nil, v335)
-				if v335 == nil then
+				local stop
+				index, stop = stops(nil, index)
+				if index == nil then
 					break
 				end
-				local v336 = math.abs(t119.Time - v332)
-				if v336 < v334 then
-					v333 = v335
-					v334 = v336
+				local distance = math.abs(stop.Time - time)
+				if distance < nearestDistance then
+					nearestIndex = index
+					nearestDistance = distance
 				end
 			end
-			return v333
+			return nearestIndex
 		end
 
-		local function f4974(p235)
-			if p227.Mode ~= "Gradient" then
+		local function onStopDragState(dragging)
+			if picker.Mode ~= "Gradient" then
 				return
 			end
-			if p235 then
-				p229.SetDragMode("stop")
-			elseif p227._dragMode == "stop" then
-				p229.SetDragMode(nil)
+			if dragging then
+				callbacks.SetDragMode("stop")
+			elseif picker._dragMode == "stop" then
+				callbacks.SetDragMode(nil)
 			end
-			t105.Repaint(true)
+			panel.Repaint(true)
 		end
 
-		local function f4975(p236)
-			local v337 = math.max(v297.AbsoluteSize.X - 1, 1)
-			p229.MoveActiveStop(math.clamp(
-				(p236.Position.X - v297.AbsolutePosition.X) / v337,
+		local function onStopDragMove(input)
+			local width = math.max(gradientBar.AbsoluteSize.X - 1, 1)
+			callbacks.MoveActiveStop(math.clamp(
+				(input.Position.X - gradientBar.AbsolutePosition.X) / width,
 				0,
 				1
 			))
 		end
 
-		local function f4976()
+		local function rebuildMarkers()
 			f4972:Destroy()
-			f4972 = Trove:Extend()
-			local f4977 = t118
-			local v338 = nil
+			f4972 = trove:Extend()
+			local nextMarker = markers
+			local index = nil
 			while true do
-				local t120
-				v338, t120 = f4977(nil, v338)
-				if v338 == nil then
+				local marker
+				index, marker = nextMarker(nil, index)
+				if index == nil then
 					break
 				end
-				t120.Marker:Destroy()
+				marker.Marker:Destroy()
 			end
-			table.clear(t118)
-			if p227.Mode ~= "Gradient" then
+			table.clear(markers)
+			if picker.Mode ~= "Gradient" then
 				return
 			end
-			local Stops8 = p227.Stops
-			local v339, v340, v341, v342
+			local stops = picker.Stops
+			local index2, accentSize, markerSize, isActive
 			while true do
-				local t121
-				v339, t121 = Stops8(nil, v339)
-				if v339 == nil then
+				local stop
+				index2, stop = stops(nil, index2)
+				if index2 == nil then
 					break
 				end
-				v342 = v339 == p227.ActiveStopIndex
+				isActive = index2 == picker.ActiveStopIndex
 				local imageButton = Instance.new("ImageButton")
 				imageButton.Active = true
 				imageButton.AutoButtonColor = false
@@ -72013,254 +72013,254 @@ local function f4735()
 				imageButton.AnchorPoint = Vector2.new(0.5, 0)
 				imageButton.Image = up5
 				imageButton.BackgroundTransparency = 1
-				imageButton.Position = UDim2.new(t121.Time, -1, 0, -1)
-				if v342 then
-					v341 = UDim2.fromOffset(10, 29)
+				imageButton.Position = UDim2.new(stop.Time, -1, 0, -1)
+				if isActive then
+					markerSize = UDim2.fromOffset(10, 29)
 				else
-					v341 = v342
+					markerSize = isActive
 				end
-				if not v341 then
-					v341 = UDim2.fromOffset(8, 24)
+				if not markerSize then
+					markerSize = UDim2.fromOffset(8, 24)
 				end
-				imageButton.Size = v341
+				imageButton.Size = markerSize
 				imageButton.BorderSizePixel = 0
-				imageButton.Parent = v300
-				local imageLabel4 = Instance.new("ImageLabel")
-				imageLabel4.Size = UDim2.new(1, -2, 1, -2)
-				imageLabel4.Image = up5
-				imageLabel4.BackgroundTransparency = 1
-				imageLabel4.Position = UDim2.fromOffset(1, 1)
-				imageLabel4.BorderSizePixel = 0
-				imageLabel4.Parent = imageButton
-				local v345 = Instance.new(up7)
-				v345.Position = UDim2.fromOffset(1, 1)
-				if v342 then
-					v340 = UDim2.new(1, -2, 0, 19)
+				imageButton.Parent = stopsArea
+				local markerInner = Instance.new("ImageLabel")
+				markerInner.Size = UDim2.new(1, -2, 1, -2)
+				markerInner.Image = up5
+				markerInner.BackgroundTransparency = 1
+				markerInner.Position = UDim2.fromOffset(1, 1)
+				markerInner.BorderSizePixel = 0
+				markerInner.Parent = imageButton
+				local accent = Instance.new(up7)
+				accent.Position = UDim2.fromOffset(1, 1)
+				if isActive then
+					accentSize = UDim2.new(1, -2, 0, 19)
 				else
-					v340 = v342
+					accentSize = isActive
 				end
-				if not v340 then
-					v340 = UDim2.new(1, -2, 0, 16)
+				if not accentSize then
+					accentSize = UDim2.new(1, -2, 0, 16)
 				end
-				v345.Size = v340
-				v345.BorderSizePixel = 0
-				v345.BackgroundColor3 = t121.Value
-				v345.Parent = imageLabel4
+				accent.Size = accentSize
+				accent.BorderSizePixel = 0
+				accent.BackgroundColor3 = stop.Value
+				accent.Parent = markerInner
 				local uiGradient7 = Instance.new("UIGradient")
 				uiGradient7.Rotation = 90
-				local new64 = ColorSequence.new
-				local v347 = table.create(1)
+				local newSequence = ColorSequence.new
+				local keypoints2 = table.create(1)
 				ColorSequenceKeypoint.new(0, up8)
 				ColorSequenceKeypoint.new(1, Color3.fromRGB(211, 211, 211))
-				uiGradient7.Color = new64(v347)
-				uiGradient7.Parent = v345
-				if not v342 then
+				uiGradient7.Color = newSequence(keypoints2)
+				uiGradient7.Parent = accent
+				if not isActive then
 					imageButton.ImageTransparency = 0.1
 				end
-				local t122 = { Marker = imageButton, Accent = v345 }
-				t118[v339] = t122
-				local v348 = v339
+				local entry = { Marker = imageButton, Accent = accent }
+				markers[index2] = entry
+				local capturedIndex = index2
 
-				local function f4978()
-					p229.SelectStop(v348)
+				local function onMarkerClicked()
+					callbacks.SelectStop(capturedIndex)
 				end
 
-				up9.connectClick(f4972, imageButton, f4978)
-				local v349 = v339
+				up9.connectClick(f4972, imageButton, onMarkerClicked)
+				local capturedIndex2 = index2
 
-				local function f4979(p237)
-					if p237 then
-						p229.SelectStop(v349)
+				local function onMarkerDragged(dragging)
+					if dragging then
+						callbacks.SelectStop(capturedIndex2)
 					end
-					f4974(p237)
+					onStopDragState(dragging)
 				end
 
-				up9.connectDrag(f4972, imageButton, f4975, f4979)
+				up9.connectDrag(f4972, imageButton, onStopDragMove, onMarkerDragged)
 			end
 		end
 
-		local function f4980(p238)
-			local DragTweenInfo4 = p225:DragTweenInfo()
-			local f4981 = t118
-			local v350, v351, v352, v353
+		local function layoutMarkers(instant)
+			local tweenInfo = menu:DragTweenInfo()
+			local nextMarker2 = markers
+			local index, accentSize, markerSize, v353
 			while true do
-				local t123
-				v350, t123 = f4981(nil, v350)
-				if v350 == nil then
+				local marker
+				index, marker = nextMarker2(nil, index)
+				if index == nil then
 					break
 				end
-				local t124 = p227.Stops[v350]
-				if t124 ~= nil then
-					v353 = v350 == p227.ActiveStopIndex
-					local v354 = UDim2.new(t124.Time, -1, 0, -1)
+				local stop = picker.Stops[index]
+				if stop ~= nil then
+					v353 = index == picker.ActiveStopIndex
+					local position = UDim2.new(stop.Time, -1, 0, -1)
 					if v353 then
-						v352 = UDim2.fromOffset(10, 29)
+						markerSize = UDim2.fromOffset(10, 29)
 					else
-						v352 = v353
+						markerSize = v353
 					end
-					if not v352 then
-						v352 = UDim2.fromOffset(8, 24)
+					if not markerSize then
+						markerSize = UDim2.fromOffset(8, 24)
 					end
 					if v353 then
-						v351 = UDim2.new(1, -2, 0, 19)
+						accentSize = UDim2.new(1, -2, 0, 19)
 					else
-						v351 = v353
+						accentSize = v353
 					end
-					if not v351 then
-						v351 = UDim2.new(1, -2, 0, 16)
+					if not accentSize then
+						accentSize = UDim2.new(1, -2, 0, 16)
 					end
 					v353 = v353 and 0 or 0.1
-					if p238 then
-						t123.Marker.Position = v354
-						t123.Marker.Size = v352
-						t123.Marker.ImageTransparency = v353
-						t123.Accent.Size = v351
-						t123.Accent.BackgroundColor3 = t124.Value
+					if instant then
+						marker.Marker.Position = position
+						marker.Marker.Size = markerSize
+						marker.Marker.ImageTransparency = v353
+						marker.Accent.Size = accentSize
+						marker.Accent.BackgroundColor3 = stop.Value
 					else
-						local t125 = p225
-						local tween = t125.Tween
-						local Marker2 = t123.Marker
-						local t126 = { Position = v354, Size = v352, ImageTransparency = v353 }
-						tween(t125, Marker2, t126, DragTweenInfo4)
-						local t127 = p225
-						local tween2 = t127.Tween
-						local Accent7 = t123.Accent
-						local t128 = { Size = v351, BackgroundColor3 = t124.Value }
-						tween2(t127, Accent7, t128, DragTweenInfo4)
+						local menuRef = menu
+						local tween = menuRef.Tween
+						local markerButton = marker.Marker
+						local goal = { Position = position, Size = markerSize, ImageTransparency = v353 }
+						tween(menuRef, markerButton, goal, tweenInfo)
+						local menuRef2 = menu
+						local tween2 = menuRef2.Tween
+						local accentFrame = marker.Accent
+						local goal2 = { Size = accentSize, BackgroundColor3 = stop.Value }
+						tween2(menuRef2, accentFrame, goal2, tweenInfo)
 					end
 				end
 			end
 		end
 
-		local function f4984(p239)
-			uiGradient5.Color = up1.toSequence(p227.Stops)
-			local t129 = p227.Stops[p227.ActiveStopIndex]
-			local v355 = p227.Color
-			local v356 = UDim2.new(0.5, -1, 0, -1)
-			if t129 ~= nil then
-				v355 = t129.Value
-				v356 = UDim2.new(t129.Time, -1, 0, -1)
+		local function repaintGradient(instant)
+			uiGradient5.Color = up1.toSequence(picker.Stops)
+			local activeStop = picker.Stops[picker.ActiveStopIndex]
+			local activeColor = picker.Color
+			local activePosition = UDim2.new(0.5, -1, 0, -1)
+			if activeStop ~= nil then
+				activeColor = activeStop.Value
+				activePosition = UDim2.new(activeStop.Time, -1, 0, -1)
 			end
-			v310.BackgroundColor3 = v355
-			local v357 = UDim2.fromOffset(10, 29)
-			if p227._dragMode == "stop" then
-				v357 = UDim2.fromOffset(12, 31)
+			activeAccent.BackgroundColor3 = activeColor
+			local activeSize = UDim2.fromOffset(10, 29)
+			if picker._dragMode == "stop" then
+				activeSize = UDim2.fromOffset(12, 31)
 			end
-			if #t118 == #p227.Stops then
-				f4980(p239)
+			if #markers == #picker.Stops then
+				layoutMarkers(instant)
 			else
-				f4976()
+				rebuildMarkers()
 			end
-			if p239 then
-				imageLabel2.Position = v356
-				imageLabel2.Size = v357
+			if instant then
+				activeMarker.Position = activePosition
+				activeMarker.Size = activeSize
 			else
-				local t130 = p225
-				local tween = t130.Tween
-				local t131 = { Position = v356, Size = v357 }
-				tween(t130, imageLabel2, t131, p225:DragTweenInfo())
+				local menuRef = menu
+				local tween = menuRef.Tween
+				local goal = { Position = activePosition, Size = activeSize }
+				tween(menuRef, activeMarker, goal, menu:DragTweenInfo())
 			end
 		end
 
-		local function f4986(p240)
-			local v358 = math.max(v237.AbsoluteSize.X - 1, 1)
-			local v359 = math.max(v237.AbsoluteSize.Y - 1, 1)
-			local v360 = math.clamp(
-				(p240.Position.X - v237.AbsolutePosition.X) / v358,
+		local function onSvDrag(input)
+			local width = math.max(svSquare.AbsoluteSize.X - 1, 1)
+			local height = math.max(svSquare.AbsoluteSize.Y - 1, 1)
+			local sat = math.clamp(
+				(input.Position.X - svSquare.AbsolutePosition.X) / width,
 				0,
 				1
 			)
-			local v361 = math.clamp(
-				(p240.Position.Y - v237.AbsolutePosition.Y) / v359,
+			local inverseVal = math.clamp(
+				(input.Position.Y - svSquare.AbsolutePosition.Y) / height,
 				0,
 				1
 			)
-			p229.SetHSVA(p227.Hue, v360, 1 - v361, p227.Alpha)
+			callbacks.SetHSVA(picker.Hue, sat, 1 - inverseVal, picker.Alpha)
 		end
 
-		local function f4987(p241)
-			local v362 = nil
-			if p241 then
-				v362 = "sat"
+		local function onSvDragState(dragging)
+			local mode = nil
+			if dragging then
+				mode = "sat"
 			end
-			p229.SetDragMode(v362)
+			callbacks.SetDragMode(mode)
 		end
 
-		up14.connectDrag(Trove, v237, f4986, f4987)
+		up14.connectDrag(trove, svSquare, onSvDrag, onSvDragState)
 
-		local function f4988(p242)
-			local v363 = math.max(v255.AbsoluteSize.Y - 1, 1)
-			local v364 = math.clamp(
-				(p242.Position.Y - v255.AbsolutePosition.Y) / v363,
+		local function onHueDrag(input)
+			local height = math.max(hueBar.AbsoluteSize.Y - 1, 1)
+			local hue = math.clamp(
+				(input.Position.Y - hueBar.AbsolutePosition.Y) / height,
 				0,
 				1
 			)
-			p229.SetHSVA(v364, p227.Sat, p227.Val, p227.Alpha)
+			callbacks.SetHSVA(hue, picker.Sat, picker.Val, picker.Alpha)
 		end
 
-		local function f4989(p243)
-			local v365 = nil
-			if p243 then
-				v365 = "hue"
+		local function onHueDragState(dragging)
+			local mode = nil
+			if dragging then
+				mode = "hue"
 			end
-			p229.SetDragMode(v365)
+			callbacks.SetDragMode(mode)
 		end
 
-		up14.connectDrag(Trove, v255, f4988, f4989)
+		up14.connectDrag(trove, hueBar, onHueDrag, onHueDragState)
 
-		local function f4990(p244)
-			local v366 = math.max(v263.AbsoluteSize.Y - 1, 1)
-			local v367 = math.clamp(
-				(p244.Position.Y - v263.AbsolutePosition.Y) / v366,
+		local function onAlphaDrag(input)
+			local height = math.max(alphaBar.AbsoluteSize.Y - 1, 1)
+			local alpha = math.clamp(
+				(input.Position.Y - alphaBar.AbsolutePosition.Y) / height,
 				0,
 				1
 			)
-			p229.SetHSVA(p227.Hue, p227.Sat, p227.Val, v367)
+			callbacks.SetHSVA(picker.Hue, picker.Sat, picker.Val, alpha)
 		end
 
-		local function f4991(p245)
-			local v368 = nil
-			if p245 then
-				v368 = "alpha"
+		local function onAlphaDragState(dragging)
+			local mode = nil
+			if dragging then
+				mode = "alpha"
 			end
-			p229.SetDragMode(v368)
+			callbacks.SetDragMode(mode)
 		end
 
-		up14.connectDrag(Trove, v263, f4990, f4991)
+		up14.connectDrag(trove, alphaBar, onAlphaDrag, onAlphaDragState)
 
-		local function f4992()
-			if p227.Mode == "Gradient" then
-				p229.SelectStop(f4973(up3.getPointerPosition().X))
+		local function onGradientBarClicked()
+			if picker.Mode == "Gradient" then
+				callbacks.SelectStop(nearestStop(up3.getPointerPosition().X))
 			end
 		end
 
-		up14.connectClick(Trove, v297, f4992)
+		up14.connectClick(trove, gradientBar, onGradientBarClicked)
 
-		local function f4993(p246)
-			if p227.Mode ~= "Gradient" then
+		local function onGradientBarDragState(dragging)
+			if picker.Mode ~= "Gradient" then
 				return
 			end
-			if p246 then
-				p229.SelectStop(f4973(up3.getPointerPosition().X))
+			if dragging then
+				callbacks.SelectStop(nearestStop(up3.getPointerPosition().X))
 			end
-			f4974(p246)
+			onStopDragState(dragging)
 		end
 
-		up14.connectDrag(Trove, v297, f4975, f4993)
-		up14.connectDrag(Trove, imageLabel2, f4975, f4974)
+		up14.connectDrag(trove, gradientBar, onStopDragMove, onGradientBarDragState)
+		up14.connectDrag(trove, activeMarker, onStopDragMove, onStopDragState)
 
-		local function f4994()
-			p229.AddStop()
+		local function onAddStop()
+			callbacks.AddStop()
 		end
 
-		up14.connectClick(Trove, v307, f4994)
+		up14.connectClick(trove, addStopButton, onAddStop)
 
-		local function f4995()
-			p229.RemoveStop()
+		local function onRemoveStop()
+			callbacks.RemoveStop()
 		end
 
-		up14.connectClick(Trove, v306, f4995)
-		local v369 = (function(c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10)
+		up14.connectClick(trove, removeStopButton, onRemoveStop)
+		local repaint = (function(c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10)
 			return (function(T)
 			local U = T[4]
 			local c = T[7]
@@ -72309,49 +72309,49 @@ local function f4735()
 				end
 			end
 		end)({[0]=c0,[1]=c1,[2]=c2,[3]=c3,[4]=c4,[5]=c5,[6]=c6,[7]=c7,[8]=c8,[9]=c9,[10]=c10})
-		end)(p227, v249, p225, v285, v237, v284, v260, f4984, v272, v283, v267)
-		t105.Repaint = v369
-		local t132 = { Repaint = v369 }
+		end)(picker, svCursor, menu, v285, svSquare, v284, hueHandle, repaintGradient, alphaHandle, alphaBox, alphaFill)
+		panel.Repaint = repaint
+		local panelApi = { Repaint = repaint }
 
-		function t132.SyncMode(p247)
-			local v370
-			v370 = p247 == "Gradient"
-			v295.Visible = v370
-			if v328 ~= nil then
-				v328:Set(p247, true)
+		function panelApi.SyncMode(mode)
+			local gradientVisible
+			gradientVisible = mode == "Gradient"
+			gradientRow.Visible = gradientVisible
+			if modeDropdownRef ~= nil then
+				modeDropdownRef:Set(mode, true)
 			end
 		end
 
-		function t132.SyncAnimation(p248, p249)
-			v322:Set(p248, true)
-			v325:Set(p249, true)
-			local v371 = p228.Animatable
-			if v371 then
-				v371 = p248 == "Breathing"
+		function panelApi.SyncAnimation(mode, speed)
+			animationModeDropdown:Set(mode, true)
+			speedSlider:Set(speed, true)
+			local breathingVisible = options.Animatable
+			if breathingVisible then
+				breathingVisible = mode == "Breathing"
 			end
-			v317.Visible = v371
+			breathingRow.Visible = breathingVisible
 		end
 
-		function t132.SyncAnimationBreathingRange(p250)
-			v329:Set(p250, true)
+		function panelApi.SyncAnimationBreathingRange(range)
+			rangeSlider:Set(range, true)
 		end
 
-		function t132.SetAnimationEnabled(p251, p252)
-			v313.Visible = p251
-			v323.Visible = p251
-			local Value52 = v322.Value
-			if p251 then
-				p251 = Value52 == "Breathing"
+		function panelApi.SetAnimationEnabled(enabled, allowBreathing)
+			animationRow.Visible = enabled
+			speedRow.Visible = enabled
+			local currentMode = animationModeDropdown.Value
+			if enabled then
+				enabled = currentMode == "Breathing"
 			end
-			v317.Visible = p251
-			local v372 = up4
-			if not p252 then
-				v372 = up5
+			breathingRow.Visible = enabled
+			local modes = up4
+			if not allowBreathing then
+				modes = up5
 			end
-			v322:SetOptions(v372)
+			animationModeDropdown:SetOptions(modes)
 		end
 
-		return t132
+		return panelApi
 	end
 
 	local function lazyModule_hY()
@@ -72363,293 +72363,293 @@ local function f4735()
 		return t133.c
 	end
 
-	local function f4997()
+	local function clampAndRefresh_proto()
 		if not (up0.Parent == nil or not up1.clampGuiToViewport(up0)) then
 			up2()
 		end
 	end
 
-	local function f4998(p253)
-		local enemies2 = up0.enemies
-		local v373 = up1
+	local function onEnemyChanged_proto(isEnemy)
+		local enemies = up0.enemies
+		local key = up1
 		repeat
-			if p253 then
-				p253 = up2
+			if isEnemy then
+				isEnemy = up2
 			end
-		until not p253
-		enemies2[v373] = nil
+		until not isEnemy
+		enemies[key] = nil
 		return
 	end
 
-	local function f4999(p254)
-		local t134 = {}
-		local inner42 = p254._playerContext.inner
-		if inner42 ~= nil then
-			for _, t135 in inner42.itemBehaviors:GetItems() do
-				t134[t135.item.name] = true
+	local function refreshRouteFulfillability(waypoints)
+		local ownedItems = {}
+		local inner = waypoints._playerContext.inner
+		if inner ~= nil then
+			for _, behavior in inner.itemBehaviors:GetItems() do
+				ownedItems[behavior.item.name] = true
 			end
 		end
-		local _routesByRecording = p254._routesByRecording
-		local v374 = nil
+		local routesByRecording = waypoints._routesByRecording
+		local recording = nil
 		while true do
-			local v375
-			v374, v375 = _routesByRecording(nil, v374)
-			if v374 == nil then
+			local route
+			recording, route = routesByRecording(nil, recording)
+			if recording == nil then
 				break
 			end
-			v375:SetUnfulfillable(not up0(v374, t134))
+			route:SetUnfulfillable(not up0(recording, ownedItems))
 		end
 	end
 
-	local function f5000(p255, p256)
-		local t136 = {}
-		local v376 = nil
+	local function newAimIndicators_proto(playerContext, nextSource)
+		local sources = {}
+		local index = nil
 		while true do
-			local v377
-			v376, v377 = p256(nil, v376)
-			if v376 == nil then
+			local source
+			index, source = nextSource(nil, index)
+			if index == nil then
 				break
 			end
 			local _ = table.insert
-			local t137 = { source = v377 }
-			local t138 = { spring = up0.new(up1(), up2, up3), circleRing = nil, lastProperties = nil }
-			t137.state = t138
-			table.insert(t136, t137)
+			local entry = { source = source }
+			local state = { spring = up0.new(up1(), up2, up3), circleRing = nil, lastProperties = nil }
+			entry.state = state
+			table.insert(sources, entry)
 		end
-		local t139 = { _playerContext = p255, _sources = t136 }
-		return (setmetatable(t139, up4))
+		local indicators = { _playerContext = playerContext, _sources = sources }
+		return (setmetatable(indicators, up4))
 	end
 
-	local function f5001(p257, p258)
-		local _sources = p257._sources
-		local v378 = nil
+	local function updateAimIndicators_proto(indicators, dt)
+		local sources = indicators._sources
+		local index = nil
 		while true do
-			local t140
-			v378, t140 = _sources(nil, v378)
-			if v378 == nil then
+			local entry
+			index, entry = sources(nil, index)
+			if index == nil then
 				break
 			end
-			local state21 = t140.state
-			local GetIndicatorState = t140.source:GetIndicatorState()
-			local ring = GetIndicatorState.ring
+			local state = entry.state
+			local indicator = entry.source:GetIndicatorState()
+			local ring = indicator.ring
 			if ring.kind == "custom" then
-				if state21.circleRing ~= nil then
-					state21.circleRing:Destroy()
-					state21.circleRing = nil
-					state21.lastProperties = nil
+				if state.circleRing ~= nil then
+					state.circleRing:Destroy()
+					state.circleRing = nil
+					state.lastProperties = nil
 				end
-				ring.ring:SetVisible(GetIndicatorState.active)
-				if GetIndicatorState.active then
-					local ring2 = ring.ring
-					local UpdateTarget = ring2.UpdateTarget
-					local target = GetIndicatorState.target
+				ring.ring:SetVisible(indicator.active)
+				if indicator.active then
+					local customRing = ring.ring
+					local updateTarget = customRing.UpdateTarget
+					local target = indicator.target
 					if target then
-						target = GetIndicatorState.target.target
+						target = indicator.target.target
 					end
-					UpdateTarget(ring2, target)
+					updateTarget(customRing, target)
 				end
-			elseif GetIndicatorState.active then
+			elseif indicator.active then
 				local properties = ring.properties
-				local v379 = state21.circleRing
-				if not v379 then
-					v379 = up0.new(properties)
+				local circle = state.circleRing
+				if not circle then
+					circle = up0.new(properties)
 				end
-				if state21.circleRing == nil then
-					state21.circleRing = v379
-					state21.lastProperties = properties
-				elseif properties ~= state21.lastProperties then
-					v379:SetProperties(properties)
-					state21.lastProperties = properties
+				if state.circleRing == nil then
+					state.circleRing = circle
+					state.lastProperties = properties
+				elseif properties ~= state.lastProperties then
+					circle:SetProperties(properties)
+					state.lastProperties = properties
 				end
 				if properties.Visible then
-					local v380 = p257:GetOrigin(GetIndicatorState.fromMuzzle)
-					local target2 = GetIndicatorState.target
-					if not (target2 == nil or not GetIndicatorState.followTarget) then
-						v380 = target2.screenPosition
+					local origin = indicators:GetOrigin(indicator.fromMuzzle)
+					local aimTarget = indicator.target
+					if not (aimTarget == nil or not indicator.followTarget) then
+						origin = aimTarget.screenPosition
 					end
-					local t141 = up1.step(state21.spring, v380, up2)
-					v379:SetPosition(UDim2.fromOffset(t141.X, t141.Y))
-					v379:Update(p258)
+					local smoothed = up1.step(state.spring, origin, up2)
+					circle:SetPosition(UDim2.fromOffset(smoothed.X, smoothed.Y))
+					circle:Update(dt)
 				end
-			elseif state21.circleRing ~= nil then
-				state21.circleRing:Destroy()
-				state21.circleRing = nil
-				state21.lastProperties = nil
+			elseif state.circleRing ~= nil then
+				state.circleRing:Destroy()
+				state.circleRing = nil
+				state.lastProperties = nil
 			end
 		end
 	end
 
-	local function f5002(p259, p260)
-		if not p260 then
+	local function getIndicatorOrigin(indicators, fromMuzzle)
+		if not fromMuzzle then
 			return (up0())
 		end
-		local inner43 = p259._playerContext.inner
-		if inner43 == nil then
+		local inner = indicators._playerContext.inner
+		if inner == nil then
 			return (up0())
 		end
-		local GetEquipped5 = inner43.itemBehaviors:GetEquipped()
-		if GetEquipped5 == nil then
+		local equipped = inner.itemBehaviors:GetEquipped()
+		if equipped == nil then
 			return (up0())
 		end
-		local t142 = up1(GetEquipped5.item.inner, "ViewModel")
-		local v381 = up2(t142.GetMuzzlePosition, t142)
-		local WorldToViewportPoint4 = workspace.CurrentCamera:WorldToViewportPoint(v381)
-		if WorldToViewportPoint4.Z < 0 then
+		local viewModel = up1(equipped.item.inner, "ViewModel")
+		local muzzle = up2(viewModel.GetMuzzlePosition, viewModel)
+		local screenPoint = workspace.CurrentCamera:WorldToViewportPoint(muzzle)
+		if screenPoint.Z < 0 then
 			return (up0())
 		end
-		return (Vector2.new(WorldToViewportPoint4.X, WorldToViewportPoint4.Y))
+		return (Vector2.new(screenPoint.X, screenPoint.Y))
 	end
 
-	local function f5003()
-		local v382 = up0.av()
-		local v383 = up0.ax()
+	local function loadAimIndicators()
+		local CircleRing = up0.av()
+		local Spring = up0.ax()
 		up0.aB()
 		up0.a4()
 		up0.aw()
-		local v384 = up0.a5()
+		local screenCenter = up0.a5()
 		local v385 = up0.ai()
-		local t143 = {}
-		t143.__index = t143
-		local v386 = 15
-		local v387 = 1
+		local AimIndicators = {}
+		AimIndicators.__index = AimIndicators
+		local springSpeed = 15
+		local springDamping = 1
 
-		function t143.new(p261, p262)
-			local t144 = {}
-			local v388 = nil
+		function AimIndicators.new(playerContext, nextSource)
+			local sources = {}
+			local index = nil
 			while true do
-				local v389
-				v388, v389 = p262(nil, v388)
-				if v388 == nil then
+				local source
+				index, source = nextSource(nil, index)
+				if index == nil then
 					break
 				end
 				local _ = table.insert
-				local t145 = { source = v389 }
-				local t146 = {
-					spring = v383.new(v384(), v386, v387),
+				local entry = { source = source }
+				local state = {
+					spring = Spring.new(screenCenter(), springSpeed, springDamping),
 					circleRing = nil,
 					lastProperties = nil
 				}
-				t145.state = t146
-				table.insert(t144, t145)
+				entry.state = state
+				table.insert(sources, entry)
 			end
-			local t147 = { _playerContext = p261, _sources = t144 }
-			return (setmetatable(t147, t143))
+			local indicators = { _playerContext = playerContext, _sources = sources }
+			return (setmetatable(indicators, AimIndicators))
 		end
 
-		local v390 = 0.5
+		local smoothing = 0.5
 
-		function t143:Update(p263)
-			local _sources2 = self._sources
-			local v391 = nil
+		function AimIndicators:Update(dt)
+			local sources = self._sources
+			local index = nil
 			while true do
-				local t148
-				v391, t148 = _sources2(nil, v391)
-				if v391 == nil then
+				local entry
+				index, entry = sources(nil, index)
+				if index == nil then
 					break
 				end
-				local state22 = t148.state
-				local GetIndicatorState2 = t148.source:GetIndicatorState()
-				local ring3 = GetIndicatorState2.ring
-				if ring3.kind == "custom" then
-					if state22.circleRing ~= nil then
-						state22.circleRing:Destroy()
-						state22.circleRing = nil
-						state22.lastProperties = nil
+				local state = entry.state
+				local indicator = entry.source:GetIndicatorState()
+				local ring = indicator.ring
+				if ring.kind == "custom" then
+					if state.circleRing ~= nil then
+						state.circleRing:Destroy()
+						state.circleRing = nil
+						state.lastProperties = nil
 					end
-					ring3.ring:SetVisible(GetIndicatorState2.active)
-					if GetIndicatorState2.active then
-						local ring4 = ring3.ring
-						local UpdateTarget2 = ring4.UpdateTarget
-						local target3 = GetIndicatorState2.target
-						if target3 then
-							target3 = GetIndicatorState2.target.target
+					ring.ring:SetVisible(indicator.active)
+					if indicator.active then
+						local customRing = ring.ring
+						local updateTarget = customRing.UpdateTarget
+						local target = indicator.target
+						if target then
+							target = indicator.target.target
 						end
-						UpdateTarget2(ring4, target3)
+						updateTarget(customRing, target)
 					end
-				elseif GetIndicatorState2.active then
-					local properties2 = ring3.properties
-					local v392 = state22.circleRing
-					if not v392 then
-						v392 = v382.new(properties2)
+				elseif indicator.active then
+					local properties = ring.properties
+					local circle = state.circleRing
+					if not circle then
+						circle = CircleRing.new(properties)
 					end
-					if state22.circleRing == nil then
-						state22.circleRing = v392
-						state22.lastProperties = properties2
-					elseif properties2 ~= state22.lastProperties then
-						v392:SetProperties(properties2)
-						state22.lastProperties = properties2
+					if state.circleRing == nil then
+						state.circleRing = circle
+						state.lastProperties = properties
+					elseif properties ~= state.lastProperties then
+						circle:SetProperties(properties)
+						state.lastProperties = properties
 					end
-					if properties2.Visible then
-						local v393 = self:GetOrigin(GetIndicatorState2.fromMuzzle)
-						local target4 = GetIndicatorState2.target
-						if not (target4 == nil or not GetIndicatorState2.followTarget) then
-							v393 = target4.screenPosition
+					if properties.Visible then
+						local origin = self:GetOrigin(indicator.fromMuzzle)
+						local aimTarget = indicator.target
+						if not (aimTarget == nil or not indicator.followTarget) then
+							origin = aimTarget.screenPosition
 						end
-						local t149 = v383.step(state22.spring, v393, v390)
-						v392:SetPosition(UDim2.fromOffset(t149.X, t149.Y))
-						v392:Update(p263)
+						local smoothed = Spring.step(state.spring, origin, smoothing)
+						circle:SetPosition(UDim2.fromOffset(smoothed.X, smoothed.Y))
+						circle:Update(dt)
 					end
-				elseif state22.circleRing ~= nil then
-					state22.circleRing:Destroy()
-					state22.circleRing = nil
-					state22.lastProperties = nil
+				elseif state.circleRing ~= nil then
+					state.circleRing:Destroy()
+					state.circleRing = nil
+					state.lastProperties = nil
 				end
 			end
 		end
 
-		function t143:GetOrigin(p264)
-			if not p264 then
-				return (v384())
+		function AimIndicators:GetOrigin(fromMuzzle)
+			if not fromMuzzle then
+				return (screenCenter())
 			end
-			local inner44 = self._playerContext.inner
-			if inner44 == nil then
-				return (v384())
+			local inner = self._playerContext.inner
+			if inner == nil then
+				return (screenCenter())
 			end
-			local GetEquipped6 = inner44.itemBehaviors:GetEquipped()
-			if GetEquipped6 == nil then
-				return (v384())
+			local equipped = inner.itemBehaviors:GetEquipped()
+			if equipped == nil then
+				return (screenCenter())
 			end
-			local t150 = up1(GetEquipped6.item.inner, "ViewModel")
-			local v394 = v385(t150.GetMuzzlePosition, t150)
-			local WorldToViewportPoint5 = workspace.CurrentCamera:WorldToViewportPoint(v394)
-			if WorldToViewportPoint5.Z < 0 then
-				return (v384())
+			local viewModel = up1(equipped.item.inner, "ViewModel")
+			local muzzle = v385(viewModel.GetMuzzlePosition, viewModel)
+			local screenPoint = workspace.CurrentCamera:WorldToViewportPoint(muzzle)
+			if screenPoint.Z < 0 then
+				return (screenCenter())
 			end
-			return (Vector2.new(WorldToViewportPoint5.X, WorldToViewportPoint5.Y))
+			return (Vector2.new(screenPoint.X, screenPoint.Y))
 		end
 
-		function t143.Destroy()
+		function AimIndicators.Destroy()
 		end
 
-		return t143
+		return AimIndicators
 	end
 
-	local function f5004(p265, p266)
-		local t151 = p265._gluedParts[p266]
-		if t151 == nil then
+	local function unglue(glue, part)
+		local entry = glue._gluedParts[part]
+		if entry == nil then
 			return
 		end
-		t151.refCount = t151.refCount - 1
-		if 0 < t151.refCount then
+		entry.refCount = entry.refCount - 1
+		if 0 < entry.refCount then
 			return
 		end
-		local weld2 = t151.weld
-		if not (weld2 == nil or t151.originalPart1 == nil) then
-			up0(weld2, "Part1", t151.originalPart1)
-			up0(t151.originalPart1, "Anchored", false)
+		local weld = entry.weld
+		if not (weld == nil or entry.originalPart1 == nil) then
+			up0(weld, "Part1", entry.originalPart1)
+			up0(entry.originalPart1, "Anchored", false)
 		end
-		p265._gluedParts[p266] = nil
+		glue._gluedParts[part] = nil
 	end
 
-	local function f5005(p267, p268)
-		local v395 = up0.new(p268)
+	local function addSkyboxGuard(manager, lighting)
+		local guard = up0.new(lighting)
 		if up1:Get(up2) then
-			local GetPreset = p267._skyboxes:GetPreset(up1:Get(up3))
-			if GetPreset ~= nil then
-				up4(v395, GetPreset)
+			local preset = manager._skyboxes:GetPreset(up1:Get(up3))
+			if preset ~= nil then
+				up4(guard, preset)
 			end
 		end
-		p267._guards[p268] = v395
+		manager._guards[lighting] = guard
 	end
 
 	local function f5006(p269)
@@ -72659,8 +72659,8 @@ local function f4735()
 		up2(p269)
 	end
 
-	local function f5007(p270)
-		p270._trove:Destroy()
+	local function destroyTrove_proto4(object)
+		object._trove:Destroy()
 	end
 
 	local function f5008()
@@ -72729,395 +72729,395 @@ local function f4735()
 		return t153.c
 	end
 
-	local function f5011(p271)
-		p271._bakeSignature = ""
+	local function invalidateBake(painter)
+		painter._bakeSignature = ""
 	end
 
-	local function f5012()
+	local function onEnvironmentChanged_proto()
 		if up0:_ShouldPaintRealDirectly() then
 			up0:_ApplyToReal()
 			return
 		end
 		if up0._replicaMaterial == nil then
-			local _realMaterial4 = up0._realMaterial
-			if _realMaterial4 ~= nil then
-				_realMaterial4:SetSpec(nil)
+			local realMaterial = up0._realMaterial
+			if realMaterial ~= nil then
+				realMaterial:SetSpec(nil)
 			end
 		end
 	end
 
-	local function f5013()
-		local _realMaterial5 = up0._realMaterial
-		if _realMaterial5 ~= nil then
+	local function destroyRealMaterial_proto()
+		local realMaterial = up0._realMaterial
+		if realMaterial ~= nil then
 			up0._realMaterial = nil
-			_realMaterial5:Destroy(false)
+			realMaterial:Destroy(false)
 		end
 	end
 
-	local function f5014(p272, p273, p274)
-		local function f5015(p275)
-			p272._realMaterial = up1.new(p275.model)
-			if not (p272._replicaMaterial == nil and not p272:_ShouldPaintRealDirectly()) then
-				p272:_ApplyToReal()
+	local function onMaterialContext(painter, context, trove)
+		local function onCharacterCreated(character)
+			painter._realMaterial = up1.new(character.model)
+			if not (painter._replicaMaterial == nil and not painter:_ShouldPaintRealDirectly()) then
+				painter:_ApplyToReal()
 			end
 		end
 
-		local function f5016()
-			local _realMaterial6 = p272._realMaterial
-			if _realMaterial6 ~= nil then
-				p272._realMaterial = nil
-				_realMaterial6:Destroy(false)
+		local function onCharacterDied()
+			local realMaterial = painter._realMaterial
+			if realMaterial ~= nil then
+				painter._realMaterial = nil
+				realMaterial:Destroy(false)
 			end
 		end
 
-		local character4 = p273.fighterState.character
-		p274:Connect(character4.created, f5015)
-		p274:Connect(character4.died, f5016)
+		local characterState = context.fighterState.character
+		trove:Connect(characterState.created, onCharacterCreated)
+		trove:Connect(characterState.died, onCharacterDied)
 
-		local function f5017()
-			if p272:_ShouldPaintRealDirectly() then
-				p272:_ApplyToReal()
+		local function onEnvironmentChanged()
+			if painter:_ShouldPaintRealDirectly() then
+				painter:_ApplyToReal()
 				return
 			end
-			if p272._replicaMaterial == nil then
-				local _realMaterial7 = p272._realMaterial
-				if _realMaterial7 ~= nil then
-					_realMaterial7:SetSpec(nil)
+			if painter._replicaMaterial == nil then
+				local realMaterial = painter._realMaterial
+				if realMaterial ~= nil then
+					realMaterial:SetSpec(nil)
 				end
 			end
 		end
 
-		p274:Connect(p273.fighterState.environmentIDChanged, f5017)
-		local state23 = character4.state
-		if state23.alive then
-			f5015(state23)
+		trove:Connect(context.fighterState.environmentIDChanged, onEnvironmentChanged)
+		local state = characterState.state
+		if state.alive then
+			onCharacterCreated(state)
 		end
 	end
 
-	local function f5018(p276, p277)
-		local v397 = up0(p276, "Info")
-		local v398 = up0(p276, "Data")
-		local t154 = {
-			index = p277,
-			_data = v398,
-			_info = v397,
-			_clientFighter = up0(p276, "ClientFighter"),
-			_aimScopePercent = up0(v397, "AimScopePercent"),
-			itemInterface = up1.new(p276),
-			inner = p276,
-			name = up0(p276, "Name"),
-			type = up0(v397, "Type"),
-			objectId = up0(v398, "ObjectID"),
-			isRaycast = up0(v397, "IsRaycast"),
-			maxAmmo = up0(v397, "MaxAmmo")
+	local function newGunItem_proto(inner, index)
+		local info = up0(inner, "Info")
+		local data = up0(inner, "Data")
+		local item = {
+			index = index,
+			_data = data,
+			_info = info,
+			_clientFighter = up0(inner, "ClientFighter"),
+			_aimScopePercent = up0(info, "AimScopePercent"),
+			itemInterface = up1.new(inner),
+			inner = inner,
+			name = up0(inner, "Name"),
+			type = up0(info, "Type"),
+			objectId = up0(data, "ObjectID"),
+			isRaycast = up0(info, "IsRaycast"),
+			maxAmmo = up0(info, "MaxAmmo")
 		}
-		return (setmetatable(t154, up2))
+		return (setmetatable(item, up2))
 	end
 
-	local function f5019(p278)
-		local v399 = up0(p278._data, "AmmoReserve")
-		if not v399 then
-			v399 = math.huge
+	local function getAmmoReserve_proto(item)
+		local reserve = up0(item._data, "AmmoReserve")
+		if not reserve then
+			reserve = math.huge
 		end
-		return v399
+		return reserve
 	end
 
-	local function f5020(p279)
-		local v400
-		v400 = p279.maxAmmo <= p279:GetAmmo()
-		return v400
+	local function isMagFull_proto(item)
+		local full
+		full = item.maxAmmo <= item:GetAmmo()
+		return full
 	end
 
-	local function f5021(p280, p281, p282, p283, p284)
-		local t155 = { ["\0"] = p281, ["\1"] = p282, ["\2"] = p283, ["\3"] = p284 }
-		if p280.name == "Revolver" then
+	local function shootEncoded_proto(item, p281, p282, p283, p284)
+		local shotArgs = { ["\0"] = p281, ["\1"] = p282, ["\2"] = p283, ["\3"] = p284 }
+		if item.name == "Revolver" then
 		end
-		t155["\4"] = nil
-		local v401 = p280.isRaycast
-		if v401 then
-			v401 = { ["\1"] = t155, ["\2"] = true }
+		shotArgs["\4"] = nil
+		local payload = item.isRaycast
+		if payload then
+			payload = { ["\1"] = shotArgs, ["\2"] = true }
 		end
-		if not v401 then
-			v401 = { ["\1"] = t155 }
+		if not payload then
+			payload = { ["\1"] = shotArgs }
 		end
-		up0(up1, p280.objectId, up2.encode("StartShooting"), v401, nil)
+		up0(up1, item.objectId, up2.encode("StartShooting"), payload, nil)
 	end
 
-	local function f5022(p285)
-		local v402 = up0(p285._data, "IsAiming")
-		local _aimScopePercent = p285._aimScopePercent
-		local v403 = up0(up0(p285.inner, "ViewModel"), "CurrentAimValue")
-		if v402 then
-			v402 = _aimScopePercent == nil
-			if not v402 then
-				v402 = _aimScopePercent <= v403
+	local function isFullyAiming_proto(item)
+		local aiming = up0(item._data, "IsAiming")
+		local scopePercent = item._aimScopePercent
+		local aimValue = up0(up0(item.inner, "ViewModel"), "CurrentAimValue")
+		if aiming then
+			aiming = scopePercent == nil
+			if not aiming then
+				aiming = scopePercent <= aimValue
 			end
 		end
-		return v402
+		return aiming
 	end
 
-	local function f5023(p286)
-		p286.itemInterface:Destroy()
+	local function destroyItem_proto(item)
+		item.itemInterface:Destroy()
 	end
 
-	local function f5024(p287)
-		if p287:IsEquipped() then
+	local function equip_proto(item)
+		if item:IsEquipped() then
 			return
 		end
-		local _clientFighter3 = p287._clientFighter
-		up0(_clientFighter3.EquipItem, _clientFighter3, p287.index)
+		local clientFighter = item._clientFighter
+		up0(clientFighter.EquipItem, clientFighter, item.index)
 	end
 
-	local function f5025(p288)
-		if p288:IsReloading() or p288:GetAmmoReserve() <= 0 or p288:IsMagFull() then
+	local function reload_proto(item)
+		if item:IsReloading() or item:GetAmmoReserve() <= 0 or item:IsMagFull() then
 			return
 		end
-		local v404 = up0.encode("Reload")
-		local t156 = { ["\1"] = v404, ["\2"] = v404 }
-		up1(up2, p288.objectId, up0.encode("StartReloading"), t156, nil)
+		local reloadCode = up0.encode("Reload")
+		local reloadArgs = { ["\1"] = reloadCode, ["\2"] = reloadCode }
+		up1(up2, item.objectId, up0.encode("StartReloading"), reloadArgs, nil)
 	end
 
-	local function f5026(p289)
-		return (up0(p289._data, "Ammo"))
+	local function getAmmo_proto(item)
+		return (up0(item._data, "Ammo"))
 	end
 
-	local function f5027(p290)
-		return (up0(p290.inner, "IsEquipped"))
+	local function isEquipped_proto(item)
+		return (up0(item.inner, "IsEquipped"))
 	end
 
-	local function f5028(p291, p292, p293, p294)
+	local function shootAt_proto(item, p292, p293, p294)
 		local v405, v406
 		v406, v405 = up0(p292, p294)
-		p291:ShootEncoded(up1.encode(p292), up1.encode(p293), v406, v405)
+		item:ShootEncoded(up1.encode(p292), up1.encode(p293), v406, v405)
 	end
 
-	local function f5029()
-		local v407 = up0.aX()
-		local v408 = up0.aU()
+	local function loadGunItem()
+		local partCodec = up0.aX()
+		local remoteCodec = up0.aU()
 		up0.aj()
-		local v409 = up0.aV()
+		local ItemInterface = up0.aV()
 		up0.al()
-		local v410 = up0.ah()
-		local v411 = up0.ai()
-		local UseItemRemote2 = up0.ao().UseItemRemote
-		local v412 = up0.aY()
-		local t157 = {}
-		t157.__index = t157
+		local safeIndex = up0.ah()
+		local safeCall = up0.ai()
+		local UseItemRemote = up0.ao().UseItemRemote
+		local encodeShot = up0.aY()
+		local GunItem = {}
+		GunItem.__index = GunItem
 
-		function t157.new(p295, p296)
-			local v413 = v410(p295, "Info")
-			local v414 = v410(p295, "Data")
-			local t158 = {
-				index = p296,
-				_data = v414,
-				_info = v413,
-				_clientFighter = v410(p295, "ClientFighter"),
-				_aimScopePercent = v410(v413, "AimScopePercent"),
-				itemInterface = v409.new(p295),
-				inner = p295,
-				name = v410(p295, "Name"),
-				type = v410(v413, "Type"),
-				objectId = v410(v414, "ObjectID"),
-				isRaycast = v410(v413, "IsRaycast"),
-				maxAmmo = v410(v413, "MaxAmmo")
+		function GunItem.new(inner, index)
+			local info = safeIndex(inner, "Info")
+			local data = safeIndex(inner, "Data")
+			local item = {
+				index = index,
+				_data = data,
+				_info = info,
+				_clientFighter = safeIndex(inner, "ClientFighter"),
+				_aimScopePercent = safeIndex(info, "AimScopePercent"),
+				itemInterface = ItemInterface.new(inner),
+				inner = inner,
+				name = safeIndex(inner, "Name"),
+				type = safeIndex(info, "Type"),
+				objectId = safeIndex(data, "ObjectID"),
+				isRaycast = safeIndex(info, "IsRaycast"),
+				maxAmmo = safeIndex(info, "MaxAmmo")
 			}
-			return (setmetatable(t158, t157))
+			return (setmetatable(item, GunItem))
 		end
 
-		function t157:Destroy()
+		function GunItem:Destroy()
 			self.itemInterface:Destroy()
 		end
 
-		function t157:Equip()
+		function GunItem:Equip()
 			if self:IsEquipped() then
 				return
 			end
-			local _clientFighter4 = self._clientFighter
-			v411(_clientFighter4.EquipItem, _clientFighter4, self.index)
+			local clientFighter = self._clientFighter
+			safeCall(clientFighter.EquipItem, clientFighter, self.index)
 		end
 
-		function t157:IsEquipped()
-			return (v410(self.inner, "IsEquipped"))
+		function GunItem:IsEquipped()
+			return (safeIndex(self.inner, "IsEquipped"))
 		end
 
-		function t157.ShootAt(p297, p298, p299, p300)
+		function GunItem.ShootAt(item, p298, p299, p300)
 			local v415, v416
-			v416, v415 = v412(p298, p300)
-			p297:ShootEncoded(v407.encode(p298), v407.encode(p299), v416, v415)
+			v416, v415 = encodeShot(p298, p300)
+			item:ShootEncoded(partCodec.encode(p298), partCodec.encode(p299), v416, v415)
 		end
 
-		function t157:ShootEncoded(p301, p302, p303, p304)
-			local t159 = { ["\0"] = p301, ["\1"] = p302, ["\2"] = p303, ["\3"] = p304 }
+		function GunItem:ShootEncoded(p301, p302, p303, p304)
+			local shotArgs = { ["\0"] = p301, ["\1"] = p302, ["\2"] = p303, ["\3"] = p304 }
 			if self.name == "Revolver" then
 			end
-			t159["\4"] = nil
-			local v417 = self.isRaycast
-			if v417 then
-				v417 = { ["\1"] = t159, ["\2"] = true }
+			shotArgs["\4"] = nil
+			local payload = self.isRaycast
+			if payload then
+				payload = { ["\1"] = shotArgs, ["\2"] = true }
 			end
-			if not v417 then
-				v417 = { ["\1"] = t159 }
+			if not payload then
+				payload = { ["\1"] = shotArgs }
 			end
-			up0(UseItemRemote2, self.objectId, v408.encode("StartShooting"), v417, nil)
+			up0(UseItemRemote, self.objectId, remoteCodec.encode("StartShooting"), payload, nil)
 		end
 
-		function t157:IsFullyAiming()
-			local v418 = v410(self._data, "IsAiming")
-			local _aimScopePercent2 = self._aimScopePercent
-			local v419 = v410(v410(self.inner, "ViewModel"), "CurrentAimValue")
-			if v418 then
-				v418 = _aimScopePercent2 == nil
-				if not v418 then
-					v418 = _aimScopePercent2 <= v419
+		function GunItem:IsFullyAiming()
+			local aiming = safeIndex(self._data, "IsAiming")
+			local scopePercent = self._aimScopePercent
+			local aimValue = safeIndex(safeIndex(self.inner, "ViewModel"), "CurrentAimValue")
+			if aiming then
+				aiming = scopePercent == nil
+				if not aiming then
+					aiming = scopePercent <= aimValue
 				end
 			end
-			return v418
+			return aiming
 		end
 
-		function t157:Reload()
+		function GunItem:Reload()
 			if self:IsReloading() or self:GetAmmoReserve() <= 0 or self:IsMagFull() then
 				return
 			end
-			local v420 = v408.encode("Reload")
-			local t160 = { ["\1"] = v420, ["\2"] = v420 }
-			up1(UseItemRemote2, self.objectId, v408.encode("StartReloading"), t160, nil)
+			local reloadCode = remoteCodec.encode("Reload")
+			local reloadArgs = { ["\1"] = reloadCode, ["\2"] = reloadCode }
+			up1(UseItemRemote, self.objectId, remoteCodec.encode("StartReloading"), reloadArgs, nil)
 		end
 
-		function t157:GetAmmo()
-			return (v410(self._data, "Ammo"))
+		function GunItem:GetAmmo()
+			return (safeIndex(self._data, "Ammo"))
 		end
 
-		function t157:GetAmmoReserve()
-			local v421 = v410(self._data, "AmmoReserve")
-			if not v421 then
-				v421 = math.huge
+		function GunItem:GetAmmoReserve()
+			local reserve = safeIndex(self._data, "AmmoReserve")
+			if not reserve then
+				reserve = math.huge
 			end
-			return v421
+			return reserve
 		end
 
-		function t157:IsReloading()
-			local v422 = tick()
-			local v423 = v410(self.inner, "_reload_cooldown")
-			if not (v423 == nil or not (v422 < v423)) then
+		function GunItem:IsReloading()
+			local now = tick()
+			local reloadCooldownEnd = safeIndex(self.inner, "_reload_cooldown")
+			if not (reloadCooldownEnd == nil or not (now < reloadCooldownEnd)) then
 				return true
 			end
-			local v424 = v410(self.inner, "_shoot_cooldown_no_ammo")
-			local v425
-			v425 = not (v424 == nil)
-			if v425 then
-				v425 = v422 < v424
+			local emptyCooldownEnd = safeIndex(self.inner, "_shoot_cooldown_no_ammo")
+			local onCooldown
+			onCooldown = not (emptyCooldownEnd == nil)
+			if onCooldown then
+				onCooldown = now < emptyCooldownEnd
 			end
-			return v425
+			return onCooldown
 		end
 
-		function t157:IsMagFull()
-			local v426
-			v426 = self.maxAmmo <= self:GetAmmo()
-			return v426
+		function GunItem:IsMagFull()
+			local full
+			full = self.maxAmmo <= self:GetAmmo()
+			return full
 		end
 
-		return t157
+		return GunItem
 	end
 
-	local function f5030()
+	local function reparent_proto()
 		up0.Parent = up1
 	end
 
-	local function f5031(p305)
-		local v427 = nil
+	local function restoreOriginalProps(nextEntry)
+		local instance = nil
 		while true do
-			local t161
-			v427, t161 = p305(nil, v427)
-			if v427 == nil then
+			local entry
+			instance, entry = nextEntry(nil, instance)
+			if instance == nil then
 				break
 			end
-			local OriginalProps = t161.OriginalProps
-			local v428 = nil
+			local originalProps = entry.OriginalProps
+			local prop = nil
 			while true do
-				local v429
-				v428, v429 = OriginalProps(nil, v428)
-				if v428 == nil then
+				local value
+				prop, value = originalProps(nil, prop)
+				if prop == nil then
 					break
 				end
-				v427[v428] = v429
+				instance[prop] = value
 			end
-			local OriginalChildren2 = t161.OriginalChildren
-			local v430 = nil
+			local originalChildren = entry.OriginalChildren
+			local key = nil
 			while true do
-				local v431
-				v430, v431 = OriginalChildren2(nil, v430)
-				if v430 == nil then
+				local child
+				key, child = originalChildren(nil, key)
+				if key == nil then
 					break
 				end
-				local v432 = v431
-				local v433 = v427
+				local capturedChild = child
+				local capturedParent = instance
 
-				local function f5032()
-					v432.Parent = v433
+				local function restoreParent()
+					capturedChild.Parent = capturedParent
 				end
 
-				up0(f5032)
+				up0(restoreParent)
 			end
-			local Cleanup = t161.Cleanup
-			local v434 = nil
+			local cleanup = entry.Cleanup
+			local key2 = nil
 			while true do
-				local v435
-				v434, v435 = Cleanup(nil, v434)
-				if v434 == nil then
+				local object
+				key2, object = cleanup(nil, key2)
+				if key2 == nil then
 					break
 				end
-				v435:Destroy()
+				object:Destroy()
 			end
-			t161.Cleanup = {}
+			entry.Cleanup = {}
 		end
 	end
 
-	local function f5033(p306)
-		local v436 = nil
-		local inner45 = p306.inner
-		if inner45 ~= nil then
-			v436 = inner45.characterController
+	local function flushViewAngles(context)
+		local characterController = nil
+		local inner = context.inner
+		if inner ~= nil then
+			characterController = inner.characterController
 		end
-		v436:FlushViewAngles()
+		characterController:FlushViewAngles()
 	end
 
-	local function f5034(p307)
-		local Value53 = up0.Value
-		if Value53 == nil or Value53 == "Unselected" then
-			local cosmetics4 = up1.cosmetics
-			local SetSkinChangerChoice4 = cosmetics4.SetSkinChangerChoice
-			local t162 = { kind = "Wrap", wrap = nil }
-			SetSkinChangerChoice4(cosmetics4, p307, t162)
+	local function applyWrapTo_proto(weapon)
+		local selected = up0.Value
+		if selected == nil or selected == "Unselected" then
+			local cosmetics = up1.cosmetics
+			local setChoice = cosmetics.SetSkinChangerChoice
+			local choice = { kind = "Wrap", wrap = nil }
+			setChoice(cosmetics, weapon, choice)
 			return
 		end
-		local cosmetics5 = up1.cosmetics
-		local SetSkinChangerChoice5 = cosmetics5.SetSkinChangerChoice
-		local t163 = { kind = "Wrap" }
-		local t164 = { name = up2(Value53), inverted = up3.Value }
-		t163.wrap = t164
-		SetSkinChangerChoice5(cosmetics5, p307, t163)
+		local cosmetics2 = up1.cosmetics
+		local setChoice2 = cosmetics2.SetSkinChangerChoice
+		local choice2 = { kind = "Wrap" }
+		local wrap = { name = up2(selected), inverted = up3.Value }
+		choice2.wrap = wrap
+		setChoice2(cosmetics2, weapon, choice2)
 	end
 
-	local function f5035(...)
-		local v437, v438
-		v438, v437 = ...
-		return (up0(up0(v438, "Data"), v437))
+	local function getDataField_proto(...)
+		local key, object
+		object, key = ...
+		return (up0(up0(object, "Data"), key))
 	end
 
-	local function f5036(p308, p309, p310, p311)
-		local t165 = { build = p309, widget = nil, naturalWidth = p310, leading = p311 }
-		table.insert(p308._attachments, t165)
-		local _ctx3 = p308._ctx
-		if _ctx3 == nil then
+	local function attachRight(row, build, naturalWidth, leading)
+		local attachment = { build = build, widget = nil, naturalWidth = naturalWidth, leading = leading }
+		table.insert(row._attachments, attachment)
+		local ctx = row._ctx
+		if ctx == nil then
 			return
 		end
-		local _barePending = p308._barePending
-		if _barePending == nil then
-			p308:_realizeAttachment(t165, _ctx3)
+		local barePending = row._barePending
+		if barePending == nil then
+			row:_realizeAttachment(attachment, ctx)
 			return
 		end
-		p308._barePending = nil
-		p308:_buildBareRoot(_barePending.parent, _barePending.layoutOrder, _ctx3)
+		row._barePending = nil
+		row:_buildBareRoot(barePending.parent, barePending.layoutOrder, ctx)
 	end
 
 	local function lazyModule_gQ()
@@ -73129,240 +73129,240 @@ local function f4735()
 		return t166.c
 	end
 
-	local function f5038(p312, p313)
-		if p312._shareActive == p313 then
+	local function setShareActive(bridge, active)
+		if bridge._shareActive == active then
 			return
 		end
-		p312._shareActive = p313
-		if p313 then
-			p312:_TrySendCurrentInventory()
+		bridge._shareActive = active
+		if active then
+			bridge:_TrySendCurrentInventory()
 		end
 	end
 
-	local function f5039(p314)
-		p314._trove:Destroy()
+	local function destroyTrove_proto5(object)
+		object._trove:Destroy()
 	end
 
-	local function f5040(p315, p316)
-		local v439 = 0
-		local v440 = 1
+	local function bitwiseByTable(a, b)
+		local result = 0
+		local place = 1
 		for _ = 1, 8 do
-			v439 = v439 + up0[p315 % 16 * 16 + p316 % 16] * v440
-			p315 = math.floor(p315 / 16)
-			p316 = math.floor(p316 / 16)
-			v440 = v440 * 16
+			result = result + up0[a % 16 * 16 + b % 16] * place
+			a = math.floor(a / 16)
+			b = math.floor(b / 16)
+			place = place * 16
 		end
-		return v439
+		return result
 	end
 
-	local function f5041(p317, p318)
+	local function mul32(a, b)
 		return (up0(
-			up0(p317, 65535) * p318 + up1(p317, 16) * p318 % 65536 * 65536,
+			up0(a, 65535) * b + up1(a, 16) * b % 65536 * 65536,
 			4294967295
 		))
 	end
 
 	return 
-		f4736,
-		f4737,
-		f4738,
-		f4740,
-		f4741,
-		f4742,
-		f4743,
-		f4744,
-		f4748,
-		f4750,
+		removeRequestBinding_proto,
+		onOpenedOnce_proto,
+		whenFirstOpened,
+		unbindKey,
+		addStop_proto,
+		validateConfigName,
+		onFontLoaded_proto,
+		initializeFonts,
+		waitForCharacterParts,
+		addImage,
 		lazyModule_fT,
 		f4752,
 		lazyModule_bM,
-		f4754,
-		f4755,
-		f4756,
-		f4757,
-		f4758,
-		f4759,
-		f4760,
-		f4762,
-		f4763,
-		f4764,
+		validateImport,
+		resetAimState,
+		onDragEnded_proto,
+		onMinDrag_proto,
+		setOptions_proto,
+		forgetClothing_proto,
+		stripClothing,
+		finalizePromise,
+		trapNoop,
+		realize,
 		lazyModule_dP,
-		f4766,
-		f4767,
-		f4768,
-		f4769,
-		f4773,
+		setRowVisible,
+		selectStop_proto,
+		onStopDragged_proto,
+		rebuildStopMarkers_proto,
+		isSpoofTarget_proto,
 		f4775,
-		f4776,
+		getPathSignal,
 		lazyModule_eJ,
-		f4779,
-		f4780,
+		resetToDefaults,
+		setAutoSavePreset,
 		f4781,
 		f4782,
-		f4783,
+		newInstalledHook_proto,
 		f4784,
 		lazyModule_gu,
-		f4786,
-		f4787,
-		f4788,
-		f4789,
-		f4790,
-		f4791,
-		f4792,
+		onAlphaDrag_proto,
+		copySelection_proto,
+		destroyTrove_proto,
+		notifyRebuilt_proto,
+		loadRebuildNotifier,
+		measureTextWidth,
+		deleteEntry,
 		f4793,
-		f4794,
-		f4796,
-		f4797,
-		f4798,
-		f4799,
-		f4801,
-		f4802,
-		f4804,
-		f4805,
-		f4806,
+		applyNoGameHitsound_proto,
+		newNoGameHitsound_proto,
+		destroyNoGameHitsound_proto,
+		revertNoGameHitsound_proto,
+		loadNoGameHitsound,
+		destroyTrove_proto2,
+		rebuildWaypointMarkers,
+		setHitFeedbackEnabled_proto,
+		handleDamageReplicate_proto,
+		loadPlayerHitFeedback,
 		f4814,
-		f4815,
-		f4816,
-		f4817,
-		f4818,
-		f4819,
-		f4820,
-		f4821,
-		f4826,
-		f4827,
-		f4828,
-		f4829,
-		f4830,
-		f4831,
-		f4832,
-		f4835,
+		setSkinOverrides,
+		hasStatus_proto,
+		onPeerPayload_proto,
+		onPeerRemoved_proto,
+		onShareSkinsChanged_proto,
+		onShowActivated_proto,
+		newCosmeticsBridge,
+		setChange,
+		fireSignal,
+		anyStatEnabled,
+		setSearchFilter_proto,
+		callWithoutTrack_proto,
+		playAnimationHook_proto,
+		installAnimationDisabler,
+		removeGuard,
 		f4836,
 		lazyModule_gw,
-		f4838,
-		f4839,
-		f4841,
-		f4844,
-		f4845,
-		f4846,
-		f4848,
+		clearCharacterTrove,
+		buildDeviceSpoofSection_proto,
+		loadDeviceSpoofSection,
+		clearEnvironment_proto,
+		reportError_proto,
+		setFpsCounterRunning_proto,
+		loadFpsCounter,
 		f4851,
-		f4852,
+		setDisabled,
 		lazyModule_de,
-		f4854,
-		f4855,
-		f4856,
-		f4857,
-		f4858,
-		f4860,
-		f4861,
-		f4862,
+		getMode_proto,
+		buildTargetingTab_proto,
+		captureFighterPrototype_proto,
+		exportLayer_proto,
+		exportCosmeticState_proto,
+		destroyBundlePatch,
+		getTypeSet,
+		onMaxDrag_proto,
 		f4863,
-		f4864,
+		getMapName,
 		f4865,
 		lazyModule_fy,
-		f4867,
-		f4868,
-		f4869,
-		f4870,
-		f4871,
-		f4872,
-		f4873,
-		f4874,
-		f4875,
-		f4877,
+		newLocalBodyAppearance_proto,
+		getMeasurement,
+		destroyUnlocker_proto,
+		newCosmeticsUnlocker_proto,
+		syncUnlockerApplied_proto,
+		setUnlockerMasterEnabled_proto,
+		setUnlockerLayerActive_proto,
+		loadCosmeticsUnlocker,
+		loadEffectsSection,
+		lcgRandom_proto,
 		f4878,
 		f4879,
 		lazyModule_ci,
 		f4881,
-		f4882,
-		f4883,
-		f4885,
+		updateAutoStrafe_proto,
+		loadAutoStrafe,
+		setUsername,
 		f4886,
 		lazyModule_cu,
-		f4888,
-		f4889,
-		f4891,
-		f4892,
-		f4893,
-		f4894,
-		f4895,
-		f4896,
-		f4899,
-		f4901,
-		f4918,
-		f4919,
-		f4920,
-		f4921,
+		syncAnimationControls_proto,
+		realizeGroup,
+		onPlayed_proto,
+		destroyTrove_proto3,
+		removeLookItem_proto,
+		syncSurface_proto,
+		onLookItemAdded_proto,
+		samePartSets_proto,
+		applyLookItem_proto,
+		loadViewModelLook,
+		addColorPicker,
+		cacheKey,
+		clearBoardProvider,
+		setTooltip,
 		lazyModule_cg,
-		f4923,
-		f4929,
-		f4932,
-		f4933,
+		bindReplicate,
+		installReplicateHook,
+		revertReplicateHook_proto,
+		loadReplicateHook,
 		lazyModule_fP,
 		lazyModule_hy,
 		f4943,
-		f4944,
-		f4945,
-		f4946,
-		f4947,
-		f4948,
-		f4949,
+		setValueSilently_proto,
+		setAnimationControlsVisible_proto,
+		onHueDrag_proto,
+		onModeChosen_proto,
+		onBreathingRangeChanged_proto,
+		onSpeedChanged_proto,
 		f4950,
-		f4951,
-		f4952,
-		f4953,
+		selectStopAtPointer_proto,
+		applyHexInput_proto,
+		makeIconButton,
 		f4954,
-		f4955,
-		f4956,
-		f4957,
-		f4958,
-		f4959,
-		f4960,
-		f4964,
-		f4965,
-		f4966,
+		onSatDrag_proto,
+		removeStop_proto,
+		onModeChanged_proto,
+		nearestStopIndex,
+		onStopDrag_proto,
+		layoutStopMarkers,
+		onBarDrag_proto,
+		addStop_proto2,
+		buildColorPanel,
 		lazyModule_hY,
-		f4997,
-		f4998,
-		f4999,
-		f5000,
-		f5001,
-		f5002,
-		f5003,
-		f5004,
-		f5005,
+		clampAndRefresh_proto,
+		onEnemyChanged_proto,
+		refreshRouteFulfillability,
+		newAimIndicators_proto,
+		updateAimIndicators_proto,
+		getIndicatorOrigin,
+		loadAimIndicators,
+		unglue,
+		addSkyboxGuard,
 		f5006,
-		f5007,
+		destroyTrove_proto4,
 		f5008,
 		f5009,
 		lazyModule_gr,
-		f5011,
-		f5012,
-		f5013,
-		f5014,
-		f5018,
-		f5019,
-		f5020,
-		f5021,
-		f5022,
-		f5023,
-		f5024,
-		f5025,
-		f5026,
-		f5027,
-		f5028,
-		f5029,
-		f5030,
-		f5031,
-		f5033,
-		f5034,
-		f5035,
-		f5036,
+		invalidateBake,
+		onEnvironmentChanged_proto,
+		destroyRealMaterial_proto,
+		onMaterialContext,
+		newGunItem_proto,
+		getAmmoReserve_proto,
+		isMagFull_proto,
+		shootEncoded_proto,
+		isFullyAiming_proto,
+		destroyItem_proto,
+		equip_proto,
+		reload_proto,
+		getAmmo_proto,
+		isEquipped_proto,
+		shootAt_proto,
+		loadGunItem,
+		reparent_proto,
+		restoreOriginalProps,
+		flushViewAngles,
+		applyWrapTo_proto,
+		getDataField_proto,
+		attachRight,
 		lazyModule_gQ,
-		f5038,
-		f5039,
-		f5040,
-		f5041
+		setShareActive,
+		destroyTrove_proto5,
+		bitwiseByTable,
+		mul32
 	
 end
 

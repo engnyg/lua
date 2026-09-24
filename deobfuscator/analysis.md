@@ -4,7 +4,7 @@
 > **規模**：6.65 MB、269,261 行、11,143 個函式
 > **工具**：`deobfuscator.py`（字串解密）、`optimize.py` + `luau-tool`（可讀性優化）
 
-本文記錄整個解謎過程：如何從反編譯後的 Lua 找出字串加密演算法、如何驗證、以及工具做了哪些（和刻意沒做哪些）轉換。第 1–11 節是第一階段（解密），第 12–15 節是第二階段（優化）。
+本文記錄整個解謎過程：如何從反編譯後的 Lua 找出字串加密演算法、如何驗證、以及工具做了哪些（和刻意沒做哪些）轉換。第 1–11 節是第一階段（解密），第 12–16 節是第二階段（優化）。
 
 ---
 
@@ -25,6 +25,7 @@
 13. [不透明條件：為什麼不刪除](#13-不透明條件為什麼不刪除)
 14. [還原反編譯殘留](#14-還原反編譯殘留)
 15. [自動改名](#15-自動改名)
+16. [手動改名（names.json）](#16-手動改名namesjson)
 
 ---
 
@@ -444,12 +445,14 @@ f10418 = { lo % 256, (lo - lo % 256) / 256, hi % 256, (hi - hi % 256) / 256 }
 
 | 規則 | 依據 | 例子 | 數量 |
 |---|---|---|---|
-| Instance.new | `local v = Instance.new("UICorner")` | `uiCorner` | 1,212 |
-| field | `local v = a.b.Character` | `character` | 1,864 |
+| Instance.new | `local v = Instance.new("UICorner")` | `uiCorner` | 1,209 |
+| field | `local v = a.b.Character` | `character` | 1,875 |
 | string index | `local v = a["Host"]` | `host` | 2 |
 | signal handler | 函式被傳給 `x.RenderStepped:Connect(f)`，而且只對應一個訊號 | `onRenderStepped` | 153 |
 | assigned to field | 函式被存進欄位 `t._reconcile = f`，而且只有這一個欄位名稱 | `_reconcile` | 8 |
 | UI section title | `local t = { Title = "Auto Queue" }` 下一行 `local s = AddSection(p, t)` | `autoQueueSection` | 222 |
+| UI element label | `local t = { Label = "Auto Save" }` 只被 `AddToggle(section, t)` 用一次；之後幾輪再處理 `{ Row = autoSaveToggle.Row }`、`{ Option = "Solid" }`、`{ Source = … }` | `autoSaveToggleOptions`、`autoSaveToggle` | 2,164 |
+| lazy module getter | `local t = X.cache.KEY; if not t then t = { c = load() } … end; return t.c` | `lazyModule_KEY` | 514 |
 
 另外：
 
@@ -463,5 +466,53 @@ f10418 = { lo % 256, (lo - lo % 256) / 256, hi % 256, (hi - hi % 256) / 256 }
 2. 新名稱不能出現在該變數所在函式的任何變數名稱中（包含全域變數的引用），避免遮蔽或捕獲。
 3. **改名後重新解析整份檔案**，逐一比對每個名稱是宣告還是引用、以及引用指向哪個宣告。只要有任何一處不同，就中止，不寫出檔案。這一步直接證明改名沒有改變任何變數的綁定關係。
 
-完整的 3,461 筆對照（行號、舊名、新名、規則）在 `kicia_optimized_report.json` 的 `renames`。
+自動規則共 6,147 筆。加上第 16 節的手動改名 4,832 筆，總共 10,979 筆；完整對照（行號、舊名、新名、規則）在 `kicia_optimized_report.json` 的 `renames`。
+
+---
+
+## 16 手動改名（names.json）
+
+自動規則只能處理有字面線索的變數。其餘的變數由人工閱讀程式碼後命名，寫在 `names.json`：
+
+```json
+{
+  "f1518": {
+    "f1655": "loadEquipCooldownModifier",
+    "t67": "EquipCooldownModifier",
+    "p98": "item"
+  }
+}
+```
+
+- 外層的鍵是作用域（一個 `fN` 函式），內層是 `舊名 → 新名`。
+- 舊名一律是**第一階段輸出**裡的名稱（`vN`、`tN`、`pN`、`fN`，或反編譯器取的 `Humanoid3` 這類名稱），不是自動改名後的名稱。手動名稱優先於自動規則。
+- 舊名在作用域內只能宣告一次，否則報錯。如果作用域裡沒有這個宣告，就把它當成上值（`upN`），只改「最內層函式就是該作用域本身」的引用，因為上值編號是每個原型各自計算的（見第 12 節）。
+- 以 `_` 開頭的鍵（`_comment`）是註解，會被略過。
+- 任何一筆有問題（名稱無效、找不到、宣告多次、和作用域內既有名稱衝突），工具會列出所有問題並結束，不寫出檔案。
+
+### 16.1 `_proto` 慣例
+
+反編譯器會把每個閉包倒出兩次：一次是模組層級的獨立原型（用 `upN` 存取外層變數），一次是在原本位置的內嵌版本（用真正的變數名稱）。兩者是同一段程式碼。內嵌版本用普通名稱（`hookEquipCooldown`），獨立原型加上 `_proto` 尾碼（`hookEquipCooldown_proto`）。模組層級的名稱會佔用整個模組的命名空間，不加尾碼就會和內嵌版本衝突。
+
+### 16.2 已完成的模組
+
+| 模組 | 內容 | 對照筆數 |
+|---|---|---|
+| `f588` | 設定頁、設定檔存取、移動錄製與重播、狀態掛鉤 | 1,058 |
+| `f5396` | ESP 設定、飾品與皮膚、顏色選擇器、角色外觀 | 1,838 |
+| `f4735` | 命中回饋、顏色面板、ViewModel 外觀、槍械物件 | 1,187 |
+| `f1518` | 裝備冷卻修改器、擊殺回饋、瞄準鏡覆蓋、自訂音效、角色狀態、玩家身分、載具選擇 | 750 |
+
+其餘 23 個模組還沒有手動命名，只套用了自動規則，可以用同樣的方式補上。
+
+### 16.3 刻意不命名的部分
+
+以下程式碼的用途是躲避偵測，所以只保留原本的 `fN`/`vN` 名稱，不替它們加上說明性的名稱：
+
+- `f1`、載入器序段（Luarmor 執行環境，第 15.1 節）
+- `f4735` 裡的 Luarmor 心跳（`f5009`）
+- `f1518` 裡的遊戲反作弊繞過與完整性檢查（`f1523`、`f1527`、`f1529`、`f1531`–`f1546`）
+- `f1518` 裡的管理員偵測（`f1560`–`f1633`，包含 `ModDetector` 類別）
+
+`names.json` 的 `_comment` 欄位也記錄了這些範圍。
 

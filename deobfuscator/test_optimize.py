@@ -161,6 +161,11 @@ class ToolTest(unittest.TestCase):
         self.assertIn('return game_, player, players', out)
         self.assertIn('return getPlayers', out)
 
+    def test_manual_comments_are_skipped(self):
+        src = 'local function f1(p1)\n\treturn p1\nend\n'
+        out = o.auto_rename(src, {}, [], {'_comment': 'top', 'f1': {'_comment': 'why', 'p1': 'player'}})
+        self.assertIn('local function f1(player)', out)
+
     def test_manual_upvalue_is_per_prototype(self):
         src = ('local function f1()\n'
                '\tlocal x = up0.a\n'

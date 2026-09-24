@@ -336,6 +336,8 @@ class Renamer:
             lo = bisect.bisect_left(self.starts, scope[0])
             hi = bisect.bisect_left(self.starts, scope[1])
             for old, new in mapping.items():
+                if old == '_comment':
+                    continue
                 if not _IDENT.fullmatch(new) or new in _KEYWORDS:
                     self.errors.append(f'{scope_name}.{old}: invalid name {new!r}')
                     continue

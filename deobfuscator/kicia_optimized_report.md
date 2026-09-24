@@ -58,13 +58,13 @@
 
 ## 自動改名
 
-共改名 9044 個反編譯器產生的名稱（`vN` / `tN` / `fN`），完整對照在 JSON 報告的 `renames`。改名後重新解析整份檔案，每個變數引用指向的宣告都和改名前相同。
+共改名 10979 個反編譯器產生的名稱（`vN` / `tN` / `fN`），完整對照在 JSON 報告的 `renames`。改名後重新解析整份檔案，每個變數引用指向的宣告都和改名前相同。
 
 不改名的範圍（Luarmor 執行環境與載入器）：第 1–3284 行、第 158122–160364 行。
 
 | 規則 | 依據 | 例子 | 數量 |
 |---|---|---|---|
-| Instance.new | `local v = Instance.new("C")` | `uiCorner` | 1212 |
+| Instance.new | `local v = Instance.new("C")` | `uiCorner` | 1209 |
 | field | `local v = a.b.Field`，且 v 之後不再被賦值 | `character` | 1875 |
 | string index | `local v = a["Field"]` | `host` | 2 |
 | require | `local v = require(a.Module)` | `Module` | 0 |
@@ -72,4 +72,4 @@
 | assigned to field | 函式被存進欄位 `t.Name = f`，而且只有這一個欄位名稱 | `_reconcile` | 8 |
 | UI section title | `AddSection` 的回傳值，用 `Title` 命名 | `generalSection` | 222 |
 | lazy module getter | `local t = X.cache.KEY … t = { c = load() } … return t.c` | `lazyModule_dJ` | 514 |
-| UI element label | `AddToggle(section, { Label = "Auto Save" })` 的回傳值與選項表 | `autoSaveToggle`、`autoSaveToggleOptions` | 2162 |
+| UI element label | `AddToggle(section, { Label = "Auto Save" })` 的回傳值與選項表 | `autoSaveToggle`、`autoSaveToggleOptions` | 2164 |
