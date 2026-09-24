@@ -113001,44 +113001,44 @@ end
 
 local function f7452()
 	local function closeConnection()
-		up0:close()
+		wsConn:close()
 	end
 
 	local function sendTicket()
-		if up0 then
-			up1("[" ..
-				up4() ..
-					"] Sending ticket...(" .. up5(up6) .. ")\n")
+		if verbose then
+			debugLog("[" ..
+				getTime() ..
+					"] Sending ticket...(" .. toStr(wsConn) .. ")\n")
 		end
-		if up6 == false then
-			up7 = up8(up9)
+		if wsConn == false then
+			ticketResp = httpGet(ticketUrl)
 		else
-			local t1 = up6
-			local request3 = t1.request
-			local t2 = { ["Url"] = up9 }
-			up7 = request3(t1, t2)
+			local connObj = wsConn
+			local request3 = connObj.request
+			local ticketReq = { ["Url"] = ticketUrl }
+			ticketResp = request3(connObj, ticketReq)
 		end
-		if up0 then
-			up1("[" ..
-				up4() ..
+		if verbose then
+			debugLog("[" ..
+				getTime() ..
 					"] Ticket responded\n")
 		end
-		if up7 and 3 < #up7 then
-			if up7 == "NOT_FOUND" then
-				up10 = true
-				up11 = false
-				up12 = false
-				up13 = 1
-				up14 = 2
-				up15:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
-				up16()
+		if ticketResp and 3 < #ticketResp then
+			if ticketResp == "NOT_FOUND" then
+				errored = true
+				isValid = false
+				isReady = false
+				errCode1 = 1
+				errCode2 = 2
+				game:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
+				fatalExit()
 			end
-			if up7 == "FAIL" then
-				up10 = true
-				up11 = false
-				up12 = false
-				up13 = 1
-				up14 = 2
+			if ticketResp == "FAIL" then
+				errored = true
+				isValid = false
+				isReady = false
+				errCode1 = 1
+				errCode2 = 2
 				writefile(
 					"luarmor-dbgfail.txt",
 					"resp:fail"
@@ -113046,97 +113046,97 @@ local function f7452()
 				while true do
 				end
 			end
-			up7 = up17(up7)[1]
-			if up7 == up18(up19 * up20 % 100000 + up21 + 18735) .. "" then
-				up22 = up22 + 1
-				up23 = true
-				up24 = true
-			elseif up7 == up25(up19 * up20 % 100000 + up21 + 18735 + 4919) ..
+			ticketResp = decryptResponse(ticketResp)[1]
+			if ticketResp == toNumStr(tokenPart1 * tokenPart2 % 100000 + tokenOffset + 18735) .. "" then
+				ticketAttempts = ticketAttempts + 1
+				isValidated = true
+				isAuthorized = true
+			elseif ticketResp == toNumStrB(tokenPart1 * tokenPart2 % 100000 + tokenOffset + 18735 + 4919) ..
 				"" then
-				up23 = true
-				up24 = true
-				up26 = true
+				isValidated = true
+				isAuthorized = true
+				shouldClose = true
 
-				local function f7455()
+				local function closeAfterSend()
 					up0:close()
 				end
 
-				up27(f7455)
+				runDeferred(closeAfterSend)
 			else
-				up10 = true
-				up11 = false
-				up12 = false
-				up13 = 1
-				up14 = 2
-				up15:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. up22)
+				errored = true
+				isValid = false
+				isReady = false
+				errCode1 = 1
+				errCode2 = 2
+				game:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. ticketAttempts)
 			end
 		end
 	end
 
 	local function heartbeatLoop(...)
-		up0 = true
+		loopActive = true
 		local response = nil
-		while not up1 do
+		while not loopStopped do
 			response = 1000
 			local interval = response
-			response = up5
-			local tokenA = up4(interval, up5 + 10000) + response
-			local tokenB = up4(1000, up5 + 10000)
-			up2 = tokenA
-			up3 = tokenB + up5
+			response = timeSeed
+			local tokenA = randRange(interval, timeSeed + 10000) + response
+			local tokenB = randRange(1000, timeSeed + 10000)
+			tokenASlot = tokenA
+			tokenBSlot = tokenB + timeSeed
 			response = 2
-			up6(response)
-			local toHashFn = up7
-			response = up3
+			delayFn(response)
+			local toHashFn = hashFn
+			response = tokenBSlot
 			response = response .. ""
 			local hashA = toHashFn(response)
-			response = up7
-			response = response(up10(up3 + up11) .. "" .. up12(up2 + up13))
-			response = response .. up7(up2 .. "")
+			response = hashFn
+			response = response(hashPartA(tokenBSlot + hashOfsA) .. "" .. hashPartB(tokenASlot + hashOfsB))
+			response = response .. hashFn(tokenASlot .. "")
 			local hashB = response
-			response = up9
+			response = junkRef9
 			response = ""
-			local heartbeatUrl = up14["Host"] ..
+			local heartbeatUrl = serverCfg["Host"] ..
 				"/" ..
-					up15 ..
+					scriptId ..
 						"/auth/heartbeat?t=" ..
-							(hashA .. hashB) .. "&s=" .. up16
+							(hashA .. hashB) .. "&s=" .. hmacKey
 
 			local function sendHeartbeatTicket()
-				if up0 then
-					up1("[" ..
-						up4() ..
-							"] Sending ticket...(" .. up5(up6) .. ")\n")
+				if verbose then
+					debugLog("[" ..
+						getTime() ..
+							"] Sending ticket...(" .. toStr(wsConn) .. ")\n")
 				end
-				if up6 == false then
-					response = up8(heartbeatUrl)
+				if wsConn == false then
+					response = httpGet(heartbeatUrl)
 				else
-					local t3 = up6
-					local request4 = t3.request
-					local t4 = { ["Url"] = heartbeatUrl }
-					response = request4(t3, t4)
+					local connObj = wsConn
+					local request4 = connObj.request
+					local heartbeatReq = { ["Url"] = heartbeatUrl }
+					response = request4(connObj, heartbeatReq)
 				end
-				if up0 then
-					up1("[" ..
-						up4() ..
+				if verbose then
+					debugLog("[" ..
+						getTime() ..
 							"] Ticket responded\n")
 				end
 				if response and 3 < #response then
 					if response == "NOT_FOUND" then
-						up10 = true
-						up11 = false
-						up12 = false
-						up13 = 1
-						up14 = 2
-						up15:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
-						up16()
+						errored = true
+						isValid = false
+						isReady = false
+						errCode1 = 1
+						errCode2 = 2
+						game:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
+						fatalExit()
 					end
 					if response == "FAIL" then
-						up10 = true
-						up11 = false
-						up12 = false
-						up13 = 1
-						up14 = 2
+						errored = true
+						isValid = false
+						isReady = false
+						errCode1 = 1
+						errCode2 = 2
 						writefile(
 							"luarmor-dbgfail.txt",
 							"resp:fail"
@@ -113144,36 +113144,36 @@ local function f7452()
 						while true do
 						end
 					end
-					response = up17(response)[1]
-					if response == up18(up19 * up20 % 100000 + up21 + 18735) ..
+					response = decryptResponse(response)[1]
+					if response == toNumStr(tokenPart1 * tokenPart2 % 100000 + tokenOffset + 18735) ..
 						"" then
-						up22 = up22 + 1
-						up23 = true
-						up24 = true
-					elseif response == up25(up19 * up20 % 100000 + up21 + 18735 + 4919) ..
+						ticketAttempts = ticketAttempts + 1
+						isValidated = true
+						isAuthorized = true
+					elseif response == toNumStrB(tokenPart1 * tokenPart2 % 100000 + tokenOffset + 18735 + 4919) ..
 						"" then
-						up23 = true
-						up24 = true
-						up26 = true
+						isValidated = true
+						isAuthorized = true
+						shouldClose = true
 
 						local function closeConnectionInner()
 							up0:close()
 						end
 
-						up27(closeConnectionInner)
+						runDeferred(closeConnectionInner)
 					else
-						up10 = true
-						up11 = false
-						up12 = false
-						up13 = 1
-						up14 = 2
-						up15:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. up22)
+						errored = true
+						isValid = false
+						isReady = false
+						errCode1 = 1
+						errCode2 = 2
+						game:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. ticketAttempts)
 					end
 				end
 			end
 
-			up17(sendHeartbeatTicket)
-			up38(20)
+			spawnTask(sendHeartbeatTicket)
+			waitSec(20)
 		end
 	end
 

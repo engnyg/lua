@@ -4176,6 +4176,114 @@
    "rule": "manual (upvalue)"
   },
   {
+   "line": 113077,
+   "old": "up0",
+   "new": "loopActive",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113079,
+   "old": "up1",
+   "new": "loopStopped",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113085,
+   "old": "up2",
+   "new": "tokenASlot",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113086,
+   "old": "up3",
+   "new": "tokenBSlot",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113083,
+   "old": "up4",
+   "new": "randRange",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113082,
+   "old": "up5",
+   "new": "timeSeed",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113088,
+   "old": "up6",
+   "new": "delayFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113089,
+   "old": "up7",
+   "new": "hashFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113097,
+   "old": "up9",
+   "new": "junkRef9",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113094,
+   "old": "up10",
+   "new": "hashPartA",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113094,
+   "old": "up11",
+   "new": "hashOfsA",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113094,
+   "old": "up12",
+   "new": "hashPartB",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113094,
+   "old": "up13",
+   "new": "hashOfsB",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113099,
+   "old": "up14",
+   "new": "serverCfg",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113101,
+   "old": "up15",
+   "new": "scriptId",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113103,
+   "old": "up16",
+   "new": "hmacKey",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113175,
+   "old": "up17",
+   "new": "spawnTask",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113176,
+   "old": "up38",
+   "new": "waitSec",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 108569,
    "old": "up0",
    "new": "pcall",
@@ -4191,6 +4299,312 @@
    "line": 108747,
    "old": "up0",
    "new": "pcall",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113004,
+   "old": "up0",
+   "new": "wsConn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113008,
+   "old": "up0",
+   "new": "verbose",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113009,
+   "old": "up1",
+   "new": "debugLog",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113010,
+   "old": "up4",
+   "new": "getTime",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113011,
+   "old": "up5",
+   "new": "toStr",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113011,
+   "old": "up6",
+   "new": "wsConn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113014,
+   "old": "up7",
+   "new": "ticketResp",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113014,
+   "old": "up8",
+   "new": "httpGet",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113014,
+   "old": "up9",
+   "new": "ticketUrl",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113028,
+   "old": "up10",
+   "new": "errored",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113029,
+   "old": "up11",
+   "new": "isValid",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113030,
+   "old": "up12",
+   "new": "isReady",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113031,
+   "old": "up13",
+   "new": "errCode1",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113032,
+   "old": "up14",
+   "new": "errCode2",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113033,
+   "old": "up15",
+   "new": "game",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113034,
+   "old": "up16",
+   "new": "fatalExit",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113049,
+   "old": "up17",
+   "new": "decryptResponse",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113050,
+   "old": "up18",
+   "new": "toNumStr",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113050,
+   "old": "up19",
+   "new": "tokenPart1",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113050,
+   "old": "up20",
+   "new": "tokenPart2",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113050,
+   "old": "up21",
+   "new": "tokenOffset",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113051,
+   "old": "up22",
+   "new": "ticketAttempts",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113052,
+   "old": "up23",
+   "new": "isValidated",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113053,
+   "old": "up24",
+   "new": "isAuthorized",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113054,
+   "old": "up25",
+   "new": "toNumStrB",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113058,
+   "old": "up26",
+   "new": "shouldClose",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113064,
+   "old": "up27",
+   "new": "runDeferred",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113106,
+   "old": "up0",
+   "new": "verbose",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113107,
+   "old": "up1",
+   "new": "debugLog",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113108,
+   "old": "up4",
+   "new": "getTime",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113109,
+   "old": "up5",
+   "new": "toStr",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113109,
+   "old": "up6",
+   "new": "wsConn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113112,
+   "old": "up8",
+   "new": "httpGet",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113126,
+   "old": "up10",
+   "new": "errored",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113127,
+   "old": "up11",
+   "new": "isValid",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113128,
+   "old": "up12",
+   "new": "isReady",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113129,
+   "old": "up13",
+   "new": "errCode1",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113130,
+   "old": "up14",
+   "new": "errCode2",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113131,
+   "old": "up15",
+   "new": "game",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113132,
+   "old": "up16",
+   "new": "fatalExit",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113147,
+   "old": "up17",
+   "new": "decryptResponse",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113148,
+   "old": "up18",
+   "new": "toNumStr",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113148,
+   "old": "up19",
+   "new": "tokenPart1",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113148,
+   "old": "up20",
+   "new": "tokenPart2",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113148,
+   "old": "up21",
+   "new": "tokenOffset",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113150,
+   "old": "up22",
+   "new": "ticketAttempts",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113151,
+   "old": "up23",
+   "new": "isValidated",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113152,
+   "old": "up24",
+   "new": "isAuthorized",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113153,
+   "old": "up25",
+   "new": "toNumStrB",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113157,
+   "old": "up26",
+   "new": "shouldClose",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 113163,
+   "old": "up27",
+   "new": "runDeferred",
    "rule": "manual (upvalue)"
   },
   {
@@ -120450,6 +120864,24 @@
    "rule": "manual"
   },
   {
+   "line": 113016,
+   "old": "t1",
+   "new": "connObj",
+   "rule": "manual"
+  },
+  {
+   "line": 113018,
+   "old": "t2",
+   "new": "ticketReq",
+   "rule": "manual"
+  },
+  {
+   "line": 113060,
+   "old": "f7455",
+   "new": "closeAfterSend",
+   "rule": "manual"
+  },
+  {
    "line": 113076,
    "old": "f7456",
    "new": "heartbeatLoop",
@@ -120507,6 +120939,18 @@
    "line": 113105,
    "old": "f7459",
    "new": "sendHeartbeatTicket",
+   "rule": "manual"
+  },
+  {
+   "line": 113114,
+   "old": "t3",
+   "new": "connObj",
+   "rule": "manual"
+  },
+  {
+   "line": 113116,
+   "old": "t4",
+   "new": "heartbeatReq",
    "rule": "manual"
   },
   {
