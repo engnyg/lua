@@ -58,7 +58,7 @@
 
 ## 自動改名
 
-共改名 27768 個反編譯器產生的名稱（`vN` / `tN` / `fN`），完整對照在 JSON 報告的 `renames`。改名後重新解析整份檔案，每個變數引用指向的宣告都和改名前相同。
+共改名 30649 個反編譯器產生的名稱（`vN` / `tN` / `fN`），完整對照在 JSON 報告的 `renames`。改名後重新解析整份檔案，每個變數引用指向的宣告都和改名前相同。
 
 不改名的範圍（Luarmor 執行環境與載入器）：第 1–3284 行、第 158122–160364 行。另外 `names.json` 的 `_skip` 列出的函式（躲避偵測的程式碼）也不改名。
 
@@ -66,7 +66,7 @@
 |---|---|---|---|
 | Instance.new | `local v = Instance.new("C")` | `uiCorner` | 1207 |
 | field | `local v = a.b.Field`，且 v 之後不再被賦值 | `character` | 1873 |
-| string index | `local v = a["Field"]` | `host` | 2 |
+| string index | `local v = a["Field"]` | `host` | 1 |
 | require | `local v = require(a.Module)` | `Module` | 0 |
 | signal handler | 函式被傳給 `x.Signal:Connect(f)`，而且只對應一個訊號 | `onRenderStepped` | 145 |
 | assigned to field | 函式被存進欄位 `t.Name = f`，而且只有這一個欄位名稱 | `_reconcile` | 8 |
@@ -74,7 +74,7 @@
 | lazy module getter | `local t = X.cache.KEY … t = { c = load() } … return t.c` | `lazyModule_dJ` | 514 |
 | UI element label | `AddToggle(section, { Label = "Auto Save" })` 的回傳值與選項表 | `autoSaveToggle`、`autoSaveToggleOptions` | 2164 |
 | class trove label | `function T.new` 建立 `_trove = Trove.new("a.KillFeed")`：類別與載入它的函式 | `KillFeed`、`loadKillFeed` | 303 |
-| prototype copy | 獨立原型和內嵌副本逐 token 相同：沿用內嵌副本的名稱 | `hookEquipCooldown_proto(self_, item)` | 6293 |
-| prototype copy (upvalue) | 同上，原型的 `upN` 取內嵌副本在同一位置的變數名稱 | `up2` → `restore` | 1851 |
-| manual | `names.json` 人工命名 | `loadEquipCooldownModifier` | 13186 |
+| prototype copy | 獨立原型和內嵌副本逐 token 相同：沿用內嵌副本的名稱 | `hookEquipCooldown_proto(self_, item)` | 7153 |
+| prototype copy (upvalue) | 同上，原型的 `upN` 取內嵌副本在同一位置的變數名稱 | `up2` → `restore` | 2035 |
+| manual | `names.json` 人工命名 | `loadEquipCooldownModifier` | 15024 |
 | manual (upvalue) | `names.json` 人工命名的上值 | `up0` → `settings` | 0 |
