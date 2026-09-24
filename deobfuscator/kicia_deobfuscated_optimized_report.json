@@ -3966,6 +3966,78 @@
  ],
  "renames": [
   {
+   "line": 40896,
+   "old": "up0",
+   "new": "rng",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 40900,
+   "old": "up0",
+   "new": "normalDistFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 40900,
+   "old": "up1",
+   "new": "rng",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 42280,
+   "old": "up0",
+   "new": "normalDistFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 42280,
+   "old": "up1",
+   "new": "rng",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 40976,
+   "old": "up1",
+   "new": "sinFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 40979,
+   "old": "up2",
+   "new": "pi",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 40990,
+   "old": "up3",
+   "new": "gammaSample",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 41012,
+   "old": "up4",
+   "new": "lognormalCDF",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 41013,
+   "old": "up5",
+   "new": "curvatureShaper",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 41026,
+   "old": "up6",
+   "new": "lognormalVelocity",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 40911,
+   "old": "up0",
+   "new": "normalDistFn",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 72675,
    "old": "up0",
    "new": "watchdogRunning",

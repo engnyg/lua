@@ -40893,11 +40893,11 @@ local function f2770()
 	end
 
 	local function uniform(lo, hi)
-		return lo + up0:NextNumber() * (hi - lo)
+		return lo + rng:NextNumber() * (hi - lo)
 	end
 
 	local function normal(mean, stdDev)
-		return (up0(up1, mean, stdDev))
+		return (normalDistFn(rng, mean, stdDev))
 	end
 
 	local function generateTrajectory(humanizer, fromX, fromY, toX, toY)
@@ -40908,7 +40908,7 @@ local function f2770()
 		end
 
 		local function normalLocal(mean, stdDev)
-			return (up0(_rng, mean, stdDev))
+			return (normalDistFn(_rng, mean, stdDev))
 		end
 
 		local dx = toX - fromX
@@ -40973,11 +40973,11 @@ local function f2770()
 				table.insert(corrections, secondCorrection)
 			end
 		end
-		local curvature = distance * humanizer._curvature_scale * up1(heading) * normalLocal(0, 1)
+		local curvature = distance * humanizer._curvature_scale * sinFn(heading) * normalLocal(0, 1)
 		local tremorFreq = uniformLocal(humanizer._tremor_freq_min, humanizer._tremor_freq_max)
 		local tremorAmp = uniformLocal(humanizer._tremor_amp_min, humanizer._tremor_amp_max)
-		local tremorPhaseX = uniformLocal(0, 2 * up2)
-		local tremorPhaseY = uniformLocal(0, 2 * up2)
+		local tremorPhaseX = uniformLocal(0, 2 * pi)
+		local tremorPhaseY = uniformLocal(0, 2 * pi)
 		local driftX = 0
 		local driftY = 0
 		local totalMs = durationMs * 1.15
@@ -40987,7 +40987,7 @@ local function f2770()
 		local sampleTime = 0
 		while sampleTime < totalMs do
 			sampleTime = sampleTime + math.clamp(
-				up3(_rng, humanizer._gamma_shape, _sample_dt_mean / _gamma_shape),
+				gammaSample(_rng, humanizer._gamma_shape, _sample_dt_mean / _gamma_shape),
 				2,
 				25
 			)
@@ -41009,9 +41009,9 @@ local function f2770()
 				stepMs = humanizer._sample_dt_mean
 			end
 			local stepSeconds = stepMs / 1000
-			local primaryProgress = up4(sampleMs, 0, primaryMu, primarySigma)
-			local posX = fromX + dirX * primaryDistance * primaryProgress + -dirY * curvature * up5(primaryProgress)
-			local posY = fromY + dirY * primaryDistance * primaryProgress + dirX * curvature * up5(primaryProgress)
+			local primaryProgress = lognormalCDF(sampleMs, 0, primaryMu, primarySigma)
+			local posX = fromX + dirX * primaryDistance * primaryProgress + -dirY * curvature * curvatureShaper(primaryProgress)
+			local posY = fromY + dirY * primaryDistance * primaryProgress + dirX * curvature * curvatureShaper(primaryProgress)
 			local correctionIndex = nil
 			while true do
 				local activeCorrection
@@ -41019,11 +41019,11 @@ local function f2770()
 				if correctionIndex == nil then
 					break
 				end
-				local correctionProgress = up4(sampleMs, activeCorrection.t0, activeCorrection.mu, activeCorrection.sigma)
+				local correctionProgress = lognormalCDF(sampleMs, activeCorrection.t0, activeCorrection.mu, activeCorrection.sigma)
 				posX = posX + activeCorrection.dirX * activeCorrection.D * correctionProgress
 				posY = posY + activeCorrection.dirY * activeCorrection.D * correctionProgress
 			end
-			local speed = primaryDistance * up6(sampleMs, 0, primaryMu, primarySigma)
+			local speed = primaryDistance * lognormalVelocity(sampleMs, 0, primaryMu, primarySigma)
 			local speedIndex = nil
 			while true do
 				local speedCorrection
@@ -41031,14 +41031,14 @@ local function f2770()
 				if speedIndex == nil then
 					break
 				end
-				speed = speed + speedCorrection.D * up6(sampleMs, speedCorrection.t0, speedCorrection.mu, speedCorrection.sigma)
+				speed = speed + speedCorrection.D * lognormalVelocity(sampleMs, speedCorrection.t0, speedCorrection.mu, speedCorrection.sigma)
 			end
 			driftX = driftX + (-humanizer._ou_theta * driftX * stepSeconds + humanizer._ou_sigma * math.sqrt(stepSeconds) * normalLocal(0, 1))
 			driftY = driftY + (-humanizer._ou_theta * driftY * stepSeconds + humanizer._ou_sigma * math.sqrt(stepSeconds) * normalLocal(0, 1))
 			local sampleSeconds = sampleMs / 1000
 			local tremorDamping = 1 / (1 + speed * 0.3)
-			local tremorX = math.sin(2 * up2 * tremorFreq * sampleSeconds + tremorPhaseX)
-			local tremorY = math.sin(2 * up2 * tremorFreq * sampleSeconds + tremorPhaseY)
+			local tremorX = math.sin(2 * pi * tremorFreq * sampleSeconds + tremorPhaseX)
+			local tremorY = math.sin(2 * pi * tremorFreq * sampleSeconds + tremorPhaseY)
 			local _sdn_k = humanizer._sdn_k
 			local noiseX = normalLocal(0, 1)
 			local _sdn_k2 = humanizer._sdn_k
@@ -42277,7 +42277,7 @@ local function f2770()
 	end
 
 	local function normal2(mean, stdDev)
-		return (up0(up1, mean, stdDev))
+		return (normalDistFn(rng, mean, stdDev))
 	end
 
 	local function newButton_proto(menu, row, trove, options, bare)

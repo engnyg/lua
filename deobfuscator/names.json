@@ -25072,18 +25072,29 @@
     "t36": "authResponse"
   },
   "f2969": {
+    "up0": "rng",
     "p181": "lo",
     "p182": "hi"
   },
   "f2970": {
+    "up0": "normalDistFn",
+    "up1": "rng",
     "p183": "mean",
     "p184": "stdDev"
   },
   "f3054": {
+    "up0": "normalDistFn",
+    "up1": "rng",
     "p270": "mean",
     "p271": "stdDev"
   },
   "f2971": {
+    "up1": "sinFn",
+    "up2": "pi",
+    "up3": "gammaSample",
+    "up4": "lognormalCDF",
+    "up5": "curvatureShaper",
+    "up6": "lognormalVelocity",
     "p185": "humanizer",
     "p186": "fromX",
     "p187": "fromY",
@@ -25155,6 +25166,9 @@
     "p191": "hi",
     "p192": "mean",
     "p193": "stdDev"
+  },
+  "f2973": {
+    "up0": "normalDistFn"
   },
   "f4167": {
     "f4168": "onFocused",
