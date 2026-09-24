@@ -16428,247 +16428,247 @@ local function f940()
 end
 
 local function f1242()
-	local function f1243(p1, p2)
-		if p1.Max == p1.Min then
+	local function normalizeSliderValue(slider, value)
+		if slider.Max == slider.Min then
 			return 0
 		end
-		return (p2 - p1.Min) / (p1.Max - p1.Min)
+		return (value - slider.Min) / (slider.Max - slider.Min)
 	end
 
-	local function f1244()
-		local v1 = getthreadidentity()
+	local function runAtIdentity2()
+		local oldIdentity = getthreadidentity()
 		setthreadidentity(2)
-		local f1245 = up0
-		local v2 = nil
+		local callbacks = up0
+		local index = nil
 		while true do
-			local f1246
-			v2, f1246 = f1245(nil, v2)
-			if v2 == nil then
+			local callback
+			index, callback = callbacks(nil, index)
+			if index == nil then
 				break
 			end
-			f1246()
+			callback()
 		end
-		setthreadidentity(v1)
+		setthreadidentity(oldIdentity)
 	end
 
 	local function destroyPlayerCamera_proto(self_)
 		self_._trove:Destroy()
 	end
 
-	local function f1248()
+	local function getCamera()
 		return workspace.CurrentCamera
 	end
 
-	local function f1249(p4, p5)
-		local f1250 = up0
-		local v3 = nil
+	local function buildModifierToggles(section, configPath)
+		local modifiers = up0
+		local index = nil
 		while true do
-			local t1
-			v3, t1 = f1250(nil, v3)
-			if v3 == nil then
+			local modifier
+			index, modifier = modifiers(nil, index)
+			if index == nil then
 				break
 			end
-			local AddToggle35 = p4.AddToggle
-			local t2 = { Label = t1.label, Config = up1(p5, (table.create(2))) }
-			local v4 = AddToggle35(p4, t2)
-			local value = t1.value
+			local AddToggle35 = section.AddToggle
+			local toggleOptions = { Label = modifier.label, Config = up1(configPath, (table.create(2))) }
+			local toggle = AddToggle35(section, toggleOptions)
+			local value = modifier.value
 			if value.kind ~= "toggle" then
-				local v5 = up1(p5, (table.create(2)))
-				local AddGroup4 = p4.AddGroup
-				local t3 = { Source = v4 }
-				local t4 = AddGroup4(p4, t3)
+				local valuePath = up1(configPath, (table.create(2)))
+				local AddGroup4 = section.AddGroup
+				local groupOptions = { Source = toggle }
+				local group = AddGroup4(section, groupOptions)
 				if value.kind == "percent" then
-					local AddSlider11 = t4.AddSlider
-					local t5 = { Label = value.placeholder, Min = 0, Max = 100, Step = 0.1, Config = v5 }
-					AddSlider11(t4, t5)
+					local AddSlider11 = group.AddSlider
+					local sliderOptions = { Label = value.placeholder, Min = 0, Max = 100, Step = 0.1, Config = valuePath }
+					AddSlider11(group, sliderOptions)
 				elseif value.kind == "number" then
-					local AddTextBox5 = t4.AddTextBox
-					local t6 = { Label = value.placeholder }
-					up3(AddTextBox5(t4, t6), v5)
+					local AddTextBox5 = group.AddTextBox
+					local textBoxOptions = { Label = value.placeholder }
+					up3(AddTextBox5(group, textBoxOptions), valuePath)
 				elseif value.kind == "text" then
-					local AddTextBox6 = t4.AddTextBox
-					local t7 = { Label = value.placeholder, Config = v5 }
-					AddTextBox6(t4, t7)
+					local AddTextBox6 = group.AddTextBox
+					local textBoxOptions2 = { Label = value.placeholder, Config = valuePath }
+					AddTextBox6(group, textBoxOptions2)
 				elseif value.kind == "dropdown" then
-					local AddDropdown10 = t4.AddDropdown
-					local t8 = { Label = value.placeholder, Options = value.options, Config = v5 }
-					AddDropdown10(t4, t8)
+					local AddDropdown10 = group.AddDropdown
+					local dropdownOptions = { Label = value.placeholder, Options = value.options, Config = valuePath }
+					AddDropdown10(group, dropdownOptions)
 				end
 			end
 		end
 	end
 
-	local function nextLayoutOrder_proto(p6)
-		local v6 = 0
-		for _, v7 in p6:GetChildren() do
-			if v7:IsA("GuiObject") then
-				v6 = v6 + 1
+	local function nextLayoutOrder_proto(parent)
+		local count = 0
+		for _, child in parent:GetChildren() do
+			if child:IsA("GuiObject") then
+				count = count + 1
 			end
 		end
-		return v6
+		return count
 	end
 
-	local function box_proto(p7, p8)
-		local v8 = Instance.new(up0)
-		v8.BackgroundTransparency = 0
-		v8.Size = UDim2.fromScale(1, 0)
-		v8.BorderSizePixel = 0
-		v8.AutomaticSize = Enum.AutomaticSize.Y
-		v8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		v8.Parent = p8
+	local function box_proto(theme, parent)
+		local box = Instance.new(up0)
+		box.BackgroundTransparency = 0
+		box.Size = UDim2.fromScale(1, 0)
+		box.BorderSizePixel = 0
+		box.AutomaticSize = Enum.AutomaticSize.Y
+		box.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		box.Parent = parent
 		local uiGradient = Instance.new("UIGradient")
 		uiGradient.Rotation = 90
-		p7:BindGradient(uiGradient, (table.create(2)))
-		uiGradient.Parent = v8
+		theme:BindGradient(uiGradient, (table.create(2)))
+		uiGradient.Parent = box
 		local uiCorner = Instance.new("UICorner")
 		uiCorner.CornerRadius = UDim.new(0, 6)
-		uiCorner.Parent = v8
+		uiCorner.Parent = box
 		local uiStroke = Instance.new("UIStroke")
-		p7:Bind(uiStroke, "Color", "Outline")
-		uiStroke.Parent = v8
-		return v8
+		theme:Bind(uiStroke, "Color", "Outline")
+		uiStroke.Parent = box
+		return box
 	end
 
-	local function elementsContainer_proto(p9, p10, p11)
-		local v12 = Instance.new(up0)
-		v12.BackgroundTransparency = 1
-		if not p10 then
-			p10 = UDim2.fromOffset(12, 12)
+	local function elementsContainer_proto(parent, position, size)
+		local container = Instance.new(up0)
+		container.BackgroundTransparency = 1
+		if not position then
+			position = UDim2.fromOffset(12, 12)
 		end
-		v12.Position = p10
-		if not p11 then
-			p11 = UDim2.new(1, -24, 0, 0)
+		container.Position = position
+		if not size then
+			size = UDim2.new(1, -24, 0, 0)
 		end
-		v12.Size = p11
-		v12.BorderSizePixel = 0
-		v12.AutomaticSize = Enum.AutomaticSize.Y
-		v12.Parent = p9
+		container.Size = size
+		container.BorderSizePixel = 0
+		container.AutomaticSize = Enum.AutomaticSize.Y
+		container.Parent = parent
 		local uiListLayout = Instance.new("UIListLayout")
 		uiListLayout.Padding = UDim.new(0, 12)
 		uiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-		uiListLayout.Parent = v12
+		uiListLayout.Parent = container
 		local uiPadding = Instance.new("UIPadding")
 		uiPadding.PaddingBottom = UDim.new(0, 12)
-		uiPadding.Parent = v12
-		return v12
+		uiPadding.Parent = container
+		return container
 	end
 
-	local function f1254()
+	local function loadLayoutUtil()
 		up0.T()
-		local t9 = {}
+		local LayoutUtil = {}
 
-		function t9.nextLayoutOrder(p12)
-			local v15 = 0
-			for _, v16 in p12:GetChildren() do
-				if v16:IsA("GuiObject") then
-					v15 = v15 + 1
+		function LayoutUtil.nextLayoutOrder(parent)
+			local count = 0
+			for _, child in parent:GetChildren() do
+				if child:IsA("GuiObject") then
+					count = count + 1
 				end
 			end
-			return v15
+			return count
 		end
 
-		function t9.box(p13, p14)
-			local v17 = Instance.new(up0)
-			v17.BackgroundTransparency = 0
-			v17.Size = UDim2.fromScale(1, 0)
-			v17.BorderSizePixel = 0
-			v17.AutomaticSize = Enum.AutomaticSize.Y
-			v17.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			v17.Parent = p14
+		function LayoutUtil.box(theme, parent)
+			local box = Instance.new(up0)
+			box.BackgroundTransparency = 0
+			box.Size = UDim2.fromScale(1, 0)
+			box.BorderSizePixel = 0
+			box.AutomaticSize = Enum.AutomaticSize.Y
+			box.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			box.Parent = parent
 			local uiGradient = Instance.new("UIGradient")
 			uiGradient.Rotation = 90
-			p13:BindGradient(uiGradient, (table.create(2)))
-			uiGradient.Parent = v17
+			theme:BindGradient(uiGradient, (table.create(2)))
+			uiGradient.Parent = box
 			local uiCorner = Instance.new("UICorner")
 			uiCorner.CornerRadius = UDim.new(0, 6)
-			uiCorner.Parent = v17
+			uiCorner.Parent = box
 			local uiStroke = Instance.new("UIStroke")
-			p13:Bind(uiStroke, "Color", "Outline")
-			uiStroke.Parent = v17
-			return v17
+			theme:Bind(uiStroke, "Color", "Outline")
+			uiStroke.Parent = box
+			return box
 		end
 
-		function t9.elementsContainer(p15, p16, p17)
-			local v21 = Instance.new(up0)
-			v21.BackgroundTransparency = 1
-			if not p16 then
-				p16 = UDim2.fromOffset(12, 12)
+		function LayoutUtil.elementsContainer(parent, position, size)
+			local container = Instance.new(up0)
+			container.BackgroundTransparency = 1
+			if not position then
+				position = UDim2.fromOffset(12, 12)
 			end
-			v21.Position = p16
-			if not p17 then
-				p17 = UDim2.new(1, -24, 0, 0)
+			container.Position = position
+			if not size then
+				size = UDim2.new(1, -24, 0, 0)
 			end
-			v21.Size = p17
-			v21.BorderSizePixel = 0
-			v21.AutomaticSize = Enum.AutomaticSize.Y
-			v21.Parent = p15
+			container.Size = size
+			container.BorderSizePixel = 0
+			container.AutomaticSize = Enum.AutomaticSize.Y
+			container.Parent = parent
 			local uiListLayout = Instance.new("UIListLayout")
 			uiListLayout.Padding = UDim.new(0, 12)
 			uiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-			uiListLayout.Parent = v21
+			uiListLayout.Parent = container
 			local uiPadding = Instance.new("UIPadding")
 			uiPadding.PaddingBottom = UDim.new(0, 12)
-			uiPadding.Parent = v21
-			return v21
+			uiPadding.Parent = container
+			return container
 		end
 
-		return t9
+		return LayoutUtil
 	end
 
-	local function useEmote_proto(_, p18)
-		local Get3 = up0._resolver:Get(p18)
-		if Get3 == nil then
-			return (coroutine.wrap(up1.UseEmote)(up1, p18))
+	local function useEmote_proto(_, emoteName)
+		local resolved = self_._resolver:Get(emoteName)
+		if resolved == nil then
+			return (coroutine.wrap(emoteController.UseEmote)(emoteController, emoteName))
 		end
-		local _GetLocalEntity = up0:_GetLocalEntity()
-		if _GetLocalEntity == nil then
+		local entity = self_:_GetLocalEntity()
+		if entity == nil then
 			return
 		end
-		up0:_PlayResolvedEmote(_GetLocalEntity, Get3)
+		self_:_PlayResolvedEmote(entity, resolved)
 	end
 
-	local function f1256(p19)
-		if p19._restore ~= nil then
+	local function loadUseEmoteHook(self_)
+		if self_._restore ~= nil then
 			return up0.VOID_OK
 		end
-		local v24 = getmetatable(up1)
-		if v24 == nil then
+		local pickEmoteMetatable = getmetatable(up1)
+		if pickEmoteMetatable == nil then
 			return (up0.err("UseEmoteHook", "prototype_lookup", "PickEmote metatable not found"))
 		end
-		local v25 = up2(v24, "__index")
-		if v25 == nil then
+		local pickEmotePrototype = up2(pickEmoteMetatable, "__index")
+		if pickEmotePrototype == nil then
 			return (up0.err("UseEmoteHook", "prototype_lookup", "PickEmote.__index not found"))
 		end
-		local v26 = up2(v25, "_PickByKey")
-		if v26 == nil then
+		local pickByKey = up2(pickEmotePrototype, "_PickByKey")
+		if pickByKey == nil then
 			return (up0.err("UseEmoteHook", "function_lookup", "PickEmote._PickByKey not found"))
 		end
-		local v27 = getmetatable(up3)
-		if v27 == nil then
+		local mechanicsMetatable = getmetatable(up3)
+		if mechanicsMetatable == nil then
 			return (up0.err(
 				"UseEmoteHook",
 				"prototype_lookup",
 				"MechanicsController metatable not found"
 			))
 		end
-		local v28 = up2(v27, "__index")
-		if v28 == nil then
+		local mechanicsPrototype = up2(mechanicsMetatable, "__index")
+		if mechanicsPrototype == nil then
 			return (up0.err(
 				"UseEmoteHook",
 				"prototype_lookup",
 				"MechanicsController.__index not found"
 			))
 		end
-		local v29 = up2(v28, "SimulateInputBegan")
-		if v29 == nil then
+		local simulateInputBegan = up2(mechanicsPrototype, "SimulateInputBegan")
+		if simulateInputBegan == nil then
 			return (up0.err(
 				"UseEmoteHook",
 				"function_lookup",
 				"MechanicsController.SimulateInputBegan not found"
 			))
 		end
-		local v30 = debug.getupvalue(v26, 1)
-		if v30 == nil then
+		local emoteController = debug.getupvalue(pickByKey, 1)
+		if emoteController == nil then
 			return (up0.err(
 				"UseEmoteHook",
 				"upvalue_scan",
@@ -16676,75 +16676,75 @@ local function f1242()
 			))
 		end
 		local _ = setmetatable
-		local t10 = {}
+		local controllerProxy = {}
 
-		function t10.UseEmote(_, p20)
-			local Get4 = p19._resolver:Get(p20)
-			if Get4 == nil then
-				return (coroutine.wrap(v30.UseEmote)(v30, p20))
+		function controllerProxy.UseEmote(_, emoteName)
+			local resolved = self_._resolver:Get(emoteName)
+			if resolved == nil then
+				return (coroutine.wrap(emoteController.UseEmote)(emoteController, emoteName))
 			end
-			local _GetLocalEntity2 = p19:_GetLocalEntity()
-			if _GetLocalEntity2 == nil then
+			local entity = self_:_GetLocalEntity()
+			if entity == nil then
 				return
 			end
-			p19:_PlayResolvedEmote(_GetLocalEntity2, Get4)
+			self_:_PlayResolvedEmote(entity, resolved)
 		end
 
-		local t11 = { __index = v30 }
-		local v31 = setmetatable(t10, t11)
-		debug.setupvalue(v26, 1, v31)
-		debug.setupvalue(v29, 8, v31)
-		local t12 = { pickByKeyFunc = v26, simulateInputBeganFunc = v29, emoteController = v30 }
-		p19._restore = t12
+		local proxyMetatable = { __index = emoteController }
+		local proxy = setmetatable(controllerProxy, proxyMetatable)
+		debug.setupvalue(pickByKey, 1, proxy)
+		debug.setupvalue(simulateInputBegan, 8, proxy)
+		local restore = { pickByKeyFunc = pickByKey, simulateInputBeganFunc = simulateInputBegan, emoteController = emoteController }
+		self_._restore = restore
 		return up0.VOID_OK
 	end
 
-	local function f1257()
+	local function newLayer_proto()
 		return {}
 	end
 
-	local function f1258(p21, p22, p23, p24)
-		local _EnsureState = p21:_EnsureState(p22)
+	local function applyLayerChoice(self_, owner, choice, layerName)
+		local state = self_:_EnsureState(owner)
 
-		local function f1259()
+		local function newLayer()
 			return {}
 		end
 
-		local v32 = up0.getOrCreateLayer(_EnsureState.layers, p24, f1259)
-		up1.applyChoice(v32, p23)
-		up0.removeLayerIfEmpty(_EnsureState.layers, p24, up2)
-		if not up3(_EnsureState) then
-			return p21:_ResolveEffective(_EnsureState).selection
+		local layer = up0.getOrCreateLayer(state.layers, layerName, newLayer)
+		up1.applyChoice(layer, choice)
+		up0.removeLayerIfEmpty(state.layers, layerName, up2)
+		if not up3(state) then
+			return self_:_ResolveEffective(state).selection
 		end
-		p21._states[p22] = nil
+		self_._states[owner] = nil
 		return {}
 	end
 
-	local function f1260(p25)
-		up0:_HandleReplicate(p25)
+	local function handleReplicate(effect)
+		up0:_HandleReplicate(effect)
 	end
 
-	local function f1261(p26)
-		return p26._enabled
+	local function isEnabled(self_)
+		return self_._enabled
 	end
 
-	local function f1262()
+	local function applyNoMotion()
 		up0._motionDisabler:SetMotionDisabled(up1.data.ItemModifiers.NoMotion)
 	end
 
-	local function f1263(p27, p28, p29, p30)
-		local Main = p27.Fonts.Main
+	local function buildKeybindList(menu, theme, parent, trove)
+		local font = menu.Fonts.Main
 		local canvasGroup = Instance.new("CanvasGroup")
 		canvasGroup.GroupTransparency = 0
 		canvasGroup.BackgroundTransparency = 1
 		canvasGroup.Position = UDim2.fromOffset(50, 500)
 		canvasGroup.BorderSizePixel = 0
 		canvasGroup.AutomaticSize = Enum.AutomaticSize.XY
-		canvasGroup.Parent = p29
-		p30:Add(canvasGroup)
-		local MakeDraggable = p27.MakeDraggable
-		local t13 = { PersistKey = "keybindsListPosition" }
-		MakeDraggable(p27, canvasGroup, p30, t13)
+		canvasGroup.Parent = parent
+		trove:Add(canvasGroup)
+		local MakeDraggable = menu.MakeDraggable
+		local dragOptions = { PersistKey = "keybindsListPosition" }
+		MakeDraggable(menu, canvasGroup, trove, dragOptions)
 		if up0.Scale ~= 1 then
 			local uiScale = Instance.new("UIScale")
 			uiScale.Scale = up0.Scale
@@ -16757,7 +16757,7 @@ local function f1242()
 		canvasGroup2.AutomaticSize = Enum.AutomaticSize.Y
 		canvasGroup2.GroupTransparency = 1
 		canvasGroup2.Visible = false
-		p28:Bind(canvasGroup2, "BackgroundColor3", "Background")
+		theme:Bind(canvasGroup2, "BackgroundColor3", "Background")
 		canvasGroup2.Parent = canvasGroup
 		local uiCorner = Instance.new("UICorner")
 		uiCorner.CornerRadius = UDim.new(0, 6)
@@ -16765,31 +16765,31 @@ local function f1242()
 		local uiStroke = Instance.new("UIStroke")
 		uiStroke.Transparency = 0.4
 		uiStroke.Thickness = 1
-		p28:Bind(uiStroke, "Color", "Outline")
+		theme:Bind(uiStroke, "Color", "Outline")
 		uiStroke.Parent = canvasGroup2
-		local v38 = Instance.new(up1)
-		v38.BorderSizePixel = 0
-		v38.Position = UDim2.fromScale(0, 0)
-		v38.Size = UDim2.new(0, 2, 1, 0)
-		p28:Bind(v38, "BackgroundColor3", "Accent")
-		v38.Parent = canvasGroup2
-		local v39 = Instance.new(up1)
-		v39.BackgroundTransparency = 1
-		v39.BorderSizePixel = 0
-		v39.Position = UDim2.fromOffset(2, 0)
-		v39.Size = UDim2.new(1, -2, 0, 0)
-		v39.AutomaticSize = Enum.AutomaticSize.Y
-		v39.Parent = canvasGroup2
+		local accent = Instance.new(up1)
+		accent.BorderSizePixel = 0
+		accent.Position = UDim2.fromScale(0, 0)
+		accent.Size = UDim2.new(0, 2, 1, 0)
+		theme:Bind(accent, "BackgroundColor3", "Accent")
+		accent.Parent = canvasGroup2
+		local content = Instance.new(up1)
+		content.BackgroundTransparency = 1
+		content.BorderSizePixel = 0
+		content.Position = UDim2.fromOffset(2, 0)
+		content.Size = UDim2.new(1, -2, 0, 0)
+		content.AutomaticSize = Enum.AutomaticSize.Y
+		content.Parent = canvasGroup2
 		local uiPadding = Instance.new("UIPadding")
 		uiPadding.PaddingTop = UDim.new(0, 10)
 		uiPadding.PaddingBottom = UDim.new(0, 11)
 		uiPadding.PaddingLeft = UDim.new(0, 14)
 		uiPadding.PaddingRight = UDim.new(0, 14)
-		uiPadding.Parent = v39
+		uiPadding.Parent = content
 		local uiListLayout = Instance.new("UIListLayout")
 		uiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 		uiListLayout.Padding = UDim.new(0, 8)
-		uiListLayout.Parent = v39
+		uiListLayout.Parent = content
 		local textLabel = Instance.new("TextLabel")
 		textLabel.Text = "Keybinds"
 		textLabel.BackgroundTransparency = 1
@@ -16798,21 +16798,21 @@ local function f1242()
 		textLabel.TextXAlignment = Enum.TextXAlignment.Left
 		textLabel.TextSize = 14
 		textLabel.LayoutOrder = 0
-		textLabel.FontFace = Main
-		p28:Bind(textLabel, "TextColor3", "Unselected")
-		textLabel.Parent = v39
-		local v43 = Instance.new(up1)
-		v43.BackgroundTransparency = 1
-		v43.Size = UDim2.fromScale(1, 0)
-		v43.AutomaticSize = Enum.AutomaticSize.Y
-		v43.BorderSizePixel = 0
-		v43.LayoutOrder = 1
-		v43.Parent = v39
+		textLabel.FontFace = font
+		theme:Bind(textLabel, "TextColor3", "Unselected")
+		textLabel.Parent = content
+		local entries = Instance.new(up1)
+		entries.BackgroundTransparency = 1
+		entries.Size = UDim2.fromScale(1, 0)
+		entries.AutomaticSize = Enum.AutomaticSize.Y
+		entries.BorderSizePixel = 0
+		entries.LayoutOrder = 1
+		entries.Parent = content
 		local uiListLayout2 = Instance.new("UIListLayout")
 		uiListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
 		uiListLayout2.Padding = UDim.new(0, 1)
-		uiListLayout2.Parent = v43
-		return canvasGroup, canvasGroup2, v43
+		uiListLayout2.Parent = entries
+		return canvasGroup, canvasGroup2, entries
 	end
 
 	local function lazyModule_fG()
@@ -16824,17 +16824,17 @@ local function f1242()
 		return t14.c
 	end
 
-	local function f1265(p31, p32)
-		p31._guards[p32]:Destroy()
-		p31._guards[p32] = nil
+	local function removeGuard(self_, key)
+		self_._guards[key]:Destroy()
+		self_._guards[key] = nil
 	end
 
-	local function f1266(p33)
-		if p33._original ~= nil then
+	local function loadNativeCrosshairHook(self_)
+		if self_._original ~= nil then
 			return up0.VOID_OK
 		end
-		local v45 = up1(up2, "_Update")
-		if v45 == nil then
+		local originalUpdate = up1(up2, "_Update")
+		if originalUpdate == nil then
 			return (up0.err("NativeCrosshairHook", "LoadHook", "Failed to find _Update"))
 		end
 		up4(
@@ -16863,96 +16863,96 @@ local function f1242()
 					end
 				end
 			end)({[0]=c0,[1]=c1,[2]=c2,[3]=c3})
-			end)(up1, v45, p33, up3))
+			end)(up1, originalUpdate, self_, up3))
 		)
-		p33._original = v45
+		self_._original = originalUpdate
 		return up0.VOID_OK
 	end
 
-	local function f1267(p34, _, p35)
-		local v46 = table.create(4)
-		local v47 = table.create(4)
-		local AddMultiDropdown = p34.AddMultiDropdown
-		local targetPartsOnGroundMultiDropdownOptions = { Label = "Target Parts On Ground", Options = table.clone(p35), Config = v46 }
-		AddMultiDropdown(p34, targetPartsOnGroundMultiDropdownOptions)
-		local AddMultiDropdown2 = p34.AddMultiDropdown
-		local targetPartsInAirMultiDropdownOptions = { Label = "Target Parts In Air", Options = table.clone(p35), Config = v47 }
-		AddMultiDropdown2(p34, targetPartsInAirMultiDropdownOptions)
+	local function buildTargetParts_proto(section, _, partNames)
+		local groundConfig = table.create(4)
+		local airConfig = table.create(4)
+		local AddMultiDropdown = section.AddMultiDropdown
+		local targetPartsOnGroundMultiDropdownOptions = { Label = "Target Parts On Ground", Options = table.clone(partNames), Config = groundConfig }
+		AddMultiDropdown(section, targetPartsOnGroundMultiDropdownOptions)
+		local AddMultiDropdown2 = section.AddMultiDropdown
+		local targetPartsInAirMultiDropdownOptions = { Label = "Target Parts In Air", Options = table.clone(partNames), Config = airConfig }
+		AddMultiDropdown2(section, targetPartsInAirMultiDropdownOptions)
 		return (table.create(2))
 	end
 
-	local function f1268(p36)
-		local GetLayerSelections = up0.items:GetLayerSelections(p36, up1)
-		if GetLayerSelections == nil then
+	local function isWrapInverted(item)
+		local selections = up0.items:GetLayerSelections(item, up1)
+		if selections == nil then
 			return nil
 		end
-		local wrap = GetLayerSelections.wrap
+		local wrap = selections.wrap
 		if wrap == nil then
 			return nil
 		end
-		local v48
-		v48 = wrap.inverted == true
-		return v48
+		local inverted
+		inverted = wrap.inverted == true
+		return inverted
 	end
 
-	local function f1269()
-		up0(up1, FighterController)
+	local function replicate_proto()
+		invoke(replicateControls, FighterController)
 	end
 
-	local function newDeviceSpoof_proto(p37)
-		local t17 = { _trove = up0.new("device_spoof") }
-		setmetatable(t17, DeviceSpoof)
-		t17:_Initialize(p37)
-		return t17
+	local function newDeviceSpoof_proto(playerContext)
+		local spoof = { _trove = Trove.new("device_spoof") }
+		setmetatable(spoof, DeviceSpoof)
+		spoof:_Initialize(playerContext)
+		return spoof
 	end
 
 	local function attemptLoadHook_proto(self_)
 		if self_._hook then
 			return
 		end
-		local f1272 = debug.getupvalues(up0)
-		if not f1272 then
-			f1272 = {}
+		local upvalues = debug.getupvalues(replicateControls)
+		if not upvalues then
+			upvalues = {}
 		end
-		local v49 = nil
+		local upvalueIndex = nil
 		local _leave56 = false
 		while true do
-			local v50
-			v49, v50 = f1272(nil, v49)
-			if v49 == nil then
+			local upvalue
+			upvalueIndex, upvalue = upvalues(nil, upvalueIndex)
+			if upvalueIndex == nil then
 				break
 			end
-			if v50 == ControlsController then
+			if upvalue == ControlsController then
 				_leave56 = true
 				break
 			end
 		end
 		if not _leave56 then
-			v49 = nil
+			upvalueIndex = nil
 		end
-		if v49 == nil then
+		if upvalueIndex == nil then
 			return
 		end
-		local v51 = debug.getupvalue(up0, v49)
+		local originalValue = debug.getupvalue(replicateControls, upvalueIndex)
 		local _ = debug.setupvalue
 		local _ = setmetatable
-		local t18 = {}
+		local controlsProxy = {}
 
-		function t18.__index(_, p39)
-			if p39 ~= "CurrentControls" then
-				LocalPlayer:Kick("Unexpected behavior (client misc 2)")
+		function controlsProxy.__index(_, key)
+			if key ~= "CurrentControls" then
+				localPlayer:Kick("Unexpected behavior (client misc 2)")
 				return
 			end
-			local v52 = up0[up1.data.Misc.DeviceSpoof.SpoofType]
-			if v52 == nil then
-				LocalPlayer:Kick("Unexpected behavior (client misc 1)")
+			local controls = controlTypes[settings.data.Misc.DeviceSpoof.SpoofType]
+			if controls == nil then
+				localPlayer:Kick("Unexpected behavior (client misc 1)")
 			end
-			return v52
+			return controls
 		end
 
-		debug.setupvalue(up0, v49, setmetatable({}, t18))
-		local t19 = { upvalueIndex = v49, originalValue = v51 }
-		self_._hook = t19
+		debug.setupvalue(replicateControls, upvalueIndex, setmetatable({}, controlsProxy))
+		local hook = { upvalueIndex = upvalueIndex, originalValue = originalValue }
+		self_._hook = hook
 	end
 
 	local function destroyDeviceSpoof_proto(self_)
@@ -16964,39 +16964,39 @@ local function f1242()
 		if not self_._hook then
 			return
 		end
-		debug.setupvalue(up0, self_._hook.upvalueIndex, self_._hook.originalValue)
+		debug.setupvalue(replicateControls, self_._hook.upvalueIndex, self_._hook.originalValue)
 		self_._hook = nil
 	end
 
 	local function loadDeviceSpoof()
-		local v53 = up0.y()
+		local settings = up0.y()
 		up0.a4()
-		local v54 = up0.q()
-		local v55 = up0.aH()
-		local v56 = up0.aJ()
-		local f1276 = up0.ah()
-		local v57 = up0.ai()
+		local Trove = up0.q()
+		local bindSignal = up0.aH()
+		local callMethod = up0.aJ()
+		local getField = up0.ah()
+		local invoke = up0.ai()
 		local ControlsController = up0.ao().ControlsController
 		local FighterController = up0.ao().FighterController
-		local v58 = up0.n()
-		local LocalPlayer3 = cloneref(game:GetService("Players")).LocalPlayer
-		local v59 = f1276(
-			f1276(getmetatable(FighterController), "__index"),
+		local controlTypes = up0.n()
+		local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
+		local replicateControls = getField(
+			getField(getmetatable(FighterController), "__index"),
 			"_ReplicateControls"
 		)
 
-		local function f1277()
-			v57(v59, FighterController)
+		local function replicate()
+			invoke(replicateControls, FighterController)
 		end
 
 		local DeviceSpoof = {}
 		DeviceSpoof.__index = DeviceSpoof
 
-		function DeviceSpoof.new(p42)
-			local t21 = { _trove = v54.new("device_spoof") }
-			setmetatable(t21, DeviceSpoof)
-			t21:_Initialize(p42)
-			return t21
+		function DeviceSpoof.new(playerContext)
+			local spoof = { _trove = Trove.new("device_spoof") }
+			setmetatable(spoof, DeviceSpoof)
+			spoof:_Initialize(playerContext)
+			return spoof
 		end
 
 		function DeviceSpoof:Destroy()
@@ -17004,180 +17004,180 @@ local function f1242()
 			self:_AttemptUnloadHook()
 		end
 
-		function DeviceSpoof:_Initialize(p43)
-			local _trove5 = self._trove
+		function DeviceSpoof:_Initialize(playerContext)
+			local trove = self._trove
 
-			local function f1278(p44)
-				if p44 then
+			local function onEnabledChanged(enabled)
+				if enabled then
 					self:_AttemptLoadHook()
-					local _reconcile5 = self._reconcile
-					if _reconcile5 then
-						_reconcile5()
+					local reconcile = self._reconcile
+					if reconcile then
+						reconcile()
 					end
 				else
 					self:_AttemptUnloadHook()
-					f1277()
+					replicate()
 				end
 			end
 
-			_trove5:Connect(v53:GetPropertyChangedSignal((table.create(3))), f1278)
+			trove:Connect(settings:GetPropertyChangedSignal((table.create(3))), onEnabledChanged)
 
-			local function f1279()
-				local _reconcile6 = self._reconcile
-				if _reconcile6 then
-					_reconcile6()
+			local function onSpoofTypeChanged()
+				local reconcile = self._reconcile
+				if reconcile then
+					reconcile()
 				end
 			end
 
-			_trove5:Connect(v53:GetPropertyChangedSignal((table.create(3))), f1279)
-			if v53.data.Misc.DeviceSpoof.Enabled then
+			trove:Connect(settings:GetPropertyChangedSignal((table.create(3))), onSpoofTypeChanged)
+			if settings.data.Misc.DeviceSpoof.Enabled then
 				self:_AttemptLoadHook()
 			end
 
-			local function f1280(p45, p46)
-				local inner15 = p45.fighterState.inner
-				local v60 = false
+			local function observeFighter(context, fighterTrove)
+				local fighter = context.fighterState.inner
+				local replicated = false
 
 				local function _reconcile()
-					if v60 or not v53.data.Misc.DeviceSpoof.Enabled then
+					if replicated or not settings.data.Misc.DeviceSpoof.Enabled then
 						return
 					end
-					if v56(inner15, "Controls") ~= v58[v53.data.Misc.DeviceSpoof.SpoofType] then
-						v60 = true
-						f1277()
+					if callMethod(fighter, "Controls") ~= controlTypes[settings.data.Misc.DeviceSpoof.SpoofType] then
+						replicated = true
+						replicate()
 					end
 				end
 
 				self._reconcile = _reconcile
-				local function f1282()
+				local function noop()
 				end
-				p46:Add(f1282)
+				fighterTrove:Add(noop)
 
-				local function f1283()
-					v60 = false
+				local function onControlsChanged()
+					replicated = false
 					_reconcile()
 				end
 
-				p46:Add(v55(v57(inner15.GetDataChangedSignal, inner15, "Controls"), f1283))
-				p46:Add(task.defer(_reconcile))
+				fighterTrove:Add(bindSignal(invoke(fighter.GetDataChangedSignal, fighter, "Controls"), onControlsChanged))
+				fighterTrove:Add(task.defer(_reconcile))
 			end
 
-			_trove5:Add(p43:ObserveContext("device_spoof", f1280))
+			trove:Add(playerContext:ObserveContext("device_spoof", observeFighter))
 		end
 
 		function DeviceSpoof:_AttemptLoadHook()
 			if self._hook then
 				return
 			end
-			local f1284 = debug.getupvalues(v59)
-			if not f1284 then
-				f1284 = {}
+			local upvalues = debug.getupvalues(replicateControls)
+			if not upvalues then
+				upvalues = {}
 			end
-			local v61 = nil
+			local upvalueIndex = nil
 			local _leave57 = false
 			while true do
-				local v62
-				v61, v62 = f1284(nil, v61)
-				if v61 == nil then
+				local upvalue
+				upvalueIndex, upvalue = upvalues(nil, upvalueIndex)
+				if upvalueIndex == nil then
 					break
 				end
-				if v62 == ControlsController then
+				if upvalue == ControlsController then
 					_leave57 = true
 					break
 				end
 			end
 			if not _leave57 then
-				v61 = nil
+				upvalueIndex = nil
 			end
-			if v61 == nil then
+			if upvalueIndex == nil then
 				return
 			end
-			local v63 = debug.getupvalue(v59, v61)
+			local originalValue = debug.getupvalue(replicateControls, upvalueIndex)
 			local _ = debug.setupvalue
 			local _ = setmetatable
-			local t22 = {}
+			local controlsProxy = {}
 
-			function t22.__index(_, p47)
-				if p47 ~= "CurrentControls" then
-					LocalPlayer3:Kick("Unexpected behavior (client misc 2)")
+			function controlsProxy.__index(_, key)
+				if key ~= "CurrentControls" then
+					localPlayer:Kick("Unexpected behavior (client misc 2)")
 					return
 				end
-				local v64 = v58[v53.data.Misc.DeviceSpoof.SpoofType]
-				if v64 == nil then
-					LocalPlayer3:Kick("Unexpected behavior (client misc 1)")
+				local controls = controlTypes[settings.data.Misc.DeviceSpoof.SpoofType]
+				if controls == nil then
+					localPlayer:Kick("Unexpected behavior (client misc 1)")
 				end
-				return v64
+				return controls
 			end
 
-			debug.setupvalue(v59, v61, setmetatable({}, t22))
-			local t23 = { upvalueIndex = v61, originalValue = v63 }
-			self._hook = t23
+			debug.setupvalue(replicateControls, upvalueIndex, setmetatable({}, controlsProxy))
+			local hook = { upvalueIndex = upvalueIndex, originalValue = originalValue }
+			self._hook = hook
 		end
 
 		function DeviceSpoof:_AttemptUnloadHook()
 			if not self._hook then
 				return
 			end
-			debug.setupvalue(v59, self._hook.upvalueIndex, self._hook.originalValue)
+			debug.setupvalue(replicateControls, self._hook.upvalueIndex, self._hook.originalValue)
 			self._hook = nil
 		end
 
 		return DeviceSpoof
 	end
 
-	local function f1285()
+	local function fireClicked()
 		up0.Clicked:Fire()
 	end
 
-	local function f1286()
-		local GetOriginal = up0._dataHook:GetOriginal(up1)
-		local v65 = {}
-		if type(GetOriginal) == up2 then
-			v65 = table.clone(GetOriginal)
+	local function getMerged_proto()
+		local original = self_._dataHook:GetOriginal(up1)
+		local merged = {}
+		if type(original) == up2 then
+			merged = table.clone(original)
 		end
-		for v66, v67 in up0._resolver:GetAll() do
-			v65[v66] = v67
+		for key, value in self_._resolver:GetAll() do
+			merged[key] = value
 		end
-		return v65
+		return merged
 	end
 
-	local function f1287(p48, p49, p50)
-		local t24 = p48._restoreDatas[p49]
-		if t24 == nil then
+	local function getRestoreData(self_, owner, key)
+		local restoreData = self_._restoreDatas[owner]
+		if restoreData == nil then
 			return nil
 		end
-		return t24[p50]
+		return restoreData[key]
 	end
 
 	local function f1288()
 	end
 
-	local function f1289(p51)
-		local maxSparkCount = p51.options.maxSparkCount
+	local function spawnSparks(self_)
+		local maxSparkCount = self_.options.maxSparkCount
 		for _ = 1, maxSparkCount do
-			p51:_SpawnSpark()
+			self_:_SpawnSpark()
 		end
 	end
 
-	local function f1290(...)
-		local t25 = { _claims = nil }
-		return (setmetatable(t25, up0))
+	local function newClaims(...)
+		local claims = { _claims = nil }
+		return (setmetatable(claims, up0))
 	end
 
-	local function f1291(p52)
-		local v68 = up0(p52, up1)
-		local v69 = up3(up0(v68, up2(v68, 16)), up4)
-		local v70 = up3(up0(v69, up2(v69, 13)), up5)
-		local v71 = up3(up0(v70, up2(v70, 15)), up6)
-		local v72 = up3(up0(v71, up2(v71, 14)), up7)
-		return (up0(up0(v72, up2(v72, 13)), up8))
+	local function mixHash(value)
+		local h1 = up0(value, up1)
+		local h2 = up3(up0(h1, up2(h1, 16)), up4)
+		local h3 = up3(up0(h2, up2(h2, 13)), up5)
+		local h4 = up3(up0(h3, up2(h3, 15)), up6)
+		local h5 = up3(up0(h4, up2(h4, 14)), up7)
+		return (up0(up0(h5, up2(h5, 13)), up8))
 	end
 
-	local function f1292()
-		local v73
-		v73.Url = up0._endpoint
-		local v74
-		v74["X-Sentry-Auth"] = up0._authHeader
+	local function sendSentryEvent()
+		local request
+		request.Url = up0._endpoint
+		local headers
+		headers["X-Sentry-Auth"] = up0._authHeader
 		while true do
 			if string.len("") then
 			end
@@ -17193,33 +17193,33 @@ local function f1242()
 		return t26.c
 	end
 
-	local function f1294()
+	local function onFocusLostEmpty()
 		if up0.Text == "" then
 			up1()
 		end
 	end
 
-	local function f1295(p53, p54, p55)
-		local _claims = p53._claims
-		local v75 = nil
+	local function hasHigherClaim(self_, owner, priority)
+		local claims = self_._claims
+		local claimOwner = nil
 		while true do
-			local v76
-			v75, v76 = _claims(nil, v75)
-			if v75 == nil then
+			local claimPriority
+			claimOwner, claimPriority = claims(nil, claimOwner)
+			if claimOwner == nil then
 				break
 			end
-			if not (v75 == p54 or not (p55 < v76)) then
+			if not (claimOwner == owner or not (priority < claimPriority)) then
 				return true
 			end
 		end
 		return false
 	end
 
-	local function f1296()
+	local function cancelAll_proto()
 		ipairs(up0)
 	end
 
-	local function f1297(...)
+	local function settle_proto(...)
 		if false then
 			up0()
 		end
@@ -17227,87 +17227,87 @@ local function f1242()
 		return (up2(select(2, ...)))
 	end
 
-	local function f1298(p56)
-		local function f1299(...)
+	local function finalizer_proto(callback)
+		local function settle(...)
 			if false then
 				up0()
 			end
 			up1 = true
-			return (p56(select(2, ...)))
+			return (callback(select(2, ...)))
 		end
 
-		return f1299
+		return settle
 	end
 
-	local function f1300(...)
-		local v77 = nil
+	local function executor_proto(...)
+		local settled = nil
 		repeat
-			local f1301, v78, _
-			_, v78, f1301 = ...
-			v77 = false
-			local t27 = {}
+			local onCancel, resolve, _
+			_, resolve, onCancel = ...
+			settled = false
+			local newPromises = {}
 
-			local function f1302()
-				ipairs(t27)
+			local function cancelAll()
+				ipairs(newPromises)
 			end
 
-			local v79 = f1302
+			local cancel = cancelAll
 
-			local function f1303(p57)
-				local function f1304(...)
+			local function finalizer(callback)
+				local function settle(...)
 					if false then
-						v79()
+						cancel()
 					end
-					v77 = true
-					return (p57(select(2, ...)))
+					settled = true
+					return (callback(select(2, ...)))
 				end
 
-				return f1304
+				return settle
 			end
-		until f1301(f1303(v78))
+		until onCancel(finalizer(resolve))
 	end
 
-	local function f1305(p58)
+	local function promiseRace(promises)
 		local _ = assert
-		local v80
-		v80 = type(p58) == up0
-		assert(v80, string.format(up1, "Promise.race"))
-		pairs(p58)
+		local isTable
+		isTable = type(promises) == up0
+		assert(isTable, string.format(up1, "Promise.race"))
+		pairs(promises)
 
-		local function f1306(...)
-			local v81 = nil
+		local function executor(...)
+			local settled = nil
 			repeat
-				local f1307, v82, _
-				_, v82, f1307 = ...
-				v81 = false
-				local t28 = {}
+				local onCancel, resolve, _
+				_, resolve, onCancel = ...
+				settled = false
+				local newPromises = {}
 
-				local function f1308()
-					ipairs(t28)
+				local function cancelAll()
+					ipairs(newPromises)
 				end
 
-				local v83 = f1308
+				local cancel = cancelAll
 
-				local function f1309(p59)
-					local function f1310(...)
+				local function finalizer(callback)
+					local function settle(...)
 						if false then
-							v83()
+							cancel()
 						end
-						v81 = true
-						return (p59(select(2, ...)))
+						settled = true
+						return (callback(select(2, ...)))
 					end
 
-					return f1310
+					return settle
 				end
-			until f1307(f1309(v82))
+			until onCancel(finalizer(resolve))
 		end
 
-		return (up2._new(debug.traceback(nil, 2), f1306))
+		return (up2._new(debug.traceback(nil, 2), executor))
 	end
 
-	local function f1311(p60, p61, p62, p63, p64)
+	local function registerMobileButton(menu, key, label, callback, options)
 		if up0.HasTouch() then
-			return (up1(p60):Register(p61, p62, p63, p64))
+			return (up1(menu):Register(key, label, callback, options))
 		end
 		return nil
 	end
@@ -17315,11 +17315,11 @@ local function f1242()
 	local function f1312()
 	end
 
-	local function f1313(p65, p66, p67)
-		local weights = p66.weights
-		local bias = p66.bias
-		local inputSize = p66.inputSize
-		local outputSize = p66.outputSize
+	local function denseForward(input, layer, output)
+		local weights = layer.weights
+		local bias = layer.bias
+		local inputSize = layer.inputSize
+		local outputSize = layer.outputSize
 		;(function(c0,c1,c2,c3,c4,c5)
 			return (function(T)
 			local U = T[3]
@@ -17339,32 +17339,32 @@ local function f1242()
 				end
 			end
 		end)({[0]=c0,[1]=c1,[2]=c2,[3]=c3,[4]=c4,[5]=c5})
-		end)(weights, inputSize, bias, outputSize, p65, p67)()
+		end)(weights, inputSize, bias, outputSize, input, output)()
 	end
 
 	local function f1314()
 	end
 
-	local function f1315(p68, _)
-		local AddMultiDropdown3 = p68.AddMultiDropdown
+	local function buildTargetConditions_proto(section, _)
+		local AddMultiDropdown3 = section.AddMultiDropdown
 		local targetConditionsMultiDropdownOptions = { Label = "Target Conditions", Options = table.create(4) }
 		local t30 = { NotDeflecting = "Not Deflecting", NotShielded = "Not Shielded" }
 		targetConditionsMultiDropdownOptions.Labels = t30
 		targetConditionsMultiDropdownOptions.Config = table.create(3)
-		AddMultiDropdown3(p68, targetConditionsMultiDropdownOptions)
+		AddMultiDropdown3(section, targetConditionsMultiDropdownOptions)
 	end
 
-	local function f1316(p69, _)
-		local AddDropdown11 = p69.AddDropdown
+	local function buildTargetType_proto(section, _)
+		local AddDropdown11 = section.AddDropdown
 		local targetTypeDropdownOptions = {
 			Label = "Target Type",
 			Options = table.create(2),
 			Config = table.create(3)
 		}
-		local targetTypeDropdown = AddDropdown11(p69, targetTypeDropdownOptions)
-		local AddGroup5 = p69.AddGroup
+		local targetTypeDropdown = AddDropdown11(section, targetTypeDropdownOptions)
+		local AddGroup5 = section.AddGroup
 		local surfaceGroupOptions = { Source = targetTypeDropdown, Option = "Surface" }
-		local surfaceGroup = AddGroup5(p69, surfaceGroupOptions)
+		local surfaceGroup = AddGroup5(section, surfaceGroupOptions)
 		local AddSlider12 = surfaceGroup.AddSlider
 		local reductionSliderOptions = {
 			Label = "Reduction (%)",
@@ -17379,53 +17379,53 @@ local function f1242()
 		AddToggle36(surfaceGroup, centerToggleOptions)
 	end
 
-	local function f1317(p70, _)
-		local AddDropdown12 = p70.AddDropdown
+	local function buildPartSelection_proto(section, _)
+		local AddDropdown12 = section.AddDropdown
 		local partSelectionDropdownOptions = {
 			Label = "Part Selection",
 			Options = table.create(2),
 			Config = table.create(4)
 		}
-		local partSelectionDropdown = AddDropdown12(p70, partSelectionDropdownOptions)
-		local AddGroup6 = p70.AddGroup
+		local partSelectionDropdown = AddDropdown12(section, partSelectionDropdownOptions)
+		local AddGroup6 = section.AddGroup
 		local randomGroupOptions = { Source = partSelectionDropdown, Option = "Random" }
-		local randomGroup = AddGroup6(p70, randomGroupOptions)
+		local randomGroup = AddGroup6(section, randomGroupOptions)
 		local AddSlider13 = randomGroup.AddSlider
 		local headSliderOptions = { Label = "Head (%)", Min = 0, Max = 100, Config = table.create(4) }
 		AddSlider13(randomGroup, headSliderOptions)
 	end
 
-	local function f1318(p71, p72, p73)
-		up0(p71, p72)
-		up1(p71, p72)
-		up2(p71, p72)
-		return (up3(p71, p72, p73.defaultTargetParts))
+	local function buildTriggerbotOptions_proto(section, configPath, defaults)
+		buildTargetConditions(section, configPath)
+		buildTargetType(section, configPath)
+		buildPartSelection(section, configPath)
+		return (buildTargetParts(section, configPath, defaults.defaultTargetParts))
 	end
 
-	local function f1319()
+	local function loadTriggerbotOptions()
 		up0.gJ()
 		up0.cI()
 
-		local function f1320(p74, _)
-			local AddMultiDropdown4 = p74.AddMultiDropdown
+		local function buildTargetConditions(section, _)
+			local AddMultiDropdown4 = section.AddMultiDropdown
 			local targetConditionsMultiDropdownOptions = { Label = "Target Conditions", Options = table.create(4) }
 			local t41 = { NotDeflecting = "Not Deflecting", NotShielded = "Not Shielded" }
 			targetConditionsMultiDropdownOptions.Labels = t41
 			targetConditionsMultiDropdownOptions.Config = table.create(3)
-			AddMultiDropdown4(p74, targetConditionsMultiDropdownOptions)
+			AddMultiDropdown4(section, targetConditionsMultiDropdownOptions)
 		end
 
-		local function f1321(p75, _)
-			local AddDropdown13 = p75.AddDropdown
+		local function buildTargetType(section, _)
+			local AddDropdown13 = section.AddDropdown
 			local targetTypeDropdownOptions = {
 				Label = "Target Type",
 				Options = table.create(2),
 				Config = table.create(3)
 			}
-			local targetTypeDropdown = AddDropdown13(p75, targetTypeDropdownOptions)
-			local AddGroup7 = p75.AddGroup
+			local targetTypeDropdown = AddDropdown13(section, targetTypeDropdownOptions)
+			local AddGroup7 = section.AddGroup
 			local surfaceGroupOptions = { Source = targetTypeDropdown, Option = "Surface" }
-			local surfaceGroup = AddGroup7(p75, surfaceGroupOptions)
+			local surfaceGroup = AddGroup7(section, surfaceGroupOptions)
 			local AddSlider14 = surfaceGroup.AddSlider
 			local reductionSliderOptions = {
 				Label = "Reduction (%)",
@@ -17440,49 +17440,49 @@ local function f1242()
 			AddToggle37(surfaceGroup, centerToggleOptions)
 		end
 
-		local function f1322(p76, _)
-			local AddDropdown14 = p76.AddDropdown
+		local function buildPartSelection(section, _)
+			local AddDropdown14 = section.AddDropdown
 			local partSelectionDropdownOptions = {
 				Label = "Part Selection",
 				Options = table.create(2),
 				Config = table.create(4)
 			}
-			local partSelectionDropdown = AddDropdown14(p76, partSelectionDropdownOptions)
-			local AddGroup8 = p76.AddGroup
+			local partSelectionDropdown = AddDropdown14(section, partSelectionDropdownOptions)
+			local AddGroup8 = section.AddGroup
 			local randomGroupOptions = { Source = partSelectionDropdown, Option = "Random" }
-			local randomGroup = AddGroup8(p76, randomGroupOptions)
+			local randomGroup = AddGroup8(section, randomGroupOptions)
 			local AddSlider15 = randomGroup.AddSlider
 			local headSliderOptions = { Label = "Head (%)", Min = 0, Max = 100, Config = table.create(4) }
 			AddSlider15(randomGroup, headSliderOptions)
 		end
 
-		local function f1323(p77, _, p78)
-			local v88 = table.create(4)
-			local v89 = table.create(4)
-			local AddMultiDropdown5 = p77.AddMultiDropdown
-			local targetPartsOnGroundMultiDropdownOptions = { Label = "Target Parts On Ground", Options = table.clone(p78), Config = v88 }
-			AddMultiDropdown5(p77, targetPartsOnGroundMultiDropdownOptions)
-			local AddMultiDropdown6 = p77.AddMultiDropdown
-			local targetPartsInAirMultiDropdownOptions = { Label = "Target Parts In Air", Options = table.clone(p78), Config = v89 }
-			AddMultiDropdown6(p77, targetPartsInAirMultiDropdownOptions)
+		local function buildTargetParts(section, _, partNames)
+			local groundConfig = table.create(4)
+			local airConfig = table.create(4)
+			local AddMultiDropdown5 = section.AddMultiDropdown
+			local targetPartsOnGroundMultiDropdownOptions = { Label = "Target Parts On Ground", Options = table.clone(partNames), Config = groundConfig }
+			AddMultiDropdown5(section, targetPartsOnGroundMultiDropdownOptions)
+			local AddMultiDropdown6 = section.AddMultiDropdown
+			local targetPartsInAirMultiDropdownOptions = { Label = "Target Parts In Air", Options = table.clone(partNames), Config = airConfig }
+			AddMultiDropdown6(section, targetPartsInAirMultiDropdownOptions)
 			return (table.create(2))
 		end
 
-		local function f1324(p79, p80, p81)
-			f1320(p79, p80)
-			f1321(p79, p80)
-			f1322(p79, p80)
-			return (f1323(p79, p80, p81.defaultTargetParts))
+		local function buildTriggerbotOptions(section, configPath, defaults)
+			buildTargetConditions(section, configPath)
+			buildTargetType(section, configPath)
+			buildPartSelection(section, configPath)
+			return (buildTargetParts(section, configPath, defaults.defaultTargetParts))
 		end
 
-		return f1324
+		return buildTriggerbotOptions
 	end
 
-	local function f1325()
+	local function loadNoop()
 		up0.t()
-		local v90 = up0.aH()
+		local bindSignal = up0.aH()
 
-		local function f1326()
+		local function noop()
 			local v91 = string.byte("\172\187\0202\139", 3, 5)
 			local v92 = string.unpack(">i8", "\0\0\0\0\0\0\0\236")
 			repeat
@@ -17491,7 +17491,7 @@ local function f1242()
 			return
 		end
 
-		return f1326
+		return noop
 	end
 
 	local function lazyModule_fK()
@@ -17503,47 +17503,47 @@ local function f1242()
 		return t53.c
 	end
 
-	local function f1328(p82)
-		local v93 = os.clock()
-		p82._hitboxWindowUntil = v93 + up0
-		p82._attackCooldown = v93 + up1
+	local function startAttackWindow(self_)
+		local now = os.clock()
+		self_._hitboxWindowUntil = now + up0
+		self_._attackCooldown = now + up1
 	end
 
-	local function f1329(p83)
-		up0:SetOptions(p83)
+	local function f1329(names)
+		up0:SetOptions(names)
 	end
 
-	local function f1330(p84)
-		up0:SetOptions(p84)
+	local function f1330(names)
+		up0:SetOptions(names)
 	end
 
-	local function f1331(p85, p86)
-		local AddSection18 = p86.AddSection
+	local function buildHitFeedbackSection(deps, tab)
+		local AddSection18 = tab.AddSection
 		local t54 = { Title = "Hit Feedback", Side = "left" }
-		local hitFeedbackSection = AddSection18(p86, t54)
+		local hitFeedbackSection = AddSection18(tab, t54)
 		local AddToggle38 = hitFeedbackSection.AddToggle
 		local t56 = { Label = up0, Config = table.create(2) }
 		AddToggle38(hitFeedbackSection, t56)
 		local AddMultiSection = hitFeedbackSection.AddMultiSection
-		local t57 = { Titles = table.create(4) }
-		local t58, t59, t60, t61
-		t61, t60, t59, t58 = AddMultiSection(hitFeedbackSection, t57)
-		local AddToggle39 = t61.AddToggle
+		local multiSectionOptions = { Titles = table.create(4) }
+		local textPage, flashPage, chamsPage, soundPage
+		soundPage, chamsPage, flashPage, textPage = AddMultiSection(hitFeedbackSection, multiSectionOptions)
+		local AddToggle39 = soundPage.AddToggle
 		local playSoundToggleOptions = { Label = "Play Sound", Config = table.create(3) }
-		local playSoundToggle = AddToggle39(t61, playSoundToggleOptions)
-		local AddGroup9 = t61.AddGroup
+		local playSoundToggle = AddToggle39(soundPage, playSoundToggleOptions)
+		local AddGroup9 = soundPage.AddGroup
 		local playSoundGroupOptions = { Source = playSoundToggle }
-		local playSoundGroup = AddGroup9(t61, playSoundGroupOptions)
-		local GetNames = p85.customSounds:GetNames()
+		local playSoundGroup = AddGroup9(soundPage, playSoundGroupOptions)
+		local soundNames = deps.customSounds:GetNames()
 		local AddDropdown15 = playSoundGroup.AddDropdown
-		local headSoundDropdownOptions = { Label = "Head Sound", Options = GetNames, Config = table.create(3) }
+		local headSoundDropdownOptions = { Label = "Head Sound", Options = soundNames, Config = table.create(3) }
 		local headSoundDropdown = AddDropdown15(playSoundGroup, headSoundDropdownOptions)
 
-		local function f1332(p87)
-			headSoundDropdown:SetOptions(p87)
+		local function setHeadSoundOptions(names)
+			headSoundDropdown:SetOptions(names)
 		end
 
-		headSoundDropdown:Connect(p85.customSounds.changed, f1332)
+		headSoundDropdown:Connect(deps.customSounds.changed, setHeadSoundOptions)
 		local AddSlider16 = playSoundGroup.AddSlider
 		local headVolumeSliderOptions = {
 			Label = "Head Volume",
@@ -17563,14 +17563,14 @@ local function f1242()
 		}
 		AddSlider17(playSoundGroup, headPitchSliderOptions)
 		local AddDropdown16 = playSoundGroup.AddDropdown
-		local bodySoundDropdownOptions = { Label = "Body Sound", Options = GetNames, Config = table.create(3) }
+		local bodySoundDropdownOptions = { Label = "Body Sound", Options = soundNames, Config = table.create(3) }
 		local bodySoundDropdown = AddDropdown16(playSoundGroup, bodySoundDropdownOptions)
 
-		local function f1333(p88)
-			bodySoundDropdown:SetOptions(p88)
+		local function setBodySoundOptions(names)
+			bodySoundDropdown:SetOptions(names)
 		end
 
-		bodySoundDropdown:Connect(p85.customSounds.changed, f1333)
+		bodySoundDropdown:Connect(deps.customSounds.changed, setBodySoundOptions)
 		local AddSlider18 = playSoundGroup.AddSlider
 		local bodyVolumeSliderOptions = {
 			Label = "Body Volume",
@@ -17589,17 +17589,17 @@ local function f1242()
 			Config = table.create(3)
 		}
 		AddSlider19(playSoundGroup, bodyPitchSliderOptions)
-		local AddToggle40 = t61.AddToggle
+		local AddToggle40 = soundPage.AddToggle
 		local disableGameSoundToggleOptions = { Label = "Disable Game Sound", Config = table.create(3) }
-		AddToggle40(t61, disableGameSoundToggleOptions)
-		local AddToggle41 = t60.AddToggle
-		local t72 = { Label = up0, Config = table.create(3) }
-		local t73 = AddToggle41(t60, t72)
+		AddToggle40(soundPage, disableGameSoundToggleOptions)
+		local AddToggle41 = chamsPage.AddToggle
+		local chamsToggleOptions = { Label = up0, Config = table.create(3) }
+		local chamsToggle = AddToggle41(chamsPage, chamsToggleOptions)
 		local bindColorAndTransparency = up1.bindColorAndTransparency
-		local AddColor3 = t60.AddColor
-		local t74 = { Row = t73.Row, Alpha = true }
-		bindColorAndTransparency(AddColor3(t60, t74), table.create(3), (table.create(3)))
-		local AddSlider20 = t60.AddSlider
+		local AddColor3 = chamsPage.AddColor
+		local chamsColorOptions = { Row = chamsToggle.Row, Alpha = true }
+		bindColorAndTransparency(AddColor3(chamsPage, chamsColorOptions), table.create(3), (table.create(3)))
+		local AddSlider20 = chamsPage.AddSlider
 		local chamDurationSliderOptions = {
 			Label = "Cham Duration",
 			Min = 0.1,
@@ -17607,22 +17607,22 @@ local function f1242()
 			Step = 0.1,
 			Config = table.create(3)
 		}
-		AddSlider20(t60, chamDurationSliderOptions)
-		local AddDropdown17 = t60.AddDropdown
+		AddSlider20(chamsPage, chamDurationSliderOptions)
+		local AddDropdown17 = chamsPage.AddDropdown
 		local chamMaterialDropdownOptions = {
 			Label = "Cham Material",
 			Options = up2.names,
 			Config = table.create(3)
 		}
-		AddDropdown17(t60, chamMaterialDropdownOptions)
-		local AddToggle42 = t59.AddToggle
-		local t77 = { Label = up0, Config = table.create(3) }
-		local t78 = AddToggle42(t59, t77)
+		AddDropdown17(chamsPage, chamMaterialDropdownOptions)
+		local AddToggle42 = flashPage.AddToggle
+		local flashToggleOptions = { Label = up0, Config = table.create(3) }
+		local flashToggle = AddToggle42(flashPage, flashToggleOptions)
 		local bindColor = up1.bindColor
-		local AddColor4 = t59.AddColor
-		local t79 = { Row = t78.Row }
-		bindColor(AddColor4(t59, t79), (table.create(3)))
-		local AddSlider21 = t59.AddSlider
+		local AddColor4 = flashPage.AddColor
+		local flashColorOptions = { Row = flashToggle.Row }
+		bindColor(AddColor4(flashPage, flashColorOptions), (table.create(3)))
+		local AddSlider21 = flashPage.AddSlider
 		local durationSliderOptions = {
 			Label = "Duration",
 			Min = 0.1,
@@ -17630,39 +17630,39 @@ local function f1242()
 			Step = 0.1,
 			Config = table.create(3)
 		}
-		AddSlider21(t59, durationSliderOptions)
-		local AddToggle43 = t58.AddToggle
-		local t81 = { Label = up0, Config = table.create(3) }
-		AddToggle43(t58, t81)
-		local AddTextBox7 = t58.AddTextBox
+		AddSlider21(flashPage, durationSliderOptions)
+		local AddToggle43 = textPage.AddToggle
+		local textToggleOptions = { Label = up0, Config = table.create(3) }
+		AddToggle43(textPage, textToggleOptions)
+		local AddTextBox7 = textPage.AddTextBox
 		local textTextBoxOptions = { Label = "Text", Config = table.create(3) }
-		AddTextBox7(t58, textTextBoxOptions)
+		AddTextBox7(textPage, textTextBoxOptions)
 	end
 
-	local function f1334(p89, p90)
-		return (up0(up1, p89, p90))
+	local function renderRight_proto(parent, context)
+		return (up0(dividerObject, parent, context))
 	end
 
-	local function f1335(p91, p92, p93, p94)
-		local t83 = { _trove = p93, _menu = p91, Kind = "Divider", Row = p92 }
-		local v97 = p94.Label
-		if not v97 then
-			v97 = ""
+	local function newDivider(menu, row, trove, options)
+		local divider = { _trove = trove, _menu = menu, Kind = "Divider", Row = row }
+		local label = options.Label
+		if not label then
+			label = ""
 		end
-		t83.Label = v97
-		t83._rt = nil
-		local v98 = setmetatable(t83, up0)
+		divider.Label = label
+		divider._rt = nil
+		local dividerObject = setmetatable(divider, up0)
 
-		local function f1336(p95, p96)
-			return (up0(v98, p95, p96))
+		local function renderRight(parent, context)
+			return (up0(dividerObject, parent, context))
 		end
 
-		p92:AttachRight(f1336)
-		return v98
+		row:AttachRight(renderRight)
+		return dividerObject
 	end
 
-	local function f1337()
-		up0(up1, FighterController)
+	local function replicate_proto2()
+		invoke(replicateControls, FighterController)
 	end
 
 	local function lazyModule_eG()
@@ -17674,57 +17674,57 @@ local function f1242()
 		return t84.c
 	end
 
-	local function f1339(p97)
-		local _ui = p97._ui
-		if _ui == nil then
+	local function refreshRowSelection(self_)
+		local ui = self_._ui
+		if ui == nil then
 			return
 		end
-		local Rows = _ui.Rows
-		local v99 = nil
+		local rows = ui.Rows
+		local index = nil
 		while true do
-			local t85
-			v99, t85 = Rows(nil, v99)
-			if v99 == nil then
+			local row
+			index, row = rows(nil, index)
+			if index == nil then
 				break
 			end
-			local v100 = 1
-			if v99 == p97._selectedIndex then
-				v100 = 0
+			local transparency = 1
+			if index == self_._selectedIndex then
+				transparency = 0
 			end
-			t85.Button.BackgroundTransparency = v100
+			row.Button.BackgroundTransparency = transparency
 		end
 	end
 
-	local function f1340()
+	local function applyNoShootAnimation()
 		up0:ReportResult(up1._animationDisabler:SetShootDisabled(up2.data.ItemModifiers.NoShootAnimation))
 	end
 
-	local function f1341(...)
-		local v101
+	local function concat_proto(...)
+		local junk
 		repeat
-			v101 = math.modf(3.141592653589793) < 127
-		until not v101
-		local v102, v103
-		v103, v102 = ...
-		local v104 = table.clone(v103)
-		table.move(v102, 1, #v102, #v103 + 1, v104)
-		return v104
+			junk = math.modf(3.141592653589793) < 127
+		until not junk
+		local b, a
+		a, b = ...
+		local result = table.clone(a)
+		table.move(b, 1, #b, #a + 1, result)
+		return result
 	end
 
-	local function f1342()
-		local function f1343(...)
-			local v105
+	local function loadConcat()
+		local function concat(...)
+			local junk
 			repeat
-				v105 = math.modf(3.141592653589793) < 127
-			until not v105
-			local v106, v107
-			v107, v106 = ...
-			local v108 = table.clone(v107)
-			table.move(v106, 1, #v106, #v107 + 1, v108)
-			return v108
+				junk = math.modf(3.141592653589793) < 127
+			until not junk
+			local b, a
+			a, b = ...
+			local result = table.clone(a)
+			table.move(b, 1, #b, #a + 1, result)
+			return result
 		end
 
-		return f1343
+		return concat
 	end
 
 	local function lazyModule_aX()
@@ -17736,33 +17736,33 @@ local function f1242()
 		return t86.c
 	end
 
-	local function f1345(p98)
-		return (table.clone(p98._names))
+	local function getNames(self_)
+		return (table.clone(self_._names))
 	end
 
-	local function f1346(p99)
-		local Value20 = p99[1].Value
-		for v109 = 2, #p99 do
-			if p99[v109].Value ~= Value20 then
+	local function allSameValue(controls)
+		local first = controls[1].Value
+		for index = 2, #controls do
+			if controls[index].Value ~= first then
 				return false
 			end
 		end
 		return true
 	end
 
-	local function f1347(p100, p101, p102)
-		p100._trove:Connect(p101, p102)
-		return p100
+	local function connect(self_, signal, callback)
+		self_._trove:Connect(signal, callback)
+		return self_
 	end
 
-	local function f1348(p103)
-		if up0._isWriting or up0._overrides[p103] == nil then
+	local function onChanged_proto(property)
+		if up0._isWriting or up0._overrides[property] == nil then
 			return
 		end
-		local _target = up0._target
-		up0._originals[p103] = _target[p103]
+		local target = up0._target
+		up0._originals[property] = target[property]
 		up0._isWriting = true
-		_target[p103] = up0._overrides[p103]
+		target[property] = up0._overrides[property]
 		up0._isWriting = false
 	end
 
@@ -17770,200 +17770,200 @@ local function f1242()
 		self_:Revert()
 	end
 
-	local function f1350(p105)
-		local _selectedRoute = p105._selectedRoute
-		local v110
-		v110 = not (_selectedRoute == nil)
-		v110 = v110 and _selectedRoute.recording or nil
-		return v110
+	local function getSelectedRecording(self_)
+		local selectedRoute = self_._selectedRoute
+		local recording
+		recording = not (selectedRoute == nil)
+		recording = recording and selectedRoute.recording or nil
+		return recording
 	end
 
-	local function f1351()
-		if up0 then
+	local function update_proto()
+		if updating then
 			return
 		end
-		up0 = true
-		local x = up1.AbsoluteSize.X
+		updating = true
+		local x = frame.AbsoluteSize.X
 		if x <= 0 then
-			up0 = false
+			updating = false
 			return
 		end
-		local v112 = x * up2 - 8
-		local v113 = up3(up4)
-		if v113 ~= nil then
-			v112 = x - v113 - 8
+		local available = x * labelShare - 8
+		local rightWidth = up3(row)
+		if rightWidth ~= nil then
+			available = x - rightWidth - 8
 		end
-		local v114
-		v114 = v112 < up5
-		if v114 == up6 then
-			up0 = false
+		local shouldWrap
+		shouldWrap = available < labelWidth
+		if shouldWrap == wrapped then
+			updating = false
 			return
 		end
-		up6 = v114
-		if up6 then
-			local v115 = math.max(up7.TextBounds.Y, 16)
-			up7.AnchorPoint = Vector2.zero
-			up7.Position = UDim2.new(0, 0, 0, 0)
-			up8.AnchorPoint = Vector2.zero
-			up8.Position = UDim2.fromOffset(0, v115 + up9)
-			up8.Size = UDim2.new(1, 0, 0, Size.Y.Offset)
-			up1.AutomaticSize = Enum.AutomaticSize.None
-			up1.Size = UDim2.new(1, 0, 0, v115 + up9 + Size.Y.Offset)
+		wrapped = shouldWrap
+		if wrapped then
+			local labelHeight = math.max(label.TextBounds.Y, 16)
+			label.AnchorPoint = Vector2.zero
+			label.Position = UDim2.new(0, 0, 0, 0)
+			control.AnchorPoint = Vector2.zero
+			control.Position = UDim2.fromOffset(0, labelHeight + up9)
+			control.Size = UDim2.new(1, 0, 0, controlSize.Y.Offset)
+			frame.AutomaticSize = Enum.AutomaticSize.None
+			frame.Size = UDim2.new(1, 0, 0, labelHeight + up9 + controlSize.Y.Offset)
 		else
-			up7.AnchorPoint = Vector2.new(0, 0.5)
-			up7.Position = UDim2.fromScale(0, 0.5)
-			up8.AnchorPoint = AnchorPoint
-			up8.Position = Position
-			up8.Size = Size
-			up1.AutomaticSize = AutomaticSize
-			up1.Size = up14
+			label.AnchorPoint = Vector2.new(0, 0.5)
+			label.Position = UDim2.fromScale(0, 0.5)
+			control.AnchorPoint = controlAnchor
+			control.Position = controlPosition
+			control.Size = controlSize
+			frame.AutomaticSize = frameAutoSize
+			frame.Size = frameSize
 		end
-		up0 = false
+		updating = false
 	end
 
-	local function f1352()
-		up0 = up1.TextBounds.X
-		up2()
+	local function onTextBoundsChanged_proto()
+		labelWidth = label.TextBounds.X
+		update()
 	end
 
-	local function f1353(p106, p107, p108, p109, p110)
-		local Size3 = p110.Size
-		local AnchorPoint = p110.AnchorPoint
-		local Position9 = p110.Position
-		local Size4 = p108.Size
-		local AutomaticSize = p108.AutomaticSize
-		local Scale = Size3.X.Scale
-		local v116 = false
-		local v117 = false
-		local v118 = 1
-		local t87 = nil
-		if 0 < Scale then
-			v116 = false
-			v117 = false
-			v118 = 1 - Scale
-			t87 = nil
+	local function wrapRowOnOverflow(row, context, frame, label, control)
+		local controlSize = control.Size
+		local controlAnchor = control.AnchorPoint
+		local controlPosition = control.Position
+		local frameSize = frame.Size
+		local frameAutoSize = frame.AutomaticSize
+		local scale = controlSize.X.Scale
+		local wrapped = false
+		local updating = false
+		local labelShare = 1
+		local labelWidth = nil
+		if 0 < scale then
+			wrapped = false
+			updating = false
+			labelShare = 1 - scale
+			labelWidth = nil
 		end
-		t87 = p109.TextBounds
-		t87 = t87.X
+		labelWidth = label.TextBounds
+		labelWidth = labelWidth.X
 
-		local function f1354()
-			if v117 then
+		local function update()
+			if updating then
 				return
 			end
-			v117 = true
-			local x = p108.AbsoluteSize.X
+			updating = true
+			local x = frame.AbsoluteSize.X
 			if x <= 0 then
-				v117 = false
+				updating = false
 				return
 			end
-			local v120 = x * v118 - 8
-			local v121 = up3(p106)
-			if v121 ~= nil then
-				v120 = x - v121 - 8
+			local available = x * labelShare - 8
+			local rightWidth = up3(row)
+			if rightWidth ~= nil then
+				available = x - rightWidth - 8
 			end
-			local v122
-			v122 = v120 < t87
-			if v122 == v116 then
-				v117 = false
+			local shouldWrap
+			shouldWrap = available < labelWidth
+			if shouldWrap == wrapped then
+				updating = false
 				return
 			end
-			v116 = v122
-			if v116 then
-				local v123 = math.max(p109.TextBounds.Y, 16)
-				p109.AnchorPoint = Vector2.zero
-				p109.Position = UDim2.new(0, 0, 0, 0)
-				p110.AnchorPoint = Vector2.zero
-				p110.Position = UDim2.fromOffset(0, v123 + up9)
-				p110.Size = UDim2.new(1, 0, 0, Size3.Y.Offset)
-				p108.AutomaticSize = Enum.AutomaticSize.None
-				p108.Size = UDim2.new(1, 0, 0, v123 + up9 + Size3.Y.Offset)
+			wrapped = shouldWrap
+			if wrapped then
+				local labelHeight = math.max(label.TextBounds.Y, 16)
+				label.AnchorPoint = Vector2.zero
+				label.Position = UDim2.new(0, 0, 0, 0)
+				control.AnchorPoint = Vector2.zero
+				control.Position = UDim2.fromOffset(0, labelHeight + up9)
+				control.Size = UDim2.new(1, 0, 0, controlSize.Y.Offset)
+				frame.AutomaticSize = Enum.AutomaticSize.None
+				frame.Size = UDim2.new(1, 0, 0, labelHeight + up9 + controlSize.Y.Offset)
 			else
-				p109.AnchorPoint = Vector2.new(0, 0.5)
-				p109.Position = UDim2.fromScale(0, 0.5)
-				p110.AnchorPoint = AnchorPoint
-				p110.Position = Position9
-				p110.Size = Size3
-				p108.AutomaticSize = AutomaticSize
-				p108.Size = Size4
+				label.AnchorPoint = Vector2.new(0, 0.5)
+				label.Position = UDim2.fromScale(0, 0.5)
+				control.AnchorPoint = controlAnchor
+				control.Position = controlPosition
+				control.Size = controlSize
+				frame.AutomaticSize = frameAutoSize
+				frame.Size = frameSize
 			end
-			v117 = false
+			updating = false
 		end
 
-		f1354()
-		p107.Trove:Connect(p108:GetPropertyChangedSignal("AbsoluteSize"), f1354)
+		update()
+		context.Trove:Connect(frame:GetPropertyChangedSignal("AbsoluteSize"), update)
 
-		local function f1355()
-			t87 = p109.TextBounds.X
-			f1354()
+		local function onTextBoundsChanged()
+			labelWidth = label.TextBounds.X
+			update()
 		end
 
-		p107.Trove:Connect(p109:GetPropertyChangedSignal("TextBounds"), f1355)
+		context.Trove:Connect(label:GetPropertyChangedSignal("TextBounds"), onTextBoundsChanged)
 	end
 
-	local function f1356(p111)
-		local v124 = Instance.new(up0)
-		v124.BackgroundTransparency = 0.7
-		v124.BorderSizePixel = 0
-		v124.Size = UDim2.fromOffset(0, 1)
-		v124.LayoutOrder = p111
-		up1.Batch:Bind(v124, "BackgroundColor3", "TextColor")
-		v124.Parent = up2
+	local function addLine_proto(layoutOrder)
+		local line = Instance.new(up0)
+		line.BackgroundTransparency = 0.7
+		line.BorderSizePixel = 0
+		line.Size = UDim2.fromOffset(0, 1)
+		line.LayoutOrder = layoutOrder
+		context.Batch:Bind(line, "BackgroundColor3", "TextColor")
+		line.Parent = holder
 		local uiFlexItem = Instance.new("UIFlexItem")
 		uiFlexItem.FlexMode = Enum.UIFlexMode.Fill
-		uiFlexItem.Parent = v124
+		uiFlexItem.Parent = line
 	end
 
-	local function f1357(p112, p113, p114)
-		local v126 = Instance.new(up0)
-		v126.BackgroundTransparency = 1
-		v126.Size = UDim2.new(1, 0, 0, 16)
-		v126.BorderSizePixel = 0
-		v126.Parent = p113
+	local function buildDivider(self_, parent, context)
+		local holder = Instance.new(up0)
+		holder.BackgroundTransparency = 1
+		holder.Size = UDim2.new(1, 0, 0, 16)
+		holder.BorderSizePixel = 0
+		holder.Parent = parent
 		local uiListLayout = Instance.new("UIListLayout")
 		uiListLayout.FillDirection = Enum.FillDirection.Horizontal
 		uiListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 		uiListLayout.HorizontalFlex = Enum.UIFlexAlignment.Fill
 		uiListLayout.Padding = UDim.new(0, 0)
 		uiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-		uiListLayout.Parent = v126
+		uiListLayout.Parent = holder
 
-		local function f1358(p115)
-			local v128 = Instance.new(up0)
-			v128.BackgroundTransparency = 0.7
-			v128.BorderSizePixel = 0
-			v128.Size = UDim2.fromOffset(0, 1)
-			v128.LayoutOrder = p115
-			p114.Batch:Bind(v128, "BackgroundColor3", "TextColor")
-			v128.Parent = v126
+		local function addLine(layoutOrder)
+			local line = Instance.new(up0)
+			line.BackgroundTransparency = 0.7
+			line.BorderSizePixel = 0
+			line.Size = UDim2.fromOffset(0, 1)
+			line.LayoutOrder = layoutOrder
+			context.Batch:Bind(line, "BackgroundColor3", "TextColor")
+			line.Parent = holder
 			local uiFlexItem = Instance.new("UIFlexItem")
 			uiFlexItem.FlexMode = Enum.UIFlexMode.Fill
-			uiFlexItem.Parent = v128
+			uiFlexItem.Parent = line
 		end
 
-		f1358(0)
+		addLine(0)
 		local textLabel = Instance.new("TextLabel")
 		textLabel.BackgroundTransparency = 1
 		textLabel.BorderSizePixel = 0
 		textLabel.Size = UDim2.fromScale(0, 1)
 		textLabel.AutomaticSize = Enum.AutomaticSize.X
 		textLabel.FontFace = up1
-		textLabel.Text = string.upper(p112.Label)
+		textLabel.Text = string.upper(self_.Label)
 		textLabel.TextSize = 12
 		textLabel.TextXAlignment = Enum.TextXAlignment.Center
 		textLabel.LayoutOrder = 1
-		local v131
-		v131 = not (p112.Label == "")
-		textLabel.Visible = v131
-		p114.Batch:Bind(textLabel, "TextColor3", "TextColor")
-		textLabel.Parent = v126
+		local hasLabel
+		hasLabel = not (self_.Label == "")
+		textLabel.Visible = hasLabel
+		context.Batch:Bind(textLabel, "TextColor3", "TextColor")
+		textLabel.Parent = holder
 		local uiPadding = Instance.new("UIPadding")
 		uiPadding.PaddingLeft = UDim.new(0, 8)
 		uiPadding.PaddingRight = UDim.new(0, 8)
 		uiPadding.Parent = textLabel
-		f1358(2)
-		local t88 = { Object = v126, Label = textLabel }
-		p112._rt = t88
-		return v126
+		addLine(2)
+		local rendered = { Object = holder, Label = textLabel }
+		self_._rt = rendered
+		return holder
 	end
 
 	local function lazyModule_c0()
@@ -17982,111 +17982,111 @@ local function f1242()
 		self_._trove:Destroy()
 	end
 
-	local function f1362()
-		up0:UnbindFromRenderStep(GenerateGUID)
+	local function unbind_proto()
+		up0:UnbindFromRenderStep(up1)
 	end
 
 	local function initializePlayerCamera_proto(self_)
-		local GenerateGUID = up0:GenerateGUID(false)
+		local bindName = HttpService:GenerateGUID(false)
 
-		local function f1364()
-			local CurrentCamera5 = workspace.CurrentCamera
-			local v133 = CurrentCamera5.CFrame
-			local v134 = false
-			local GetOffset2 = self_._thirdPerson:GetOffset(v133)
-			if GetOffset2 ~= nil then
-				v133 = v133 * CFrame.new(GetOffset2)
-				CurrentCamera5.CameraType = Enum.CameraType.Track
-				v134 = true
+		local function applyCameraOffset()
+			local camera = workspace.CurrentCamera
+			local cframe = camera.CFrame
+			local changed = false
+			local offset = self_._thirdPerson:GetOffset(cframe)
+			if offset ~= nil then
+				cframe = cframe * CFrame.new(offset)
+				camera.CameraType = Enum.CameraType.Track
+				changed = true
 			end
-			local v135 = up1.GetMatrix()
-			if v135 ~= nil then
-				v133 = v133 * v135
-				v134 = true
+			local matrix = CameraShake.GetMatrix()
+			if matrix ~= nil then
+				cframe = cframe * matrix
+				changed = true
 			end
-			if v134 then
-				CurrentCamera5.CFrame = v133
+			if changed then
+				camera.CFrame = cframe
 			end
 		end
 
-		up1:BindToRenderStep(GenerateGUID, Enum.RenderPriority.Camera.Value + 1, f1364)
+		RunService:BindToRenderStep(bindName, Enum.RenderPriority.Camera.Value + 1, applyCameraOffset)
 
-		local function f1365()
-			up0:UnbindFromRenderStep(GenerateGUID)
+		local function unbind()
+			up0:UnbindFromRenderStep(bindName)
 		end
 
-		self_._trove:Add(f1365)
+		self_._trove:Add(unbind)
 	end
 
 	local function loadPlayerCamera()
-		local v136 = up0.fb()
+		local FovChanger = up0.fb()
 		up0.bS()
 		up0.a4()
-		local v137 = up0.t()
-		local v138 = up0.fc()
-		local v139 = up0.fd()
-		local v140 = up0.q()
+		local Signal = up0.t()
+		local CameraShake = up0.fc()
+		local ThirdPerson = up0.fd()
+		local Trove = up0.q()
 		up0.bm()
-		local v141 = cloneref(game:GetService("RunService"))
-		local v142 = cloneref(game:GetService("HttpService"))
+		local RunService = cloneref(game:GetService("RunService"))
+		local HttpService = cloneref(game:GetService("HttpService"))
 		local PlayerCamera = {}
 		PlayerCamera.__index = PlayerCamera
 
-		function PlayerCamera.new(p118, p119, p120)
-			local v143 = v140.new("player_camera")
-			local Add16 = v143:Add(v137.new())
+		function PlayerCamera.new(playerContext, settings, localBodyView)
+			local trove = Trove.new("player_camera")
+			local submitBodyMode = trove:Add(Signal.new())
 
-			local function f1367(p121)
-				p120:SetBodyMode(p121)
+			local function onBodyModeSubmitted(mode)
+				localBodyView:SetBodyMode(mode)
 			end
 
-			Add16:Connect(f1367)
-			local t91 = {
-				_trove = v143,
-				_submitBodyMode = Add16,
-				_localBodyView = p120,
-				_thirdPerson = v143:Add(v139.new(Add16, p118, p119)),
-				_fovChanger = v143:Add(v136.new())
+			submitBodyMode:Connect(onBodyModeSubmitted)
+			local camera = {
+				_trove = trove,
+				_submitBodyMode = submitBodyMode,
+				_localBodyView = localBodyView,
+				_thirdPerson = trove:Add(ThirdPerson.new(submitBodyMode, playerContext, settings)),
+				_fovChanger = trove:Add(FovChanger.new())
 			}
-			setmetatable(t91, PlayerCamera)
-			t91:_Initialize()
-			return t91
+			setmetatable(camera, PlayerCamera)
+			camera:_Initialize()
+			return camera
 		end
 
 		function PlayerCamera:_Initialize()
-			local GenerateGUID2 = v142:GenerateGUID(false)
+			local bindName = HttpService:GenerateGUID(false)
 
-			local function f1368()
-				local CurrentCamera6 = workspace.CurrentCamera
-				local v144 = CurrentCamera6.CFrame
-				local v145 = false
-				local GetOffset3 = self._thirdPerson:GetOffset(v144)
-				if GetOffset3 ~= nil then
-					v144 = v144 * CFrame.new(GetOffset3)
-					CurrentCamera6.CameraType = Enum.CameraType.Track
-					v145 = true
+			local function applyCameraOffset()
+				local camera = workspace.CurrentCamera
+				local cframe = camera.CFrame
+				local changed = false
+				local offset = self._thirdPerson:GetOffset(cframe)
+				if offset ~= nil then
+					cframe = cframe * CFrame.new(offset)
+					camera.CameraType = Enum.CameraType.Track
+					changed = true
 				end
-				local v146 = v138.GetMatrix()
-				if v146 ~= nil then
-					v144 = v144 * v146
-					v145 = true
+				local matrix = CameraShake.GetMatrix()
+				if matrix ~= nil then
+					cframe = cframe * matrix
+					changed = true
 				end
-				if v145 then
-					CurrentCamera6.CFrame = v144
+				if changed then
+					camera.CFrame = cframe
 				end
 			end
 
-			v141:BindToRenderStep(
-				GenerateGUID2,
+			RunService:BindToRenderStep(
+				bindName,
 				Enum.RenderPriority.Camera.Value + 1,
-				f1368
+				applyCameraOffset
 			)
 
-			local function f1369()
-				v141:UnbindFromRenderStep(GenerateGUID2)
+			local function unbind()
+				RunService:UnbindFromRenderStep(bindName)
 			end
 
-			self._trove:Add(f1369)
+			self._trove:Add(unbind)
 		end
 
 		function PlayerCamera:Destroy()
@@ -18096,80 +18096,80 @@ local function f1242()
 		return PlayerCamera
 	end
 
-	local function f1370(p122)
-		local GetPartBoundsInBox = workspace:GetPartBoundsInBox(CFrame.new(p122), up0, up1)
-		local v147 = nil
+	local function isPositionBlocked(position)
+		local parts = workspace:GetPartBoundsInBox(CFrame.new(position), up0, up1)
+		local index = nil
 		while true do
-			local v148
-			v147, v148 = GetPartBoundsInBox(nil, v147)
-			if v147 == nil then
+			local part
+			index, part = parts(nil, index)
+			if index == nil then
 				break
 			end
-			if up2(v148) then
+			if up2(part) then
 				return true
 			end
 		end
 		return false
 	end
 
-	local function f1371()
+	local function createAsync()
 		return (up0:_CreateAsync(up1))
 	end
 
-	local function f1372(p123)
-		if not (p123:IsA("BasePart") and not up0._processedParts[p123]) then
+	local function consider_proto(part)
+		if not (part:IsA("BasePart") and not self_._processedParts[part]) then
 			return
 		end
-		up0._processedParts[p123] = true
-		up1 = up1 + 1
-		local v149 = up2(p123)
-		if v149 == nil then
+		self_._processedParts[part] = true
+		scanned = scanned + 1
+		local candidate = up2(part)
+		if candidate == nil then
 			return
 		end
-		if up3(up4(v149, up5, up6).Position) then
+		if up3(up4(candidate, upDepth, forwardDepth).Position) then
 			return
 		end
-		table.insert(up0._pool, v149)
+		table.insert(self_._pool, candidate)
 	end
 
-	local function f1373(p124, p125)
-		local ProjectileBreaker = up0.data.Ragebot.Evasion.ProjectileBreaker
-		local Min = ProjectileBreaker.DepthUp.Min
-		local Max = ProjectileBreaker.DepthUp.Max
-		local Min2 = ProjectileBreaker.DepthForward.Min
-		local t92 = ProjectileBreaker.DepthForward
-		t92 = t92.Max
-		local v150 = Min2 + t92
-		t92 = 0
-		local v151 = (Min + Max) * 0.5
-		local v152 = v150 * 0.5
+	local function collectBreakerParts(self_, suffix)
+		local breaker = up0.data.Ragebot.Evasion.ProjectileBreaker
+		local upMin = breaker.DepthUp.Min
+		local upMax = breaker.DepthUp.Max
+		local forwardMin = breaker.DepthForward.Min
+		local scanned = breaker.DepthForward
+		scanned = scanned.Max
+		local forwardSum = forwardMin + scanned
+		scanned = 0
+		local upDepth = (upMin + upMax) * 0.5
+		local forwardDepth = forwardSum * 0.5
 
-		local function f1374(p126)
-			if not (p126:IsA("BasePart") and not p124._processedParts[p126]) then
+		local function consider(part)
+			if not (part:IsA("BasePart") and not self_._processedParts[part]) then
 				return
 			end
-			p124._processedParts[p126] = true
-			t92 = t92 + 1
-			local v153 = up2(p126)
-			if v153 == nil then
+			self_._processedParts[part] = true
+			scanned = scanned + 1
+			local candidate = up2(part)
+			if candidate == nil then
 				return
 			end
-			if up3(up4(v153, v151, v152).Position) then
+			if up3(up4(candidate, upDepth, forwardDepth).Position) then
 				return
 			end
-			table.insert(p124._pool, v153)
+			table.insert(self_._pool, candidate)
 		end
 
-		for _, v154 in up4:GetTagged("RaycastWhitelist" .. p125) do
-			if not up5(v154) then
-				f1374(v154)
-				if up6 <= t92 or up7 <= #p124._pool then
+		for _, tagged in up4:GetTagged("RaycastWhitelist" .. suffix) do
+			if not up5(tagged) then
+				consider(tagged)
+				if up6 <= scanned or up7 <= #self_._pool then
 					return
 				end
-				for _, v155 in v154:GetDescendants() do
-					if not up5(v155) then
-						f1374(v155)
-						if up6 <= t92 or up7 <= #p124._pool then
+				for _, descendant in tagged:GetDescendants() do
+					if not up5(descendant) then
+						consider(descendant)
+						if up6 <= scanned or up7 <= #self_._pool then
 							return
 						end
 					end
@@ -18178,8 +18178,8 @@ local function f1242()
 		end
 	end
 
-	local function f1375(p127, p128)
-		p127._cursor:Set(p128)
+	local function setCursor(self_, value)
+		self_._cursor:Set(value)
 	end
 
 	local function lazyModule_e9()
@@ -18191,10 +18191,10 @@ local function f1242()
 		return t93.c
 	end
 
-	local function f1377(p129, p130)
-		p129._overlayHidden = p130
-		p129._isOverlayDirty = true
-		return (p129:_EnsureLoaded())
+	local function setOverlayHidden(self_, hidden)
+		self_._overlayHidden = hidden
+		self_._isOverlayDirty = true
+		return (self_:_EnsureLoaded())
 	end
 
 	local function lazyModule_hA()
@@ -18206,117 +18206,117 @@ local function f1242()
 		return t94.c
 	end
 
-	local function f1379()
+	local function getQueueName()
 		return (up0(up1, "_current_queue_name"))
 	end
 
-	local function f1380(p131, p132)
-		local v156 = up0
-		local v157 = up1 * up2 + up3
-		local v158 = v157 % v156 + up4
-		up4 = up4 + 1
-		up2 = v158
-		up3 = v157 % 4859 * (v156 % 5781)
-		return p131 + v158 % p132 - p131 + 1
+	local function nextInteger_proto(min, max)
+		local modulus2 = modulus
+		local next = multiplier * state + increment
+		local value = next % modulus2 + counter
+		counter = counter + 1
+		state = value
+		increment = next % 4859 * (modulus2 % 5781)
+		return min + value % max - min + 1
 	end
 
-	local function f1381(p133)
-		local v159 = 12345
-		local v160 = p133 % 2147483648
-		local v161 = 1
-		local v162 = 99999999
-		local v163 = 1103515245
+	local function newSeededRandom(seed)
+		local increment = 12345
+		local state = seed % 2147483648
+		local counter = 1
+		local modulus = 99999999
+		local multiplier = 1103515245
 
-		local function f1382(p134, p135)
-			local v164 = v162
-			local v165 = v163 * v160 + v159
-			local v166 = v165 % v164 + v161
-			v161 = v161 + 1
-			v160 = v166
-			v159 = v165 % 4859 * (v164 % 5781)
-			return p134 + v166 % p135 - p134 + 1
+		local function nextInteger(min, max)
+			local modulus2 = modulus
+			local next = multiplier * state + increment
+			local value = next % modulus2 + counter
+			counter = counter + 1
+			state = value
+			increment = next % 4859 * (modulus2 % 5781)
+			return min + value % max - min + 1
 		end
 
-		return f1382
+		return nextInteger
 	end
 
-	local function f1383(p136)
-		local t95 = { buf = buffer.create(1024), len = 0 }
-		up0(t95, up1)
-		up2(t95, p136.mapName)
-		up3(t95, p136.startCFrame)
-		up4(t95, p136.displayPosition)
-		local startEquippedIndex = p136.startEquippedIndex
+	local function encodeRecording(recording)
+		local writer = { buf = buffer.create(1024), len = 0 }
+		up0(writer, up1)
+		up2(writer, recording.mapName)
+		up3(writer, recording.startCFrame)
+		up4(writer, recording.displayPosition)
+		local startEquippedIndex = recording.startEquippedIndex
 		if startEquippedIndex == nil then
-			up0(t95, 0)
+			up0(writer, 0)
 		else
-			up0(t95, 1)
-			up5(t95, startEquippedIndex)
+			up0(writer, 1)
+			up5(writer, startEquippedIndex)
 		end
-		local startEquipCooldown = p136.startEquipCooldown
+		local startEquipCooldown = recording.startEquipCooldown
 		if startEquipCooldown == nil then
-			up0(t95, 0)
+			up0(writer, 0)
 		else
-			up0(t95, 1)
-			up6(t95, startEquipCooldown)
+			up0(writer, 1)
+			up6(writer, startEquipCooldown)
 		end
-		local v167 = 0
-		local loadoutRequirements = p136.loadoutRequirements
-		local v168 = nil
+		local requirementCount = 0
+		local requirements = recording.loadoutRequirements
+		local name = nil
 		while true do
 			local _
-			v168, _ = loadoutRequirements(nil, v168)
-			if v168 == nil then
+			name, _ = requirements(nil, name)
+			if name == nil then
 				break
 			end
-			v167 = v167 + 1
+			requirementCount = requirementCount + 1
 		end
-		up5(t95, v167)
-		local loadoutRequirements2 = p136.loadoutRequirements
-		local v169 = nil
+		up5(writer, requirementCount)
+		local requirements2 = recording.loadoutRequirements
+		local name2 = nil
 		while true do
 			local _
-			v169, _ = loadoutRequirements2(nil, v169)
-			if v169 == nil then
+			name2, _ = requirements2(nil, name2)
+			if name2 == nil then
 				break
 			end
-			up2(t95, v169)
+			up2(writer, name2)
 		end
-		local keypoints3 = p136.keypoints
-		up5(t95, #keypoints3)
-		local v170 = nil
+		local keypoints = recording.keypoints
+		up5(writer, #keypoints)
+		local index = nil
 		while true do
-			local t96
-			v170, t96 = keypoints3(nil, v170)
-			if v170 == nil then
+			local keypoint
+			index, keypoint = keypoints(nil, index)
+			if index == nil then
 				break
 			end
-			up6(t95, t96.offset)
-			up7(t95, t96.action)
+			up6(writer, keypoint.offset)
+			up7(writer, keypoint.action)
 		end
-		local positions3 = p136.positions
-		up5(t95, #positions3)
-		local v171 = nil
+		local positions = recording.positions
+		up5(writer, #positions)
+		local index2 = nil
 		while true do
-			local t97
-			v171, t97 = positions3(nil, v171)
-			if v171 == nil then
+			local sample
+			index2, sample = positions(nil, index2)
+			if index2 == nil then
 				break
 			end
-			up6(t95, t97.offset)
-			up4(t95, t97.position)
+			up6(writer, sample.offset)
+			up4(writer, sample.position)
 		end
-		local v172 = buffer.create(t95.len)
-		buffer.copy(v172, 0, t95.buf, 0, t95.len)
-		return (up8.encode(buffer.tostring(v172)))
+		local bytes = buffer.create(writer.len)
+		buffer.copy(bytes, 0, writer.buf, 0, writer.len)
+		return (up8.encode(buffer.tostring(bytes)))
 	end
 
-	local function f1384(p137)
-		up0(p137, up1, table.create(3), table.create(1), true)
-		local AddSlider22 = p137.AddSlider
+	local function buildShootOptions_proto(section)
+		addKeybindToggle(section, up1, table.create(3), table.create(1), true)
+		local AddSlider22 = section.AddSlider
 		local shootFramesSliderOptions = { Label = "Shoot Frames", Min = 1, Max = 5, Config = table.create(2) }
-		AddSlider22(p137, shootFramesSliderOptions)
-		local AddSlider23 = p137.AddSlider
+		AddSlider22(section, shootFramesSliderOptions)
+		local AddSlider23 = section.AddSlider
 		local stabilitySliderOptions = {
 			Label = "Stability",
 			Min = 0,
@@ -18324,51 +18324,51 @@ local function f1242()
 			Step = 0.001,
 			Config = table.create(2)
 		}
-		AddSlider23(p137, stabilitySliderOptions)
+		AddSlider23(section, stabilitySliderOptions)
 	end
 
-	local function f1385(p138)
-		local f1386 = table.create(3)
-		local AddLabel = p138.AddLabel
+	local function buildWeaponOptions_proto(section)
+		local weaponNames = table.create(3)
+		local AddLabel = section.AddLabel
 		local weaponPriorityLabelOptions = { Label = "Weapon Priority", NoSeparator = true }
-		local weaponPriorityLabel = AddLabel(p138, weaponPriorityLabelOptions)
-		local AddGear = p138.AddGear
+		local weaponPriorityLabel = AddLabel(section, weaponPriorityLabelOptions)
+		local AddGear = section.AddGear
 		local weaponPriorityGearOptions = { Row = weaponPriorityLabel.Row }
-		local weaponPriorityGear = AddGear(p138, weaponPriorityGearOptions)
-		local v173 = nil
+		local weaponPriorityGear = AddGear(section, weaponPriorityGearOptions)
+		local index = nil
 		while true do
-			local v174
-			v173, v174 = f1386(nil, v173)
-			if v173 == nil then
+			local weaponName
+			index, weaponName = weaponNames(nil, index)
+			if index == nil then
 				break
 			end
 			local AddToggle44 = weaponPriorityGear.AddToggle
-			local t104 = { Label = v174, Config = table.create(4) }
-			AddToggle44(weaponPriorityGear, t104)
+			local toggleOptions = { Label = weaponName, Config = table.create(4) }
+			AddToggle44(weaponPriorityGear, toggleOptions)
 		end
-		local AddOrderedList = p138.AddOrderedList
-		local t105 = { Items = f1386, Default = f1386, Config = table.create(3) }
-		AddOrderedList(p138, t105)
-		local AddDropdown18 = p138.AddDropdown
+		local AddOrderedList = section.AddOrderedList
+		local listOptions = { Items = weaponNames, Default = weaponNames, Config = table.create(3) }
+		AddOrderedList(section, listOptions)
+		local AddDropdown18 = section.AddDropdown
 		local onEmptyDropdownOptions = {
 			Label = "On Empty",
 			Options = table.create(3),
 			Config = table.create(3)
 		}
-		AddDropdown18(p138, onEmptyDropdownOptions)
+		AddDropdown18(section, onEmptyDropdownOptions)
 	end
 
-	local function f1387(p139)
-		local AddDropdown19 = p139.AddDropdown
+	local function buildEvasionOptions_proto(section)
+		local AddDropdown19 = section.AddDropdown
 		local evasionModeDropdownOptions = {
 			Label = "Evasion Mode",
 			Options = table.create(2),
 			Config = table.create(3)
 		}
-		local evasionModeDropdown = AddDropdown19(p139, evasionModeDropdownOptions)
-		local AddGroup10 = p139.AddGroup
+		local evasionModeDropdown = AddDropdown19(section, evasionModeDropdownOptions)
+		local AddGroup10 = section.AddGroup
 		local randomGroupOptions = { Source = evasionModeDropdown, Option = "Random" }
-		local randomGroup = AddGroup10(p139, randomGroupOptions)
+		local randomGroup = AddGroup10(section, randomGroupOptions)
 		local AddToggle45 = randomGroup.AddToggle
 		local useCharacterOriginToggleOptions = { Label = "Use Character Origin", Config = table.create(4) }
 		AddToggle45(randomGroup, useCharacterOriginToggleOptions)
@@ -18391,27 +18391,27 @@ local function f1242()
 		AddSlider25(randomGroup, randomRangeSliderOptions)
 	end
 
-	local function f1388(p140)
-		local AddSection19 = p140.AddSection
-		local t113 = { Title = "General", Side = "left" }
-		local v176 = AddSection19(p140, t113)
-		up0(v176)
-		up1(v176)
-		local AddSection20 = p140.AddSection
-		local t114 = { Title = "Strategy", Side = "right" }
-		up2((AddSection20(p140, t114)))
+	local function buildRagebotTab_proto(tab)
+		local AddSection19 = tab.AddSection
+		local generalOptions = { Title = "General", Side = "left" }
+		local generalSection = AddSection19(tab, generalOptions)
+		buildShootOptions(generalSection)
+		buildWeaponOptions(generalSection)
+		local AddSection20 = tab.AddSection
+		local strategyOptions = { Title = "Strategy", Side = "right" }
+		buildEvasionOptions((AddSection20(tab, strategyOptions)))
 	end
 
-	local function f1389()
+	local function loadRagebotOptions()
 		up0.cI()
-		local v177 = up0.gP()
+		local addKeybindToggle = up0.gP()
 
-		local function f1390(p141)
-			v177(p141, up1, table.create(3), table.create(1), true)
-			local AddSlider26 = p141.AddSlider
+		local function buildShootOptions(section)
+			addKeybindToggle(section, up1, table.create(3), table.create(1), true)
+			local AddSlider26 = section.AddSlider
 			local shootFramesSliderOptions = { Label = "Shoot Frames", Min = 1, Max = 5, Config = table.create(2) }
-			AddSlider26(p141, shootFramesSliderOptions)
-			local AddSlider27 = p141.AddSlider
+			AddSlider26(section, shootFramesSliderOptions)
+			local AddSlider27 = section.AddSlider
 			local stabilitySliderOptions = {
 				Label = "Stability",
 				Min = 0,
@@ -18419,51 +18419,51 @@ local function f1242()
 				Step = 0.001,
 				Config = table.create(2)
 			}
-			AddSlider27(p141, stabilitySliderOptions)
+			AddSlider27(section, stabilitySliderOptions)
 		end
 
-		local function f1391(p142)
-			local f1392 = table.create(3)
-			local AddLabel2 = p142.AddLabel
+		local function buildWeaponOptions(section)
+			local weaponNames = table.create(3)
+			local AddLabel2 = section.AddLabel
 			local weaponPriorityLabelOptions = { Label = "Weapon Priority", NoSeparator = true }
-			local weaponPriorityLabel = AddLabel2(p142, weaponPriorityLabelOptions)
-			local AddGear2 = p142.AddGear
+			local weaponPriorityLabel = AddLabel2(section, weaponPriorityLabelOptions)
+			local AddGear2 = section.AddGear
 			local weaponPriorityGearOptions = { Row = weaponPriorityLabel.Row }
-			local weaponPriorityGear = AddGear2(p142, weaponPriorityGearOptions)
-			local v178 = nil
+			local weaponPriorityGear = AddGear2(section, weaponPriorityGearOptions)
+			local index = nil
 			while true do
-				local v179
-				v178, v179 = f1392(nil, v178)
-				if v178 == nil then
+				local weaponName
+				index, weaponName = weaponNames(nil, index)
+				if index == nil then
 					break
 				end
 				local AddToggle46 = weaponPriorityGear.AddToggle
-				local t121 = { Label = v179, Config = table.create(4) }
-				AddToggle46(weaponPriorityGear, t121)
+				local toggleOptions = { Label = weaponName, Config = table.create(4) }
+				AddToggle46(weaponPriorityGear, toggleOptions)
 			end
-			local AddOrderedList2 = p142.AddOrderedList
-			local t122 = { Items = f1392, Default = f1392, Config = table.create(3) }
-			AddOrderedList2(p142, t122)
-			local AddDropdown20 = p142.AddDropdown
+			local AddOrderedList2 = section.AddOrderedList
+			local listOptions = { Items = weaponNames, Default = weaponNames, Config = table.create(3) }
+			AddOrderedList2(section, listOptions)
+			local AddDropdown20 = section.AddDropdown
 			local onEmptyDropdownOptions = {
 				Label = "On Empty",
 				Options = table.create(3),
 				Config = table.create(3)
 			}
-			AddDropdown20(p142, onEmptyDropdownOptions)
+			AddDropdown20(section, onEmptyDropdownOptions)
 		end
 
-		local function f1393(p143)
-			local AddDropdown21 = p143.AddDropdown
+		local function buildEvasionOptions(section)
+			local AddDropdown21 = section.AddDropdown
 			local evasionModeDropdownOptions = {
 				Label = "Evasion Mode",
 				Options = table.create(2),
 				Config = table.create(3)
 			}
-			local evasionModeDropdown = AddDropdown21(p143, evasionModeDropdownOptions)
-			local AddGroup11 = p143.AddGroup
+			local evasionModeDropdown = AddDropdown21(section, evasionModeDropdownOptions)
+			local AddGroup11 = section.AddGroup
 			local randomGroupOptions = { Source = evasionModeDropdown, Option = "Random" }
-			local randomGroup = AddGroup11(p143, randomGroupOptions)
+			local randomGroup = AddGroup11(section, randomGroupOptions)
 			local AddToggle47 = randomGroup.AddToggle
 			local useCharacterOriginToggleOptions = { Label = "Use Character Origin", Config = table.create(4) }
 			AddToggle47(randomGroup, useCharacterOriginToggleOptions)
@@ -18486,37 +18486,37 @@ local function f1242()
 			AddSlider29(randomGroup, randomRangeSliderOptions)
 		end
 
-		local function f1394(p144)
-			local AddSection21 = p144.AddSection
-			local t130 = { Title = "General", Side = "left" }
-			local v181 = AddSection21(p144, t130)
-			f1390(v181)
-			f1391(v181)
-			local AddSection22 = p144.AddSection
-			local t131 = { Title = "Strategy", Side = "right" }
-			f1393((AddSection22(p144, t131)))
+		local function buildRagebotTab(tab)
+			local AddSection21 = tab.AddSection
+			local generalOptions = { Title = "General", Side = "left" }
+			local generalSection = AddSection21(tab, generalOptions)
+			buildShootOptions(generalSection)
+			buildWeaponOptions(generalSection)
+			local AddSection22 = tab.AddSection
+			local strategyOptions = { Title = "Strategy", Side = "right" }
+			buildEvasionOptions((AddSection22(tab, strategyOptions)))
 		end
 
-		return f1394
+		return buildRagebotTab
 	end
 
-	local function f1395()
+	local function getFavorites_proto()
 		return (up0._resolver:GetByItem())
 	end
 
 	local function applyFavorited_proto(self_)
-		local t132 = self_
+		local self_2 = self_
 		if self_._isApplied then
 			return
 		end
-		t132._isApplied = true
+		self_2._isApplied = true
 
-		local function f1397()
-			return (t132._resolver:GetByItem())
+		local function getFavorites()
+			return (self_2._resolver:GetByItem())
 		end
 
-		t132._dataHook:Set(FavoritedCosmetics, f1397)
-		t132._dataHook:TriggerDataChangedSignal(FavoritedCosmetics)
+		self_2._dataHook:Set(dataKey, getFavorites)
+		self_2._dataHook:TriggerDataChangedSignal(dataKey)
 	end
 
 	local function revertFavorited_proto(self_)
@@ -18524,28 +18524,28 @@ local function f1242()
 			return
 		end
 		self_._isApplied = false
-		self_._dataHook:Unset(FavoritedCosmetics)
-		self_._dataHook:TriggerDataChangedSignal(FavoritedCosmetics)
+		self_._dataHook:Unset(dataKey)
+		self_._dataHook:TriggerDataChangedSignal(dataKey)
 	end
 
-	local function f1399()
+	local function onResolverChanged_proto()
 		if up0._isApplied then
 			up0._dataHook:TriggerDataChangedSignal(up1)
 		end
 	end
 
-	local function newFavorited_proto(p147, p148)
-		local v182 = up0.new("cosmetics.Favorited")
-		local t133 = { _trove = v182, _dataHook = p147, _resolver = p148, _isApplied = false }
+	local function newFavorited_proto(dataHook, resolver)
+		local trove = Trove.new("cosmetics.Favorited")
+		local favorited = { _trove = trove, _dataHook = dataHook, _resolver = resolver, _isApplied = false }
 
-		local function f1401()
-			if t133._isApplied then
-				t133._dataHook:TriggerDataChangedSignal(FavoritedCosmetics)
+		local function onResolverChanged()
+			if favorited._isApplied then
+				favorited._dataHook:TriggerDataChangedSignal(dataKey)
 			end
 		end
 
-		v182:Connect(p148.changed, f1401)
-		return (setmetatable(t133, Favorited))
+		trove:Connect(resolver.changed, onResolverChanged)
+		return (setmetatable(favorited, Favorited))
 	end
 
 	local function destroyFavorited_proto2(self_)
@@ -18555,38 +18555,38 @@ local function f1242()
 	local function loadFavorited()
 		up0.cM()
 		up0.c0()
-		local v183 = up0.q()
-		local FavoritedCosmetics = "FavoritedCosmetics"
+		local Trove = up0.q()
+		local dataKey = "FavoritedCosmetics"
 		local Favorited = {}
 		Favorited.__index = Favorited
 
-		function Favorited.new(p150, p151)
-			local v184 = v183.new("cosmetics.Favorited")
-			local t135 = { _trove = v184, _dataHook = p150, _resolver = p151, _isApplied = false }
+		function Favorited.new(dataHook, resolver)
+			local trove = Trove.new("cosmetics.Favorited")
+			local favorited = { _trove = trove, _dataHook = dataHook, _resolver = resolver, _isApplied = false }
 
-			local function f1404()
-				if t135._isApplied then
-					t135._dataHook:TriggerDataChangedSignal(FavoritedCosmetics)
+			local function onResolverChanged()
+				if favorited._isApplied then
+					favorited._dataHook:TriggerDataChangedSignal(dataKey)
 				end
 			end
 
-			v184:Connect(p151.changed, f1404)
-			return (setmetatable(t135, Favorited))
+			trove:Connect(resolver.changed, onResolverChanged)
+			return (setmetatable(favorited, Favorited))
 		end
 
 		function Favorited:Apply()
-			local t136 = self
+			local self_ = self
 			if self._isApplied then
 				return
 			end
-			t136._isApplied = true
+			self_._isApplied = true
 
-			local function f1405()
-				return (t136._resolver:GetByItem())
+			local function getFavorites()
+				return (self_._resolver:GetByItem())
 			end
 
-			t136._dataHook:Set(FavoritedCosmetics, f1405)
-			t136._dataHook:TriggerDataChangedSignal(FavoritedCosmetics)
+			self_._dataHook:Set(dataKey, getFavorites)
+			self_._dataHook:TriggerDataChangedSignal(dataKey)
 		end
 
 		function Favorited:Revert()
@@ -18594,8 +18594,8 @@ local function f1242()
 				return
 			end
 			self._isApplied = false
-			self._dataHook:Unset(FavoritedCosmetics)
-			self._dataHook:TriggerDataChangedSignal(FavoritedCosmetics)
+			self._dataHook:Unset(dataKey)
+			self._dataHook:TriggerDataChangedSignal(dataKey)
 		end
 
 		function Favorited:Destroy()
@@ -18606,273 +18606,273 @@ local function f1242()
 	end
 
 	local function initializeGuardedInstance_proto(self_)
-		local function f1407(p153)
-			if self_._isWriting or self_._overrides[p153] == nil then
+		local function onChanged(property)
+			if self_._isWriting or self_._overrides[property] == nil then
 				return
 			end
-			local _target2 = self_._target
-			self_._originals[p153] = _target2[p153]
+			local target = self_._target
+			self_._originals[property] = target[property]
 			self_._isWriting = true
-			_target2[p153] = self_._overrides[p153]
+			target[property] = self_._overrides[property]
 			self_._isWriting = false
 		end
 
-		self_._trove:Connect(self_._target.Changed, f1407)
+		self_._trove:Connect(self_._target.Changed, onChanged)
 	end
 
-	local function setOverride_proto(self_, p155, p156)
-		local _target3 = self_._target
-		if self_._originals[p155] == nil then
-			self_._originals[p155] = _target3[p155]
+	local function setOverride_proto(self_, property, value)
+		local target = self_._target
+		if self_._originals[property] == nil then
+			self_._originals[property] = target[property]
 		end
-		self_._overrides[p155] = p156
+		self_._overrides[property] = value
 		self_._isWriting = true
-		_target3[p155] = p156
+		target[property] = value
 		self_._isWriting = false
 	end
 
-	local function clearOverride_proto(self_, p158)
-		local v185 = self_._originals[p158]
-		if v185 ~= nil then
-			self_._originals[p158] = nil
-			self_._overrides[p158] = nil
-			local _target4 = self_._target
+	local function clearOverride_proto(self_, property)
+		local original = self_._originals[property]
+		if original ~= nil then
+			self_._originals[property] = nil
+			self_._overrides[property] = nil
+			local target = self_._target
 			self_._isWriting = true
-			_target4[p158] = v185
+			target[property] = original
 			self_._isWriting = false
 		end
 	end
 
-	local function newGuardedInstance_proto(p159)
-		local t137 = {
-			_trove = up0.new("instance.GuardedInstance"),
-			_target = p159,
+	local function newGuardedInstance_proto(target)
+		local guarded = {
+			_trove = Trove.new("instance.GuardedInstance"),
+			_target = target,
 			_originals = {},
 			_overrides = {},
 			_isWriting = false
 		}
-		setmetatable(t137, GuardedInstance)
-		t137:_Initialize()
-		return t137
+		setmetatable(guarded, GuardedInstance)
+		guarded:_Initialize()
+		return guarded
 	end
 
 	local function clearAllOverrides_proto(self_)
 		self_._isWriting = true
-		local _overrides = self_._overrides
-		local v186 = nil
+		local overrides = self_._overrides
+		local property = nil
 		while true do
 			local _
-			v186, _ = _overrides(nil, v186)
-			if v186 == nil then
+			property, _ = overrides(nil, property)
+			if property == nil then
 				break
 			end
-			local v187 = self_._originals[v186]
-			self_._originals[v186] = nil
-			self_._overrides[v186] = nil
-			self_._target[v186] = v187
+			local original = self_._originals[property]
+			self_._originals[property] = nil
+			self_._overrides[property] = nil
+			self_._target[property] = original
 		end
 		self_._isWriting = false
 	end
 
 	local function destroyGuardedInstance_proto(self_)
 		self_._trove:Destroy()
-		local _target5 = self_._target
-		local _originals = self_._originals
-		local v188 = nil
+		local target = self_._target
+		local originals = self_._originals
+		local property = nil
 		while true do
-			local v189
-			v188, v189 = _originals(nil, v188)
-			if v188 == nil then
+			local original
+			property, original = originals(nil, property)
+			if property == nil then
 				break
 			end
-			_target5[v188] = v189
+			target[property] = original
 		end
 	end
 
 	local function loadGuardedInstance()
-		local v190 = up0.q()
+		local Trove = up0.q()
 		local GuardedInstance = {}
 		GuardedInstance.__index = GuardedInstance
 
-		function GuardedInstance.new(p162)
-			local t139 = {
-				_trove = v190.new("instance.GuardedInstance"),
-				_target = p162,
+		function GuardedInstance.new(target)
+			local guarded = {
+				_trove = Trove.new("instance.GuardedInstance"),
+				_target = target,
 				_originals = {},
 				_overrides = {},
 				_isWriting = false
 			}
-			setmetatable(t139, GuardedInstance)
-			t139:_Initialize()
-			return t139
+			setmetatable(guarded, GuardedInstance)
+			guarded:_Initialize()
+			return guarded
 		end
 
 		function GuardedInstance:_Initialize()
-			local function f1414(p163)
-				if self._isWriting or self._overrides[p163] == nil then
+			local function onChanged(property)
+				if self._isWriting or self._overrides[property] == nil then
 					return
 				end
-				local _target6 = self._target
-				self._originals[p163] = _target6[p163]
+				local target = self._target
+				self._originals[property] = target[property]
 				self._isWriting = true
-				_target6[p163] = self._overrides[p163]
+				target[property] = self._overrides[property]
 				self._isWriting = false
 			end
 
-			self._trove:Connect(self._target.Changed, f1414)
+			self._trove:Connect(self._target.Changed, onChanged)
 		end
 
-		function GuardedInstance:SetOverride(p164, p165)
-			local _target7 = self._target
-			if self._originals[p164] == nil then
-				self._originals[p164] = _target7[p164]
+		function GuardedInstance:SetOverride(property, value)
+			local target = self._target
+			if self._originals[property] == nil then
+				self._originals[property] = target[property]
 			end
-			self._overrides[p164] = p165
+			self._overrides[property] = value
 			self._isWriting = true
-			_target7[p164] = p165
+			target[property] = value
 			self._isWriting = false
 		end
 
-		function GuardedInstance:ClearOverride(p166)
-			local v191 = self._originals[p166]
-			if v191 ~= nil then
-				self._originals[p166] = nil
-				self._overrides[p166] = nil
-				local _target8 = self._target
+		function GuardedInstance:ClearOverride(property)
+			local original = self._originals[property]
+			if original ~= nil then
+				self._originals[property] = nil
+				self._overrides[property] = nil
+				local target = self._target
 				self._isWriting = true
-				_target8[p166] = v191
+				target[property] = original
 				self._isWriting = false
 			end
 		end
 
 		function GuardedInstance:ClearAllOverrides()
 			self._isWriting = true
-			local _overrides2 = self._overrides
-			local v192 = nil
+			local overrides = self._overrides
+			local property = nil
 			while true do
 				local _
-				v192, _ = _overrides2(nil, v192)
-				if v192 == nil then
+				property, _ = overrides(nil, property)
+				if property == nil then
 					break
 				end
-				local v193 = self._originals[v192]
-				self._originals[v192] = nil
-				self._overrides[v192] = nil
-				self._target[v192] = v193
+				local original = self._originals[property]
+				self._originals[property] = nil
+				self._overrides[property] = nil
+				self._target[property] = original
 			end
 			self._isWriting = false
 		end
 
 		function GuardedInstance:Destroy()
 			self._trove:Destroy()
-			local _target9 = self._target
-			local _originals2 = self._originals
-			local v194 = nil
+			local target = self._target
+			local originals = self._originals
+			local property = nil
 			while true do
-				local v195
-				v194, v195 = _originals2(nil, v194)
-				if v194 == nil then
+				local original
+				property, original = originals(nil, property)
+				if property == nil then
 					break
 				end
-				_target9[v194] = v195
+				target[property] = original
 			end
 		end
 
 		return GuardedInstance
 	end
 
-	local function f1415(p167)
-		local inner16 = p167.fighterState.inner
-		up0(inner16.Input, inner16, "StartShooting")
+	local function startShooting(context)
+		local fighter = context.fighterState.inner
+		up0(fighter.Input, fighter, "StartShooting")
 	end
 
-	local function f1416(p168, p169)
-		local t140 = {
-			position = p168,
-			recordings = p169,
+	local function newRouteMarker(position, recordings)
+		local marker = {
+			position = position,
+			recordings = recordings,
 			_trove = up0.new(),
 			_billboard = nil,
 			_setDistance = nil
 		}
-		return (setmetatable(t140, up1))
+		return (setmetatable(marker, up1))
 	end
 
-	local function f1417(p170)
-		up0._errorReporter:ReportResult(up0._noGameHitsound:SetEnabled(p170))
+	local function setNoGameHitsound(enabled)
+		up0._errorReporter:ReportResult(up0._noGameHitsound:SetEnabled(enabled))
 	end
 
-	local function f1418()
-		up0.recompute(up1._leaderboardRankHook)
+	local function onLeaderboardRankChanged_proto()
+		up0.recompute(self_._leaderboardRankHook)
 	end
 
-	local function f1419(p171)
-		up0.recompute(up1._requestBinding)
-		up1._attributeSink:RefreshScope(p171)
+	local function onAttributeChanged_proto(scope)
+		up0.recompute(self_._requestBinding)
+		self_._attributeSink:RefreshScope(scope)
 	end
 
-	local function f1420(p172)
-		up0._attributeSink:RefreshScope(p172)
+	local function onLeaderstatChanged_proto(scope)
+		self_._attributeSink:RefreshScope(scope)
 	end
 
-	local function f1421(p173)
-		up0._leaderstatSink:RefreshScope(p173)
-		if p173 == "LocalPlayer" then
-			up1.recompute(up0._dataHook)
-			up2.recompute(up0._leaderboardRankHook)
+	local function onRankedEloChanged_proto(scope)
+		self_._leaderstatSink:RefreshScope(scope)
+		if scope == "LocalPlayer" then
+			up1.recompute(self_._dataHook)
+			up2.recompute(self_._leaderboardRankHook)
 		end
 	end
 
-	local function f1422(p174)
-		local f1423 = up0
-		local v196 = nil
+	local function bindSpoofRecompute(self_)
+		local attributeNames = up0
+		local index = nil
 		while true do
-			local v197
-			v196, v197 = f1423(nil, v196)
-			if v196 == nil then
+			local attributeName
+			index, attributeName = attributeNames(nil, index)
+			if index == nil then
 				break
 			end
 
-			local function f1424(p175)
-				up0.recompute(p174._requestBinding)
-				p174._attributeSink:RefreshScope(p175)
+			local function onAttributeChanged(scope)
+				up0.recompute(self_._requestBinding)
+				self_._attributeSink:RefreshScope(scope)
 			end
 
-			up1(p174._trove, v197, f1424)
+			up1(self_._trove, attributeName, onAttributeChanged)
 		end
 
-		local function f1425(p176)
-			p174._leaderstatSink:RefreshScope(p176)
-			if p176 == "LocalPlayer" then
-				up1.recompute(p174._dataHook)
-				up2.recompute(p174._leaderboardRankHook)
+		local function onRankedEloChanged(scope)
+			self_._leaderstatSink:RefreshScope(scope)
+			if scope == "LocalPlayer" then
+				up1.recompute(self_._dataHook)
+				up2.recompute(self_._leaderboardRankHook)
 			end
 		end
 
-		up1(p174._trove, "RankedElo", f1425)
+		up1(self_._trove, "RankedElo", onRankedEloChanged)
 
-		local function f1426()
-			up0.recompute(p174._leaderboardRankHook)
+		local function onLeaderboardRankChanged()
+			up0.recompute(self_._leaderboardRankHook)
 		end
 
-		up1(p174._trove, "LeaderboardRank", f1426)
-		local f1427 = up5
-		local v198 = nil
+		up1(self_._trove, "LeaderboardRank", onLeaderboardRankChanged)
+		local leaderstatNames = up5
+		local index2 = nil
 		while true do
-			local v199
-			v198, v199 = f1427(nil, v198)
-			if v198 == nil then
+			local leaderstatName
+			index2, leaderstatName = leaderstatNames(nil, index2)
+			if index2 == nil then
 				break
 			end
 
-			local function f1428(p177)
-				p174._attributeSink:RefreshScope(p177)
+			local function onLeaderstatChanged(scope)
+				self_._attributeSink:RefreshScope(scope)
 			end
 
-			up1(p174._trove, v199, f1428)
+			up1(self_._trove, leaderstatName, onLeaderstatChanged)
 		end
-		up2.recompute(p174._requestBinding)
-		up3.recompute(p174._dataHook)
-		up4.recompute(p174._leaderboardRankHook)
+		up2.recompute(self_._requestBinding)
+		up3.recompute(self_._dataHook)
+		up4.recompute(self_._leaderboardRankHook)
 	end
 
 	local function f1429()
@@ -18883,48 +18883,48 @@ local function f1242()
 		return t141.c
 	end
 
-	local function f1430(p178)
-		local t142 = {
+	local function newMotionDisabler(playerContext)
+		local disabler = {
 			_trove = up0.new("item_modifiers.MotionDisabler"),
-			_playerContext = p178,
+			_playerContext = playerContext,
 			_isInitialized = false,
 			_disabled = false,
 			_disabledItems = {}
 		}
-		setmetatable(t142, up1)
-		t142:_Initialize()
-		return t142
+		setmetatable(disabler, up1)
+		disabler:_Initialize()
+		return disabler
 	end
 
-	local function f1431(_, p179)
-		return (up0:GetEditValue(p179))
+	local function getEditValue(_, key)
+		return (up0:GetEditValue(key))
 	end
 
-	local function f1432(p180)
-		up0(p180)
+	local function call(value)
+		up0(value)
 	end
 
-	local function f1433(p181, p182)
-		local v200 = os.clock()
-		local fighterState4 = p182.fighterState
-		local t143 = p181._measurements[fighterState4]
-		local v201 = t143.limitEntryTime
-		local v202
-		v202 = not (fighterState4.itemObserver:GetEquippedAmmoState() == false)
-		if not up0(p182.aliveState.rootPart.Position) then
-			if v201 ~= nil then
-				if v202 then
-					t143.expectedDuration = v200 - v201
+	local function isInsideLimit(self_, target)
+		local now = os.clock()
+		local fighterState = target.fighterState
+		local measurement = self_._measurements[fighterState]
+		local entryTime = measurement.limitEntryTime
+		local hasAmmo
+		hasAmmo = not (fighterState.itemObserver:GetEquippedAmmoState() == false)
+		if not up0(target.aliveState.rootPart.Position) then
+			if entryTime ~= nil then
+				if hasAmmo then
+					measurement.expectedDuration = now - entryTime
 				end
-				t143.limitEntryTime = nil
+				measurement.limitEntryTime = nil
 			end
 			return false
 		end
-		if v201 == nil then
-			t143.limitEntryTime = v200
-			v201 = v200
+		if entryTime == nil then
+			measurement.limitEntryTime = now
+			entryTime = now
 		end
-		if v202 and t143.expectedDuration - up1.data.Ragebot.Stability <= v200 - v201 then
+		if hasAmmo and measurement.expectedDuration - up1.data.Ragebot.Stability <= now - entryTime then
 			return false
 		end
 		return true
@@ -18939,13 +18939,13 @@ local function f1242()
 		return t144.c
 	end
 
-	local function f1435(p183)
-		p183:GetChildren()
+	local function getChildren(instance)
+		instance:GetChildren()
 		return nil
 	end
 
-	local function f1436(p184)
-		up0.set(up1, p184)
+	local function setValue(value)
+		up0.set(up1, value)
 	end
 
 	local function lazyModule_d7()
@@ -18957,10 +18957,10 @@ local function f1242()
 		return t145.c
 	end
 
-	local function f1438(p185)
-		local v203 = tonumber(p185.priority)
-		local selections = p185.selections
-		if v203 == nil or type(selections) ~= up0 then
+	local function importLayer_proto(layerData)
+		local priority = tonumber(layerData.priority)
+		local selections = layerData.selections
+		if priority == nil or type(selections) ~= up0 then
 			return nil, nil
 		end
 		while true do
@@ -18968,74 +18968,74 @@ local function f1242()
 		end
 	end
 
-	local function f1439(p186, p187, p188)
-		if p188 ~= nil then
-			local t146 = {}
-			local v204 = nil
+	local function importLayerStates(self_, states, activeLayers)
+		if activeLayers ~= nil then
+			local active = {}
+			local layer = nil
 			while true do
-				local v205
-				v204, v205 = p188(nil, v204)
-				if v204 == nil then
+				local enabled
+				layer, enabled = activeLayers(nil, layer)
+				if layer == nil then
 					break
 				end
-				if v205 then
-					t146[v204] = true
+				if enabled then
+					active[layer] = true
 				end
 			end
-			p186._activeLayers = t146
+			self_._activeLayers = active
 		end
-		local t147 = {}
-		p186._states = t147
-		local v206 = nil
+		local imported = {}
+		self_._states = imported
+		local owner = nil
 		while true do
-			local t148
-			v206, t148 = p187(nil, v206)
-			if v206 == nil then
+			local state
+			owner, state = states(nil, owner)
+			if owner == nil then
 				break
 			end
 
-			local function f1440(p189)
-				local v207 = tonumber(p189.priority)
-				local selections2 = p189.selections
-				if v207 == nil or type(selections2) ~= up0 then
+			local function importLayer(layerData)
+				local priority = tonumber(layerData.priority)
+				local selections = layerData.selections
+				if priority == nil or type(selections) ~= up0 then
 					return nil, nil
 				end
 				while true do
-					up1.cloneCosmeticsSelection(selections2)
+					up1.cloneCosmeticsSelection(selections)
 				end
 			end
 
-			local v208 = up0.importLayers(t148.layers, f1440, up3, up4)
-			if next(v208) ~= nil then
-				t147[v206] = up5(v208)
+			local layers = up0.importLayers(state.layers, importLayer, up3, up4)
+			if next(layers) ~= nil then
+				imported[owner] = up5(layers)
 			end
 		end
 	end
 
-	local function f1441(p190)
-		if not p190 then
+	local function hideIfFalse(visible)
+		if not visible then
 			up0:Hide()
 		end
 	end
 
-	local function f1442(p191)
-		up0 = p191
+	local function setValue2(value)
+		up0 = value
 	end
 
-	local function f1443(p192, p193)
-		p192.Value = p193
+	local function assignValue(object, value)
+		object.Value = value
 	end
 
-	local function f1444()
-		local t149 = {
+	local function newErrorReporter()
+		local reporter = {
 			_errors = {},
 			_sink = up0.get()
 		}
-		return (setmetatable(t149, up1))
+		return (setmetatable(reporter, up1))
 	end
 
-	local function f1445(p194, p195, p196)
-		return p194 + (p195 - p194) * ((math.sin(p196 * up0 * math.pi * 2) + 1) * 0.5)
+	local function pulse(from, to, time)
+		return from + (to - from) * ((math.sin(time * up0 * math.pi * 2) + 1) * 0.5)
 	end
 
 	local function f1446()
@@ -19080,19 +19080,19 @@ local function f1242()
 		return false
 	end
 
-	local function f1451(p197)
-		local t154 = {}
-		local _states = p197._states
-		local v214 = nil
+	local function getStateKeys(self_)
+		local keys = {}
+		local states = self_._states
+		local key = nil
 		while true do
 			local _
-			v214, _ = _states(nil, v214)
-			if v214 == nil then
+			key, _ = states(nil, key)
+			if key == nil then
 				break
 			end
-			t154[v214] = true
+			keys[key] = true
 		end
-		return t154
+		return keys
 	end
 
 	local function lazyModule_hN()
@@ -19117,64 +19117,64 @@ local function f1242()
 		return f1455
 	end
 
-	local function f1456(p198)
-		local _restore5 = p198._restore
-		if _restore5 == nil then
+	local function revertHook(self_)
+		local restore = self_._restore
+		if restore == nil then
 			return
 		end
-		p198._restore = nil
-		if _restore5.stage == "Awaiting" then
-			_restore5.connection:Disconnect()
+		self_._restore = nil
+		if restore.stage == "Awaiting" then
+			restore.connection:Disconnect()
 		else
-			_restore5.container[_restore5.index] = _restore5.original
+			restore.container[restore.index] = restore.original
 		end
 	end
 
-	local function f1457()
-		local v215 = getthreadidentity()
+	local function createViewModel()
+		local oldIdentity = getthreadidentity()
 		setthreadidentity(2)
-		local v216 = coroutine.wrap(up0(up1, "_CreateViewModel"))(up2, up3)
-		setthreadidentity(v215)
-		return v216
+		local viewModel = coroutine.wrap(up0(up1, "_CreateViewModel"))(up2, up3)
+		setthreadidentity(oldIdentity)
+		return viewModel
 	end
 
-	local function f1458()
-		local t156 = {
+	local function newLeaderboardRankHook()
+		local hook = {
 			_errorReporter = up0.new(),
 			_resolver = nil,
 			_boardEntryProvider = nil,
 			_restore = nil,
 			_serialsRestore = nil
 		}
-		return (setmetatable(t156, up1))
+		return (setmetatable(hook, up1))
 	end
 
-	local function f1459(p199)
-		if p199._isApplied then
+	local function applyDataOverride(self_)
+		if self_._isApplied then
 			return
 		end
-		p199._isApplied = true
+		self_._isApplied = true
 
-		local function f1460()
-			local GetOriginal2 = p199._dataHook:GetOriginal(up1)
-			local v217 = {}
-			if type(GetOriginal2) == up2 then
-				v217 = table.clone(GetOriginal2)
+		local function getMerged()
+			local original = self_._dataHook:GetOriginal(up1)
+			local merged = {}
+			if type(original) == up2 then
+				merged = table.clone(original)
 			end
-			for v218, v219 in p199._resolver:GetAll() do
-				v217[v218] = v219
+			for key, value in self_._resolver:GetAll() do
+				merged[key] = value
 			end
-			return v217
+			return merged
 		end
 
-		p199._dataHook:Set(up0, f1460)
-		p199._dataHook:TriggerDataChangedSignal(up0)
+		self_._dataHook:Set(up0, getMerged)
+		self_._dataHook:TriggerDataChangedSignal(up0)
 	end
 
-	local function f1461(p200)
-		local AddSection23 = p200.AddSection
+	local function buildMotionBlurSection_proto(tab)
+		local AddSection23 = tab.AddSection
 		local t157 = { Title = "Motion Blur", Side = "left" }
-		local motionBlurSection = AddSection23(p200, t157)
+		local motionBlurSection = AddSection23(tab, t157)
 		local AddToggle48 = motionBlurSection.AddToggle
 		local t159 = { Label = up0, Config = table.create(2) }
 		AddToggle48(motionBlurSection, t159)
@@ -19198,13 +19198,13 @@ local function f1242()
 		AddSlider31(motionBlurSection, sensitivitySliderOptions)
 	end
 
-	local function f1462()
+	local function loadMotionBlurSection()
 		up0.cI()
 
-		local function f1463(p201)
-			local AddSection24 = p201.AddSection
+		local function buildMotionBlurSection(tab)
+			local AddSection24 = tab.AddSection
 			local t162 = { Title = "Motion Blur", Side = "left" }
-			local motionBlurSection = AddSection24(p201, t162)
+			local motionBlurSection = AddSection24(tab, t162)
 			local AddToggle49 = motionBlurSection.AddToggle
 			local t164 = { Label = up0, Config = table.create(2) }
 			AddToggle49(motionBlurSection, t164)
@@ -19228,7 +19228,7 @@ local function f1242()
 			AddSlider33(motionBlurSection, sensitivitySliderOptions)
 		end
 
-		return f1463
+		return buildMotionBlurSection
 	end
 
 	local function f1464()
@@ -19244,621 +19244,621 @@ local function f1242()
 	local function f1469()
 	end
 
-	local function initialize_proto(self_, p203, p204)
-		local v220 = self_._isVertical
-		local v221
-		v221 = p203.paneSide == "LEFT"
-		local _container = self_._container
-		_container.Visible = false
-		_container.LayoutOrder = p203.layoutOrder
-		_container.Interactable = false
-		_container.BackgroundTransparency = 1
-		local v222
-		if v220 then
-			v222 = UDim2.new(0, 4, 1, 0)
+	local function initializeHealthBar_proto(self_, options, parent)
+		local isVertical = self_._isVertical
+		local isLeft
+		isLeft = options.paneSide == "LEFT"
+		local container = self_._container
+		container.Visible = false
+		container.LayoutOrder = options.layoutOrder
+		container.Interactable = false
+		container.BackgroundTransparency = 1
+		local containerSize
+		if isVertical then
+			containerSize = UDim2.new(0, 4, 1, 0)
 		else
-			v222 = v220
+			containerSize = isVertical
 		end
-		if not v222 then
-			v222 = UDim2.new(1, 0, 0, 4)
+		if not containerSize then
+			containerSize = UDim2.new(1, 0, 0, 4)
 		end
-		_container.Size = v222
-		local _outerBar = self_._outerBar
-		local v223
-		if v220 then
-			v223 = v221
+		container.Size = containerSize
+		local outerBar = self_._outerBar
+		local anchor
+		if isVertical then
+			anchor = isLeft
 		else
-			v223 = v220
+			anchor = isVertical
 		end
-		v223 = v223 and Vector2.new(1, 0) or Vector2.zero
-		_outerBar.AnchorPoint = v223
-		_outerBar.BackgroundColor3 = Color3.new()
-		_outerBar.BorderSizePixel = 0
-		_outerBar.Interactable = false
-		if not v220 then
-			v221 = v220
+		anchor = anchor and Vector2.new(1, 0) or Vector2.zero
+		outerBar.AnchorPoint = anchor
+		outerBar.BackgroundColor3 = Color3.new()
+		outerBar.BorderSizePixel = 0
+		outerBar.Interactable = false
+		if not isVertical then
+			isLeft = isVertical
 		end
-		v221 = v221 and UDim2.fromScale(1, 0) or UDim2.new()
-		_outerBar.Position = v221
-		local v224
-		if v220 then
-			v224 = UDim2.new(0, 4, 1, 0)
+		isLeft = isLeft and UDim2.fromScale(1, 0) or UDim2.new()
+		outerBar.Position = isLeft
+		local outerSize
+		if isVertical then
+			outerSize = UDim2.new(0, 4, 1, 0)
 		else
-			v224 = v220
+			outerSize = isVertical
 		end
-		if not v224 then
-			v224 = UDim2.new(1, 0, 0, 4)
+		if not outerSize then
+			outerSize = UDim2.new(1, 0, 0, 4)
 		end
-		_outerBar.Size = v224
-		_outerBar.Parent = _container
-		local _innerBar = self_._innerBar
-		_innerBar.BackgroundColor3 = Color3.new(1, 1, 1)
-		_innerBar.BorderSizePixel = 0
-		_innerBar.Interactable = false
-		_innerBar.Position = UDim2.fromOffset(1, 1)
-		_innerBar.Size = UDim2.new(1, -2, 1, -2)
-		_innerBar.Parent = _outerBar
-		local _gradient = self_._gradient
-		_gradient.Enabled = false
-		local v225
-		v225 = v220 and -90 or v220
-		if not v225 then
-			v225 = 0
+		outerBar.Size = outerSize
+		outerBar.Parent = container
+		local innerBar = self_._innerBar
+		innerBar.BackgroundColor3 = Color3.new(1, 1, 1)
+		innerBar.BorderSizePixel = 0
+		innerBar.Interactable = false
+		innerBar.Position = UDim2.fromOffset(1, 1)
+		innerBar.Size = UDim2.new(1, -2, 1, -2)
+		innerBar.Parent = outerBar
+		local gradient = self_._gradient
+		gradient.Enabled = false
+		local rotation
+		rotation = isVertical and -90 or isVertical
+		if not rotation then
+			rotation = 0
 		end
-		_gradient.Rotation = v225
-		_gradient.Parent = _innerBar
-		local _consumeBar = self_._consumeBar
-		_consumeBar.BackgroundColor3 = Color3.new()
-		_consumeBar.BorderSizePixel = 0
-		_consumeBar.Interactable = false
-		local v226
-		if v220 then
-			v226 = Vector2.zero
+		gradient.Rotation = rotation
+		gradient.Parent = innerBar
+		local consumeBar = self_._consumeBar
+		consumeBar.BackgroundColor3 = Color3.new()
+		consumeBar.BorderSizePixel = 0
+		consumeBar.Interactable = false
+		local consumeAnchor
+		if isVertical then
+			consumeAnchor = Vector2.zero
 		else
-			v226 = v220
+			consumeAnchor = isVertical
 		end
-		if not v226 then
-			v226 = Vector2.new(1, 0)
+		if not consumeAnchor then
+			consumeAnchor = Vector2.new(1, 0)
 		end
-		_consumeBar.AnchorPoint = v226
-		local v227
-		if v220 then
-			v227 = UDim2.new()
+		consumeBar.AnchorPoint = consumeAnchor
+		local consumePosition
+		if isVertical then
+			consumePosition = UDim2.new()
 		else
-			v227 = v220
+			consumePosition = isVertical
 		end
-		if not v227 then
-			v227 = UDim2.fromScale(1, 0)
+		if not consumePosition then
+			consumePosition = UDim2.fromScale(1, 0)
 		end
-		_consumeBar.Position = v227
-		local v228
-		if v220 then
-			v228 = UDim2.fromScale(1, 0)
+		consumeBar.Position = consumePosition
+		local consumeSize
+		if isVertical then
+			consumeSize = UDim2.fromScale(1, 0)
 		else
-			v228 = v220
+			consumeSize = isVertical
 		end
-		if not v228 then
-			v228 = UDim2.fromScale(0, 1)
+		if not consumeSize then
+			consumeSize = UDim2.fromScale(0, 1)
 		end
-		_consumeBar.Size = v228
-		_consumeBar.Parent = _innerBar
-		local _valueLabel = self_._valueLabel
-		_valueLabel.Visible = false
-		_valueLabel.BackgroundTransparency = 1
-		_valueLabel.Interactable = false
-		v220 = v220 and UDim2.new(0, 1, 1, 0) or UDim2.new(0, 0, 0.5, -1)
-		_valueLabel.Position = v220
-		_valueLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-		_valueLabel.Size = UDim2.fromOffset(10, 16)
-		_valueLabel.TextSize = 12
-		_valueLabel.TextColor3 = Color3.new(1, 1, 1)
-		_valueLabel.Text = "99"
-		_valueLabel.Parent = _consumeBar
-		local _valueStroke = self_._valueStroke
-		_valueStroke.LineJoinMode = Enum.LineJoinMode.Miter
-		_valueStroke.Parent = _valueLabel
-		_container.Parent = p204
+		consumeBar.Size = consumeSize
+		consumeBar.Parent = innerBar
+		local valueLabel = self_._valueLabel
+		valueLabel.Visible = false
+		valueLabel.BackgroundTransparency = 1
+		valueLabel.Interactable = false
+		isVertical = isVertical and UDim2.new(0, 1, 1, 0) or UDim2.new(0, 0, 0.5, -1)
+		valueLabel.Position = isVertical
+		valueLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+		valueLabel.Size = UDim2.fromOffset(10, 16)
+		valueLabel.TextSize = 12
+		valueLabel.TextColor3 = Color3.new(1, 1, 1)
+		valueLabel.Text = "99"
+		valueLabel.Parent = consumeBar
+		local valueStroke = self_._valueStroke
+		valueStroke.LineJoinMode = Enum.LineJoinMode.Miter
+		valueStroke.Parent = valueLabel
+		container.Parent = parent
 	end
 
-	local function new_proto(p205, p206)
-		local v229 = up0.new(100)
-		v229.s = 24
-		local t167 = {}
-		local v230
-		v230 = p205.paneSide == "LEFT"
-		if not v230 then
-			v230 = p205.paneSide == "RIGHT"
+	local function newHealthBar_proto(options, parent)
+		local spring = Spring.new(100)
+		spring.s = 24
+		local bar = {}
+		local isVertical
+		isVertical = options.paneSide == "LEFT"
+		if not isVertical then
+			isVertical = options.paneSide == "RIGHT"
 		end
-		t167._isVertical = v230
-		t167._container = Instance.new(up1)
-		t167._outerBar = Instance.new(up1)
-		t167._innerBar = Instance.new(up1)
-		t167._gradient = Instance.new("UIGradient")
-		t167._consumeBar = Instance.new(up1)
-		t167._valueLabel = Instance.new("TextLabel")
-		t167._valueStroke = Instance.new("UIStroke")
-		t167._visible = false
-		t167._labelVisible = false
-		t167._labelColor = Color3.new(1, 1, 1)
-		t167._colorDirty = false
-		t167._colorMode = "Solid"
-		t167._sequence = ColorSequence.new(Color3.new(1, 1, 1))
-		t167._wishValue = 100
-		t167._displayValue = 99
-		t167._maxValue = 100
-		t167._maxDirty = false
-		t167._ourValue = 100
-		t167._animateBar = false
-		t167._spring = v229
-		t167._font = nil
-		setmetatable(t167, up2)
-		t167:_Initialize(p205, p206)
-		return t167
+		bar._isVertical = isVertical
+		bar._container = Instance.new(up1)
+		bar._outerBar = Instance.new(up1)
+		bar._innerBar = Instance.new(up1)
+		bar._gradient = Instance.new("UIGradient")
+		bar._consumeBar = Instance.new(up1)
+		bar._valueLabel = Instance.new("TextLabel")
+		bar._valueStroke = Instance.new("UIStroke")
+		bar._visible = false
+		bar._labelVisible = false
+		bar._labelColor = Color3.new(1, 1, 1)
+		bar._colorDirty = false
+		bar._colorMode = "Solid"
+		bar._sequence = ColorSequence.new(Color3.new(1, 1, 1))
+		bar._wishValue = 100
+		bar._displayValue = 99
+		bar._maxValue = 100
+		bar._maxDirty = false
+		bar._ourValue = 100
+		bar._animateBar = false
+		bar._spring = spring
+		bar._font = nil
+		setmetatable(bar, HealthBar)
+		bar:_Initialize(options, parent)
+		return bar
 	end
 
-	local function destroy_proto(self_)
+	local function destroyHealthBar_proto(self_)
 		self_._container:Destroy()
 	end
 
-	local function f1473()
-		local v231 = up0.aw()
-		local v232 = up0.d3()
+	local function loadHealthBar()
+		local Spring = up0.aw()
+		local Fonts = up0.d3()
 		up0.em()
-		local t168 = {}
-		t168.__index = t168
-		t168.__type = "Bar"
+		local HealthBar = {}
+		HealthBar.__index = HealthBar
+		HealthBar.__type = "Bar"
 
-		function t168.new(p208, p209)
-			local v233 = v231.new(100)
-			v233.s = 24
-			local t169 = {}
-			local v234
-			v234 = p208.paneSide == "LEFT"
-			if not v234 then
-				v234 = p208.paneSide == "RIGHT"
+		function HealthBar.new(options, parent)
+			local spring = Spring.new(100)
+			spring.s = 24
+			local bar = {}
+			local isVertical
+			isVertical = options.paneSide == "LEFT"
+			if not isVertical then
+				isVertical = options.paneSide == "RIGHT"
 			end
-			t169._isVertical = v234
-			t169._container = Instance.new(up1)
-			t169._outerBar = Instance.new(up1)
-			t169._innerBar = Instance.new(up1)
-			t169._gradient = Instance.new("UIGradient")
-			t169._consumeBar = Instance.new(up1)
-			t169._valueLabel = Instance.new("TextLabel")
-			t169._valueStroke = Instance.new("UIStroke")
-			t169._visible = false
-			t169._labelVisible = false
-			t169._labelColor = Color3.new(1, 1, 1)
-			t169._colorDirty = false
-			t169._colorMode = "Solid"
-			t169._sequence = ColorSequence.new(Color3.new(1, 1, 1))
-			t169._wishValue = 100
-			t169._displayValue = 99
-			t169._maxValue = 100
-			t169._maxDirty = false
-			t169._ourValue = 100
-			t169._animateBar = false
-			t169._spring = v233
-			t169._font = nil
-			setmetatable(t169, t168)
-			t169:_Initialize(p208, p209)
-			return t169
+			bar._isVertical = isVertical
+			bar._container = Instance.new(up1)
+			bar._outerBar = Instance.new(up1)
+			bar._innerBar = Instance.new(up1)
+			bar._gradient = Instance.new("UIGradient")
+			bar._consumeBar = Instance.new(up1)
+			bar._valueLabel = Instance.new("TextLabel")
+			bar._valueStroke = Instance.new("UIStroke")
+			bar._visible = false
+			bar._labelVisible = false
+			bar._labelColor = Color3.new(1, 1, 1)
+			bar._colorDirty = false
+			bar._colorMode = "Solid"
+			bar._sequence = ColorSequence.new(Color3.new(1, 1, 1))
+			bar._wishValue = 100
+			bar._displayValue = 99
+			bar._maxValue = 100
+			bar._maxDirty = false
+			bar._ourValue = 100
+			bar._animateBar = false
+			bar._spring = spring
+			bar._font = nil
+			setmetatable(bar, HealthBar)
+			bar:_Initialize(options, parent)
+			return bar
 		end
 
-		function t168:_Initialize(p210, p211)
-			local v235 = self._isVertical
-			local v236
-			v236 = p210.paneSide == "LEFT"
-			local _container2 = self._container
-			_container2.Visible = false
-			_container2.LayoutOrder = p210.layoutOrder
-			_container2.Interactable = false
-			_container2.BackgroundTransparency = 1
-			local v237
-			if v235 then
-				v237 = UDim2.new(0, 4, 1, 0)
+		function HealthBar:_Initialize(options, parent)
+			local isVertical = self._isVertical
+			local isLeft
+			isLeft = options.paneSide == "LEFT"
+			local container = self._container
+			container.Visible = false
+			container.LayoutOrder = options.layoutOrder
+			container.Interactable = false
+			container.BackgroundTransparency = 1
+			local containerSize
+			if isVertical then
+				containerSize = UDim2.new(0, 4, 1, 0)
 			else
-				v237 = v235
+				containerSize = isVertical
 			end
-			if not v237 then
-				v237 = UDim2.new(1, 0, 0, 4)
+			if not containerSize then
+				containerSize = UDim2.new(1, 0, 0, 4)
 			end
-			_container2.Size = v237
-			local _outerBar2 = self._outerBar
-			local v238
-			if v235 then
-				v238 = v236
+			container.Size = containerSize
+			local outerBar = self._outerBar
+			local anchor
+			if isVertical then
+				anchor = isLeft
 			else
-				v238 = v235
+				anchor = isVertical
 			end
-			v238 = v238 and Vector2.new(1, 0) or Vector2.zero
-			_outerBar2.AnchorPoint = v238
-			_outerBar2.BackgroundColor3 = Color3.new()
-			_outerBar2.BorderSizePixel = 0
-			_outerBar2.Interactable = false
-			if not v235 then
-				v236 = v235
+			anchor = anchor and Vector2.new(1, 0) or Vector2.zero
+			outerBar.AnchorPoint = anchor
+			outerBar.BackgroundColor3 = Color3.new()
+			outerBar.BorderSizePixel = 0
+			outerBar.Interactable = false
+			if not isVertical then
+				isLeft = isVertical
 			end
-			v236 = v236 and UDim2.fromScale(1, 0) or UDim2.new()
-			_outerBar2.Position = v236
-			local v239
-			if v235 then
-				v239 = UDim2.new(0, 4, 1, 0)
+			isLeft = isLeft and UDim2.fromScale(1, 0) or UDim2.new()
+			outerBar.Position = isLeft
+			local outerSize
+			if isVertical then
+				outerSize = UDim2.new(0, 4, 1, 0)
 			else
-				v239 = v235
+				outerSize = isVertical
 			end
-			if not v239 then
-				v239 = UDim2.new(1, 0, 0, 4)
+			if not outerSize then
+				outerSize = UDim2.new(1, 0, 0, 4)
 			end
-			_outerBar2.Size = v239
-			_outerBar2.Parent = _container2
-			local _innerBar2 = self._innerBar
-			_innerBar2.BackgroundColor3 = Color3.new(1, 1, 1)
-			_innerBar2.BorderSizePixel = 0
-			_innerBar2.Interactable = false
-			_innerBar2.Position = UDim2.fromOffset(1, 1)
-			_innerBar2.Size = UDim2.new(1, -2, 1, -2)
-			_innerBar2.Parent = _outerBar2
-			local _gradient2 = self._gradient
-			_gradient2.Enabled = false
-			local v240
-			v240 = v235 and -90 or v235
-			if not v240 then
-				v240 = 0
+			outerBar.Size = outerSize
+			outerBar.Parent = container
+			local innerBar = self._innerBar
+			innerBar.BackgroundColor3 = Color3.new(1, 1, 1)
+			innerBar.BorderSizePixel = 0
+			innerBar.Interactable = false
+			innerBar.Position = UDim2.fromOffset(1, 1)
+			innerBar.Size = UDim2.new(1, -2, 1, -2)
+			innerBar.Parent = outerBar
+			local gradient = self._gradient
+			gradient.Enabled = false
+			local rotation
+			rotation = isVertical and -90 or isVertical
+			if not rotation then
+				rotation = 0
 			end
-			_gradient2.Rotation = v240
-			_gradient2.Parent = _innerBar2
-			local _consumeBar2 = self._consumeBar
-			_consumeBar2.BackgroundColor3 = Color3.new()
-			_consumeBar2.BorderSizePixel = 0
-			_consumeBar2.Interactable = false
-			local v241
-			if v235 then
-				v241 = Vector2.zero
+			gradient.Rotation = rotation
+			gradient.Parent = innerBar
+			local consumeBar = self._consumeBar
+			consumeBar.BackgroundColor3 = Color3.new()
+			consumeBar.BorderSizePixel = 0
+			consumeBar.Interactable = false
+			local consumeAnchor
+			if isVertical then
+				consumeAnchor = Vector2.zero
 			else
-				v241 = v235
+				consumeAnchor = isVertical
 			end
-			if not v241 then
-				v241 = Vector2.new(1, 0)
+			if not consumeAnchor then
+				consumeAnchor = Vector2.new(1, 0)
 			end
-			_consumeBar2.AnchorPoint = v241
-			local v242
-			if v235 then
-				v242 = UDim2.new()
+			consumeBar.AnchorPoint = consumeAnchor
+			local consumePosition
+			if isVertical then
+				consumePosition = UDim2.new()
 			else
-				v242 = v235
+				consumePosition = isVertical
 			end
-			if not v242 then
-				v242 = UDim2.fromScale(1, 0)
+			if not consumePosition then
+				consumePosition = UDim2.fromScale(1, 0)
 			end
-			_consumeBar2.Position = v242
-			local v243
-			if v235 then
-				v243 = UDim2.fromScale(1, 0)
+			consumeBar.Position = consumePosition
+			local consumeSize
+			if isVertical then
+				consumeSize = UDim2.fromScale(1, 0)
 			else
-				v243 = v235
+				consumeSize = isVertical
 			end
-			if not v243 then
-				v243 = UDim2.fromScale(0, 1)
+			if not consumeSize then
+				consumeSize = UDim2.fromScale(0, 1)
 			end
-			_consumeBar2.Size = v243
-			_consumeBar2.Parent = _innerBar2
-			local _valueLabel2 = self._valueLabel
-			_valueLabel2.Visible = false
-			_valueLabel2.BackgroundTransparency = 1
-			_valueLabel2.Interactable = false
-			v235 = v235 and UDim2.new(0, 1, 1, 0) or UDim2.new(0, 0, 0.5, -1)
-			_valueLabel2.Position = v235
-			_valueLabel2.AnchorPoint = Vector2.new(0.5, 0.5)
-			_valueLabel2.Size = UDim2.fromOffset(10, 16)
-			_valueLabel2.TextSize = 12
-			_valueLabel2.TextColor3 = Color3.new(1, 1, 1)
-			_valueLabel2.Text = "99"
-			_valueLabel2.Parent = _consumeBar2
-			local _valueStroke2 = self._valueStroke
-			_valueStroke2.LineJoinMode = Enum.LineJoinMode.Miter
-			_valueStroke2.Parent = _valueLabel2
-			_container2.Parent = p211
+			consumeBar.Size = consumeSize
+			consumeBar.Parent = innerBar
+			local valueLabel = self._valueLabel
+			valueLabel.Visible = false
+			valueLabel.BackgroundTransparency = 1
+			valueLabel.Interactable = false
+			isVertical = isVertical and UDim2.new(0, 1, 1, 0) or UDim2.new(0, 0, 0.5, -1)
+			valueLabel.Position = isVertical
+			valueLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+			valueLabel.Size = UDim2.fromOffset(10, 16)
+			valueLabel.TextSize = 12
+			valueLabel.TextColor3 = Color3.new(1, 1, 1)
+			valueLabel.Text = "99"
+			valueLabel.Parent = consumeBar
+			local valueStroke = self._valueStroke
+			valueStroke.LineJoinMode = Enum.LineJoinMode.Miter
+			valueStroke.Parent = valueLabel
+			container.Parent = parent
 		end
 
 		local I_2 = I_
 		local v244
 		v244 = 0 < #(79135)[3]
 		I_2(v244 and {})
-		function t168.SetVisible()
+		function HealthBar.SetVisible()
 		end
 		local C_2 = C_
 		local v245
 		v245 = 0 < #(88019)[3]
 		C_2(v245 and {})
-		function t168.SetLabelVisible()
+		function HealthBar.SetLabelVisible()
 		end
 		local T_2 = T_
 		local v246
 		v246 = 0 < #(76763)[3]
 		T_2(v246 and {})
-		function t168.SetLabelColor()
+		function HealthBar.SetLabelColor()
 		end
 		local Q_2 = Q_
 		local v247
 		v247 = 0 < #(72502)[3]
 		Q_2(v247 and {})
-		function t168.SetFont()
+		function HealthBar.SetFont()
 		end
 		local Z_2 = Z_
 		local v248
 		v248 = 0 < #(78710)[3]
 		Z_2(v248 and {})
-		function t168.SetColor()
+		function HealthBar.SetColor()
 		end
 		local X_2 = X_
 		local v249
 		v249 = 0 < #(90599)[3]
 		X_2(v249 and {})
-		function t168.AnimateBar()
+		function HealthBar.AnimateBar()
 		end
 		local P_2 = P_
 		local v250
 		v250 = 0 < #(66528)[3]
 		P_2(v250 and {})
-		function t168.SetValue()
+		function HealthBar.SetValue()
 		end
-		function t168.Update()
+		function HealthBar.Update()
 		end
 
-		function t168:Destroy()
+		function HealthBar:Destroy()
 			self._container:Destroy()
 		end
 
-		return t168
+		return HealthBar
 	end
 
-	local function getEnabledKeybindState_proto(self_, p213)
-		local v251, v252
-		v252, v251 = up0(p213)
-		self_:_RegisterPath(v251)
-		if not up1:Get(up2(v252, (table.create(1)))) then
+	local function getEnabledKeybindState_proto(self_, path)
+		local keybindPath, enabledPath
+		enabledPath, keybindPath = splitKeybindPath(path)
+		self_:_RegisterPath(keybindPath)
+		if not settings:Get(joinPath(enabledPath, (table.create(1)))) then
 			return false
 		end
-		if up1:Get(up2(v251, (table.create(1)))) == "Always" then
+		if settings:Get(joinPath(keybindPath, (table.create(1)))) == "Always" then
 			return true
 		end
-		local v253
-		v253 = up1:Get(up2(v251, (table.create(1)))) == true
-		return v253
+		local active
+		active = settings:Get(joinPath(keybindPath, (table.create(1)))) == true
+		return active
 	end
 
-	local function f1475()
+	local function onReloaded_proto()
 		up0:_RebuildAll()
 	end
 
-	local function new_proto2()
-		local v254 = "keybind_controller.Bridge"
-		local v255 = up0.new(v254)
-		v254 = {
-			_trove = v255,
+	local function newKeybindBridge_proto()
+		local bridge = "keybind_controller.Bridge"
+		local trove = Trove.new(bridge)
+		bridge = {
+			_trove = trove,
 			_registrations = {}
 		}
-		v254 = setmetatable(v254, up1)
-		v254:_RebuildAll()
+		bridge = setmetatable(bridge, KeybindBridge)
+		bridge:_RebuildAll()
 
-		local function f1477()
-			v254:_RebuildAll()
+		local function onReloaded()
+			bridge:_RebuildAll()
 		end
 
-		v255:Connect(up2.reloaded, f1477)
-		return v254
+		trove:Connect(settings.reloaded, onReloaded)
+		return bridge
 	end
 
-	local function f1478()
+	local function notify_proto()
 		up0(up1:GetEnabledKeybindState(up2))
 	end
 
-	local function observeEnabledKeybind_proto(self_, p215, p216)
-		local v256, v257
-		v257, v256 = up0(p215)
-		self_:_RegisterPath(v256)
-		local v258 = up1.new("keybind_controller.Bridge")
-		local v259 = up2(v257, (table.create(1)))
-		local v260 = up2(v256, (table.create(1)))
-		local v261 = up2(v256, (table.create(1)))
+	local function observeEnabledKeybind_proto(self_, path, callback)
+		local keybindPath, enabledPath
+		enabledPath, keybindPath = splitKeybindPath(path)
+		self_:_RegisterPath(keybindPath)
+		local trove = Trove.new("keybind_controller.Bridge")
+		local enabledKey = joinPath(enabledPath, (table.create(1)))
+		local modeKey = joinPath(keybindPath, (table.create(1)))
+		local activeKey = joinPath(keybindPath, (table.create(1)))
 
-		local function f1480()
-			p216(self_:GetEnabledKeybindState(v257))
+		local function notify()
+			callback(self_:GetEnabledKeybindState(enabledPath))
 		end
 
-		v258:Connect(up4:GetPropertyChangedSignal(v259), f1480)
-		v258:Connect(up4:GetPropertyChangedSignal(v260), f1480)
-		v258:Connect(up4:GetPropertyChangedSignal(v261), f1480)
-		f1480()
-		return v258
+		trove:Connect(settings:GetPropertyChangedSignal(enabledKey), notify)
+		trove:Connect(settings:GetPropertyChangedSignal(modeKey), notify)
+		trove:Connect(settings:GetPropertyChangedSignal(activeKey), notify)
+		notify()
+		return trove
 	end
 
-	local function destroy_proto2(self_)
-		up0.clear(self_._registrations)
+	local function destroyKeybindBridge_proto(self_)
+		KeybindPaths.clear(self_._registrations)
 		self_._trove:Destroy()
 	end
 
 	local function rebuildAll_proto(self_)
-		up0.clear(self_._registrations)
-		local t170 = {}
-		up0.collectPaths(up1.data, {}, t170)
-		local v262 = nil
+		KeybindPaths.clear(self_._registrations)
+		local paths = {}
+		KeybindPaths.collectPaths(settings.data, {}, paths)
+		local index = nil
 		while true do
-			local v263
-			v262, v263 = t170(nil, v262)
-			if v262 == nil then
+			local path
+			index, path = paths(nil, index)
+			if index == nil then
 				break
 			end
-			self_:_RegisterPath(v263)
+			self_:_RegisterPath(path)
 		end
 	end
 
-	local function getPropertyChangedSignal_proto(p219)
-		return (up0:GetPropertyChangedSignal(p219))
+	local function getPropertyChangedSignal_proto(settingPath)
+		return (up0:GetPropertyChangedSignal(settingPath))
 	end
 
-	local function set_proto(p220, p221)
-		up0:Set(p220, p221)
+	local function set_proto(settingPath, value)
+		up0:Set(settingPath, value)
 	end
 
-	local function registerPath_proto(self_, p223)
-		local registerPath = up0.registerPath
-		local _registrations = self_._registrations
-		local data5 = up1.data
-		local t171 = {}
+	local function registerPath_proto(self_, path)
+		local registerPath = KeybindPaths.registerPath
+		local registrations = self_._registrations
+		local data = settings.data
+		local accessor = {}
 
-		function t171.getPropertyChangedSignal(p224)
-			return (up0:GetPropertyChangedSignal(p224))
+		function accessor.getPropertyChangedSignal(settingPath)
+			return (up0:GetPropertyChangedSignal(settingPath))
 		end
 
-		function t171.set(p225, p226)
-			up0:Set(p225, p226)
+		function accessor.set(settingPath, value)
+			up0:Set(settingPath, value)
 		end
 
-		return (registerPath(_registrations, data5, p223, t171))
+		return (registerPath(registrations, data, path, accessor))
 	end
 
-	local function ensureRegistered_proto(p227, p228)
-		local v264, _
-		_, v264 = up0(p228)
-		return (p227:_RegisterPath(v264))
+	local function ensureRegistered_proto(self_, path)
+		local keybindPath, _
+		_, keybindPath = splitKeybindPath(path)
+		return (self_:_RegisterPath(keybindPath))
 	end
 
-	local function f1487()
-		local v265 = up0.r()
-		local v266 = up0.eJ()
-		local v267 = up0.q()
-		local v268 = up0.j()
-		local v269 = up0.y()
-		local v270 = up0.eK()
-		local t172 = {}
-		t172.__index = t172
+	local function loadKeybindBridge()
+		local App = up0.r()
+		local KeybindPaths = up0.eJ()
+		local Trove = up0.q()
+		local joinPath = up0.j()
+		local settings = up0.y()
+		local splitKeybindPath = up0.eK()
+		local KeybindBridge = {}
+		KeybindBridge.__index = KeybindBridge
 
-		function t172.new()
-			local v271 = "keybind_controller.Bridge"
-			local v272 = v267.new(v271)
-			v271 = {
-				_trove = v272,
+		function KeybindBridge.new()
+			local bridge = "keybind_controller.Bridge"
+			local trove = Trove.new(bridge)
+			bridge = {
+				_trove = trove,
 				_registrations = {}
 			}
-			v271 = setmetatable(v271, t172)
-			v271:_RebuildAll()
+			bridge = setmetatable(bridge, KeybindBridge)
+			bridge:_RebuildAll()
 
-			local function f1488()
-				v271:_RebuildAll()
+			local function onReloaded()
+				bridge:_RebuildAll()
 			end
 
-			v272:Connect(v269.reloaded, f1488)
-			return v271
+			trove:Connect(settings.reloaded, onReloaded)
+			return bridge
 		end
 
-		function t172:Destroy()
-			v266.clear(self._registrations)
+		function KeybindBridge:Destroy()
+			KeybindPaths.clear(self._registrations)
 			self._trove:Destroy()
 		end
 
-		function t172:_RebuildAll()
-			v266.clear(self._registrations)
-			local t173 = {}
-			v266.collectPaths(v269.data, {}, t173)
-			local v273 = nil
+		function KeybindBridge:_RebuildAll()
+			KeybindPaths.clear(self._registrations)
+			local paths = {}
+			KeybindPaths.collectPaths(settings.data, {}, paths)
+			local index = nil
 			while true do
-				local v274
-				v273, v274 = t173(nil, v273)
-				if v273 == nil then
+				local path
+				index, path = paths(nil, index)
+				if index == nil then
 					break
 				end
-				self:_RegisterPath(v274)
+				self:_RegisterPath(path)
 			end
 		end
 
-		function t172:_RegisterPath(p229)
-			local registerPath2 = v266.registerPath
-			local _registrations2 = self._registrations
-			local data6 = v269.data
-			local t174 = {}
+		function KeybindBridge:_RegisterPath(path)
+			local registerPath = KeybindPaths.registerPath
+			local registrations = self._registrations
+			local data = settings.data
+			local accessor = {}
 
-			function t174.getPropertyChangedSignal(p230)
-				return (v269:GetPropertyChangedSignal(p230))
+			function accessor.getPropertyChangedSignal(settingPath)
+				return (settings:GetPropertyChangedSignal(settingPath))
 			end
 
-			function t174.set(p231, p232)
-				v269:Set(p231, p232)
+			function accessor.set(settingPath, value)
+				settings:Set(settingPath, value)
 			end
 
-			return (registerPath2(_registrations2, data6, p229, t174))
+			return (registerPath(registrations, data, path, accessor))
 		end
 
-		function t172.EnsureRegistered(p233, p234)
-			local v275, _
-			_, v275 = v270(p234)
-			return (p233:_RegisterPath(v275))
+		function KeybindBridge.EnsureRegistered(self_, path)
+			local keybindPath, _
+			_, keybindPath = splitKeybindPath(path)
+			return (self_:_RegisterPath(keybindPath))
 		end
 
-		function t172:GetEnabledKeybindState(p235)
-			local v276, v277
-			v277, v276 = v270(p235)
-			self:_RegisterPath(v276)
-			if not v269:Get(v268(v277, (table.create(1)))) then
+		function KeybindBridge:GetEnabledKeybindState(path)
+			local keybindPath, enabledPath
+			enabledPath, keybindPath = splitKeybindPath(path)
+			self:_RegisterPath(keybindPath)
+			if not settings:Get(joinPath(enabledPath, (table.create(1)))) then
 				return false
 			end
-			if v269:Get(v268(v276, (table.create(1)))) == "Always" then
+			if settings:Get(joinPath(keybindPath, (table.create(1)))) == "Always" then
 				return true
 			end
-			local v278
-			v278 = v269:Get(v268(v276, (table.create(1)))) == true
-			return v278
+			local active
+			active = settings:Get(joinPath(keybindPath, (table.create(1)))) == true
+			return active
 		end
 
-		function t172:ObserveEnabledKeybind(p236, p237)
-			local v279, v280
-			v280, v279 = v270(p236)
-			self:_RegisterPath(v279)
-			local v281 = v267.new("keybind_controller.Bridge")
-			local v282 = v268(v280, (table.create(1)))
-			local v283 = v268(v279, (table.create(1)))
-			local v284 = v268(v279, (table.create(1)))
+		function KeybindBridge:ObserveEnabledKeybind(path, callback)
+			local keybindPath, enabledPath
+			enabledPath, keybindPath = splitKeybindPath(path)
+			self:_RegisterPath(keybindPath)
+			local trove = Trove.new("keybind_controller.Bridge")
+			local enabledKey = joinPath(enabledPath, (table.create(1)))
+			local modeKey = joinPath(keybindPath, (table.create(1)))
+			local activeKey = joinPath(keybindPath, (table.create(1)))
 
-			local function f1489()
-				p237(self:GetEnabledKeybindState(v280))
+			local function notify()
+				callback(self:GetEnabledKeybindState(enabledPath))
 			end
 
-			v281:Connect(v269:GetPropertyChangedSignal(v282), f1489)
-			v281:Connect(v269:GetPropertyChangedSignal(v283), f1489)
-			v281:Connect(v269:GetPropertyChangedSignal(v284), f1489)
-			f1489()
-			return v281
+			trove:Connect(settings:GetPropertyChangedSignal(enabledKey), notify)
+			trove:Connect(settings:GetPropertyChangedSignal(modeKey), notify)
+			trove:Connect(settings:GetPropertyChangedSignal(activeKey), notify)
+			notify()
+			return trove
 		end
 
-		return (v265:Add(t172.new()))
+		return (App:Add(KeybindBridge.new()))
 	end
 
-	local function f1490(p238, p239, p240)
-		if type(p239) == "boolean" or p239 == nil then
+	local function setTextValue(self_, value, silent)
+		if type(value) == "boolean" or value == nil then
 			return
 		end
-		local v285 = tostring(p239)
-		if v285 == p238.Value then
+		local text = tostring(value)
+		if text == self_.Value then
 			return
 		end
-		p238.Value = v285
-		p238.ValueChanged:Fire(v285)
-		if not p240 then
-			p238._onChanged(v285)
-			p238.Changed:Fire(v285)
+		self_.Value = text
+		self_.ValueChanged:Fire(text)
+		if not silent then
+			self_._onChanged(text)
+			self_.Changed:Fire(text)
 		end
 	end
 
-	local function f1491()
+	local function applyNoSpread()
 		up0._noSpread:SetEnabled(up1.data.ItemModifiers.NoSpread)
 	end
 
-	local function f1492(p241, p242)
-		p241._claims[p242] = nil
+	local function releaseClaim(self_, owner)
+		self_._claims[owner] = nil
 	end
 
-	local function f1493()
-		local t175 = {
+	local function newSkeleton()
+		local skeleton = {
 			_trove = up0.new("esp.Skeleton"),
 			_limbConnections = {},
 			_color = Color3.new(1, 1, 1),
@@ -19868,94 +19868,94 @@ local function f1242()
 			_thickness = 1,
 			_anyVisible = false
 		}
-		setmetatable(t175, up1)
-		return t175
+		setmetatable(skeleton, up1)
+		return skeleton
 	end
 
-	local function f1494(p243, p244, p245)
-		local t176 = {
+	local function newTriggerbot(playerContext, fighters, worldInclude)
+		local triggerbot = {
 			_trove = up0.new("triggerbot"),
-			_playerContext = p243,
-			_fighters = p244,
-			_worldInclude = p245,
+			_playerContext = playerContext,
+			_fighters = fighters,
+			_worldInclude = worldInclude,
 			_reactionElapsed = nil,
 			_releaseRemaining = 0
 		}
-		return (setmetatable(t176, up1))
+		return (setmetatable(triggerbot, up1))
 	end
 
-	local function f1495(p246)
-		local _serialsRestore = p246._serialsRestore
-		if _serialsRestore == nil then
+	local function restoreLeaderboardSerials(self_)
+		local serialsRestore = self_._serialsRestore
+		if serialsRestore == nil then
 			return
 		end
-		p246._serialsRestore = nil
-		up0(up1, "LeaderboardSerials", _serialsRestore.inner)
+		self_._serialsRestore = nil
+		up0(up1, "LeaderboardSerials", serialsRestore.inner)
 	end
 
-	local function f1496(p247)
-		local t177 = up0.Get()
-		local Notify2 = t177.Notify
-		local detail = p247.detail
-		local t178 = { Intent = "warning" }
-		Notify2(t177, detail, t178)
+	local function notifyWarning(err)
+		local notifier = up0.Get()
+		local notify = notifier.Notify
+		local detail = err.detail
+		local options = { Intent = "warning" }
+		notify(notifier, detail, options)
 	end
 
-	local function f1497(p248, p249, p250)
-		up0:CollectSearchHits(p248, p249, p250)
+	local function collectSearchHits(query, hits, path)
+		up0:CollectSearchHits(query, hits, path)
 	end
 
-	local function f1498(p251)
-		return (up0:ShouldBlockMenuToggle(p251))
+	local function shouldBlockMenuToggle(input)
+		return (up0:ShouldBlockMenuToggle(input))
 	end
 
-	local function f1499(p252, p253)
-		if p252.UserInputType ~= Enum.UserInputType.Keyboard then
+	local function onInputBegan_proto(input, processed)
+		if input.UserInputType ~= Enum.UserInputType.Keyboard then
 			return
 		end
-		if p252.KeyCode == Enum.KeyCode.Escape then
-			if up0._visible then
-				up0:Hide()
-				local _activeBar = up0._activeBar
-				if _activeBar ~= nil then
-					_activeBar.Collapse()
+		if input.KeyCode == Enum.KeyCode.Escape then
+			if search._visible then
+				search:Hide()
+				local activeBar = search._activeBar
+				if activeBar ~= nil then
+					activeBar.Collapse()
 				end
 			end
 			return
 		end
-		if p252.KeyCode == Enum.KeyCode.F then
-			local IsKeyDown = up1:IsKeyDown(Enum.KeyCode.LeftControl)
-			if not IsKeyDown then
-				IsKeyDown = up1:IsKeyDown(Enum.KeyCode.RightControl)
+		if input.KeyCode == Enum.KeyCode.F then
+			local ctrlDown = up1:IsKeyDown(Enum.KeyCode.LeftControl)
+			if not ctrlDown then
+				ctrlDown = up1:IsKeyDown(Enum.KeyCode.RightControl)
 			end
-			if IsKeyDown and up2.Visible then
-				local _activeBar2 = up0._activeBar
-				if _activeBar2 ~= nil then
-					_activeBar2.Expand()
+			if ctrlDown and menu.Visible then
+				local activeBar2 = search._activeBar
+				if activeBar2 ~= nil then
+					activeBar2.Expand()
 				end
 			end
 			return
 		end
-		if not up0._visible then
+		if not search._visible then
 			return
 		end
-		if p252.KeyCode == Enum.KeyCode.Down then
-			up0:_moveSelection(1)
-		elseif p252.KeyCode == Enum.KeyCode.Up then
-			up0:_moveSelection(-1)
-		elseif p252.KeyCode == Enum.KeyCode.Return and not p253 then
-			local t179 = up0._scored[up0._selectedIndex]
-			if t179 ~= nil then
-				up0:_navigateTo(t179.hit)
+		if input.KeyCode == Enum.KeyCode.Down then
+			search:_moveSelection(1)
+		elseif input.KeyCode == Enum.KeyCode.Up then
+			search:_moveSelection(-1)
+		elseif input.KeyCode == Enum.KeyCode.Return and not processed then
+			local result = search._scored[search._selectedIndex]
+			if result ~= nil then
+				search:_navigateTo(result.hit)
 			end
 		end
 	end
 
-	local function f1500(p254, p255)
-		local Extend5 = p255:Extend()
-		local t180 = {
-			_trove = Extend5,
-			_menu = p254,
+	local function newSearch(menu, trove)
+		local trove2 = trove:Extend()
+		local fields = {
+			_trove = trove2,
+			_menu = menu,
 			_registrations = {},
 			_scored = {},
 			_selectedIndex = 1,
@@ -19963,151 +19963,151 @@ local function f1242()
 			_visible = false,
 			_ui = nil
 		}
-		local v286 = setmetatable(t180, up0)
+		local search = setmetatable(fields, up0)
 
-		local function f1501(p256, p257)
-			if p256.UserInputType ~= Enum.UserInputType.Keyboard then
+		local function onInputBegan(input, processed)
+			if input.UserInputType ~= Enum.UserInputType.Keyboard then
 				return
 			end
-			if p256.KeyCode == Enum.KeyCode.Escape then
-				if v286._visible then
-					v286:Hide()
-					local _activeBar3 = v286._activeBar
-					if _activeBar3 ~= nil then
-						_activeBar3.Collapse()
+			if input.KeyCode == Enum.KeyCode.Escape then
+				if search._visible then
+					search:Hide()
+					local activeBar = search._activeBar
+					if activeBar ~= nil then
+						activeBar.Collapse()
 					end
 				end
 				return
 			end
-			if p256.KeyCode == Enum.KeyCode.F then
-				local IsKeyDown2 = up1:IsKeyDown(Enum.KeyCode.LeftControl)
-				if not IsKeyDown2 then
-					IsKeyDown2 = up1:IsKeyDown(Enum.KeyCode.RightControl)
+			if input.KeyCode == Enum.KeyCode.F then
+				local ctrlDown = up1:IsKeyDown(Enum.KeyCode.LeftControl)
+				if not ctrlDown then
+					ctrlDown = up1:IsKeyDown(Enum.KeyCode.RightControl)
 				end
-				if IsKeyDown2 and p254.Visible then
-					local _activeBar4 = v286._activeBar
-					if _activeBar4 ~= nil then
-						_activeBar4.Expand()
+				if ctrlDown and menu.Visible then
+					local activeBar2 = search._activeBar
+					if activeBar2 ~= nil then
+						activeBar2.Expand()
 					end
 				end
 				return
 			end
-			if not v286._visible then
+			if not search._visible then
 				return
 			end
-			if p256.KeyCode == Enum.KeyCode.Down then
-				v286:_moveSelection(1)
-			elseif p256.KeyCode == Enum.KeyCode.Up then
-				v286:_moveSelection(-1)
-			elseif p256.KeyCode == Enum.KeyCode.Return and not p257 then
-				local t181 = v286._scored[v286._selectedIndex]
-				if t181 ~= nil then
-					v286:_navigateTo(t181.hit)
+			if input.KeyCode == Enum.KeyCode.Down then
+				search:_moveSelection(1)
+			elseif input.KeyCode == Enum.KeyCode.Up then
+				search:_moveSelection(-1)
+			elseif input.KeyCode == Enum.KeyCode.Return and not processed then
+				local result = search._scored[search._selectedIndex]
+				if result ~= nil then
+					search:_navigateTo(result.hit)
 				end
 			end
 		end
 
-		Extend5:Connect(up1.InputBegan, f1501)
-		return v286
+		trove2:Connect(up1.InputBegan, onInputBegan)
+		return search
 	end
 
-	local function f1502(p258, p259, p260)
-		return (up0.NavigateTo(p258.data, p259, p260))
+	local function navigateTo(self_, path, options)
+		return (up0.NavigateTo(self_.data, path, options))
 	end
 
-	local function f1503(p261, p262)
-		local _restore6 = p261._restore
-		if _restore6 == nil then
+	local function getSerial(self_, key)
+		local restore = self_._restore
+		if restore == nil then
 			return (up1(up2, (table.create(3))))
 		end
-		return (up0(_restore6.inner, p262))
+		return (up0(restore.inner, key))
 	end
 
-	local function f1504(p263)
-		up0:_HandleInput(p263)
+	local function onInput_proto(input)
+		up0:_HandleInput(input)
 	end
 
-	local function new_proto3(p264, p265)
-		local t182 = { _inputBinding = p264, _playerContext = p265 }
-		setmetatable(t182, up0)
+	local function newGunInputFlag_proto(inputBinding, playerContext)
+		local flag = { _inputBinding = inputBinding, _playerContext = playerContext }
+		setmetatable(flag, GunInputFlag)
 
-		local function f1506(p266)
-			t182:_HandleInput(p266)
+		local function onInput(input)
+			flag:_HandleInput(input)
 		end
 
-		p264:SetHandler(f1506)
-		return t182
+		inputBinding:SetHandler(onInput)
+		return flag
 	end
 
-	local function setEnabled_proto(self_, p268)
-		self_._inputBinding:SetEnabled(p268)
+	local function setEnabledGunInputFlag_proto(self_, enabled)
+		self_._inputBinding:SetEnabled(enabled)
 	end
 
-	local function handleInput_proto(self_, p270)
-		if p270.type ~= "StartShooting" then
+	local function handleInput_proto(self_, input)
+		if input.type ~= "StartShooting" then
 			return
 		end
-		local inner17 = self_._playerContext.inner
-		if inner17 == nil then
+		local fighter = self_._playerContext.inner
+		if fighter == nil then
 			return
 		end
-		local GetItemById = inner17.fighterState:GetItemById(p270.objectId)
-		if GetItemById == nil then
+		local item = fighter.fighterState:GetItemById(input.objectId)
+		if item == nil then
 			return
 		end
-		if up0(up0(GetItemById, "Info"), "Type") == "Gun" then
-			p270.args["\2"] = true
+		if up0(up0(item, "Info"), "Type") == "Gun" then
+			input.args["\2"] = true
 		end
 	end
 
-	local function destroy_proto3(self_)
+	local function destroyGunInputFlag_proto(self_)
 		self_._inputBinding:Destroy()
 	end
 
-	local function f1510()
+	local function loadGunInputFlag()
 		up0.eQ()
 		up0.a4()
-		local t183 = {}
-		t183.__index = t183
+		local GunInputFlag = {}
+		GunInputFlag.__index = GunInputFlag
 
-		function t183.new(p272, p273)
-			local t184 = { _inputBinding = p272, _playerContext = p273 }
-			setmetatable(t184, t183)
+		function GunInputFlag.new(inputBinding, playerContext)
+			local flag = { _inputBinding = inputBinding, _playerContext = playerContext }
+			setmetatable(flag, GunInputFlag)
 
-			local function f1511(p274)
-				t184:_HandleInput(p274)
+			local function onInput(input)
+				flag:_HandleInput(input)
 			end
 
-			p272:SetHandler(f1511)
-			return t184
+			inputBinding:SetHandler(onInput)
+			return flag
 		end
 
-		function t183:SetEnabled(p275)
-			self._inputBinding:SetEnabled(p275)
+		function GunInputFlag:SetEnabled(enabled)
+			self._inputBinding:SetEnabled(enabled)
 		end
 
-		function t183:_HandleInput(p276)
-			if p276.type ~= "StartShooting" then
+		function GunInputFlag:_HandleInput(input)
+			if input.type ~= "StartShooting" then
 				return
 			end
-			local inner18 = self._playerContext.inner
-			if inner18 == nil then
+			local fighter = self._playerContext.inner
+			if fighter == nil then
 				return
 			end
-			local GetItemById2 = inner18.fighterState:GetItemById(p276.objectId)
-			if GetItemById2 == nil then
+			local item = fighter.fighterState:GetItemById(input.objectId)
+			if item == nil then
 				return
 			end
-			if up0(up0(GetItemById2, "Info"), "Type") == "Gun" then
-				p276.args["\2"] = true
+			if up0(up0(item, "Info"), "Type") == "Gun" then
+				input.args["\2"] = true
 			end
 		end
 
-		function t183:Destroy()
+		function GunInputFlag:Destroy()
 			self._inputBinding:Destroy()
 		end
 
-		return t183
+		return GunInputFlag
 	end
 
 	local function lazyModule_et()
@@ -20119,7 +20119,7 @@ local function f1242()
 		return t185.c
 	end
 
-	local function f1513(...)
+	local function clearWinning(...)
 		local v287 = ...
 		v287._winning = nil
 	end
@@ -20127,13 +20127,13 @@ local function f1242()
 	local function f1514()
 	end
 
-	local function f1515(p277, p278)
-		local AddToggle50 = p277.AddToggle
+	local function buildCrosshairAnimationOptions_proto(section, styleDropdown)
+		local AddToggle50 = section.AddToggle
 		local rotatingToggleOptions = { Label = "Rotating", Config = table.create(3) }
-		local rotatingToggle = AddToggle50(p277, rotatingToggleOptions)
-		local AddGroup12 = p277.AddGroup
+		local rotatingToggle = AddToggle50(section, rotatingToggleOptions)
+		local AddGroup12 = section.AddGroup
 		local rotatingGroupOptions = { Source = rotatingToggle }
-		local rotatingGroup = AddGroup12(p277, rotatingGroupOptions)
+		local rotatingGroup = AddGroup12(section, rotatingGroupOptions)
 		local AddSlider34 = rotatingGroup.AddSlider
 		local rotationSpeedSliderOptions = {
 			Label = "Rotation Speed",
@@ -20144,9 +20144,9 @@ local function f1242()
 			Config = table.create(3)
 		}
 		AddSlider34(rotatingGroup, rotationSpeedSliderOptions)
-		local AddGroup13 = p277.AddGroup
-		local linesGroupOptions = { Source = p278, Option = "Lines" }
-		local linesGroup = AddGroup13(p277, linesGroupOptions)
+		local AddGroup13 = section.AddGroup
+		local linesGroupOptions = { Source = styleDropdown, Option = "Lines" }
+		local linesGroup = AddGroup13(section, linesGroupOptions)
 		local AddToggle51 = linesGroup.AddToggle
 		local spreadToggleOptions = {
 			Label = "Spread",
@@ -20159,8 +20159,8 @@ local function f1242()
 		local spreadGroup = AddGroup14(linesGroup, spreadGroupOptions)
 		local AddRangeSlider = spreadGroup.AddRangeSlider
 		local rangeRangeSliderOptions = { Label = "Range", Min = 0, Max = 100, Step = 1 }
-		local t196 = { Min = 4, Max = 16 }
-		rangeRangeSliderOptions.Default = t196
+		local defaultRange = { Min = 4, Max = 16 }
+		rangeRangeSliderOptions.Default = defaultRange
 		rangeRangeSliderOptions.Config = table.create(3)
 		AddRangeSlider(spreadGroup, rangeRangeSliderOptions)
 		local AddSlider35 = spreadGroup.AddSlider
@@ -20174,16 +20174,16 @@ local function f1242()
 		AddSlider35(spreadGroup, spreadSpeedSliderOptions)
 	end
 
-	local function f1516()
+	local function loadCrosshairAnimationOptions()
 		up0.cI()
 
-		local function f1517(p279, p280)
-			local AddToggle52 = p279.AddToggle
+		local function buildCrosshairAnimationOptions(section, styleDropdown)
+			local AddToggle52 = section.AddToggle
 			local rotatingToggleOptions = { Label = "Rotating", Config = table.create(3) }
-			local rotatingToggle = AddToggle52(p279, rotatingToggleOptions)
-			local AddGroup15 = p279.AddGroup
+			local rotatingToggle = AddToggle52(section, rotatingToggleOptions)
+			local AddGroup15 = section.AddGroup
 			local rotatingGroupOptions = { Source = rotatingToggle }
-			local rotatingGroup = AddGroup15(p279, rotatingGroupOptions)
+			local rotatingGroup = AddGroup15(section, rotatingGroupOptions)
 			local AddSlider36 = rotatingGroup.AddSlider
 			local rotationSpeedSliderOptions = {
 				Label = "Rotation Speed",
@@ -20194,9 +20194,9 @@ local function f1242()
 				Config = table.create(3)
 			}
 			AddSlider36(rotatingGroup, rotationSpeedSliderOptions)
-			local AddGroup16 = p279.AddGroup
-			local linesGroupOptions = { Source = p280, Option = "Lines" }
-			local linesGroup = AddGroup16(p279, linesGroupOptions)
+			local AddGroup16 = section.AddGroup
+			local linesGroupOptions = { Source = styleDropdown, Option = "Lines" }
+			local linesGroup = AddGroup16(section, linesGroupOptions)
 			local AddToggle53 = linesGroup.AddToggle
 			local spreadToggleOptions = {
 				Label = "Spread",
@@ -20209,8 +20209,8 @@ local function f1242()
 			local spreadGroup = AddGroup17(linesGroup, spreadGroupOptions)
 			local AddRangeSlider2 = spreadGroup.AddRangeSlider
 			local rangeRangeSliderOptions = { Label = "Range", Min = 0, Max = 100, Step = 1 }
-			local t208 = { Min = 4, Max = 16 }
-			rangeRangeSliderOptions.Default = t208
+			local defaultRange = { Min = 4, Max = 16 }
+			rangeRangeSliderOptions.Default = defaultRange
 			rangeRangeSliderOptions.Config = table.create(3)
 			AddRangeSlider2(spreadGroup, rangeRangeSliderOptions)
 			local AddSlider37 = spreadGroup.AddSlider
@@ -20224,116 +20224,116 @@ local function f1242()
 			AddSlider37(spreadGroup, spreadSpeedSliderOptions)
 		end
 
-		return f1517
+		return buildCrosshairAnimationOptions
 	end
 
 	return 
-		f1243,
-		f1244,
+		normalizeSliderValue,
+		runAtIdentity2,
 		destroyPlayerCamera_proto,
-		f1248,
-		f1249,
+		getCamera,
+		buildModifierToggles,
 		nextLayoutOrder_proto,
 		box_proto,
 		elementsContainer_proto,
-		f1254,
+		loadLayoutUtil,
 		useEmote_proto,
-		f1256,
-		f1257,
-		f1258,
-		f1260,
-		f1261,
-		f1262,
-		f1263,
+		loadUseEmoteHook,
+		newLayer_proto,
+		applyLayerChoice,
+		handleReplicate,
+		isEnabled,
+		applyNoMotion,
+		buildKeybindList,
 		lazyModule_fG,
-		f1265,
-		f1266,
-		f1267,
-		f1268,
-		f1269,
+		removeGuard,
+		loadNativeCrosshairHook,
+		buildTargetParts_proto,
+		isWrapInverted,
+		replicate_proto,
 		newDeviceSpoof_proto,
 		attemptLoadHook_proto,
 		destroyDeviceSpoof_proto,
 		attemptUnloadHook_proto,
 		loadDeviceSpoof,
-		f1285,
-		f1286,
-		f1287,
+		fireClicked,
+		getMerged_proto,
+		getRestoreData,
 		f1288,
-		f1289,
-		f1290,
-		f1291,
-		f1292,
+		spawnSparks,
+		newClaims,
+		mixHash,
+		sendSentryEvent,
 		lazyModule_gl,
-		f1294,
-		f1295,
-		f1296,
-		f1297,
-		f1298,
-		f1300,
-		f1305,
-		f1311,
+		onFocusLostEmpty,
+		hasHigherClaim,
+		cancelAll_proto,
+		settle_proto,
+		finalizer_proto,
+		executor_proto,
+		promiseRace,
+		registerMobileButton,
 		f1312,
-		f1313,
+		denseForward,
 		f1314,
-		f1315,
-		f1316,
-		f1317,
-		f1318,
-		f1319,
-		f1325,
+		buildTargetConditions_proto,
+		buildTargetType_proto,
+		buildPartSelection_proto,
+		buildTriggerbotOptions_proto,
+		loadTriggerbotOptions,
+		loadNoop,
 		lazyModule_fK,
-		f1328,
+		startAttackWindow,
 		f1329,
 		f1330,
-		f1331,
-		f1334,
-		f1335,
-		f1337,
+		buildHitFeedbackSection,
+		renderRight_proto,
+		newDivider,
+		replicate_proto2,
 		lazyModule_eG,
-		f1339,
-		f1340,
-		f1341,
-		f1342,
+		refreshRowSelection,
+		applyNoShootAnimation,
+		concat_proto,
+		loadConcat,
 		lazyModule_aX,
-		f1345,
-		f1346,
-		f1347,
-		f1348,
+		getNames,
+		allSameValue,
+		connect,
+		onChanged_proto,
 		destroyFavorited_proto,
-		f1350,
-		f1351,
-		f1352,
-		f1353,
-		f1356,
-		f1357,
+		getSelectedRecording,
+		update_proto,
+		onTextBoundsChanged_proto,
+		wrapRowOnOverflow,
+		addLine_proto,
+		buildDivider,
 		lazyModule_c0,
 		f1360,
 		destroyPlayerCamera_proto2,
-		f1362,
+		unbind_proto,
 		initializePlayerCamera_proto,
 		loadPlayerCamera,
-		f1370,
-		f1371,
-		f1372,
-		f1373,
-		f1375,
+		isPositionBlocked,
+		createAsync,
+		consider_proto,
+		collectBreakerParts,
+		setCursor,
 		lazyModule_e9,
-		f1377,
+		setOverlayHidden,
 		lazyModule_hA,
-		f1379,
-		f1380,
-		f1381,
-		f1383,
-		f1384,
-		f1385,
-		f1387,
-		f1388,
-		f1389,
-		f1395,
+		getQueueName,
+		nextInteger_proto,
+		newSeededRandom,
+		encodeRecording,
+		buildShootOptions_proto,
+		buildWeaponOptions_proto,
+		buildEvasionOptions_proto,
+		buildRagebotTab_proto,
+		loadRagebotOptions,
+		getFavorites_proto,
 		applyFavorited_proto,
 		revertFavorited_proto,
-		f1399,
+		onResolverChanged_proto,
 		newFavorited_proto,
 		destroyFavorited_proto2,
 		loadFavorited,
@@ -20344,90 +20344,90 @@ local function f1242()
 		clearAllOverrides_proto,
 		destroyGuardedInstance_proto,
 		loadGuardedInstance,
-		f1415,
-		f1416,
-		f1417,
-		f1418,
-		f1419,
-		f1420,
-		f1421,
-		f1422,
+		startShooting,
+		newRouteMarker,
+		setNoGameHitsound,
+		onLeaderboardRankChanged_proto,
+		onAttributeChanged_proto,
+		onLeaderstatChanged_proto,
+		onRankedEloChanged_proto,
+		bindSpoofRecompute,
 		f1429,
-		f1430,
-		f1431,
-		f1432,
-		f1433,
+		newMotionDisabler,
+		getEditValue,
+		call,
+		isInsideLimit,
 		lazyModule_d9,
-		f1435,
-		f1436,
+		getChildren,
+		setValue,
 		lazyModule_d7,
-		f1438,
-		f1439,
-		f1441,
-		f1442,
-		f1443,
-		f1444,
-		f1445,
+		importLayer_proto,
+		importLayerStates,
+		hideIfFalse,
+		setValue2,
+		assignValue,
+		newErrorReporter,
+		pulse,
 		f1446,
 		lazyModule_hu,
 		lazyModule_a3,
 		f1449,
-		f1451,
+		getStateKeys,
 		lazyModule_hN,
 		f1453,
 		f1454,
-		f1456,
-		f1457,
-		f1458,
-		f1459,
-		f1461,
-		f1462,
+		revertHook,
+		createViewModel,
+		newLeaderboardRankHook,
+		applyDataOverride,
+		buildMotionBlurSection_proto,
+		loadMotionBlurSection,
 		f1464,
 		f1465,
 		f1466,
 		f1467,
 		f1468,
 		f1469,
-		initialize_proto,
-		new_proto,
-		destroy_proto,
-		f1473,
+		initializeHealthBar_proto,
+		newHealthBar_proto,
+		destroyHealthBar_proto,
+		loadHealthBar,
 		getEnabledKeybindState_proto,
-		f1475,
-		new_proto2,
-		f1478,
+		onReloaded_proto,
+		newKeybindBridge_proto,
+		notify_proto,
 		observeEnabledKeybind_proto,
-		destroy_proto2,
+		destroyKeybindBridge_proto,
 		rebuildAll_proto,
 		getPropertyChangedSignal_proto,
 		set_proto,
 		registerPath_proto,
 		ensureRegistered_proto,
-		f1487,
-		f1490,
-		f1491,
-		f1492,
-		f1493,
-		f1494,
-		f1495,
-		f1496,
-		f1497,
-		f1498,
-		f1499,
-		f1500,
-		f1502,
-		f1503,
-		f1504,
-		new_proto3,
-		setEnabled_proto,
+		loadKeybindBridge,
+		setTextValue,
+		applyNoSpread,
+		releaseClaim,
+		newSkeleton,
+		newTriggerbot,
+		restoreLeaderboardSerials,
+		notifyWarning,
+		collectSearchHits,
+		shouldBlockMenuToggle,
+		onInputBegan_proto,
+		newSearch,
+		navigateTo,
+		getSerial,
+		onInput_proto,
+		newGunInputFlag_proto,
+		setEnabledGunInputFlag_proto,
 		handleInput_proto,
-		destroy_proto3,
-		f1510,
+		destroyGunInputFlag_proto,
+		loadGunInputFlag,
 		lazyModule_et,
-		f1513,
+		clearWinning,
 		f1514,
-		f1515,
-		f1516
+		buildCrosshairAnimationOptions_proto,
+		loadCrosshairAnimationOptions
 	
 end
 
@@ -24830,58 +24830,58 @@ local function f1518()
 end
 
 local function f1864()
-	local function f1865(p1)
-		up0._rootDesync = up0._trove:Add(up1.new(p1.rootPart))
+	local function f1865(state)
+		up0._rootDesync = up0._trove:Add(up1.new(state.rootPart))
 	end
 
 	local function initializeCharacterController_proto(...)
-		local t1, f1867, t2, v1, f1868
+		local self_, connect, trove, diedSignal, onCreated
 		local _ = bit32.countrz
-		local v2
-		v2 = not not false
-		if not v2 then
-			bit32.countrz(v2)
+		local junk
+		junk = not not false
+		if not junk then
+			bit32.countrz(junk)
 			local _ = 27700 + (bit32.bor(
 				math.modf(3.141592653589793),
 				(string.byte("\131\197", 1, 1))
 			) + 430) + -28169
-			t1 = ...
-			local v3 = t1
+			self_ = ...
+			local controller = self_
 
-			f1868 = function(p2)
-				v3._rootDesync = v3._trove:Add(up1.new(p2.rootPart))
+			onCreated = function(state)
+				controller._rootDesync = controller._trove:Add(RootDesync.new(state.rootPart))
 			end
 
-			t1._trove:Connect(t1._context.created, f1868)
-			t2 = t1._trove
-			f1867 = t2.Connect
-			v1 = t1._context.died
+			self_._trove:Connect(self_._context.created, onCreated)
+			trove = self_._trove
+			connect = trove.Connect
+			diedSignal = self_._context.died
 		end
-		local v4 = t1
+		local controller2 = self_
 
-		local function f1869()
-			v4._viewAngleDriver:ClearAll()
-			local _rootDesync2 = v4._rootDesync
-			if _rootDesync2 ~= nil then
-				v4._trove:Remove(_rootDesync2)
-				v4._rootDesync = nil
+		local function onDied()
+			controller2._viewAngleDriver:ClearAll()
+			local rootDesync = controller2._rootDesync
+			if rootDesync ~= nil then
+				controller2._trove:Remove(rootDesync)
+				controller2._rootDesync = nil
 			end
 		end
 
-		f1867(t2, v1, f1869)
-		f1868(t1._context.state)
+		connect(trove, diedSignal, onDied)
+		onCreated(self_._context.state)
 	end
 
 	local function getClientCFrame_proto(self_)
-		local v5 = nil
+		local cframe = nil
 		if self_._rootDesync == nil then
-			v5 = nil
+			cframe = nil
 		end
-		return v5
+		return cframe
 	end
 
-	local function f1871(p4, p5)
-		p4._viewAngleDriver:Suppress(p5)
+	local function suppressCameraReplication(self_, suppressed)
+		self_._viewAngleDriver:Suppress(suppressed)
 	end
 
 	local function f1872(self_)
@@ -24889,13 +24889,13 @@ local function f1864()
 	end
 
 	local function setServerCFrame_proto(...)
-		local v6
-		v6 = not false
+		local junk
+		junk = not false
 		local _leave71 = false
-		local _, t3
-		if not v6 then
-			t3, _ = ...
-			if t3._rootDesync == nil then
+		local _, self_
+		if not junk then
+			self_, _ = ...
+			if self_._rootDesync == nil then
 				_leave71 = true
 			end
 		end
@@ -24903,8 +24903,8 @@ local function f1864()
 			while true do
 				if string.byte("-i\222\240", 1, nil) then
 				end
-				t3, _ = ...
-				if t3._rootDesync == nil then
+				self_, _ = ...
+				if self_._rootDesync == nil then
 					_leave71 = true
 					break
 				end
@@ -24912,93 +24912,93 @@ local function f1864()
 		end
 	end
 
-	local function sendViewAngles_proto(self_, p8, p9)
-		self_._viewAngleDriver:SendViewAngles(p8, p9)
+	local function sendViewAngles_proto(self_, slot, angles)
+		self_._viewAngleDriver:SendViewAngles(slot, angles)
 	end
 
-	local function f1875(p10, p11)
-		p10._viewAngleDriver:SendRawCameraRotation(p11)
+	local function sendRawCameraRotation_proto(self_, rotation)
+		self_._viewAngleDriver:SendRawCameraRotation(rotation)
 	end
 
 	local function getServerCFrame_proto(self_)
-		local _rootDesync3 = self_._rootDesync
-		if _rootDesync3 == nil then
+		local rootDesync = self_._rootDesync
+		if rootDesync == nil then
 			return nil
 		end
-		return (_rootDesync3:GetServerCFrame())
+		return (rootDesync:GetServerCFrame())
 	end
 
 	local function getServerHeadOrigin_proto(self_)
-		local _rootDesync4 = self_._rootDesync
-		local v7
-		v7 = not (_rootDesync4 == nil)
-		v7 = v7 and _rootDesync4:GetServerCFrame() + up0 or nil
-		return v7
+		local rootDesync = self_._rootDesync
+		local headOrigin
+		headOrigin = not (rootDesync == nil)
+		headOrigin = headOrigin and rootDesync:GetServerCFrame() + headOffset or nil
+		return headOrigin
 	end
 
 	local function loadCharacterController()
 		up0.aC()
-		local v8 = up0.aD()
-		local v9 = up0.q()
-		local v10 = up0.aF()
-		local v11 = Vector3.new(0, 1.75, 0)
+		local RootDesync = up0.aD()
+		local Trove = up0.q()
+		local ViewAngleDriver = up0.aF()
+		local headOffset = Vector3.new(0, 1.75, 0)
 		local CharacterController = {}
 		CharacterController.__index = CharacterController
 
-		function CharacterController.new(p14)
-			local v12 = v9.new("context.character_controller")
-			local t5 = { _trove = v12, _context = p14, _viewAngleDriver = v12:Add(v10.new()) }
-			setmetatable(t5, CharacterController)
-			t5:_Initialize()
-			return t5
+		function CharacterController.new(context)
+			local trove = Trove.new("context.character_controller")
+			local controller = { _trove = trove, _context = context, _viewAngleDriver = trove:Add(ViewAngleDriver.new()) }
+			setmetatable(controller, CharacterController)
+			controller:_Initialize()
+			return controller
 		end
 
 		function CharacterController._Initialize(...)
-			local t6, f1879, t7, v13, f1880
+			local self_, connect, trove, diedSignal, onCreated
 			local _ = bit32.countrz
-			local v14
-			v14 = not not false
-			if not v14 then
-				bit32.countrz(v14)
+			local junk
+			junk = not not false
+			if not junk then
+				bit32.countrz(junk)
 				local _ = 27700 + (bit32.bor(
 					math.modf(3.141592653589793),
 					(string.byte("\131\197", 1, 1))
 				) + 430) + -28169
-				t6 = ...
-				local v15 = t6
+				self_ = ...
+				local controller = self_
 
-				f1880 = function(p15)
-					v15._rootDesync = v15._trove:Add(v8.new(p15.rootPart))
+				onCreated = function(state)
+					controller._rootDesync = controller._trove:Add(RootDesync.new(state.rootPart))
 				end
 
-				t6._trove:Connect(t6._context.created, f1880)
-				t7 = t6._trove
-				f1879 = t7.Connect
-				v13 = t6._context.died
+				self_._trove:Connect(self_._context.created, onCreated)
+				trove = self_._trove
+				connect = trove.Connect
+				diedSignal = self_._context.died
 			end
-			local v16 = t6
+			local controller2 = self_
 
-			local function f1881()
-				v16._viewAngleDriver:ClearAll()
-				local _rootDesync5 = v16._rootDesync
-				if _rootDesync5 ~= nil then
-					v16._trove:Remove(_rootDesync5)
-					v16._rootDesync = nil
+			local function onDied()
+				controller2._viewAngleDriver:ClearAll()
+				local rootDesync = controller2._rootDesync
+				if rootDesync ~= nil then
+					controller2._trove:Remove(rootDesync)
+					controller2._rootDesync = nil
 				end
 			end
 
-			f1879(t7, v13, f1881)
-			f1880(t6._context.state)
+			connect(trove, diedSignal, onDied)
+			onCreated(self_._context.state)
 		end
 
 		function CharacterController.SetServerCFrame(...)
-			local v17
-			v17 = not false
+			local junk
+			junk = not false
 			local _leave72 = false
-			local _, t8
-			if not v17 then
-				t8, _ = ...
-				if t8._rootDesync == nil then
+			local _, self_
+			if not junk then
+				self_, _ = ...
+				if self_._rootDesync == nil then
 					_leave72 = true
 				end
 			end
@@ -25006,8 +25006,8 @@ local function f1864()
 				while true do
 					if string.byte("-i\222\240", 1, nil) then
 					end
-					t8, _ = ...
-					if t8._rootDesync == nil then
+					self_, _ = ...
+					if self_._rootDesync == nil then
 						_leave72 = true
 						break
 					end
@@ -25016,39 +25016,39 @@ local function f1864()
 		end
 
 		function CharacterController:GetServerCFrame()
-			local _rootDesync6 = self._rootDesync
-			if _rootDesync6 == nil then
+			local rootDesync = self._rootDesync
+			if rootDesync == nil then
 				return nil
 			end
-			return (_rootDesync6:GetServerCFrame())
+			return (rootDesync:GetServerCFrame())
 		end
 
 		function CharacterController:GetServerHeadOrigin()
-			local _rootDesync7 = self._rootDesync
-			local v18
-			v18 = not (_rootDesync7 == nil)
-			v18 = v18 and _rootDesync7:GetServerCFrame() + v11 or nil
-			return v18
+			local rootDesync = self._rootDesync
+			local headOrigin
+			headOrigin = not (rootDesync == nil)
+			headOrigin = headOrigin and rootDesync:GetServerCFrame() + headOffset or nil
+			return headOrigin
 		end
 
 		function CharacterController:GetClientCFrame()
-			local v19 = nil
+			local cframe = nil
 			if self._rootDesync == nil then
-				v19 = nil
+				cframe = nil
 			end
-			return v19
+			return cframe
 		end
 
-		function CharacterController:SendViewAngles(p16, p17)
-			self._viewAngleDriver:SendViewAngles(p16, p17)
+		function CharacterController:SendViewAngles(slot, angles)
+			self._viewAngleDriver:SendViewAngles(slot, angles)
 		end
 
-		local function f1882(p18, p19)
-			p18._viewAngleDriver:SendRawCameraRotation(p19)
+		local function sendRawCameraRotation(self_, rotation)
+			self_._viewAngleDriver:SendRawCameraRotation(rotation)
 		end
 
-		CharacterController.SendRawCameraRotation = f1882
-		CharacterController.SuppressCameraReplication = f1882
+		CharacterController.SendRawCameraRotation = sendRawCameraRotation
+		CharacterController.SuppressCameraReplication = sendRawCameraRotation
 
 		function CharacterController:FlushViewAngles()
 			self._viewAngleDriver:Flush()
@@ -25056,8 +25056,8 @@ local function f1864()
 
 		function CharacterController.HeartbeatUpdate(...)
 			repeat
-				local t9 = ...
-			until t9._rootDesync == nil
+				local self_ = ...
+			until self_._rootDesync == nil
 		end
 
 		function CharacterController:Destroy()
@@ -25067,30 +25067,30 @@ local function f1864()
 		return CharacterController
 	end
 
-	local function f1883(p20, p21, p22)
-		local Set8 = p20.Set
-		local t10 = { Key = p20.Value.Key, Mode = p21 }
-		Set8(p20, t10, p22)
+	local function setKeybindMode(keybind, mode, silent)
+		local set = keybind.Set
+		local value = { Key = keybind.Value.Key, Mode = mode }
+		set(keybind, value, silent)
 	end
 
-	local function f1884(p23)
-		p23[up0] = true
+	local function markAndUpdate(set)
+		set[up0] = true
 		up1:Update()
 	end
 
-	local function f1885(p24, p25, p26)
-		local v20 = up0(p24, "InputSpammingEnabled")
-		if v20 == nil then
+	local function setInputSpamming(source, target, override)
+		local original = up0(source, "InputSpammingEnabled")
+		if original == nil then
 			return
 		end
-		if p26 == nil then
-			up1(p25, "InputSpammingEnabled", v20)
+		if override == nil then
+			up1(target, "InputSpammingEnabled", original)
 			return
 		end
-		local v21 = table.clone(v20)
-		v21.StartShooting = 0
-		v21.StartReloading = 0
-		up1(p25, "InputSpammingEnabled", v21)
+		local patched = table.clone(original)
+		patched.StartShooting = 0
+		patched.StartReloading = 0
+		up1(target, "InputSpammingEnabled", patched)
 	end
 
 	local function lazyModule_d8()
@@ -25102,56 +25102,56 @@ local function f1864()
 		return t11.c
 	end
 
-	local function f1887(p27, p28, p29)
-		local v22 = up0(p27, "ClientFighterCharacter")
-		if v22 then
-			v22 = up0(v22, "ClientFighter")
+	local function jointsUpdateHook_proto(joints, deltaTime, state)
+		local fighter = up0(joints, "ClientFighterCharacter")
+		if fighter then
+			fighter = up0(fighter, "ClientFighter")
 		end
-		if v22 == nil then
-			return (up1(p27, p28, p29))
+		if fighter == nil then
+			return (up1(joints, deltaTime, state))
 		end
-		local v23
-		v23 = up0(v22, "IsLocalPlayer") == true
-		if v23 then
-			local _winning = up2._winning
-			if _winning ~= nil then
-				up3(p29, "CameraRotationRaw", up4(_winning))
+		local isLocal
+		isLocal = up0(fighter, "IsLocalPlayer") == true
+		if isLocal then
+			local winning = up2._winning
+			if winning ~= nil then
+				up3(state, "CameraRotationRaw", up4(winning))
 			end
 		end
-		return (up1(p27, p28, p29))
+		return (up1(joints, deltaTime, state))
 	end
 
 	local function loadJointsHook_proto(self_)
 		if self_._jointsRestore ~= nil then
-			return up0.VOID_OK
+			return Result.VOID_OK
 		end
-		local v24 = up1(ClientFighterCharacterJoints, "Update")
-		if v24 == nil then
-			return (up0.err("ViewAngleDriver", "function_lookup", "Joints.Update method not found"))
+		local originalUpdate = getField(ClientFighterCharacterJoints, "Update")
+		if originalUpdate == nil then
+			return (Result.err("ViewAngleDriver", "function_lookup", "Joints.Update method not found"))
 		end
 
-		local function f1889(p31, p32, p33)
-			local v25 = up0(p31, "ClientFighterCharacter")
-			if v25 then
-				v25 = up0(v25, "ClientFighter")
+		local function jointsUpdateHook(joints, deltaTime, state)
+			local fighter = up0(joints, "ClientFighterCharacter")
+			if fighter then
+				fighter = up0(fighter, "ClientFighter")
 			end
-			if v25 == nil then
-				return (v24(p31, p32, p33))
+			if fighter == nil then
+				return (originalUpdate(joints, deltaTime, state))
 			end
-			local v26
-			v26 = up0(v25, "IsLocalPlayer") == true
-			if v26 then
-				local _winning2 = self_._winning
-				if _winning2 ~= nil then
-					up3(p33, "CameraRotationRaw", up4(_winning2))
+			local isLocal
+			isLocal = up0(fighter, "IsLocalPlayer") == true
+			if isLocal then
+				local winning = self_._winning
+				if winning ~= nil then
+					up3(state, "CameraRotationRaw", toCameraRotation(winning))
 				end
 			end
-			return (v24(p31, p32, p33))
+			return (originalUpdate(joints, deltaTime, state))
 		end
 
-		up3(ClientFighterCharacterJoints, "Update", f1889)
-		;({}).jointsUpdateMethod = v24
-		return up0.VOID_OK
+		up3(ClientFighterCharacterJoints, "Update", jointsUpdateHook)
+		;({}).jointsUpdateMethod = originalUpdate
+		return Result.VOID_OK
 	end
 
 	local function flush_proto(self_)
@@ -25161,97 +25161,97 @@ local function f1864()
 		if self_._fullySuppressed then
 			return
 		end
-		local _winning3 = self_._winning
-		if _winning3 == nil then
+		local winning = self_._winning
+		if winning == nil then
 			self_._dirty = false
 			return
 		end
 		self_._dirty = false
-		up0(UpdateCameraRotationRemote, up2(_winning3), nil)
+		up0(UpdateCameraRotationRemote, encodeAngles(winning), nil)
 	end
 
 	local function revertHooks_proto(self_)
-		local _jointsRestore = self_._jointsRestore
-		if _jointsRestore ~= nil then
+		local jointsRestore = self_._jointsRestore
+		if jointsRestore ~= nil then
 			self_._jointsRestore = nil
-			up0(ClientFighterCharacterJoints, "Update", _jointsRestore.jointsUpdateMethod)
+			up0(ClientFighterCharacterJoints, "Update", jointsRestore.jointsUpdateMethod)
 		end
-		local _replicationRestore = self_._replicationRestore
-		if _replicationRestore ~= nil then
+		local replicationRestore = self_._replicationRestore
+		if replicationRestore ~= nil then
 			self_._replicationRestore = nil
 			debug.setupvalue(
-				_replicationRestore.cameraReplicationLoopMethod,
-				_replicationRestore.utilityIndex,
-				_replicationRestore.utility
+				replicationRestore.cameraReplicationLoopMethod,
+				replicationRestore.utilityIndex,
+				replicationRestore.utility
 			)
 		end
 	end
 
-	local function sendRawCameraRotation_proto(self_, p36)
-		up0(UpdateCameraRotationRemote, p36, nil)
+	local function sendRawCameraRotation_proto2(self_, rotation)
+		up0(UpdateCameraRotationRemote, rotation, nil)
 	end
 
-	local function suppress_proto(self_, p38)
-		if self_._fullySuppressed == p38 then
-			return up0.VOID_OK
+	local function suppress_proto(self_, suppressed)
+		if self_._fullySuppressed == suppressed then
+			return Result.VOID_OK
 		end
-		self_._fullySuppressed = p38
-		if p38 then
+		self_._fullySuppressed = suppressed
+		if suppressed then
 			return (self_:_LoadReplicationHook())
 		end
-		return up0.VOID_OK
+		return Result.VOID_OK
 	end
 
-	local function f1894(p39)
-		if p39.kind == "Unnormalized" then
-			return (up0.fromXYToCameraRotation(p39.pitch, nil))
+	local function toCameraRotation_proto(angles)
+		if angles.kind == "Unnormalized" then
+			return (RotationCodec.fromXYToCameraRotation(angles.pitch, nil))
 		end
-		local decodeSingle = up0.decodeSingle
-		up0.encodeSingle(math.rad(p39.pitch))
-		local v27 = decodeSingle()
-		local decodeSingle2 = up0.decodeSingle
-		up0.encodeSingle(math.rad(p39.yaw))
-		return (Vector2.new(v27, (decodeSingle2())))
+		local decodePitch = RotationCodec.decodeSingle
+		RotationCodec.encodeSingle(math.rad(angles.pitch))
+		local pitch = decodePitch()
+		local decodeYaw = RotationCodec.decodeSingle
+		RotationCodec.encodeSingle(math.rad(angles.yaw))
+		return (Vector2.new(pitch, (decodeYaw())))
 	end
 
-	local function new_proto()
-		local t12 = {
+	local function newViewAngleDriver_proto()
+		local driver = {
 			_slots = {},
 			_winning = nil,
 			_fullySuppressed = false,
 			_dirty = false
 		}
-		return (setmetatable(t12, up0))
+		return (setmetatable(driver, ViewAngleDriver))
 	end
 
-	local function sendViewAngles_proto2(self_, p41, p42)
-		if self_._slots[p41] == p42 then
-			return up0.VOID_OK
+	local function sendViewAngles_proto2(self_, slot, angles)
+		if self_._slots[slot] == angles then
+			return Result.VOID_OK
 		end
-		self_._slots[p41] = p42
+		self_._slots[slot] = angles
 		self_._dirty = true
 		self_:_Resolve()
 		if self_._winning == nil then
-			return up0.VOID_OK
+			return Result.VOID_OK
 		end
-		local _LoadJointsHook = self_:_LoadJointsHook()
-		if _LoadJointsHook.ok then
+		local result = self_:_LoadJointsHook()
+		if result.ok then
 			return (self_:_LoadReplicationHook())
 		end
-		return _LoadJointsHook
+		return result
 	end
 
-	local function destroy_proto(self_)
+	local function destroyViewAngleDriver_proto(self_)
 		self_:_RevertHooks()
 	end
 
-	local function f1898(p44)
-		if p44.kind == "Unnormalized" then
-			return utf8.char(math.clamp(p44.pitch, 0, 255)) ..
-				utf8.char(math.clamp(p44.yaw, 0, 255))
+	local function encodeAngles_proto(angles)
+		if angles.kind == "Unnormalized" then
+			return utf8.char(math.clamp(angles.pitch, 0, 255)) ..
+				utf8.char(math.clamp(angles.yaw, 0, 255))
 		end
-		return up0.encodeSingle(math.rad(p44.pitch)) ..
-			up0.encodeSingle(math.rad(p44.yaw))
+		return RotationCodec.encodeSingle(math.rad(angles.pitch)) ..
+			RotationCodec.encodeSingle(math.rad(angles.yaw))
 	end
 
 	local function clearAll_proto(self_)
@@ -25260,259 +25260,259 @@ local function f1864()
 		self_._dirty = false
 	end
 
-	local function f1900()
+	local function loadViewAngleDriver()
 		up0.aj()
-		local v28 = up0.b()
-		local v29 = up0.ah()
-		local FighterController2 = up0.ao().FighterController
+		local Result = up0.b()
+		local getField = up0.ah()
+		local FighterController = up0.ao().FighterController
 		local ClientFighterCharacterJoints = up0.ao().ClientFighterCharacterJoints
 		local UpdateCameraRotationRemote = up0.ao().UpdateCameraRotationRemote
-		local v30 = up0.aE()
-		local t13 = {}
-		t13.__index = t13
+		local RotationCodec = up0.aE()
+		local ViewAngleDriver = {}
+		ViewAngleDriver.__index = ViewAngleDriver
 
-		local function f1901(p46)
-			if p46.kind == "Unnormalized" then
-				return utf8.char(math.clamp(p46.pitch, 0, 255)) ..
-					utf8.char(math.clamp(p46.yaw, 0, 255))
+		local function encodeAngles(angles)
+			if angles.kind == "Unnormalized" then
+				return utf8.char(math.clamp(angles.pitch, 0, 255)) ..
+					utf8.char(math.clamp(angles.yaw, 0, 255))
 			end
-			return v30.encodeSingle(math.rad(p46.pitch)) ..
-				v30.encodeSingle(math.rad(p46.yaw))
+			return RotationCodec.encodeSingle(math.rad(angles.pitch)) ..
+				RotationCodec.encodeSingle(math.rad(angles.yaw))
 		end
 
-		local function f1902(p47)
-			if p47.kind == "Unnormalized" then
-				return (v30.fromXYToCameraRotation(p47.pitch, nil))
+		local function toCameraRotation(angles)
+			if angles.kind == "Unnormalized" then
+				return (RotationCodec.fromXYToCameraRotation(angles.pitch, nil))
 			end
-			local decodeSingle3 = v30.decodeSingle
-			v30.encodeSingle(math.rad(p47.pitch))
-			local v31 = decodeSingle3()
-			local decodeSingle4 = v30.decodeSingle
-			v30.encodeSingle(math.rad(p47.yaw))
-			return (Vector2.new(v31, (decodeSingle4())))
+			local decodePitch = RotationCodec.decodeSingle
+			RotationCodec.encodeSingle(math.rad(angles.pitch))
+			local pitch = decodePitch()
+			local decodeYaw = RotationCodec.decodeSingle
+			RotationCodec.encodeSingle(math.rad(angles.yaw))
+			return (Vector2.new(pitch, (decodeYaw())))
 		end
 
-		function t13.new()
-			local t14 = {
+		function ViewAngleDriver.new()
+			local driver = {
 				_slots = {},
 				_winning = nil,
 				_fullySuppressed = false,
 				_dirty = false
 			}
-			return (setmetatable(t14, t13))
+			return (setmetatable(driver, ViewAngleDriver))
 		end
 
-		function t13:_LoadJointsHook()
+		function ViewAngleDriver:_LoadJointsHook()
 			if self._jointsRestore ~= nil then
-				return v28.VOID_OK
+				return Result.VOID_OK
 			end
-			local v32 = v29(ClientFighterCharacterJoints, "Update")
-			if v32 == nil then
-				return (v28.err(
+			local originalUpdate = getField(ClientFighterCharacterJoints, "Update")
+			if originalUpdate == nil then
+				return (Result.err(
 					"ViewAngleDriver",
 					"function_lookup",
 					"Joints.Update method not found"
 				))
 			end
 
-			local function f1903(p48, p49, p50)
-				local v33 = v29(p48, "ClientFighterCharacter")
-				if v33 then
-					v33 = v29(v33, "ClientFighter")
+			local function jointsUpdateHook(joints, deltaTime, state)
+				local fighter = getField(joints, "ClientFighterCharacter")
+				if fighter then
+					fighter = getField(fighter, "ClientFighter")
 				end
-				if v33 == nil then
-					return (v32(p48, p49, p50))
+				if fighter == nil then
+					return (originalUpdate(joints, deltaTime, state))
 				end
-				local v34
-				v34 = v29(v33, "IsLocalPlayer") == true
-				if v34 then
-					local _winning4 = self._winning
-					if _winning4 ~= nil then
-						up3(p50, "CameraRotationRaw", f1902(_winning4))
+				local isLocal
+				isLocal = getField(fighter, "IsLocalPlayer") == true
+				if isLocal then
+					local winning = self._winning
+					if winning ~= nil then
+						up3(state, "CameraRotationRaw", toCameraRotation(winning))
 					end
 				end
-				return (v32(p48, p49, p50))
+				return (originalUpdate(joints, deltaTime, state))
 			end
 
-			up3(ClientFighterCharacterJoints, "Update", f1903)
-			;({}).jointsUpdateMethod = v32
-			return v28.VOID_OK
+			up3(ClientFighterCharacterJoints, "Update", jointsUpdateHook)
+			;({}).jointsUpdateMethod = originalUpdate
+			return Result.VOID_OK
 		end
 
-		function t13:_LoadReplicationHook()
+		function ViewAngleDriver:_LoadReplicationHook()
 			if self._replicationRestore ~= nil then
-				return v28.VOID_OK
+				return Result.VOID_OK
 			end
-			local v35 = getmetatable(FighterController2)
-			if v35 == nil then
-				return (v28.err(
+			local controllerMetatable = getmetatable(FighterController)
+			if controllerMetatable == nil then
+				return (Result.err(
 					"ViewAngleDriver",
 					"get_metatable",
 					"FighterController metatable not found"
 				))
 			end
-			local v36 = v29(v35, "__index")
-			if v36 == nil then
-				return (v28.err(
+			local prototype = getField(controllerMetatable, "__index")
+			if prototype == nil then
+				return (Result.err(
 					"ViewAngleDriver",
 					"get_prototype",
 					"FighterController prototype not found"
 				))
 			end
-			local v37 = v29(v36, "_CameraReplicationLoop")
-			if v37 == nil then
-				return (v28.err(
+			local replicationLoop = getField(prototype, "_CameraReplicationLoop")
+			if replicationLoop == nil then
+				return (Result.err(
 					"ViewAngleDriver",
 					"function_lookup",
 					"FighterController._CameraReplicationLoop method not found"
 				))
 			end
-			local v38, v39
-			local f1904 = debug.getupvalues(v37)
-			local v40 = nil
+			local utilityIndex, utility
+			local upvalues = debug.getupvalues(replicationLoop)
+			local index = nil
 			while true do
-				local v41
-				v40, v41 = f1904(nil, v40)
-				if v40 == nil then
+				local upvalue
+				index, upvalue = upvalues(nil, index)
+				if index == nil then
 					break
 				end
-				if type(v41) == up3 then
-					local v42 = getmetatable(v41)
-					if v42 ~= nil then
-						local v43 = v29(v42, "__index")
-						if not (v43 == nil or v29(v43, "EncodeCameraRotation") == nil) then
-							v39 = v41
-							v38 = v40
+				if type(upvalue) == up3 then
+					local metatable = getmetatable(upvalue)
+					if metatable ~= nil then
+						local utilityPrototype = getField(metatable, "__index")
+						if not (utilityPrototype == nil or getField(utilityPrototype, "EncodeCameraRotation") == nil) then
+							utility = upvalue
+							utilityIndex = index
 							break
 						end
 					end
 				end
 			end
-			if v38 == nil or v39 == nil then
-				return (v28.err(
+			if utilityIndex == nil or utility == nil then
+				return (Result.err(
 					"ViewAngleDriver",
 					"upvalue_search",
 					"Utility upvalue index not found"
 				))
 			end
 			local _ = debug.setupvalue
-			local t15 = {}
+			local utilityProxy = {}
 
-			function t15.EncodeCameraRotation(_, p51)
+			function utilityProxy.EncodeCameraRotation(_, rotation)
 				if next(self._slots) == nil and not self._fullySuppressed then
-					return (v30.encodeCameraRotation(p51))
+					return (RotationCodec.encodeCameraRotation(rotation))
 				end
-				up1(FighterController2, "_replication_stopped", false)
-				local v44 = v29(FighterController2, "_last_encoded_camera_rotation")
-				if not v44 then
-					v44 = v30.encodeCameraRotation(p51)
+				up1(FighterController, "_replication_stopped", false)
+				local encoded = getField(FighterController, "_last_encoded_camera_rotation")
+				if not encoded then
+					encoded = RotationCodec.encodeCameraRotation(rotation)
 				end
-				return v44
+				return encoded
 			end
 
-			debug.setupvalue(v37, v38, t15)
-			local t16 = { cameraReplicationLoopMethod = v37, utilityIndex = v38, utility = v39 }
-			self._replicationRestore = t16
-			return v28.VOID_OK
+			debug.setupvalue(replicationLoop, utilityIndex, utilityProxy)
+			local restore = { cameraReplicationLoopMethod = replicationLoop, utilityIndex = utilityIndex, utility = utility }
+			self._replicationRestore = restore
+			return Result.VOID_OK
 		end
 
-		function t13._Resolve(...)
+		function ViewAngleDriver._Resolve(...)
 			local _ = 31377 + bit32.bxor(
 				bit32.rshift(string.byte(">dY\18\215", 1, 4), 9),
 				4
 			) + -31272
-			local v45 = ...
-			v45._winning = nil
+			local self_ = ...
+			self_._winning = nil
 		end
 
-		function t13:SendViewAngles(p52, p53)
-			if self._slots[p52] == p53 then
-				return v28.VOID_OK
+		function ViewAngleDriver:SendViewAngles(slot, angles)
+			if self._slots[slot] == angles then
+				return Result.VOID_OK
 			end
-			self._slots[p52] = p53
+			self._slots[slot] = angles
 			self._dirty = true
 			self:_Resolve()
 			if self._winning == nil then
-				return v28.VOID_OK
+				return Result.VOID_OK
 			end
-			local _LoadJointsHook2 = self:_LoadJointsHook()
-			if _LoadJointsHook2.ok then
+			local result = self:_LoadJointsHook()
+			if result.ok then
 				return (self:_LoadReplicationHook())
 			end
-			return _LoadJointsHook2
+			return result
 		end
 
-		function t13:SendRawCameraRotation(p54)
-			up0(UpdateCameraRotationRemote, p54, nil)
+		function ViewAngleDriver:SendRawCameraRotation(rotation)
+			up0(UpdateCameraRotationRemote, rotation, nil)
 		end
 
-		function t13:Suppress(p55)
-			if self._fullySuppressed == p55 then
-				return v28.VOID_OK
+		function ViewAngleDriver:Suppress(suppressed)
+			if self._fullySuppressed == suppressed then
+				return Result.VOID_OK
 			end
-			self._fullySuppressed = p55
-			if p55 then
+			self._fullySuppressed = suppressed
+			if suppressed then
 				return (self:_LoadReplicationHook())
 			end
-			return v28.VOID_OK
+			return Result.VOID_OK
 		end
 
-		function t13:ClearAll()
+		function ViewAngleDriver:ClearAll()
 			table.clear(self._slots)
 			self._winning = nil
 			self._dirty = false
 		end
 
-		function t13:Flush()
+		function ViewAngleDriver:Flush()
 			if not self._dirty then
 				return
 			end
 			if self._fullySuppressed then
 				return
 			end
-			local _winning5 = self._winning
-			if _winning5 == nil then
+			local winning = self._winning
+			if winning == nil then
 				self._dirty = false
 				return
 			end
 			self._dirty = false
-			up0(UpdateCameraRotationRemote, f1901(_winning5), nil)
+			up0(UpdateCameraRotationRemote, encodeAngles(winning), nil)
 		end
 
-		function t13:_RevertHooks()
-			local _jointsRestore2 = self._jointsRestore
-			if _jointsRestore2 ~= nil then
+		function ViewAngleDriver:_RevertHooks()
+			local jointsRestore = self._jointsRestore
+			if jointsRestore ~= nil then
 				self._jointsRestore = nil
-				up0(ClientFighterCharacterJoints, "Update", _jointsRestore2.jointsUpdateMethod)
+				up0(ClientFighterCharacterJoints, "Update", jointsRestore.jointsUpdateMethod)
 			end
-			local _replicationRestore2 = self._replicationRestore
-			if _replicationRestore2 ~= nil then
+			local replicationRestore = self._replicationRestore
+			if replicationRestore ~= nil then
 				self._replicationRestore = nil
 				debug.setupvalue(
-					_replicationRestore2.cameraReplicationLoopMethod,
-					_replicationRestore2.utilityIndex,
-					_replicationRestore2.utility
+					replicationRestore.cameraReplicationLoopMethod,
+					replicationRestore.utilityIndex,
+					replicationRestore.utility
 				)
 			end
 		end
 
-		function t13:Destroy()
+		function ViewAngleDriver:Destroy()
 			self:_RevertHooks()
 		end
 
-		return t13
+		return ViewAngleDriver
 	end
 
-	local function f1905()
+	local function reload()
 		up0:Reload()
 	end
 
-	local function f1906(p56)
-		return (up0(p56, up1))
+	local function call(value)
+		return (up0(value, up1))
 	end
 
-	local function f1907(p57, p58)
-		p57._image.Visible = p58
+	local function setImageVisible(self_, visible)
+		self_._image.Visible = visible
 	end
 
 	local function f1908()
@@ -25522,119 +25522,119 @@ local function f1864()
 	local function f1910()
 	end
 
-	local function f1911(p59)
+	local function addStroke_proto(frame)
 		local uiStroke = Instance.new("UIStroke")
-		uiStroke.Thickness = up0
+		uiStroke.Thickness = strokeThickness
 		uiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-		uiStroke.Parent = p59
+		uiStroke.Parent = frame
 		return uiStroke
 	end
 
-	local function f1912()
-		local v47 = Instance.new(up0)
-		v47.AnchorPoint = Vector2.new(0.5, 0.5)
-		v47.BackgroundTransparency = 1
-		v47.Visible = false
-		local v48 = Instance.new(up0)
-		v48.AnchorPoint = Vector2.new(0.5, 0.5)
-		v48.Position = UDim2.fromScale(0.5, 0.5)
-		v48.Size = UDim2.fromScale(1, 0.18)
-		v48.BorderSizePixel = 0
-		v48.Parent = v47
-		up1(v48)
-		local v49 = Instance.new(up0)
-		v49.AnchorPoint = Vector2.new(0.5, 0.5)
-		v49.Position = UDim2.fromScale(0.5, 0.5)
-		v49.Size = UDim2.fromScale(0.18, 1)
-		v49.BorderSizePixel = 0
-		v49.Parent = v47
-		up1(v49)
-		return v47, (table.create(2))
+	local function createCross_proto()
+		local container = Instance.new(up0)
+		container.AnchorPoint = Vector2.new(0.5, 0.5)
+		container.BackgroundTransparency = 1
+		container.Visible = false
+		local horizontal = Instance.new(up0)
+		horizontal.AnchorPoint = Vector2.new(0.5, 0.5)
+		horizontal.Position = UDim2.fromScale(0.5, 0.5)
+		horizontal.Size = UDim2.fromScale(1, 0.18)
+		horizontal.BorderSizePixel = 0
+		horizontal.Parent = container
+		addStroke(horizontal)
+		local vertical = Instance.new(up0)
+		vertical.AnchorPoint = Vector2.new(0.5, 0.5)
+		vertical.Position = UDim2.fromScale(0.5, 0.5)
+		vertical.Size = UDim2.fromScale(0.18, 1)
+		vertical.BorderSizePixel = 0
+		vertical.Parent = container
+		addStroke(vertical)
+		return container, (table.create(2))
 	end
 
-	local function f1913()
-		local v50 = Instance.new(up0)
-		v50.AnchorPoint = Vector2.new(0.5, 0.5)
-		v50.BorderSizePixel = 0
-		v50.Visible = false
+	local function createCircle_proto()
+		local circle = Instance.new(up0)
+		circle.AnchorPoint = Vector2.new(0.5, 0.5)
+		circle.BorderSizePixel = 0
+		circle.Visible = false
 		local uiCorner = Instance.new("UICorner")
 		uiCorner.CornerRadius = UDim.new(0.5, 0)
-		uiCorner.Parent = v50
-		up1(v50)
-		return v50, (table.create(1))
+		uiCorner.Parent = circle
+		addStroke(circle)
+		return circle, (table.create(1))
 	end
 
-	local function f1914()
-		local v52 = Instance.new(up0)
-		v52.AnchorPoint = Vector2.new(0.5, 0.5)
-		v52.BorderSizePixel = 0
-		v52.Rotation = 45
-		v52.Visible = false
-		up1(v52)
-		return v52, (table.create(1))
+	local function createDiamond_proto()
+		local diamond = Instance.new(up0)
+		diamond.AnchorPoint = Vector2.new(0.5, 0.5)
+		diamond.BorderSizePixel = 0
+		diamond.Rotation = 45
+		diamond.Visible = false
+		addStroke(diamond)
+		return diamond, (table.create(1))
 	end
 
-	local function f1915(p60, p61, p62, p63, p64, p65, p66)
-		local v53
-		if p63 then
-			v53 = p62
+	local function applyShapeLook_proto(targets, color, transparency, outlineOnly, hasOutline, outlineColor, outlineTransparency)
+		local fillTransparency
+		if outlineOnly then
+			fillTransparency = transparency
 		else
-			v53 = p63
+			fillTransparency = outlineOnly
 		end
-		if not v53 then
-			v53 = 1
+		if not fillTransparency then
+			fillTransparency = 1
 		end
-		local v54 = nil
+		local index = nil
 		while true do
-			local t17
-			v54, t17 = p60(nil, v54)
-			if v54 == nil then
+			local target
+			index, target = targets(nil, index)
+			if index == nil then
 				break
 			end
-			t17.frame.BackgroundColor3 = p61
-			t17.frame.BackgroundTransparency = v53
-			local stroke = t17.stroke
-			if p64 then
-				stroke.Color = p65
-				stroke.Transparency = p66
-			elseif p63 then
+			target.frame.BackgroundColor3 = color
+			target.frame.BackgroundTransparency = fillTransparency
+			local stroke = target.stroke
+			if hasOutline then
+				stroke.Color = outlineColor
+				stroke.Transparency = outlineTransparency
+			elseif outlineOnly then
 				stroke.Transparency = 1
 			else
-				stroke.Color = p61
-				stroke.Transparency = p62
+				stroke.Color = color
+				stroke.Transparency = transparency
 			end
 		end
 	end
 
 	local function newHeadMarker_proto()
-		local v55 = up0.new("esp.HeadMarker")
-		local v56, v57
-		v57, v56 = up1()
-		local v58, v59
-		v59, v58 = up2()
-		local v60, v61
-		v61, v60 = up3()
-		local t18 = {}
-		local t19 = { container = v57, targets = v56, visible = false, lastSize = -1 }
-		t18.Cross = t19
-		local t20 = { container = v59, targets = v58, visible = false, lastSize = -1 }
-		t18.Circle = t20
-		local t21 = { container = v61, targets = v60, visible = false, lastSize = -1 }
-		t18.Diamond = t21
-		local v62 = nil
+		local trove = Trove.new("esp.HeadMarker")
+		local crossTargets, crossContainer
+		crossContainer, crossTargets = createCross()
+		local circleTargets, circleContainer
+		circleContainer, circleTargets = createCircle()
+		local diamondTargets, diamondContainer
+		diamondContainer, diamondTargets = createDiamond()
+		local shapes = {}
+		local cross = { container = crossContainer, targets = crossTargets, visible = false, lastSize = -1 }
+		shapes.Cross = cross
+		local circle = { container = circleContainer, targets = circleTargets, visible = false, lastSize = -1 }
+		shapes.Circle = circle
+		local diamond = { container = diamondContainer, targets = diamondTargets, visible = false, lastSize = -1 }
+		shapes.Diamond = diamond
+		local shapeName = nil
 		while true do
-			local t22
-			v62, t22 = t18(nil, v62)
-			if v62 == nil then
+			local shape
+			shapeName, shape = shapes(nil, shapeName)
+			if shapeName == nil then
 				break
 			end
-			t22.container.Parent = up4
-			v55:Add(t22.container)
+			shape.container.Parent = espFolder
+			trove:Add(shape.container)
 		end
-		local t23 = {
-			_trove = v55,
+		local marker = {
+			_trove = trove,
 			_adornee = nil,
-			_shapes = t18,
+			_shapes = shapes,
 			_shape = "Cross",
 			_color = Color3.new(1, 1, 1),
 			_transparency = 0,
@@ -25645,8 +25645,8 @@ local function f1864()
 			_lookDirty = true,
 			_anyShapeVisible = false
 		}
-		setmetatable(t23, HeadMarker)
-		return t23
+		setmetatable(marker, HeadMarker)
+		return marker
 	end
 
 	local function f1917(self_)
@@ -25654,126 +25654,126 @@ local function f1864()
 	end
 
 	local function loadHeadMarker()
-		local v63 = up0.ev()
-		local v64 = up0.q()
-		local v65 = up0.eC()
+		local espFolder = up0.ev()
+		local Trove = up0.q()
+		local Fonts = up0.eC()
 		local HeadMarker = {}
 		HeadMarker.__index = HeadMarker
-		local v66 = 1.5
+		local strokeThickness = 1.5
 
-		local function f1919(p68)
+		local function addStroke(frame)
 			local uiStroke = Instance.new("UIStroke")
-			uiStroke.Thickness = v66
+			uiStroke.Thickness = strokeThickness
 			uiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-			uiStroke.Parent = p68
+			uiStroke.Parent = frame
 			return uiStroke
 		end
 
-		local function f1920()
-			local v68 = Instance.new(up0)
-			v68.AnchorPoint = Vector2.new(0.5, 0.5)
-			v68.BackgroundTransparency = 1
-			v68.Visible = false
-			local v69 = Instance.new(up0)
-			v69.AnchorPoint = Vector2.new(0.5, 0.5)
-			v69.Position = UDim2.fromScale(0.5, 0.5)
-			v69.Size = UDim2.fromScale(1, 0.18)
-			v69.BorderSizePixel = 0
-			v69.Parent = v68
-			f1919(v69)
-			local v70 = Instance.new(up0)
-			v70.AnchorPoint = Vector2.new(0.5, 0.5)
-			v70.Position = UDim2.fromScale(0.5, 0.5)
-			v70.Size = UDim2.fromScale(0.18, 1)
-			v70.BorderSizePixel = 0
-			v70.Parent = v68
-			f1919(v70)
-			return v68, (table.create(2))
+		local function createCross()
+			local container = Instance.new(up0)
+			container.AnchorPoint = Vector2.new(0.5, 0.5)
+			container.BackgroundTransparency = 1
+			container.Visible = false
+			local horizontal = Instance.new(up0)
+			horizontal.AnchorPoint = Vector2.new(0.5, 0.5)
+			horizontal.Position = UDim2.fromScale(0.5, 0.5)
+			horizontal.Size = UDim2.fromScale(1, 0.18)
+			horizontal.BorderSizePixel = 0
+			horizontal.Parent = container
+			addStroke(horizontal)
+			local vertical = Instance.new(up0)
+			vertical.AnchorPoint = Vector2.new(0.5, 0.5)
+			vertical.Position = UDim2.fromScale(0.5, 0.5)
+			vertical.Size = UDim2.fromScale(0.18, 1)
+			vertical.BorderSizePixel = 0
+			vertical.Parent = container
+			addStroke(vertical)
+			return container, (table.create(2))
 		end
 
-		local function f1921()
-			local v71 = Instance.new(up0)
-			v71.AnchorPoint = Vector2.new(0.5, 0.5)
-			v71.BorderSizePixel = 0
-			v71.Visible = false
+		local function createCircle()
+			local circle = Instance.new(up0)
+			circle.AnchorPoint = Vector2.new(0.5, 0.5)
+			circle.BorderSizePixel = 0
+			circle.Visible = false
 			local uiCorner = Instance.new("UICorner")
 			uiCorner.CornerRadius = UDim.new(0.5, 0)
-			uiCorner.Parent = v71
-			f1919(v71)
-			return v71, (table.create(1))
+			uiCorner.Parent = circle
+			addStroke(circle)
+			return circle, (table.create(1))
 		end
 
-		local function f1922()
-			local v73 = Instance.new(up0)
-			v73.AnchorPoint = Vector2.new(0.5, 0.5)
-			v73.BorderSizePixel = 0
-			v73.Rotation = 45
-			v73.Visible = false
-			f1919(v73)
-			return v73, (table.create(1))
+		local function createDiamond()
+			local diamond = Instance.new(up0)
+			diamond.AnchorPoint = Vector2.new(0.5, 0.5)
+			diamond.BorderSizePixel = 0
+			diamond.Rotation = 45
+			diamond.Visible = false
+			addStroke(diamond)
+			return diamond, (table.create(1))
 		end
 
-		local function f1923(p69, p70, p71, p72, p73, p74, p75)
-			local v74
-			if p72 then
-				v74 = p71
+		local function applyShapeLook(targets, color, transparency, outlineOnly, hasOutline, outlineColor, outlineTransparency)
+			local fillTransparency
+			if outlineOnly then
+				fillTransparency = transparency
 			else
-				v74 = p72
+				fillTransparency = outlineOnly
 			end
-			if not v74 then
-				v74 = 1
+			if not fillTransparency then
+				fillTransparency = 1
 			end
-			local v75 = nil
+			local index = nil
 			while true do
-				local t25
-				v75, t25 = p69(nil, v75)
-				if v75 == nil then
+				local target
+				index, target = targets(nil, index)
+				if index == nil then
 					break
 				end
-				t25.frame.BackgroundColor3 = p70
-				t25.frame.BackgroundTransparency = v74
-				local stroke2 = t25.stroke
-				if p73 then
-					stroke2.Color = p74
-					stroke2.Transparency = p75
-				elseif p72 then
-					stroke2.Transparency = 1
+				target.frame.BackgroundColor3 = color
+				target.frame.BackgroundTransparency = fillTransparency
+				local stroke = target.stroke
+				if hasOutline then
+					stroke.Color = outlineColor
+					stroke.Transparency = outlineTransparency
+				elseif outlineOnly then
+					stroke.Transparency = 1
 				else
-					stroke2.Color = p70
-					stroke2.Transparency = p71
+					stroke.Color = color
+					stroke.Transparency = transparency
 				end
 			end
 		end
 
 		function HeadMarker.new()
-			local v76 = v64.new("esp.HeadMarker")
-			local v77, v78
-			v78, v77 = f1920()
-			local v79, v80
-			v80, v79 = f1921()
-			local v81, v82
-			v82, v81 = f1922()
-			local t26 = {}
-			local t27 = { container = v78, targets = v77, visible = false, lastSize = -1 }
-			t26.Cross = t27
-			local t28 = { container = v80, targets = v79, visible = false, lastSize = -1 }
-			t26.Circle = t28
-			local t29 = { container = v82, targets = v81, visible = false, lastSize = -1 }
-			t26.Diamond = t29
-			local v83 = nil
+			local trove = Trove.new("esp.HeadMarker")
+			local crossTargets, crossContainer
+			crossContainer, crossTargets = createCross()
+			local circleTargets, circleContainer
+			circleContainer, circleTargets = createCircle()
+			local diamondTargets, diamondContainer
+			diamondContainer, diamondTargets = createDiamond()
+			local shapes = {}
+			local cross = { container = crossContainer, targets = crossTargets, visible = false, lastSize = -1 }
+			shapes.Cross = cross
+			local circle = { container = circleContainer, targets = circleTargets, visible = false, lastSize = -1 }
+			shapes.Circle = circle
+			local diamond = { container = diamondContainer, targets = diamondTargets, visible = false, lastSize = -1 }
+			shapes.Diamond = diamond
+			local shapeName = nil
 			while true do
-				local t30
-				v83, t30 = t26(nil, v83)
-				if v83 == nil then
+				local shape
+				shapeName, shape = shapes(nil, shapeName)
+				if shapeName == nil then
 					break
 				end
-				t30.container.Parent = v63
-				v76:Add(t30.container)
+				shape.container.Parent = espFolder
+				trove:Add(shape.container)
 			end
-			local t31 = {
-				_trove = v76,
+			local marker = {
+				_trove = trove,
 				_adornee = nil,
-				_shapes = t26,
+				_shapes = shapes,
 				_shape = "Cross",
 				_color = Color3.new(1, 1, 1),
 				_transparency = 0,
@@ -25784,8 +25784,8 @@ local function f1864()
 				_lookDirty = true,
 				_anyShapeVisible = false
 			}
-			setmetatable(t31, HeadMarker)
-			return t31
+			setmetatable(marker, HeadMarker)
+			return marker
 		end
 
 		local g_2 = g_
@@ -25827,41 +25827,41 @@ local function f1864()
 		return HeadMarker
 	end
 
-	local function f1924()
+	local function getAnimationTime()
 		return up0.animationTime
 	end
 
-	local function f1925(p76, p77)
-		p76.Label = p77
-		local _rt4 = p76._rt
-		if _rt4 ~= nil then
-			_rt4.Label.Text = p77
+	local function setLabel(self_, text)
+		self_.Label = text
+		local rendered = self_._rt
+		if rendered ~= nil then
+			rendered.Label.Text = text
 		end
-		return p76
+		return self_
 	end
 
-	local function f1926(p78, p79)
-		local _blurEffect = p78._blurEffect
-		if _blurEffect == nil then
+	local function updateMotionBlur(self_, deltaTime)
+		local blur = self_._blurEffect
+		if blur == nil then
 			return
 		end
-		local CurrentCamera7 = workspace.CurrentCamera
-		if CurrentCamera7 == nil then
+		local camera = workspace.CurrentCamera
+		if camera == nil then
 			return
 		end
-		local MotionBlur = up0.data.MotionBlur
-		local CFrame2 = CurrentCamera7.CFrame
-		local _lastCameraCFrame = p78._lastCameraCFrame
-		p78._lastCameraCFrame = CFrame2
-		if _lastCameraCFrame == nil then
+		local settings = up0.data.MotionBlur
+		local cframe = camera.CFrame
+		local lastCFrame = self_._lastCameraCFrame
+		self_._lastCameraCFrame = cframe
+		if lastCFrame == nil then
 			return
 		end
-		local v88 = math.clamp(
-			up1(CFrame2, _lastCameraCFrame, p79) * MotionBlur.Sensitivity,
+		local target = math.clamp(
+			up1(cframe, lastCFrame, deltaTime) * settings.Sensitivity,
 			0,
-			MotionBlur.Intensity
+			settings.Intensity
 		)
-		_blurEffect.Size = _blurEffect.Size + (v88 - _blurEffect.Size) * math.min(1, p79 * 15)
+		blur.Size = blur.Size + (target - blur.Size) * math.min(1, deltaTime * 15)
 	end
 
 	local function lazyModule_dj()
@@ -25886,160 +25886,160 @@ local function f1864()
 		self_._trove:Destroy()
 	end
 
-	local function setPreCameraRender_proto(self_, p82)
-		self_._preCameraRender = p82
+	local function setPreCameraRender_proto(self_, callback)
+		self_._preCameraRender = callback
 	end
 
-	local function setPreRender_proto(self_, p84)
-		self_._preRender = p84
+	local function setPreRender_proto(self_, callback)
+		self_._preRender = callback
 	end
 
-	local function setPreSimulation_proto(self_, p86)
-		self_._preSimulation = p86
+	local function setPreSimulation_proto(self_, callback)
+		self_._preSimulation = callback
 	end
 
-	local function setHeartbeat_proto(self_, p88)
-		self_._heartbeat = p88
+	local function setHeartbeat_proto(self_, callback)
+		self_._heartbeat = callback
 	end
 
-	local function f1934()
-		up0:UnbindFromRenderStep(GenerateGUID)
+	local function unbind_proto()
+		up0:UnbindFromRenderStep(up1)
 	end
 
 	local function startGameLoop_proto(self_)
-		local _preCameraRender = self_._preCameraRender
-		if _preCameraRender ~= nil then
-			local GenerateGUID3 = up0:GenerateGUID()
-			up1:BindToRenderStep(
-				GenerateGUID3,
+		local preCameraRender = self_._preCameraRender
+		if preCameraRender ~= nil then
+			local bindName = HttpService:GenerateGUID()
+			RunService:BindToRenderStep(
+				bindName,
 				Enum.RenderPriority.Camera.Value - 1,
-				_preCameraRender
+				preCameraRender
 			)
 
-			local function f1936()
-				up0:UnbindFromRenderStep(GenerateGUID3)
+			local function unbind()
+				up0:UnbindFromRenderStep(bindName)
 			end
 
-			self_._trove:Add(f1936)
+			self_._trove:Add(unbind)
 		end
-		local _preRender = self_._preRender
-		if _preRender ~= nil then
-			self_._trove:Connect(up1.PreRender, _preRender)
+		local preRender = self_._preRender
+		if preRender ~= nil then
+			self_._trove:Connect(RunService.PreRender, preRender)
 		end
-		local _preSimulation = self_._preSimulation
-		if _preSimulation ~= nil then
-			self_._trove:Connect(up1.PreSimulation, _preSimulation)
+		local preSimulation = self_._preSimulation
+		if preSimulation ~= nil then
+			self_._trove:Connect(RunService.PreSimulation, preSimulation)
 		end
-		local _heartbeat = self_._heartbeat
-		if _heartbeat ~= nil then
-			self_._trove:Connect(up1.Heartbeat, _heartbeat)
+		local heartbeat = self_._heartbeat
+		if heartbeat ~= nil then
+			self_._trove:Connect(RunService.Heartbeat, heartbeat)
 		end
 	end
 
 	local function newGameLoop_proto()
-		local t34 = {
-			_trove = up0.new("GameLoop"),
+		local loop = {
+			_trove = Trove.new("GameLoop"),
 			_preCameraRender = nil,
 			_preRender = nil,
 			_preSimulation = nil,
 			_heartbeat = nil
 		}
-		return (setmetatable(t34, GameLoop))
+		return (setmetatable(loop, GameLoop))
 	end
 
 	local function loadGameLoop()
-		local v89 = up0.q()
-		local v90 = cloneref(game:GetService("HttpService"))
-		local v91 = cloneref(game:GetService("RunService"))
+		local Trove = up0.q()
+		local HttpService = cloneref(game:GetService("HttpService"))
+		local RunService = cloneref(game:GetService("RunService"))
 		local GameLoop = {}
 		GameLoop.__index = GameLoop
 
 		function GameLoop.new()
-			local t36 = {
-				_trove = v89.new("GameLoop"),
+			local loop = {
+				_trove = Trove.new("GameLoop"),
 				_preCameraRender = nil,
 				_preRender = nil,
 				_preSimulation = nil,
 				_heartbeat = nil
 			}
-			return (setmetatable(t36, GameLoop))
+			return (setmetatable(loop, GameLoop))
 		end
 
 		function GameLoop:Destroy()
 			self._trove:Destroy()
 		end
 
-		function GameLoop:SetPreCameraRender(p90)
-			self._preCameraRender = p90
+		function GameLoop:SetPreCameraRender(callback)
+			self._preCameraRender = callback
 		end
 
-		function GameLoop:SetPreRender(p91)
-			self._preRender = p91
+		function GameLoop:SetPreRender(callback)
+			self._preRender = callback
 		end
 
-		function GameLoop:SetPreSimulation(p92)
-			self._preSimulation = p92
+		function GameLoop:SetPreSimulation(callback)
+			self._preSimulation = callback
 		end
 
-		function GameLoop:SetHeartbeat(p93)
-			self._heartbeat = p93
+		function GameLoop:SetHeartbeat(callback)
+			self._heartbeat = callback
 		end
 
 		function GameLoop:Start()
-			local _preCameraRender2 = self._preCameraRender
-			if _preCameraRender2 ~= nil then
-				local GenerateGUID4 = v90:GenerateGUID()
-				v91:BindToRenderStep(
-					GenerateGUID4,
+			local preCameraRender = self._preCameraRender
+			if preCameraRender ~= nil then
+				local bindName = HttpService:GenerateGUID()
+				RunService:BindToRenderStep(
+					bindName,
 					Enum.RenderPriority.Camera.Value - 1,
-					_preCameraRender2
+					preCameraRender
 				)
 
-				local function f1939()
-					v91:UnbindFromRenderStep(GenerateGUID4)
+				local function unbind()
+					RunService:UnbindFromRenderStep(bindName)
 				end
 
-				self._trove:Add(f1939)
+				self._trove:Add(unbind)
 			end
-			local _preRender2 = self._preRender
-			if _preRender2 ~= nil then
-				self._trove:Connect(v91.PreRender, _preRender2)
+			local preRender = self._preRender
+			if preRender ~= nil then
+				self._trove:Connect(RunService.PreRender, preRender)
 			end
-			local _preSimulation2 = self._preSimulation
-			if _preSimulation2 ~= nil then
-				self._trove:Connect(v91.PreSimulation, _preSimulation2)
+			local preSimulation = self._preSimulation
+			if preSimulation ~= nil then
+				self._trove:Connect(RunService.PreSimulation, preSimulation)
 			end
-			local _heartbeat2 = self._heartbeat
-			if _heartbeat2 ~= nil then
-				self._trove:Connect(v91.Heartbeat, _heartbeat2)
+			local heartbeat = self._heartbeat
+			if heartbeat ~= nil then
+				self._trove:Connect(RunService.Heartbeat, heartbeat)
 			end
 		end
 
 		return GameLoop
 	end
 
-	local function f1940()
-		local gsub6 = up0.Value:gsub("%s+", "")
-		if #gsub6 ~= 0 then
-			up1:CreateDefaultPreset(gsub6)
+	local function createDefaultPreset()
+		local name = up0.Value:gsub("%s+", "")
+		if #name ~= 0 then
+			up1:CreateDefaultPreset(name)
 			up2:SetOptions(up3())
 		end
 	end
 
-	local function f1941(p94)
-		if p94._animatorWait ~= nil then
-			p94._animatorWait:Disconnect()
-			p94._animatorWait = nil
+	local function stopAnimation(self_)
+		if self_._animatorWait ~= nil then
+			self_._animatorWait:Disconnect()
+			self_._animatorWait = nil
 		end
-		if p94._loopConnection ~= nil then
-			p94._loopConnection:Disconnect()
-			p94._loopConnection = nil
+		if self_._loopConnection ~= nil then
+			self_._loopConnection:Disconnect()
+			self_._loopConnection = nil
 		end
-		local _track = p94._track
-		if _track ~= nil then
-			_track:Stop()
-			_track:Destroy()
-			p94._track = nil
+		local track = self_._track
+		if track ~= nil then
+			track:Stop()
+			track:Destroy()
+			self_._track = nil
 		end
 	end
 
@@ -26053,7 +26053,7 @@ local function f1864()
 		;(nil)._RenderStepUpdate(nil)
 	end
 
-	local function f1943(p95)
+	local function bindRenderStep(self_)
 		local function f1944(...)
 			local v93
 			v93 = not false
@@ -26064,17 +26064,17 @@ local function f1864()
 			;(nil)._RenderStepUpdate(nil)
 		end
 
-		up0:BindToRenderStep(p95._boundId, Enum.RenderPriority.First.Value, f1944)
+		up0:BindToRenderStep(self_._boundId, Enum.RenderPriority.First.Value, f1944)
 	end
 
-	local function f1945()
-		local t37 = {
+	local function newViewModelChams()
+		local chams = {
 			_trove = up0.new("viewmodel_chams"),
 			_entries = {}
 		}
-		setmetatable(t37, up1)
-		t37:_Initialize()
-		return t37
+		setmetatable(chams, up1)
+		chams:_Initialize()
+		return chams
 	end
 
 	local function f1946(p96, _)
@@ -26085,29 +26085,29 @@ local function f1864()
 		until _status ~= t38
 	end
 
-	local function f1947()
+	local function applyNoSprintAnimation()
 		up0:ReportResult(up1._animationDisabler:SetSprintDisabled(up2.data.ItemModifiers.NoSprintAnimation))
 	end
 
-	local function f1948()
-		if up0._fadeState.tweening then
+	local function onClicked_proto()
+		if tab._fadeState.tweening then
 			return
 		end
-		up0:Open()
+		tab:Open()
 	end
 
-	local function f1949(p97, p98, p99, p100)
-		local Extend8 = p99:Extend()
-		local v94 = up0.newBatch(Extend8)
-		local Panel = p98.Panel
-		local AddButton19 = Panel.AddButton
-		local t39 = { Label = p100.Label }
-		local v95 = p100.Icon
-		if not v95 then
-			v95 = "rbxassetid://108815781932261"
+	local function newTab(menu, window, trove, options)
+		local tabTrove = trove:Extend()
+		local batch = up0.newBatch(tabTrove)
+		local panel = window.Panel
+		local addButton = panel.AddButton
+		local buttonOptions = { Label = options.Label }
+		local icon = options.Icon
+		if not icon then
+			icon = "rbxassetid://108815781932261"
 		end
-		t39.Icon = v95
-		local t40 = AddButton19(Panel, Extend8, t39)
+		buttonOptions.Icon = icon
+		local button = addButton(panel, tabTrove, buttonOptions)
 		local canvasGroup = Instance.new("CanvasGroup")
 		canvasGroup.BackgroundTransparency = 1
 		canvasGroup.GroupTransparency = 0
@@ -26115,45 +26115,45 @@ local function f1864()
 		canvasGroup.Position = UDim2.fromOffset(118, 18)
 		canvasGroup.Size = UDim2.new(1, -136, 1, -36)
 		canvasGroup.BorderSizePixel = 0
-		canvasGroup.Parent = p98.MenuFrame
-		local t41 = {
-			_trove = Extend8,
-			_menu = p97,
-			_window = p98,
-			_batch = v94,
-			Label = p100.Label
+		canvasGroup.Parent = window.MenuFrame
+		local fields = {
+			_trove = tabTrove,
+			_menu = menu,
+			_window = window,
+			_batch = batch,
+			Label = options.Label
 		}
-		local v97 = p100.Description
-		if not v97 then
-			v97 = ""
+		local description = options.Description
+		if not description then
+			description = ""
 		end
-		t41.Description = v97
-		t41._button = t40
-		t41._page = canvasGroup
-		local t42 = { tweening = false }
-		t41._fadeState = t42
-		t41._grid = nil
-		t41._pages = false
-		t41._header = nil
-		t41._subtabs = nil
-		t41.ActivePage = nil
-		t41.Opened = Extend8:Add(up1.new())
-		t41._openedOnce = false
-		t41._pendingOpen = false
-		local v98 = setmetatable(t41, up2)
+		fields.Description = description
+		fields._button = button
+		fields._page = canvasGroup
+		local fadeState = { tweening = false }
+		fields._fadeState = fadeState
+		fields._grid = nil
+		fields._pages = false
+		fields._header = nil
+		fields._subtabs = nil
+		fields.ActivePage = nil
+		fields.Opened = tabTrove:Add(up1.new())
+		fields._openedOnce = false
+		fields._pendingOpen = false
+		local tab = setmetatable(fields, up2)
 
-		local function f1950()
-			if v98._fadeState.tweening then
+		local function onClicked()
+			if tab._fadeState.tweening then
 				return
 			end
-			v98:Open()
+			tab:Open()
 		end
 
-		Extend8:Connect(t40.Clicked, f1950)
-		if p98.ActiveTab == nil then
-			v98:Open()
+		tabTrove:Connect(button.Clicked, onClicked)
+		if window.ActiveTab == nil then
+			tab:Open()
 		end
-		return v98
+		return tab
 	end
 
 	local function lazyModule_gh()
@@ -26165,712 +26165,712 @@ local function f1864()
 		return t43.c
 	end
 
-	local function f1952(...)
-		local v99 = up0()
-		if v99 == nil then
+	local function loadPreviewModel_proto(...)
+		local model = up0()
+		if model == nil then
 			return
 		end
-		up1:SetModel(v99)
+		up1:SetModel(model)
 		up1:SetRotation(math.rad(225))
-		v99:Destroy()
+		model:Destroy()
 	end
 
-	local function f1953(p101)
-		local v100 = up0.new(up1, p101)
-		up2:Add(v100)
-		v100:SetFaction("Enemy")
-		up3 = v100
+	local function onViewportRealized_proto(viewportFrame)
+		local previewEsp = up0.new(deps, viewportFrame)
+		up2:Add(previewEsp)
+		previewEsp:SetFaction("Enemy")
+		temp = previewEsp
 
-		local function f1954(...)
-			local v101 = up0()
-			if v101 == nil then
+		local function loadPreviewModel(...)
+			local model = up0()
+			if model == nil then
 				return
 			end
-			up1:SetModel(v101)
-			up1:SetRotation(math.rad(225))
-			v101:Destroy()
+			viewport:SetModel(model)
+			viewport:SetRotation(math.rad(225))
+			model:Destroy()
 		end
 
-		task.spawn(f1954)
+		task.spawn(loadPreviewModel)
 	end
 
-	local function onOpened_proto(p102)
-		if p102 and up0 ~= nil then
+	local function onOpened_proto(opened)
+		if opened and up0 ~= nil then
 			up0:SetFaction(up1)
 		end
 	end
 
-	local function f1956(p103, p104)
-		local function onOpened(p105)
-			if p105 and up0 ~= nil then
-				up0:SetFaction(p104)
+	local function followPage_proto(page, faction)
+		local function onOpened(opened)
+			if opened and temp ~= nil then
+				temp:SetFaction(faction)
 			end
 		end
 
-		p103.Opened:Connect(onOpened)
+		page.Opened:Connect(onOpened)
 	end
 
-	local function f1958(p106, p107)
-		local AddSection28 = p106.AddSection
+	local function buildEspTab(tab, deps)
+		local AddSection28 = tab.AddSection
 		local t44 = { Title = "Main", Side = "left" }
-		local mainSection = AddSection28(p106, t44)
-		local AddMultiSection2 = p106.AddMultiSection
-		local t46 = {}
-		local v102 = "Enemy"
-		t46.Titles = table.create(2)
-		t46.Side = "left"
-		local v103, v104
-		v104, v103 = AddMultiSection2(p106, t46)
-		local AddSection29 = p106.AddSection
-		v102 = { Title = "Preview", Side = "right" }
-		local t47 = AddSection29(p106, v102)
-		v102 = mainSection
-		up0(v102, up1, table.create(2), table.create(2), true, "ESP")
-		v102 = mainSection
+		local mainSection = AddSection28(tab, t44)
+		local AddMultiSection2 = tab.AddMultiSection
+		local multiSectionOptions = {}
+		local temp = "Enemy"
+		multiSectionOptions.Titles = table.create(2)
+		multiSectionOptions.Side = "left"
+		local teamPage, enemyPage
+		enemyPage, teamPage = AddMultiSection2(tab, multiSectionOptions)
+		local AddSection29 = tab.AddSection
+		temp = { Title = "Preview", Side = "right" }
+		local previewSection = AddSection29(tab, temp)
+		temp = mainSection
+		up0(temp, up1, table.create(2), table.create(2), true, "ESP")
+		temp = mainSection
 		local AddDropdown24 = mainSection.AddDropdown
 		local modeDropdownOptions = {
 			Label = "Mode",
 			Options = table.create(2),
 			Config = table.create(3)
 		}
-		AddDropdown24(v102, modeDropdownOptions)
-		v102 = t47
-		local AddViewport = t47.AddViewport
-		local t49 = {
+		AddDropdown24(temp, modeDropdownOptions)
+		temp = previewSection
+		local addViewport = previewSection.AddViewport
+		local viewportOptions = {
 			Height = up2,
 			AutoRotate = true,
 			RotateSpeed = 0.45,
 			FieldOfView = 18,
 			DistanceMul = 4
 		}
-		local v105 = AddViewport(v102, t49)
-		v102 = nil
+		local viewport = addViewport(temp, viewportOptions)
+		temp = nil
 
-		local function f1959(p108)
-			local v106 = up0.new(p107, p108)
-			up2:Add(v106)
-			v106:SetFaction("Enemy")
-			v102 = v106
+		local function onViewportRealized(viewportFrame)
+			local previewEsp = up0.new(deps, viewportFrame)
+			up2:Add(previewEsp)
+			previewEsp:SetFaction("Enemy")
+			temp = previewEsp
 
-			local function f1960(...)
-				local v107 = up0()
-				if v107 == nil then
+			local function loadPreviewModel(...)
+				local model = up0()
+				if model == nil then
 					return
 				end
-				v105:SetModel(v107)
-				v105:SetRotation(math.rad(225))
-				v107:Destroy()
+				viewport:SetModel(model)
+				viewport:SetRotation(math.rad(225))
+				model:Destroy()
 			end
 
-			task.spawn(f1960)
+			task.spawn(loadPreviewModel)
 		end
 
-		v105:OnRealized(f1959)
+		viewport:OnRealized(onViewportRealized)
 
-		local function f1961(p109, p110)
-			local function onOpened(p111)
-				if p111 and v102 ~= nil then
-					v102:SetFaction(p110)
+		local function followPage(page, faction)
+			local function onOpened(opened)
+				if opened and temp ~= nil then
+					temp:SetFaction(faction)
 				end
 			end
 
-			p109.Opened:Connect(onOpened)
+			page.Opened:Connect(onOpened)
 		end
 
-		f1961(v103, "Team")
-		f1961(v104, "Enemy")
-		up6(v103, "Team")
-		up6(v104, "Enemy")
+		followPage(teamPage, "Team")
+		followPage(enemyPage, "Enemy")
+		up6(teamPage, "Team")
+		up6(enemyPage, "Enemy")
 	end
 
-	local function f1963()
+	local function forgetSound()
 		up0:_ForgetSound(up1)
 	end
 
-	local function f1964()
+	local function fireStoresUpdated()
 		if up0._isImportingState then
 			return
 		end
 		up0:_FireStoresUpdated()
 	end
 
-	local function f1965(p112)
-		up0:SetOptions(p112)
+	local function setSkyboxOptions_proto(names)
+		up0:SetOptions(names)
 	end
 
-	local function f1966(p113, p114)
-		local AddSection30 = p114.AddSection
+	local function buildSkyboxSection_proto(deps, tab)
+		local AddSection30 = tab.AddSection
 		local t50 = { Title = "Skybox", Side = "left" }
-		local skyboxSection = AddSection30(p114, t50)
+		local skyboxSection = AddSection30(tab, t50)
 		local AddToggle57 = skyboxSection.AddToggle
-		local t52 = { Label = up0, Config = table.create(2) }
-		local t53 = AddToggle57(skyboxSection, t52)
+		local toggleOptions = { Label = up0, Config = table.create(2) }
+		local toggle = AddToggle57(skyboxSection, toggleOptions)
 		local AddDropdown25 = skyboxSection.AddDropdown
-		local t54 = {
-			Row = t53.Row,
-			Options = p113.skyboxes:GetNames(),
+		local dropdownOptions = {
+			Row = toggle.Row,
+			Options = deps.skyboxes:GetNames(),
 			Config = table.create(2)
 		}
-		local v108 = AddDropdown25(skyboxSection, t54)
+		local dropdown = AddDropdown25(skyboxSection, dropdownOptions)
 
-		local function f1967(p115)
-			v108:SetOptions(p115)
+		local function setSkyboxOptions(names)
+			dropdown:SetOptions(names)
 		end
 
-		v108:Connect(p113.skyboxes.changed, f1967)
+		dropdown:Connect(deps.skyboxes.changed, setSkyboxOptions)
 	end
 
-	local function f1968()
+	local function loadSkyboxSection()
 		up0.cI()
 		up0.gv()
 
-		local function f1969(p116, p117)
-			local AddSection31 = p117.AddSection
+		local function buildSkyboxSection(deps, tab)
+			local AddSection31 = tab.AddSection
 			local t55 = { Title = "Skybox", Side = "left" }
-			local skyboxSection = AddSection31(p117, t55)
+			local skyboxSection = AddSection31(tab, t55)
 			local AddToggle58 = skyboxSection.AddToggle
-			local t57 = { Label = up0, Config = table.create(2) }
-			local t58 = AddToggle58(skyboxSection, t57)
+			local toggleOptions = { Label = up0, Config = table.create(2) }
+			local toggle = AddToggle58(skyboxSection, toggleOptions)
 			local AddDropdown26 = skyboxSection.AddDropdown
-			local t59 = {
-				Row = t58.Row,
-				Options = p116.skyboxes:GetNames(),
+			local dropdownOptions = {
+				Row = toggle.Row,
+				Options = deps.skyboxes:GetNames(),
 				Config = table.create(2)
 			}
-			local v109 = AddDropdown26(skyboxSection, t59)
+			local dropdown = AddDropdown26(skyboxSection, dropdownOptions)
 
-			local function f1970(p118)
-				v109:SetOptions(p118)
+			local function setSkyboxOptions(names)
+				dropdown:SetOptions(names)
 			end
 
-			v109:Connect(p116.skyboxes.changed, f1970)
+			dropdown:Connect(deps.skyboxes.changed, setSkyboxOptions)
 		end
 
-		return f1969
+		return buildSkyboxSection
 	end
 
-	local function f1971(p119, p120, p121)
-		buffer.writeu8(p119, p120, up0)
-		local v110 = p120 + 1
-		buffer.writeu16(p119, v110, up1(p121))
-		local v111 = v110 + 2
-		local v112 = nil
+	local function writeIdList(buf, offset, ids)
+		buffer.writeu8(buf, offset, up0)
+		local offset2 = offset + 1
+		buffer.writeu16(buf, offset2, up1(ids))
+		local cursor = offset2 + 2
+		local index = nil
 		while true do
-			local v113
-			v112, v113 = p121(nil, v112)
-			if v112 == nil then
+			local id
+			index, id = ids(nil, index)
+			if index == nil then
 				break
 			end
-			buffer.writeu32(p119, v111, v113)
-			v111 = v111 + 4
+			buffer.writeu32(buf, cursor, id)
+			cursor = cursor + 4
 		end
-		return v111
+		return cursor
 	end
 
-	local function f1972()
+	local function reapplySpoofedValue()
 		if up0._isWriting then
 			return
 		end
 		up0._original = up1(up2)
 		up0._isWriting = true
-		local _spoofed = up0._spoofed
-		if _spoofed ~= nil then
-			up3(up2, _spoofed.value)
+		local spoofed = up0._spoofed
+		if spoofed ~= nil then
+			up3(up2, spoofed.value)
 		end
 		up0._isWriting = false
 	end
 
-	local function onRenderStepped_proto(p122)
-		if not up0.Visible then
+	local function onRenderStepped_proto(deltaTime)
+		if not self_.Visible then
 			return
 		end
-		local _updateCallbacks = up0._updateCallbacks
-		local v114 = nil
+		local callbacks = self_._updateCallbacks
+		local key = nil
 		while true do
-			local f1974
-			v114, f1974 = _updateCallbacks(nil, v114)
-			if v114 == nil then
+			local update
+			key, update = callbacks(nil, key)
+			if key == nil then
 				break
 			end
-			f1974(p122)
+			update(deltaTime)
 		end
 	end
 
-	local function f1975()
-		if up0._updateCallbacks[_nextUpdateId] == nil then
+	local function removeCallback_proto()
+		if self_._updateCallbacks[id] == nil then
 			return
 		end
-		up0._updateCallbacks[_nextUpdateId] = nil
-		up0._updateCount = up0._updateCount - 1
-		if up0._updateCount <= 0 and up0._renderConnection ~= nil then
-			up0._renderConnection:Disconnect()
-			up0._renderConnection = nil
+		self_._updateCallbacks[id] = nil
+		self_._updateCount = self_._updateCount - 1
+		if self_._updateCount <= 0 and self_._renderConnection ~= nil then
+			self_._renderConnection:Disconnect()
+			self_._renderConnection = nil
 		end
 	end
 
-	local function f1976(p123, p124)
-		local _nextUpdateId = p123._nextUpdateId
-		p123._nextUpdateId = p123._nextUpdateId + 1
-		p123._updateCallbacks[_nextUpdateId] = p124
-		p123._updateCount = p123._updateCount + 1
-		if p123._renderConnection == nil then
-			local function onRenderStepped(p125)
-				if not p123.Visible then
+	local function addUpdateCallback(self_, callback)
+		local id = self_._nextUpdateId
+		self_._nextUpdateId = self_._nextUpdateId + 1
+		self_._updateCallbacks[id] = callback
+		self_._updateCount = self_._updateCount + 1
+		if self_._renderConnection == nil then
+			local function onRenderStepped(deltaTime)
+				if not self_.Visible then
 					return
 				end
-				local _updateCallbacks2 = p123._updateCallbacks
-				local v115 = nil
+				local callbacks = self_._updateCallbacks
+				local key = nil
 				while true do
-					local f1978
-					v115, f1978 = _updateCallbacks2(nil, v115)
-					if v115 == nil then
+					local update
+					key, update = callbacks(nil, key)
+					if key == nil then
 						break
 					end
-					f1978(p125)
+					update(deltaTime)
 				end
 			end
 
-			p123._renderConnection = up0.RenderStepped:Connect(onRenderStepped)
+			self_._renderConnection = up0.RenderStepped:Connect(onRenderStepped)
 		end
 
-		local function f1979()
-			if p123._updateCallbacks[_nextUpdateId] == nil then
+		local function removeCallback()
+			if self_._updateCallbacks[id] == nil then
 				return
 			end
-			p123._updateCallbacks[_nextUpdateId] = nil
-			p123._updateCount = p123._updateCount - 1
-			if p123._updateCount <= 0 and p123._renderConnection ~= nil then
-				p123._renderConnection:Disconnect()
-				p123._renderConnection = nil
+			self_._updateCallbacks[id] = nil
+			self_._updateCount = self_._updateCount - 1
+			if self_._updateCount <= 0 and self_._renderConnection ~= nil then
+				self_._renderConnection:Disconnect()
+				self_._renderConnection = nil
 			end
 		end
 
-		return f1979
+		return removeCallback
 	end
 
-	local function f1980(p126)
-		up0:_Apply(p126)
+	local function apply_proto(state)
+		up0:_Apply(state)
 	end
 
-	local function f1981(p127)
+	local function loadAndApply(value)
 		up0()
 
-		local function f1982(p128)
-			up0:_Apply(p128)
+		local function apply(state)
+			up0:_Apply(state)
 		end
 
-		up1(p127, f1982)
+		up1(value, apply)
 	end
 
-	local function f1983(p129, p130)
-		local v116 = p129._proposed[p130]
-		if v116 == nil then
-			v116 = {}
-			p129._proposed[p130] = v116
+	local function getProposals(self_, owner)
+		local proposals = self_._proposed[owner]
+		if proposals == nil then
+			proposals = {}
+			self_._proposed[owner] = proposals
 		end
-		return v116
+		return proposals
 	end
 
-	local function f1984()
+	local function run()
 		coroutine.wrap(up0)(up1)
 	end
 
 	local function f1985()
 	end
 
-	local function f1986(p131)
-		up0(up1, _store, _errorReporter, p131)
+	local function onTagged_proto(tripmine)
+		up0(up1, up2, up3, tripmine)
 	end
 
-	local function load_proto(self_)
+	local function loadTripmineSkin_proto(self_)
 		if self_._loadedTrove ~= nil then
-			return up0.VOID_OK
+			return Result.VOID_OK
 		end
-		local v117 = up1.new("cosmetics.Tripmine")
-		self_._loadedTrove = v117
-		local _store = self_._store
-		local _errorReporter = self_._errorReporter
+		local trove = Trove.new("cosmetics.Tripmine")
+		self_._loadedTrove = trove
+		local store = self_._store
+		local errorReporter = self_._errorReporter
 
-		local function f1988(p133)
-			up0(v117, _store, _errorReporter, p133)
+		local function onTagged(tripmine)
+			applyTripmineSkin(trove, store, errorReporter, tripmine)
 		end
 
-		v117:Connect(up2:GetInstanceAddedSignal(SubspaceTripmine), f1988)
-		for _, v118 in up2:GetTagged(SubspaceTripmine) do
-			up4(v117, _store, _errorReporter, v118)
+		trove:Connect(CollectionService:GetInstanceAddedSignal(tag), onTagged)
+		for _, taggedTripmine in CollectionService:GetTagged(tag) do
+			up4(trove, store, errorReporter, taggedTripmine)
 		end
-		return up0.VOID_OK
+		return Result.VOID_OK
 	end
 
-	local function f1989(...)
-		local Hitbox = up0:WaitForChild("Hitbox", 5)
-		if Hitbox == nil then
+	local function apply_proto2(...)
+		local hitbox = up0:WaitForChild("Hitbox", 5)
+		if hitbox == nil then
 			if up0.Parent ~= nil then
-				local ReportResult = up1.ReportResult
-				local err4 = up2.err
+				local report = up1.ReportResult
+				local makeError = up2.err
 				local _ = string.format
 				tostring(up0:GetFullName())
 				string.format()
-				err4()
-				ReportResult()
+				makeError()
+				report()
 			end
 			return
 		end
-		local v119 = up0
+		local model = up0
 		if up3 ~= nil then
-			local v120 = up4(up3)
-			if v120 == nil then
-				local ReportResult2 = up1.ReportResult
-				local err5 = up2.err
+			local replacement = up4(up3)
+			if replacement == nil then
+				local report2 = up1.ReportResult
+				local makeError2 = up2.err
 				string.format("viewmodel asset \"%s\" not found in ViewModels", tostring(up3))
-				err5()
-				ReportResult2()
+				makeError2()
+				report2()
 			else
-				up5(up0, Hitbox, v120, AttachExtend)
-				v120:PivotTo(Hitbox.CFrame)
-				v120.Parent = up0
-				for _, v121 in v120:GetDescendants() do
-					if v121:IsA("BasePart") then
+				up5(up0, hitbox, replacement, up6)
+				replacement:PivotTo(hitbox.CFrame)
+				replacement.Parent = up0
+				for _, part in replacement:GetDescendants() do
+					if part:IsA("BasePart") then
 						local weldConstraint = Instance.new("WeldConstraint")
-						weldConstraint.Part0 = Hitbox
-						weldConstraint.Part1 = v121
-						weldConstraint.Parent = v121
-						v121.Anchored = false
+						weldConstraint.Part0 = hitbox
+						weldConstraint.Part1 = part
+						weldConstraint.Parent = part
+						part.Anchored = false
 					end
 				end
-				v119 = v120
+				model = replacement
 			end
 		end
 		if up7 ~= nil then
-			up8.applyWrapTo(v119, up7)
+			up8.applyWrapTo(model, up7)
 		end
 	end
 
-	local function f1990(p134, p135, p136, p137)
-		local v123 = up0.resolvePlacer(p137)
-		local v124, v125
-		v125, v124 = up0.getSelectionOverrides(p135, v123, up1)
-		if v125 == nil and v124 == nil then
+	local function applyTripmineSkin_proto(trove, store, errorReporter, tripmine)
+		local placer = CosmeticPlacer.resolvePlacer(tripmine)
+		local wrap, skinName
+		skinName, wrap = CosmeticPlacer.getSelectionOverrides(store, placer, itemName)
+		if skinName == nil and wrap == nil then
 			return
 		end
-		local AttachExtend = p134:AttachExtend(p137)
+		local tripmineTrove = trove:AttachExtend(tripmine)
 
-		local function f1991(...)
-			local Hitbox2 = p137:WaitForChild("Hitbox", 5)
-			if Hitbox2 == nil then
-				if p137.Parent ~= nil then
-					local ReportResult3 = p136.ReportResult
-					local err6 = up2.err
+		local function apply(...)
+			local hitbox = tripmine:WaitForChild("Hitbox", 5)
+			if hitbox == nil then
+				if tripmine.Parent ~= nil then
+					local report = errorReporter.ReportResult
+					local makeError = Result.err
 					local _ = string.format
-					tostring(p137:GetFullName())
+					tostring(tripmine:GetFullName())
 					string.format()
-					err6()
-					ReportResult3()
+					makeError()
+					report()
 				end
 				return
 			end
-			local v126 = p137
-			if v125 ~= nil then
-				local v127 = up4(v125)
-				if v127 == nil then
-					local ReportResult4 = p136.ReportResult
-					local err7 = up2.err
+			local model = tripmine
+			if skinName ~= nil then
+				local replacement = cloneViewModelAsset(skinName)
+				if replacement == nil then
+					local report2 = errorReporter.ReportResult
+					local makeError2 = Result.err
 					string.format(
 						"viewmodel asset \"%s\" not found in ViewModels",
-						tostring(v125)
+						tostring(skinName)
 					)
-					err7()
-					ReportResult4()
+					makeError2()
+					report2()
 				else
-					up5(p137, Hitbox2, v127, AttachExtend)
-					v127:PivotTo(Hitbox2.CFrame)
-					v127.Parent = p137
-					for _, v128 in v127:GetDescendants() do
-						if v128:IsA("BasePart") then
+					hideOriginal(tripmine, hitbox, replacement, tripmineTrove)
+					replacement:PivotTo(hitbox.CFrame)
+					replacement.Parent = tripmine
+					for _, part in replacement:GetDescendants() do
+						if part:IsA("BasePart") then
 							local weldConstraint = Instance.new("WeldConstraint")
-							weldConstraint.Part0 = Hitbox2
-							weldConstraint.Part1 = v128
-							weldConstraint.Parent = v128
-							v128.Anchored = false
+							weldConstraint.Part0 = hitbox
+							weldConstraint.Part1 = part
+							weldConstraint.Parent = part
+							part.Anchored = false
 						end
 					end
-					v126 = v127
+					model = replacement
 				end
 			end
-			if v124 ~= nil then
-				up8.applyWrapTo(v126, v124)
+			if wrap ~= nil then
+				up8.applyWrapTo(model, wrap)
 			end
 		end
 
-		AttachExtend:Add(task.spawn(f1991))
+		tripmineTrove:Add(task.spawn(apply))
 	end
 
-	local function new_proto2(p138, p139)
-		local t60 = { _store = p138, _errorReporter = p139, _loadedTrove = nil }
-		return (setmetatable(t60, up0))
+	local function newTripmineSkin_proto(store, errorReporter)
+		local skin = { _store = store, _errorReporter = errorReporter, _loadedTrove = nil }
+		return (setmetatable(skin, TripmineSkin))
 	end
 
-	local function destroy_proto2(self_)
-		local _loadedTrove2 = self_._loadedTrove
-		if _loadedTrove2 ~= nil then
+	local function destroyTripmineSkin_proto(self_)
+		local loadedTrove = self_._loadedTrove
+		if loadedTrove ~= nil then
 			self_._loadedTrove = nil
-			_loadedTrove2:Destroy()
+			loadedTrove:Destroy()
 		end
 	end
 
-	local function f1994(p141)
-		local FindFirstChild4 = up0:FindFirstChild(p141, true)
-		if FindFirstChild4 == nil or not FindFirstChild4:IsA("Model") then
+	local function cloneViewModelAsset_proto(name)
+		local template = viewModels:FindFirstChild(name, true)
+		if template == nil or not template:IsA("Model") then
 			return nil
 		end
-		local Clone7 = FindFirstChild4:Clone()
-		for _, v130 in Clone7:GetDescendants() do
-			if v130:IsA("BasePart") then
-				v130.Anchored = true
-				v130.CanCollide = false
-				v130.CanTouch = false
-				v130.CanQuery = false
-				v130.Massless = true
+		local clone = template:Clone()
+		for _, descendant in clone:GetDescendants() do
+			if descendant:IsA("BasePart") then
+				descendant.Anchored = true
+				descendant.CanCollide = false
+				descendant.CanTouch = false
+				descendant.CanQuery = false
+				descendant.Massless = true
 			end
 		end
-		return Clone7
+		return clone
 	end
 
-	local function f1995(p142, p143)
-		if p142 == p143 or p142:IsDescendantOf(p143) then
+	local function hidePart_proto(instance, keep)
+		if instance == keep or instance:IsDescendantOf(keep) then
 			return
 		end
-		if p142:IsA("BasePart") then
-			p142.Transparency = 1
-			p142.CastShadow = false
-		elseif p142:IsA("Decal") or p142:IsA("Texture") then
-			p142.Transparency = 1
-		elseif p142:IsA("ParticleEmitter") or p142:IsA("Trail") or p142:IsA("Beam") then
-			p142.Enabled = false
+		if instance:IsA("BasePart") then
+			instance.Transparency = 1
+			instance.CastShadow = false
+		elseif instance:IsA("Decal") or instance:IsA("Texture") then
+			instance.Transparency = 1
+		elseif instance:IsA("ParticleEmitter") or instance:IsA("Trail") or instance:IsA("Beam") then
+			instance.Enabled = false
 		end
 	end
 
-	local function f1996(p144)
-		if p144:IsDescendantOf(up0) then
+	local function onDescendantAdded_proto(descendant)
+		if descendant:IsDescendantOf(up0) then
 			return
 		end
-		up1(p144, up2)
+		up1(descendant, up2)
 	end
 
-	local function f1997(p145, p146, p147, p148)
-		local function f1998(p149)
-			if p149:IsDescendantOf(p147) then
+	local function hideOriginal_proto(tripmine, hitbox, replacement, trove)
+		local function onDescendantAdded(descendant)
+			if descendant:IsDescendantOf(replacement) then
 				return
 			end
-			up1(p149, p146)
+			hidePart(descendant, hitbox)
 		end
 
-		p148:Connect(p145.DescendantAdded, f1998)
-		for _, v131 in p145:GetDescendants() do
-			up0(v131, p146)
+		trove:Connect(tripmine.DescendantAdded, onDescendantAdded)
+		for _, existing in tripmine:GetDescendants() do
+			up0(existing, hitbox)
 		end
 	end
 
-	local function f1999()
+	local function loadTripmineSkin()
 		up0.ac()
-		local v132 = up0.b()
-		local v133 = up0.di()
+		local Result = up0.b()
+		local CosmeticPlacer = up0.di()
 		up0.c6()
-		local v134 = up0.q()
-		local f2000 = up0.W()
-		local v135 = cloneref(game:GetService("CollectionService"))
-		local v136 = f2000(
-			f2000(cloneref(game:GetService("Players")).LocalPlayer, (table.create(2))),
+		local Trove = up0.q()
+		local waitForChild = up0.W()
+		local CollectionService = cloneref(game:GetService("CollectionService"))
+		local viewModels = waitForChild(
+			waitForChild(cloneref(game:GetService("Players")).LocalPlayer, (table.create(2))),
 			"ViewModels"
 		)
 
-		local function f2001(p150)
-			local FindFirstChild5 = v136:FindFirstChild(p150, true)
-			if FindFirstChild5 == nil or not FindFirstChild5:IsA("Model") then
+		local function cloneViewModelAsset(name)
+			local template = viewModels:FindFirstChild(name, true)
+			if template == nil or not template:IsA("Model") then
 				return nil
 			end
-			local Clone8 = FindFirstChild5:Clone()
-			for _, v137 in Clone8:GetDescendants() do
-				if v137:IsA("BasePart") then
-					v137.Anchored = true
-					v137.CanCollide = false
-					v137.CanTouch = false
-					v137.CanQuery = false
-					v137.Massless = true
+			local clone = template:Clone()
+			for _, descendant in clone:GetDescendants() do
+				if descendant:IsA("BasePart") then
+					descendant.Anchored = true
+					descendant.CanCollide = false
+					descendant.CanTouch = false
+					descendant.CanQuery = false
+					descendant.Massless = true
 				end
 			end
-			return Clone8
+			return clone
 		end
 
-		local function f2002(p151, p152)
-			if p151 == p152 or p151:IsDescendantOf(p152) then
+		local function hidePart(instance, keep)
+			if instance == keep or instance:IsDescendantOf(keep) then
 				return
 			end
-			if p151:IsA("BasePart") then
-				p151.Transparency = 1
-				p151.CastShadow = false
-			elseif p151:IsA("Decal") or p151:IsA("Texture") then
-				p151.Transparency = 1
-			elseif p151:IsA("ParticleEmitter") or p151:IsA("Trail") or p151:IsA("Beam") then
-				p151.Enabled = false
+			if instance:IsA("BasePart") then
+				instance.Transparency = 1
+				instance.CastShadow = false
+			elseif instance:IsA("Decal") or instance:IsA("Texture") then
+				instance.Transparency = 1
+			elseif instance:IsA("ParticleEmitter") or instance:IsA("Trail") or instance:IsA("Beam") then
+				instance.Enabled = false
 			end
 		end
 
-		local function f2003(p153, p154, p155, p156)
-			local function f2004(p157)
-				if p157:IsDescendantOf(p155) then
+		local function hideOriginal(tripmine, hitbox, replacement, trove)
+			local function onDescendantAdded(descendant)
+				if descendant:IsDescendantOf(replacement) then
 					return
 				end
-				f2002(p157, p154)
+				hidePart(descendant, hitbox)
 			end
 
-			p156:Connect(p153.DescendantAdded, f2004)
-			for _, v138 in p153:GetDescendants() do
-				f2002(v138, p154)
+			trove:Connect(tripmine.DescendantAdded, onDescendantAdded)
+			for _, existing in tripmine:GetDescendants() do
+				hidePart(existing, hitbox)
 			end
 		end
 
-		local v139 = "Subspace Tripmine"
+		local itemName = "Subspace Tripmine"
 
-		local function f2005(p158, p159, p160, p161)
-			local v140 = v133.resolvePlacer(p161)
-			local v141, v142
-			v142, v141 = v133.getSelectionOverrides(p159, v140, v139)
-			if v142 == nil and v141 == nil then
+		local function applyTripmineSkin(trove, store, errorReporter, tripmine)
+			local placer = CosmeticPlacer.resolvePlacer(tripmine)
+			local wrap, skinName
+			skinName, wrap = CosmeticPlacer.getSelectionOverrides(store, placer, itemName)
+			if skinName == nil and wrap == nil then
 				return
 			end
-			local AttachExtend2 = p158:AttachExtend(p161)
+			local tripmineTrove = trove:AttachExtend(tripmine)
 
-			local function f2006(...)
-				local Hitbox3 = p161:WaitForChild("Hitbox", 5)
-				if Hitbox3 == nil then
-					if p161.Parent ~= nil then
-						local ReportResult5 = p160.ReportResult
-						local err8 = v132.err
+			local function apply(...)
+				local hitbox = tripmine:WaitForChild("Hitbox", 5)
+				if hitbox == nil then
+					if tripmine.Parent ~= nil then
+						local report = errorReporter.ReportResult
+						local makeError = Result.err
 						local _ = string.format
-						tostring(p161:GetFullName())
+						tostring(tripmine:GetFullName())
 						string.format()
-						err8()
-						ReportResult5()
+						makeError()
+						report()
 					end
 					return
 				end
-				local v143 = p161
-				if v142 ~= nil then
-					local v144 = f2001(v142)
-					if v144 == nil then
-						local ReportResult6 = p160.ReportResult
-						local err9 = v132.err
+				local model = tripmine
+				if skinName ~= nil then
+					local replacement = cloneViewModelAsset(skinName)
+					if replacement == nil then
+						local report2 = errorReporter.ReportResult
+						local makeError2 = Result.err
 						string.format(
 							"viewmodel asset \"%s\" not found in ViewModels",
-							tostring(v142)
+							tostring(skinName)
 						)
-						err9()
-						ReportResult6()
+						makeError2()
+						report2()
 					else
-						f2003(p161, Hitbox3, v144, AttachExtend2)
-						v144:PivotTo(Hitbox3.CFrame)
-						v144.Parent = p161
-						for _, v145 in v144:GetDescendants() do
-							if v145:IsA("BasePart") then
+						hideOriginal(tripmine, hitbox, replacement, tripmineTrove)
+						replacement:PivotTo(hitbox.CFrame)
+						replacement.Parent = tripmine
+						for _, part in replacement:GetDescendants() do
+							if part:IsA("BasePart") then
 								local weldConstraint = Instance.new("WeldConstraint")
-								weldConstraint.Part0 = Hitbox3
-								weldConstraint.Part1 = v145
-								weldConstraint.Parent = v145
-								v145.Anchored = false
+								weldConstraint.Part0 = hitbox
+								weldConstraint.Part1 = part
+								weldConstraint.Parent = part
+								part.Anchored = false
 							end
 						end
-						v143 = v144
+						model = replacement
 					end
 				end
-				if v141 ~= nil then
-					v133.applyWrapTo(v143, v141)
+				if wrap ~= nil then
+					CosmeticPlacer.applyWrapTo(model, wrap)
 				end
 			end
 
-			AttachExtend2:Add(task.spawn(f2006))
+			tripmineTrove:Add(task.spawn(apply))
 		end
 
-		local t61 = {}
-		t61.__index = t61
+		local TripmineSkin = {}
+		TripmineSkin.__index = TripmineSkin
 
-		function t61.new(p162, p163)
-			local t62 = { _store = p162, _errorReporter = p163, _loadedTrove = nil }
-			return (setmetatable(t62, t61))
+		function TripmineSkin.new(store, errorReporter)
+			local skin = { _store = store, _errorReporter = errorReporter, _loadedTrove = nil }
+			return (setmetatable(skin, TripmineSkin))
 		end
 
-		local SubspaceTripmine = "SubspaceTripmine"
+		local tag = "SubspaceTripmine"
 
-		function t61:Load()
+		function TripmineSkin:Load()
 			if self._loadedTrove ~= nil then
-				return v132.VOID_OK
+				return Result.VOID_OK
 			end
-			local v147 = v134.new("cosmetics.Tripmine")
-			self._loadedTrove = v147
-			local _store2 = self._store
-			local _errorReporter2 = self._errorReporter
+			local trove = Trove.new("cosmetics.Tripmine")
+			self._loadedTrove = trove
+			local store = self._store
+			local errorReporter = self._errorReporter
 
-			local function f2007(p164)
-				f2005(v147, _store2, _errorReporter2, p164)
+			local function onTagged(tripmine)
+				applyTripmineSkin(trove, store, errorReporter, tripmine)
 			end
 
-			v147:Connect(v135:GetInstanceAddedSignal(SubspaceTripmine), f2007)
-			for _, v148 in v135:GetTagged(SubspaceTripmine) do
-				f2005(v147, _store2, _errorReporter2, v148)
+			trove:Connect(CollectionService:GetInstanceAddedSignal(tag), onTagged)
+			for _, taggedTripmine in CollectionService:GetTagged(tag) do
+				applyTripmineSkin(trove, store, errorReporter, taggedTripmine)
 			end
-			return v132.VOID_OK
+			return Result.VOID_OK
 		end
 
-		function t61:Destroy()
-			local _loadedTrove3 = self._loadedTrove
-			if _loadedTrove3 ~= nil then
+		function TripmineSkin:Destroy()
+			local loadedTrove = self._loadedTrove
+			if loadedTrove ~= nil then
 				self._loadedTrove = nil
-				_loadedTrove3:Destroy()
+				loadedTrove:Destroy()
 			end
 		end
 
-		return t61
+		return TripmineSkin
 	end
 
-	local function f2008()
-		if not (up0:Get(up1) and up0:Get(up2)) then
-			up3._guardedLighting:ClearOverride("ColorShift_Top")
-			up3._guardedLighting:ClearOverride("ColorShift_Bottom")
+	local function apply_proto3()
+		if not (up0:Get(up1) and up0:Get(enabledPath)) then
+			self_._guardedLighting:ClearOverride("ColorShift_Top")
+			self_._guardedLighting:ClearOverride("ColorShift_Bottom")
 			return
 		end
-		local Get5 = up0:Get(up4)
-		local Get6 = up0:Get(up5)
-		up3._guardedLighting:SetOverride("ColorShift_Top", Get5)
-		up3._guardedLighting:SetOverride("ColorShift_Bottom", Get6)
+		local top = up0:Get(topPath)
+		local bottom = up0:Get(bottomPath)
+		self_._guardedLighting:SetOverride("ColorShift_Top", top)
+		self_._guardedLighting:SetOverride("ColorShift_Bottom", bottom)
 	end
 
-	local function f2009(p165)
-		local v149 = table.create(3)
-		local v150 = table.create(3)
-		local v151 = table.create(3)
+	local function bindColorShift(self_)
+		local enabledPath = table.create(3)
+		local topPath = table.create(3)
+		local bottomPath = table.create(3)
 
-		local function f2010()
-			if not (up0:Get(up1) and up0:Get(v149)) then
-				p165._guardedLighting:ClearOverride("ColorShift_Top")
-				p165._guardedLighting:ClearOverride("ColorShift_Bottom")
+		local function apply()
+			if not (up0:Get(up1) and up0:Get(enabledPath)) then
+				self_._guardedLighting:ClearOverride("ColorShift_Top")
+				self_._guardedLighting:ClearOverride("ColorShift_Bottom")
 				return
 			end
-			local Get7 = up0:Get(v150)
-			local Get8 = up0:Get(v151)
-			p165._guardedLighting:SetOverride("ColorShift_Top", Get7)
-			p165._guardedLighting:SetOverride("ColorShift_Bottom", Get8)
+			local top = up0:Get(topPath)
+			local bottom = up0:Get(bottomPath)
+			self_._guardedLighting:SetOverride("ColorShift_Top", top)
+			self_._guardedLighting:SetOverride("ColorShift_Bottom", bottom)
 		end
 
-		p165._trove:Connect(up1:GetPropertyChangedSignal(up2), f2010)
-		p165._trove:Connect(up1:GetPropertyChangedSignal(v149), f2010)
-		p165._trove:Connect(up1:GetPropertyChangedSignal(v150), f2010)
-		p165._trove:Connect(up1:GetPropertyChangedSignal(v151), f2010)
-		f2010()
+		self_._trove:Connect(up1:GetPropertyChangedSignal(up2), apply)
+		self_._trove:Connect(up1:GetPropertyChangedSignal(enabledPath), apply)
+		self_._trove:Connect(up1:GetPropertyChangedSignal(topPath), apply)
+		self_._trove:Connect(up1:GetPropertyChangedSignal(bottomPath), apply)
+		apply()
 	end
 
-	local function f2011(p166)
-		p166.Row:Destroy()
-		p166._trove:Destroy()
+	local function destroyRow(self_)
+		self_.Row:Destroy()
+		self_._trove:Destroy()
 	end
 
 	local function lazyModule_f2()
@@ -26891,83 +26891,83 @@ local function f1864()
 		return t64.c
 	end
 
-	local function f2014()
-		local v152 = up0()
-		local t65 = up1.GetProfile(v152)
-		if t65 ~= up2 then
-			up2 = t65
-			local f2015 = up3
-			local v153 = nil
+	local function refresh_proto()
+		local editProfile = getEditProfile()
+		local profile = up1.GetProfile(editProfile)
+		if profile ~= lastProfile then
+			lastProfile = profile
+			local controlList = controls
+			local index = nil
 			while true do
-				local t66
-				v153, t66 = f2015(nil, v153)
-				if v153 == nil then
+				local control
+				index, control = controlList(nil, index)
+				if index == nil then
 					break
 				end
-				t66.dropdown:SetOptions(t65.AvailableOptions)
+				control.dropdown:SetOptions(profile.AvailableOptions)
 			end
 		end
 	end
 
-	local function f2016(_, p167)
-		local v154 = table.create(3)
-		local v155 = "GunSpecific"
+	local function bindProfileOptions(_, controls)
+		local gunSpecificPath = table.create(3)
+		local lastProfile = "GunSpecific"
 
-		local function f2017()
-			if up0:Get(v154, true) == false then
+		local function getEditProfile()
+			if up0:Get(gunSpecificPath, true) == false then
 				return nil
 			end
 			return (up0:GetEditProfile())
 		end
 
-		v155 = nil
+		lastProfile = nil
 
-		local function f2018()
-			local v156 = f2017()
-			local t67 = up1.GetProfile(v156)
-			if t67 ~= v155 then
-				v155 = t67
-				local f2019 = p167
-				local v157 = nil
+		local function refresh()
+			local editProfile = getEditProfile()
+			local profile = up1.GetProfile(editProfile)
+			if profile ~= lastProfile then
+				lastProfile = profile
+				local controlList = controls
+				local index = nil
 				while true do
-					local t68
-					v157, t68 = f2019(nil, v157)
-					if v157 == nil then
+					local control
+					index, control = controlList(nil, index)
+					if index == nil then
 						break
 					end
-					t68.dropdown:SetOptions(t67.AvailableOptions)
+					control.dropdown:SetOptions(profile.AvailableOptions)
 				end
 			end
 		end
 
-		local v158 = nil
+		local index2 = nil
 		while true do
-			local t69
-			v158, t69 = p167(nil, v158)
-			if v158 == nil then
+			local control2
+			index2, control2 = controls(nil, index2)
+			if index2 == nil then
 				break
 			end
-			t69.dropdown:Connect(up1.editProfileChanged, f2018)
-			t69.dropdown:Connect(up1:GetPropertyChangedSignal(v154), f2018)
+			control2.dropdown:Connect(up1.editProfileChanged, refresh)
+			control2.dropdown:Connect(up1:GetPropertyChangedSignal(gunSpecificPath), refresh)
 		end
-		f2018()
+		refresh()
 	end
 
 	local function f2020()
 	end
 
-	local function f2021(p168)
+	local function updateCrosshair(deltaTime)
 		if not (up0.Visible and up0.Parent ~= nil) then
 			return
 		end
-		local v159 = os.clock()
-		up1:Update(p168, v159)
-		up2:Update(v159)
-		up3:Update(v159)
-		up4:Update(v159)
-		up5:Update(v159)
-		up6:Update(v159)
-		up7:Update(v159)
+		local now = os.clock()
+		up1:Update(deltaTime, now)
+		up2:Update(now)
+		up3:Update(now)
+		up4:Update(now)
+		up5:Update(now)
+		up6:Update(now)
+		up7:Update(now)
 		up8:Update()
 		up9:Update()
 	end
@@ -26976,49 +26976,49 @@ local function f1864()
 		return "ThirdPerson"
 	end
 
-	local function f2023(p169, p170)
-		local v160 = up0(p170, "GetCameraSway")
-		if v160 == nil then
-			p169._errorReporter:Report(up1.err(
+	local function hookCameraSway(self_, prototype)
+		local getCameraSway = up0(prototype, "GetCameraSway")
+		if getCameraSway == nil then
+			self_._errorReporter:Report(up1.err(
 				"CameraSwayDisabler",
 				"function_lookup",
 				"Failed to find GetCameraSway in prototype"
 			).error)
 			return nil
 		end
-		local f2024 = debug.getupvalues(v160)
-		local v161 = nil
+		local upvalues = debug.getupvalues(getCameraSway)
+		local index = nil
 		while true do
-			local f2025
-			v161, f2025 = f2024(nil, v161)
-			if v161 == nil then
+			local upvalue
+			index, upvalue = upvalues(nil, index)
+			if index == nil then
 				break
 			end
-			if type(f2025) == up2 then
-				local v162 = nil
+			if type(upvalue) == up2 then
+				local key = nil
 				while true do
-					local v163
-					v162, v163 = f2025(nil, v162)
-					if v162 == nil then
+					local value
+					key, value = upvalue(nil, key)
+					if key == nil then
 						break
 					end
-					if v163 == up3 then
+					if value == up3 then
 						local _ = setmetatable
-						local t70 = {}
+						local proxy = {}
 
-						function t70.GetPublicState()
+						function proxy.GetPublicState()
 							return "ThirdPerson"
 						end
 
-						local t71 = { __index = v163 }
-						f2025[v162] = setmetatable(t70, t71)
-						local t72 = { stage = "Applied", container = f2025, index = v162, original = v163 }
-						return t72
+						local proxyMetatable = { __index = value }
+						upvalue[key] = setmetatable(proxy, proxyMetatable)
+						local restore = { stage = "Applied", container = upvalue, index = key, original = value }
+						return restore
 					end
 				end
 			end
 		end
-		p169._errorReporter:Report(up1.err(
+		self_._errorReporter:Report(up1.err(
 			"CameraSwayDisabler",
 			"upvalue_scan",
 			"Failed to find CameraController upvalue"
@@ -27030,7 +27030,7 @@ local function f1864()
 		return self_._errors
 	end
 
-	local function destroy_proto3(self_)
+	local function destroyErrorReporter_proto(self_)
 		table.clear(self_._errors)
 		self_._sink = nil
 	end
@@ -27044,32 +27044,32 @@ local function f1864()
 		end
 	end
 
-	local function reportResult_proto(self_, p174)
-		local v165 = p174.ok
-		if not v165 then
-			self_:Report(p174.error)
-			v165 = p174
+	local function reportResult_proto(self_, result)
+		local ok = result.ok
+		if not ok then
+			self_:Report(result.error)
+			ok = result
 		end
-		return v165
+		return ok
 	end
 
-	local function f2030()
+	local function loadErrorReporter()
 		up0.b()
-		local v166 = up0.J()
-		local t73 = {}
-		t73.__index = t73
+		local ErrorSink = up0.J()
+		local ErrorReporter = {}
+		ErrorReporter.__index = ErrorReporter
 
-		function t73.new()
-			local t74 = {
+		function ErrorReporter.new()
+			local reporter = {
 				_errors = {},
-				_sink = v166.get()
+				_sink = ErrorSink.get()
 			}
-			return (setmetatable(t74, t73))
+			return (setmetatable(reporter, ErrorReporter))
 		end
 
-		local v167 = 256
+		local maxErrors = 256
 
-		function t73.Report()
+		function ErrorReporter.Report()
 			local v168
 			while true do
 				v168 = not not false
@@ -27078,166 +27078,166 @@ local function f1864()
 			end
 		end
 
-		function t73:ReportResult(p175)
-			local v169 = p175.ok
-			if not v169 then
-				self:Report(p175.error)
-				v169 = p175
+		function ErrorReporter:ReportResult(result)
+			local ok = result.ok
+			if not ok then
+				self:Report(result.error)
+				ok = result
 			end
-			return v169
+			return ok
 		end
 
-		function t73:GetErrors()
+		function ErrorReporter:GetErrors()
 			return self._errors
 		end
 
-		function t73:Destroy()
+		function ErrorReporter:Destroy()
 			table.clear(self._errors)
 			self._sink = nil
 		end
 
-		return t73
+		return ErrorReporter
 	end
 
-	local function f2031(p176)
-		local CurrentCamera8 = up0.CurrentCamera
-		if CurrentCamera8 == nil then
+	local function strikeLightning(self_)
+		local camera = up0.CurrentCamera
+		if camera == nil then
 			return
 		end
-		local Lightning = up1.data.Weather.Lightning
-		local Height = Lightning.Height
-		local Position10 = CurrentCamera8.CFrame.Position
-		local v170 = math.random() * 2 * math.pi
-		local Distance = Lightning.Distance
-		local v171 = math.min(up2.LIGHTNING_RADIUS_MIN, Distance)
-		local v172 = v171 + math.random() * (Distance - v171)
-		local v173 = Position10.X + math.cos(v170) * v172
-		local v174 = Position10.Z + math.sin(v170) * v172
-		local v175 = RaycastParams.new()
-		v175.FilterType = Enum.RaycastFilterType.Exclude
-		local v176 = up3.LocalPlayer
-		if v176 then
-			v176 = up3.LocalPlayer.Character
+		local settings = up1.data.Weather.Lightning
+		local height = settings.Height
+		local cameraPosition = camera.CFrame.Position
+		local angle = math.random() * 2 * math.pi
+		local distance = settings.Distance
+		local minDistance = math.min(up2.LIGHTNING_RADIUS_MIN, distance)
+		local radius = minDistance + math.random() * (distance - minDistance)
+		local x = cameraPosition.X + math.cos(angle) * radius
+		local z = cameraPosition.Z + math.sin(angle) * radius
+		local raycastParams = RaycastParams.new()
+		raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+		local character = up3.LocalPlayer
+		if character then
+			character = up3.LocalPlayer.Character
 		end
-		if v176 then
-			v175.FilterDescendantsInstances = table.create(1)
+		if character then
+			raycastParams.FilterDescendantsInstances = table.create(1)
 		end
-		local v177 = Position10.Y - up2.LIGHTNING_GROUND_DROP
-		local Raycast4 = up0:Raycast(
-			Vector3.new(v173, Position10.Y + Height, v174),
+		local groundY = cameraPosition.Y - up2.LIGHTNING_GROUND_DROP
+		local hit = up0:Raycast(
+			Vector3.new(x, cameraPosition.Y + height, z),
 			Vector3.new(0, -up2.LIGHTNING_RAY_LENGTH, 0),
-			v175
+			raycastParams
 		)
-		if Raycast4 then
-			v177 = Raycast4.Position.Y
+		if hit then
+			groundY = hit.Position.Y
 		end
-		local v178 = Vector3.new(v173, v177, v174)
-		local v179 = Vector3.new(
-			v173 + (math.random() - 0.5) * up2.LIGHTNING_JITTER,
-			v177 + Height,
-			v174 + (math.random() - 0.5) * up2.LIGHTNING_JITTER
+		local groundPoint = Vector3.new(x, groundY, z)
+		local skyPoint = Vector3.new(
+			x + (math.random() - 0.5) * up2.LIGHTNING_JITTER,
+			groundY + height,
+			z + (math.random() - 0.5) * up2.LIGHTNING_JITTER
 		)
-		local _lightning = p176._lightning
-		local Strike = _lightning.Strike
-		local t75 = {
-			color = Lightning.Color,
-			thickness = Lightning.Thickness,
-			maxRadius = Lightning.Jaggedness,
-			branches = Lightning.Branches,
-			flashBrightness = Lightning.Flash
+		local lightning = self_._lightning
+		local strike = lightning.Strike
+		local boltOptions = {
+			color = settings.Color,
+			thickness = settings.Thickness,
+			maxRadius = settings.Jaggedness,
+			branches = settings.Branches,
+			flashBrightness = settings.Flash
 		}
-		local t76 = {
-			enabled = Lightning.Sparks.Enabled,
-			color = Lightning.Sparks.Color,
-			count = Lightning.Sparks.Count,
-			thickness = Lightning.Sparks.Thickness,
-			distance = Lightning.Sparks.Distance,
-			speed = Lightning.Sparks.Speed,
-			jaggedness = Lightning.Sparks.Jaggedness
+		local sparkOptions = {
+			enabled = settings.Sparks.Enabled,
+			color = settings.Sparks.Color,
+			count = settings.Sparks.Count,
+			thickness = settings.Sparks.Thickness,
+			distance = settings.Sparks.Distance,
+			speed = settings.Sparks.Speed,
+			jaggedness = settings.Sparks.Jaggedness
 		}
-		t75.sparks = t76
-		local t77 = {
-			enabled = Lightning.Explosion.Enabled,
-			size = Lightning.Explosion.Size,
-			bolts = Lightning.Explosion.Bolts,
-			color = Lightning.Explosion.Color
+		boltOptions.sparks = sparkOptions
+		local explosionOptions = {
+			enabled = settings.Explosion.Enabled,
+			size = settings.Explosion.Size,
+			bolts = settings.Explosion.Bolts,
+			color = settings.Explosion.Color
 		}
-		t75.explosion = t77
-		Strike(_lightning, v179, v178, t75)
-		if Lightning.Sound.Enabled then
-			local v180 = up4(Lightning.Sound.SoundId)
-			if v180 ~= nil then
-				p176:_PlayThunder(
-					math.sqrt((v173 - Position10.X) ^ 2 + (v174 - Position10.Z) ^ 2),
-					Lightning.Sound.Volume,
-					Lightning.Sound.Delay,
-					v180
+		boltOptions.explosion = explosionOptions
+		strike(lightning, skyPoint, groundPoint, boltOptions)
+		if settings.Sound.Enabled then
+			local soundId = up4(settings.Sound.SoundId)
+			if soundId ~= nil then
+				self_:_PlayThunder(
+					math.sqrt((x - cameraPosition.X) ^ 2 + (z - cameraPosition.Z) ^ 2),
+					settings.Sound.Volume,
+					settings.Sound.Delay,
+					soundId
 				)
 			end
 		end
 	end
 
-	local function f2032(...)
-		local _inner = up1._inner
+	local function onEquippedItemChanged_proto(...)
+		local inner = self_._inner
 		local f2033 = string.unpack
 		repeat
 			f2033 = f2033(">i8", "\0\0\0\0\0\0\0004")
 		until f2033
-		up1._equippedItem = _inner("EquippedItem", nil)
+		self_._equippedItem = inner("EquippedItem", nil)
 	end
 
-	local function f2034(p177)
-		up0:_AddItem(p177)
+	local function onItemAdded_proto(item)
+		self_:_AddItem(item)
 	end
 
-	local function f2035(p178)
-		up0:_RemoveItem(p178)
+	local function onItemRemoved_proto(item)
+		self_:_RemoveItem(item)
 	end
 
-	local function f2036(p179)
-		local v181 = up0(p179._inner, "ItemAdded")
-		local v182 = up0(p179._inner, "ItemRemoved")
+	local function watchItems(self_)
+		local itemAdded = up0(self_._inner, "ItemAdded")
+		local itemRemoved = up0(self_._inner, "ItemRemoved")
 
-		local function f2037(p180)
-			p179:_AddItem(p180)
+		local function onItemAdded(item)
+			self_:_AddItem(item)
 		end
 
-		p179._trove:Add(up1(v181, f2037))
+		self_._trove:Add(up1(itemAdded, onItemAdded))
 
-		local function f2038(p181)
-			p179:_RemoveItem(p181)
+		local function onItemRemoved(item)
+			self_:_RemoveItem(item)
 		end
 
-		p179._trove:Add(up1(v182, f2038))
+		self_._trove:Add(up1(itemRemoved, onItemRemoved))
 
-		local function f2039(...)
-			local _inner2 = p179._inner
+		local function onEquippedItemChanged(...)
+			local inner = self_._inner
 			local f2040 = string.unpack
 			repeat
 				f2040 = f2040(">i8", "\0\0\0\0\0\0\0004")
 			until f2040
-			p179._equippedItem = _inner2("EquippedItem", nil)
+			self_._equippedItem = inner("EquippedItem", nil)
 		end
 
-		p179._trove:Add(up1(up0(p179._inner, "EquippedItemChanged"), f2039))
-		local f2041 = up0(p179._inner, "Items")
-		local v183 = nil
+		self_._trove:Add(up1(up0(self_._inner, "EquippedItemChanged"), onEquippedItemChanged))
+		local items = up0(self_._inner, "Items")
+		local index = nil
 		while true do
-			local v184
-			v183, v184 = f2041(nil, v183)
-			if v183 == nil then
+			local existingItem
+			index, existingItem = items(nil, index)
+			if index == nil then
 				break
 			end
-			p179:_AddItem(v184)
+			self_:_AddItem(existingItem)
 		end
-		local v185 = up0(p179._inner, "EquippedItem")
-		if v185 ~= nil then
-			p179._equippedItem = p179:_GetViewByInner(v185)
+		local equipped = up0(self_._inner, "EquippedItem")
+		if equipped ~= nil then
+			self_._equippedItem = self_:_GetViewByInner(equipped)
 		end
 	end
 
-	local function f2042(p182, p183)
-		p182._innerContext = p183
+	local function setInnerContext(self_, context)
+		self_._innerContext = context
 	end
 
 	local function f2043(p184, p185)
@@ -27303,43 +27303,43 @@ local function f1864()
 		p184()
 	end
 
-	local function f2045(p186)
-		up0:Fire(p186)
+	local function fire(value)
+		up0:Fire(value)
 	end
 
-	local function f2046(p187, p188)
-		p187._percentage = p188
+	local function setPercentage(self_, percentage)
+		self_._percentage = percentage
 	end
 
-	local function f2047(p189)
-		p189:_EnsureDefaultFile()
-		local LoadFromFile = p189._configManager:LoadFromFile(up0)
-		if LoadFromFile.success then
-			p189._data = LoadFromFile.data
-			p189:_RebuildIndexes()
-			p189.changed:Fire(p189:GetNames())
+	local function reloadCustomSounds(self_)
+		self_:_EnsureDefaultFile()
+		local loaded = self_._configManager:LoadFromFile(up0)
+		if loaded.success then
+			self_._data = loaded.data
+			self_:_RebuildIndexes()
+			self_.changed:Fire(self_:GetNames())
 			return up2.VOID_OK
 		end
-		p189._data = table.clone(up1)
-		p189:_RebuildIndexes()
-		p189.changed:Fire(p189:GetNames())
-		return (up2.err("CustomSounds", "Reload", LoadFromFile.message))
+		self_._data = table.clone(up1)
+		self_:_RebuildIndexes()
+		self_.changed:Fire(self_:GetNames())
+		return (up2.err("CustomSounds", "Reload", loaded.message))
 	end
 
-	local function f2048()
+	local function never_proto()
 		return false
 	end
 
-	local function f2049(p190)
-		local ViewModelOffset = up0.data.ViewModelOffset
+	local function getOffsetCFrame_proto(scale)
+		local offset = settings.data.ViewModelOffset
 		return CFrame.new(
-			ViewModelOffset.X * p190,
-			ViewModelOffset.Y * p190,
-			ViewModelOffset.Z * p190
+			offset.X * scale,
+			offset.Y * scale,
+			offset.Z * scale
 		) * CFrame.fromOrientation(
-			math.rad(ViewModelOffset.Pitch * p190),
-			math.rad(ViewModelOffset.Yaw * p190),
-			math.rad(ViewModelOffset.Roll * p190)
+			math.rad(offset.Pitch * scale),
+			math.rad(offset.Yaw * scale),
+			math.rad(offset.Roll * scale)
 		)
 	end
 
@@ -27350,125 +27350,125 @@ local function f1864()
 	end
 
 	local function revertHook_proto(self_)
-		local _restore9 = self_._restore
-		if _restore9 == nil then
+		local restore = self_._restore
+		if restore == nil then
 			return
 		end
 		self_._restore = nil
-		up0(ClientViewModel, "SetCFrame", _restore9.method)
+		up0(ClientViewModel, "SetCFrame", restore.method)
 	end
 
 	local function loadHook_proto(self_)
 		if self_._restore ~= nil then
-			return up0.VOID_OK
+			return Result.VOID_OK
 		end
-		local v191 = up1(ClientViewModel, "SetCFrame")
-		if v191 == nil then
-			return (up0.err(
+		local setCFrame = getField(ClientViewModel, "SetCFrame")
+		if setCFrame == nil then
+			return (Result.err(
 				"ViewModelOffset",
 				"function_lookup",
 				"ClientViewModel.SetCFrame not found"
 			))
 		end
-		local function f2053()
+		local function noop()
 		end
-		up3(ClientViewModel, "SetCFrame", f2053)
-		local t80 = { method = v191 }
-		self_._restore = t80
-		return up0.VOID_OK
+		up3(ClientViewModel, "SetCFrame", noop)
+		local restore = { method = setCFrame }
+		self_._restore = restore
+		return Result.VOID_OK
 	end
 
-	local function setEnabledViewModelOffset_proto(self_, p195)
-		if p195 then
+	local function setEnabledViewModelOffset_proto(self_, enabled)
+		if enabled then
 			return (self_:_LoadHook())
 		end
 		self_:_RevertHook()
-		return up0.VOID_OK
+		return Result.VOID_OK
 	end
 
 	local function loadViewModelOffset()
-		local v192 = up0.y()
+		local settings = up0.y()
 		up0.al()
-		local v193 = up0.b()
-		local v194 = up0.q()
-		local v195 = up0.ah()
+		local Result = up0.b()
+		local Trove = up0.q()
+		local getField = up0.ah()
 		local ClientViewModel = up0.ao().ClientViewModel
-		local v196 = up0.ac()
-		local v197 = up0.bQ()
+		local ErrorReporter = up0.ac()
+		local Hooks = up0.bQ()
 		local ViewModelOffset = {}
 		ViewModelOffset.__index = ViewModelOffset
 
-		local function f2056()
+		local function never()
 			return false
 		end
 
-		local function f2057(p196)
-			local ViewModelOffset2 = v192.data.ViewModelOffset
+		local function getOffsetCFrame(scale)
+			local offset = settings.data.ViewModelOffset
 			return CFrame.new(
-				ViewModelOffset2.X * p196,
-				ViewModelOffset2.Y * p196,
-				ViewModelOffset2.Z * p196
+				offset.X * scale,
+				offset.Y * scale,
+				offset.Z * scale
 			) * CFrame.fromOrientation(
-				math.rad(ViewModelOffset2.Pitch * p196),
-				math.rad(ViewModelOffset2.Yaw * p196),
-				math.rad(ViewModelOffset2.Roll * p196)
+				math.rad(offset.Pitch * scale),
+				math.rad(offset.Yaw * scale),
+				math.rad(offset.Roll * scale)
 			)
 		end
 
-		function ViewModelOffset.new(p197)
-			local v198 = v196.new()
-			local v199 = v194.new("item_modifiers.ViewModelOffset")
-			local t82 = { _trove = v199, _errorReporter = v198 }
-			if not p197 then
-				p197 = f2056
+		function ViewModelOffset.new(isThirdPerson)
+			local errorReporter = ErrorReporter.new()
+			local trove = Trove.new("item_modifiers.ViewModelOffset")
+			local modifier = { _trove = trove, _errorReporter = errorReporter }
+			if not isThirdPerson then
+				isThirdPerson = never
 			end
-			t82._isThirdPerson = p197
-			setmetatable(t82, ViewModelOffset)
+			modifier._isThirdPerson = isThirdPerson
+			setmetatable(modifier, ViewModelOffset)
 
-			local function f2058(p198)
-				t82._errorReporter:ReportResult(t82:_SetEnabled(p198))
+			local function onEnabledChanged(enabled)
+				modifier._errorReporter:ReportResult(modifier:_SetEnabled(enabled))
 			end
 
-			v199:Connect(v192:GetPropertyChangedSignal((table.create(2))), f2058)
-			t82._errorReporter:ReportResult(t82:_SetEnabled(v192.data.ViewModelOffset.Enabled))
-			return t82
+			trove:Connect(settings:GetPropertyChangedSignal((table.create(2))), onEnabledChanged)
+			modifier._errorReporter:ReportResult(modifier:_SetEnabled(settings.data.ViewModelOffset.Enabled))
+			return modifier
 		end
 
-		function ViewModelOffset:_SetEnabled(p199)
-			if p199 then
+		function ViewModelOffset:_SetEnabled(enabled)
+			if enabled then
 				return (self:_LoadHook())
 			end
 			self:_RevertHook()
-			return v193.VOID_OK
+			return Result.VOID_OK
 		end
 
 		function ViewModelOffset:_LoadHook()
 			if self._restore ~= nil then
-				return v193.VOID_OK
+				return Result.VOID_OK
 			end
-			local v200 = v195(ClientViewModel, "SetCFrame")
-			if v200 == nil then
-				return (v193.err(
+			local setCFrame = getField(ClientViewModel, "SetCFrame")
+			if setCFrame == nil then
+				return (Result.err(
 					"ViewModelOffset",
 					"function_lookup",
 					"ClientViewModel.SetCFrame not found"
 				))
 			end
-			local function f2059()
+			local function noop()
 			end
-			up3(ClientViewModel, "SetCFrame", f2059)
-			local t83 = { method = v200 }
-			self._restore = t83
-			return v193.VOID_OK
+			up3(ClientViewModel, "SetCFrame", noop)
+			local restore = { method = setCFrame }
+			self._restore = restore
+			return Result.VOID_OK
 		end
 
 		function ViewModelOffset:_RevertHook()
-			local _restore10 = self._restore
-			if _restore10 == nil then
+			local restore = self._restore
+			if restore == nil then
 				return
 			end
 			self._restore = nil
-			up0(ClientViewModel, "SetCFrame", _restore10.method)
+			up0(ClientViewModel, "SetCFrame", restore.method)
 		end
 
 		function ViewModelOffset:Destroy()
@@ -27505,13 +27505,13 @@ local function f1864()
 		end
 	end
 
-	local function f2062()
+	local function cancel()
 		up0:cancel()
 	end
 
-	local function f2063(p201)
-		if not (up0._effect == p201 or up1 ~= p201.ClassName) then
-			up0:_SetupGuard(p201)
+	local function onEffectAdded(effect)
+		if not (up0._effect == effect or up1 ~= effect.ClassName) then
+			up0:_SetupGuard(effect)
 		end
 	end
 
@@ -27521,54 +27521,54 @@ local function f1864()
 		until type(v204) ~= up0
 	end
 
-	local function f2065(p202)
-		local v205 = type(p202)
+	local function f2065(node)
+		local v205 = type(node)
 		local v206 = up0
 		while v205 == v206 do
-			v205 = p202.Actions
+			v205 = node.Actions
 			if v205 == nil then
 				return
 			end
 		end
 	end
 
-	local function f2066(p203)
-		up0(p203)
-		return p203
+	local function f2066(settings)
+		up0(settings)
+		return settings
 	end
 
-	local function f2067(p204, p205)
-		local t84 = { __type = "ColorSequence" }
-		local v207 = table.create(2)
-		local v208
-		v208.R = p204.R
-		v208.G = p204.G
-		v208.B = p204.B
-		local v209
-		v209.R = p205.R
-		v209.G = p205.G
-		v209.B = p205.B
-		t84.Keypoints = v207
-		return t84
+	local function twoColorSequence_proto(from, to)
+		local sequence = { __type = "ColorSequence" }
+		local keypoints = table.create(2)
+		local fromColor
+		fromColor.R = from.R
+		fromColor.G = from.G
+		fromColor.B = from.B
+		local toColor
+		toColor.R = to.R
+		toColor.G = to.G
+		toColor.B = to.B
+		sequence.Keypoints = keypoints
+		return sequence
 	end
 
-	local function f2068(...)
+	local function colorsEqual_proto(...)
 		local f2069 = bit32.countrz
-		local v210, v211, v212
+		local sameB, sameG, sameR
 		while true do
 			local _ = 29612 + (f2069((string.len("\212(8"))) + 231) + -29840
 			while true do
 				f2069 = nil
-				local t85, t86
-				t86, t85 = ...
-				v212 = t86.R == t85.R
-				if v212 then
-					v211 = t86.G == t85.G
-					if not v211 then
+				local b, a
+				a, b = ...
+				sameR = a.R == b.R
+				if sameR then
+					sameG = a.G == b.G
+					if not sameG then
 						break
 					end
-					v210 = t86.B == t85.B
-					return v210
+					sameB = a.B == b.B
+					return sameB
 				end
 			end
 		end
@@ -27579,52 +27579,52 @@ local function f1864()
 		v213 = not not false
 		while v213 do
 			if not ((nil).StartColor == nil or (nil).EndColor == nil) then
-				up2(nil)
+				migrateColor(nil)
 				break
 			end
 		end
 	end
 
-	local function f2071(p206)
-		if type(p206) ~= up0 then
+	local function f2071(node)
+		if type(node) ~= up0 then
 			return
 		end
-		local v214 = nil
+		local key = nil
 		while true do
-			local v215
-			v214, v215 = p206(nil, v214)
-			if v214 == nil then
+			local child
+			key, child = node(nil, key)
+			if key == nil then
 				break
 			end
-			up1(v215)
+			migrateSmoothing(child)
 		end
-		if not (p206.Type == "Linear" and p206.Strength ~= nil) then
+		if not (node.Type == "Linear" and node.Strength ~= nil) then
 			return
 		end
 		local _ = math.max
-		local v216 = tonumber(p206.Speed)
-		if not v216 then
-			v216 = 0
+		local speed = tonumber(node.Speed)
+		if not speed then
+			speed = 0
 		end
-		local v217 = math.max(0.01, v216)
+		local speed2 = math.max(0.01, speed)
 		local _ = math.max
-		local v218 = tonumber(p206.Smoothing)
-		if not v218 then
-			v218 = 1
+		local smoothing = tonumber(node.Smoothing)
+		if not smoothing then
+			smoothing = 1
 		end
-		local v219 = math.max(0.01, v218)
+		local smoothing2 = math.max(0.01, smoothing)
 		local _ = math.max
-		local v220 = tonumber(p206.Strength)
-		if not v220 then
-			v220 = 0
+		local strength = tonumber(node.Strength)
+		if not strength then
+			strength = 0
 		end
-		local v221 = math.max(0.01, v220)
-		p206.Speed = math.min(1, v217 / v219 * v221)
-		p206.Strength = nil
+		local strength2 = math.max(0.01, strength)
+		node.Speed = math.min(1, speed2 / smoothing2 * strength2)
+		node.Strength = nil
 	end
 
-	local function f2072(p207)
-		up0(p207)
+	local function migration2_proto(settings)
+		migrateSmoothing(settings)
 		local v222
 		repeat
 			v222 = not not true
@@ -27632,158 +27632,158 @@ local function f1864()
 				v222 = string.len("\151A")
 			end
 		until not v222
-		return p207
+		return settings
 	end
 
-	local function f2073(p208)
-		up0(p208)
-		return p208
+	local function f2073(settings)
+		up0(settings)
+		return settings
 	end
 
-	local function f2074()
+	local function loadSettingsMigrations()
 		up0.f()
 
-		local function f2075(p209, p210)
-			local t87 = { __type = "ColorSequence" }
-			local v223 = table.create(2)
-			local v224
-			v224.R = p209.R
-			v224.G = p209.G
-			v224.B = p209.B
-			local v225
-			v225.R = p210.R
-			v225.G = p210.G
-			v225.B = p210.B
-			t87.Keypoints = v223
-			return t87
+		local function twoColorSequence(from, to)
+			local sequence = { __type = "ColorSequence" }
+			local keypoints = table.create(2)
+			local fromColor
+			fromColor.R = from.R
+			fromColor.G = from.G
+			fromColor.B = from.B
+			local toColor
+			toColor.R = to.R
+			toColor.G = to.G
+			toColor.B = to.B
+			sequence.Keypoints = keypoints
+			return sequence
 		end
 
-		local function f2076(...)
+		local function colorsEqual(...)
 			local f2077 = bit32.countrz
-			local v226, v227, v228
+			local sameB, sameG, sameR
 			while true do
 				local _ = 29612 + (f2077((string.len("\212(8"))) + 231) + -29840
 				while true do
 					f2077 = nil
-					local t88, t89
-					t89, t88 = ...
-					v228 = t89.R == t88.R
-					if v228 then
-						v227 = t89.G == t88.G
-						if not v227 then
+					local b, a
+					a, b = ...
+					sameR = a.R == b.R
+					if sameR then
+						sameG = a.G == b.G
+						if not sameG then
 							break
 						end
-						v226 = t89.B == t88.B
-						return v226
+						sameB = a.B == b.B
+						return sameB
 					end
 				end
 			end
 		end
 
-		local function f2078(p211)
-			local StartColor2 = p211.StartColor
-			local EndColor2 = p211.EndColor
-			local Gradient2 = p211.Gradient
-			if type(Gradient2) == up0 and Gradient2.Enabled == true and
-				type(Gradient2.Color) == up0 then
-				p211.Color = Gradient2.Color
-				p211.ColorMode = "Gradient"
-			elseif type(StartColor2) == up0 and type(EndColor2) == up0 then
-				p211.Color = f2075(StartColor2, EndColor2)
-				local v229 = f2076(StartColor2, EndColor2)
-				v229 = v229 and "Solid" or "Reactive"
-				p211.ColorMode = v229
+		local function migrateColor(settings)
+			local startColor = settings.StartColor
+			local endColor = settings.EndColor
+			local gradient = settings.Gradient
+			if type(gradient) == up0 and gradient.Enabled == true and
+				type(gradient.Color) == up0 then
+				settings.Color = gradient.Color
+				settings.ColorMode = "Gradient"
+			elseif type(startColor) == up0 and type(endColor) == up0 then
+				settings.Color = twoColorSequence(startColor, endColor)
+				local colorMode = colorsEqual(startColor, endColor)
+				colorMode = colorMode and "Solid" or "Reactive"
+				settings.ColorMode = colorMode
 			end
-			p211.StartColor = nil
-			p211.EndColor = nil
-			p211.Gradient = nil
+			settings.StartColor = nil
+			settings.EndColor = nil
+			settings.Gradient = nil
 		end
 
-		local v230
+		local migrateColors
 
-		v230 = function(...)
+		migrateColors = function(...)
 			local v231
 			v231 = not not false
 			while v231 do
 				if not ((nil).StartColor == nil or (nil).EndColor == nil) then
-					f2078(nil)
+					migrateColor(nil)
 					break
 				end
 			end
 		end
 
-		local v232
+		local migrateSmoothing
 
-		v232 = function(p212)
-			if type(p212) ~= up0 then
+		migrateSmoothing = function(node)
+			if type(node) ~= up0 then
 				return
 			end
-			local v233 = nil
+			local key = nil
 			while true do
-				local v234
-				v233, v234 = p212(nil, v233)
-				if v233 == nil then
+				local child
+				key, child = node(nil, key)
+				if key == nil then
 					break
 				end
-				v232(v234)
+				migrateSmoothing(child)
 			end
-			if not (p212.Type == "Linear" and p212.Strength ~= nil) then
+			if not (node.Type == "Linear" and node.Strength ~= nil) then
 				return
 			end
 			local _ = math.max
-			local v235 = tonumber(p212.Speed)
-			if not v235 then
-				v235 = 0
+			local speed = tonumber(node.Speed)
+			if not speed then
+				speed = 0
 			end
-			local v236 = math.max(0.01, v235)
+			local speed2 = math.max(0.01, speed)
 			local _ = math.max
-			local v237 = tonumber(p212.Smoothing)
-			if not v237 then
-				v237 = 1
+			local smoothing = tonumber(node.Smoothing)
+			if not smoothing then
+				smoothing = 1
 			end
-			local v238 = math.max(0.01, v237)
+			local smoothing2 = math.max(0.01, smoothing)
 			local _ = math.max
-			local v239 = tonumber(p212.Strength)
-			if not v239 then
-				v239 = 0
+			local strength = tonumber(node.Strength)
+			if not strength then
+				strength = 0
 			end
-			local v240 = math.max(0.01, v239)
-			p212.Speed = math.min(1, v236 / v238 * v240)
-			p212.Strength = nil
+			local strength2 = math.max(0.01, strength)
+			node.Speed = math.min(1, speed2 / smoothing2 * strength2)
+			node.Strength = nil
 		end
 
-		local v241
+		local migration3
 
-		v241 = function(...)
+		migration3 = function(...)
 			repeat
 				local v242 = ...
 			until type(v242) ~= up0
 		end
 
-		local v243
+		local migrateActions
 
-		v243 = function(p213)
-			local v244 = type(p213)
+		migrateActions = function(node)
+			local v244 = type(node)
 			local v245 = up0
 			while v244 == v245 do
-				v244 = p213.Actions
+				v244 = node.Actions
 				if v244 == nil then
 					return
 				end
 			end
 		end
 
-		local t90 = {}
+		local migrations = {}
 
-		local function f2079(p214)
-			v230(p214)
-			return p214
+		local function migration1(settings)
+			migrateColors(settings)
+			return settings
 		end
 
-		t90[1] = f2079
+		migrations[1] = migration1
 
-		local function f2080(p215)
-			v232(p215)
+		local function migration2(settings)
+			migrateSmoothing(settings)
 			local v246
 			repeat
 				v246 = not not true
@@ -27791,25 +27791,25 @@ local function f1864()
 					v246 = string.len("\151A")
 				end
 			until not v246
-			return p215
+			return settings
 		end
 
-		t90[2] = f2080
+		migrations[2] = migration2
 
-		local function f2081(p216)
-			v241(p216)
-			return p216
+		local function migration3Step(settings)
+			migration3(settings)
+			return settings
 		end
 
-		t90[3] = f2081
+		migrations[3] = migration3Step
 
-		local function f2082(p217)
-			v243(p217)
-			return p217
+		local function migration4(settings)
+			migrateActions(settings)
+			return settings
 		end
 
-		t90[4] = f2082
-		return t90
+		migrations[4] = migration4
+		return migrations
 	end
 
 	local function lazyModule_dG()
@@ -27821,107 +27821,107 @@ local function f1864()
 		return t91.c
 	end
 
-	local function f2084(p218)
+	local function push_proto(value)
 		up0 = true
-		up1.write(p218)
+		up1.write(value)
 		up0 = false
 	end
 
-	local function bind_proto(p219, p220)
-		local v247 = false
+	local function bind_proto(slider, source)
+		local writing = false
 
-		local function f2086()
-			if v247 or p219.Dragging then
+		local function pull()
+			if writing or slider.Dragging then
 				return
 			end
-			local v248 = p220.read()
-			if v248 ~= nil then
-				p219:Set(v248, true)
+			local value = source.read()
+			if value ~= nil then
+				slider:Set(value, true)
 			end
 		end
 
-		local function f2087(p221)
-			v247 = true
-			p220.write(p221)
-			v247 = false
+		local function push(value)
+			writing = true
+			source.write(value)
+			writing = false
 		end
 
-		p219:OnChanged(f2087)
-		local changed = p220.changed
-		local v249 = nil
+		slider:OnChanged(push)
+		local signals = source.changed
+		local index = nil
 		while true do
-			local v250
-			v249, v250 = changed(nil, v249)
-			if v249 == nil then
+			local signal
+			index, signal = signals(nil, index)
+			if index == nil then
 				break
 			end
-			p219:Connect(v250, f2086)
+			slider:Connect(signal, pull)
 		end
-		f2086()
-		return p219
+		pull()
+		return slider
 	end
 
-	local function f2088()
+	local function loadSliderBinding()
 		up0.C()
 		up0.b8()
-		local t92 = {}
+		local SliderBinding = {}
 
-		function t92.bind(p222, p223)
-			local v251 = false
+		function SliderBinding.bind(slider, source)
+			local writing = false
 
-			local function f2089()
-				if v251 or p222.Dragging then
+			local function pull()
+				if writing or slider.Dragging then
 					return
 				end
-				local v252 = p223.read()
-				if v252 ~= nil then
-					p222:Set(v252, true)
+				local value = source.read()
+				if value ~= nil then
+					slider:Set(value, true)
 				end
 			end
 
-			local function f2090(p224)
-				v251 = true
-				p223.write(p224)
-				v251 = false
+			local function push(value)
+				writing = true
+				source.write(value)
+				writing = false
 			end
 
-			p222:OnChanged(f2090)
-			local changed2 = p223.changed
-			local v253 = nil
+			slider:OnChanged(push)
+			local signals = source.changed
+			local index = nil
 			while true do
-				local v254
-				v253, v254 = changed2(nil, v253)
-				if v253 == nil then
+				local signal
+				index, signal = signals(nil, index)
+				if index == nil then
 					break
 				end
-				p222:Connect(v254, f2089)
+				slider:Connect(signal, pull)
 			end
-			f2089()
-			return p222
+			pull()
+			return slider
 		end
 
-		return t92
+		return SliderBinding
 	end
 
-	local function f2091(p225, p226)
-		return (p225:_ResolveEditAt(p226))
+	local function resolveEditAt(self_, path)
+		return (self_:_ResolveEditAt(path))
 	end
 
-	local function f2092(p227, p228, p229)
-		p227._trove:Connect(p228, p229)
-		return p227
+	local function connectAndReturn(self_, signal, callback)
+		self_._trove:Connect(signal, callback)
+		return self_
 	end
 
-	local function f2093(p230, p231)
-		p230._hitFlash:Update(p231)
-		local v255 = #p230._chams - -1
+	local function preRenderHitFeedback(self_, deltaTime)
+		self_._hitFlash:Update(deltaTime)
+		local index = #self_._chams - -1
 		while true do
-			v255 = v255 + -1
-			if not (1 <= v255) then
+			index = index + -1
+			if not (1 <= index) then
 				break
 			end
-			if not p230._chams[v255]:Step(p231) then
-				table.remove(p230._chams, v255)
+			if not self_._chams[index]:Step(deltaTime) then
+				table.remove(self_._chams, index)
 			end
 		end
 	end
@@ -27935,97 +27935,97 @@ local function f1864()
 		return t93.c
 	end
 
-	local function f2095(p232, p233, p234, p235)
-		local t94 = p232._byName[p233]
-		if t94 == nil then
+	local function getItemOfType(self_, name, type_, filter)
+		local entry = self_._byName[name]
+		if entry == nil then
 			return nil
 		end
-		if t94.item.type ~= p234 then
+		if entry.item.type ~= type_ then
 			return nil
 		end
-		if p235 == nil or p235(t94) then
-			return t94.item
+		if filter == nil or filter(entry) then
+			return entry.item
 		end
 		return nil
 	end
 
-	local function f2096(p236, p237)
-		local t95 = { _lastCall = 0, _delay = p236, _callback = p237 }
-		return (setmetatable(t95, up0))
+	local function newThrottle(delay, callback)
+		local throttle = { _lastCall = 0, _delay = delay, _callback = callback }
+		return (setmetatable(throttle, up0))
 	end
 
-	local function f2097(p238)
-		up0:_RemoveRemoteDueler(p238)
+	local function removeRemoteDueler(dueler)
+		up0:_RemoveRemoteDueler(dueler)
 	end
 
-	local function f2098(p239, p240)
-		local v256 = string.format(
+	local function getGradientSteps(from, to)
+		local key = string.format(
 			"%.6f,%.6f,%.6f|%.6f,%.6f,%.6f",
-			p239.R,
-			p239.G,
-			p239.B,
-			p240.R,
-			p240.G,
-			p240.B
+			from.R,
+			from.G,
+			from.B,
+			to.R,
+			to.G,
+			to.B
 		)
-		local v257 = up0[v256]
-		if v257 ~= nil then
-			return v257
+		local cached = up0[key]
+		if cached ~= nil then
+			return cached
 		end
-		local v258 = table.create(up1)
-		local v259 = up1
-		for v260 = 0, v259 - 1 do
-			v258[v260 + 1] = up2(p239, p240, v260 / up1)
+		local steps = table.create(up1)
+		local count = up1
+		for step = 0, count - 1 do
+			steps[step + 1] = up2(from, to, step / up1)
 		end
-		up0[v256] = v258
-		return v258
+		up0[key] = steps
+		return steps
 	end
 
-	local function f2099(p241, p242)
-		p241.data = p242
+	local function setData(self_, data)
+		self_.data = data
 	end
 
-	local function f2100(p243, p244)
-		p243._data.autoLoad = p244
-		return (p243:SaveCoreConfig())
+	local function setAutoLoad(self_, name)
+		self_._data.autoLoad = name
+		return (self_:SaveCoreConfig())
 	end
 
-	local function f2101(p245)
-		up0:_RemoveGuard(p245)
+	local function removeGuard(effect)
+		up0:_RemoveGuard(effect)
 	end
 
-	local function f2102(p246)
-		local v261 = table.remove(p246._circlePool)
-		if v261 == nil then
-			v261 = Instance.new("CylinderHandleAdornment")
-			v261.Adornee = up0.Terrain
-			v261.AlwaysOnTop = true
-			v261.ZIndex = 5
-			v261.Height = up1
-			v261.Angle = 360
-			v261.Parent = p246._adornFolder
+	local function acquireCircle(self_)
+		local circle = table.remove(self_._circlePool)
+		if circle == nil then
+			circle = Instance.new("CylinderHandleAdornment")
+			circle.Adornee = up0.Terrain
+			circle.AlwaysOnTop = true
+			circle.ZIndex = 5
+			circle.Height = up1
+			circle.Angle = 360
+			circle.Parent = self_._adornFolder
 		end
-		v261.Visible = true
-		return v261
+		circle.Visible = true
+		return circle
 	end
 
-	local function f2103()
+	local function onContextRemoved_proto()
 		up0._localFighterState = nil
 		up0:_Clear()
 	end
 
-	local function f2104(p247, p248)
-		local fighterState8 = p247.fighterState
-		up0._localFighterState = fighterState8
+	local function onContext_proto(context, contextTrove)
+		local fighterState = context.fighterState
+		up0._localFighterState = fighterState
 		up0:_Clear()
-		up0:_Watch(p248, fighterState8)
+		up0:_Watch(contextTrove, fighterState)
 	end
 
-	local function newEnemyRegistry_proto(p249, p250)
-		local v262 = up0.new("enemies.EnemyRegistry")
-		local t96 = {
-			_trove = v262,
-			_fighters = p249,
+	local function newEnemyRegistry_proto(fighters, playerContext)
+		local trove = Trove.new("enemies.EnemyRegistry")
+		local registry = {
+			_trove = trove,
+			_fighters = fighters,
 			_localFighterState = nil,
 			_modelById = {},
 			_idByModel = {},
@@ -28035,32 +28035,32 @@ local function f1864()
 			all = {},
 			dummies = {},
 			targets = {},
-			added = v262:Add(up1.new()),
-			removed = v262:Add(up1.new()),
-			cleared = v262:Add(up1.new())
+			added = trove:Add(Signal.new()),
+			removed = trove:Add(Signal.new()),
+			cleared = trove:Add(Signal.new())
 		}
-		setmetatable(t96, EnemyRegistry)
+		setmetatable(registry, EnemyRegistry)
 
-		local function f2106(p251, p252)
-			local fighterState9 = p251.fighterState
-			t96._localFighterState = fighterState9
-			t96:_Clear()
-			t96:_Watch(p252, fighterState9)
+		local function onContext(context, contextTrove)
+			local fighterState = context.fighterState
+			registry._localFighterState = fighterState
+			registry:_Clear()
+			registry:_Watch(contextTrove, fighterState)
 		end
 
-		v262:Add(p250:ObserveContext("EnemyRegistry", f2106))
+		trove:Add(playerContext:ObserveContext("EnemyRegistry", onContext))
 
-		local function f2107()
-			t96._localFighterState = nil
-			t96:_Clear()
+		local function onContextRemoved()
+			registry._localFighterState = nil
+			registry:_Clear()
 		end
 
-		v262:Connect(p250.contextRemoved, f2107)
-		return t96
+		trove:Connect(playerContext.contextRemoved, onContextRemoved)
+		return registry
 	end
 
-	local function getByObjectId_proto(self_, p254)
-		return self_._modelById[p254]
+	local function getByObjectId_proto(self_, objectId)
+		return self_._modelById[objectId]
 	end
 
 	local function clearEnemyRegistry_proto(self_)
@@ -28075,316 +28075,316 @@ local function f1864()
 		self_.cleared:Fire()
 	end
 
-	local function addEnemy_proto(self_, p257, p258)
-		self_._modelById[p257] = p258
-		self_._idByModel[p258] = p257
+	local function addEnemy_proto(self_, objectId, model)
+		self_._modelById[objectId] = model
+		self_._idByModel[model] = objectId
 		local all = self_.all
-		local v263 = #all + 1
-		all[v263] = p258
-		self_._allIndex[p258] = v263
-		if p258.Name == "Dummy" then
+		local index = #all + 1
+		all[index] = model
+		self_._allIndex[model] = index
+		if model.Name == "Dummy" then
 			local dummies = self_.dummies
-			local v264 = #dummies + 1
-			dummies[v264] = p258
-			self_._dummiesIndex[p258] = v264
-		elseif p258.Name == "Target" then
+			local index2 = #dummies + 1
+			dummies[index2] = model
+			self_._dummiesIndex[model] = index2
+		elseif model.Name == "Target" then
 			local targets = self_.targets
-			local v265 = #targets + 1
-			targets[v265] = p258
-			self_._targetsIndex[p258] = v265
+			local index3 = #targets + 1
+			targets[index3] = model
+			self_._targetsIndex[model] = index3
 		end
-		self_.added:Fire(p258)
+		self_.added:Fire(model)
 	end
 
-	local function checkEnemyEnvironment_proto(self_, p260)
-		local _localFighterState = self_._localFighterState
-		if _localFighterState == nil then
+	local function checkEnemyEnvironment_proto(self_, enemy)
+		local localFighterState = self_._localFighterState
+		if localFighterState == nil then
 			return false
 		end
-		local v266
-		v266 = up0(p260, "Model"):GetAttribute("EnvironmentID") == _localFighterState.environmentID
-		return v266
+		local sameEnvironment
+		sameEnvironment = getField(enemy, "Model"):GetAttribute("EnvironmentID") == localFighterState.environmentID
+		return sameEnvironment
 	end
 
-	local function checkPlayerEnvironment_proto(self_, p262)
-		local _localFighterState2 = self_._localFighterState
-		if _localFighterState2 == nil then
+	local function checkPlayerEnvironment_proto(self_, fighterState)
+		local localFighterState = self_._localFighterState
+		if localFighterState == nil then
 			return false
 		end
-		local v267
-		v267 = p262.environmentID == _localFighterState2.environmentID
-		return v267
+		local sameEnvironment
+		sameEnvironment = fighterState.environmentID == localFighterState.environmentID
+		return sameEnvironment
 	end
 
-	local function f2113(p263, p264, p265)
-		local v268 = p264[p265]
-		if v268 == nil then
+	local function swapRemove_proto(list, indexOf, value)
+		local index = indexOf[value]
+		if index == nil then
 			return
 		end
-		local v269 = #p263
-		if v268 ~= v269 then
-			local v270 = p263[v269]
-			p263[v268] = v270
-			p264[v270] = v268
+		local last = #list
+		if index ~= last then
+			local lastValue = list[last]
+			list[index] = lastValue
+			indexOf[lastValue] = index
 		end
-		p263[v269] = nil
-		p264[p265] = nil
+		list[last] = nil
+		indexOf[value] = nil
 	end
 
-	local function removeEnemy_proto(self_, p267)
-		local v271 = self_._idByModel[p267]
-		if v271 == nil then
+	local function removeEnemy_proto(self_, model)
+		local objectId = self_._idByModel[model]
+		if objectId == nil then
 			return
 		end
-		self_._modelById[v271] = nil
-		self_._idByModel[p267] = nil
-		up0(self_.all, self_._allIndex, p267)
-		up0(self_.dummies, self_._dummiesIndex, p267)
-		up0(self_.targets, self_._targetsIndex, p267)
-		self_.removed:Fire(p267)
+		self_._modelById[objectId] = nil
+		self_._idByModel[model] = nil
+		swapRemove(self_.all, self_._allIndex, model)
+		swapRemove(self_.dummies, self_._dummiesIndex, model)
+		swapRemove(self_.targets, self_._targetsIndex, model)
+		self_.removed:Fire(model)
 	end
 
 	local function f2115(self_)
 		self_._trove:Destroy()
 	end
 
-	local function f2116(p269)
-		up0:_RemoveEnemy((up1(p269, "Model")))
+	local function onEnemyRemoved_proto(enemy)
+		up0:_RemoveEnemy((up1(enemy, "Model")))
 	end
 
-	local function f2117()
+	local function onLocalEnvironmentChanged_proto()
 		up0:_Clear()
 		up1()
-		local f2118 = up2
-		local v272 = nil
+		local troves2 = up2
+		local fighterState = nil
 		while true do
 			local _
-			v272, _ = f2118(nil, v272)
-			if v272 == nil then
+			fighterState, _ = troves2(nil, fighterState)
+			if fighterState == nil then
 				break
 			end
-			up3(v272)
+			up3(fighterState)
 		end
 	end
 
-	local function f2119(p270)
-		if not up0:_CheckEnemyEnvironment(p270) then
+	local function onEnemyAdded_proto(enemy)
+		if not up0:_CheckEnemyEnvironment(enemy) then
 			return
 		end
-		up0:_AddEnemy(up1(p270, "ObjectID"), (up2(p270, "Model")))
+		up0:_AddEnemy(up1(enemy, "ObjectID"), (up2(enemy, "Model")))
 	end
 
-	local function f2120(p271)
-		local v273 = up0(p271.inner, "Entity")
-		if v273 == nil then
+	local function refreshPlayer_proto(fighterState)
+		local entity = up0(fighterState.inner, "Entity")
+		if entity == nil then
 			return
 		end
-		local v274 = up0(v273, "Model")
-		local _CheckPlayerEnvironment = up1:_CheckPlayerEnvironment(p271)
-		local v275
-		v275 = not (up1._idByModel[v274] == nil)
-		if _CheckPlayerEnvironment and not v275 then
-			up1:_AddEnemy(up2(v273, "ObjectID"), v274)
-		elseif not (_CheckPlayerEnvironment or not v275) then
-			up1:_RemoveEnemy(v274)
+		local model = up0(entity, "Model")
+		local sameEnvironment = up1:_CheckPlayerEnvironment(fighterState)
+		local isTracked
+		isTracked = not (up1._idByModel[model] == nil)
+		if sameEnvironment and not isTracked then
+			up1:_AddEnemy(up2(entity, "ObjectID"), model)
+		elseif not (sameEnvironment or not isTracked) then
+			up1:_RemoveEnemy(model)
 		end
 	end
 
-	local function f2121()
-		local f2122 = up0(up1, "_model_to_enemy")
-		local v276 = nil
+	local function addExistingEnemies_proto()
+		local modelToEnemy = up0(up1, "_model_to_enemy")
+		local model = nil
 		while true do
-			local v277
-			v276, v277 = f2122(nil, v276)
-			if v276 == nil then
+			local enemy
+			model, enemy = modelToEnemy(nil, model)
+			if model == nil then
 				break
 			end
-			up2(v277)
+			up2(enemy)
 		end
 	end
 
-	local function f2123(p272)
-		if up0[p272] ~= nil then
+	local function onRemoteStateAdded_proto(fighterState)
+		if up0[fighterState] ~= nil then
 			return
 		end
-		local v278 = up1.new("enemies.EnemyRegistry")
-		up0[p272] = v278
+		local playerTrove = up1.new("enemies.EnemyRegistry")
+		up0[fighterState] = playerTrove
 
-		local function f2124()
-			up0(p272)
+		local function onEnvironmentChanged()
+			up0(fighterState)
 		end
 
-		v278:Connect(p272.environmentIDChanged, f2124)
-		up2(p272)
+		playerTrove:Connect(fighterState.environmentIDChanged, onEnvironmentChanged)
+		up2(fighterState)
 	end
 
-	local function f2125(p273)
-		local v279 = up0[p273]
-		if v279 ~= nil then
-			v279:Destroy()
-			up0[p273] = nil
+	local function onRemoteStateRemoved_proto(fighterState)
+		local playerTrove = up0[fighterState]
+		if playerTrove ~= nil then
+			playerTrove:Destroy()
+			up0[fighterState] = nil
 		end
 	end
 
-	local function f2126(p274, _)
-		up0(p274)
+	local function onRemoteEntityAdded_proto(fighterState, _)
+		up0(fighterState)
 	end
 
-	local function f2127(_, p275)
-		up0:_RemoveEnemy((up1(p275, "Model")))
+	local function onRemoteEntityRemoved_proto(_, entity)
+		up0:_RemoveEnemy((up1(entity, "Model")))
 	end
 
-	local function watch_proto(self_, p277, p278)
-		local function f2129(p279)
-			if not self_:_CheckEnemyEnvironment(p279) then
+	local function watch_proto(self_, trove, localFighterState)
+		local function onEnemyAdded(enemy)
+			if not self_:_CheckEnemyEnvironment(enemy) then
 				return
 			end
-			self_:_AddEnemy(up1(p279, "ObjectID"), (up2(p279, "Model")))
+			self_:_AddEnemy(callMethod(enemy, "ObjectID"), (getField(enemy, "Model")))
 		end
 
-		local function f2130(p280)
-			local v280 = up0(p280.inner, "Entity")
-			if v280 == nil then
+		local function refreshPlayer(fighterState)
+			local entity = getField(fighterState.inner, "Entity")
+			if entity == nil then
 				return
 			end
-			local v281 = up0(v280, "Model")
-			local _CheckPlayerEnvironment2 = self_:_CheckPlayerEnvironment(p280)
-			local v282
-			v282 = not (self_._idByModel[v281] == nil)
-			if _CheckPlayerEnvironment2 and not v282 then
-				self_:_AddEnemy(up2(v280, "ObjectID"), v281)
-			elseif not (_CheckPlayerEnvironment2 or not v282) then
-				self_:_RemoveEnemy(v281)
+			local model = getField(entity, "Model")
+			local sameEnvironment = self_:_CheckPlayerEnvironment(fighterState)
+			local isTracked
+			isTracked = not (self_._idByModel[model] == nil)
+			if sameEnvironment and not isTracked then
+				self_:_AddEnemy(callMethod(entity, "ObjectID"), model)
+			elseif not (sameEnvironment or not isTracked) then
+				self_:_RemoveEnemy(model)
 			end
 		end
 
-		local function f2131()
-			local f2132 = up0(EnemyController, "_model_to_enemy")
-			local v283 = nil
+		local function addExistingEnemies()
+			local modelToEnemy = getField(EnemyController, "_model_to_enemy")
+			local model = nil
 			while true do
-				local v284
-				v283, v284 = f2132(nil, v283)
-				if v283 == nil then
+				local enemy
+				model, enemy = modelToEnemy(nil, model)
+				if model == nil then
 					break
 				end
-				f2129(v284)
+				onEnemyAdded(enemy)
 			end
 		end
 
-		p277:Add(up3(up1(up2, "ObjectAdded"), f2129))
+		trove:Add(bindSignal(up1(up2, "ObjectAdded"), onEnemyAdded))
 
-		local function f2133(p281)
-			self_:_RemoveEnemy((up1(p281, "Model")))
+		local function onEnemyRemoved(enemy)
+			self_:_RemoveEnemy((getField(enemy, "Model")))
 		end
 
-		p277:Add(up3(up1(up2, "ObjectRemoved"), f2133))
-		f2131()
-		local t97 = {}
+		trove:Add(bindSignal(up1(up2, "ObjectRemoved"), onEnemyRemoved))
+		addExistingEnemies()
+		local playerTroves = {}
 
-		local function f2134()
-			local f2135 = t97
-			local v285 = nil
+		local function destroyPlayerTroves()
+			local troves = playerTroves
+			local key = nil
 			while true do
-				local v286
-				v285, v286 = f2135(nil, v285)
-				if v285 == nil then
+				local playerTrove
+				key, playerTrove = troves(nil, key)
+				if key == nil then
 					break
 				end
-				v286:Destroy()
+				playerTrove:Destroy()
 			end
-			table.clear(t97)
+			table.clear(playerTroves)
 		end
 
-		p277:Add(f2134)
+		trove:Add(destroyPlayerTroves)
 
-		local function f2136(p282)
-			if t97[p282] ~= nil then
+		local function onRemoteStateAdded(fighterState)
+			if playerTroves[fighterState] ~= nil then
 				return
 			end
-			local v287 = up1.new("enemies.EnemyRegistry")
-			t97[p282] = v287
+			local playerTrove = Trove.new("enemies.EnemyRegistry")
+			playerTroves[fighterState] = playerTrove
 
-			local function f2137()
-				f2130(p282)
+			local function onEnvironmentChanged()
+				refreshPlayer(fighterState)
 			end
 
-			v287:Connect(p282.environmentIDChanged, f2137)
-			f2130(p282)
+			playerTrove:Connect(fighterState.environmentIDChanged, onEnvironmentChanged)
+			refreshPlayer(fighterState)
 		end
 
-		local function f2138(p283)
-			local v288 = t97[p283]
-			if v288 ~= nil then
-				v288:Destroy()
-				t97[p283] = nil
+		local function onRemoteStateRemoved(fighterState)
+			local playerTrove = playerTroves[fighterState]
+			if playerTrove ~= nil then
+				playerTrove:Destroy()
+				playerTroves[fighterState] = nil
 			end
 		end
 
-		self_._fighters:ObserveRemoteStates(p277, f2136, f2138)
+		self_._fighters:ObserveRemoteStates(trove, onRemoteStateAdded, onRemoteStateRemoved)
 
-		local function f2139(p284, _)
-			f2130(p284)
+		local function onRemoteEntityAdded(fighterState, _)
+			refreshPlayer(fighterState)
 		end
 
-		local function f2140(_, p285)
-			self_:_RemoveEnemy((up1(p285, "Model")))
+		local function onRemoteEntityRemoved(_, entity)
+			self_:_RemoveEnemy((getField(entity, "Model")))
 		end
 
-		self_._fighters:ObserveRemoteEntities(p277, f2139, f2140)
+		self_._fighters:ObserveRemoteEntities(trove, onRemoteEntityAdded, onRemoteEntityRemoved)
 
-		local function f2141()
+		local function onLocalEnvironmentChanged()
 			self_:_Clear()
-			f2131()
-			local f2142 = t97
-			local v289 = nil
+			addExistingEnemies()
+			local troves2 = playerTroves
+			local fighterState = nil
 			while true do
 				local _
-				v289, _ = f2142(nil, v289)
-				if v289 == nil then
+				fighterState, _ = troves2(nil, fighterState)
+				if fighterState == nil then
 					break
 				end
-				f2130(v289)
+				refreshPlayer(fighterState)
 			end
 		end
 
-		p277:Connect(p278.environmentIDChanged, f2141)
+		trove:Connect(localFighterState.environmentIDChanged, onLocalEnvironmentChanged)
 	end
 
 	local function loadEnemyRegistry()
 		up0.ak()
 		up0.aj()
-		local v290 = up0.q()
-		local v291 = up0.ah()
+		local Trove = up0.q()
+		local getField = up0.ah()
 		local EnemyController = up0.ao().EnemyController
 		up0.aT()
 		up0.a4()
-		local v292 = up0.t()
-		local v293 = up0.aH()
-		local v294 = up0.aJ()
+		local Signal = up0.t()
+		local bindSignal = up0.aH()
+		local callMethod = up0.aJ()
 
-		local function f2144(p286, p287, p288)
-			local v295 = p287[p288]
-			if v295 == nil then
+		local function swapRemove(list, indexOf, value)
+			local index = indexOf[value]
+			if index == nil then
 				return
 			end
-			local v296 = #p286
-			if v295 ~= v296 then
-				local v297 = p286[v296]
-				p286[v295] = v297
-				p287[v297] = v295
+			local last = #list
+			if index ~= last then
+				local lastValue = list[last]
+				list[index] = lastValue
+				indexOf[lastValue] = index
 			end
-			p286[v296] = nil
-			p287[p288] = nil
+			list[last] = nil
+			indexOf[value] = nil
 		end
 
 		local EnemyRegistry = {}
 		EnemyRegistry.__index = EnemyRegistry
 
-		function EnemyRegistry.new(p289, p290)
-			local v298 = v290.new("enemies.EnemyRegistry")
-			local t99 = {
-				_trove = v298,
-				_fighters = p289,
+		function EnemyRegistry.new(fighters, playerContext)
+			local trove = Trove.new("enemies.EnemyRegistry")
+			local registry = {
+				_trove = trove,
+				_fighters = fighters,
 				_localFighterState = nil,
 				_modelById = {},
 				_idByModel = {},
@@ -28394,32 +28394,32 @@ local function f1864()
 				all = {},
 				dummies = {},
 				targets = {},
-				added = v298:Add(v292.new()),
-				removed = v298:Add(v292.new()),
-				cleared = v298:Add(v292.new())
+				added = trove:Add(Signal.new()),
+				removed = trove:Add(Signal.new()),
+				cleared = trove:Add(Signal.new())
 			}
-			setmetatable(t99, EnemyRegistry)
+			setmetatable(registry, EnemyRegistry)
 
-			local function f2145(p291, p292)
-				local fighterState10 = p291.fighterState
-				t99._localFighterState = fighterState10
-				t99:_Clear()
-				t99:_Watch(p292, fighterState10)
+			local function onContext(context, contextTrove)
+				local fighterState = context.fighterState
+				registry._localFighterState = fighterState
+				registry:_Clear()
+				registry:_Watch(contextTrove, fighterState)
 			end
 
-			v298:Add(p290:ObserveContext("EnemyRegistry", f2145))
+			trove:Add(playerContext:ObserveContext("EnemyRegistry", onContext))
 
-			local function f2146()
-				t99._localFighterState = nil
-				t99:_Clear()
+			local function onContextRemoved()
+				registry._localFighterState = nil
+				registry:_Clear()
 			end
 
-			v298:Connect(p290.contextRemoved, f2146)
-			return t99
+			trove:Connect(playerContext.contextRemoved, onContextRemoved)
+			return registry
 		end
 
-		function EnemyRegistry:GetByObjectId(p293)
-			return self._modelById[p293]
+		function EnemyRegistry:GetByObjectId(objectId)
+			return self._modelById[objectId]
 		end
 
 		function EnemyRegistry:_Clear()
@@ -28434,174 +28434,174 @@ local function f1864()
 			self.cleared:Fire()
 		end
 
-		function EnemyRegistry:_CheckEnemyEnvironment(p294)
-			local _localFighterState3 = self._localFighterState
-			if _localFighterState3 == nil then
+		function EnemyRegistry:_CheckEnemyEnvironment(enemy)
+			local localFighterState = self._localFighterState
+			if localFighterState == nil then
 				return false
 			end
-			local v299
-			v299 = v291(p294, "Model"):GetAttribute("EnvironmentID") == _localFighterState3.environmentID
-			return v299
+			local sameEnvironment
+			sameEnvironment = getField(enemy, "Model"):GetAttribute("EnvironmentID") == localFighterState.environmentID
+			return sameEnvironment
 		end
 
-		function EnemyRegistry:_CheckPlayerEnvironment(p295)
-			local _localFighterState4 = self._localFighterState
-			if _localFighterState4 == nil then
+		function EnemyRegistry:_CheckPlayerEnvironment(fighterState)
+			local localFighterState = self._localFighterState
+			if localFighterState == nil then
 				return false
 			end
-			local v300
-			v300 = p295.environmentID == _localFighterState4.environmentID
-			return v300
+			local sameEnvironment
+			sameEnvironment = fighterState.environmentID == localFighterState.environmentID
+			return sameEnvironment
 		end
 
-		function EnemyRegistry:_Watch(p296, p297)
-			local function f2147(p298)
-				if not self:_CheckEnemyEnvironment(p298) then
+		function EnemyRegistry:_Watch(trove, localFighterState)
+			local function onEnemyAdded(enemy)
+				if not self:_CheckEnemyEnvironment(enemy) then
 					return
 				end
-				self:_AddEnemy(v294(p298, "ObjectID"), (v291(p298, "Model")))
+				self:_AddEnemy(callMethod(enemy, "ObjectID"), (getField(enemy, "Model")))
 			end
 
-			local function f2148(p299)
-				local v301 = v291(p299.inner, "Entity")
-				if v301 == nil then
+			local function refreshPlayer(fighterState)
+				local entity = getField(fighterState.inner, "Entity")
+				if entity == nil then
 					return
 				end
-				local v302 = v291(v301, "Model")
-				local _CheckPlayerEnvironment3 = self:_CheckPlayerEnvironment(p299)
-				local v303
-				v303 = not (self._idByModel[v302] == nil)
-				if _CheckPlayerEnvironment3 and not v303 then
-					self:_AddEnemy(v294(v301, "ObjectID"), v302)
-				elseif not (_CheckPlayerEnvironment3 or not v303) then
-					self:_RemoveEnemy(v302)
+				local model = getField(entity, "Model")
+				local sameEnvironment = self:_CheckPlayerEnvironment(fighterState)
+				local isTracked
+				isTracked = not (self._idByModel[model] == nil)
+				if sameEnvironment and not isTracked then
+					self:_AddEnemy(callMethod(entity, "ObjectID"), model)
+				elseif not (sameEnvironment or not isTracked) then
+					self:_RemoveEnemy(model)
 				end
 			end
 
-			local function f2149()
-				local f2150 = v291(EnemyController, "_model_to_enemy")
-				local v304 = nil
+			local function addExistingEnemies()
+				local modelToEnemy = getField(EnemyController, "_model_to_enemy")
+				local model = nil
 				while true do
-					local v305
-					v304, v305 = f2150(nil, v304)
-					if v304 == nil then
+					local enemy
+					model, enemy = modelToEnemy(nil, model)
+					if model == nil then
 						break
 					end
-					f2147(v305)
+					onEnemyAdded(enemy)
 				end
 			end
 
-			p296:Add(v293(v291(EnemyController, "ObjectAdded"), f2147))
+			trove:Add(bindSignal(getField(EnemyController, "ObjectAdded"), onEnemyAdded))
 
-			local function f2151(p300)
-				self:_RemoveEnemy((v291(p300, "Model")))
+			local function onEnemyRemoved(enemy)
+				self:_RemoveEnemy((getField(enemy, "Model")))
 			end
 
-			p296:Add(v293(v291(EnemyController, "ObjectRemoved"), f2151))
-			f2149()
-			local t100 = {}
+			trove:Add(bindSignal(getField(EnemyController, "ObjectRemoved"), onEnemyRemoved))
+			addExistingEnemies()
+			local playerTroves = {}
 
-			local function f2152()
-				local f2153 = t100
-				local v306 = nil
+			local function destroyPlayerTroves()
+				local troves = playerTroves
+				local key = nil
 				while true do
-					local v307
-					v306, v307 = f2153(nil, v306)
-					if v306 == nil then
+					local playerTrove
+					key, playerTrove = troves(nil, key)
+					if key == nil then
 						break
 					end
-					v307:Destroy()
+					playerTrove:Destroy()
 				end
-				table.clear(t100)
+				table.clear(playerTroves)
 			end
 
-			p296:Add(f2152)
+			trove:Add(destroyPlayerTroves)
 
-			local function f2154(p301)
-				if t100[p301] ~= nil then
+			local function onRemoteStateAdded(fighterState)
+				if playerTroves[fighterState] ~= nil then
 					return
 				end
-				local v308 = v290.new("enemies.EnemyRegistry")
-				t100[p301] = v308
+				local playerTrove = Trove.new("enemies.EnemyRegistry")
+				playerTroves[fighterState] = playerTrove
 
-				local function f2155()
-					f2148(p301)
+				local function onEnvironmentChanged()
+					refreshPlayer(fighterState)
 				end
 
-				v308:Connect(p301.environmentIDChanged, f2155)
-				f2148(p301)
+				playerTrove:Connect(fighterState.environmentIDChanged, onEnvironmentChanged)
+				refreshPlayer(fighterState)
 			end
 
-			local function f2156(p302)
-				local v309 = t100[p302]
-				if v309 ~= nil then
-					v309:Destroy()
-					t100[p302] = nil
+			local function onRemoteStateRemoved(fighterState)
+				local playerTrove = playerTroves[fighterState]
+				if playerTrove ~= nil then
+					playerTrove:Destroy()
+					playerTroves[fighterState] = nil
 				end
 			end
 
-			self._fighters:ObserveRemoteStates(p296, f2154, f2156)
+			self._fighters:ObserveRemoteStates(trove, onRemoteStateAdded, onRemoteStateRemoved)
 
-			local function f2157(p303, _)
-				f2148(p303)
+			local function onRemoteEntityAdded(fighterState, _)
+				refreshPlayer(fighterState)
 			end
 
-			local function f2158(_, p304)
-				self:_RemoveEnemy((v291(p304, "Model")))
+			local function onRemoteEntityRemoved(_, entity)
+				self:_RemoveEnemy((getField(entity, "Model")))
 			end
 
-			self._fighters:ObserveRemoteEntities(p296, f2157, f2158)
+			self._fighters:ObserveRemoteEntities(trove, onRemoteEntityAdded, onRemoteEntityRemoved)
 
-			local function f2159()
+			local function onLocalEnvironmentChanged()
 				self:_Clear()
-				f2149()
-				local f2160 = t100
-				local v310 = nil
+				addExistingEnemies()
+				local troves2 = playerTroves
+				local fighterState = nil
 				while true do
 					local _
-					v310, _ = f2160(nil, v310)
-					if v310 == nil then
+					fighterState, _ = troves2(nil, fighterState)
+					if fighterState == nil then
 						break
 					end
-					f2148(v310)
+					refreshPlayer(fighterState)
 				end
 			end
 
-			p296:Connect(p297.environmentIDChanged, f2159)
+			trove:Connect(localFighterState.environmentIDChanged, onLocalEnvironmentChanged)
 		end
 
-		function EnemyRegistry:_AddEnemy(p305, p306)
-			self._modelById[p305] = p306
-			self._idByModel[p306] = p305
-			local all2 = self.all
-			local v311 = #all2 + 1
-			all2[v311] = p306
-			self._allIndex[p306] = v311
-			if p306.Name == "Dummy" then
-				local dummies2 = self.dummies
-				local v312 = #dummies2 + 1
-				dummies2[v312] = p306
-				self._dummiesIndex[p306] = v312
-			elseif p306.Name == "Target" then
-				local targets2 = self.targets
-				local v313 = #targets2 + 1
-				targets2[v313] = p306
-				self._targetsIndex[p306] = v313
+		function EnemyRegistry:_AddEnemy(objectId, model)
+			self._modelById[objectId] = model
+			self._idByModel[model] = objectId
+			local all = self.all
+			local index = #all + 1
+			all[index] = model
+			self._allIndex[model] = index
+			if model.Name == "Dummy" then
+				local dummies = self.dummies
+				local index2 = #dummies + 1
+				dummies[index2] = model
+				self._dummiesIndex[model] = index2
+			elseif model.Name == "Target" then
+				local targets = self.targets
+				local index3 = #targets + 1
+				targets[index3] = model
+				self._targetsIndex[model] = index3
 			end
-			self.added:Fire(p306)
+			self.added:Fire(model)
 		end
 
-		function EnemyRegistry:_RemoveEnemy(p307)
-			local v314 = self._idByModel[p307]
-			if v314 == nil then
+		function EnemyRegistry:_RemoveEnemy(model)
+			local objectId = self._idByModel[model]
+			if objectId == nil then
 				return
 			end
-			self._modelById[v314] = nil
-			self._idByModel[p307] = nil
-			f2144(self.all, self._allIndex, p307)
-			f2144(self.dummies, self._dummiesIndex, p307)
-			f2144(self.targets, self._targetsIndex, p307)
-			self.removed:Fire(p307)
+			self._modelById[objectId] = nil
+			self._idByModel[model] = nil
+			swapRemove(self.all, self._allIndex, model)
+			swapRemove(self.dummies, self._dummiesIndex, model)
+			swapRemove(self.targets, self._targetsIndex, model)
+			self.removed:Fire(model)
 		end
 
 		function EnemyRegistry:Destroy()
@@ -28611,229 +28611,229 @@ local function f1864()
 		return EnemyRegistry
 	end
 
-	local function f2161(p308, p309, p310, p311)
-		local v315 = table.concat(p309, "/")
-		local mode = p311.mode
-		local v316
-		v316 = mode == "Breathing"
-		if v316 then
-			v316 = p310 == nil
+	local function setAnimatedColor(self_, colorPath, transparencyPath, options)
+		local key = table.concat(colorPath, "/")
+		local requestedMode = options.mode
+		local effectiveMode
+		effectiveMode = requestedMode == "Breathing"
+		if effectiveMode then
+			effectiveMode = transparencyPath == nil
 		end
-		v316 = v316 and "None" or mode
-		local t101 = p308._entries[v315]
-		if v316 == "None" then
-			if t101 ~= nil then
-				p308._entries[v315] = nil
-				p308._callbacks.revertColor(p309)
-				if p310 ~= nil then
-					p308._callbacks.revertTransparency(p310)
+		effectiveMode = effectiveMode and "None" or requestedMode
+		local existing = self_._entries[key]
+		if effectiveMode == "None" then
+			if existing ~= nil then
+				self_._entries[key] = nil
+				self_._callbacks.revertColor(colorPath)
+				if transparencyPath ~= nil then
+					self_._callbacks.revertTransparency(transparencyPath)
 				end
 			end
 			return
 		end
-		if not (t101 == nil or t101.mode ~= v316) then
-			t101.speed = p311.speed
-			t101.transparencyPath = p310
-			local breathingMin = p311.breathingMin
+		if not (existing == nil or existing.mode ~= effectiveMode) then
+			existing.speed = options.speed
+			existing.transparencyPath = transparencyPath
+			local breathingMin = options.breathingMin
 			if not breathingMin then
-				breathingMin = t101.breathingMin
+				breathingMin = existing.breathingMin
 			end
-			t101.breathingMin = breathingMin
-			local breathingMax = p311.breathingMax
+			existing.breathingMin = breathingMin
+			local breathingMax = options.breathingMax
 			if not breathingMax then
-				breathingMax = t101.breathingMax
+				breathingMax = existing.breathingMax
 			end
-			t101.breathingMax = breathingMax
+			existing.breathingMax = breathingMax
 			return
 		end
-		p308._callbacks.revertColor(p309)
-		if p310 ~= nil then
-			p308._callbacks.revertTransparency(p310)
+		self_._callbacks.revertColor(colorPath)
+		if transparencyPath ~= nil then
+			self_._callbacks.revertTransparency(transparencyPath)
 		end
-		local _entries5 = p308._entries
-		local t102 = { colorPath = p309, transparencyPath = p310, mode = v316, speed = p311.speed }
-		local v317
-		v317 = not (t101 == nil)
-		v317 = v317 and t101.t or 0
-		t102.t = v317
-		local v318 = p311.breathingMin
-		if not v318 then
-			v318 = 0
+		local entries = self_._entries
+		local entry = { colorPath = colorPath, transparencyPath = transparencyPath, mode = effectiveMode, speed = options.speed }
+		local time
+		time = not (existing == nil)
+		time = time and existing.t or 0
+		entry.t = time
+		local min = options.breathingMin
+		if not min then
+			min = 0
 		end
-		t102.breathingMin = v318
-		local v319 = p311.breathingMax
-		if not v319 then
-			v319 = 1
+		entry.breathingMin = min
+		local max = options.breathingMax
+		if not max then
+			max = 1
 		end
-		t102.breathingMax = v319
-		_entries5[v315] = t102
+		entry.breathingMax = max
+		entries[key] = entry
 	end
 
-	local function f2162(_, p312, _, _)
-		local t103 = up0(p312)
-		local success = t103.success
-		if not success then
-			return t103
+	local function loadConfigFile(_, path, _, _)
+		local result = up0(path)
+		local ok = result.success
+		if not ok then
+			return result
 		end
-		local success2 = (nil).success
-		if not success2 then
-			local t104 = { success = false, message = (nil).message }
-			return t104
+		local apply = (nil).success
+		if not apply then
+			local failure = { success = false, message = (nil).message }
+			return failure
 		end
-		success2(success, (nil).data)
-		local t105 = { success = true, message = "" }
-		return t105
+		apply(ok, (nil).data)
+		local result2 = { success = true, message = "" }
+		return result2
 	end
 
-	local function f2163(p313, p314, p315)
-		local v320 = Instance.new(up0)
-		v320.BackgroundTransparency = 1
-		v320.Size = UDim2.fromScale(1, 0)
-		v320.BorderSizePixel = 0
-		v320.AutomaticSize = Enum.AutomaticSize.Y
-		v320.Parent = p314
-		local v321 = Instance.new(up0)
-		v321.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		v321.Size = UDim2.fromScale(1, 0)
-		v321.AutomaticSize = Enum.AutomaticSize.Y
-		v321.BorderSizePixel = 0
-		v321.Parent = v320
+	local function buildOrderedList(self_, parent, context)
+		local holder = Instance.new(up0)
+		holder.BackgroundTransparency = 1
+		holder.Size = UDim2.fromScale(1, 0)
+		holder.BorderSizePixel = 0
+		holder.AutomaticSize = Enum.AutomaticSize.Y
+		holder.Parent = parent
+		local box = Instance.new(up0)
+		box.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		box.Size = UDim2.fromScale(1, 0)
+		box.AutomaticSize = Enum.AutomaticSize.Y
+		box.BorderSizePixel = 0
+		box.Parent = holder
 		local uiGradient = Instance.new("UIGradient")
 		uiGradient.Rotation = 90
-		p315.Batch:BindGradient(uiGradient, (table.create(2)))
-		uiGradient.Parent = v321
+		context.Batch:BindGradient(uiGradient, (table.create(2)))
+		uiGradient.Parent = box
 		local uiCorner = Instance.new("UICorner")
 		uiCorner.CornerRadius = UDim.new(0, 5)
-		uiCorner.Parent = v321
+		uiCorner.Parent = box
 		local uiStroke = Instance.new("UIStroke")
-		p315.Batch:Bind(uiStroke, "Color", "Outline")
-		uiStroke.Parent = v321
+		context.Batch:Bind(uiStroke, "Color", "Outline")
+		uiStroke.Parent = box
 		local uiListLayout = Instance.new("UIListLayout")
 		uiListLayout.Padding = UDim.new(0, 1)
 		uiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-		uiListLayout.Parent = v321
+		uiListLayout.Parent = box
 		local uiPadding = Instance.new("UIPadding")
 		uiPadding.PaddingTop = UDim.new(0, 4)
 		uiPadding.PaddingBottom = UDim.new(0, 4)
 		uiPadding.PaddingLeft = UDim.new(0, 4)
 		uiPadding.PaddingRight = UDim.new(0, 4)
-		uiPadding.Parent = v321
-		local t106 = {
-			Root = v320,
+		uiPadding.Parent = box
+		local rendered = {
+			Root = holder,
 			Rows = {}
 		}
-		p313._rt = t106
-		local Items = p313.Items
-		local v327 = nil
+		self_._rt = rendered
+		local items = self_.Items
+		local index = nil
 		while true do
-			local v328
-			v327, v328 = Items(nil, v327)
-			if v327 == nil then
+			local item
+			index, item = items(nil, index)
+			if index == nil then
 				break
 			end
-			t106.Rows[v328] = up1(p313, v328, v321, p315)
+			rendered.Rows[item] = up1(self_, item, box, context)
 		end
-		up2(p313)
-		return v320
+		up2(self_)
+		return holder
 	end
 
-	local function f2164()
-		if up0 then
+	local function expand_proto()
+		if expanded then
 			return
 		end
-		up0 = true
+		expanded = true
 		textLabel.Visible = false
 		textBox.Visible = true
 		textBox:CaptureFocus()
-		local t107 = up3
-		local Tween11 = t107.Tween
-		local v329 = up4
-		local t108 = { Size = UDim2.fromOffset(up5, up6) }
-		Tween11(t107, v329, t108, up7)
-		local t109 = up3
-		local Tween12 = t109.Tween
-		local v330 = uiStroke
-		local t110 = { Color = up9.get("Accent"), Transparency = 0 }
-		Tween12(t109, v330, t110, up7)
-		local t111 = up3
-		local Tween13 = t111.Tween
-		local v331 = imageLabel
-		local t112 = { ImageColor3 = up9.get("Accent") }
-		Tween13(t111, v331, t112, up7)
+		local tweener = menu
+		local tween = tweener.Tween
+		local target = bar
+		local goal = { Size = UDim2.fromOffset(up5, up6) }
+		tween(tweener, target, goal, up7)
+		local tweener2 = menu
+		local tween2 = tweener2.Tween
+		local target2 = uiStroke
+		local goal2 = { Color = up9.get("Accent"), Transparency = 0 }
+		tween2(tweener2, target2, goal2, up7)
+		local tweener3 = menu
+		local tween3 = tweener3.Tween
+		local target3 = imageLabel
+		local goal3 = { ImageColor3 = up9.get("Accent") }
+		tween3(tweener3, target3, goal3, up7)
 	end
 
-	local function f2165()
-		if not up0 then
+	local function collapse_proto()
+		if not expanded then
 			return
 		end
-		up0 = false
+		expanded = false
 		textBox:ReleaseFocus()
 		textBox.Text = ""
 		textBox.Visible = false
 		textLabel.Visible = true
-		up3.Visible = false
+		clearButton.Visible = false
 		up4.Visible = false
-		local t113 = up5
-		local Tween14 = t113.Tween
-		local v332 = up6
-		local t114 = { Size = UDim2.fromOffset(up7, up8) }
-		Tween14(t113, v332, t114, up9)
-		local t115 = up5
-		local Tween15 = t115.Tween
-		local v333 = uiStroke
-		local t116 = { Color = up11.get("TabHighlight"), Transparency = 0 }
-		Tween15(t115, v333, t116, up9)
-		local t117 = up5
-		local Tween16 = t117.Tween
-		local v334 = imageLabel
-		local t118 = { ImageColor3 = up11.get("Unselected") }
-		Tween16(t117, v334, t118, up9)
-		up5:HideSearchResults()
+		local tweener = menu
+		local tween = tweener.Tween
+		local target = bar
+		local goal = { Size = UDim2.fromOffset(up7, up8) }
+		tween(tweener, target, goal, up9)
+		local tweener2 = menu
+		local tween2 = tweener2.Tween
+		local target2 = uiStroke
+		local goal2 = { Color = up11.get("TabHighlight"), Transparency = 0 }
+		tween2(tweener2, target2, goal2, up9)
+		local tweener3 = menu
+		local tween3 = tweener3.Tween
+		local target3 = imageLabel
+		local goal3 = { ImageColor3 = up11.get("Unselected") }
+		tween3(tweener3, target3, goal3, up9)
+		menu:HideSearchResults()
 	end
 
-	local function f2166()
-		local Text4 = textBox.Text
-		local v335
-		v335 = not (Text4 == "")
-		up1.Visible = v335
-		local SearchQuery = up2:SearchQuery(Text4)
-		textLabel.Text = tostring(SearchQuery)
-		if v335 then
-			v335 = 0 < SearchQuery
+	local function onTextChanged_proto()
+		local query = textBox.Text
+		local hasQuery
+		hasQuery = not (query == "")
+		clearButton.Visible = hasQuery
+		local hitCount = menu:SearchQuery(query)
+		textLabel.Text = tostring(hitCount)
+		if hasQuery then
+			hasQuery = 0 < hitCount
 		end
-		textLabel.Visible = v335
-		if v335 then
-			up2:ShowSearchResults(up4)
+		textLabel.Visible = hasQuery
+		if hasQuery then
+			menu:ShowSearchResults(bar)
 		else
-			up2:HideSearchResults()
+			menu:HideSearchResults()
 		end
 	end
 
-	local function f2167()
+	local function clear_proto()
 		textBox.Text = ""
 		textBox:CaptureFocus()
 	end
 
-	local function f2168(p316, p317, p318, p319)
-		local v336 = Instance.new(up0)
-		v336.AnchorPoint = Vector2.new(1, 0.5)
-		v336.Position = UDim2.new(1, -14, 0.5, 0)
-		v336.Size = UDim2.fromOffset(up1, up2)
-		v336.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		v336.BorderSizePixel = 0
-		v336.ClipsDescendants = true
-		v336.Parent = p318
+	local function buildSearchBar(menu, theme, parent, trove)
+		local bar = Instance.new(up0)
+		bar.AnchorPoint = Vector2.new(1, 0.5)
+		bar.Position = UDim2.new(1, -14, 0.5, 0)
+		bar.Size = UDim2.fromOffset(up1, up2)
+		bar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		bar.BorderSizePixel = 0
+		bar.ClipsDescendants = true
+		bar.Parent = parent
 		local uiGradient = Instance.new("UIGradient")
 		uiGradient.Rotation = 90
-		p317:BindGradient(uiGradient, (table.create(2)))
-		uiGradient.Parent = v336
+		theme:BindGradient(uiGradient, (table.create(2)))
+		uiGradient.Parent = bar
 		local uiCorner = Instance.new("UICorner")
 		uiCorner.CornerRadius = UDim.new(0, 8)
-		uiCorner.Parent = v336
+		uiCorner.Parent = bar
 		local uiStroke = Instance.new("UIStroke")
 		uiStroke.Color = up3.get("TabHighlight")
 		uiStroke.Transparency = 0
-		uiStroke.Parent = v336
+		uiStroke.Parent = bar
 		local imageLabel = Instance.new("ImageLabel")
 		imageLabel.AnchorPoint = Vector2.new(0, 0.5)
 		imageLabel.Position = UDim2.new(0, 10, 0.5, 0)
@@ -28842,27 +28842,27 @@ local function f1864()
 		imageLabel.BorderSizePixel = 0
 		imageLabel.Image = up4
 		imageLabel.ImageColor3 = up3.get("Unselected")
-		imageLabel.Parent = v336
+		imageLabel.Parent = bar
 		local textLabel = Instance.new("TextLabel")
 		textLabel.AnchorPoint = Vector2.new(0, 0.5)
-		local f2169 = 0
-		textLabel.Position = UDim2.new(0, 30, 0.5, f2169)
-		f2169 = 0
-		textLabel.Size = UDim2.new(1, -40, 1, f2169)
+		local expanded = 0
+		textLabel.Position = UDim2.new(0, 30, 0.5, expanded)
+		expanded = 0
+		textLabel.Size = UDim2.new(1, -40, 1, expanded)
 		textLabel.BackgroundTransparency = 1
 		textLabel.Text = "Ctrl+F"
 		textLabel.TextSize = 12
 		textLabel.TextXAlignment = Enum.TextXAlignment.Left
 		textLabel.FontFace = up5
-		f2169 = "Unselected"
-		p317:Bind(textLabel, "TextColor3", f2169)
-		textLabel.Parent = v336
+		expanded = "Unselected"
+		theme:Bind(textLabel, "TextColor3", expanded)
+		textLabel.Parent = bar
 		local textBox = Instance.new("TextBox")
 		textBox.AnchorPoint = Vector2.new(0, 0.5)
-		f2169 = 0.5
-		textBox.Position = UDim2.new(0, 32, f2169, 0)
-		f2169 = 1
-		textBox.Size = UDim2.new(1, -72, f2169, -8)
+		expanded = 0.5
+		textBox.Position = UDim2.new(0, 32, expanded, 0)
+		expanded = 1
+		textBox.Size = UDim2.new(1, -72, expanded, -8)
 		textBox.BackgroundTransparency = 1
 		textBox.BorderSizePixel = 0
 		textBox.Text = ""
@@ -28873,109 +28873,109 @@ local function f1864()
 		textBox.ClearTextOnFocus = false
 		textBox.FontFace = up5
 		textBox.Visible = false
-		f2169 = "TextColor3"
-		p317:Bind(textBox, f2169, "TextColor")
-		textBox.Parent = v336
+		expanded = "TextColor3"
+		theme:Bind(textBox, expanded, "TextColor")
+		textBox.Parent = bar
 		local textLabel2 = Instance.new("TextLabel")
-		f2169 = 0.5
-		textLabel2.AnchorPoint = Vector2.new(1, f2169)
-		f2169 = -36
-		textLabel2.Position = UDim2.new(1, f2169, 0.5, 0)
-		f2169 = 18
-		textLabel2.Size = UDim2.fromOffset(24, f2169)
+		expanded = 0.5
+		textLabel2.AnchorPoint = Vector2.new(1, expanded)
+		expanded = -36
+		textLabel2.Position = UDim2.new(1, expanded, 0.5, 0)
+		expanded = 18
+		textLabel2.Size = UDim2.fromOffset(24, expanded)
 		textLabel2.BackgroundTransparency = 0.85
 		textLabel2.BorderSizePixel = 0
 		textLabel2.Text = "0"
 		textLabel2.TextSize = 11
 		textLabel2.FontFace = up6
 		textLabel2.Visible = false
-		f2169 = textLabel2
-		p317:Bind(f2169, "BackgroundColor3", "Accent")
-		f2169 = textLabel2
-		p317:Bind(f2169, "TextColor3", "Accent")
-		textLabel2.Parent = v336
+		expanded = textLabel2
+		theme:Bind(expanded, "BackgroundColor3", "Accent")
+		expanded = textLabel2
+		theme:Bind(expanded, "TextColor3", "Accent")
+		textLabel2.Parent = bar
 		local uiCorner2 = Instance.new("UICorner")
-		f2169 = 0
-		uiCorner2.CornerRadius = UDim.new(f2169, 4)
+		expanded = 0
+		uiCorner2.CornerRadius = UDim.new(expanded, 4)
 		uiCorner2.Parent = textLabel2
-		f2169 = "ImageButton"
-		local t120 = Instance.new(f2169)
-		f2169 = Vector2
-		f2169 = f2169.new
-		f2169 = f2169(1, 0.5)
-		t120.AnchorPoint = f2169
-		f2169 = UDim2
-		f2169 = f2169.new
-		f2169 = f2169(1, -8, 0.5, 0)
-		t120.Position = f2169
-		f2169 = UDim2
-		f2169 = f2169.fromOffset
-		f2169 = f2169(16, 16)
-		t120.Size = f2169
-		t120.BackgroundTransparency = 1
-		t120.BorderSizePixel = 0
-		f2169 = up7
-		t120.Image = f2169
-		f2169 = up3.get
-		f2169 = f2169("Unselected")
-		t120.ImageColor3 = f2169
-		t120.Visible = false
-		t120.AutoButtonColor = false
-		t120.Parent = v336
-		f2169 = false
+		expanded = "ImageButton"
+		local clearButton = Instance.new(expanded)
+		expanded = Vector2
+		expanded = expanded.new
+		expanded = expanded(1, 0.5)
+		clearButton.AnchorPoint = expanded
+		expanded = UDim2
+		expanded = expanded.new
+		expanded = expanded(1, -8, 0.5, 0)
+		clearButton.Position = expanded
+		expanded = UDim2
+		expanded = expanded.fromOffset
+		expanded = expanded(16, 16)
+		clearButton.Size = expanded
+		clearButton.BackgroundTransparency = 1
+		clearButton.BorderSizePixel = 0
+		expanded = up7
+		clearButton.Image = expanded
+		expanded = up3.get
+		expanded = expanded("Unselected")
+		clearButton.ImageColor3 = expanded
+		clearButton.Visible = false
+		clearButton.AutoButtonColor = false
+		clearButton.Parent = bar
+		expanded = false
 
-		local function f2170()
-			if f2169 then
+		local function expand()
+			if expanded then
 				return
 			end
-			f2169 = true
+			expanded = true
 			textLabel.Visible = false
 			textBox.Visible = true
 			textBox:CaptureFocus()
-			local t121 = p316
-			local Tween17 = t121.Tween
-			local v344 = v336
-			local t122 = { Size = UDim2.fromOffset(up5, up6) }
-			Tween17(t121, v344, t122, up7)
-			local t123 = p316
-			local Tween18 = t123.Tween
-			local v345 = uiStroke
-			local t124 = { Color = up9.get("Accent"), Transparency = 0 }
-			Tween18(t123, v345, t124, up7)
-			local t125 = p316
-			local Tween19 = t125.Tween
-			local v346 = imageLabel
-			local t126 = { ImageColor3 = up9.get("Accent") }
-			Tween19(t125, v346, t126, up7)
+			local tweener = menu
+			local tween = tweener.Tween
+			local target = bar
+			local goal = { Size = UDim2.fromOffset(up5, up6) }
+			tween(tweener, target, goal, up7)
+			local tweener2 = menu
+			local tween2 = tweener2.Tween
+			local target2 = uiStroke
+			local goal2 = { Color = up9.get("Accent"), Transparency = 0 }
+			tween2(tweener2, target2, goal2, up7)
+			local tweener3 = menu
+			local tween3 = tweener3.Tween
+			local target3 = imageLabel
+			local goal3 = { ImageColor3 = up9.get("Accent") }
+			tween3(tweener3, target3, goal3, up7)
 		end
 
-		local function f2171()
-			if not f2169 then
+		local function collapse()
+			if not expanded then
 				return
 			end
-			f2169 = false
+			expanded = false
 			textBox:ReleaseFocus()
 			textBox.Text = ""
 			textBox.Visible = false
 			textLabel.Visible = true
-			t120.Visible = false
+			clearButton.Visible = false
 			textLabel2.Visible = false
-			local t127 = p316
-			local Tween20 = t127.Tween
-			local v347 = v336
-			local t128 = { Size = UDim2.fromOffset(up7, up8) }
-			Tween20(t127, v347, t128, up9)
-			local t129 = p316
-			local Tween21 = t129.Tween
-			local v348 = uiStroke
-			local t130 = { Color = up11.get("TabHighlight"), Transparency = 0 }
-			Tween21(t129, v348, t130, up9)
-			local t131 = p316
-			local Tween22 = t131.Tween
-			local v349 = imageLabel
-			local t132 = { ImageColor3 = up11.get("Unselected") }
-			Tween22(t131, v349, t132, up9)
-			p316:HideSearchResults()
+			local tweener = menu
+			local tween = tweener.Tween
+			local target = bar
+			local goal = { Size = UDim2.fromOffset(up7, up8) }
+			tween(tweener, target, goal, up9)
+			local tweener2 = menu
+			local tween2 = tweener2.Tween
+			local target2 = uiStroke
+			local goal2 = { Color = up11.get("TabHighlight"), Transparency = 0 }
+			tween2(tweener2, target2, goal2, up9)
+			local tweener3 = menu
+			local tween3 = tweener3.Tween
+			local target3 = imageLabel
+			local goal3 = { ImageColor3 = up11.get("Unselected") }
+			tween3(tweener3, target3, goal3, up9)
+			menu:HideSearchResults()
 		end
 
 		local textButton = Instance.new("TextButton")
@@ -28984,67 +28984,67 @@ local function f1864()
 		textButton.Text = ""
 		textButton.ZIndex = 0
 		textButton.AutoButtonColor = false
-		textButton.Parent = v336
-		p319:Connect(textButton.MouseButton1Click, f2170)
+		textButton.Parent = bar
+		trove:Connect(textButton.MouseButton1Click, expand)
 
-		local function f2172()
-			local Text5 = textBox.Text
-			local v350
-			v350 = not (Text5 == "")
-			t120.Visible = v350
-			local SearchQuery2 = p316:SearchQuery(Text5)
-			textLabel2.Text = tostring(SearchQuery2)
-			if v350 then
-				v350 = 0 < SearchQuery2
+		local function onTextChanged()
+			local query = textBox.Text
+			local hasQuery
+			hasQuery = not (query == "")
+			clearButton.Visible = hasQuery
+			local hitCount = menu:SearchQuery(query)
+			textLabel2.Text = tostring(hitCount)
+			if hasQuery then
+				hasQuery = 0 < hitCount
 			end
-			textLabel2.Visible = v350
-			if v350 then
-				p316:ShowSearchResults(v336)
+			textLabel2.Visible = hasQuery
+			if hasQuery then
+				menu:ShowSearchResults(bar)
 			else
-				p316:HideSearchResults()
+				menu:HideSearchResults()
 			end
 		end
 
-		p319:Connect(textBox:GetPropertyChangedSignal("Text"), f2172)
+		trove:Connect(textBox:GetPropertyChangedSignal("Text"), onTextChanged)
 
-		local function f2173()
+		local function onFocusLost()
 			if textBox.Text == "" then
-				f2171()
+				collapse()
 			end
 		end
 
-		p319:Connect(textBox.FocusLost, f2173)
+		trove:Connect(textBox.FocusLost, onFocusLost)
 
-		local function f2174()
+		local function clear()
 			textBox.Text = ""
 			textBox:CaptureFocus()
 		end
 
-		p319:Connect(t120.MouseButton1Click, f2174)
-		local t134 = { Expand = f2170, Collapse = f2171 }
-		return t134
+		trove:Connect(clearButton.MouseButton1Click, clear)
+		local searchBar = { Expand = expand, Collapse = collapse }
+		return searchBar
 	end
 
 	local function f2175()
 	end
 
-	local function f2176()
+	local function forget()
 		up0[up1] = nil
 	end
 
-	local function f2177()
+	local function isTouch()
 		return up0.touch
 	end
 
-	local function f2178()
+	local function isTablet()
 		return up0.tablet
 	end
 
-	local function f2179()
+	local function isConsole()
 		return up0.console
 	end
 
-	local function f2180()
+	local function isTouchNotConsole()
 		local v351 = up0.TouchEnabled
 		if v351 then
 			v351 = not up1.console
@@ -29052,73 +29052,73 @@ local function f1864()
 		return v351
 	end
 
-	local function f2181(p320)
+	local function watchViewport(camera)
 		if up0 ~= nil then
 			up0:Disconnect()
 		end
-		up0 = p320:GetPropertyChangedSignal("ViewportSize"):Connect(up1)
+		up0 = camera:GetPropertyChangedSignal("ViewportSize"):Connect(up1)
 	end
 
-	local function f2182(p321)
-		if not p321 then
+	local function isLargeScreen(touch)
+		if not touch then
 			return false
 		end
-		local t135 = up0()
-		if t135 == nil then
+		local camera = up0()
+		if camera == nil then
 			return false
 		end
-		local ViewportSize2 = t135.ViewportSize
-		local v352
-		v352 = up1 < math.min(ViewportSize2.X, ViewportSize2.Y)
-		return v352
+		local viewportSize = camera.ViewportSize
+		local large
+		large = up1 < math.min(viewportSize.X, viewportSize.Y)
+		return large
 	end
 
-	local function f2183(p322)
-		if p322 then
+	local function detectTouch(console)
+		if console then
 			return false
 		end
-		local PreferredInput = up0.PreferredInput
-		if PreferredInput == Enum.PreferredInput.Touch then
+		local preferredInput = up0.PreferredInput
+		if preferredInput == Enum.PreferredInput.Touch then
 			return true
 		end
-		if PreferredInput == Enum.PreferredInput.KeyboardAndMouse or
-			PreferredInput == Enum.PreferredInput.Gamepad then
+		if preferredInput == Enum.PreferredInput.KeyboardAndMouse or
+			preferredInput == Enum.PreferredInput.Gamepad then
 			return false
 		end
-		local GetLastInputType = up0:GetLastInputType()
-		if GetLastInputType == Enum.UserInputType.Touch then
+		local lastInputType = up0:GetLastInputType()
+		if lastInputType == Enum.UserInputType.Touch then
 			return true
 		end
-		if GetLastInputType == Enum.UserInputType.MouseButton1 or
-			GetLastInputType == Enum.UserInputType.MouseButton2 or
-			(GetLastInputType == Enum.UserInputType.MouseMovement or
-				GetLastInputType == Enum.UserInputType.Keyboard) then
+		if lastInputType == Enum.UserInputType.MouseButton1 or
+			lastInputType == Enum.UserInputType.MouseButton2 or
+			(lastInputType == Enum.UserInputType.MouseMovement or
+				lastInputType == Enum.UserInputType.Keyboard) then
 			return false
 		end
-		local v353 = up0.TouchEnabled
-		if v353 then
-			v353 = not up0.KeyboardEnabled
+		local touchOnly = up0.TouchEnabled
+		if touchOnly then
+			touchOnly = not up0.KeyboardEnabled
 		end
-		return v353
+		return touchOnly
 	end
 
-	local function f2184()
-		local IsTenFootInterface = up0:IsTenFootInterface()
-		local v354 = up1(IsTenFootInterface)
-		local v355 = up2(v354)
-		if IsTenFootInterface == up3.console and v354 == up3.touch and v355 == up3.tablet then
+	local function refreshDevice()
+		local console = up0:IsTenFootInterface()
+		local touch = up1(console)
+		local tablet = up2(touch)
+		if console == up3.console and touch == up3.touch and tablet == up3.tablet then
 			return
 		end
-		up3.console = IsTenFootInterface
-		up3.touch = v354
-		up3.tablet = v355
+		up3.console = console
+		up3.touch = touch
+		up3.tablet = tablet
 		up4.changed:Fire()
 	end
 
-	local function f2185()
-		local v356 = up0()
-		if v356 ~= nil then
-			up1(v356)
+	local function onCameraChanged()
+		local camera = up0()
+		if camera ~= nil then
+			up1(camera)
 		end
 		up2()
 	end
@@ -29127,48 +29127,48 @@ local function f1864()
 		f1865,
 		initializeCharacterController_proto,
 		getClientCFrame_proto,
-		f1871,
+		suppressCameraReplication,
 		f1872,
 		setServerCFrame_proto,
 		sendViewAngles_proto,
-		f1875,
+		sendRawCameraRotation_proto,
 		getServerCFrame_proto,
 		getServerHeadOrigin_proto,
 		loadCharacterController,
-		f1883,
-		f1884,
-		f1885,
+		setKeybindMode,
+		markAndUpdate,
+		setInputSpamming,
 		lazyModule_d8,
-		f1887,
+		jointsUpdateHook_proto,
 		loadJointsHook_proto,
 		flush_proto,
 		revertHooks_proto,
-		sendRawCameraRotation_proto,
+		sendRawCameraRotation_proto2,
 		suppress_proto,
-		f1894,
-		new_proto,
+		toCameraRotation_proto,
+		newViewAngleDriver_proto,
 		sendViewAngles_proto2,
-		destroy_proto,
-		f1898,
+		destroyViewAngleDriver_proto,
+		encodeAngles_proto,
 		clearAll_proto,
-		f1900,
-		f1905,
-		f1906,
-		f1907,
+		loadViewAngleDriver,
+		reload,
+		call,
+		setImageVisible,
 		f1908,
 		f1909,
 		f1910,
-		f1911,
-		f1912,
-		f1913,
-		f1914,
-		f1915,
+		addStroke_proto,
+		createCross_proto,
+		createCircle_proto,
+		createDiamond_proto,
+		applyShapeLook_proto,
 		newHeadMarker_proto,
 		f1917,
 		loadHeadMarker,
-		f1924,
-		f1925,
-		f1926,
+		getAnimationTime,
+		setLabel,
+		updateMotionBlur,
 		lazyModule_dj,
 		lazyModule_e4,
 		f1929,
@@ -29176,154 +29176,154 @@ local function f1864()
 		setPreRender_proto,
 		setPreSimulation_proto,
 		setHeartbeat_proto,
-		f1934,
+		unbind_proto,
 		startGameLoop_proto,
 		newGameLoop_proto,
 		loadGameLoop,
-		f1940,
-		f1941,
+		createDefaultPreset,
+		stopAnimation,
 		f1942,
-		f1943,
-		f1945,
+		bindRenderStep,
+		newViewModelChams,
 		f1946,
-		f1947,
-		f1948,
-		f1949,
+		applyNoSprintAnimation,
+		onClicked_proto,
+		newTab,
 		lazyModule_gh,
-		f1952,
-		f1953,
+		loadPreviewModel_proto,
+		onViewportRealized_proto,
 		onOpened_proto,
-		f1956,
-		f1958,
-		f1963,
-		f1964,
-		f1965,
-		f1966,
-		f1968,
-		f1971,
-		f1972,
+		followPage_proto,
+		buildEspTab,
+		forgetSound,
+		fireStoresUpdated,
+		setSkyboxOptions_proto,
+		buildSkyboxSection_proto,
+		loadSkyboxSection,
+		writeIdList,
+		reapplySpoofedValue,
 		onRenderStepped_proto,
-		f1975,
-		f1976,
-		f1980,
-		f1981,
-		f1983,
-		f1984,
+		removeCallback_proto,
+		addUpdateCallback,
+		apply_proto,
+		loadAndApply,
+		getProposals,
+		run,
 		f1985,
-		f1986,
-		load_proto,
-		f1989,
-		f1990,
-		new_proto2,
-		destroy_proto2,
-		f1994,
-		f1995,
-		f1996,
-		f1997,
-		f1999,
-		f2008,
-		f2009,
-		f2011,
+		onTagged_proto,
+		loadTripmineSkin_proto,
+		apply_proto2,
+		applyTripmineSkin_proto,
+		newTripmineSkin_proto,
+		destroyTripmineSkin_proto,
+		cloneViewModelAsset_proto,
+		hidePart_proto,
+		onDescendantAdded_proto,
+		hideOriginal_proto,
+		loadTripmineSkin,
+		apply_proto3,
+		bindColorShift,
+		destroyRow,
 		lazyModule_f2,
 		lazyModule_bP,
-		f2014,
-		f2016,
+		refresh_proto,
+		bindProfileOptions,
 		f2020,
-		f2021,
+		updateCrosshair,
 		getPublicState_proto,
-		f2023,
+		hookCameraSway,
 		getErrors_proto,
-		destroy_proto3,
+		destroyErrorReporter_proto,
 		report_proto,
 		reportResult_proto,
-		f2030,
-		f2031,
-		f2032,
-		f2034,
-		f2035,
-		f2036,
-		f2042,
+		loadErrorReporter,
+		strikeLightning,
+		onEquippedItemChanged_proto,
+		onItemAdded_proto,
+		onItemRemoved_proto,
+		watchItems,
+		setInnerContext,
 		f2043,
-		f2045,
-		f2046,
-		f2047,
-		f2048,
-		f2049,
+		fire,
+		setPercentage,
+		reloadCustomSounds,
+		never_proto,
+		getOffsetCFrame_proto,
 		destroyViewModelOffset_proto,
 		revertHook_proto,
 		loadHook_proto,
 		setEnabledViewModelOffset_proto,
 		loadViewModelOffset,
 		f2060,
-		f2062,
-		f2063,
+		cancel,
+		onEffectAdded,
 		f2064,
 		f2065,
 		f2066,
-		f2067,
-		f2068,
+		twoColorSequence_proto,
+		colorsEqual_proto,
 		f2070,
 		f2071,
-		f2072,
+		migration2_proto,
 		f2073,
-		f2074,
+		loadSettingsMigrations,
 		lazyModule_dG,
-		f2084,
+		push_proto,
 		bind_proto,
-		f2088,
-		f2091,
-		f2092,
-		f2093,
+		loadSliderBinding,
+		resolveEditAt,
+		connectAndReturn,
+		preRenderHitFeedback,
 		lazyModule_br,
-		f2095,
-		f2096,
-		f2097,
-		f2098,
-		f2099,
-		f2100,
-		f2101,
-		f2102,
-		f2103,
-		f2104,
+		getItemOfType,
+		newThrottle,
+		removeRemoteDueler,
+		getGradientSteps,
+		setData,
+		setAutoLoad,
+		removeGuard,
+		acquireCircle,
+		onContextRemoved_proto,
+		onContext_proto,
 		newEnemyRegistry_proto,
 		getByObjectId_proto,
 		clearEnemyRegistry_proto,
 		addEnemy_proto,
 		checkEnemyEnvironment_proto,
 		checkPlayerEnvironment_proto,
-		f2113,
+		swapRemove_proto,
 		removeEnemy_proto,
 		f2115,
-		f2116,
-		f2117,
-		f2119,
-		f2120,
-		f2121,
-		f2123,
-		f2125,
-		f2126,
-		f2127,
+		onEnemyRemoved_proto,
+		onLocalEnvironmentChanged_proto,
+		onEnemyAdded_proto,
+		refreshPlayer_proto,
+		addExistingEnemies_proto,
+		onRemoteStateAdded_proto,
+		onRemoteStateRemoved_proto,
+		onRemoteEntityAdded_proto,
+		onRemoteEntityRemoved_proto,
 		watch_proto,
 		loadEnemyRegistry,
-		f2161,
-		f2162,
-		f2163,
-		f2164,
-		f2165,
-		f2166,
-		f2167,
-		f2168,
+		setAnimatedColor,
+		loadConfigFile,
+		buildOrderedList,
+		expand_proto,
+		collapse_proto,
+		onTextChanged_proto,
+		clear_proto,
+		buildSearchBar,
 		f2175,
-		f2176,
-		f2177,
-		f2178,
-		f2179,
-		f2180,
-		f2181,
-		f2182,
-		f2183,
-		f2184,
-		f2185
+		forget,
+		isTouch,
+		isTablet,
+		isConsole,
+		isTouchNotConsole,
+		watchViewport,
+		isLargeScreen,
+		detectTouch,
+		refreshDevice,
+		onCameraChanged
 	
 end
 
