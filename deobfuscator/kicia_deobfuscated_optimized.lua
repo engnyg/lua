@@ -27249,39 +27249,39 @@ local function f1864()
 			reject("no script key available")
 			return
 		end
-		local userId = up0(up1, "UserId")
-		local jobId = up0(game, "JobId")
-		if userId ~= up0(up1, "userId") then
-			up2:_Report("auth", "UserId was tampered with (1)")
+		local userId = getProp(localPlayer, "UserId")
+		local jobId = getProp(game, "JobId")
+		if userId ~= getProp(localPlayer, "userId") then
+			client:_Report("auth", "UserId was tampered with (1)")
 			reject("auth failed")
 			return
 		end
-		local appearanceId = up0(up1, "CharacterAppearanceId")
-		if appearanceId ~= up0(up1, "characterAppearanceId") then
-			up2:_Report("auth", "UserId was tampered with (2)")
+		local appearanceId = getProp(localPlayer, "CharacterAppearanceId")
+		if appearanceId ~= getProp(localPlayer, "characterAppearanceId") then
+			client:_Report("auth", "UserId was tampered with (2)")
 			reject("auth failed")
 			return
 		end
 		if appearanceId ~= userId then
-			up2:_Report("auth", "UserId was tampered with (3)")
+			client:_Report("auth", "UserId was tampered with (3)")
 			reject("auth failed")
 			return
 		end
-		if up3:GetPlayerByUserId(userId) == nil then
-			up2:_Report("auth", "UserId was tampered with (4)")
+		if playersService:GetPlayerByUserId(userId) == nil then
+			client:_Report("auth", "UserId was tampered with (4)")
 			reject("auth failed")
 			return
 		end
-		local authBody = up4.encodeAuthRequest(up5, scriptKey, up6(userId), up7.str(jobId))
-		local request = up8
+		local authBody = codec.encodeAuthRequest(codecArg, scriptKey, encodeUserId(userId), stringUtils.str(jobId))
+		local request = requestFn
 		local authRequest = {
-			Url = string.format("%s/v1/authentication/start", tostring(up9)),
+			Url = string.format("%s/v1/authentication/start", tostring(serverUrl)),
 			Method = "POST",
 			Body = authBody
 		}
 		local authResponse = request(authRequest)
 		if not authResponse.ok then
-			local _Report = up2._Report
+			local _Report = client._Report
 			local _ = string.format
 			tostring(tostring(authResponse.error))
 			string.format()
@@ -27290,16 +27290,16 @@ local function f1864()
 			return
 		end
 		if authResponse.value.StatusCode ~= 200 then
-			local _Report2 = up2._Report
+			local _Report2 = client._Report
 			string.format("auth returned status %s", tostring(authResponse.value.StatusCode))
 			_Report2()
 			reject("auth failed")
 			return
 		end
-		up2._sessionId = authResponse.value.Body
-		up2._connected = true
-		up2:_StartRecvLoop()
-		up2.connected:Fire()
+		client._sessionId = authResponse.value.Body
+		client._connected = true
+		client:_StartRecvLoop()
+		client.connected:Fire()
 		resolve()
 	end
 

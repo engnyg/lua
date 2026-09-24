@@ -25048,6 +25048,16 @@
     "p101": "player"
   },
   "f2043": {
+    "up0": "getProp",
+    "up1": "localPlayer",
+    "up2": "client",
+    "up3": "playersService",
+    "up4": "codec",
+    "up5": "codecArg",
+    "up6": "encodeUserId",
+    "up7": "stringUtils",
+    "up8": "requestFn",
+    "up9": "serverUrl",
     "p184": "resolve",
     "p185": "reject",
     "v186": "scriptKey",

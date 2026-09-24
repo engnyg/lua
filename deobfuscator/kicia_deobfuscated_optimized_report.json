@@ -3966,6 +3966,66 @@
  ],
  "renames": [
   {
+   "line": 27252,
+   "old": "up0",
+   "new": "getProp",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 27252,
+   "old": "up1",
+   "new": "localPlayer",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 27255,
+   "old": "up2",
+   "new": "client",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 27270,
+   "old": "up3",
+   "new": "playersService",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 27275,
+   "old": "up4",
+   "new": "codec",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 27275,
+   "old": "up5",
+   "new": "codecArg",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 27275,
+   "old": "up6",
+   "new": "encodeUserId",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 27275,
+   "old": "up7",
+   "new": "stringUtils",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 27276,
+   "old": "up8",
+   "new": "requestFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 27278,
+   "old": "up9",
+   "new": "serverUrl",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 40896,
    "old": "up0",
    "new": "rng",
