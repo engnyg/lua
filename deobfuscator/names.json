@@ -25079,7 +25079,8 @@
     "v62": "authBody",
     "f2498": "request",
     "t35": "authRequest",
-    "t36": "authResponse"
+    "t36": "authResponse",
+    "up0": "getProp"
   },
   "f2969": {
     "up0": "rng",
@@ -25864,5 +25865,8 @@
     "up1": "origStringMeta",
     "up2": "callstackChecker",
     "up4": "callstackData"
+  },
+  "f2531": {
+    "up0": "getProp"
   }
 }

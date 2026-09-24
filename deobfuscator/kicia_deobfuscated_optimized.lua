@@ -34307,15 +34307,15 @@ local function f2461()
 				reject("no script key available")
 				return
 			end
-			local userId = up0(localPlayer, "UserId")
-			local jobId = up0(game, "JobId")
-			if userId ~= up0(localPlayer, "userId") then
+			local userId = getProp(localPlayer, "UserId")
+			local jobId = getProp(game, "JobId")
+			if userId ~= getProp(localPlayer, "userId") then
 				self_:_Report("auth", "UserId was tampered with (1)")
 				reject("auth failed")
 				return
 			end
-			local appearanceId = up0(localPlayer, "CharacterAppearanceId")
-			if appearanceId ~= up0(localPlayer, "characterAppearanceId") then
+			local appearanceId = getProp(localPlayer, "CharacterAppearanceId")
+			if appearanceId ~= getProp(localPlayer, "characterAppearanceId") then
 				self_:_Report("auth", "UserId was tampered with (2)")
 				reject("auth failed")
 				return
@@ -34795,15 +34795,15 @@ local function f2461()
 					reject("no script key available")
 					return
 				end
-				local userId = up0(localPlayer, "UserId")
-				local jobId = up0(game, "JobId")
-				if userId ~= up0(localPlayer, "userId") then
+				local userId = getProp(localPlayer, "UserId")
+				local jobId = getProp(game, "JobId")
+				if userId ~= getProp(localPlayer, "userId") then
 					self:_Report("auth", "UserId was tampered with (1)")
 					reject("auth failed")
 					return
 				end
-				local appearanceId = up0(localPlayer, "CharacterAppearanceId")
-				if appearanceId ~= up0(localPlayer, "characterAppearanceId") then
+				local appearanceId = getProp(localPlayer, "CharacterAppearanceId")
+				if appearanceId ~= getProp(localPlayer, "characterAppearanceId") then
 					self:_Report("auth", "UserId was tampered with (2)")
 					reject("auth failed")
 					return
