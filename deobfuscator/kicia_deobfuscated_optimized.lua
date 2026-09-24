@@ -148246,7 +148246,7 @@ end
 
 local function f9797()
 	local function detectVR()
-		while not up0.VREnabled do
+		while not inputService.VREnabled do
 		end
 		return "VR"
 	end
@@ -148255,14 +148255,14 @@ local function f9797()
 		local guiService = cloneref(game:GetService("GuiService"))
 		local httpService = cloneref(game:GetService("HttpService"))
 		local userInputService = cloneref(game:GetService("UserInputService"))
-		up0.c()
+		modules.c()
 		local kiciahook = "kiciahook"
 		local version = "0.1.0"
 		local startTime = os.clock()
 		local unknown = "unknown"
 		local unknown2 = "unknown"
 		local executorVersion, executorName, identifyOk
-		identifyOk, executorName, executorVersion = up1(identifyexecutor)
+		identifyOk, executorName, executorVersion = pcall(identifyexecutor)
 		local executorNameStr = unknown
 		local executorVersionStr = unknown2
 		if identifyOk then
@@ -148286,9 +148286,9 @@ local function f9797()
 
 		local platform = detectVRInner()
 
-		local function parseDsn(p1)
+		local function parseDsn(dsn)
 			local projectId, host, key
-			key, host, projectId = p1:match("^https?://([^@]+)@([^/]+)/(.+)$")
+			key, host, projectId = dsn:match("^https?://([^@]+)@([^/]+)/(.+)$")
 			local parsed
 			parsed = not (key == nil)
 			if parsed then
@@ -148336,65 +148336,65 @@ local function f9797()
 			return (setmetatable(selfObj, SentryClient))
 		end
 
-		local function buildEnvelope(p2, p3)
+		local function buildEnvelope(errorInfo, userId)
 			local lower6 = httpService:GenerateGUID(false):gsub("-", ""):lower()
-			local t2 = {
+			local eventPayload = {
 				event_id = lower6,
 				timestamp = os.time(),
 				platform = "other",
 				level = "error",
 				logger = kiciahook,
 				release = string.format("%s@%s", tostring(kiciahook), tostring(version)),
-				environment = p2.build,
+				environment = errorInfo.build,
 				transaction = string.format(
 					"%s/%s",
-					tostring(p2.error.source),
-					tostring(p2.error.stage)
+					tostring(errorInfo.error.source),
+					tostring(errorInfo.error.stage)
 				)
 			}
-			local t3 = { formatted = p2.error.detail }
-			t2.message = t3
-			local t4 = {
-				source = p2.error.source,
-				stage = p2.error.stage,
-				build = p2.build,
+			local messageObj = { formatted = errorInfo.error.detail }
+			eventPayload.message = messageObj
+			local tagsObj = {
+				source = errorInfo.error.source,
+				stage = errorInfo.error.stage,
+				build = errorInfo.build,
 				executor_name = executorNameStr,
 				executor_version = executorVersionStr
 			}
-			t2.tags = t4
-			local t5 = {
-				occurrences = p2.error.occurrences,
-				original_timestamp = p2.error.timestamp,
+			eventPayload.tags = tagsObj
+			local extraObj = {
+				occurrences = errorInfo.error.occurrences,
+				original_timestamp = errorInfo.error.timestamp,
 				uptime_seconds = math.floor(os.clock() - startTime)
 			}
-			t2.extra = t5
-			t2.fingerprint = table.create(3)
-			local t6 = { name = string.format("%s.sentry", tostring(kiciahook)), version = version }
-			t2.sdk = t6
-			local t7 = {}
-			local t8 = { name = executorNameStr, version = executorVersionStr }
-			t7.runtime = t8
-			local t9 = { app_name = kiciahook, app_version = version, build_type = p2.build }
-			t7.app = t9
-			local t10 = { name = platform }
-			t7.os = t10
-			t2.contexts = t7
-			if p3 ~= nil then
-				local t11 = { id = p3 }
-				t2.user = t11
+			eventPayload.extra = extraObj
+			eventPayload.fingerprint = table.create(3)
+			local sdkObj = { name = string.format("%s.sentry", tostring(kiciahook)), version = version }
+			eventPayload.sdk = sdkObj
+			local contextsObj = {}
+			local runtimeCtx = { name = executorNameStr, version = executorVersionStr }
+			contextsObj.runtime = runtimeCtx
+			local appCtx = { app_name = kiciahook, app_version = version, build_type = errorInfo.build }
+			contextsObj.app = appCtx
+			local osCtx = { name = platform }
+			contextsObj.os = osCtx
+			eventPayload.contexts = contextsObj
+			if userId ~= nil then
+				local userObj = { id = userId }
+				eventPayload.user = userObj
 			end
-			local JSONEncode4 = httpService:JSONEncode(t2)
-			local t12 = httpService
-			local JSONEncode5 = t12.JSONEncode
-			local t13 = { event_id = lower6 }
-			local envelopeHeader = JSONEncode5(t12, t13)
-			local t14 = httpService
-			local JSONEncode6 = t14.JSONEncode
-			local t15 = { type = "event", length = #JSONEncode4 }
+			local JSONEncode4 = httpService:JSONEncode(eventPayload)
+			local httpRef1 = httpService
+			local JSONEncode5 = httpRef1.JSONEncode
+			local envelopeHeaderData = { event_id = lower6 }
+			local envelopeHeader = JSONEncode5(httpRef1, envelopeHeaderData)
+			local httpRef2 = httpService
+			local JSONEncode6 = httpRef2.JSONEncode
+			local itemHeader = { type = "event", length = #JSONEncode4 }
 			return (string.format(
 				"%s\n%s\n%s",
 				tostring(envelopeHeader),
-				tostring((JSONEncode6(t14, t15))),
+				tostring((JSONEncode6(httpRef2, itemHeader))),
 				tostring(JSONEncode4)
 			))
 		end
@@ -148404,17 +148404,17 @@ local function f9797()
 				local envelope = buildEnvelope(p4, self._userId)
 
 				local function sendRequest()
-					local v23
-					v23.Url = self._endpoint
-					local v24
-					v24["X-Sentry-Auth"] = self._authHeader
+					local reqOpts
+					reqOpts.Url = self._endpoint
+					local reqHeaders
+					reqHeaders["X-Sentry-Auth"] = self._authHeader
 					while true do
 						if string.len("") then
 						end
 					end
 				end
 
-				up3(sendRequest)
+				runTask(sendRequest)
 			end
 
 			task.spawn(doReport)
@@ -151129,7 +151129,7 @@ local function f9797()
 		return UseEmoteHook
 	end
 
-	local function f9957(msgType, key, userId, extra)
+	local function encodeAuthRequest(msgType, key, userId, extra)
 		local keyLen = #key
 		local buf = buffer.create(2 + keyLen + 8 + 8)
 		buffer.writeu8(buf, 0, msgType)
@@ -151145,7 +151145,7 @@ local function f9797()
 		return (buffer.tostring(buf))
 	end
 
-	local function f9958(active)
+	local function encodeShowActive(active)
 		local buf = buffer.create(2)
 		buffer.writeu8(buf, 0, 1)
 		local _ = buffer.writeu8
@@ -151154,7 +151154,7 @@ local function f9797()
 		return (buffer.tostring(buf))
 	end
 
-	local function f9959(data)
+	local function decodeRecvEntries(data)
 		if #data == 0 then
 			return {}
 		end
@@ -151177,7 +151177,7 @@ local function f9797()
 		return entries
 	end
 
-	local function f9960()
+	local function makeCodec()
 		local codec = {}
 
 		function codec.encodeAuthRequest(msgType, key, userId, extra)
@@ -151196,12 +151196,12 @@ local function f9797()
 			return (buffer.tostring(buf))
 		end
 
-		function codec.encodeShowActiveEvent(p171)
+		function codec.encodeShowActiveEvent(active)
 			local buf2 = buffer.create(2)
 			buffer.writeu8(buf2, 0, 1)
 			local _ = buffer.writeu8
-			p171 = p171 and 1 or 0
-			buffer.writeu8(buf2, 1, p171)
+			active = active and 1 or 0
+			buffer.writeu8(buf2, 1, active)
 			return (buffer.tostring(buf2))
 		end
 
@@ -154401,10 +154401,10 @@ local function f9797()
 		playResolvedEmote_proto,
 		destroyUseEmoteHook_proto,
 		loadUseEmoteHook,
-		f9957,
-		f9958,
-		f9959,
-		f9960,
+		encodeAuthRequest,
+		encodeShowActive,
+		decodeRecvEntries,
+		makeCodec,
 		f9961,
 		f9962,
 		lazyModule_ip,

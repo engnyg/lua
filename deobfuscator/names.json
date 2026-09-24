@@ -25038,7 +25038,11 @@
     "f10134": "loadLocalBodyAppearance",
     "t301": "LocalBodyAppearance",
     "f9798": "detectVR",
-    "f9799": "createSentryClient"
+    "f9799": "createSentryClient",
+    "f9957": "encodeAuthRequest",
+    "f9958": "encodeShowActive",
+    "f9959": "decodeRecvEntries",
+    "f9960": "makeCodec"
   },
   "f1042": {
     "p101": "player"
@@ -25554,6 +25558,8 @@
     "v657": "userId"
   },
   "f9799": {
+    "up0": "modules",
+    "up1": "pcall",
     "v1": "guiService",
     "v2": "httpService",
     "v3": "userInputService",
@@ -25583,6 +25589,37 @@
     "f9804": "doReport",
     "f9805": "sendRequest",
     "v22": "envelope"
+  },
+  "f9798": {
+    "up0": "inputService"
+  },
+  "f9801": {
+    "p1": "dsn"
+  },
+  "f9803": {
+    "p2": "errorInfo",
+    "p3": "userId",
+    "t2": "eventPayload",
+    "t3": "messageObj",
+    "t4": "tagsObj",
+    "t5": "extraObj",
+    "t6": "sdkObj",
+    "t7": "contextsObj",
+    "t8": "runtimeCtx",
+    "t9": "appCtx",
+    "t10": "osCtx",
+    "t11": "userObj",
+    "t12": "httpRef1",
+    "t13": "envelopeHeaderData",
+    "t14": "httpRef2",
+    "t15": "itemHeader"
+  },
+  "f9804": {
+    "up3": "runTask"
+  },
+  "f9805": {
+    "v23": "reqOpts",
+    "v24": "reqHeaders"
   },
   "f9957": {
     "p161": "msgType",
@@ -25618,6 +25655,7 @@
     "p168": "key",
     "p169": "userId",
     "p170": "extra",
+    "p171": "active",
     "v299": "keyLen",
     "v300": "buf",
     "v301": "keyEnd",

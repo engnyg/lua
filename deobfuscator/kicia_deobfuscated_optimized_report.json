@@ -4284,6 +4284,30 @@
    "rule": "manual (upvalue)"
   },
   {
+   "line": 148258,
+   "old": "up0",
+   "new": "modules",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 148265,
+   "old": "up1",
+   "new": "pcall",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 148249,
+   "old": "up0",
+   "new": "inputService",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 148417,
+   "old": "up3",
+   "new": "runTask",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 108569,
    "old": "up0",
    "new": "pcall",
@@ -150276,6 +150300,12 @@
    "rule": "manual"
   },
   {
+   "line": 148289,
+   "old": "p1",
+   "new": "dsn",
+   "rule": "manual"
+  },
+  {
    "line": 148290,
    "old": "v12",
    "new": "projectId",
@@ -150348,9 +150378,105 @@
    "rule": "manual"
   },
   {
+   "line": 148339,
+   "old": "p2",
+   "new": "errorInfo",
+   "rule": "manual"
+  },
+  {
+   "line": 148339,
+   "old": "p3",
+   "new": "userId",
+   "rule": "manual"
+  },
+  {
+   "line": 148341,
+   "old": "t2",
+   "new": "eventPayload",
+   "rule": "manual"
+  },
+  {
+   "line": 148355,
+   "old": "t3",
+   "new": "messageObj",
+   "rule": "manual"
+  },
+  {
+   "line": 148357,
+   "old": "t4",
+   "new": "tagsObj",
+   "rule": "manual"
+  },
+  {
+   "line": 148365,
+   "old": "t5",
+   "new": "extraObj",
+   "rule": "manual"
+  },
+  {
+   "line": 148372,
+   "old": "t6",
+   "new": "sdkObj",
+   "rule": "manual"
+  },
+  {
+   "line": 148374,
+   "old": "t7",
+   "new": "contextsObj",
+   "rule": "manual"
+  },
+  {
+   "line": 148375,
+   "old": "t8",
+   "new": "runtimeCtx",
+   "rule": "manual"
+  },
+  {
+   "line": 148377,
+   "old": "t9",
+   "new": "appCtx",
+   "rule": "manual"
+  },
+  {
+   "line": 148379,
+   "old": "t10",
+   "new": "osCtx",
+   "rule": "manual"
+  },
+  {
+   "line": 148383,
+   "old": "t11",
+   "new": "userObj",
+   "rule": "manual"
+  },
+  {
+   "line": 148387,
+   "old": "t12",
+   "new": "httpRef1",
+   "rule": "manual"
+  },
+  {
+   "line": 148389,
+   "old": "t13",
+   "new": "envelopeHeaderData",
+   "rule": "manual"
+  },
+  {
    "line": 148390,
    "old": "v21",
    "new": "envelopeHeader",
+   "rule": "manual"
+  },
+  {
+   "line": 148391,
+   "old": "t14",
+   "new": "httpRef2",
+   "rule": "manual"
+  },
+  {
+   "line": 148393,
+   "old": "t15",
+   "new": "itemHeader",
    "rule": "manual"
   },
   {
@@ -150369,6 +150495,18 @@
    "line": 148406,
    "old": "f9805",
    "new": "sendRequest",
+   "rule": "manual"
+  },
+  {
+   "line": 148407,
+   "old": "v23",
+   "new": "reqOpts",
+   "rule": "manual"
+  },
+  {
+   "line": 148409,
+   "old": "v24",
+   "new": "reqHeaders",
    "rule": "manual"
   },
   {
@@ -152923,6 +153061,12 @@
   },
   {
    "line": 151132,
+   "old": "f9957",
+   "new": "encodeAuthRequest",
+   "rule": "manual"
+  },
+  {
+   "line": 151132,
    "old": "p161",
    "new": "msgType",
    "rule": "manual"
@@ -152977,6 +153121,12 @@
   },
   {
    "line": 151148,
+   "old": "f9958",
+   "new": "encodeShowActive",
+   "rule": "manual"
+  },
+  {
+   "line": 151148,
    "old": "p165",
    "new": "active",
    "rule": "manual"
@@ -152985,6 +153135,12 @@
    "line": 151149,
    "old": "v290",
    "new": "buf",
+   "rule": "manual"
+  },
+  {
+   "line": 151157,
+   "old": "f9959",
+   "new": "decodeRecvEntries",
    "rule": "manual"
   },
   {
@@ -153054,6 +153210,12 @@
    "rule": "manual"
   },
   {
+   "line": 151180,
+   "old": "f9960",
+   "new": "makeCodec",
+   "rule": "manual"
+  },
+  {
    "line": 151181,
    "old": "t168",
    "new": "codec",
@@ -153111,6 +153273,12 @@
    "line": 151193,
    "old": "v303",
    "new": "extraOffset",
+   "rule": "manual"
+  },
+  {
+   "line": 151199,
+   "old": "p171",
+   "new": "active",
    "rule": "manual"
   },
   {
