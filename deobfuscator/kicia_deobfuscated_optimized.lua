@@ -88676,40 +88676,40 @@ local function f5931()
 	end
 
 	local function checkStatus()
-		local request = up1
-		local host = up2["Host"]
+		local request = httpRequest
+		local host = config["Host"]
 		local statusPath = "/status"
 		local isBeta
-		isBeta = up5 == 9
+		isBeta = versionCode == 9
 		if not isBeta then
-			isBeta = up5 == 15
+			isBeta = versionCode == 15
 		end
-		up0 = request(host .. statusPath, isBeta)
-		local JSONDecode = up6:GetService("HttpService"):JSONDecode(up0)
+		statusResponse = request(host .. statusPath, isBeta)
+		local JSONDecode = gameRef:GetService("HttpService"):JSONDecode(statusResponse)
 		if not JSONDecode["active"] then
 			warn(JSONDecode["message"])
-			up7()
+			exitFn()
 		end
-		if not JSONDecode["versions"][up2["Version"]] then
+		if not JSONDecode["versions"][config["Version"]] then
 			warn("This script is outdated! Try using the latest version.")
-			up7()
+			exitFn()
 		end
 		local hostKey = "Host"
-		local hostValue = up8
+		local hostValue = customHostFlag
 		if hostValue then
 			hostValue = LT_R_RRT_H
 		end
 		if not hostValue then
-			hostValue = up9
+			hostValue = customHost
 			if hostValue then
 				hostValue = "http://mc.felinemastery.xyz"
 			end
 		end
 		if not hostValue then
-			hostValue = "https://" .. up10
+			hostValue = "https://" .. defaultHost
 		end
-		up2[hostKey] = hostValue
-		up11 = JSONDecode["versions"][up2["Version"]]
+		config[hostKey] = hostValue
+		versionInfo = JSONDecode["versions"][config["Version"]]
 	end
 
 	local function build_proto(_, menu)
@@ -89617,7 +89617,7 @@ local function f5931()
 			local savedIdentity = getthreadidentity()
 			setthreadidentity(2)
 			local _ = table.pack
-			up0(select(2, ...))
+			pcallFn(select(2, ...))
 			result = table.pack()
 			local setthreadidentity4 = setthreadidentity
 			local _ = 13996 + bit32.rrotate(
@@ -89637,7 +89637,7 @@ local function f5931()
 				local savedIdentity = getthreadidentity()
 				setthreadidentity(2)
 				local _ = table.pack
-				up0(select(2, ...))
+				pcallFn(select(2, ...))
 				result = table.pack()
 				local setthreadidentity5 = setthreadidentity
 				local _ = 13996 + bit32.rrotate(

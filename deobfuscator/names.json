@@ -25250,6 +25250,16 @@
   },
   "f6019": {
     "f6020": "request",
+    "up0": "statusResponse",
+    "up1": "httpRequest",
+    "up2": "config",
+    "up5": "versionCode",
+    "up6": "gameRef",
+    "up7": "exitFn",
+    "up8": "customHostFlag",
+    "up9": "customHost",
+    "up10": "defaultHost",
+    "up11": "versionInfo",
     "v129": "host",
     "v130": "statusPath",
     "v131": "isBeta",
@@ -25257,6 +25267,7 @@
     "v133": "hostValue"
   },
   "f6076": {
+    "up0": "pcallFn",
     "v194": "savedIdentity",
     "t128": "result"
   },
@@ -25264,6 +25275,7 @@
     "f6078": "caller"
   },
   "f6078": {
+    "up0": "pcallFn",
     "v195": "savedIdentity",
     "t129": "result"
   },

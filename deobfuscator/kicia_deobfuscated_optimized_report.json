@@ -4062,6 +4062,78 @@
    "rule": "manual (upvalue)"
   },
   {
+   "line": 88687,
+   "old": "up0",
+   "new": "statusResponse",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 88679,
+   "old": "up1",
+   "new": "httpRequest",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 88680,
+   "old": "up2",
+   "new": "config",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 88683,
+   "old": "up5",
+   "new": "versionCode",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 88688,
+   "old": "up6",
+   "new": "gameRef",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 88691,
+   "old": "up7",
+   "new": "exitFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 88698,
+   "old": "up8",
+   "new": "customHostFlag",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 88703,
+   "old": "up9",
+   "new": "customHost",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 88709,
+   "old": "up10",
+   "new": "defaultHost",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 88712,
+   "old": "up11",
+   "new": "versionInfo",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 89620,
+   "old": "up0",
+   "new": "pcallFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 89640,
+   "old": "up0",
+   "new": "pcallFn",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 102506,
    "old": "up0",
    "new": "wsSocket",
