@@ -3966,6 +3966,198 @@
  ],
  "renames": [
   {
+   "line": 106825,
+   "old": "up0",
+   "new": "normalParams",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106826,
+   "old": "up1",
+   "new": "AimPredictorClass",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106840,
+   "old": "up0",
+   "new": "denseLayerForward",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106840,
+   "old": "up1",
+   "new": "layer1Input",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106840,
+   "old": "up2",
+   "new": "modelWeights",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106840,
+   "old": "up3",
+   "new": "layer1Output",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106841,
+   "old": "up4",
+   "new": "activation",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106842,
+   "old": "up5",
+   "new": "layer2Output",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106844,
+   "old": "up6",
+   "new": "layer3Output",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106846,
+   "old": "up7",
+   "new": "outputBuffer",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106857,
+   "old": "up0",
+   "new": "inputBuffer",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 106866,
+   "old": "up0",
+   "new": "registry",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108545,
+   "old": "up0",
+   "new": "pcall",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108574,
+   "old": "up0",
+   "new": "Promise",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108587,
+   "old": "up0",
+   "new": "seen",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108589,
+   "old": "up1",
+   "new": "onUser",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108597,
+   "old": "up0",
+   "new": "groupsBaseUrl",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108620,
+   "old": "up1",
+   "new": "groupId",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108622,
+   "old": "up2",
+   "new": "pageLimit",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108616,
+   "old": "up3",
+   "new": "pageScanner",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108664,
+   "old": "up1",
+   "new": "roles",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108719,
+   "old": "up0",
+   "new": "makeGroupScan",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108609,
+   "old": "up0",
+   "new": "seen",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108611,
+   "old": "up1",
+   "new": "onUser",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108633,
+   "old": "up0",
+   "new": "groupsBaseUrl",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108656,
+   "old": "up1",
+   "new": "groupId",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108658,
+   "old": "up2",
+   "new": "pageLimit",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108652,
+   "old": "up3",
+   "new": "pageScanner",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108645,
+   "old": "up0",
+   "new": "seen",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108647,
+   "old": "up1",
+   "new": "onUser",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 108668,
+   "old": "up0",
+   "new": "result",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 109942,
+   "old": "up0",
+   "new": "tostring_marker",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 3296,
    "old": "f299",
    "new": "callElevated",
@@ -81330,6 +81522,342 @@
    "rule": "manual"
   },
   {
+   "line": 74522,
+   "old": "f5136",
+   "new": "advanceCursor",
+   "rule": "manual"
+  },
+  {
+   "line": 74522,
+   "old": "p123",
+   "new": "cursor",
+   "rule": "manual"
+  },
+  {
+   "line": 74522,
+   "old": "p124",
+   "new": "fromPos",
+   "rule": "manual"
+  },
+  {
+   "line": 74522,
+   "old": "p125",
+   "new": "toPos",
+   "rule": "manual"
+  },
+  {
+   "line": 74522,
+   "old": "p126",
+   "new": "humDt",
+   "rule": "manual"
+  },
+  {
+   "line": 74523,
+   "old": "t24",
+   "new": "delta",
+   "rule": "manual"
+  },
+  {
+   "line": 74539,
+   "old": "v104",
+   "new": "trajIdx",
+   "rule": "manual"
+  },
+  {
+   "line": 74548,
+   "old": "t25",
+   "new": "prevPt",
+   "rule": "manual"
+  },
+  {
+   "line": 74549,
+   "old": "t26",
+   "new": "nextPt",
+   "rule": "manual"
+  },
+  {
+   "line": 74550,
+   "old": "v105",
+   "new": "segDur",
+   "rule": "manual"
+  },
+  {
+   "line": 74551,
+   "old": "v106",
+   "new": "segAlpha",
+   "rule": "manual"
+  },
+  {
+   "line": 74561,
+   "old": "f5137",
+   "new": "applySettings",
+   "rule": "manual"
+  },
+  {
+   "line": 74561,
+   "old": "p127",
+   "new": "humanizerSelf",
+   "rule": "manual"
+  },
+  {
+   "line": 74561,
+   "old": "p128",
+   "new": "humSettings",
+   "rule": "manual"
+  },
+  {
+   "line": 74562,
+   "old": "v107",
+   "new": "paramDurMs",
+   "rule": "manual"
+  },
+  {
+   "line": 74578,
+   "old": "v108",
+   "new": "humannessFactor",
+   "rule": "manual"
+  },
+  {
+   "line": 74585,
+   "old": "f5138",
+   "new": "erfHelper",
+   "rule": "manual"
+  },
+  {
+   "line": 74585,
+   "old": "p129",
+   "new": "erfInput",
+   "rule": "manual"
+  },
+  {
+   "line": 74586,
+   "old": "v109",
+   "new": "erfSign",
+   "rule": "manual"
+  },
+  {
+   "line": 74589,
+   "old": "v110",
+   "new": "erfAbs",
+   "rule": "manual"
+  },
+  {
+   "line": 74590,
+   "old": "v111",
+   "new": "erfPoly",
+   "rule": "manual"
+  },
+  {
+   "line": 74594,
+   "old": "f5139",
+   "new": "normalCdfHelper",
+   "rule": "manual"
+  },
+  {
+   "line": 74594,
+   "old": "p130",
+   "new": "normalZ",
+   "rule": "manual"
+  },
+  {
+   "line": 74598,
+   "old": "f5140",
+   "new": "lognormalCdfHelper",
+   "rule": "manual"
+  },
+  {
+   "line": 74598,
+   "old": "p131",
+   "new": "lognormTime",
+   "rule": "manual"
+  },
+  {
+   "line": 74598,
+   "old": "p132",
+   "new": "lognormOnset",
+   "rule": "manual"
+  },
+  {
+   "line": 74598,
+   "old": "p133",
+   "new": "lognormMu",
+   "rule": "manual"
+  },
+  {
+   "line": 74598,
+   "old": "p134",
+   "new": "lognormSigma",
+   "rule": "manual"
+  },
+  {
+   "line": 74605,
+   "old": "f5141",
+   "new": "lognormalPdfHelper",
+   "rule": "manual"
+  },
+  {
+   "line": 74605,
+   "old": "p135",
+   "new": "pdfTime",
+   "rule": "manual"
+  },
+  {
+   "line": 74605,
+   "old": "p136",
+   "new": "pdfOnset",
+   "rule": "manual"
+  },
+  {
+   "line": 74605,
+   "old": "p137",
+   "new": "pdfMu",
+   "rule": "manual"
+  },
+  {
+   "line": 74605,
+   "old": "p138",
+   "new": "pdfSigma",
+   "rule": "manual"
+  },
+  {
+   "line": 74609,
+   "old": "v112",
+   "new": "sinceOnset",
+   "rule": "manual"
+  },
+  {
+   "line": 74610,
+   "old": "v113",
+   "new": "standardized",
+   "rule": "manual"
+  },
+  {
+   "line": 74614,
+   "old": "f5142",
+   "new": "curvatureProfileHelper",
+   "rule": "manual"
+  },
+  {
+   "line": 74614,
+   "old": "p139",
+   "new": "curvProgress",
+   "rule": "manual"
+  },
+  {
+   "line": 74621,
+   "old": "f5143",
+   "new": "directionCurvatureHelper",
+   "rule": "manual"
+  },
+  {
+   "line": 74621,
+   "old": "p140",
+   "new": "curvAngle",
+   "rule": "manual"
+  },
+  {
+   "line": 74625,
+   "old": "f5144",
+   "new": "gaussianHelper",
+   "rule": "manual"
+  },
+  {
+   "line": 74625,
+   "old": "p141",
+   "new": "gaussRng",
+   "rule": "manual"
+  },
+  {
+   "line": 74625,
+   "old": "p142",
+   "new": "gaussMean",
+   "rule": "manual"
+  },
+  {
+   "line": 74625,
+   "old": "p143",
+   "new": "gaussStdDev",
+   "rule": "manual"
+  },
+  {
+   "line": 74626,
+   "old": "v114",
+   "new": "gaussU1",
+   "rule": "manual"
+  },
+  {
+   "line": 74634,
+   "old": "f5145",
+   "new": "gammaSampleHelper",
+   "rule": "manual"
+  },
+  {
+   "line": 74634,
+   "old": "p144",
+   "new": "gammaRng2",
+   "rule": "manual"
+  },
+  {
+   "line": 74634,
+   "old": "p145",
+   "new": "gammaShape",
+   "rule": "manual"
+  },
+  {
+   "line": 74634,
+   "old": "p146",
+   "new": "gammaScale",
+   "rule": "manual"
+  },
+  {
+   "line": 74635,
+   "old": "v115",
+   "new": "shapeBoost",
+   "rule": "manual"
+  },
+  {
+   "line": 74640,
+   "old": "v116",
+   "new": "gammaD",
+   "rule": "manual"
+  },
+  {
+   "line": 74641,
+   "old": "v117",
+   "new": "gammaC",
+   "rule": "manual"
+  },
+  {
+   "line": 74643,
+   "old": "v118",
+   "new": "normalDraw",
+   "rule": "manual"
+  },
+  {
+   "line": 74644,
+   "old": "v119",
+   "new": "gammaCube",
+   "rule": "manual"
+  },
+  {
+   "line": 74646,
+   "old": "v120",
+   "new": "uniformDraw",
+   "rule": "manual"
+  },
+  {
+   "line": 74658,
+   "old": "f5146",
+   "new": "createHumanizerDefaults",
+   "rule": "manual"
+  },
+  {
+   "line": 74659,
+   "old": "t27",
+   "new": "defaults",
+   "rule": "manual"
+  },
+  {
    "line": 74694,
    "old": "f5147",
    "new": "loadMouseHumanizer",
@@ -82014,6 +82542,36 @@
    "rule": "manual"
   },
   {
+   "line": 74968,
+   "old": "p173",
+   "new": "targetX",
+   "rule": "manual"
+  },
+  {
+   "line": 74968,
+   "old": "p174",
+   "new": "targetY",
+   "rule": "manual"
+  },
+  {
+   "line": 74972,
+   "old": "v188",
+   "new": "deltaX",
+   "rule": "manual"
+  },
+  {
+   "line": 74973,
+   "old": "v189",
+   "new": "deltaY",
+   "rule": "manual"
+  },
+  {
+   "line": 74974,
+   "old": "v190",
+   "new": "needsRegen",
+   "rule": "manual"
+  },
+  {
    "line": 74979,
    "old": "p175",
    "new": "mover",
@@ -82419,6 +82977,42 @@
    "line": 75254,
    "old": "v207",
    "new": "matches2",
+   "rule": "manual"
+  },
+  {
+   "line": 75259,
+   "old": "f5183",
+   "new": "newDenseLayer",
+   "rule": "manual"
+  },
+  {
+   "line": 75259,
+   "old": "p198",
+   "new": "inputSize",
+   "rule": "manual"
+  },
+  {
+   "line": 75259,
+   "old": "p199",
+   "new": "outputSize",
+   "rule": "manual"
+  },
+  {
+   "line": 75259,
+   "old": "p200",
+   "new": "weights",
+   "rule": "manual"
+  },
+  {
+   "line": 75259,
+   "old": "p201",
+   "new": "bias",
+   "rule": "manual"
+  },
+  {
+   "line": 75260,
+   "old": "t61",
+   "new": "layerSpec",
    "rule": "manual"
   },
   {
@@ -114240,6 +114834,24 @@
    "rule": "manual"
   },
   {
+   "line": 106875,
+   "old": "p22",
+   "new": "inputVec",
+   "rule": "manual"
+  },
+  {
+   "line": 106875,
+   "old": "p23",
+   "new": "layerDef",
+   "rule": "manual"
+  },
+  {
+   "line": 106875,
+   "old": "p24",
+   "new": "outputVec",
+   "rule": "manual"
+  },
+  {
    "line": 106903,
    "old": "v43",
    "new": "junkVk",
@@ -115626,6 +116238,18 @@
    "rule": "manual"
   },
   {
+   "line": 108517,
+   "old": "t96",
+   "new": "junkStr",
+   "rule": "manual"
+  },
+  {
+   "line": 108518,
+   "old": "v152",
+   "new": "junkBool",
+   "rule": "manual"
+  },
+  {
    "line": 108527,
    "old": "f7205",
    "new": "pcallWithRetry",
@@ -115647,6 +116271,18 @@
    "line": 108533,
    "old": "f7207",
    "new": "junkCode",
+   "rule": "manual"
+  },
+  {
+   "line": 108534,
+   "old": "t97",
+   "new": "junkStr",
+   "rule": "manual"
+  },
+  {
+   "line": 108535,
+   "old": "v154",
+   "new": "junkBool",
    "rule": "manual"
   },
   {
@@ -115692,6 +116328,18 @@
    "rule": "manual"
   },
   {
+   "line": 108558,
+   "old": "t98",
+   "new": "junkStr",
+   "rule": "manual"
+  },
+  {
+   "line": 108559,
+   "old": "v157",
+   "new": "junkBool",
+   "rule": "manual"
+  },
+  {
    "line": 108568,
    "old": "v158",
    "new": "ok",
@@ -115713,6 +116361,12 @@
    "line": 108579,
    "old": "v159",
    "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 108581,
+   "old": "t99",
+   "new": "user",
    "rule": "manual"
   },
   {
@@ -115740,9 +116394,21 @@
    "rule": "manual"
   },
   {
+   "line": 108599,
+   "old": "p114",
+   "new": "page",
+   "rule": "manual"
+  },
+  {
    "line": 108601,
    "old": "v161",
    "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 108603,
+   "old": "t100",
+   "new": "userRecord",
    "rule": "manual"
   },
   {
@@ -115758,6 +116424,12 @@
    "rule": "manual"
   },
   {
+   "line": 108630,
+   "old": "p115",
+   "new": "role",
+   "rule": "manual"
+  },
+  {
    "line": 108633,
    "old": "v162",
    "new": "baseUrl",
@@ -115770,9 +116442,21 @@
    "rule": "manual"
   },
   {
+   "line": 108635,
+   "old": "p116",
+   "new": "page",
+   "rule": "manual"
+  },
+  {
    "line": 108637,
    "old": "v163",
    "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 108639,
+   "old": "t101",
+   "new": "userRecord",
    "rule": "manual"
   },
   {
@@ -115824,9 +116508,39 @@
    "rule": "manual"
   },
   {
+   "line": 108678,
+   "old": "p117",
+   "new": "role",
+   "rule": "manual"
+  },
+  {
+   "line": 108681,
+   "old": "v167",
+   "new": "baseUrl",
+   "rule": "manual"
+  },
+  {
    "line": 108683,
    "old": "f7222",
    "new": "processPage",
+   "rule": "manual"
+  },
+  {
+   "line": 108683,
+   "old": "p118",
+   "new": "page",
+   "rule": "manual"
+  },
+  {
+   "line": 108685,
+   "old": "v168",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 108687,
+   "old": "t103",
+   "new": "userRecord",
    "rule": "manual"
   },
   {
@@ -115872,6 +116586,12 @@
    "rule": "manual"
   },
   {
+   "line": 108728,
+   "old": "p119",
+   "new": "groupId",
+   "rule": "manual"
+  },
+  {
    "line": 108729,
    "old": "f7226",
    "new": "promiseBody",
@@ -115893,6 +116613,18 @@
    "line": 108735,
    "old": "f7228",
    "new": "junkCode",
+   "rule": "manual"
+  },
+  {
+   "line": 108736,
+   "old": "t104",
+   "new": "junkStr",
+   "rule": "manual"
+  },
+  {
+   "line": 108737,
+   "old": "v174",
+   "new": "junkBool",
    "rule": "manual"
   },
   {
@@ -115944,9 +116676,39 @@
    "rule": "manual"
   },
   {
+   "line": 108764,
+   "old": "p120",
+   "new": "role",
+   "rule": "manual"
+  },
+  {
+   "line": 108767,
+   "old": "v180",
+   "new": "baseUrl",
+   "rule": "manual"
+  },
+  {
    "line": 108769,
    "old": "f7232",
    "new": "processPage",
+   "rule": "manual"
+  },
+  {
+   "line": 108769,
+   "old": "p121",
+   "new": "page",
+   "rule": "manual"
+  },
+  {
+   "line": 108771,
+   "old": "v181",
+   "new": "index",
+   "rule": "manual"
+  },
+  {
+   "line": 108773,
+   "old": "t106",
+   "new": "userRecord",
    "rule": "manual"
   },
   {

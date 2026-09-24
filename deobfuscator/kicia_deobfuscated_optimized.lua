@@ -74519,144 +74519,144 @@ local function f5042()
 		return false
 	end
 
-	local function f5136(p123, p124, p125, p126)
-		local t24 = p125 - p124
-		if t24.Magnitude < 1 then
-			return t24
+	local function advanceCursor(cursor, fromPos, toPos, humDt)
+		local delta = toPos - fromPos
+		if delta.Magnitude < 1 then
+			return delta
 		end
-		if p123:_NeedsRegeneration(p125.X, p125.Y) then
-			p123._trajectory = p123:Generate(p124.X, p124.Y, p125.X, p125.Y)
-			p123._trajectoryIndex = 1
-			p123._elapsed = 0
-			p123._lastTargetX = p125.X
-			p123._lastTargetY = p125.Y
+		if cursor:_NeedsRegeneration(toPos.X, toPos.Y) then
+			cursor._trajectory = cursor:Generate(fromPos.X, fromPos.Y, toPos.X, toPos.Y)
+			cursor._trajectoryIndex = 1
+			cursor._elapsed = 0
+			cursor._lastTargetX = toPos.X
+			cursor._lastTargetY = toPos.Y
 		end
-		local _trajectory3 = p123._trajectory
+		local _trajectory3 = cursor._trajectory
 		if not (_trajectory3 and not (#_trajectory3 < 2)) then
-			return t24
+			return delta
 		end
-		p123._elapsed = p123._elapsed + p126 * 1000
-		local v104 = p123._trajectoryIndex
-		while v104 < #_trajectory3 and _trajectory3[v104 + 1].t <= p123._elapsed do
-			v104 = v104 + 1
+		cursor._elapsed = cursor._elapsed + humDt * 1000
+		local trajIdx = cursor._trajectoryIndex
+		while trajIdx < #_trajectory3 and _trajectory3[trajIdx + 1].t <= cursor._elapsed do
+			trajIdx = trajIdx + 1
 		end
-		p123._trajectoryIndex = v104
-		if #_trajectory3 <= v104 then
-			p123._trajectory = nil
-			return t24
+		cursor._trajectoryIndex = trajIdx
+		if #_trajectory3 <= trajIdx then
+			cursor._trajectory = nil
+			return delta
 		end
-		local t25 = _trajectory3[v104]
-		local t26 = _trajectory3[v104 + 1]
-		local v105 = t26.t - t25.t
-		local v106 = 1
-		if 0 < v105 then
-			v106 = math.clamp((p123._elapsed - t25.t) / v105, 0, 1)
+		local prevPt = _trajectory3[trajIdx]
+		local nextPt = _trajectory3[trajIdx + 1]
+		local segDur = nextPt.t - prevPt.t
+		local segAlpha = 1
+		if 0 < segDur then
+			segAlpha = math.clamp((cursor._elapsed - prevPt.t) / segDur, 0, 1)
 		end
 		return (Vector2.new(
-			t25.x + (t26.x - t25.x) * v106 - p124.X,
-			t25.y + (t26.y - t25.y) * v106 - p124.Y
+			prevPt.x + (nextPt.x - prevPt.x) * segAlpha - fromPos.X,
+			prevPt.y + (nextPt.y - prevPt.y) * segAlpha - fromPos.Y
 		))
 	end
 
-	local function f5137(p127, p128)
-		local v107 = math.max(p128.durationMs, 20)
-		p127._fittsA = v107 / 4
-		p127._fittsB = v107 / 4
-		p127._target_width = 80
-		p127._peak_time_ratio = 0.32
-		p127._primary_sigma_min = 0.2
-		p127._primary_sigma_max = 0.26
-		p127._undershoot_min = 0.97
-		p127._undershoot_max = 1
-		p127._overshoot_prob = 0.08
-		p127._overshoot_min = 1.01
-		p127._overshoot_max = 1.04
-		p127._second_correction_prob = 0
-		p127._correction_sigma_min = 0.1
-		p127._correction_sigma_max = 0.14
-		p127._curvature_scale = math.clamp(p128.curvature, 0, 50) / 1000
-		local v108 = math.clamp(p128.humanness, 0, 100) / 30
-		p127._ou_sigma = 0.5 * v108
-		p127._tremor_amp_min = 0.05 * v108
-		p127._tremor_amp_max = 0.18 * v108
-		p127._sdn_k = 0.02
+	local function applySettings(humanizerSelf, humSettings)
+		local paramDurMs = math.max(humSettings.durationMs, 20)
+		humanizerSelf._fittsA = paramDurMs / 4
+		humanizerSelf._fittsB = paramDurMs / 4
+		humanizerSelf._target_width = 80
+		humanizerSelf._peak_time_ratio = 0.32
+		humanizerSelf._primary_sigma_min = 0.2
+		humanizerSelf._primary_sigma_max = 0.26
+		humanizerSelf._undershoot_min = 0.97
+		humanizerSelf._undershoot_max = 1
+		humanizerSelf._overshoot_prob = 0.08
+		humanizerSelf._overshoot_min = 1.01
+		humanizerSelf._overshoot_max = 1.04
+		humanizerSelf._second_correction_prob = 0
+		humanizerSelf._correction_sigma_min = 0.1
+		humanizerSelf._correction_sigma_max = 0.14
+		humanizerSelf._curvature_scale = math.clamp(humSettings.curvature, 0, 50) / 1000
+		local humannessFactor = math.clamp(humSettings.humanness, 0, 100) / 30
+		humanizerSelf._ou_sigma = 0.5 * humannessFactor
+		humanizerSelf._tremor_amp_min = 0.05 * humannessFactor
+		humanizerSelf._tremor_amp_max = 0.18 * humannessFactor
+		humanizerSelf._sdn_k = 0.02
 	end
 
-	local function f5138(p129)
-		local v109
-		v109 = p129 < 0
-		v109 = v109 and -1 or 1
-		local v110 = math.abs(p129)
-		local v111 = 1 / (1 + 0.3275911 * v110)
-		return v109 * (1 - (0.254829592 * v111 - 0.284496736 * v111 * v111 + 1.421413741 * v111 ^ 3 - 1.453152027 * v111 ^ 4 + 1.061405429 * v111 ^ 5) * math.exp(-v110 * v110))
+	local function erfHelper(erfInput)
+		local erfSign
+		erfSign = erfInput < 0
+		erfSign = erfSign and -1 or 1
+		local erfAbs = math.abs(erfInput)
+		local erfPoly = 1 / (1 + 0.3275911 * erfAbs)
+		return erfSign * (1 - (0.254829592 * erfPoly - 0.284496736 * erfPoly * erfPoly + 1.421413741 * erfPoly ^ 3 - 1.453152027 * erfPoly ^ 4 + 1.061405429 * erfPoly ^ 5) * math.exp(-erfAbs * erfAbs))
 	end
 
-	local function f5139(p130)
-		return 0.5 * (1 + up0(p130 / up1))
+	local function normalCdfHelper(normalZ)
+		return 0.5 * (1 + up0(normalZ / up1))
 	end
 
-	local function f5140(p131, p132, p133, p134)
-		if p131 <= p132 then
+	local function lognormalCdfHelper(lognormTime, lognormOnset, lognormMu, lognormSigma)
+		if lognormTime <= lognormOnset then
 			return 0
 		end
-		return (up0((math.log(p131 - p132) - p133) / p134))
+		return (up0((math.log(lognormTime - lognormOnset) - lognormMu) / lognormSigma))
 	end
 
-	local function f5141(p135, p136, p137, p138)
-		if p135 <= p136 then
+	local function lognormalPdfHelper(pdfTime, pdfOnset, pdfMu, pdfSigma)
+		if pdfTime <= pdfOnset then
 			return 0
 		end
-		local v112 = p135 - p136
-		local v113 = (math.log(v112) - p137) / p138
-		return 1 / (p138 * up0 * v112) * math.exp(-0.5 * v113 * v113)
+		local sinceOnset = pdfTime - pdfOnset
+		local standardized = (math.log(sinceOnset) - pdfMu) / pdfSigma
+		return 1 / (pdfSigma * up0 * sinceOnset) * math.exp(-0.5 * standardized * standardized)
 	end
 
-	local function f5142(p139)
-		if p139 <= 0 or 1 <= p139 then
+	local function curvatureProfileHelper(curvProgress)
+		if curvProgress <= 0 or 1 <= curvProgress then
 			return 0
 		end
-		return p139 * p139 * (1 - p139) * (1 - p139) * (1 - p139) / up0
+		return curvProgress * curvProgress * (1 - curvProgress) * (1 - curvProgress) * (1 - curvProgress) / up0
 	end
 
-	local function f5143(p140)
-		return 0.5 + 0.8 * math.abs(math.sin(p140)) - 0.15 * math.abs(math.cos(p140))
+	local function directionCurvatureHelper(curvAngle)
+		return 0.5 + 0.8 * math.abs(math.sin(curvAngle)) - 0.15 * math.abs(math.cos(curvAngle))
 	end
 
-	local function f5144(p141, p142, p143)
-		local v114 = p141:NextNumber()
-		local NextNumber3 = p141:NextNumber()
-		if v114 < 1e-15 then
-			v114 = 1e-15
+	local function gaussianHelper(gaussRng, gaussMean, gaussStdDev)
+		local gaussU1 = gaussRng:NextNumber()
+		local NextNumber3 = gaussRng:NextNumber()
+		if gaussU1 < 1e-15 then
+			gaussU1 = 1e-15
 		end
-		return p142 + p143 * (math.sqrt(-2 * math.log(v114)) * math.cos(2 * up0 * NextNumber3))
+		return gaussMean + gaussStdDev * (math.sqrt(-2 * math.log(gaussU1)) * math.cos(2 * up0 * NextNumber3))
 	end
 
-	local function f5145(p144, p145, p146)
-		local v115 = 1
-		if p145 < 1 then
-			v115 = p144:NextNumber() ^ (1 / p145)
-			p145 = p145 + 1
+	local function gammaSampleHelper(gammaRng2, gammaShape, gammaScale)
+		local shapeBoost = 1
+		if gammaShape < 1 then
+			shapeBoost = gammaRng2:NextNumber() ^ (1 / gammaShape)
+			gammaShape = gammaShape + 1
 		end
-		local v116 = p145 - 0.3333333333333333
-		local v117 = math.sqrt(9 * v116)
+		local gammaD = gammaShape - 0.3333333333333333
+		local gammaC = math.sqrt(9 * gammaD)
 		while true do
-			local v118 = up0(p144, 0, 1)
-			local v119 = (1 + 1 / v117 * v118) ^ 3
-			if 0 < v119 then
-				local v120 = p144:NextNumber()
-				if v120 < 1e-15 then
-					v120 = 1e-15
+			local normalDraw = up0(gammaRng2, 0, 1)
+			local gammaCube = (1 + 1 / gammaC * normalDraw) ^ 3
+			if 0 < gammaCube then
+				local uniformDraw = gammaRng2:NextNumber()
+				if uniformDraw < 1e-15 then
+					uniformDraw = 1e-15
 				end
-				if v120 < 1 - 0.0331 * v118 * v118 * v118 * v118 or
-					math.log(v120) < 0.5 * v118 * v118 + v116 * (1 - v119 + math.log(v119)) then
-					return v116 * v119 * p146 * v115
+				if uniformDraw < 1 - 0.0331 * normalDraw * normalDraw * normalDraw * normalDraw or
+					math.log(uniformDraw) < 0.5 * normalDraw * normalDraw + gammaD * (1 - gammaCube + math.log(gammaCube)) then
+					return gammaD * gammaCube * gammaScale * shapeBoost
 				end
 			end
 		end
 	end
 
-	local function f5146()
-		local t27 = {
+	local function createHumanizerDefaults()
+		local defaults = {
 			_fittsA = 50,
 			_fittsB = 100,
 			_target_width = 20,
@@ -74688,7 +74688,7 @@ local function f5042()
 			_lastTargetY = 0,
 			_rng = Random.new()
 		}
-		return (setmetatable(t27, up0))
+		return (setmetatable(defaults, up0))
 	end
 
 	local function loadMouseHumanizer()
@@ -74965,15 +74965,15 @@ local function f5042()
 			return points
 		end
 
-		function MouseHumanizer:_NeedsRegeneration(p173, p174)
+		function MouseHumanizer:_NeedsRegeneration(targetX, targetY)
 			if not (self._trajectory and #self._trajectory ~= 0) then
 				return true
 			end
-			local v188 = p173 - self._lastTargetX
-			local v189 = p174 - self._lastTargetY
-			local v190
-			v190 = 9 < v188 * v188 + v189 * v189
-			return v190
+			local deltaX = targetX - self._lastTargetX
+			local deltaY = targetY - self._lastTargetY
+			local needsRegen
+			needsRegen = 9 < deltaX * deltaX + deltaY * deltaY
+			return needsRegen
 		end
 
 		function MouseHumanizer.Predict(mover, origin, target, deltaTime)
@@ -75256,9 +75256,9 @@ local function f5042()
 		return matches2
 	end
 
-	local function f5183(p198, p199, p200, p201)
-		local t61 = { weights = p200, bias = p201, inputSize = p198, outputSize = p199 }
-		return t61
+	local function newDenseLayer(inputSize, outputSize, weights, bias)
+		local layerSpec = { weights = weights, bias = bias, inputSize = inputSize, outputSize = outputSize }
+		return layerSpec
 	end
 
 	local function disconnect()
@@ -78877,17 +78877,17 @@ local function f5042()
 		connect,
 		setLiveOverride,
 		isAnyClass,
-		f5136,
-		f5137,
-		f5138,
-		f5139,
-		f5140,
-		f5141,
-		f5142,
-		f5143,
-		f5144,
-		f5145,
-		f5146,
+		advanceCursor,
+		applySettings,
+		erfHelper,
+		normalCdfHelper,
+		lognormalCdfHelper,
+		lognormalPdfHelper,
+		curvatureProfileHelper,
+		directionCurvatureHelper,
+		gaussianHelper,
+		gammaSampleHelper,
+		createHumanizerDefaults,
 		loadMouseHumanizer,
 		setMultiplier,
 		watchValue,
@@ -78905,7 +78905,7 @@ local function f5042()
 		handleInput,
 		newCrosshairRing,
 		matchesInput,
-		f5183,
+		newDenseLayer,
 		disconnect,
 		moveActiveStop,
 		lazyModule_d3,
@@ -106822,8 +106822,8 @@ local function f7069()
 	end
 
 	local function NormaliserNew()
-		local normaliser = { _normalParams = up0 }
-		return (setmetatable(normaliser, up1))
+		local normaliser = { _normalParams = normalParams }
+		return (setmetatable(normaliser, AimPredictorClass))
 	end
 
 	local function DenormaliseToVector2(selfObj, values)
@@ -106837,14 +106837,14 @@ local function f7069()
 
 	local function Predict(selfObj, input)
 		selfObj:Normalise(input)
-		up0(up1, up2.layers[1], up3)
-		up4(up3, 96)
-		up0(up3, up2.layers[2], up5)
-		up4(up5, 96)
-		up0(up5, up2.layers[3], up6)
-		up4(up6, 64)
-		up0(up6, up2.layers[4], up7)
-		return (selfObj:DenormaliseToVector2(up7))
+		denseLayerForward(layer1Input, modelWeights.layers[1], layer1Output)
+		activation(layer1Output, 96)
+		denseLayerForward(layer1Output, modelWeights.layers[2], layer2Output)
+		activation(layer2Output, 96)
+		denseLayerForward(layer2Output, modelWeights.layers[3], layer3Output)
+		activation(layer3Output, 64)
+		denseLayerForward(layer3Output, modelWeights.layers[4], outputBuffer)
+		return (selfObj:DenormaliseToVector2(outputBuffer))
 	end
 
 	local function AimPredict(predictor, fromPos, toPos, extraParam)
@@ -106854,17 +106854,17 @@ local function f7069()
 			return delta
 		end
 		local heading = math.atan2(delta.Y, delta.X)
-		up0[1] = delta.X
-		up0[2] = delta.Y
-		up0[3] = Magnitude12
-		up0[4] = heading
-		up0[11] = extraParam
-		return (predictor:_Predict(up0))
+		inputBuffer[1] = delta.X
+		inputBuffer[2] = delta.Y
+		inputBuffer[3] = Magnitude12
+		inputBuffer[4] = heading
+		inputBuffer[11] = extraParam
+		return (predictor:_Predict(inputBuffer))
 	end
 
 	local function createAimPredictor()
-		local normalParams = up0.bc()
-		local modelWeights = up0.bd()
+		local normalParams = registry.bc()
+		local modelWeights = registry.bd()
 		local inputBuffer = table.create(12, 0)
 		local layer1Input = table.create(12, 0)
 		local layer1Output = table.create(96, 0)
@@ -106872,11 +106872,11 @@ local function f7069()
 		local layer3Output = table.create(64, 0)
 		local outputBuffer = table.create(3, 0)
 
-		local function denseLayerForward(p22, p23, p24)
-			local weights2 = p23.weights
-			local bias2 = p23.bias
-			local inputSize2 = p23.inputSize
-			local outputSize2 = p23.outputSize
+		local function denseLayerForward(inputVec, layerDef, outputVec)
+			local weights2 = layerDef.weights
+			local bias2 = layerDef.bias
+			local inputSize2 = layerDef.inputSize
+			local outputSize2 = layerDef.outputSize
 			;(function(c0,c1,c2,c3,c4,c5)
 				return (function(T)
 				local U = T[3]
@@ -106896,7 +106896,7 @@ local function f7069()
 					end
 				end
 			end)({[0]=c0,[1]=c1,[2]=c2,[3]=c3,[4]=c4,[5]=c5})
-			end)(weights2, inputSize2, bias2, outputSize2, p22, p24)()
+			end)(weights2, inputSize2, bias2, outputSize2, inputVec, outputVec)()
 		end
 
 		local VK2 = VK
@@ -108514,13 +108514,13 @@ local function f7069()
 	end
 
 	local function junkLoop()
-		local t96 = string
-		local v152
+		local junkStr = string
+		local junkBool
 		while true do
-			t96 = t96.format
+			junkStr = junkStr.format
 			repeat
-				v152 = not not true
-			until v152
+				junkBool = not not true
+			until junkBool
 		end
 	end
 
@@ -108531,18 +108531,18 @@ local function f7069()
 			_, onError = ...
 
 			local function junkCode()
-				local t97 = string
-				local v154
+				local junkStr = string
+				local junkBool
 				while true do
-					t97 = t97.format
+					junkStr = junkStr.format
 					repeat
-						v154 = not not true
-					until v154
+						junkBool = not not true
+					until junkBool
 				end
 			end
 
 			local ok
-			ok, errorMsg = up0(junkCode)
+			ok, errorMsg = pcall(junkCode)
 		until not ok
 		onError(errorMsg)
 	end
@@ -108555,13 +108555,13 @@ local function f7069()
 				_, onError = ...
 
 				local function junkCode()
-					local t98 = string
-					local v157
+					local junkStr = string
+					local junkBool
 					while true do
-						t98 = t98.format
+						junkStr = junkStr.format
 						repeat
-							v157 = not not true
-						until v157
+							junkBool = not not true
+						until junkBool
 					end
 				end
 
@@ -108571,22 +108571,22 @@ local function f7069()
 			onError(errorMsg)
 		end
 
-		return (up0.new(promiseBody))
+		return (Promise.new(promiseBody))
 	end
 
 	local function collectGroupUsers(data)
 		local data10 = data.data
 		local index = nil
 		while true do
-			local t99
-			index, t99 = data10(nil, index)
+			local user
+			index, user = data10(nil, index)
 			if index == nil then
 				break
 			end
-			local userId = t99.userId
-			if not (userId == nil or up0[userId]) then
-				up0[userId] = true
-				up1(userId)
+			local userId = user.userId
+			if not (userId == nil or seen[userId]) then
+				seen[userId] = true
+				onUser(userId)
 			end
 		end
 	end
@@ -108594,32 +108594,32 @@ local function f7069()
 	local function fetchGroupRole(role)
 		local _ = string.format
 		local _ = tostring
-		local baseUrl = up0
+		local baseUrl = groupsBaseUrl
 
-		local function processPage(p114)
-			local data11 = p114.data
+		local function processPage(page)
+			local data11 = page.data
 			local index = nil
 			while true do
-				local t100
-				index, t100 = data11(nil, index)
+				local userRecord
+				index, userRecord = data11(nil, index)
 				if index == nil then
 					break
 				end
-				local userId2 = t100.userId
-				if not (userId2 == nil or up0[userId2]) then
-					up0[userId2] = true
-					up1(userId2)
+				local userId2 = userRecord.userId
+				if not (userId2 == nil or seen[userId2]) then
+					seen[userId2] = true
+					onUser(userId2)
 				end
 			end
 		end
 
-		return (up3.scanPagesAsync(
+		return (pageScanner.scanPagesAsync(
 			string.format(
 				"%s/v1/groups/%s/roles/%s/users?limit=%s&sortOrder=Asc",
 				tostring(baseUrl),
-				tostring(up1),
+				tostring(groupId),
 				tostring(role.id),
-				tostring(up2)
+				tostring(pageLimit)
 			),
 			processPage
 		))
@@ -108627,45 +108627,45 @@ local function f7069()
 
 	local function fetchAllGroupRoles()
 
-		local function fetchRole(p115)
+		local function fetchRole(role)
 			local _ = string.format
 			local _ = tostring
-			local baseUrl = up0
+			local baseUrl = groupsBaseUrl
 
-			local function processPage(p116)
-				local data12 = p116.data
+			local function processPage(page)
+				local data12 = page.data
 				local index = nil
 				while true do
-					local t101
-					index, t101 = data12(nil, index)
+					local userRecord
+					index, userRecord = data12(nil, index)
 					if index == nil then
 						break
 					end
-					local userId3 = t101.userId
-					if not (userId3 == nil or up0[userId3]) then
-						up0[userId3] = true
-						up1(userId3)
+					local userId3 = userRecord.userId
+					if not (userId3 == nil or seen[userId3]) then
+						seen[userId3] = true
+						onUser(userId3)
 					end
 				end
 			end
 
-			return (up3.scanPagesAsync(
+			return (pageScanner.scanPagesAsync(
 				string.format(
 					"%s/v1/groups/%s/roles/%s/users?limit=%s&sortOrder=Asc",
 					tostring(baseUrl),
-					tostring(up1),
-					tostring(p115.id),
-					tostring(up2)
+					tostring(groupId),
+					tostring(role.id),
+					tostring(pageLimit)
 				),
 				processPage
 			))
 		end
 
-		return (up1.each({}, fetchRole))
+		return (roles.each({}, fetchRole))
 	end
 
 	local function getResult()
-		return up0
+		return result
 	end
 
 	local function createGroupScan(...)
@@ -108675,21 +108675,21 @@ local function f7069()
 
 		local function doScan()
 
-			local function fetchRole(p117)
+			local function fetchRole(role)
 				local _ = string.format
 				local _ = tostring
-				local v167 = up0
+				local baseUrl = up0
 
-				local function processPage(p118)
-					local data13 = p118.data
-					local v168 = nil
+				local function processPage(page)
+					local data13 = page.data
+					local index = nil
 					while true do
-						local t103
-						v168, t103 = data13(nil, v168)
-						if v168 == nil then
+						local userRecord
+						index, userRecord = data13(nil, index)
+						if index == nil then
 							break
 						end
-						local userId4 = t103.userId
+						local userId4 = userRecord.userId
 						if not (userId4 == nil or seen[userId4]) then
 							seen[userId4] = true
 							onUser(userId4)
@@ -108700,9 +108700,9 @@ local function f7069()
 				return (up3.scanPagesAsync(
 					string.format(
 						"%s/v1/groups/%s/roles/%s/users?limit=%s&sortOrder=Asc",
-						tostring(v167),
+						tostring(baseUrl),
 						tostring(groupId),
-						tostring(p117.id),
+						tostring(role.id),
 						tostring(up2)
 					),
 					processPage
@@ -108716,7 +108716,7 @@ local function f7069()
 			return seen
 		end
 
-		return (up0(groupId):andThen(doScan):andThen(getScanResult))
+		return (makeGroupScan(groupId):andThen(doScan):andThen(getScanResult))
 	end
 
 	local function createGroupScanner()
@@ -108725,7 +108725,7 @@ local function f7069()
 		local groupsBaseUrl = "https://groups.roblox.com"
 		local httpService = cloneref(game:GetService("HttpService"))
 
-		local function makeScanPromise(p119)
+		local function makeScanPromise(groupId)
 			local function promiseBody(...)
 				local errorMsg, onError
 				repeat
@@ -108733,13 +108733,13 @@ local function f7069()
 					_, onError = ...
 
 					local function junkCode()
-						local t104 = string
-						local v174
+						local junkStr = string
+						local junkBool
 						while true do
-							t104 = t104.format
+							junkStr = junkStr.format
 							repeat
-								v174 = not not true
-							until v174
+								junkBool = not not true
+							until junkBool
 						end
 					end
 
@@ -108761,21 +108761,21 @@ local function f7069()
 
 			local function doScan()
 
-				local function fetchRole(p120)
+				local function fetchRole(role)
 					local _ = string.format
 					local _ = tostring
-					local v180 = groupsBaseUrl
+					local baseUrl = groupsBaseUrl
 
-					local function processPage(p121)
-						local data14 = p121.data
-						local v181 = nil
+					local function processPage(page)
+						local data14 = page.data
+						local index = nil
 						while true do
-							local t106
-							v181, t106 = data14(nil, v181)
-							if v181 == nil then
+							local userRecord
+							index, userRecord = data14(nil, index)
+							if index == nil then
 								break
 							end
-							local userId5 = t106.userId
+							local userId5 = userRecord.userId
 							if not (userId5 == nil or seen[userId5]) then
 								seen[userId5] = true
 								onUser(userId5)
@@ -108786,9 +108786,9 @@ local function f7069()
 					return (pageScanner.scanPagesAsync(
 						string.format(
 							"%s/v1/groups/%s/roles/%s/users?limit=%s&sortOrder=Asc",
-							tostring(v180),
+							tostring(baseUrl),
 							tostring(groupId),
-							tostring(p120.id),
+							tostring(role.id),
 							tostring(pageLimit)
 						),
 						processPage
@@ -109939,7 +109939,7 @@ local function f7069()
 	end
 
 	local function tostring_hook()
-		up0 = "tostring_fired"
+		tostring_marker = "tostring_fired"
 		return ""
 	end
 
