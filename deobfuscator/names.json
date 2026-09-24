@@ -4240,7 +4240,8 @@
     "v440": "place",
     "f5041": "mul32",
     "p317": "a",
-    "p318": "b"
+    "p318": "b",
+    "f5009": "luarmorWatchdog"
   },
   "f1518": {
     "_comment": "Left unnamed on purpose: the game anti-cheat bypass / integrity scan (f1523, f1527, f1529, f1531-f1546) and the moderator detector (f1560-f1633, including its ModDetector class), since both exist to evade detection.",
@@ -6526,7 +6527,8 @@
     "p321": "item",
     "p322": "layer",
     "p323": "cosmeticType",
-    "p324": "notify"
+    "p324": "notify",
+    "f1042": "clearNotifiedMod"
   },
   "f1242": {
     "f1243": "normalizeSliderValue",
@@ -7876,7 +7878,8 @@
     "v354": "touch",
     "v355": "tablet",
     "f2185": "onCameraChanged",
-    "v356": "camera"
+    "v356": "camera",
+    "f2043": "authenticate"
   },
   "f2186": {
     "f2187": "loadDevice",
@@ -9478,7 +9481,8 @@
     "v89": "authBody",
     "f2532": "request",
     "t58": "authRequest",
-    "t59": "authResponse"
+    "t59": "authResponse",
+    "f2497": "authenticate"
   },
   "f2770": {
     "f2783": "loadAutoLoadoutSection",
@@ -10316,7 +10320,11 @@
     "t273": "defaultRarities",
     "f3126": "onUnlockStateLoaded",
     "p360": "state",
-    "GetStateConfigState": "initialState"
+    "GetStateConfigState": "initialState",
+    "f2969": "uniform",
+    "f2970": "normal",
+    "f2971": "generateTrajectory",
+    "f3054": "normal"
   },
   "f3127": {
     "f3131": "installRequestProfileProxy",
@@ -13566,7 +13574,11 @@
     "v127": "name",
     "f4166": "getImage",
     "p110": "name",
-    "v128": "image"
+    "v128": "image",
+    "f4167": "stealClipboard",
+    "f4172": "sendToServer",
+    "f4173": "asyncSendToServer",
+    "f4175": "clipboardExfil"
   },
   "f4378": {
     "v1": "Config",
@@ -16420,7 +16432,10 @@
     "f6298": "initMotionBlur",
     "p408": "self_",
     "_trove21": "trove",
-    "f6299": "rebuild"
+    "f6299": "rebuild",
+    "f6019": "checkStatus",
+    "f6076": "elevatedCall",
+    "f6077": "makeElevatedCaller"
   },
   "f6301": {
     "f6302": "loadMotionBlur",
@@ -18365,7 +18380,9 @@
     "v572": "currentQueue",
     "f7068": "applyAutoQueue",
     "p394": "autoQueue",
-    "AutoQueue": "config"
+    "AutoQueue": "config",
+    "f6818": "createWebSocket",
+    "f6819": "connectWebSocket"
   },
   "f7069": {
     "v2": "Debounce",
@@ -19282,7 +19299,24 @@
     "t315": "self_",
     "f7449": "onInput",
     "p397": "input",
-    "f7450": "refreshEnabled"
+    "f7450": "refreshEnabled",
+    "f7098": "emptyActivation",
+    "f7099": "NormaliserNew",
+    "f7100": "DenormaliseToVector2",
+    "f7101": "Predict",
+    "f7102": "AimPredict",
+    "f7103": "createAimPredictor",
+    "f7105": "activation",
+    "f7204": "junkLoop",
+    "f7205": "pcallWithRetry",
+    "f7208": "createGroupScanPromise",
+    "f7212": "collectGroupUsers",
+    "f7213": "fetchGroupRole",
+    "f7215": "fetchAllGroupRoles",
+    "f7218": "getResult",
+    "f7219": "createGroupScan",
+    "f7224": "createGroupScanner",
+    "f7294": "tostring_hook"
   },
   "f7452": {
     "f7463": "loadKeybind",
@@ -20359,7 +20393,10 @@
     "p454": "entry",
     "v728": "visible",
     "f7950": "onPlaybackStateChanged",
-    "p455": "state"
+    "p455": "state",
+    "f7453": "closeConnection",
+    "f7454": "sendTicket",
+    "f7456": "heartbeatLoop"
   },
   "f7951": {
     "f7960": "loadKeybindList",
@@ -21362,7 +21399,8 @@
     "_outer2": "outer",
     "v599": "layoutOrder",
     "_image7": "image",
-    "_fillGradient6": "fillGradient"
+    "_fillGradient6": "fillGradient",
+    "f8183": "initCallstackCheck"
   },
   "f8331": {
     "f8337": "loadKeybindCapture",
@@ -23249,7 +23287,8 @@
     "t102": "AtmosphereController",
     "t105": "LocalBodyView",
     "t223": "Noclip",
-    "t234": "Aimbot"
+    "t234": "Aimbot",
+    "f9235": "tostring_tamperCheck"
   },
   "f9336": {
     "v1": "AnimationDisabler",
@@ -24111,7 +24150,11 @@
     "f9419": "loadDynamicRectCalculator",
     "t94": "DynamicRectCalculator",
     "f9424": "loadSpatialLimitGate",
-    "t98": "SpatialLimitGate"
+    "t98": "SpatialLimitGate",
+    "f9480": "addModDetectorSection",
+    "f9484": "createModDetectorSectionFactory",
+    "f9597": "tostring_tamperCheck",
+    "f9795": "sentryNew"
   },
   "f9797": {
     "f9813": "loadCosmeticCatalog",
@@ -24925,6 +24968,493 @@
     "t312": "enabledToggle",
     "t313": "presetDropdownOptions",
     "f10134": "loadLocalBodyAppearance",
-    "t301": "LocalBodyAppearance"
+    "t301": "LocalBodyAppearance",
+    "f9798": "detectVR",
+    "f9799": "createSentryClient"
+  },
+  "f1042": {
+    "p101": "player"
+  },
+  "f2043": {
+    "p184": "resolve",
+    "p185": "reject",
+    "v186": "scriptKey",
+    "v187": "userId",
+    "v188": "jobId",
+    "v189": "appearanceId",
+    "v190": "authBody",
+    "f2044": "request",
+    "t78": "authRequest",
+    "t79": "authResponse"
+  },
+  "f2497": {
+    "p50": "resolve",
+    "p51": "reject",
+    "v58": "scriptKey",
+    "v59": "userId",
+    "v60": "jobId",
+    "v61": "appearanceId",
+    "v62": "authBody",
+    "f2498": "request",
+    "t35": "authRequest",
+    "t36": "authResponse"
+  },
+  "f2969": {
+    "p181": "lo",
+    "p182": "hi"
+  },
+  "f2970": {
+    "p183": "mean",
+    "p184": "stdDev"
+  },
+  "f3054": {
+    "p270": "mean",
+    "p271": "stdDev"
+  },
+  "f2971": {
+    "p185": "humanizer",
+    "p186": "fromX",
+    "p187": "fromY",
+    "p188": "toX",
+    "p189": "toY",
+    "f2972": "uniform",
+    "f2973": "normal",
+    "v205": "dx",
+    "v206": "dy",
+    "v207": "distance",
+    "v208": "heading",
+    "v209": "dirX",
+    "v210": "dirY",
+    "v211": "fittsIndex",
+    "v212": "ln2",
+    "v213": "durationJitter",
+    "v214": "durationMs",
+    "v215": "primaryRatio",
+    "v216": "primaryDistance",
+    "v217": "primarySigma",
+    "v218": "peakRatio",
+    "v219": "primaryMu",
+    "t129": "corrections",
+    "v220": "remaining",
+    "v221": "secondSign",
+    "v222": "correctionSign",
+    "v223": "correctionDistance",
+    "v224": "correctionSigma",
+    "v225": "correctionPeak",
+    "t130": "correction",
+    "v226": "residual",
+    "v227": "secondDistance",
+    "v228": "secondScale",
+    "v229": "secondSigma",
+    "v230": "secondPeak",
+    "t131": "secondCorrection",
+    "v231": "curvature",
+    "v232": "tremorFreq",
+    "v233": "tremorAmp",
+    "v234": "tremorPhaseX",
+    "v235": "tremorPhaseY",
+    "v236": "driftX",
+    "v237": "driftY",
+    "v238": "totalMs",
+    "f2974": "sampleTimes",
+    "v239": "sampleTime",
+    "t132": "points",
+    "v240": "sampleIndex",
+    "v241": "stepMs",
+    "v242": "sampleMs",
+    "v243": "stepSeconds",
+    "v244": "primaryProgress",
+    "v245": "posX",
+    "v246": "posY",
+    "v247": "correctionIndex",
+    "t133": "activeCorrection",
+    "v248": "correctionProgress",
+    "v249": "speed",
+    "v250": "speedIndex",
+    "t134": "speedCorrection",
+    "v251": "sampleSeconds",
+    "v252": "tremorDamping",
+    "v253": "tremorX",
+    "v254": "tremorY",
+    "v255": "noiseX",
+    "v256": "noiseY",
+    "t135": "point",
+    "p190": "lo",
+    "p191": "hi",
+    "p192": "mean",
+    "p193": "stdDev"
+  },
+  "f4167": {
+    "f4168": "onFocused",
+    "f4169": "flag",
+    "v129": "thread",
+    "v130": "connection",
+    "f4170": "onTextChanged",
+    "f4171": "onTimeout"
+  },
+  "f4172": {
+    "t137": "request",
+    "t138": "headers"
+  },
+  "f4173": {
+    "p111": "body",
+    "f4174": "doSend",
+    "t139": "request",
+    "t140": "headers"
+  },
+  "f4175": {
+    "v131": "clipboardBox",
+    "t141": "whitelist",
+    "t142": "flagSet",
+    "v132": "scriptKeyVal",
+    "v133": "requestFn",
+    "v134": "unhookFn",
+    "v135": "bodyFn",
+    "f4176": "buildDeserializer",
+    "f4177": "bitor",
+    "f4178": "extractBits",
+    "f4179": "readUint32",
+    "f4180": "readFloat64",
+    "f4181": "luauDeserialize"
+  },
+  "f4177": {
+    "p112": "a",
+    "p113": "b",
+    "v136": "bit",
+    "v137": "result",
+    "v138": "aBit",
+    "v139": "bBit"
+  },
+  "f4178": {
+    "p114": "value",
+    "p115": "from",
+    "p116": "width",
+    "v141": "field",
+    "v142": "mask",
+    "v143": "bit"
+  },
+  "f4179": {
+    "v145": "b1",
+    "v146": "b2",
+    "v147": "b3",
+    "v148": "b4"
+  },
+  "f4180": {
+    "v149": "lo32",
+    "v150": "hi32",
+    "v151": "exponentBias",
+    "v152": "mantissa",
+    "v153": "exponent",
+    "v154": "sign",
+    "v155": "result"
+  },
+  "f4181": {
+    "t143": "lut",
+    "v156": "rounds",
+    "v157": "k",
+    "v158": "substitute",
+    "v159": "idx",
+    "v160": "val",
+    "v161": "bit_"
+  },
+  "f5009": {
+    "v396": "cycleCount"
+  },
+  "f6019": {
+    "f6020": "request",
+    "v129": "host",
+    "v130": "statusPath",
+    "v131": "isBeta",
+    "v132": "hostKey",
+    "v133": "hostValue"
+  },
+  "f6076": {
+    "v194": "savedIdentity",
+    "t128": "result"
+  },
+  "f6077": {
+    "f6078": "elevatedCall"
+  },
+  "f6078": {
+    "v195": "savedIdentity",
+    "t129": "result"
+  },
+  "f6818": {
+    "t115": "WebSocket",
+    "v198": "wsUrl"
+  },
+  "f6819": {
+    "f6820": "createWebSocket",
+    "t116": "WebSocket",
+    "v199": "wsUrl"
+  },
+  "f6820": {
+    "t116": "WebSocket",
+    "v199": "wsUrl"
+  },
+  "f7099": {
+    "t13": "normaliser"
+  },
+  "f7100": {
+    "p14": "self",
+    "p15": "values"
+  },
+  "f7101": {
+    "p16": "self",
+    "p17": "input"
+  },
+  "f7102": {
+    "p18": "predictor",
+    "p19": "fromPos",
+    "p20": "toPos",
+    "p21": "extraParam",
+    "t14": "delta",
+    "v34": "heading"
+  },
+  "f7103": {
+    "v35": "normalParams",
+    "v36": "modelWeights",
+    "v37": "inputBuffer",
+    "v38": "layer1Input",
+    "v39": "layer1Output",
+    "v40": "layer2Output",
+    "v41": "layer3Output",
+    "v42": "outputBuffer",
+    "f7104": "denseLayerForward",
+    "t15": "AimPredictor",
+    "v43": "junkVk",
+    "v44": "heading2"
+  },
+  "f7205": {
+    "v153": "errorMsg",
+    "f7206": "onError",
+    "f7207": "junkCode",
+    "v155": "ok"
+  },
+  "f7208": {
+    "p111": "groupId",
+    "f7209": "promiseBody",
+    "v156": "errorMsg",
+    "f7210": "onError",
+    "f7211": "junkCode",
+    "v158": "ok"
+  },
+  "f7212": {
+    "p112": "data",
+    "v159": "index"
+  },
+  "f7213": {
+    "p113": "role",
+    "v160": "baseUrl",
+    "f7214": "processPage",
+    "v161": "index"
+  },
+  "f7215": {
+    "f7216": "fetchGroupRole",
+    "f7217": "processPage",
+    "v162": "baseUrl",
+    "v163": "index"
+  },
+  "f7219": {
+    "v164": "onUser",
+    "v165": "pageLimit",
+    "v166": "groupId",
+    "t102": "seen",
+    "f7220": "doScan",
+    "f7221": "fetchRole",
+    "f7222": "processPage",
+    "f7223": "getResult"
+  },
+  "f7224": {
+    "v169": "pageScanner",
+    "v170": "Promise",
+    "v171": "groupsBaseUrl",
+    "v172": "httpService",
+    "f7225": "createGroupScanPromise",
+    "f7226": "promiseBody",
+    "f7227": "onError",
+    "f7228": "junkCode",
+    "v173": "errorMsg",
+    "v176": "pageLimit",
+    "f7229": "scan"
+  },
+  "f7229": {
+    "v177": "onUser",
+    "v178": "userId",
+    "v179": "groupId",
+    "t105": "seen",
+    "f7230": "doScan",
+    "f7231": "fetchRole",
+    "f7232": "processPage",
+    "f7233": "getResult"
+  },
+  "f7456": {
+    "f7457": "response",
+    "v1": "interval",
+    "v2": "tokenA",
+    "v3": "tokenB",
+    "v4": "hashA",
+    "f7458": "toHashFn",
+    "v5": "hashB",
+    "v6": "heartbeatUrl",
+    "f7459": "sendTicket",
+    "f7460": "closeConnection"
+  },
+  "f9235": {
+    "v344": "isActive1",
+    "v345": "lineNum1",
+    "v346": "funcName1",
+    "v347": "isActive2",
+    "v348": "lineNum2",
+    "v349": "funcName2",
+    "v350": "source2",
+    "v351": "func2",
+    "v352": "isActive3",
+    "v353": "lineNum3",
+    "v354": "funcName3",
+    "v355": "func3",
+    "v356": "source3",
+    "v357": "isActive4",
+    "v358": "lineNum4",
+    "v359": "funcName4",
+    "v360": "func4"
+  },
+  "f9480": {
+    "p102": "section",
+    "f9481": "AddSection",
+    "t126": "config",
+    "t127": "modSection",
+    "f9482": "AddToggle",
+    "t128": "toggleConfig",
+    "t129": "modDropdownConfig",
+    "t130": "friendsDropdownConfig",
+    "t131": "colorLabelConfig",
+    "t132": "colorLabel"
+  },
+  "f9484": {
+    "v158": "colorBindings",
+    "f9485": "addModDetectorSection"
+  },
+  "f9485": {
+    "p103": "section",
+    "f9486": "AddSection",
+    "t133": "config",
+    "t134": "modSection",
+    "f9487": "AddToggle",
+    "t135": "toggleConfig",
+    "t136": "modDropdownConfig",
+    "t137": "friendsDropdownConfig",
+    "t138": "colorLabelConfig",
+    "t139": "colorLabel"
+  },
+  "f9597": {
+    "v317": "isActive1",
+    "v318": "lineNum1",
+    "v319": "funcName1",
+    "v320": "isActive2",
+    "v321": "lineNum2",
+    "v322": "funcName2",
+    "v323": "source2",
+    "v324": "func2",
+    "v325": "isActive3",
+    "v326": "lineNum3",
+    "v327": "funcName3",
+    "v328": "func3",
+    "v329": "source3",
+    "v330": "isActive4",
+    "v331": "lineNum4",
+    "v332": "funcName4",
+    "v333": "func4"
+  },
+  "f9795": {
+    "v653": "self",
+    "f9796": "formatFn",
+    "v654": "endpointTemplate",
+    "v655": "host",
+    "v656": "junkFlag",
+    "v657": "userId"
+  },
+  "f9799": {
+    "v1": "guiService",
+    "v2": "httpService",
+    "v3": "userInputService",
+    "v4": "version",
+    "v5": "startTime",
+    "v6": "executorVersion",
+    "v7": "executorName",
+    "v8": "identifyOk",
+    "v9": "executorNameStr",
+    "v10": "executorVersionStr",
+    "f9800": "detectVR",
+    "v11": "platform",
+    "f9801": "parseDsn",
+    "v12": "projectId",
+    "v13": "host",
+    "v14": "key",
+    "v15": "parsed",
+    "t1": "SentryClient",
+    "v16": "self",
+    "f9802": "formatFn",
+    "v17": "endpointTemplate",
+    "v18": "host",
+    "v19": "junkFlag",
+    "v20": "userId",
+    "f9803": "buildEnvelope",
+    "v21": "envelopeHeader",
+    "f9804": "doReport",
+    "f9805": "sendRequest",
+    "v22": "envelope"
+  },
+  "f9957": {
+    "p161": "msgType",
+    "p162": "key",
+    "p163": "userId",
+    "p164": "extra",
+    "v285": "keyLen",
+    "v286": "buf",
+    "v287": "keyEnd",
+    "v288": "userIdEnd",
+    "v289": "extraOffset"
+  },
+  "f9958": {
+    "p165": "active",
+    "v290": "buf"
+  },
+  "f9959": {
+    "p166": "data",
+    "v291": "buf",
+    "v292": "bufLen",
+    "v293": "offset",
+    "t166": "entries",
+    "v294": "userIdHash",
+    "v295": "payloadOffset",
+    "v296": "payloadLen",
+    "v297": "payloadStart",
+    "v298": "payloadBuf",
+    "t167": "entry"
+  },
+  "f9960": {
+    "t168": "codec",
+    "p167": "msgType",
+    "p168": "key",
+    "p169": "userId",
+    "p170": "extra",
+    "v299": "keyLen",
+    "v300": "buf",
+    "v301": "keyEnd",
+    "v302": "userIdEnd",
+    "v303": "extraOffset",
+    "v304": "buf2",
+    "p172": "data",
+    "v305": "buf3",
+    "v306": "bufLen",
+    "v307": "offset",
+    "t169": "entries",
+    "v308": "userIdHash",
+    "v309": "payloadOffset",
+    "v310": "payloadLen",
+    "v311": "payloadStart",
+    "v312": "payloadBuf",
+    "t170": "entry"
   }
 }
