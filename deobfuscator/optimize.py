@@ -184,6 +184,8 @@ _RULE_DOCS = {
     'prototype copy': ('獨立原型和內嵌副本逐 token 相同：沿用內嵌副本的名稱',
                        '`hookEquipCooldown_proto(self_, item)`'),
     'prototype copy (upvalue)': ('同上，原型的 `upN` 取內嵌副本在同一位置的變數名稱', '`up2` → `restore`'),
+    'duplicate copy': ('載入器裡深層巢狀的模組程式碼和已命名的函式逐 token 相同（已命名那邊的 `upN` 可對應任何名稱）：沿用已命名函式的名稱',
+                       '`v6449` → `header`'),
     'manual': ('`names.json` 人工命名', '`loadEquipCooldownModifier`'),
     'manual (upvalue)': ('`names.json` 人工命名的上值', '`up0` → `settings`'),
 }
@@ -279,6 +281,7 @@ class Renamer:
         self.used_cache = {}
         self.assigned = {}                            # new name -> [scope ranges]
         self.proto_copies = []                        # (prototype body, inline body)
+        self.dup_copies = []                          # (copy body, named body)
 
     # -- source helpers ----------------------------------------------------
     def line_of(self, pos):
@@ -670,6 +673,12 @@ class Renamer:
         """Token shape of a function body with variables replaced by the order
         of their declaration inside it. Free names stay as ('F', name).
         Returns (key, decl ids in order, free token positions) or None."""
+        cache = self.__dict__.setdefault('_shape_cache', {})
+        if body not in cache:
+            cache[body] = self._body_shape(body)
+        return cache[body]
+
+    def _body_shape(self, body):
         s, e = body
         toks = self.tokens()
         lo = bisect.bisect_left(self._token_starts, s)
@@ -869,6 +878,79 @@ class Renamer:
                         and not re.fullmatch(r'up\d+', new):
                     self.free_renames.append((scope, old, new, refs, 'prototype copy (upvalue)'))
 
+    _MIN_COPY_TOKENS = 40
+
+    def local_function_decl(self, body):
+        """Declaration id of `local function NAME` whose body this is."""
+        ls = self.line_around(body[0])[0]
+        m = re.search(rb'local function ([A-Za-z_]\w*)$', self.data[ls:body[0]])
+        if not m:
+            return None
+        d = self.name_at(ls + m.start(1))
+        return d[3] if d and d[4] else None
+
+    def rule_duplicate_copies(self):
+        """The file holds the module code twice: in the module functions (outer
+        variables as upN) and again, deeply nested, in the loader that runs the
+        script. When a body's tokens equal a named body's elsewhere (upN in the
+        named body matching any free name), its declarations take the named
+        body's names by declaration order. Largest bodies first, so nested
+        declarations follow the enclosing match; tiny bodies never start one."""
+        file_scope = (0, len(self.data))
+        top_bodies = {b for b in self.bodies if self.scope_of(b[0] - 1) == file_scope
+                      or b[0] == 0}
+        shapes = {}
+        buckets = {}
+        for body in self.bodies:
+            if body in top_bodies or self.skipped(body[0]):
+                continue
+            shape = self.body_shape(body)
+            if shape is None or len(shape[0]) < self._MIN_COPY_TOKENS:
+                continue
+            shapes[body] = shape
+            buckets.setdefault(shape[0], []).append(body)
+
+        def matches(src, dst):
+            for si, di in zip(shapes[src][2], shapes[dst][2]):
+                sn, dn = self.names[si], self.names[di]
+                if not re.fullmatch(r'up\d+', sn[2]) and sn[2] != dn[2]:
+                    return False
+            return True
+
+        def named(decl):
+            return decl in self.proposals and self.proposals[decl][1] != 'duplicate copy'
+
+        for group in buckets.values():
+            if len(group) < 2:
+                continue
+            for dst in sorted(group, key=lambda b: b[0] - b[1]):   # largest first
+                if self.scope_of(dst[0] - 1) in top_bodies:
+                    continue                       # module-level prototypes: next rule
+                ddecls = shapes[dst][1]
+                if all(d in self.proposals for d in ddecls):
+                    continue
+                srcs = [s for s in group if s != dst
+                        and not (s[0] <= dst[0] < s[1] or dst[0] <= s[0] < dst[1])
+                        and any(named(d) for d in shapes[s][1]) and matches(s, dst)]
+                if not srcs:
+                    continue
+                self.dup_copies.append((dst, srcs[0]))
+                fn = self.local_function_decl(dst)
+                if fn is not None and fn not in self.proposals:
+                    vals = {self.proposals[f][0] for f in map(self.local_function_decl, srcs)
+                            if f is not None and named(f)}
+                    if len(vals) == 1:
+                        self.propose(fn, vals.pop(), 'duplicate copy')
+                for k, d in enumerate(ddecls):
+                    if d in self.proposals or self.names[self.decl_index[d]][2] == 'self':
+                        continue                   # implicit self has no token to rename
+                    vals = {self.proposals[shapes[s][1][k]][0] for s in srcs
+                            if named(shapes[s][1][k])}
+                    if len(vals) == 1:
+                        name = vals.pop()
+                        if name != self.names[self.decl_index[d]][2]:
+                            self.propose(d, name, 'duplicate copy')
+
     # -- assignment ------------------------------------------------------------
     def pick(self, base, scope, strict):
         """`base`, or `base2`, `base3`… (`base_2` if base ends in a digit)."""
@@ -967,6 +1049,7 @@ def auto_rename(src: str, report: dict, skip_lines, manual=None) -> str:
     r.rule_lazy_modules()
     r.rule_classes()
     r.rule_local_value()
+    r.rule_duplicate_copies()
     r.rule_prototype_copies()
     edits, applied = r.edits()
     if r.errors:
@@ -978,6 +1061,8 @@ def auto_rename(src: str, report: dict, skip_lines, manual=None) -> str:
     report['renames'] = applied
     report['prototype_copies'] = [{'line': r.line_of(p[0]), 'copy_of_line': r.line_of(c[0])}
                                   for p, c in r.proto_copies]
+    report['duplicate_copies'] = [{'line': r.line_of(d[0]), 'copy_of_line': r.line_of(s[0])}
+                                  for d, s in r.dup_copies]
     return out
 
 

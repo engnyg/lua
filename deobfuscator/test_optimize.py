@@ -189,6 +189,42 @@ class ToolTest(unittest.TestCase):
         self.assertIn('local scaled = size * workspace.scale', out)
         self.assertIn('up1(self_, scaled)', out)
 
+    def test_duplicate_copy_takes_named_names(self):
+        body = ('\t\tlocal v1 = p1 * {s}.scale + 1\n'
+                '\t\tlocal v2 = {{ size = v1, name = "box", visible = true, depth = 2 }}\n'
+                '\t\t{a}(v2, v1, "resize")\n'
+                '\t\tprint(v2.size, v2.name, v2.visible, v2.depth, v1)\n'
+                '\t\tif v1 > 10 then\n'
+                '\t\t\tv2.size = v1 - 10\n'
+                '\t\tend\n'
+                '\t\treturn v2, v1\n')
+        named = body.replace('v1', 'v1').format(s='up0', a='up1')
+        copy = body.replace('v1', 'v11').replace('v2', 'v12').replace('p1', 'p5')
+        copy = '\t' + copy.replace('\n\t', '\n\t\t').format(s='v8', a='v9')
+        src = ('local function f1()\n'
+               '\tlocal function f2(p1)\n' + named + '\tend\n'
+               '\treturn f2\n'
+               'end\n'
+               'local function f9()\n'
+               '\tlocal v8 = game.Workspace\n'
+               '\tlocal v9 = apply\n'
+               '\tlocal function f11()\n'
+               '\t\tlocal function f10(p5)\n' + copy + '\t\tend\n'
+               '\t\treturn f10\n'
+               '\tend\n'
+               '\treturn f11\n'
+               'end\n')
+        out = o.auto_rename(src, {}, [], {'f1': {'f2': 'resizeBox', 'p1': 'factor',
+                                                 'v1': 'scaled', 'v2': 'box'}})
+        self.assertIn('local function resizeBox(factor)', out)
+        self.assertIn('\t\tlocal function resizeBox(factor)\n\t\t\tlocal scaled = factor * workspace.scale', out)
+        self.assertIn('v9(box, scaled, "resize")', out)
+        # a copy that differs in one token is left alone
+        other = src.replace('"box", visible = true, depth = 2 }\n\t\t\tv9', '"box", visible = false, depth = 2 }\n\t\t\tv9')
+        out = o.auto_rename(other, {}, [], {'f1': {'f2': 'resizeBox', 'p1': 'factor',
+                                                   'v1': 'scaled', 'v2': 'box'}})
+        self.assertIn('local function f10(p5)', out)
+
     def test_class_from_trove_label(self):
         src = ('local function f1()\n'
                '\tlocal function f2()\n'
