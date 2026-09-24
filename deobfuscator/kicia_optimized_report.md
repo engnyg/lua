@@ -58,7 +58,7 @@
 
 ## 自動改名
 
-共改名 21453 個反編譯器產生的名稱（`vN` / `tN` / `fN`），完整對照在 JSON 報告的 `renames`。改名後重新解析整份檔案，每個變數引用指向的宣告都和改名前相同。
+共改名 24452 個反編譯器產生的名稱（`vN` / `tN` / `fN`），完整對照在 JSON 報告的 `renames`。改名後重新解析整份檔案，每個變數引用指向的宣告都和改名前相同。
 
 不改名的範圍（Luarmor 執行環境與載入器）：第 1–3284 行、第 158122–160364 行。另外 `names.json` 的 `_skip` 列出的函式（躲避偵測的程式碼）也不改名。
 
@@ -74,7 +74,7 @@
 | lazy module getter | `local t = X.cache.KEY … t = { c = load() } … return t.c` | `lazyModule_dJ` | 514 |
 | UI element label | `AddToggle(section, { Label = "Auto Save" })` 的回傳值與選項表 | `autoSaveToggle`、`autoSaveToggleOptions` | 2164 |
 | class trove label | `function T.new` 建立 `_trove = Trove.new("a.KillFeed")`：類別與載入它的函式 | `KillFeed`、`loadKillFeed` | 303 |
-| prototype copy | 獨立原型和內嵌副本逐 token 相同：沿用內嵌副本的名稱 | `hookEquipCooldown_proto(self_, item)` | 4411 |
-| prototype copy (upvalue) | 同上，原型的 `upN` 取內嵌副本在同一位置的變數名稱 | `up2` → `restore` | 1462 |
-| manual | `names.json` 人工命名 | `loadEquipCooldownModifier` | 9130 |
+| prototype copy | 獨立原型和內嵌副本逐 token 相同：沿用內嵌副本的名稱 | `hookEquipCooldown_proto(self_, item)` | 5527 |
+| prototype copy (upvalue) | 同上，原型的 `upN` 取內嵌副本在同一位置的變數名稱 | `up2` → `restore` | 1651 |
+| manual | `names.json` 人工命名 | `loadEquipCooldownModifier` | 10824 |
 | manual (upvalue) | `names.json` 人工命名的上值 | `up0` → `settings` | 0 |
