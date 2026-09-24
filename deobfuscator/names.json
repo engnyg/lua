@@ -15550,7 +15550,74 @@
   "p179": "profiled",
   "p180": "flickProfile",
   "v194": "flickMs",
-  "v195": "humanness"
+  "v195": "humanness",
+  "f5136": "advanceCursor",
+  "p123": "cursor",
+  "p124": "fromPos",
+  "p125": "toPos",
+  "p126": "humDt",
+  "t24": "delta",
+  "v104": "trajIdx",
+  "t25": "prevPt",
+  "t26": "nextPt",
+  "v105": "segDur",
+  "v106": "segAlpha",
+  "f5137": "applySettings",
+  "p127": "humanizerSelf",
+  "p128": "humSettings",
+  "v107": "paramDurMs",
+  "v108": "humannessFactor",
+  "f5138": "erfHelper",
+  "p129": "erfInput",
+  "v109": "erfSign",
+  "v110": "erfAbs",
+  "v111": "erfPoly",
+  "f5139": "normalCdfHelper",
+  "p130": "normalZ",
+  "f5140": "lognormalCdfHelper",
+  "p131": "lognormTime",
+  "p132": "lognormOnset",
+  "p133": "lognormMu",
+  "p134": "lognormSigma",
+  "f5141": "lognormalPdfHelper",
+  "p135": "pdfTime",
+  "p136": "pdfOnset",
+  "p137": "pdfMu",
+  "p138": "pdfSigma",
+  "v112": "sinceOnset",
+  "v113": "standardized",
+  "f5142": "curvatureProfileHelper",
+  "p139": "curvProgress",
+  "f5143": "directionCurvatureHelper",
+  "p140": "curvAngle",
+  "f5144": "gaussianHelper",
+  "p141": "gaussRng",
+  "p142": "gaussMean",
+  "p143": "gaussStdDev",
+  "v114": "gaussU1",
+  "f5145": "gammaSampleHelper",
+  "p144": "gammaRng2",
+  "p145": "gammaShape",
+  "p146": "gammaScale",
+  "v115": "shapeBoost",
+  "v116": "gammaD",
+  "v117": "gammaC",
+  "v118": "normalDraw",
+  "v119": "gammaCube",
+  "v120": "uniformDraw",
+  "f5146": "createHumanizerDefaults",
+  "t27": "defaults",
+  "p173": "targetX",
+  "p174": "targetY",
+  "v188": "deltaX",
+  "v189": "deltaY",
+  "v190": "needsRegen",
+  "f5183": "newDenseLayer",
+  "p198": "inputSize",
+  "p199": "outputSize",
+  "p200": "weights",
+  "p201": "bias",
+  "t61": "layerSpec"
  },
  "f5931": {
   "f5934": "getConnect",
@@ -25193,7 +25260,9 @@
   "v199": "wsUrl"
  },
  "f7099": {
-  "t13": "normaliser"
+  "t13": "normaliser",
+  "up0": "normalParams",
+  "up1": "AimPredictorClass"
  },
  "f7100": {
   "p14": "selfObj",
@@ -25201,7 +25270,15 @@
  },
  "f7101": {
   "p16": "selfObj",
-  "p17": "input"
+  "p17": "input",
+  "up0": "denseLayerForward",
+  "up1": "layer1Input",
+  "up2": "modelWeights",
+  "up3": "layer1Output",
+  "up4": "activation",
+  "up5": "layer2Output",
+  "up6": "layer3Output",
+  "up7": "outputBuffer"
  },
  "f7102": {
   "p18": "predictor",
@@ -25209,7 +25286,8 @@
   "p20": "toPos",
   "p21": "extraParam",
   "t14": "delta",
-  "v34": "heading"
+  "v34": "heading",
+  "up0": "inputBuffer"
  },
  "f7103": {
   "v35": "normalParams",
@@ -25223,13 +25301,15 @@
   "f7104": "denseLayerForward",
   "t15": "AimPredictor",
   "v43": "junkVk",
-  "v44": "heading2"
+  "v44": "heading2",
+  "up0": "registry"
  },
  "f7205": {
   "v153": "errorMsg",
   "f7206": "onError",
   "f7207": "junkCode",
-  "v155": "ok"
+  "v155": "ok",
+  "up0": "pcall"
  },
  "f7208": {
   "p111": "groupId",
@@ -25237,23 +25317,32 @@
   "v156": "errorMsg",
   "f7210": "onError",
   "f7211": "junkCode",
-  "v158": "ok"
+  "v158": "ok",
+  "up0": "Promise"
  },
  "f7212": {
   "p112": "data",
-  "v159": "index"
+  "v159": "index",
+  "t99": "user",
+  "up0": "seen",
+  "up1": "onUser"
  },
  "f7213": {
   "p113": "role",
   "v160": "baseUrl",
   "f7214": "processPage",
-  "v161": "index"
+  "v161": "index",
+  "up0": "groupsBaseUrl",
+  "up1": "groupId",
+  "up2": "pageLimit",
+  "up3": "pageScanner"
  },
  "f7215": {
   "f7216": "fetchRole",
   "f7217": "processPage",
   "v162": "baseUrl",
-  "v163": "index"
+  "v163": "index",
+  "up1": "roles"
  },
  "f7219": {
   "v164": "onUser",
@@ -25263,7 +25352,8 @@
   "f7220": "doScan",
   "f7221": "fetchRole",
   "f7222": "processPage",
-  "f7223": "getScanResult"
+  "f7223": "getScanResult",
+  "up0": "makeGroupScan"
  },
  "f7224": {
   "v169": "pageScanner",
@@ -25287,6 +25377,77 @@
   "f7231": "fetchRole",
   "f7232": "processPage",
   "f7233": "getScannerResult"
+ },
+ "f7104": {
+  "p22": "inputVec",
+  "p23": "layerDef",
+  "p24": "outputVec"
+ },
+ "f7204": {
+  "t96": "junkStr",
+  "v152": "junkBool"
+ },
+ "f7207": {
+  "t97": "junkStr",
+  "v154": "junkBool"
+ },
+ "f7211": {
+  "t98": "junkStr",
+  "v157": "junkBool"
+ },
+ "f7214": {
+  "p114": "page",
+  "t100": "userRecord",
+  "up0": "seen",
+  "up1": "onUser"
+ },
+ "f7216": {
+  "p115": "role",
+  "up0": "groupsBaseUrl",
+  "up1": "groupId",
+  "up2": "pageLimit",
+  "up3": "pageScanner"
+ },
+ "f7217": {
+  "p116": "page",
+  "t101": "userRecord",
+  "up0": "seen",
+  "up1": "onUser"
+ },
+ "f7218": {
+  "up0": "result"
+ },
+ "f7221": {
+  "p117": "role",
+  "v167": "baseUrl"
+ },
+ "f7222": {
+  "p118": "page",
+  "v168": "index",
+  "t103": "userRecord",
+  "up0": "seenTable",
+  "up1": "callback"
+ },
+ "f7225": {
+  "p119": "groupId"
+ },
+ "f7228": {
+  "t104": "junkStr",
+  "v174": "junkBool"
+ },
+ "f7231": {
+  "p120": "role",
+  "v180": "baseUrl"
+ },
+ "f7232": {
+  "p121": "page",
+  "v181": "index",
+  "t106": "userRecord",
+  "up0": "seenTable",
+  "up1": "callback"
+ },
+ "f7294": {
+  "up0": "tostring_marker"
  },
  "f7456": {
   "f7457": "response",
