@@ -36,6 +36,8 @@ struct Resolver {
     repeat_bodies: HashSet<usize>,
     /// ranges of `local function fN` / `function fN` definitions
     functions: Vec<(String, usize, usize)>,
+    /// ranges of every function body (params + block), named or not
+    bodies: Vec<(usize, usize)>,
 }
 
 fn token_span(tok: &TokenReference) -> (String, usize, usize) {
@@ -105,6 +107,8 @@ impl Visitor for Resolver {
     }
 
     fn visit_function_body(&mut self, body: &FunctionBody) {
+        self.bodies.push((body.start_position().unwrap().bytes(),
+                          body.end_position().unwrap().bytes()));
         let params: Vec<_> = body
             .parameters()
             .iter()
@@ -186,5 +190,6 @@ pub fn run(src: &str) -> String {
         .map(|n| json!([n.start, n.end, n.name, n.target, n.is_decl as u8]))
         .collect();
     let functions: Vec<_> = r.functions.iter().map(|(n, s, e)| json!([n, s, e])).collect();
-    json!({ "names": names, "functions": functions }).to_string()
+    r.bodies.sort();
+    json!({ "names": names, "functions": functions, "bodies": r.bodies }).to_string()
 }

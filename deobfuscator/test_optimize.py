@@ -98,6 +98,44 @@ class ToolTest(unittest.TestCase):
         self.assertIn('p1.Update = Update', out)
         self.assertIn('return uiCorner, character, autoQueueSection', out)
 
+    def test_ui_elements(self):
+        src = ('local function f1(p1)\n'
+               '\tlocal t1 = {\n\t\tLabel = "Auto Save Config",\n\t\tOptions = { "a" },\n\t}\n'
+               '\tlocal v1 = AddDropdown4(p1, t1)\n'
+               '\tlocal t2 = { Label = "Import", Confirm = true }\n'
+               '\tfunction t2.OnClick() end\n'
+               '\tAddButton8(p1, t2)\n'
+               '\tlocal t3 = { Label = "Twice" }\n'
+               '\tAddButton(p1, t3)\n\tAddButton(p1, t3)\n'
+               '\treturn v1\n'
+               'end\n')
+        out, _ = self.rename(src)
+        self.assertIn('local autoSaveConfigDropdownOptions = {', out)
+        self.assertIn('local autoSaveConfigDropdown = AddDropdown4(p1, autoSaveConfigDropdownOptions)', out)
+        self.assertIn('function importButtonOptions.OnClick() end', out)
+        self.assertIn('local t3 = { Label = "Twice" }', out)  # used twice: ambiguous
+
+    def test_ui_rows_and_groups(self):
+        src = ('local function f1(p1)\n'
+               '\tlocal v1 = p1.AddToggle\n'
+               '\tlocal t1 = { Label = "FOV Circle" }\n'
+               '\tlocal v2 = v1(p1, t1)\n'
+               '\tlocal t2 = { Label = "Color Mode" }\n'
+               '\tlocal v3 = AddLabel9(p1, t2)\n'
+               '\tlocal t3 = { Row = v3.Row, Options = {} }\n'
+               '\tlocal v4 = AddDropdown(p1, t3)\n'
+               '\tlocal t4 = { Source = v4, Option = "Solid" }\n'
+               '\tlocal v5 = AddGroup(p1, t4)\n'
+               '\tlocal t5 = { Source = v2 }\n'
+               '\tlocal v6 = AddGroup(p1, t5)\n'
+               '\treturn v5, v6\n'
+               'end\n')
+        out, _ = self.rename(src)
+        self.assertIn('local fovCircleToggle = addToggle(p1, fovCircleToggleOptions)', out)
+        self.assertIn('local colorModeDropdown = AddDropdown(p1, colorModeDropdownOptions)', out)
+        self.assertIn('local solidGroup = AddGroup(p1, solidGroupOptions)', out)
+        self.assertIn('local fovCircleGroup = AddGroup(p1, fovCircleGroupOptions)', out)
+
     def test_rename_avoids_capture(self):
         src = ('local function f1(p1)\n'
                '\tlocal v1 = p1.Character\n'
@@ -106,6 +144,39 @@ class ToolTest(unittest.TestCase):
                'end\n')
         out, _ = self.rename(src)
         self.assertIn('print(character, character2, character3)', out)
+
+    def test_manual_names(self):
+        src = ('local function f1()\n'
+               '\tlocal function f2(p1)\n'
+               '\t\tlocal v1 = up0.Players\n'
+               '\t\treturn up0, p1, v1\n'
+               '\tend\n'
+               '\treturn f2\n'
+               'end\n')
+        report = {}
+        out = o.auto_rename(src, report, [], {'f1': {'f2': 'getPlayers'},
+                                              'f2': {'p1': 'player', 'up0': 'game_', 'v1': 'players'}})
+        self.assertIn('local function getPlayers(player)', out)
+        self.assertIn('local players = game_.Players', out)
+        self.assertIn('return game_, player, players', out)
+        self.assertIn('return getPlayers', out)
+
+    def test_manual_upvalue_is_per_prototype(self):
+        src = ('local function f1()\n'
+               '\tlocal x = up0.a\n'
+               '\tlocal function f2() return up0.b end\n'
+               '\treturn x, f2\n'
+               'end\n')
+        out = o.auto_rename(src, {}, [], {'f1': {'up0': 'outerThing'}})
+        self.assertIn('local x = outerThing.a', out)
+        self.assertIn('return up0.b', out)
+
+    def test_manual_errors(self):
+        src = 'local function f1(p1)\n\tlocal v1 = 1\n\treturn p1, v1\nend\n'
+        for table in ({'f1': {'v1': 'p1'}}, {'f1': {'v9': 'x'}}, {'f9': {'v1': 'x'}},
+                      {'f1': {'v1': 'end'}}):
+            with self.assertRaises(SystemExit):
+                o.auto_rename(src, {}, [], table)
 
     def test_rename_skips_ranges(self):
         src = 'local function f1(p1)\n\tlocal v1 = p1.Character\n\treturn v1\nend\n'

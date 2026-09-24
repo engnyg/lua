@@ -175,6 +175,10 @@ _RULE_DOCS = {
     'signal handler': ('函式被傳給 `x.Signal:Connect(f)`，而且只對應一個訊號', '`onRenderStepped`'),
     'assigned to field': ('函式被存進欄位 `t.Name = f`，而且只有這一個欄位名稱', '`_reconcile`'),
     'UI section title': ('`AddSection` 的回傳值，用 `Title` 命名', '`generalSection`'),
+    'lazy module getter': ('`local t = X.cache.KEY … t = { c = load() } … return t.c`',
+                           '`lazyModule_dJ`'),
+    'UI element label': ('`AddToggle(section, { Label = "Auto Save" })` 的回傳值與選項表',
+                         '`autoSaveToggle`、`autoSaveToggleOptions`'),
 }
 
 
@@ -257,10 +261,13 @@ class Renamer:
         for i, n in enumerate(self.names):
             if not n[4] and n[3] >= 0:
                 self.refs.setdefault(n[3], []).append(i)
-        self.functions = sorted((s, e, name) for name, s, e in res['functions'])
-        self.fn_by_name = {name: (s, e) for s, e, name in self.functions}
+        self.fn_by_name = {name: (s, e) for name, s, e in res['functions']}
+        self.bodies = [tuple(b) for b in res['bodies']]    # sorted by start
+        self.body_starts = [b[0] for b in self.bodies]
         self.skip = skip_ranges
         self.proposals = {}                           # decl id -> (name, rule)
+        self.free_renames = []                        # (scope, old, new, [name indexes])
+        self.errors = []
         self.used_cache = {}
         self.assigned = {}                            # new name -> [scope ranges]
 
@@ -283,15 +290,17 @@ class Renamer:
         return any(a <= pos < b for a, b in self.skip)
 
     # -- scopes ------------------------------------------------------------
-    def scope_of(self, pos, exclude=None):
-        """Innermost named function range containing pos (whole file if none)."""
-        best = (0, len(self.data))
-        for s, e, _ in self.functions:
-            if s > pos:
-                break
-            if s <= pos < e and (s, e) != exclude and e - s < best[1] - best[0]:
-                best = (s, e)
-        return best
+    def scope_of(self, pos):
+        """Innermost function body containing pos (whole file if none). Bodies
+        nest, so the last one starting before pos that also ends after it is
+        the innermost."""
+        i = bisect.bisect_right(self.body_starts, pos) - 1
+        while i >= 0:
+            s, e = self.bodies[i]
+            if pos < e:
+                return (s, e)
+            i -= 1
+        return (0, len(self.data))
 
     def used(self, scope):
         if scope not in self.used_cache:
@@ -313,6 +322,40 @@ class Renamer:
         if decl_id in self.proposals or not name or not _IDENT.fullmatch(name):
             return
         self.proposals[decl_id] = (name, rule)
+
+    def rule_manual(self, table: dict):
+        """Curated names: {scope function: {old: new}}. A name declared in the
+        scope renames that binding; otherwise free names (upN) in the scope."""
+        for scope_name, mapping in table.items():
+            if scope_name.startswith('_'):
+                continue  # comment keys
+            if scope_name not in self.fn_by_name:
+                self.errors.append(f'{scope_name}: no such function')
+                continue
+            scope = self.fn_by_name[scope_name]
+            lo = bisect.bisect_left(self.starts, scope[0])
+            hi = bisect.bisect_left(self.starts, scope[1])
+            for old, new in mapping.items():
+                if not _IDENT.fullmatch(new) or new in _KEYWORDS:
+                    self.errors.append(f'{scope_name}.{old}: invalid name {new!r}')
+                    continue
+                decls = [self.names[i] for i in range(lo, hi)
+                         if self.names[i][4] and self.names[i][2] == old]
+                if len(decls) == 1:
+                    self.proposals[decls[0][3]] = (new, 'manual')
+                elif len(decls) > 1:
+                    self.errors.append(f'{scope_name}.{old}: declared {len(decls)} times')
+                else:
+                    # upvalues are numbered per prototype: only refs whose
+                    # innermost function is the scope itself
+                    body = self.bodies[bisect.bisect_left(self.body_starts, scope[0])]
+                    refs = [i for i in range(lo, hi)
+                            if self.names[i][2] == old and self.names[i][3] == -1
+                            and self.scope_of(self.names[i][0]) == body]
+                    if refs:
+                        self.free_renames.append((body, old, new, refs))
+                    else:
+                        self.errors.append(f'{scope_name}.{old}: not found')
 
     def rule_local_value(self):
         rx = [
@@ -371,26 +414,189 @@ class Renamer:
                 self.propose(self.names[i][3], name if name[0].isalpha() else '_' + name,
                              'UI section title')
 
+    def table_text(self, pos):
+        """(text, byte offset) of the `{ ... }` constructor at the first `{` after pos."""
+        i = self.data.find(b'{', pos)
+        depth, j, n = 0, i, min(len(self.data), i + 4000)
+        while j < n:
+            c = self.data[j]
+            if c == 0x22:  # skip "strings"
+                j += 1
+                while j < n and self.data[j] != 0x22:
+                    j += 2 if self.data[j] == 0x5C else 1
+            elif c == 0x7B:
+                depth += 1
+            elif c == 0x7D:
+                depth -= 1
+                if depth == 0:
+                    return self.data[i:j + 1].decode('utf-8'), i
+            j += 1
+        return None, i
+
+    def index_at(self, pos):
+        i = bisect.bisect_left(self.starts, pos)
+        return i if i < len(self.names) and self.names[i][0] == pos else None
+
+    def name_at(self, pos):
+        i = self.index_at(pos)
+        return None if i is None else self.names[i]
+
+    def element_kind(self, callee_idx):
+        """`AddToggle3` → `Toggle`; a local alias `local v = x.AddSlider` → `Slider`."""
+        name = self.names[callee_idx]
+        m = re.fullmatch(r'Add([A-Z]\w*?)\d*', name[2])
+        if m:
+            return m.group(1)
+        if name[3] < 0:
+            return None
+        d = self.names[self.decl_index[name[3]]]
+        _, _, line = self.line_around(d[0])
+        m = re.fullmatch(r'\s*local ' + re.escape(d[2]) + r' = [\w.]+\.Add([A-Z]\w*?)\s*', line)
+        return m.group(1) if m else None
+
+    _KINDS = ('Toggle', 'Slider', 'Dropdown', 'Label', 'Button', 'TextBox', 'List', 'Color',
+              'Keybind', 'Group', 'Gear', 'Tab', 'Section')
+
+    def base_from(self, text, tstart, key):
+        """Base name from `key = var.Row` / `key = var`, using var's proposed name."""
+        m = re.search(r'(?:^\{|,)\s*' + key + r' = (\w+)(?:\.Row)?\s*[,}]', text)
+        if not m:
+            return None
+        tok = self.name_at(tstart + len(text[:m.start(1)].encode('utf-8')))
+        prop = tok and tok[3] >= 0 and self.proposals.get(tok[3])
+        if not prop:
+            return None
+        for kind in self._KINDS:
+            if prop[0].endswith(kind) and len(prop[0]) > len(kind):
+                return prop[0][:-len(kind)]
+        return None
+
+    def rule_ui_elements(self):
+        """`local t = { Label = "Auto Save", ... }` used once as
+        `[local v =] AddToggle3(section, t)` → `autoSaveToggleOptions` and
+        `autoSaveToggle`. Later passes also name `{ Row = autoSaveLabel.Row }`
+        (the control on that label's row), `{ Option = "Solid" }` groups and
+        `{ Source = animateToggle }` groups."""
+        candidates = []
+        for n in self.names:
+            if not n[4] or not re.fullmatch(r't\d+', n[2]) or self.skipped(n[0]):
+                continue
+            _, _, line = self.line_around(n[0])
+            if not re.match(r'\s*local ' + n[2] + r' = \{', line):
+                continue
+            refs = self.refs.get(n[3], ())
+            if any(self.is_write(r) for r in refs):
+                continue
+            calls = []
+            for r in refs:
+                _, _, rl = self.line_around(self.names[r][0])
+                m = re.fullmatch(r'\s*(?:local ([vt]\d+) = )?(\w+)\(\w+, ' + n[2] + r'\)\s*', rl)
+                if m:
+                    calls.append((m, self.names[r][0]))
+            if len(calls) != 1:
+                continue
+            (m, at), = calls
+            ls, _, rl = self.line_around(at)
+            callee = self.index_at(ls + len(rl[:m.start(2)].encode('utf-8')))
+            kind = None if callee is None else self.element_kind(callee)
+            if not kind:
+                continue
+            text, tstart = self.table_text(n[1])
+            if text:
+                candidates.append((n, m, ls, rl, kind, text, tstart))
+
+        for pass_ in range(3):
+            for n, m, ls, rl, kind, text, tstart in candidates:
+                if n[3] in self.proposals:
+                    continue
+                base = None
+                label = re.search(r'(?:^\{|,)\s*Label = "([^"]+)"', text)
+                if label:
+                    base = self.camel(label.group(1))
+                elif pass_ > 0:
+                    option = re.search(r'(?:^\{|,)\s*Option = "([^"]+)"', text)
+                    if option:
+                        base = self.camel(option.group(1))
+                    else:
+                        base = self.base_from(text, tstart, 'Row') or self.base_from(text, tstart, 'Source')
+                if not base:
+                    continue
+                self.propose(n[3], base + kind + 'Options', 'UI element label')
+                if m.group(1):
+                    d = self.name_at(ls + len(rl[:m.start(1)].encode('utf-8')))
+                    if d and d[4] and not any(self.is_write(r) for r in self.refs.get(d[3], ())):
+                        self.propose(d[3], base + kind, 'UI element label')
+
+    @staticmethod
+    def camel(text):
+        words = re.findall(r'[A-Za-z0-9]+', text)
+        if not words:
+            return None
+        first = words[0].lower() if words[0].isupper() else words[0][0].lower() + words[0][1:]
+        base = first + ''.join(w[0].upper() + w[1:] for w in words[1:])
+        return '_' + base if base[0].isdigit() else base
+
+    def rule_lazy_modules(self):
+        """`local function f() local t = X.cache.KEY if not t then t = { c = load() }
+        X.cache.KEY = t end return t.c end` → `lazyModule_KEY`."""
+        rx = re.compile(
+            r'(?m)^[ \t]*local function (f\d+)\(\)[ \t]*\r?\n'
+            r'[ \t]*local (t\d+) = ([\w.]+)\.cache\.(\w+)[ \t]*\r?\n'
+            r'[ \t]*if not \2 then[ \t]*\r?\n'
+            r'[ \t]*\2 = \{ c = [\w.]+\(\) \}[ \t]*\r?\n'
+            r'[ \t]*\3\.cache\.\4 = \2[ \t]*\r?\n'
+            r'[ \t]*end[ \t]*\r?\n'
+            r'[ \t]*return \2\.c[ \t]*\r?\n'
+            r'[ \t]*end\b')
+        for m in rx.finditer(self.src):
+            pos = len(self.src[:m.start(1)].encode('utf-8'))
+            i = bisect.bisect_left(self.starts, pos)
+            if i < len(self.names) and self.names[i][0] == pos and self.names[i][4] \
+                    and not self.skipped(pos):
+                self.propose(self.names[i][3], 'lazyModule_' + m.group(4), 'lazy module getter')
+
     # -- assignment ------------------------------------------------------------
+    def pick(self, base, scope, strict):
+        """`base`, or `base2`, `base3`… (`base_2` if base ends in a digit)."""
+        if strict:
+            return base if self.free(base, scope) else None
+        sep = '_' if base[-1].isdigit() else ''
+        for k in range(1, 100):
+            cand = base if k == 1 else f'{base}{sep}{k}'
+            if self.free(cand, scope):
+                return cand
+        return None
+
+    def take(self, name, scope):
+        self.assigned.setdefault(name, []).append(scope)
+        self.used(scope).add(name)
+
     def edits(self):
         edits, applied = [], []
-        for decl_id, (base, rule) in sorted(self.proposals.items(),
-                                            key=lambda kv: self.names[self.decl_index[kv[0]]][0]):
-            d = self.names[self.decl_index[decl_id]]
-            own = self.fn_by_name.get(d[2]) if d[2].startswith('f') else None
-            scope = self.scope_of(d[0], exclude=own)
-            for k in range(1, 100):
-                sep = '_' if base[-1].isdigit() else ''
-                cand = base if k == 1 else f'{base}{sep}{k}'
-                if self.free(cand, scope):
-                    break
-            else:
+        for scope, old, new, refs in self.free_renames:
+            if not self.free(new, scope):
+                self.errors.append(f'{old} -> {new}: name already used in scope')
                 continue
-            self.assigned.setdefault(cand, []).append(scope)
-            self.used(scope).add(cand)
+            self.take(new, scope)
+            edits += [{'start': self.names[i][0], 'end': self.names[i][1], 'text': new}
+                      for i in refs]
+            applied.append({'line': self.data.count(b'\n', 0, self.names[refs[0]][0]) + 1,
+                            'old': old, 'new': new, 'rule': 'manual (upvalue)'})
+
+        # curated names first, then evidence-based ones, each in source order
+        order = sorted(self.proposals.items(),
+                       key=lambda kv: (kv[1][1] != 'manual', self.names[self.decl_index[kv[0]]][0]))
+        for decl_id, (base, rule) in order:
+            d = self.names[self.decl_index[decl_id]]
+            scope = self.scope_of(d[0])
+            cand = self.pick(base, scope, strict=rule == 'manual')
+            if cand is None:
+                if rule == 'manual':
+                    self.errors.append(f'{d[2]} -> {base}: name already used in scope')
+                continue
+            self.take(cand, scope)
             for idx in [self.decl_index[decl_id]] + self.refs.get(decl_id, []):
-                s, e = self.names[idx][0], self.names[idx][1]
-                edits.append({'start': s, 'end': e, 'text': cand})
+                edits.append({'start': self.names[idx][0], 'end': self.names[idx][1], 'text': cand})
             applied.append({'line': self.data.count(b'\n', 0, d[0]) + 1,
                             'old': d[2], 'new': cand, 'rule': rule})
         return edits, applied
@@ -420,16 +626,21 @@ def signature(src: str):
     return [(n[4], n[3]) for n in run_tool('resolve', src)['names']]
 
 
-def auto_rename(src: str, report: dict, skip_lines) -> str:
+def auto_rename(src: str, report: dict, skip_lines, manual=None) -> str:
     data = src.encode('utf-8')
     line_starts = [0] + [m.end() for m in re.finditer(rb'\n', data)]
     skip = [(line_starts[a - 1], line_starts[b] if b < len(line_starts) else len(data))
             for a, b in skip_lines]
     r = Renamer(src, skip)
+    r.rule_manual(manual or {})
     r.rule_function_refs()
     r.rule_sections()
+    r.rule_ui_elements()
+    r.rule_lazy_modules()
     r.rule_local_value()
     edits, applied = r.edits()
+    if r.errors:
+        sys.exit('names.json problems:\n  ' + '\n  '.join(r.errors))
     out = apply_edits(src, edits)
     before = [(n[4], n[3]) for n in r.names]
     if signature(out) != before:
@@ -448,6 +659,8 @@ def main(argv=None):
     ap.add_argument('input', help='output of deobfuscator.py')
     ap.add_argument('-o', '--output', help='default: <input>_optimized.lua')
     ap.add_argument('-r', '--report', help='default: <output>_report.json (+ .md)')
+    ap.add_argument('-n', '--names', default=os.path.join(HERE, 'names.json'),
+                    help='curated names {scope function: {old: new}} (default: names.json)')
     args = ap.parse_args(argv)
 
     root = os.path.splitext(args.input)[0]
@@ -467,7 +680,11 @@ def main(argv=None):
         sys.exit(f'syntax errors after restoring artifacts: {errors[:5]}')
     report_predicates(src, report)
     report['excluded_lines'] = luarmor_ranges(src)
-    src = auto_rename(src, report, report['excluded_lines'])
+    manual = {}
+    if os.path.exists(args.names):
+        with open(args.names, encoding='utf-8') as fh:
+            manual = json.load(fh)
+    src = auto_rename(src, report, report['excluded_lines'], manual)
     errors = check_syntax(src)
     if errors:
         sys.exit(f'syntax errors after renaming: {errors[:5]}')
