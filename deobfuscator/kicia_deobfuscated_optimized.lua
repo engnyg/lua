@@ -102486,56 +102486,56 @@ local function f6675()
 	end
 
 	local function createWebSocket()
-		local WebSocket = up1
+		local WebSocket = WebSocketLib
 		local new97 = WebSocket.new
-		local wsUrl = up2
+		local wsUrl = wsUrlOverride
 		if wsUrl then
 			wsUrl = LT_R_RRT_W
 		end
 		if not wsUrl then
-			wsUrl = up3
+			wsUrl = serverIp
 			if wsUrl then
 				wsUrl = "ws://" ..
-					up6 .. ":80/wshttpemu"
+					serverHost .. ":80/wshttpemu"
 			end
 		end
 		if not wsUrl then
 			wsUrl = "wss://" ..
-				up6 .. ":443/wshttpemu"
+				serverHost .. ":443/wshttpemu"
 		end
-		up0 = new97(WebSocket, wsUrl)
+		wsSocket = new97(WebSocket, wsUrl)
 	end
 
 	local function connectWebSocket()
 		repeat
 			local function tryCreateWebSocket()
-				local WebSocket = up1
+				local WebSocket = WebSocketLib
 				local new98 = WebSocket.new
-				local wsUrl = up2
+				local wsUrl = wsUrlOverride
 				if wsUrl then
 					wsUrl = LT_R_RRT_W
 				end
 				if not wsUrl then
-					wsUrl = up3
+					wsUrl = serverIp
 					if wsUrl then
 						wsUrl = "ws://" ..
-							up6 .. ":80/wshttpemu"
+							serverHost .. ":80/wshttpemu"
 					end
 				end
 				if not wsUrl then
 					wsUrl = "wss://" ..
-						up6 .. ":443/wshttpemu"
+						serverHost .. ":443/wshttpemu"
 				end
-				up0 = new98(WebSocket, wsUrl)
+				wsSocket = new98(WebSocket, wsUrl)
 			end
-		until not up0(tryCreateWebSocket)
-		up8(
+		until not pcallFn(tryCreateWebSocket)
+		logWarn(
 			75,
 			"%",
 			" - Failed to connect to WS, falling back to HTTP."
 		)
-		up1 = false
-		up9 = true
+		wsConnected = false
+		httpFallback = true
 	end
 
 	local function lazyModule_gP()

@@ -4062,6 +4062,90 @@
    "rule": "manual (upvalue)"
   },
   {
+   "line": 102506,
+   "old": "up0",
+   "new": "wsSocket",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102489,
+   "old": "up1",
+   "new": "WebSocketLib",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102491,
+   "old": "up2",
+   "new": "wsUrlOverride",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102496,
+   "old": "up3",
+   "new": "serverIp",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102499,
+   "old": "up6",
+   "new": "serverHost",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102531,
+   "old": "up0",
+   "new": "pcallFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102537,
+   "old": "up1",
+   "new": "wsConnected",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102532,
+   "old": "up8",
+   "new": "logWarn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102538,
+   "old": "up9",
+   "new": "httpFallback",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102529,
+   "old": "up0",
+   "new": "wsSocket",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102512,
+   "old": "up1",
+   "new": "WebSocketLib",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102514,
+   "old": "up2",
+   "new": "wsUrlOverride",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102519,
+   "old": "up3",
+   "new": "serverIp",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 102522,
+   "old": "up6",
+   "new": "serverHost",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 106825,
    "old": "up0",
    "new": "normalParams",

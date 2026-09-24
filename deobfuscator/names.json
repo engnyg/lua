@@ -25268,15 +25268,29 @@
     "t129": "result"
   },
   "f6818": {
+    "up0": "wsSocket",
+    "up1": "WebSocketLib",
+    "up2": "wsUrlOverride",
+    "up3": "serverIp",
+    "up6": "serverHost",
     "t115": "WebSocket",
     "v198": "wsUrl"
   },
   "f6819": {
     "f6820": "tryCreateWebSocket",
+    "up0": "pcallFn",
+    "up1": "wsConnected",
+    "up8": "logWarn",
+    "up9": "httpFallback",
     "t116": "WebSocket",
     "v199": "wsUrl"
   },
   "f6820": {
+    "up0": "wsSocket",
+    "up1": "WebSocketLib",
+    "up2": "wsUrlOverride",
+    "up3": "serverIp",
+    "up6": "serverHost",
     "t116": "WebSocket",
     "v199": "wsUrl"
   },
