@@ -154530,7 +154530,7 @@ end
 
 local function f10149()
 	local function f10150()
-		up0.cI()
+		modules.cI()
 
 		local function buildColorGradingSection(grid)
 			local addSection = grid.AddSection
@@ -154552,10 +154552,10 @@ local function f10149()
 	end
 
 	local function lazyModule_hO()
-		local t6 = up0.cache.hO
+		local t6 = modules.cache.hO
 		if not t6 then
-			t6 = { c = up1() }
-			up0.cache.hO = t6
+			t6 = { c = loadModule_hO() }
+			modules.cache.hO = t6
 		end
 		return t6.c
 	end
@@ -155036,9 +155036,9 @@ local function f10149()
 	end
 
 	local function f10187()
-		local v50 = up0.bX()
-		local v51 = up0.y()
-		local ColorBinding2 = up0.cI().ColorBinding
+		local v50 = modules.bX()
+		local v51 = modules.y()
+		local ColorBinding2 = modules.cI().ColorBinding
 		local t50 = {}
 		local v52 = nil
 
@@ -155500,10 +155500,10 @@ local function f10149()
 	end
 
 	local function loadAlwaysBackstab()
-		local v95 = up0.y()
-		up0.aT()
-		up0.a4()
-		local v96 = up0.q()
+		local v95 = modules.y()
+		modules.aT()
+		modules.a4()
+		local v96 = modules.q()
 		local AlwaysBackstab = {}
 		AlwaysBackstab.__index = AlwaysBackstab
 
@@ -155775,8 +155775,8 @@ local function f10149()
 	end
 
 	local function f10240()
-		local v100 = up0.cJ()
-		up0.cI()
+		local v100 = modules.cJ()
+		modules.cI()
 
 		local function packArgs(...)
 			local args = table.create(2)
@@ -156162,10 +156162,10 @@ local function f10149()
 	end
 
 	local function f10292()
-		up0.gJ()
-		up0.cI()
-		local v110 = up0.gO()
-		local v111 = up0.gP()
+		modules.gJ()
+		modules.cI()
+		local v110 = modules.gO()
+		local v111 = modules.gP()
 
 		local function f10293(p90)
 			local addSection = p90.AddSection
@@ -156528,12 +156528,12 @@ local function f10149()
 	end
 
 	local function loadInfoModifier()
-		up0.al()
-		up0.aK()
-		up0.a4()
-		local v138 = up0.q()
-		local v139 = up0.d()
-		local v140 = up0.ah()
+		modules.al()
+		modules.aK()
+		modules.a4()
+		local v138 = modules.q()
+		local v139 = modules.d()
+		local v140 = modules.ah()
 		local t234 = {}
 
 		function t234.MaxDoubleJumps(p132, p133, p134)
@@ -156795,10 +156795,10 @@ local function f10149()
 	end
 
 	local function lazyModule_e_()
-		local t238 = up0.cache.e_
+		local t238 = modules.cache.e_
 		if not t238 then
-			t238 = { c = up1() }
-			up0.cache.e_ = t238
+			t238 = { c = loadModule_e_() }
+			modules.cache.e_ = t238
 		end
 		return t238.c
 	end
@@ -156983,11 +156983,11 @@ local function f10149()
 	end
 
 	local function loadMotionDisabler()
-		up0.al()
-		up0.aK()
-		up0.a4()
-		local v184 = up0.q()
-		local v185 = up0.dv()
+		modules.al()
+		modules.aK()
+		modules.a4()
+		local v184 = modules.q()
+		local v185 = modules.dv()
 		local t239 = {
 			_sliding_spring = 0,
 			_sprinting_spring = 0,
@@ -157273,11 +157273,11 @@ local function f10149()
 	end
 
 	local function loadLightningSparks()
-		up0.m()
-		local v217 = up0.q()
-		local v218 = up0.f5()
-		local v219 = up0.fY()
-		local v220 = up0.f0()
+		modules.m()
+		local v217 = modules.q()
+		local v218 = modules.f5()
+		local v219 = modules.fY()
+		local v220 = modules.f0()
 		local v221 = Random.new()
 		local LightningSparks = {}
 		LightningSparks.__index = LightningSparks
@@ -157424,24 +157424,24 @@ local function f10149()
 	end
 
 	local function f10371()
-		up0.g()
+		modules.g()
 		return (table.create(7))
 	end
 
 	local function lazyModule_dZ()
-		local t250 = up0.cache.dZ
+		local t250 = modules.cache.dZ
 		if not t250 then
-			t250 = { c = up1() }
-			up0.cache.dZ = t250
+			t250 = { c = loadModule_dZ() }
+			modules.cache.dZ = t250
 		end
 		return t250.c
 	end
 
 	local function lazyModule_d_()
-		local t251 = up0.cache.d_
+		local t251 = modules.cache.d_
 		if not t251 then
-			t251 = { c = up1() }
-			up0.cache.d_ = t251
+			t251 = { c = loadModule_d_() }
+			modules.cache.d_ = t251
 		end
 		return t251.c
 	end
@@ -157642,14 +157642,14 @@ local function f10149()
 	end
 
 	local function loadConfig(...)
-		local v245 = up0.f()
-		up0.g()
-		up0.dY()
-		up0.t()
-		up0.dA()
-		local v246 = up0.d_()
-		up0.cR()
-		local v247 = up0.q()
+		local v245 = modules.f()
+		modules.g()
+		modules.dY()
+		modules.t()
+		modules.dA()
+		local v246 = modules.d_()
+		modules.cR()
+		local v247 = modules.q()
 		local v248 = "kiciahook/rivals_v3/cosmetics"
 		local v249 = string.format("%s/states", tostring(v248))
 		local core_config = "core_config"
@@ -157969,19 +157969,19 @@ local function f10149()
 	end
 
 	local function lazyModule_g6()
-		local t281 = up0.cache.g6
+		local t281 = modules.cache.g6
 		if not t281 then
-			t281 = { c = up1() }
-			up0.cache.g6 = t281
+			t281 = { c = loadModule_g6() }
+			modules.cache.g6 = t281
 		end
 		return t281.c
 	end
 
 	local function lazyModule_gm()
-		local t282 = up0.cache.gm
+		local t282 = modules.cache.gm
 		if not t282 then
-			t282 = { c = up1() }
-			up0.cache.gm = t282
+			t282 = { c = loadModule_gm() }
+			modules.cache.gm = t282
 		end
 		return t282.c
 	end
@@ -158039,11 +158039,11 @@ local function f10149()
 	end
 
 	local function f10405()
-		local v267 = up0.ac()
-		up0.aj()
-		local v268 = up0.b()
-		local v269 = up0.ag()
-		local QuickAttackFunction = up0.ao().QuickAttackFunction
+		local v267 = modules.ac()
+		modules.aj()
+		local v268 = modules.b()
+		local v269 = modules.ag()
+		local QuickAttackFunction = modules.ao().QuickAttackFunction
 		local v270 = cloneref(game:GetService("ReplicatedStorage"))
 		local t289 = {}
 		t289.__index = t289
@@ -161194,12 +161194,12 @@ local function f10149()
 									return v681
 								end
 
-								local byte = string.byte
+								local byte9 = string.byte
 								local v682 = string.rep(" ", 8)
 
 								local function f10565()
 									local v683, v684, v685, v686
-									v686, v685, v684, v683 = byte(v682, 1, 4)
+									v686, v685, v684, v683 = byte9(v682, 1, 4)
 									return f10563(v683, 64) * 16777216 + f10563(v684, 32) * 65536 + f10563(v685, 16) * 256 + f10563(v686, 8)
 								end
 
@@ -161404,12 +161404,12 @@ local function f10149()
 							return v709
 						end
 
-						local byte = string.byte
+						local byte10 = string.byte
 						local v710 = string.rep(" ", 8)
 
 						local function f10570()
 							local v711, v712, v713, v714
-							v714, v713, v712, v711 = byte(v710, 1, 4)
+							v714, v713, v712, v711 = byte10(v710, 1, 4)
 							return f10568(v711, 64) * 16777216 + f10568(v712, 32) * 65536 + f10568(v713, 16) * 256 + f10568(v714, 8)
 						end
 
@@ -161607,12 +161607,12 @@ local function f10149()
 									return v737
 								end
 
-								local byte = string.byte
+								local byte11 = string.byte
 								local v738 = string.rep(" ", 8)
 
 								local function f10575()
 									local v739, v740, v741, v742
-									v742, v741, v740, v739 = byte(v738, 1, 4)
+									v742, v741, v740, v739 = byte11(v738, 1, 4)
 									return f10573(v739, 64) * 16777216 + f10573(v740, 32) * 65536 + f10573(v741, 16) * 256 + f10573(v742, 8)
 								end
 
@@ -161821,12 +161821,12 @@ local function f10149()
 									return v765
 								end
 
-								local byte = string.byte
+								local byte12 = string.byte
 								local v766 = string.rep(" ", 8)
 
 								local function f10580()
 									local v767, v768, v769, v770
-									v770, v769, v768, v767 = byte(v766, 1, 4)
+									v770, v769, v768, v767 = byte12(v766, 1, 4)
 									return f10578(v767, 64) * 16777216 + f10578(v768, 32) * 65536 + f10578(v769, 16) * 256 + f10578(v770, 8)
 								end
 
@@ -162037,12 +162037,12 @@ local function f10149()
 							return v793
 						end
 
-						local byte = string.byte
+						local byte13 = string.byte
 						local v794 = string.rep(" ", 8)
 
 						local function f10585()
 							local v795, v796, v797, v798
-							v798, v797, v796, v795 = byte(v794, 1, 4)
+							v798, v797, v796, v795 = byte13(v794, 1, 4)
 							return f10583(v795, 64) * 16777216 + f10583(v796, 32) * 65536 + f10583(v797, 16) * 256 + f10583(v798, 8)
 						end
 
@@ -162899,12 +162899,12 @@ local function f10149()
 							return v911
 						end
 
-						local byte = string.byte
+						local byte17 = string.byte
 						local v912 = string.rep(" ", 8)
 
 						local function f10610()
 							local v913, v914, v915, v916
-							v916, v915, v914, v913 = byte(v912, 1, 4)
+							v916, v915, v914, v913 = byte17(v912, 1, 4)
 							return f10608(v913, 64) * 16777216 + f10608(v914, 32) * 65536 + f10608(v915, 16) * 256 + f10608(v916, 8)
 						end
 
@@ -163115,12 +163115,12 @@ local function f10149()
 							return v941
 						end
 
-						local byte = string.byte
+						local byte18 = string.byte
 						local v942 = string.rep(" ", 8)
 
 						local function f10617()
 							local v943, v944, v945, v946
-							v946, v945, v944, v943 = byte(v942, 1, 4)
+							v946, v945, v944, v943 = byte18(v942, 1, 4)
 							return f10615(v943, 64) * 16777216 + f10615(v944, 32) * 65536 + f10615(v945, 16) * 256 + f10615(v946, 8)
 						end
 
@@ -163329,12 +163329,12 @@ local function f10149()
 							return v970
 						end
 
-						local byte = string.byte
+						local byte19 = string.byte
 						local v971 = string.rep(" ", 8)
 
 						local function f10623()
 							local v972, v973, v974, v975
-							v975, v974, v973, v972 = byte(v971, 1, 4)
+							v975, v974, v973, v972 = byte19(v971, 1, 4)
 							return f10621(v972, 64) * 16777216 + f10621(v973, 32) * 65536 + f10621(v974, 16) * 256 + f10621(v975, 8)
 						end
 
@@ -163530,12 +163530,12 @@ local function f10149()
 							return v998
 						end
 
-						local byte = string.byte
+						local byte20 = string.byte
 						local v999 = string.rep(" ", 8)
 
 						local function f10628()
 							local v1000, v1001, v1002, v1003
-							v1003, v1002, v1001, v1000 = byte(v999, 1, 4)
+							v1003, v1002, v1001, v1000 = byte20(v999, 1, 4)
 							return f10626(v1000, 64) * 16777216 + f10626(v1001, 32) * 65536 + f10626(v1002, 16) * 256 + f10626(v1003, 8)
 						end
 
@@ -163730,12 +163730,12 @@ local function f10149()
 							return v1026
 						end
 
-						local byte = string.byte
+						local byte21 = string.byte
 						local v1027 = string.rep(" ", 8)
 
 						local function f10633()
 							local v1028, v1029, v1030, v1031
-							v1031, v1030, v1029, v1028 = byte(v1027, 1, 4)
+							v1031, v1030, v1029, v1028 = byte21(v1027, 1, 4)
 							return f10631(v1028, 64) * 16777216 + f10631(v1029, 32) * 65536 + f10631(v1030, 16) * 256 + f10631(v1031, 8)
 						end
 
@@ -163931,12 +163931,12 @@ local function f10149()
 								return v1054
 							end
 
-							local byte = string.byte
+							local byte22 = string.byte
 							local v1055 = string.rep(" ", 8)
 
 							local function f10638()
 								local v1056, v1057, v1058, v1059
-								v1059, v1058, v1057, v1056 = byte(v1055, 1, 4)
+								v1059, v1058, v1057, v1056 = byte22(v1055, 1, 4)
 								return f10636(v1056, 64) * 16777216 + f10636(v1057, 32) * 65536 + f10636(v1058, 16) * 256 + f10636(v1059, 8)
 							end
 
@@ -164133,12 +164133,12 @@ local function f10149()
 							return v1082
 						end
 
-						local byte = string.byte
+						local byte23 = string.byte
 						local v1083 = string.rep(" ", 8)
 
 						local function f10643()
 							local v1084, v1085, v1086, v1087
-							v1087, v1086, v1085, v1084 = byte(v1083, 1, 4)
+							v1087, v1086, v1085, v1084 = byte23(v1083, 1, 4)
 							return f10641(v1084, 64) * 16777216 + f10641(v1085, 32) * 65536 + f10641(v1086, 16) * 256 + f10641(v1087, 8)
 						end
 
@@ -164339,12 +164339,12 @@ local function f10149()
 							return v1110
 						end
 
-						local byte = string.byte
+						local byte24 = string.byte
 						local v1111 = string.rep(" ", 8)
 
 						local function f10648()
 							local v1112, v1113, v1114, v1115
-							v1115, v1114, v1113, v1112 = byte(v1111, 1, 4)
+							v1115, v1114, v1113, v1112 = byte24(v1111, 1, 4)
 							return f10646(v1112, 64) * 16777216 + f10646(v1113, 32) * 65536 + f10646(v1114, 16) * 256 + f10646(v1115, 8)
 						end
 
@@ -164539,12 +164539,12 @@ local function f10149()
 							return v1138
 						end
 
-						local byte = string.byte
+						local byte25 = string.byte
 						local v1139 = string.rep(" ", 8)
 
 						local function f10653()
 							local v1140, v1141, v1142, v1143
-							v1143, v1142, v1141, v1140 = byte(v1139, 1, 4)
+							v1143, v1142, v1141, v1140 = byte25(v1139, 1, 4)
 							return f10651(v1140, 64) * 16777216 + f10651(v1141, 32) * 65536 + f10651(v1142, 16) * 256 + f10651(v1143, 8)
 						end
 
@@ -164754,12 +164754,12 @@ local function f10149()
 							return v1166
 						end
 
-						local byte = string.byte
+						local byte26 = string.byte
 						local v1167 = string.rep(" ", 8)
 
 						local function f10658()
 							local v1168, v1169, v1170, v1171
-							v1171, v1170, v1169, v1168 = byte(v1167, 1, 4)
+							v1171, v1170, v1169, v1168 = byte26(v1167, 1, 4)
 							return f10656(v1168, 64) * 16777216 + f10656(v1169, 32) * 65536 + f10656(v1170, 16) * 256 + f10656(v1171, 8)
 						end
 
@@ -164961,12 +164961,12 @@ local function f10149()
 							return v1194
 						end
 
-						local byte = string.byte
+						local byte27 = string.byte
 						local v1195 = string.rep(" ", 8)
 
 						local function f10663()
 							local v1196, v1197, v1198, v1199
-							v1199, v1198, v1197, v1196 = byte(v1195, 1, 4)
+							v1199, v1198, v1197, v1196 = byte27(v1195, 1, 4)
 							return f10661(v1196, 64) * 16777216 + f10661(v1197, 32) * 65536 + f10661(v1198, 16) * 256 + f10661(v1199, 8)
 						end
 
@@ -165174,12 +165174,12 @@ local function f10149()
 							return v1222
 						end
 
-						local byte = string.byte
+						local byte28 = string.byte
 						local v1223 = string.rep(" ", 8)
 
 						local function f10668()
 							local v1224, v1225, v1226, v1227
-							v1227, v1226, v1225, v1224 = byte(v1223, 1, 4)
+							v1227, v1226, v1225, v1224 = byte28(v1223, 1, 4)
 							return f10666(v1224, 64) * 16777216 + f10666(v1225, 32) * 65536 + f10666(v1226, 16) * 256 + f10666(v1227, 8)
 						end
 
@@ -165377,12 +165377,12 @@ local function f10149()
 								return v1250
 							end
 
-							local byte = string.byte
+							local byte29 = string.byte
 							local v1251 = string.rep(" ", 8)
 
 							local function f10673()
 								local v1252, v1253, v1254, v1255
-								v1255, v1254, v1253, v1252 = byte(v1251, 1, 4)
+								v1255, v1254, v1253, v1252 = byte29(v1251, 1, 4)
 								return f10671(v1252, 64) * 16777216 + f10671(v1253, 32) * 65536 + f10671(v1254, 16) * 256 + f10671(v1255, 8)
 							end
 
@@ -165580,12 +165580,12 @@ local function f10149()
 							return v1278
 						end
 
-						local byte = string.byte
+						local byte30 = string.byte
 						local v1279 = string.rep(" ", 8)
 
 						local function f10678()
 							local v1280, v1281, v1282, v1283
-							v1283, v1282, v1281, v1280 = byte(v1279, 1, 4)
+							v1283, v1282, v1281, v1280 = byte30(v1279, 1, 4)
 							return f10676(v1280, 64) * 16777216 + f10676(v1281, 32) * 65536 + f10676(v1282, 16) * 256 + f10676(v1283, 8)
 						end
 
@@ -165781,12 +165781,12 @@ local function f10149()
 							return v1306
 						end
 
-						local byte = string.byte
+						local byte31 = string.byte
 						local v1307 = string.rep(" ", 8)
 
 						local function f10683()
 							local v1308, v1309, v1310, v1311
-							v1311, v1310, v1309, v1308 = byte(v1307, 1, 4)
+							v1311, v1310, v1309, v1308 = byte31(v1307, 1, 4)
 							return f10681(v1308, 64) * 16777216 + f10681(v1309, 32) * 65536 + f10681(v1310, 16) * 256 + f10681(v1311, 8)
 						end
 
@@ -165981,12 +165981,12 @@ local function f10149()
 							return v1334
 						end
 
-						local byte = string.byte
+						local byte32 = string.byte
 						local v1335 = string.rep(" ", 8)
 
 						local function f10688()
 							local v1336, v1337, v1338, v1339
-							v1339, v1338, v1337, v1336 = byte(v1335, 1, 4)
+							v1339, v1338, v1337, v1336 = byte32(v1335, 1, 4)
 							return f10686(v1336, 64) * 16777216 + f10686(v1337, 32) * 65536 + f10686(v1338, 16) * 256 + f10686(v1339, 8)
 						end
 
@@ -166183,12 +166183,12 @@ local function f10149()
 							return v1362
 						end
 
-						local byte = string.byte
+						local byte33 = string.byte
 						local v1363 = string.rep(" ", 8)
 
 						local function f10693()
 							local v1364, v1365, v1366, v1367
-							v1367, v1366, v1365, v1364 = byte(v1363, 1, 4)
+							v1367, v1366, v1365, v1364 = byte33(v1363, 1, 4)
 							return f10691(v1364, 64) * 16777216 + f10691(v1365, 32) * 65536 + f10691(v1366, 16) * 256 + f10691(v1367, 8)
 						end
 
@@ -166383,12 +166383,12 @@ local function f10149()
 							return v1390
 						end
 
-						local byte = string.byte
+						local byte34 = string.byte
 						local v1391 = string.rep(" ", 8)
 
 						local function f10698()
 							local v1392, v1393, v1394, v1395
-							v1395, v1394, v1393, v1392 = byte(v1391, 1, 4)
+							v1395, v1394, v1393, v1392 = byte34(v1391, 1, 4)
 							return f10696(v1392, 64) * 16777216 + f10696(v1393, 32) * 65536 + f10696(v1394, 16) * 256 + f10696(v1395, 8)
 						end
 
@@ -166590,12 +166590,12 @@ local function f10149()
 							return v1418
 						end
 
-						local byte = string.byte
+						local byte35 = string.byte
 						local v1419 = string.rep(" ", 8)
 
 						local function f10703()
 							local v1420, v1421, v1422, v1423
-							v1423, v1422, v1421, v1420 = byte(v1419, 1, 4)
+							v1423, v1422, v1421, v1420 = byte35(v1419, 1, 4)
 							return f10701(v1420, 64) * 16777216 + f10701(v1421, 32) * 65536 + f10701(v1422, 16) * 256 + f10701(v1423, 8)
 						end
 
@@ -166812,12 +166812,12 @@ local function f10149()
 										return v1446
 									end
 
-									local byte = string.byte
+									local byte36 = string.byte
 									local v1447 = string.rep(" ", 8)
 
 									local function f10708()
 										local v1448, v1449, v1450, v1451
-										v1451, v1450, v1449, v1448 = byte(v1447, 1, 4)
+										v1451, v1450, v1449, v1448 = byte36(v1447, 1, 4)
 										return f10706(v1448, 64) * 16777216 + f10706(v1449, 32) * 65536 + f10706(v1450, 16) * 256 + f10706(v1451, 8)
 									end
 
@@ -167016,12 +167016,12 @@ local function f10149()
 										return v1474
 									end
 
-									local byte = string.byte
+									local byte37 = string.byte
 									local v1475 = string.rep(" ", 8)
 
 									local function f10713()
 										local v1476, v1477, v1478, v1479
-										v1479, v1478, v1477, v1476 = byte(v1475, 1, 4)
+										v1479, v1478, v1477, v1476 = byte37(v1475, 1, 4)
 										return f10711(v1476, 64) * 16777216 + f10711(v1477, 32) * 65536 + f10711(v1478, 16) * 256 + f10711(v1479, 8)
 									end
 
@@ -167222,12 +167222,12 @@ local function f10149()
 										return v1502
 									end
 
-									local byte = string.byte
+									local byte38 = string.byte
 									local v1503 = string.rep(" ", 8)
 
 									local function f10718()
 										local v1504, v1505, v1506, v1507
-										v1507, v1506, v1505, v1504 = byte(v1503, 1, 4)
+										v1507, v1506, v1505, v1504 = byte38(v1503, 1, 4)
 										return f10716(v1504, 64) * 16777216 + f10716(v1505, 32) * 65536 + f10716(v1506, 16) * 256 + f10716(v1507, 8)
 									end
 
@@ -167425,12 +167425,12 @@ local function f10149()
 									return v1530
 								end
 
-								local byte = string.byte
+								local byte39 = string.byte
 								local v1531 = string.rep(" ", 8)
 
 								local function f10723()
 									local v1532, v1533, v1534, v1535
-									v1535, v1534, v1533, v1532 = byte(v1531, 1, 4)
+									v1535, v1534, v1533, v1532 = byte39(v1531, 1, 4)
 									return f10721(v1532, 64) * 16777216 + f10721(v1533, 32) * 65536 + f10721(v1534, 16) * 256 + f10721(v1535, 8)
 								end
 
@@ -167631,12 +167631,12 @@ local function f10149()
 									return v1558
 								end
 
-								local byte = string.byte
+								local byte40 = string.byte
 								local v1559 = string.rep(" ", 8)
 
 								local function f10728()
 									local v1560, v1561, v1562, v1563
-									v1563, v1562, v1561, v1560 = byte(v1559, 1, 4)
+									v1563, v1562, v1561, v1560 = byte40(v1559, 1, 4)
 									return f10726(v1560, 64) * 16777216 + f10726(v1561, 32) * 65536 + f10726(v1562, 16) * 256 + f10726(v1563, 8)
 								end
 
@@ -167839,12 +167839,12 @@ local function f10149()
 									return v1586
 								end
 
-								local byte = string.byte
+								local byte41 = string.byte
 								local v1587 = string.rep(" ", 8)
 
 								local function f10733()
 									local v1588, v1589, v1590, v1591
-									v1591, v1590, v1589, v1588 = byte(v1587, 1, 4)
+									v1591, v1590, v1589, v1588 = byte41(v1587, 1, 4)
 									return f10731(v1588, 64) * 16777216 + f10731(v1589, 32) * 65536 + f10731(v1590, 16) * 256 + f10731(v1591, 8)
 								end
 
@@ -168047,12 +168047,12 @@ local function f10149()
 									return v1614
 								end
 
-								local byte = string.byte
+								local byte42 = string.byte
 								local v1615 = string.rep(" ", 8)
 
 								local function f10738()
 									local v1616, v1617, v1618, v1619
-									v1619, v1618, v1617, v1616 = byte(v1615, 1, 4)
+									v1619, v1618, v1617, v1616 = byte42(v1615, 1, 4)
 									return f10736(v1616, 64) * 16777216 + f10736(v1617, 32) * 65536 + f10736(v1618, 16) * 256 + f10736(v1619, 8)
 								end
 
@@ -168255,12 +168255,12 @@ local function f10149()
 									return v1642
 								end
 
-								local byte = string.byte
+								local byte43 = string.byte
 								local v1643 = string.rep(" ", 8)
 
 								local function f10743()
 									local v1644, v1645, v1646, v1647
-									v1647, v1646, v1645, v1644 = byte(v1643, 1, 4)
+									v1647, v1646, v1645, v1644 = byte43(v1643, 1, 4)
 									return f10741(v1644, 64) * 16777216 + f10741(v1645, 32) * 65536 + f10741(v1646, 16) * 256 + f10741(v1647, 8)
 								end
 
@@ -168461,12 +168461,12 @@ local function f10149()
 									return v1670
 								end
 
-								local byte = string.byte
+								local byte44 = string.byte
 								local v1671 = string.rep(" ", 8)
 
 								local function f10748()
 									local v1672, v1673, v1674, v1675
-									v1675, v1674, v1673, v1672 = byte(v1671, 1, 4)
+									v1675, v1674, v1673, v1672 = byte44(v1671, 1, 4)
 									return f10746(v1672, 64) * 16777216 + f10746(v1673, 32) * 65536 + f10746(v1674, 16) * 256 + f10746(v1675, 8)
 								end
 
@@ -168662,12 +168662,12 @@ local function f10149()
 										return v1698
 									end
 
-									local byte = string.byte
+									local byte45 = string.byte
 									local v1699 = string.rep(" ", 8)
 
 									local function f10753()
 										local v1700, v1701, v1702, v1703
-										v1703, v1702, v1701, v1700 = byte(v1699, 1, 4)
+										v1703, v1702, v1701, v1700 = byte45(v1699, 1, 4)
 										return f10751(v1700, 64) * 16777216 + f10751(v1701, 32) * 65536 + f10751(v1702, 16) * 256 + f10751(v1703, 8)
 									end
 
@@ -168865,12 +168865,12 @@ local function f10149()
 									return v1726
 								end
 
-								local byte = string.byte
+								local byte46 = string.byte
 								local v1727 = string.rep(" ", 8)
 
 								local function f10758()
 									local v1728, v1729, v1730, v1731
-									v1731, v1730, v1729, v1728 = byte(v1727, 1, 4)
+									v1731, v1730, v1729, v1728 = byte46(v1727, 1, 4)
 									return f10756(v1728, 64) * 16777216 + f10756(v1729, 32) * 65536 + f10756(v1730, 16) * 256 + f10756(v1731, 8)
 								end
 
@@ -169065,12 +169065,12 @@ local function f10149()
 									return v1754
 								end
 
-								local byte = string.byte
+								local byte47 = string.byte
 								local v1755 = string.rep(" ", 8)
 
 								local function f10763()
 									local v1756, v1757, v1758, v1759
-									v1759, v1758, v1757, v1756 = byte(v1755, 1, 4)
+									v1759, v1758, v1757, v1756 = byte47(v1755, 1, 4)
 									return f10761(v1756, 64) * 16777216 + f10761(v1757, 32) * 65536 + f10761(v1758, 16) * 256 + f10761(v1759, 8)
 								end
 
@@ -169271,12 +169271,12 @@ local function f10149()
 									return v1782
 								end
 
-								local byte = string.byte
+								local byte48 = string.byte
 								local v1783 = string.rep(" ", 8)
 
 								local function f10768()
 									local v1784, v1785, v1786, v1787
-									v1787, v1786, v1785, v1784 = byte(v1783, 1, 4)
+									v1787, v1786, v1785, v1784 = byte48(v1783, 1, 4)
 									return f10766(v1784, 64) * 16777216 + f10766(v1785, 32) * 65536 + f10766(v1786, 16) * 256 + f10766(v1787, 8)
 								end
 
@@ -169429,12 +169429,12 @@ local function f10149()
 									return v1810
 								end
 
-								local byte = string.byte
+								local byte49 = string.byte
 								local v1811 = string.rep(" ", 8)
 
 								local function f10773()
 									local v1812, v1813, v1814, v1815
-									v1815, v1814, v1813, v1812 = byte(v1811, 1, 4)
+									v1815, v1814, v1813, v1812 = byte49(v1811, 1, 4)
 									return f10771(v1812, 64) * 16777216 + f10771(v1813, 32) * 65536 + f10771(v1814, 16) * 256 + f10771(v1815, 8)
 								end
 
@@ -169637,12 +169637,12 @@ local function f10149()
 									return v1838
 								end
 
-								local byte = string.byte
+								local byte50 = string.byte
 								local v1839 = string.rep(" ", 8)
 
 								local function f10778()
 									local v1840, v1841, v1842, v1843
-									v1843, v1842, v1841, v1840 = byte(v1839, 1, 4)
+									v1843, v1842, v1841, v1840 = byte50(v1839, 1, 4)
 									return f10776(v1840, 64) * 16777216 + f10776(v1841, 32) * 65536 + f10776(v1842, 16) * 256 + f10776(v1843, 8)
 								end
 
@@ -169843,12 +169843,12 @@ local function f10149()
 									return v1866
 								end
 
-								local byte = string.byte
+								local byte51 = string.byte
 								local v1867 = string.rep(" ", 8)
 
 								local function f10783()
 									local v1868, v1869, v1870, v1871
-									v1871, v1870, v1869, v1868 = byte(v1867, 1, 4)
+									v1871, v1870, v1869, v1868 = byte51(v1867, 1, 4)
 									return f10781(v1868, 64) * 16777216 + f10781(v1869, 32) * 65536 + f10781(v1870, 16) * 256 + f10781(v1871, 8)
 								end
 
@@ -170044,12 +170044,12 @@ local function f10149()
 										return v1894
 									end
 
-									local byte = string.byte
+									local byte52 = string.byte
 									local v1895 = string.rep(" ", 8)
 
 									local function f10788()
 										local v1896, v1897, v1898, v1899
-										v1899, v1898, v1897, v1896 = byte(v1895, 1, 4)
+										v1899, v1898, v1897, v1896 = byte52(v1895, 1, 4)
 										return f10786(v1896, 64) * 16777216 + f10786(v1897, 32) * 65536 + f10786(v1898, 16) * 256 + f10786(v1899, 8)
 									end
 
@@ -170247,12 +170247,12 @@ local function f10149()
 									return v1922
 								end
 
-								local byte = string.byte
+								local byte53 = string.byte
 								local v1923 = string.rep(" ", 8)
 
 								local function f10793()
 									local v1924, v1925, v1926, v1927
-									v1927, v1926, v1925, v1924 = byte(v1923, 1, 4)
+									v1927, v1926, v1925, v1924 = byte53(v1923, 1, 4)
 									return f10791(v1924, 64) * 16777216 + f10791(v1925, 32) * 65536 + f10791(v1926, 16) * 256 + f10791(v1927, 8)
 								end
 
@@ -170447,12 +170447,12 @@ local function f10149()
 									return v1950
 								end
 
-								local byte = string.byte
+								local byte54 = string.byte
 								local v1951 = string.rep(" ", 8)
 
 								local function f10798()
 									local v1952, v1953, v1954, v1955
-									v1955, v1954, v1953, v1952 = byte(v1951, 1, 4)
+									v1955, v1954, v1953, v1952 = byte54(v1951, 1, 4)
 									return f10796(v1952, 64) * 16777216 + f10796(v1953, 32) * 65536 + f10796(v1954, 16) * 256 + f10796(v1955, 8)
 								end
 
@@ -170649,12 +170649,12 @@ local function f10149()
 									return v1978
 								end
 
-								local byte = string.byte
+								local byte55 = string.byte
 								local v1979 = string.rep(" ", 8)
 
 								local function f10803()
 									local v1980, v1981, v1982, v1983
-									v1983, v1982, v1981, v1980 = byte(v1979, 1, 4)
+									v1983, v1982, v1981, v1980 = byte55(v1979, 1, 4)
 									return f10801(v1980, 64) * 16777216 + f10801(v1981, 32) * 65536 + f10801(v1982, 16) * 256 + f10801(v1983, 8)
 								end
 
@@ -170853,12 +170853,12 @@ local function f10149()
 									return v2006
 								end
 
-								local byte = string.byte
+								local byte56 = string.byte
 								local v2007 = string.rep(" ", 8)
 
 								local function f10808()
 									local v2008, v2009, v2010, v2011
-									v2011, v2010, v2009, v2008 = byte(v2007, 1, 4)
+									v2011, v2010, v2009, v2008 = byte56(v2007, 1, 4)
 									return f10806(v2008, 64) * 16777216 + f10806(v2009, 32) * 65536 + f10806(v2010, 16) * 256 + f10806(v2011, 8)
 								end
 
@@ -171056,12 +171056,12 @@ local function f10149()
 										return v2034
 									end
 
-									local byte = string.byte
+									local byte57 = string.byte
 									local v2035 = string.rep(" ", 8)
 
 									local function f10813()
 										local v2036, v2037, v2038, v2039
-										v2039, v2038, v2037, v2036 = byte(v2035, 1, 4)
+										v2039, v2038, v2037, v2036 = byte57(v2035, 1, 4)
 										return f10811(v2036, 64) * 16777216 + f10811(v2037, 32) * 65536 + f10811(v2038, 16) * 256 + f10811(v2039, 8)
 									end
 
@@ -171261,12 +171261,12 @@ local function f10149()
 										return v2062
 									end
 
-									local byte = string.byte
+									local byte58 = string.byte
 									local v2063 = string.rep(" ", 8)
 
 									local function f10818()
 										local v2064, v2065, v2066, v2067
-										v2067, v2066, v2065, v2064 = byte(v2063, 1, 4)
+										v2067, v2066, v2065, v2064 = byte58(v2063, 1, 4)
 										return f10816(v2064, 64) * 16777216 + f10816(v2065, 32) * 65536 + f10816(v2066, 16) * 256 + f10816(v2067, 8)
 									end
 
@@ -171465,12 +171465,12 @@ local function f10149()
 										return v2090
 									end
 
-									local byte = string.byte
+									local byte59 = string.byte
 									local v2091 = string.rep(" ", 8)
 
 									local function f10823()
 										local v2092, v2093, v2094, v2095
-										v2095, v2094, v2093, v2092 = byte(v2091, 1, 4)
+										v2095, v2094, v2093, v2092 = byte59(v2091, 1, 4)
 										return f10821(v2092, 64) * 16777216 + f10821(v2093, 32) * 65536 + f10821(v2094, 16) * 256 + f10821(v2095, 8)
 									end
 
@@ -171669,12 +171669,12 @@ local function f10149()
 										return v2118
 									end
 
-									local byte = string.byte
+									local byte60 = string.byte
 									local v2119 = string.rep(" ", 8)
 
 									local function f10828()
 										local v2120, v2121, v2122, v2123
-										v2123, v2122, v2121, v2120 = byte(v2119, 1, 4)
+										v2123, v2122, v2121, v2120 = byte60(v2119, 1, 4)
 										return f10826(v2120, 64) * 16777216 + f10826(v2121, 32) * 65536 + f10826(v2122, 16) * 256 + f10826(v2123, 8)
 									end
 
@@ -171873,12 +171873,12 @@ local function f10149()
 										return v2146
 									end
 
-									local byte = string.byte
+									local byte61 = string.byte
 									local v2147 = string.rep(" ", 8)
 
 									local function f10833()
 										local v2148, v2149, v2150, v2151
-										v2151, v2150, v2149, v2148 = byte(v2147, 1, 4)
+										v2151, v2150, v2149, v2148 = byte61(v2147, 1, 4)
 										return f10831(v2148, 64) * 16777216 + f10831(v2149, 32) * 65536 + f10831(v2150, 16) * 256 + f10831(v2151, 8)
 									end
 
@@ -172078,12 +172078,12 @@ local function f10149()
 										return v2174
 									end
 
-									local byte = string.byte
+									local byte62 = string.byte
 									local v2175 = string.rep(" ", 8)
 
 									local function f10838()
 										local v2176, v2177, v2178, v2179
-										v2179, v2178, v2177, v2176 = byte(v2175, 1, 4)
+										v2179, v2178, v2177, v2176 = byte62(v2175, 1, 4)
 										return f10836(v2176, 64) * 16777216 + f10836(v2177, 32) * 65536 + f10836(v2178, 16) * 256 + f10836(v2179, 8)
 									end
 
@@ -172283,12 +172283,12 @@ local function f10149()
 										return v2202
 									end
 
-									local byte = string.byte
+									local byte63 = string.byte
 									local v2203 = string.rep(" ", 8)
 
 									local function f10843()
 										local v2204, v2205, v2206, v2207
-										v2207, v2206, v2205, v2204 = byte(v2203, 1, 4)
+										v2207, v2206, v2205, v2204 = byte63(v2203, 1, 4)
 										return f10841(v2204, 64) * 16777216 + f10841(v2205, 32) * 65536 + f10841(v2206, 16) * 256 + f10841(v2207, 8)
 									end
 
@@ -172488,12 +172488,12 @@ local function f10149()
 										return v2230
 									end
 
-									local byte = string.byte
+									local byte64 = string.byte
 									local v2231 = string.rep(" ", 8)
 
 									local function f10848()
 										local v2232, v2233, v2234, v2235
-										v2235, v2234, v2233, v2232 = byte(v2231, 1, 4)
+										v2235, v2234, v2233, v2232 = byte64(v2231, 1, 4)
 										return f10846(v2232, 64) * 16777216 + f10846(v2233, 32) * 65536 + f10846(v2234, 16) * 256 + f10846(v2235, 8)
 									end
 
@@ -172693,12 +172693,12 @@ local function f10149()
 										return v2258
 									end
 
-									local byte = string.byte
+									local byte65 = string.byte
 									local v2259 = string.rep(" ", 8)
 
 									local function f10853()
 										local v2260, v2261, v2262, v2263
-										v2263, v2262, v2261, v2260 = byte(v2259, 1, 4)
+										v2263, v2262, v2261, v2260 = byte65(v2259, 1, 4)
 										return f10851(v2260, 64) * 16777216 + f10851(v2261, 32) * 65536 + f10851(v2262, 16) * 256 + f10851(v2263, 8)
 									end
 
@@ -172888,12 +172888,12 @@ local function f10149()
 											return v2286
 										end
 
-										local byte = string.byte
+										local byte66 = string.byte
 										local v2287 = string.rep(" ", 8)
 
 										local function f10858()
 											local v2288, v2289, v2290, v2291
-											v2291, v2290, v2289, v2288 = byte(v2287, 1, 4)
+											v2291, v2290, v2289, v2288 = byte66(v2287, 1, 4)
 											return f10856(v2288, 64) * 16777216 + f10856(v2289, 32) * 65536 + f10856(v2290, 16) * 256 + f10856(v2291, 8)
 										end
 
@@ -173091,12 +173091,12 @@ local function f10149()
 										return v2314
 									end
 
-									local byte = string.byte
+									local byte67 = string.byte
 									local v2315 = string.rep(" ", 8)
 
 									local function f10863()
 										local v2316, v2317, v2318, v2319
-										v2319, v2318, v2317, v2316 = byte(v2315, 1, 4)
+										v2319, v2318, v2317, v2316 = byte67(v2315, 1, 4)
 										return f10861(v2316, 64) * 16777216 + f10861(v2317, 32) * 65536 + f10861(v2318, 16) * 256 + f10861(v2319, 8)
 									end
 
@@ -173293,12 +173293,12 @@ local function f10149()
 										return v2342
 									end
 
-									local byte = string.byte
+									local byte68 = string.byte
 									local v2343 = string.rep(" ", 8)
 
 									local function f10868()
 										local v2344, v2345, v2346, v2347
-										v2347, v2346, v2345, v2344 = byte(v2343, 1, 4)
+										v2347, v2346, v2345, v2344 = byte68(v2343, 1, 4)
 										return f10866(v2344, 64) * 16777216 + f10866(v2345, 32) * 65536 + f10866(v2346, 16) * 256 + f10866(v2347, 8)
 									end
 
@@ -173494,12 +173494,12 @@ local function f10149()
 										return v2370
 									end
 
-									local byte = string.byte
+									local byte69 = string.byte
 									local v2371 = string.rep(" ", 8)
 
 									local function f10873()
 										local v2372, v2373, v2374, v2375
-										v2375, v2374, v2373, v2372 = byte(v2371, 1, 4)
+										v2375, v2374, v2373, v2372 = byte69(v2371, 1, 4)
 										return f10871(v2372, 64) * 16777216 + f10871(v2373, 32) * 65536 + f10871(v2374, 16) * 256 + f10871(v2375, 8)
 									end
 
@@ -173696,12 +173696,12 @@ local function f10149()
 										return v2398
 									end
 
-									local byte = string.byte
+									local byte70 = string.byte
 									local v2399 = string.rep(" ", 8)
 
 									local function f10878()
 										local v2400, v2401, v2402, v2403
-										v2403, v2402, v2401, v2400 = byte(v2399, 1, 4)
+										v2403, v2402, v2401, v2400 = byte70(v2399, 1, 4)
 										return f10876(v2400, 64) * 16777216 + f10876(v2401, 32) * 65536 + f10876(v2402, 16) * 256 + f10876(v2403, 8)
 									end
 
@@ -173896,12 +173896,12 @@ local function f10149()
 										return v2426
 									end
 
-									local byte = string.byte
+									local byte71 = string.byte
 									local v2427 = string.rep(" ", 8)
 
 									local function f10883()
 										local v2428, v2429, v2430, v2431
-										v2431, v2430, v2429, v2428 = byte(v2427, 1, 4)
+										v2431, v2430, v2429, v2428 = byte71(v2427, 1, 4)
 										return f10881(v2428, 64) * 16777216 + f10881(v2429, 32) * 65536 + f10881(v2430, 16) * 256 + f10881(v2431, 8)
 									end
 
@@ -174097,12 +174097,12 @@ local function f10149()
 										return v2454
 									end
 
-									local byte = string.byte
+									local byte72 = string.byte
 									local v2455 = string.rep(" ", 8)
 
 									local function f10888()
 										local v2456, v2457, v2458, v2459
-										v2459, v2458, v2457, v2456 = byte(v2455, 1, 4)
+										v2459, v2458, v2457, v2456 = byte72(v2455, 1, 4)
 										return f10886(v2456, 64) * 16777216 + f10886(v2457, 32) * 65536 + f10886(v2458, 16) * 256 + f10886(v2459, 8)
 									end
 
@@ -174298,12 +174298,12 @@ local function f10149()
 											return v2482
 										end
 
-										local byte = string.byte
+										local byte73 = string.byte
 										local v2483 = string.rep(" ", 8)
 
 										local function f10893()
 											local v2484, v2485, v2486, v2487
-											v2487, v2486, v2485, v2484 = byte(v2483, 1, 4)
+											v2487, v2486, v2485, v2484 = byte73(v2483, 1, 4)
 											return f10891(v2484, 64) * 16777216 + f10891(v2485, 32) * 65536 + f10891(v2486, 16) * 256 + f10891(v2487, 8)
 										end
 
@@ -174499,12 +174499,12 @@ local function f10149()
 										return v2510
 									end
 
-									local byte = string.byte
+									local byte74 = string.byte
 									local v2511 = string.rep(" ", 8)
 
 									local function f10898()
 										local v2512, v2513, v2514, v2515
-										v2515, v2514, v2513, v2512 = byte(v2511, 1, 4)
+										v2515, v2514, v2513, v2512 = byte74(v2511, 1, 4)
 										return f10896(v2512, 64) * 16777216 + f10896(v2513, 32) * 65536 + f10896(v2514, 16) * 256 + f10896(v2515, 8)
 									end
 
@@ -174700,12 +174700,12 @@ local function f10149()
 										return v2538
 									end
 
-									local byte = string.byte
+									local byte75 = string.byte
 									local v2539 = string.rep(" ", 8)
 
 									local function f10903()
 										local v2540, v2541, v2542, v2543
-										v2543, v2542, v2541, v2540 = byte(v2539, 1, 4)
+										v2543, v2542, v2541, v2540 = byte75(v2539, 1, 4)
 										return f10901(v2540, 64) * 16777216 + f10901(v2541, 32) * 65536 + f10901(v2542, 16) * 256 + f10901(v2543, 8)
 									end
 
@@ -174900,12 +174900,12 @@ local function f10149()
 										return v2566
 									end
 
-									local byte = string.byte
+									local byte76 = string.byte
 									local v2567 = string.rep(" ", 8)
 
 									local function f10908()
 										local v2568, v2569, v2570, v2571
-										v2571, v2570, v2569, v2568 = byte(v2567, 1, 4)
+										v2571, v2570, v2569, v2568 = byte76(v2567, 1, 4)
 										return f10906(v2568, 64) * 16777216 + f10906(v2569, 32) * 65536 + f10906(v2570, 16) * 256 + f10906(v2571, 8)
 									end
 
@@ -175124,12 +175124,12 @@ local function f10149()
 										return v2593
 									end
 
-									local byte = string.byte
+									local byte77 = string.byte
 									local v2594 = string.rep(" ", 8)
 
 									local function f10913()
 										local v2595, v2596, v2597, v2598
-										v2598, v2597, v2596, v2595 = byte(v2594, 1, 4)
+										v2598, v2597, v2596, v2595 = byte77(v2594, 1, 4)
 										return f10911(v2595, 64) * 16777216 + f10911(v2596, 32) * 65536 + f10911(v2597, 16) * 256 + f10911(v2598, 8)
 									end
 
@@ -175316,12 +175316,12 @@ local function f10149()
 										return v2621
 									end
 
-									local byte = string.byte
+									local byte78 = string.byte
 									local v2622 = string.rep(" ", 8)
 
 									local function f10918()
 										local v2623, v2624, v2625, v2626
-										v2626, v2625, v2624, v2623 = byte(v2622, 1, 4)
+										v2626, v2625, v2624, v2623 = byte78(v2622, 1, 4)
 										return f10916(v2623, 64) * 16777216 + f10916(v2624, 32) * 65536 + f10916(v2625, 16) * 256 + f10916(v2626, 8)
 									end
 
@@ -175518,12 +175518,12 @@ local function f10149()
 										return v2649
 									end
 
-									local byte = string.byte
+									local byte79 = string.byte
 									local v2650 = string.rep(" ", 8)
 
 									local function f10923()
 										local v2651, v2652, v2653, v2654
-										v2654, v2653, v2652, v2651 = byte(v2650, 1, 4)
+										v2654, v2653, v2652, v2651 = byte79(v2650, 1, 4)
 										return f10921(v2651, 64) * 16777216 + f10921(v2652, 32) * 65536 + f10921(v2653, 16) * 256 + f10921(v2654, 8)
 									end
 
@@ -175719,12 +175719,12 @@ local function f10149()
 										return v2677
 									end
 
-									local byte = string.byte
+									local byte80 = string.byte
 									local v2678 = string.rep(" ", 8)
 
 									local function f10928()
 										local v2679, v2680, v2681, v2682
-										v2682, v2681, v2680, v2679 = byte(v2678, 1, 4)
+										v2682, v2681, v2680, v2679 = byte80(v2678, 1, 4)
 										return f10926(v2679, 64) * 16777216 + f10926(v2680, 32) * 65536 + f10926(v2681, 16) * 256 + f10926(v2682, 8)
 									end
 
@@ -175921,12 +175921,12 @@ local function f10149()
 										return v2705
 									end
 
-									local byte = string.byte
+									local byte81 = string.byte
 									local v2706 = string.rep(" ", 8)
 
 									local function f10933()
 										local v2707, v2708, v2709, v2710
-										v2710, v2709, v2708, v2707 = byte(v2706, 1, 4)
+										v2710, v2709, v2708, v2707 = byte81(v2706, 1, 4)
 										return f10931(v2707, 64) * 16777216 + f10931(v2708, 32) * 65536 + f10931(v2709, 16) * 256 + f10931(v2710, 8)
 									end
 
@@ -176122,12 +176122,12 @@ local function f10149()
 										return v2733
 									end
 
-									local byte = string.byte
+									local byte82 = string.byte
 									local v2734 = string.rep(" ", 8)
 
 									local function f10938()
 										local v2735, v2736, v2737, v2738
-										v2738, v2737, v2736, v2735 = byte(v2734, 1, 4)
+										v2738, v2737, v2736, v2735 = byte82(v2734, 1, 4)
 										return f10936(v2735, 64) * 16777216 + f10936(v2736, 32) * 65536 + f10936(v2737, 16) * 256 + f10936(v2738, 8)
 									end
 
@@ -176322,12 +176322,12 @@ local function f10149()
 										return v2761
 									end
 
-									local byte = string.byte
+									local byte83 = string.byte
 									local v2762 = string.rep(" ", 8)
 
 									local function f10943()
 										local v2763, v2764, v2765, v2766
-										v2766, v2765, v2764, v2763 = byte(v2762, 1, 4)
+										v2766, v2765, v2764, v2763 = byte83(v2762, 1, 4)
 										return f10941(v2763, 64) * 16777216 + f10941(v2764, 32) * 65536 + f10941(v2765, 16) * 256 + f10941(v2766, 8)
 									end
 
@@ -176523,12 +176523,12 @@ local function f10149()
 											return v2789
 										end
 
-										local byte = string.byte
+										local byte84 = string.byte
 										local v2790 = string.rep(" ", 8)
 
 										local function f10948()
 											local v2791, v2792, v2793, v2794
-											v2794, v2793, v2792, v2791 = byte(v2790, 1, 4)
+											v2794, v2793, v2792, v2791 = byte84(v2790, 1, 4)
 											return f10946(v2791, 64) * 16777216 + f10946(v2792, 32) * 65536 + f10946(v2793, 16) * 256 + f10946(v2794, 8)
 										end
 
@@ -176722,12 +176722,12 @@ local function f10149()
 										return v2816
 									end
 
-									local byte = string.byte
+									local byte85 = string.byte
 									local v2817 = string.rep(" ", 8)
 
 									local function f10953()
 										local v2818, v2819, v2820, v2821
-										v2821, v2820, v2819, v2818 = byte(v2817, 1, 4)
+										v2821, v2820, v2819, v2818 = byte85(v2817, 1, 4)
 										return f10951(v2818, 64) * 16777216 + f10951(v2819, 32) * 65536 + f10951(v2820, 16) * 256 + f10951(v2821, 8)
 									end
 
@@ -176922,12 +176922,12 @@ local function f10149()
 										return v2844
 									end
 
-									local byte = string.byte
+									local byte86 = string.byte
 									local v2845 = string.rep(" ", 8)
 
 									local function f10958()
 										local v2846, v2847, v2848, v2849
-										v2849, v2848, v2847, v2846 = byte(v2845, 1, 4)
+										v2849, v2848, v2847, v2846 = byte86(v2845, 1, 4)
 										return f10956(v2846, 64) * 16777216 + f10956(v2847, 32) * 65536 + f10956(v2848, 16) * 256 + f10956(v2849, 8)
 									end
 
@@ -177122,12 +177122,12 @@ local function f10149()
 										return v2872
 									end
 
-									local byte = string.byte
+									local byte87 = string.byte
 									local v2873 = string.rep(" ", 8)
 
 									local function f10963()
 										local v2874, v2875, v2876, v2877
-										v2877, v2876, v2875, v2874 = byte(v2873, 1, 4)
+										v2877, v2876, v2875, v2874 = byte87(v2873, 1, 4)
 										return f10961(v2874, 64) * 16777216 + f10961(v2875, 32) * 65536 + f10961(v2876, 16) * 256 + f10961(v2877, 8)
 									end
 
@@ -177324,12 +177324,12 @@ local function f10149()
 										return v2900
 									end
 
-									local byte = string.byte
+									local byte88 = string.byte
 									local v2901 = string.rep(" ", 8)
 
 									local function f10968()
 										local v2902, v2903, v2904, v2905
-										v2905, v2904, v2903, v2902 = byte(v2901, 1, 4)
+										v2905, v2904, v2903, v2902 = byte88(v2901, 1, 4)
 										return f10966(v2902, 64) * 16777216 + f10966(v2903, 32) * 65536 + f10966(v2904, 16) * 256 + f10966(v2905, 8)
 									end
 
@@ -177524,12 +177524,12 @@ local function f10149()
 										return v2928
 									end
 
-									local byte = string.byte
+									local byte89 = string.byte
 									local v2929 = string.rep(" ", 8)
 
 									local function f10973()
 										local v2930, v2931, v2932, v2933
-										v2933, v2932, v2931, v2930 = byte(v2929, 1, 4)
+										v2933, v2932, v2931, v2930 = byte89(v2929, 1, 4)
 										return f10971(v2930, 64) * 16777216 + f10971(v2931, 32) * 65536 + f10971(v2932, 16) * 256 + f10971(v2933, 8)
 									end
 
@@ -177725,12 +177725,12 @@ local function f10149()
 										return v2956
 									end
 
-									local byte = string.byte
+									local byte90 = string.byte
 									local v2957 = string.rep(" ", 8)
 
 									local function f10978()
 										local v2958, v2959, v2960, v2961
-										v2961, v2960, v2959, v2958 = byte(v2957, 1, 4)
+										v2961, v2960, v2959, v2958 = byte90(v2957, 1, 4)
 										return f10976(v2958, 64) * 16777216 + f10976(v2959, 32) * 65536 + f10976(v2960, 16) * 256 + f10976(v2961, 8)
 									end
 
@@ -177927,12 +177927,12 @@ local function f10149()
 											return v2984
 										end
 
-										local byte = string.byte
+										local byte91 = string.byte
 										local v2985 = string.rep(" ", 8)
 
 										local function f10983()
 											local v2986, v2987, v2988, v2989
-											v2989, v2988, v2987, v2986 = byte(v2985, 1, 4)
+											v2989, v2988, v2987, v2986 = byte91(v2985, 1, 4)
 											return f10981(v2986, 64) * 16777216 + f10981(v2987, 32) * 65536 + f10981(v2988, 16) * 256 + f10981(v2989, 8)
 										end
 
@@ -178131,12 +178131,12 @@ local function f10149()
 											return v3012
 										end
 
-										local byte = string.byte
+										local byte92 = string.byte
 										local v3013 = string.rep(" ", 8)
 
 										local function f10988()
 											local v3014, v3015, v3016, v3017
-											v3017, v3016, v3015, v3014 = byte(v3013, 1, 4)
+											v3017, v3016, v3015, v3014 = byte92(v3013, 1, 4)
 											return f10986(v3014, 64) * 16777216 + f10986(v3015, 32) * 65536 + f10986(v3016, 16) * 256 + f10986(v3017, 8)
 										end
 
@@ -178336,12 +178336,12 @@ local function f10149()
 											return v3040
 										end
 
-										local byte = string.byte
+										local byte93 = string.byte
 										local v3041 = string.rep(" ", 8)
 
 										local function f10993()
 											local v3042, v3043, v3044, v3045
-											v3045, v3044, v3043, v3042 = byte(v3041, 1, 4)
+											v3045, v3044, v3043, v3042 = byte93(v3041, 1, 4)
 											return f10991(v3042, 64) * 16777216 + f10991(v3043, 32) * 65536 + f10991(v3044, 16) * 256 + f10991(v3045, 8)
 										end
 
@@ -178540,12 +178540,12 @@ local function f10149()
 											return v3068
 										end
 
-										local byte = string.byte
+										local byte94 = string.byte
 										local v3069 = string.rep(" ", 8)
 
 										local function f10998()
 											local v3070, v3071, v3072, v3073
-											v3073, v3072, v3071, v3070 = byte(v3069, 1, 4)
+											v3073, v3072, v3071, v3070 = byte94(v3069, 1, 4)
 											return f10996(v3070, 64) * 16777216 + f10996(v3071, 32) * 65536 + f10996(v3072, 16) * 256 + f10996(v3073, 8)
 										end
 
@@ -178746,12 +178746,12 @@ local function f10149()
 											return v3096
 										end
 
-										local byte = string.byte
+										local byte95 = string.byte
 										local v3097 = string.rep(" ", 8)
 
 										local function f11003()
 											local v3098, v3099, v3100, v3101
-											v3101, v3100, v3099, v3098 = byte(v3097, 1, 4)
+											v3101, v3100, v3099, v3098 = byte95(v3097, 1, 4)
 											return f11001(v3098, 64) * 16777216 + f11001(v3099, 32) * 65536 + f11001(v3100, 16) * 256 + f11001(v3101, 8)
 										end
 
@@ -178931,12 +178931,12 @@ local function f10149()
 										return v3123
 									end
 
-									local byte = string.byte
+									local byte96 = string.byte
 									local v3124 = string.rep(" ", 8)
 
 									local function f11008()
 										local v3125, v3126, v3127, v3128
-										v3128, v3127, v3126, v3125 = byte(v3124, 1, 4)
+										v3128, v3127, v3126, v3125 = byte96(v3124, 1, 4)
 										return f11006(v3125, 64) * 16777216 + f11006(v3126, 32) * 65536 + f11006(v3127, 16) * 256 + f11006(v3128, 8)
 									end
 
@@ -179141,12 +179141,12 @@ local function f10149()
 											return v3151
 										end
 
-										local byte = string.byte
+										local byte97 = string.byte
 										local v3152 = string.rep(" ", 8)
 
 										local function f11015()
 											local v3153, v3154, v3155, v3156
-											v3156, v3155, v3154, v3153 = byte(v3152, 1, 4)
+											v3156, v3155, v3154, v3153 = byte97(v3152, 1, 4)
 											return f11013(v3153, 64) * 16777216 + f11013(v3154, 32) * 65536 + f11013(v3155, 16) * 256 + f11013(v3156, 8)
 										end
 
@@ -179345,12 +179345,12 @@ local function f10149()
 										return v3179
 									end
 
-									local byte = string.byte
+									local byte98 = string.byte
 									local v3180 = string.rep(" ", 8)
 
 									local function f11020()
 										local v3181, v3182, v3183, v3184
-										v3184, v3183, v3182, v3181 = byte(v3180, 1, 4)
+										v3184, v3183, v3182, v3181 = byte98(v3180, 1, 4)
 										return f11018(v3181, 64) * 16777216 + f11018(v3182, 32) * 65536 + f11018(v3183, 16) * 256 + f11018(v3184, 8)
 									end
 
@@ -179548,12 +179548,12 @@ local function f10149()
 										return v3207
 									end
 
-									local byte = string.byte
+									local byte99 = string.byte
 									local v3208 = string.rep(" ", 8)
 
 									local function f11025()
 										local v3209, v3210, v3211, v3212
-										v3212, v3211, v3210, v3209 = byte(v3208, 1, 4)
+										v3212, v3211, v3210, v3209 = byte99(v3208, 1, 4)
 										return f11023(v3209, 64) * 16777216 + f11023(v3210, 32) * 65536 + f11023(v3211, 16) * 256 + f11023(v3212, 8)
 									end
 
@@ -179749,12 +179749,12 @@ local function f10149()
 										return v3235
 									end
 
-									local byte = string.byte
+									local v3236 = string.byte
 									local v3237 = string.rep(" ", 8)
 
 									local function f11030()
 										local v3238, v3239, v3240, v3241
-										v3241, v3240, v3239, v3238 = byte(v3237, 1, 4)
+										v3241, v3240, v3239, v3238 = v3236(v3237, 1, 4)
 										return f11028(v3238, 64) * 16777216 + f11028(v3239, 32) * 65536 + f11028(v3240, 16) * 256 + f11028(v3241, 8)
 									end
 
@@ -179951,12 +179951,12 @@ local function f10149()
 										return v3264
 									end
 
-									local byte = string.byte
+									local v3265 = string.byte
 									local v3266 = string.rep(" ", 8)
 
 									local function f11035()
 										local v3267, v3268, v3269, v3270
-										v3270, v3269, v3268, v3267 = byte(v3266, 1, 4)
+										v3270, v3269, v3268, v3267 = v3265(v3266, 1, 4)
 										return f11033(v3267, 64) * 16777216 + f11033(v3268, 32) * 65536 + f11033(v3269, 16) * 256 + f11033(v3270, 8)
 									end
 
@@ -180144,12 +180144,12 @@ local function f10149()
 											return v3293
 										end
 
-										local byte = string.byte
+										local v3294 = string.byte
 										local v3295 = string.rep(" ", 8)
 
 										local function f11040()
 											local v3296, v3297, v3298, v3299
-											v3299, v3298, v3297, v3296 = byte(v3295, 1, 4)
+											v3299, v3298, v3297, v3296 = v3294(v3295, 1, 4)
 											return f11038(v3296, 64) * 16777216 + f11038(v3297, 32) * 65536 + f11038(v3298, 16) * 256 + f11038(v3299, 8)
 										end
 
@@ -180350,12 +180350,12 @@ local function f10149()
 											return v3322
 										end
 
-										local byte = string.byte
+										local v3323 = string.byte
 										local v3324 = string.rep(" ", 8)
 
 										local function f11045()
 											local v3325, v3326, v3327, v3328
-											v3328, v3327, v3326, v3325 = byte(v3324, 1, 4)
+											v3328, v3327, v3326, v3325 = v3323(v3324, 1, 4)
 											return f11043(v3325, 64) * 16777216 + f11043(v3326, 32) * 65536 + f11043(v3327, 16) * 256 + f11043(v3328, 8)
 										end
 
@@ -180554,12 +180554,12 @@ local function f10149()
 											return v3351
 										end
 
-										local byte = string.byte
+										local v3352 = string.byte
 										local v3353 = string.rep(" ", 8)
 
 										local function f11050()
 											local v3354, v3355, v3356, v3357
-											v3357, v3356, v3355, v3354 = byte(v3353, 1, 4)
+											v3357, v3356, v3355, v3354 = v3352(v3353, 1, 4)
 											return f11048(v3354, 64) * 16777216 + f11048(v3355, 32) * 65536 + f11048(v3356, 16) * 256 + f11048(v3357, 8)
 										end
 
@@ -180758,12 +180758,12 @@ local function f10149()
 											return v3380
 										end
 
-										local byte = string.byte
+										local v3381 = string.byte
 										local v3382 = string.rep(" ", 8)
 
 										local function f11055()
 											local v3383, v3384, v3385, v3386
-											v3386, v3385, v3384, v3383 = byte(v3382, 1, 4)
+											v3386, v3385, v3384, v3383 = v3381(v3382, 1, 4)
 											return f11053(v3383, 64) * 16777216 + f11053(v3384, 32) * 65536 + f11053(v3385, 16) * 256 + f11053(v3386, 8)
 										end
 
@@ -180962,12 +180962,12 @@ local function f10149()
 											return v3409
 										end
 
-										local byte = string.byte
+										local v3410 = string.byte
 										local v3411 = string.rep(" ", 8)
 
 										local function f11060()
 											local v3412, v3413, v3414, v3415
-											v3415, v3414, v3413, v3412 = byte(v3411, 1, 4)
+											v3415, v3414, v3413, v3412 = v3410(v3411, 1, 4)
 											return f11058(v3412, 64) * 16777216 + f11058(v3413, 32) * 65536 + f11058(v3414, 16) * 256 + f11058(v3415, 8)
 										end
 
@@ -181163,12 +181163,12 @@ local function f10149()
 										return v3438
 									end
 
-									local byte = string.byte
+									local v3439 = string.byte
 									local v3440 = string.rep(" ", 8)
 
 									local function f11065()
 										local v3441, v3442, v3443, v3444
-										v3444, v3443, v3442, v3441 = byte(v3440, 1, 4)
+										v3444, v3443, v3442, v3441 = v3439(v3440, 1, 4)
 										return f11063(v3441, 64) * 16777216 + f11063(v3442, 32) * 65536 + f11063(v3443, 16) * 256 + f11063(v3444, 8)
 									end
 
@@ -181365,12 +181365,12 @@ local function f10149()
 										return v3467
 									end
 
-									local byte = string.byte
+									local v3468 = string.byte
 									local v3469 = string.rep(" ", 8)
 
 									local function f11070()
 										local v3470, v3471, v3472, v3473
-										v3473, v3472, v3471, v3470 = byte(v3469, 1, 4)
+										v3473, v3472, v3471, v3470 = v3468(v3469, 1, 4)
 										return f11068(v3470, 64) * 16777216 + f11068(v3471, 32) * 65536 + f11068(v3472, 16) * 256 + f11068(v3473, 8)
 									end
 
@@ -181566,12 +181566,12 @@ local function f10149()
 										return v3497
 									end
 
-									local byte = string.byte
+									local v3498 = string.byte
 									local v3499 = string.rep(" ", 8)
 
 									local function f11075()
 										local v3500, v3501, v3502, v3503
-										v3503, v3502, v3501, v3500 = byte(v3499, 1, 4)
+										v3503, v3502, v3501, v3500 = v3498(v3499, 1, 4)
 										return f11073(v3500, 64) * 16777216 + f11073(v3501, 32) * 65536 + f11073(v3502, 16) * 256 + f11073(v3503, 8)
 									end
 
@@ -181782,12 +181782,12 @@ local function f10149()
 										return v3526
 									end
 
-									local byte = string.byte
+									local v3527 = string.byte
 									local v3528 = string.rep(" ", 8)
 
 									local function f11082()
 										local v3529, v3530, v3531, v3532
-										v3532, v3531, v3530, v3529 = byte(v3528, 1, 4)
+										v3532, v3531, v3530, v3529 = v3527(v3528, 1, 4)
 										return f11080(v3529, 64) * 16777216 + f11080(v3530, 32) * 65536 + f11080(v3531, 16) * 256 + f11080(v3532, 8)
 									end
 
@@ -182001,12 +182001,12 @@ local function f10149()
 										return v3555
 									end
 
-									local byte = string.byte
+									local v3556 = string.byte
 									local v3557 = string.rep(" ", 8)
 
 									local function f11089()
 										local v3558, v3559, v3560, v3561
-										v3561, v3560, v3559, v3558 = byte(v3557, 1, 4)
+										v3561, v3560, v3559, v3558 = v3556(v3557, 1, 4)
 										return f11087(v3558, 64) * 16777216 + f11087(v3559, 32) * 65536 + f11087(v3560, 16) * 256 + f11087(v3561, 8)
 									end
 
@@ -182206,12 +182206,12 @@ local function f10149()
 											return v3585
 										end
 
-										local byte = string.byte
+										local v3586 = string.byte
 										local v3587 = string.rep(" ", 8)
 
 										local function f11094()
 											local v3588, v3589, v3590, v3591
-											v3591, v3590, v3589, v3588 = byte(v3587, 1, 4)
+											v3591, v3590, v3589, v3588 = v3586(v3587, 1, 4)
 											return f11092(v3588, 64) * 16777216 + f11092(v3589, 32) * 65536 + f11092(v3590, 16) * 256 + f11092(v3591, 8)
 										end
 
@@ -182416,12 +182416,12 @@ local function f10149()
 										return v3615
 									end
 
-									local byte = string.byte
+									local v3616 = string.byte
 									local v3617 = string.rep(" ", 8)
 
 									local function f11103()
 										local v3618, v3619, v3620, v3621
-										v3621, v3620, v3619, v3618 = byte(v3617, 1, 4)
+										v3621, v3620, v3619, v3618 = v3616(v3617, 1, 4)
 										return f11101(v3618, 64) * 16777216 + f11101(v3619, 32) * 65536 + f11101(v3620, 16) * 256 + f11101(v3621, 8)
 									end
 
@@ -183155,12 +183155,12 @@ local function f10149()
 										return v3741
 									end
 
-									local byte = string.byte
+									local v3742 = string.byte
 									local v3743 = string.rep(" ", 8)
 
 									local function f11121()
 										local v3744, v3745, v3746, v3747
-										v3747, v3746, v3745, v3744 = byte(v3743, 1, 4)
+										v3747, v3746, v3745, v3744 = v3742(v3743, 1, 4)
 										return f11119(v3744, 64) * 16777216 + f11119(v3745, 32) * 65536 + f11119(v3746, 16) * 256 + f11119(v3747, 8)
 									end
 
@@ -183592,12 +183592,12 @@ local function f10149()
 										return v3800
 									end
 
-									local byte = string.byte
+									local v3801 = string.byte
 									local v3802 = string.rep(" ", 8)
 
 									local function f11134()
 										local v3803, v3804, v3805, v3806
-										v3806, v3805, v3804, v3803 = byte(v3802, 1, 4)
+										v3806, v3805, v3804, v3803 = v3801(v3802, 1, 4)
 										return f11132(v3803, 64) * 16777216 + f11132(v3804, 32) * 65536 + f11132(v3805, 16) * 256 + f11132(v3806, 8)
 									end
 
@@ -183803,12 +183803,12 @@ local function f10149()
 										return v3829
 									end
 
-									local byte = string.byte
+									local v3830 = string.byte
 									local v3831 = string.rep(" ", 8)
 
 									local function f11139()
 										local v3832, v3833, v3834, v3835
-										v3835, v3834, v3833, v3832 = byte(v3831, 1, 4)
+										v3835, v3834, v3833, v3832 = v3830(v3831, 1, 4)
 										return f11137(v3832, 64) * 16777216 + f11137(v3833, 32) * 65536 + f11137(v3834, 16) * 256 + f11137(v3835, 8)
 									end
 
@@ -184005,12 +184005,12 @@ local function f10149()
 										return v3858
 									end
 
-									local byte = string.byte
+									local v3859 = string.byte
 									local v3860 = string.rep(" ", 8)
 
 									local function f11144()
 										local v3861, v3862, v3863, v3864
-										v3864, v3863, v3862, v3861 = byte(v3860, 1, 4)
+										v3864, v3863, v3862, v3861 = v3859(v3860, 1, 4)
 										return f11142(v3861, 64) * 16777216 + f11142(v3862, 32) * 65536 + f11142(v3863, 16) * 256 + f11142(v3864, 8)
 									end
 
@@ -184320,12 +184320,12 @@ local function f10149()
 										return v3896
 									end
 
-									local byte = string.byte
+									local v3897 = string.byte
 									local v3898 = string.rep(" ", 8)
 
 									local function f11149()
 										local v3899, v3900, v3901, v3902
-										v3902, v3901, v3900, v3899 = byte(v3898, 1, 4)
+										v3902, v3901, v3900, v3899 = v3897(v3898, 1, 4)
 										return f11147(v3899, 64) * 16777216 + f11147(v3900, 32) * 65536 + f11147(v3901, 16) * 256 + f11147(v3902, 8)
 									end
 
@@ -184485,12 +184485,12 @@ local function f10149()
 							end
 
 							f10500 = "a"
-							local v3918 = f10536
-							local v3919 = f10537
+							local modules = f10536
+							local loadModule_a = f10537
 
 							f11098 = function()
-								local t471 = { c = v3919() }
-								v3918.cache.a = t471
+								local t471 = { c = loadModule_a() }
+								modules.cache.a = t471
 								local _ = -3221205701 + bit32.rrotate(
 									bit32.lrotate(string.byte("\27", 1, nil), 1),
 									3
@@ -184515,7 +184515,7 @@ local function f10149()
 							end
 
 							f10500 = "b"
-							local v3920 = f10536
+							local modules = f10536
 							local v3921 = f10537
 
 							f11098 = function()
@@ -184526,18 +184526,18 @@ local function f10149()
 									),
 									4
 								) + -4205
-								while v3920.cache.b do
+								while modules.cache.b do
 								end
 								local t474 = { c = v3921 }
-								v3920.cache.b = t474
+								modules.cache.b = t474
 								return t474.c
 							end
 
 							f10536[f10500] = f11098
-							local v3922 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v3922.b()
+								modules.b()
 								local t475 = {}
 								t475.__index = t475
 
@@ -184627,15 +184627,15 @@ local function f10149()
 							end
 
 							f10500 = "c"
-							local v3930 = f10536
-							local v3931 = f10537
+							local modules = f10536
+							local loadModule_c = f10537
 
 							f11098 = function(...)
 								local v3932 = nil
-								local t480 = v3930.cache.c
+								local t480 = modules.cache.c
 								if not t480 then
-									t480 = { c = v3931() }
-									v3932 = v3930.cache
+									t480 = { c = loadModule_c() }
+									v3932 = modules.cache
 								end
 								v3932.c = t480
 								return t480.c
@@ -184662,8 +184662,8 @@ local function f10149()
 							end
 
 							f10500 = "d"
-							local v3933 = f10536
-							local v3934 = f10537
+							local modules = f10536
+							local loadModule_d = f10537
 
 							f11098 = function()
 								local v3935
@@ -184676,11 +184676,11 @@ local function f10149()
 										end
 										f11158 = 16
 										if not f11158 then
-											if v3933.cache.d then
+											if modules.cache.d then
 												break
 											end
-											local t481 = { c = v3934() }
-											v3933.cache.d = t481
+											local t481 = { c = loadModule_d() }
+											modules.cache.d = t481
 											return t481.c
 										end
 									end
@@ -184688,10 +184688,10 @@ local function f10149()
 							end
 
 							f10536[f10500] = f11098
-							local v3936 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Result = v3936.b()
+								local Result = modules.b()
 
 								local function ensureFolderPath(path, root)
 									local segments = path:split("/")
@@ -184730,23 +184730,23 @@ local function f10149()
 							end
 
 							f10500 = "e"
-							local v3941 = f10536
+							local modules = f10536
 							local v3942 = f10537
 
 							f11098 = function()
-								if v3941.cache.e then
+								if modules.cache.e then
 								end
 								local t482 = { c = v3942 }
-								v3941.cache.e = t482
+								modules.cache.e = t482
 								return t482.c
 							end
 
 							f10536[f10500] = f11098
-							local v3943 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local deepCopy = v3943.d()
-								local ensureFolderPath = v3943.e()
+								local deepCopy = modules.d()
+								local ensureFolderPath = modules.e()
 								local HttpService = cloneref(game:GetService("HttpService"))
 								local ConfigManager = {}
 								ConfigManager.__index = ConfigManager
@@ -185052,14 +185052,14 @@ local function f10149()
 							end
 
 							f10500 = "f"
-							local v3966 = f10536
-							local v3967 = f10537
+							local modules = f10536
+							local loadModule_f = f10537
 
 							f11098 = function()
-								local t513 = v3966.cache.f
+								local t513 = modules.cache.f
 								if not t513 then
-									t513 = { c = v3967() }
-									v3966.cache.f = t513
+									t513 = { c = loadModule_f() }
+									modules.cache.f = t513
 								end
 								return t513.c
 							end
@@ -185071,14 +185071,14 @@ local function f10149()
 							end
 
 							f10500 = "g"
-							local v3968 = f10536
-							local v3969 = f10537
+							local modules = f10536
+							local loadModule_g = f10537
 
 							f11098 = function()
-								local t514 = v3968.cache.g
+								local t514 = modules.cache.g
 								if not t514 then
-									t514 = { c = v3969() }
-									v3968.cache.g = t514
+									t514 = { c = loadModule_g() }
+									modules.cache.g = t514
 								end
 								return t514.c
 							end
@@ -185090,14 +185090,14 @@ local function f10149()
 							end
 
 							f10500 = "h"
-							local v3970 = f10536
+							local modules = f10536
 							local v3971 = f10537
 
 							f11098 = function()
-								while v3970.cache.h do
+								while modules.cache.h do
 								end
 								local t515 = { c = v3971 }
-								v3970.cache.h = t515
+								modules.cache.h = t515
 								return t515.c
 							end
 
@@ -185143,14 +185143,14 @@ local function f10149()
 							end
 
 							f10500 = "i"
-							local v3973 = f10536
-							local v3974 = f10537
+							local modules = f10536
+							local loadModule_i = f10537
 
 							f11098 = function()
-								local t518 = v3973.cache.i
+								local t518 = modules.cache.i
 								if not t518 then
-									t518 = { c = v3974() }
-									v3973.cache.i = t518
+									t518 = { c = loadModule_i() }
+									modules.cache.i = t518
 								end
 								return t518.c
 							end
@@ -185174,14 +185174,14 @@ local function f10149()
 							end
 
 							f10500 = "j"
-							local v3979 = f10536
-							local v3980 = f10537
+							local modules = f10536
+							local loadModule_j = f10537
 
 							f11098 = function()
-								local t519 = v3979.cache.j
+								local t519 = modules.cache.j
 								if not t519 then
-									t519 = { c = v3980() }
-									v3979.cache.j = t519
+									t519 = { c = loadModule_j() }
+									modules.cache.j = t519
 								end
 								return t519.c
 							end
@@ -185199,24 +185199,24 @@ local function f10149()
 							end
 
 							f10500 = "k"
-							local v3981 = f10536
-							local v3982 = f10537
+							local modules = f10536
+							local loadModule_k = f10537
 
 							f11098 = function()
-								local t520 = v3981.cache.k
+								local t520 = modules.cache.k
 								if not t520 then
-									t520 = { c = v3982() }
-									v3981.cache.k = t520
+									t520 = { c = loadModule_k() }
+									modules.cache.k = t520
 								end
 								return t520.c
 							end
 
 							f10536[f10500] = f11098
-							local v3983 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local concat = v3983.j()
-								local keys = v3983.k()
+								local concat = modules.j()
+								local keys = modules.k()
 								local materialByName = {
 									Ghost = Enum.Material.ForceField,
 									Flat = Enum.Material.Neon,
@@ -185230,12 +185230,12 @@ local function f10149()
 							end
 
 							f10500 = "l"
-							local v3985 = f10536
-							local v3986 = f10537
+							local modules = f10536
+							local loadModule_l = f10537
 
 							f11098 = function(...)
 								local f11167, f11168
-								local t523 = v3985.cache
+								local t523 = modules.cache
 								while true do
 									t523 = t523.l
 									if t523 then
@@ -185248,8 +185248,8 @@ local function f10149()
 									until f11167
 								end
 								local _ = 18532 + f11168((f11167("6\218\164\222\30", 1, nil))) + -18532
-								local t524 = { c = v3986() }
-								v3985.cache.l = t524
+								local t524 = { c = loadModule_l() }
+								modules.cache.l = t524
 								return t524.c
 							end
 
@@ -185260,7 +185260,7 @@ local function f10149()
 							end
 
 							f10500 = "m"
-							local v3987 = f10536
+							local modules = f10536
 							local v3988 = f10537
 
 							f11098 = function(...)
@@ -185270,7 +185270,7 @@ local function f10149()
 									v3989 = v3988
 								end
 								t525.c = v3989
-								v3987.cache.m = t525
+								modules.cache.m = t525
 								return t525.c
 							end
 
@@ -185288,14 +185288,14 @@ local function f10149()
 							end
 
 							f10500 = "n"
-							local v3990 = f10536
-							local v3991 = f10537
+							local modules = f10536
+							local loadModule_n = f10537
 
 							f11098 = function()
-								while v3990.cache.n do
+								while modules.cache.n do
 								end
-								local t527 = { c = v3991() }
-								v3990.cache.n = t527
+								local t527 = { c = loadModule_n() }
+								modules.cache.n = t527
 								return t527.c
 							end
 
@@ -185306,22 +185306,22 @@ local function f10149()
 							end
 
 							f10500 = "o"
-							local v3992 = f10536
-							local v3993 = f10537
+							local modules = f10536
+							local loadModule_o = f10537
 
 							f11098 = function()
-								while v3992.cache.o do
+								while modules.cache.o do
 								end
-								local t528 = { c = v3993() }
-								v3992.cache.o = t528
+								local t528 = { c = loadModule_o() }
+								modules.cache.o = t528
 								return t528.c
 							end
 
 							f10536[f10500] = f11098
-							local v3994 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v3994.g()
+								modules.g()
 								while true do
 									if bit32.lrotate(
 										6,
@@ -185332,14 +185332,14 @@ local function f10149()
 							end
 
 							f10500 = "p"
-							local v3995 = f10536
-							local v3996 = f10537
+							local modules = f10536
+							local loadModule_p = f10537
 
 							f11098 = function()
-								while v3995.cache.p do
+								while modules.cache.p do
 								end
-								local t529 = { c = v3996() }
-								v3995.cache.p = t529
+								local t529 = { c = loadModule_p() }
+								modules.cache.p = t529
 								return t529.c
 							end
 
@@ -185472,25 +185472,25 @@ local function f10149()
 							end
 
 							f10500 = "q"
-							local v4012 = f10536
-							local v4013 = f10537
+							local modules = f10536
+							local loadModule_q = f10537
 
 							f11098 = function()
-								local t535 = v4012.cache.q
+								local t535 = modules.cache.q
 								if not t535 then
-									t535 = { c = v4013() }
-									v4012.cache.q = t535
+									t535 = { c = loadModule_q() }
+									modules.cache.q = t535
 								end
 								return t535.c
 							end
 
 							f10536[f10500] = f11098
-							local v4014 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								local t536
 								repeat
-									t536 = v4014.q()
+									t536 = modules.q()
 								until not _G.globalTrove
 								local v4015 = t536.new("GlobalTrove")
 								_G.globalTrove = v4015
@@ -185498,7 +185498,7 @@ local function f10149()
 							end
 
 							f10500 = "r"
-							local v4016 = f10536
+							local modules = f10536
 							local v4017 = f10537
 
 							f11098 = function(...)
@@ -185653,14 +185653,14 @@ local function f10149()
 							end
 
 							f10500 = "s"
-							local v4022 = f10536
-							local v4023 = f10537
+							local modules = f10536
+							local loadModule_s = f10537
 
 							f11098 = function()
-								if v4022.cache.s then
+								if modules.cache.s then
 								end
-								local t539 = { c = v4023() }
-								v4022.cache.s = t539
+								local t539 = { c = loadModule_s() }
+								modules.cache.s = t539
 								return t539.c
 							end
 
@@ -185881,28 +185881,28 @@ local function f10149()
 							end
 
 							f10500 = "t"
-							local v4033 = f10536
-							local v4034 = f10537
+							local modules = f10536
+							local loadModule_t = f10537
 
 							f11098 = function()
-								local t548 = v4033.cache
+								local t548 = modules.cache
 								repeat
 									t548 = t548.t
 								until not t548
-								local t549 = { c = v4034() }
-								v4033.cache.t = t549
+								local t549 = { c = loadModule_t() }
+								modules.cache.t = t549
 								return t549.c
 							end
 
 							f10536[f10500] = f11098
-							local v4035 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ConfigManager = v4035.f()
-								local Paths = v4035.s()
-								local Signal = v4035.t()
-								local Trove = v4035.q()
-								local deepCopy = v4035.d()
+								local ConfigManager = modules.f()
+								local Paths = modules.s()
+								local Signal = modules.t()
+								local Trove = modules.q()
+								local deepCopy = modules.d()
 								local ConfigStoreBase = {}
 								ConfigStoreBase.__index = ConfigStoreBase
 
@@ -186211,14 +186211,14 @@ local function f10149()
 							end
 
 							f10500 = "u"
-							local v4050 = f10536
-							local v4051 = f10537
+							local modules = f10536
+							local loadModule_u = f10537
 
 							f11098 = function()
-								while v4050.cache.u do
+								while modules.cache.u do
 								end
-								local t563 = { c = v4051() }
-								v4050.cache.u = t563
+								local t563 = { c = loadModule_u() }
+								modules.cache.u = t563
 								return t563.c
 							end
 
@@ -186352,28 +186352,28 @@ local function f10149()
 							end
 
 							f10500 = "v"
-							local v4064 = f10536
-							local v4065 = f10537
+							local modules = f10536
+							local loadModule_v = f10537
 
 							f11098 = function()
 								local _ = -216097 + bit32.rrotate(
 									439,
 									(string.unpack("<i8", "\23\0\0\0\0\0\0\0"))
 								) + -8437
-								while v4064.cache.v do
+								while modules.cache.v do
 								end
-								local t576 = { c = v4065() }
-								v4064.cache.v = t576
+								local t576 = { c = loadModule_v() }
+								modules.cache.v = t576
 								return t576.c
 							end
 
 							f10536[f10500] = f11098
-							local v4066 = f10536
+							local modules = f10536
 
 							f10537 = function(...)
-								v4066.p()
-								local Config = v4066.s()
-								local deepCopy = v4066.d()
+								modules.p()
+								local Config = modules.s()
+								local deepCopy = modules.d()
 								local atomic2 = Config.atomic
 
 								local function defaultAnimation()
@@ -187421,7 +187421,7 @@ local function f10149()
 							end
 
 							f10500 = "w"
-							local v4072 = f10536
+							local modules = f10536
 							local v4073 = f10537
 
 							f11098 = function()
@@ -187429,9 +187429,9 @@ local function f10149()
 								while true do
 									v4074 = not false
 									if not (v4074 and 0) then
-										local w = v4072.cache.w
+										local w = modules.cache.w
 										if not w then
-											v4072.cache.w = w
+											modules.cache.w = w
 											return w.c
 										end
 									end
@@ -187439,10 +187439,10 @@ local function f10149()
 							end
 
 							f10536[f10500] = f11098
-							local v4075 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4075.f()
+								modules.f()
 
 								local function twoColorSequence(from, to)
 									local sequence = { __type = "ColorSequence" }
@@ -187614,33 +187614,33 @@ local function f10149()
 							end
 
 							f10500 = "x"
-							local v4100 = f10536
-							local v4101 = f10537
+							local modules = f10536
+							local loadModule_x = f10537
 
 							f11098 = function()
-								while v4100.cache.x do
+								while modules.cache.x do
 								end
-								local t829 = { c = v4101() }
-								v4100.cache.x = t829
+								local t829 = { c = loadModule_x() }
+								modules.cache.x = t829
 								return t829.c
 							end
 
 							f10536[f10500] = f11098
-							local v4102 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4102.f()
-								v4102.p()
-								local rootTrove = v4102.r()
-								local pathUtil = v4102.s()
-								local ConfigStore = v4102.u()
-								local serializer = v4102.v()
-								local Signal = v4102.t()
-								v4102.q()
-								local joinPaths = v4102.j()
-								local deepClone = v4102.d()
-								local defaultConfig = v4102.w()
-								local migrations = v4102.x()
+								modules.f()
+								modules.p()
+								local rootTrove = modules.r()
+								local pathUtil = modules.s()
+								local ConfigStore = modules.u()
+								local serializer = modules.v()
+								local Signal = modules.t()
+								modules.q()
+								local joinPaths = modules.j()
+								local deepClone = modules.d()
+								local defaultConfig = modules.w()
+								local migrations = modules.x()
 								local _ = setmetatable
 								local baseMeta = { __index = ConfigStore }
 								local GunConfig = setmetatable({}, baseMeta)
@@ -187978,23 +187978,23 @@ local function f10149()
 							end
 
 							f10500 = "y"
-							local v4115 = f10536
-							local v4116 = f10537
+							local modules = f10536
+							local loadModule_y = f10537
 
 							f11098 = function()
-								if v4115.cache.y then
+								if modules.cache.y then
 								end
-								local t834 = { c = v4116() }
-								v4115.cache.y = t834
+								local t834 = { c = loadModule_y() }
+								modules.cache.y = t834
 								return t834.c
 							end
 
 							f10536[f10500] = f11098
-							local v4117 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v4117.y()
-								local Trove = v4117.q()
+								local Config = modules.y()
+								local Trove = modules.q()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local AutoExecuteScript = {}
 								AutoExecuteScript.__index = AutoExecuteScript
@@ -188041,14 +188041,14 @@ local function f10149()
 							end
 
 							f10500 = "z"
-							local v4121 = f10536
-							local v4122 = f10537
+							local modules = f10536
+							local loadModule_z = f10537
 
 							f11098 = function()
-								if v4121.cache.z then
+								if modules.cache.z then
 								end
-								local t837 = { c = v4122() }
-								v4121.cache.z = t837
+								local t837 = { c = loadModule_z() }
+								modules.cache.z = t837
 								return t837.c
 							end
 
@@ -189658,70 +189658,70 @@ local function f10149()
 							end
 
 							f10500 = "A"
-							local v4275 = f10536
-							local v4276 = f10537
+							local modules = f10536
+							local loadModule_A = f10537
 
 							f11098 = function()
-								local t877 = v4275.cache.A
+								local t877 = modules.cache.A
 								if not t877 then
-									t877 = { c = v4276() }
-									v4275.cache.A = t877
+									t877 = { c = loadModule_A() }
+									modules.cache.A = t877
 								end
 								return t877.c
 							end
 
 							f10536[f10500] = f11098
-							local v4277 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4277.A()
+								modules.A()
 								return nil
 							end
 
 							f10500 = "B"
-							local v4278 = f10536
-							local v4279 = f10537
+							local modules = f10536
+							local loadModule_B = f10537
 
 							f11098 = function()
-								local t878 = v4278.cache.B
+								local t878 = modules.cache.B
 								if not t878 then
-									t878 = { c = v4279() }
-									v4278.cache.B = t878
+									t878 = { c = loadModule_B() }
+									modules.cache.B = t878
 								end
 								return t878.c
 							end
 
 							f10536[f10500] = f11098
-							local v4280 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4280.t()
-								v4280.q()
+								modules.t()
+								modules.q()
 								return {}
 							end
 
 							f10500 = "C"
-							local v4281 = f10536
-							local v4282 = f10537
+							local modules = f10536
+							local loadModule_C = f10537
 
 							f11098 = function()
 								local _ = -4162042346 + bit32.rrotate(
 									-508,
 									(string.unpack(">i8", "\0\0\0\0\0\0\0\14"))
 								) + -17832
-								while v4281.cache.C do
+								while modules.cache.C do
 								end
-								local t879 = { c = v4282() }
-								v4281.cache.C = t879
+								local t879 = { c = loadModule_C() }
+								modules.cache.C = t879
 								return t879.c
 							end
 
 							f10536[f10500] = f11098
-							local v4283 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ConfigManager = v4283.f()
-								v4283.C()
+								local ConfigManager = modules.f()
+								modules.C()
 								local GeneralState = {}
 								GeneralState.__index = GeneralState
 								local defaults = {
@@ -189853,26 +189853,26 @@ local function f10149()
 							end
 
 							f10500 = "D"
-							local v4295 = f10536
+							local modules = f10536
 							local v4296 = f10537
 
 							f11098 = function(...)
 								local t888, v4297
-								if not v4295.cache.D then
+								if not modules.cache.D then
 									t888 = {}
 									v4297 = v4296()
 								end
 								t888.c = v4297
-								v4295.cache.D = t888
+								modules.cache.D = t888
 								return t888.c
 							end
 
 							f10536[f10500] = f11098
-							local v4298 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v4298.t()
-								local Trove = v4298.q()
+								local Signal = modules.t()
+								local Trove = modules.q()
 								local Players = cloneref(game:GetService("Players"))
 								local PlayerRegistry = {}
 								PlayerRegistry.__index = PlayerRegistry
@@ -189926,24 +189926,24 @@ local function f10149()
 							end
 
 							f10500 = "E"
-							local v4304 = f10536
-							local v4305 = f10537
+							local modules = f10536
+							local loadModule_E = f10537
 
 							f11098 = function()
-								if v4304.cache.E then
+								if modules.cache.E then
 								end
-								local t890 = { c = v4305() }
-								v4304.cache.E = t890
+								local t890 = { c = loadModule_E() }
+								modules.cache.E = t890
 								return t890.c
 							end
 
 							f10536[f10500] = f11098
-							local v4306 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4306.E()
-								local Signal = v4306.t()
-								local Trove = v4306.q()
+								modules.E()
+								local Signal = modules.t()
+								local Trove = modules.q()
 								local Identities = {}
 								Identities.__index = Identities
 
@@ -190051,12 +190051,12 @@ local function f10149()
 							end
 
 							f10500 = "F"
-							local v4320 = f10536
+							local modules = f10536
 							local v4321 = f10537
 
 							f11098 = function(...)
 								local f11322, v4322, v4323
-								if not v4320.cache.F then
+								if not modules.cache.F then
 									v4323 = 471
 									f11322 = math.floor
 									v4322 = 3.141592653589793
@@ -190071,13 +190071,13 @@ local function f10149()
 							end
 
 							f10536[f10500] = f11098
-							local v4324 = f10536
+							local modules = f10536
 
 							f10537 = function(...)
 								local v4325 = nil
-								v4324.E()
-								v4324.t()
-								v4324.q()
+								modules.E()
+								modules.t()
+								modules.q()
 								local PlayerTags = {}
 								PlayerTags.__index = PlayerTags
 								if false then
@@ -190165,8 +190165,8 @@ local function f10149()
 							end
 
 							f10500 = "G"
-							local v4338 = f10536
-							local v4339 = f10537
+							local modules = f10536
+							local loadModule_G = f10537
 
 							f11098 = function()
 								local f11325 = bit32.bnot
@@ -190179,34 +190179,34 @@ local function f10149()
 									v4340 = nil
 									f11326 = nil
 									v4341 = nil
-								until not v4338.cache.G
-								local t908 = { c = v4339() }
-								v4338.cache.G = t908
+								until not modules.cache.G
+								local t908 = { c = loadModule_G() }
+								modules.cache.G = t908
 								return t908.c
 							end
 
 							f10536[f10500] = f11098
-							local v4342 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4342.B()
-								v4342.D()
-								v4342.F()
-								v4342.E()
-								local g = v4342.G
+								modules.B()
+								modules.D()
+								modules.F()
+								modules.E()
+								local g = modules.G
 								g()
 								return nil
 							end
 
 							f10500 = "H"
-							local v4343 = f10536
-							local v4344 = f10537
+							local modules = f10536
+							local loadModule_H = f10537
 
 							f11098 = function()
-								if v4343.cache.H then
+								if modules.cache.H then
 								end
-								local t909 = { c = v4344() }
-								v4343.cache.H = t909
+								local t909 = { c = loadModule_H() }
+								modules.cache.H = t909
 								return t909.c
 							end
 
@@ -190225,8 +190225,8 @@ local function f10149()
 							end
 
 							f10500 = "I"
-							local v4346 = f10536
-							local v4347 = f10537
+							local modules = f10536
+							local loadModule_I = f10537
 
 							f11098 = function()
 								local f11328 = bit32.lshift
@@ -190235,14 +190235,14 @@ local function f10149()
 									local _ = -921038 + f11328(f11329("") + 225, 12) + -458
 									f11328 = nil
 									f11329 = nil
-								until not v4346.cache.I
-								local t911 = { c = v4347() }
-								v4346.cache.I = t911
+								until not modules.cache.I
+								local t911 = { c = loadModule_I() }
+								modules.cache.I = t911
 								return t911.c
 							end
 
 							f10536[f10500] = f11098
-							local v4348 = f10536
+							local modules = f10536
 
 							f10537 = function(...)
 								local f11330
@@ -190251,7 +190251,7 @@ local function f10149()
 									v4349 = not not false
 									f11330 = nil
 								until v4349
-								f11330 = v4348.b
+								f11330 = modules.b
 								f11330()
 								f11330 = nil
 								local t912 = {}
@@ -190268,26 +190268,26 @@ local function f10149()
 							end
 
 							f10500 = "J"
-							local v4350 = f10536
-							local v4351 = f10537
+							local modules = f10536
+							local loadModule_J = f10537
 
 							f11098 = function(...)
 								local v4352 = nil
-								if not v4350.cache.J then
-									local t913 = { c = v4351() }
-									v4350.cache.J = t913
+								if not modules.cache.J then
+									local t913 = { c = loadModule_J() }
+									modules.cache.J = t913
 									v4352 = t913.c
 								end
 								return v4352
 							end
 
 							f10536[f10500] = f11098
-							local v4353 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Promise = v4353.A()
-								local Result = v4353.b()
-								local ensureFolderPath = v4353.e()
+								local Promise = modules.A()
+								local Result = modules.b()
+								local ensureFolderPath = modules.e()
 								local HttpService = cloneref(game:GetService("HttpService"))
 								local fontFolder = "kiciahook/rivals_v3/fonts"
 								local builtinFonts = {
@@ -190499,14 +190499,14 @@ local function f10149()
 							end
 
 							f10500 = "K"
-							local v4383 = f10536
-							local v4384 = f10537
+							local modules = f10536
+							local loadModule_K = f10537
 
 							f11098 = function()
-								local t925 = v4383.cache.K
+								local t925 = modules.cache.K
 								if not t925 then
-									t925 = { c = v4384() }
-									v4383.cache.K = t925
+									t925 = { c = loadModule_K() }
+									modules.cache.K = t925
 								end
 								return t925.c
 							end
@@ -190527,25 +190527,25 @@ local function f10149()
 							end
 
 							f10500 = "L"
-							local v4385 = f10536
-							local v4386 = f10537
+							local modules = f10536
+							local loadModule_L = f10537
 
 							f11098 = function()
-								local t927 = v4385.cache.L
+								local t927 = modules.cache.L
 								if not t927 then
-									t927 = { c = v4386() }
-									v4385.cache.L = t927
+									t927 = { c = loadModule_L() }
+									modules.cache.L = t927
 								end
 								return t927.c
 							end
 
 							f10536[f10500] = f11098
-							local v4387 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v4388 = v4387.t()
-								local v4389 = v4387.q()
-								local TweenService3 = v4387.L().TweenService
+								local v4388 = modules.t()
+								local v4389 = modules.q()
+								local TweenService3 = modules.L().TweenService
 								local t928 = {}
 								t928.__index = t928
 								local v4390 = TweenInfo.new(
@@ -190768,23 +190768,23 @@ local function f10149()
 							end
 
 							f10500 = "M"
-							local v4415 = f10536
-							local v4416 = f10537
+							local modules = f10536
+							local loadModule_M = f10537
 
 							f11098 = function()
-								if v4415.cache.M then
+								if modules.cache.M then
 								end
-								local t948 = { c = v4416() }
-								v4415.cache.M = t948
+								local t948 = { c = loadModule_M() }
+								modules.cache.M = t948
 								return t948.c
 							end
 
 							f10536[f10500] = f11098
-							local v4417 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local services = v4417.L()
-								local ensureFolderPath = v4417.e()
+								local services = modules.L()
+								local ensureFolderPath = modules.e()
 								local GuiService3 = services.GuiService
 								local GuiUtil = {}
 
@@ -191050,25 +191050,25 @@ local function f10149()
 							end
 
 							f10500 = "N"
-							local v4444 = f10536
-							local v4445 = f10537
+							local modules = f10536
+							local loadModule_N = f10537
 
 							f11098 = function()
-								while v4444.cache.N do
+								while modules.cache.N do
 								end
-								local t955 = { c = v4445() }
-								v4444.cache.N = t955
+								local t955 = { c = loadModule_N() }
+								modules.cache.N = t955
 								return t955.c
 							end
 
 							f10536[f10500] = f11098
-							local v4446 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4446.C()
-								local Toast = v4446.M()
-								v4446.q()
-								v4446.N()
+								modules.C()
+								local Toast = modules.M()
+								modules.q()
+								modules.N()
 								local Notifications = {}
 								Notifications.__index = Notifications
 								local sideSpecs = {}
@@ -191236,27 +191236,27 @@ local function f10149()
 							end
 
 							f10500 = "O"
-							local v4465 = f10536
-							local v4466 = f10537
+							local modules = f10536
+							local loadModule_O = f10537
 
 							f11098 = function()
-								local t969 = v4465.cache.O
+								local t969 = modules.cache.O
 								if not t969 then
-									t969 = { c = v4466() }
-									v4465.cache.O = t969
+									t969 = { c = loadModule_O() }
+									modules.cache.O = t969
 								end
 								return t969.c
 							end
 
 							f10536[f10500] = f11098
-							local v4467 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								local v4468
 								repeat
 									v4468 = not false
 								until v4468
-								local Promise = v4467.A()
+								local Promise = modules.A()
 								local HttpService = cloneref(game:GetService("HttpService"))
 
 								local function fetchPage(url, cursor)
@@ -191341,27 +191341,27 @@ local function f10149()
 							end
 
 							f10500 = "P"
-							local v4482 = f10536
-							local v4483 = f10537
+							local modules = f10536
+							local loadModule_P = f10537
 
 							f11098 = function(...)
 								local v4484 = nil
 								repeat
-									if not v4482.cache.P then
+									if not modules.cache.P then
 										v4484 = not not false
 									end
 								until v4484
-								local t972 = { c = v4483() }
-								v4482.cache.P = t972
+								local t972 = { c = loadModule_P() }
+								modules.cache.P = t972
 								return t972.c
 							end
 
 							f10536[f10500] = f11098
-							local v4485 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v4486 = v4485.P()
-								local v4487 = v4485.A()
+								local v4486 = modules.P()
+								local v4487 = modules.A()
 								local v4488 = "https://groups.roblox.com"
 								local v4489 = cloneref(game:GetService("HttpService"))
 
@@ -191449,29 +191449,29 @@ local function f10149()
 							end
 
 							f10500 = "Q"
-							local v4499 = f10536
-							local v4500 = f10537
+							local modules = f10536
+							local loadModule_Q = f10537
 
 							f11098 = function()
-								local t976 = v4499.cache.Q
+								local t976 = modules.cache.Q
 								if not t976 then
-									t976 = { c = v4500() }
-									v4499.cache.Q = t976
+									t976 = { c = loadModule_Q() }
+									modules.cache.Q = t976
 								end
 								return t976.c
 							end
 
 							f10536[f10500] = f11098
-							local v4501 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v4502 = v4501.y()
-								local v4503 = v4501.O()
-								v4501.E()
-								v4501.G()
-								local v4504 = v4501.A()
-								local v4505 = v4501.q()
-								local v4506 = v4501.Q()
+								local v4502 = modules.y()
+								local v4503 = modules.O()
+								modules.E()
+								modules.G()
+								local v4504 = modules.A()
+								local v4505 = modules.q()
+								local v4506 = modules.Q()
 								local t977 = cloneref(game:GetService("Players"))
 								local LocalPlayer34 = t977.LocalPlayer
 								local v4507 = cloneref(game:GetService("GroupService"))
@@ -191867,14 +191867,14 @@ local function f10149()
 							end
 
 							f10500 = "R"
-							local v4544 = f10536
-							local v4545 = f10537
+							local modules = f10536
+							local loadModule_R = f10537
 
 							f11098 = function(...)
 								local v4546 = nil
-								if not v4544.cache.R then
-									local t996 = { c = v4545() }
-									v4544.cache.R = t996
+								if not modules.cache.R then
+									local t996 = { c = loadModule_R() }
+									modules.cache.R = t996
 									v4546 = t996.c
 								end
 								return v4546
@@ -191904,23 +191904,23 @@ local function f10149()
 							end
 
 							f10500 = "S"
-							local v4547 = f10536
-							local v4548 = f10537
+							local modules = f10536
+							local loadModule_S = f10537
 
 							f11098 = function()
-								while v4547.cache.S do
+								while modules.cache.S do
 								end
-								local t998 = { c = v4548() }
-								v4547.cache.S = t998
+								local t998 = { c = loadModule_S() }
+								modules.cache.S = t998
 								return t998.c
 							end
 
 							f10536[f10500] = f11098
-							local v4549 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4549.q()
-								local Tokens = v4549.S()
+								modules.q()
+								local Tokens = modules.S()
 								local ThemeBatch = {}
 								ThemeBatch.__index = ThemeBatch
 								local batches = {}
@@ -192094,8 +192094,8 @@ local function f10149()
 							end
 
 							f10500 = "T"
-							local v4564 = f10536
-							local v4565 = f10537
+							local modules = f10536
+							local loadModule_T = f10537
 
 							f11098 = function()
 								local f11409 = string.unpack
@@ -192106,18 +192106,18 @@ local function f10149()
 									f11409 = nil
 									v4566 = nil
 									v4567 = nil
-								until not v4564.cache.T
-								local t1011 = { c = v4565() }
-								v4564.cache.T = t1011
+								until not modules.cache.T
+								local t1011 = { c = loadModule_T() }
+								modules.cache.T = t1011
 								return t1011.c
 							end
 
 							f10536[f10500] = f11098
-							local v4568 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v4568.y()
-								v4568.C()
+								local Config = modules.y()
+								modules.C()
 								local ConfigStore = {}
 
 								function ConfigStore:Get(path)
@@ -192143,25 +192143,25 @@ local function f10149()
 							end
 
 							f10500 = "U"
-							local v4572 = f10536
-							local v4573 = f10537
+							local modules = f10536
+							local loadModule_U = f10537
 
 							f11098 = function()
 								repeat
-								until not v4572.cache.U
-								local t1013 = { c = v4573() }
-								v4572.cache.U = t1013
+								until not modules.cache.U
+								local t1013 = { c = loadModule_U() }
+								modules.cache.U = t1013
 								return t1013.c
 							end
 
 							f10536[f10500] = f11098
-							local v4574 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								local v4575 = cloneref(game:GetService("GuiService"))
 								local v4576 = cloneref(game:GetService("HttpService"))
 								local v4577 = cloneref(game:GetService("UserInputService"))
-								v4574.c()
+								modules.c()
 								local kiciahook2 = "kiciahook"
 								local v4578 = "0.1.0"
 								local v4579 = os.clock()
@@ -192334,14 +192334,14 @@ local function f10149()
 							end
 
 							f10500 = "V"
-							local v4599 = f10536
-							local v4600 = f10537
+							local modules = f10536
+							local loadModule_V = f10537
 
 							f11098 = function()
-								while v4599.cache.V do
+								while modules.cache.V do
 								end
-								local t1029 = { c = v4600() }
-								v4599.cache.V = t1029
+								local t1029 = { c = loadModule_V() }
+								modules.cache.V = t1029
 								return t1029.c
 							end
 
@@ -192369,22 +192369,22 @@ local function f10149()
 							end
 
 							f10500 = "W"
-							local v4601 = f10536
-							local v4602 = f10537
+							local modules = f10536
+							local loadModule_W = f10537
 
 							f11098 = function(...)
 								local t1030 = nil
-								t1030 = { c = v4602() }
-								v4601.cache.W = t1030
+								t1030 = { c = loadModule_W() }
+								modules.cache.W = t1030
 								return t1030.c
 							end
 
 							f10536[f10500] = f11098
-							local v4603 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4603.q()
-								local f11417 = v4603.W
+								modules.q()
+								local f11417 = modules.W
 								local v4604
 								repeat
 									f11417 = f11417()
@@ -192399,25 +192399,25 @@ local function f10149()
 							end
 
 							f10500 = "X"
-							local v4605 = f10536
-							local v4606 = f10537
+							local modules = f10536
+							local loadModule_X = f10537
 
 							f11098 = function()
-								local t1031 = v4605.cache.X
+								local t1031 = modules.cache.X
 								if not t1031 then
-									t1031 = { c = v4606() }
-									v4605.cache.X = t1031
+									t1031 = { c = loadModule_X() }
+									modules.cache.X = t1031
 								end
 								return t1031.c
 							end
 
 							f10536[f10500] = f11098
-							local v4607 = f10536
+							local modules = f10536
 
 							f10537 = function(...)
-								v4607.F()
-								local Trove = v4607.q()
-								local observeGuis = v4607.X()
+								modules.F()
+								local Trove = modules.q()
+								local observeGuis = modules.X()
 								local Players = cloneref((nil).GetService(nil, "Players"))
 								local GuiNameSpoofer = {}
 								GuiNameSpoofer.__index = GuiNameSpoofer
@@ -192671,14 +192671,14 @@ local function f10149()
 							end
 
 							f10500 = "Y"
-							local v4624 = f10536
-							local v4625 = f10537
+							local modules = f10536
+							local loadModule_Y = f10537
 
 							f11098 = function()
-								while v4624.cache.Y do
+								while modules.cache.Y do
 								end
-								local t1038 = { c = v4625() }
-								v4624.cache.Y = t1038
+								local t1038 = { c = loadModule_Y() }
+								modules.cache.Y = t1038
 								return t1038.c
 							end
 
@@ -192700,8 +192700,8 @@ local function f10149()
 							end
 
 							f10500 = "Z"
-							local v4626 = f10536
-							local v4627 = f10537
+							local modules = f10536
+							local loadModule_Z = f10537
 
 							f11098 = function(...)
 								local t1040, v4628
@@ -192709,13 +192709,13 @@ local function f10149()
 								if v4628 then
 									t1040 = nil
 								end
-								local t1041 = { c = v4627() }
-								v4626.cache.Z = t1041
+								local t1041 = { c = loadModule_Z() }
+								modules.cache.Z = t1041
 								return t1040.c
 							end
 
 							f10536[f10500] = f11098
-							local v4629 = f10536
+							local modules = f10536
 
 							f10537 = function(...)
 								while true do
@@ -192749,27 +192749,27 @@ local function f10149()
 							end
 
 							f10500 = "_"
-							local v4635 = f10536
-							local v4636 = f10537
+							local modules = f10536
+							local loadModule__ = f10537
 
 							f11098 = function(...)
 								local v4637 = nil
-								if not v4635.cache._ then
+								if not modules.cache._ then
 									v4637 = 302
 								end
 								while v4637 do
 								end
-								local t1042 = { c = v4636() }
-								v4635.cache._ = t1042
+								local t1042 = { c = loadModule__() }
+								modules.cache._ = t1042
 								return t1042.c
 							end
 
 							f10536[f10500] = f11098
-							local v4638 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v4638.y()
-								v4638.q()
+								local Config = modules.y()
+								modules.q()
 								local categories = table.create(2)
 								local properties = table.create(2)
 
@@ -192808,7 +192808,7 @@ local function f10149()
 							end
 
 							f10500 = "aa"
-							local v4646 = f10536
+							local modules = f10536
 							local v4647 = f10537
 
 							f11098 = function(...)
@@ -192818,22 +192818,22 @@ local function f10149()
 									t1043 = {}
 								end
 								t1043.c = v4647()
-								v4646.cache.aa = t1043
+								modules.cache.aa = t1043
 								return t1043.c
 							end
 
 							f10536[f10500] = f11098
-							local v4649 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4649.y()
-								v4649.Y()
-								v4649.F()
-								v4649.q()
-								v4649.Z()
-								v4649._()
+								modules.y()
+								modules.Y()
+								modules.F()
+								modules.q()
+								modules.Z()
+								modules._()
 								while true do
-									v4649.aa()
+									modules.aa()
 									local v4650 = -75
 									repeat
 										v4650 = v4650 == 174
@@ -192842,24 +192842,24 @@ local function f10149()
 							end
 
 							f10500 = "ab"
-							local v4651 = f10536
-							local v4652 = f10537
+							local modules = f10536
+							local loadModule_ab = f10537
 
 							f11098 = function()
-								local t1044 = v4651.cache.ab
+								local t1044 = modules.cache.ab
 								if not t1044 then
-									t1044 = { c = v4652() }
-									v4651.cache.ab = t1044
+									t1044 = { c = loadModule_ab() }
+									modules.cache.ab = t1044
 								end
 								return t1044.c
 							end
 
 							f10536[f10500] = f11098
-							local v4653 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4653.b()
-								local ErrorSink = v4653.J()
+								modules.b()
+								local ErrorSink = modules.J()
 								local ErrorReporter = {}
 								ErrorReporter.__index = ErrorReporter
 
@@ -192904,25 +192904,25 @@ local function f10149()
 							end
 
 							f10500 = "ac"
-							local v4658 = f10536
-							local v4659 = f10537
+							local modules = f10536
+							local loadModule_ac = f10537
 
 							f11098 = function()
 								repeat
-								until not v4658.cache.ac
-								local t1047 = { c = v4659() }
-								v4658.cache.ac = t1047
+								until not modules.cache.ac
+								local t1047 = { c = loadModule_ac() }
+								modules.cache.ac = t1047
 								return t1047.c
 							end
 
 							f10536[f10500] = f11098
-							local v4660 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ErrorReporter = v4660.ac()
-								local Promise = v4660.A()
-								local Result = v4660.b()
-								local Trove = v4660.q()
+								local ErrorReporter = modules.ac()
+								local Promise = modules.A()
+								local Result = modules.b()
+								local Trove = modules.q()
 								local Players = cloneref(game:GetService("Players"))
 
 								local function isAnyClass(instance, nextClass)
@@ -193312,8 +193312,8 @@ local function f10149()
 							end
 
 							f10500 = "ad"
-							local v4686 = f10536
-							local v4687 = f10537
+							local modules = f10536
+							local loadModule_ad = f10537
 
 							f11098 = function()
 								local f11462 = bit32.lrotate
@@ -193324,17 +193324,17 @@ local function f10149()
 									f11462 = nil
 									f11463 = nil
 									v4688 = nil
-								until not v4686.cache.ad
-								local t1059 = { c = v4687() }
-								v4686.cache.ad = t1059
+								until not modules.cache.ad
+								local t1059 = { c = loadModule_ad() }
+								modules.cache.ad = t1059
 								return t1059.c
 							end
 
 							f10536[f10500] = f11098
-							local v4689 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v4690 = v4689.y()
+								local v4690 = modules.y()
 
 								local function f11464()
 									while true do
@@ -193347,30 +193347,30 @@ local function f10149()
 							end
 
 							f10500 = "ae"
-							local v4691 = f10536
-							local v4692 = f10537
+							local modules = f10536
+							local loadModule_ae = f10537
 
 							f11098 = function()
-								local t1060 = v4691.cache.ae
+								local t1060 = modules.cache.ae
 								if not t1060 then
-									t1060 = { c = v4692() }
-									v4691.cache.ae = t1060
+									t1060 = { c = loadModule_ae() }
+									modules.cache.ae = t1060
 								end
 								return t1060.c
 							end
 
 							f10536[f10500] = f11098
-							local v4693 = f10536
+							local modules = f10536
 
 							f10537 = function(...)
 								local AvatarDecorator, restoreKey, loaded
 								loaded = not not true
 								if loaded then
-									local AvatarSpoof = v4693.ad()
-									local settings = v4693.y()
-									local Promise = v4693.A()
-									local Trove = v4693.q()
-									local getDesiredUserId = v4693.ae()
+									local AvatarSpoof = modules.ad()
+									local settings = modules.y()
+									local Promise = modules.A()
+									local Trove = modules.q()
+									local getDesiredUserId = modules.ae()
 									local Players = cloneref(game:GetService("Players"))
 									local localPlayer = Players.LocalPlayer
 									AvatarDecorator = {}
@@ -193531,14 +193531,14 @@ local function f10149()
 							end
 
 							f10500 = "af"
-							local v4717 = f10536
-							local v4718 = f10537
+							local modules = f10536
+							local loadModule_af = f10537
 
 							f11098 = function()
-								while v4717.cache.af do
+								while modules.cache.af do
 								end
-								local t1065 = { c = v4718() }
-								v4717.cache.af = t1065
+								local t1065 = { c = loadModule_af() }
+								modules.cache.af = t1065
 								return t1065.c
 							end
 
@@ -193561,14 +193561,14 @@ local function f10149()
 							end
 
 							f10500 = "ag"
-							local v4720 = f10536
-							local v4721 = f10537
+							local modules = f10536
+							local loadModule_ag = f10537
 
 							f11098 = function()
-								while v4720.cache.ag do
+								while modules.cache.ag do
 								end
-								local t1066 = { c = v4721() }
-								v4720.cache.ag = t1066
+								local t1066 = { c = loadModule_ag() }
+								modules.cache.ag = t1066
 								return t1066.c
 							end
 
@@ -193580,13 +193580,13 @@ local function f10149()
 							end
 
 							f10500 = "ah"
-							local v4723 = f10536
+							local modules = f10536
 							local v4724 = f10537
 
 							f11098 = function(...)
 								local f11476, v4725
 								while true do
-									if not v4723.cache.ah then
+									if not modules.cache.ah then
 										({}).c = v4724()
 										v4725 = 20
 										f11476 = math.floor
@@ -193633,105 +193633,105 @@ local function f10149()
 							end
 
 							f10500 = "ai"
-							local v4727 = f10536
-							local v4728 = f10537
+							local modules = f10536
+							local loadModule_ai = f10537
 
 							f11098 = function()
-								if v4727.cache.ai then
+								if modules.cache.ai then
 								end
-								local t1068 = { c = v4728() }
-								v4727.cache.ai = t1068
+								local t1068 = { c = loadModule_ai() }
+								modules.cache.ai = t1068
 								return t1068.c
 							end
 
 							f10536[f10500] = f11098
-							local v4729 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4729.t()
+								modules.t()
 								return nil
 							end
 
 							f10500 = "aj"
-							local v4730 = f10536
-							local v4731 = f10537
+							local modules = f10536
+							local loadModule_aj = f10537
 
 							f11098 = function()
-								if v4730.cache.aj then
+								if modules.cache.aj then
 								end
-								local t1069 = { c = v4731() }
-								v4730.cache.aj = t1069
+								local t1069 = { c = loadModule_aj() }
+								modules.cache.aj = t1069
 								return t1069.c
 							end
 
 							f10536[f10500] = f11098
-							local v4732 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4732.aj()
-								v4732.t()
+								modules.aj()
+								modules.t()
 								return nil
 							end
 
 							f10500 = "ak"
-							local v4733 = f10536
-							local v4734 = f10537
+							local modules = f10536
+							local loadModule_ak = f10537
 
 							f11098 = function()
-								local t1070 = v4733.cache.ak
+								local t1070 = modules.cache.ak
 								if not t1070 then
-									t1070 = { c = v4734() }
-									v4733.cache.ak = t1070
+									t1070 = { c = loadModule_ak() }
+									modules.cache.ak = t1070
 								end
 								return t1070.c
 							end
 
 							f10536[f10500] = f11098
-							local v4735 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4735.aj()
-								v4735.t()
+								modules.aj()
+								modules.t()
 								return nil
 							end
 
 							f10500 = "al"
-							local v4736 = f10536
-							local v4737 = f10537
+							local modules = f10536
+							local loadModule_al = f10537
 
 							f11098 = function()
-								if v4736.cache.al then
+								if modules.cache.al then
 								end
-								local t1071 = { c = v4737() }
-								v4736.cache.al = t1071
+								local t1071 = { c = loadModule_al() }
+								modules.cache.al = t1071
 								return t1071.c
 							end
 
 							f10536[f10500] = f11098
-							local v4738 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4738.g()
-								v4738.ak()
-								v4738.aj()
-								v4738.al()
-								v4738.t()
+								modules.g()
+								modules.ak()
+								modules.aj()
+								modules.al()
+								modules.t()
 								return nil
 							end
 
 							f10500 = "am"
-							local v4739 = f10536
-							local v4740 = f10537
+							local modules = f10536
+							local loadModule_am = f10537
 
 							f11098 = function(...)
 								local f11478, v4741
-								if not v4739.cache.am then
+								if not modules.cache.am then
 									f11478 = bit32.band
 									v4741 = string.unpack("<i8", "\134\1\0\0\0\0\0\0")
 								end
 								local _ = 25346 + (f11478(v4741, 436, 278) + string.byte("&\145O\221", 1, 2)) + -25640
-								local t1072 = { c = v4740() }
-								v4739.cache.am = t1072
+								local t1072 = { c = loadModule_am() }
+								modules.cache.am = t1072
 								return t1072.c
 							end
 
@@ -193742,35 +193742,35 @@ local function f10149()
 							end
 
 							f10500 = "an"
-							local v4742 = f10536
-							local v4743 = f10537
+							local modules = f10536
+							local loadModule_an = f10537
 
 							f11098 = function()
-								local t1073 = v4742.cache.an
+								local t1073 = modules.cache.an
 								if not t1073 then
-									t1073 = { c = v4743() }
-									v4742.cache.an = t1073
+									t1073 = { c = loadModule_an() }
+									modules.cache.an = t1073
 								end
 								return t1073.c
 							end
 
 							f10536[f10500] = f11098
-							local v4744 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4744.am()
-								v4744.g()
-								v4744.ak()
-								v4744.aj()
-								v4744.an()
-								v4744.al()
-								local waitForChild = v4744.W()
+								modules.am()
+								modules.g()
+								modules.ak()
+								modules.aj()
+								modules.an()
+								modules.al()
+								local waitForChild = modules.W()
 								local Players = cloneref(game:GetService("Players"))
 								local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"))
 								local localPlayer = Players.LocalPlayer
 								local playerScripts = waitForChild(localPlayer, "PlayerScripts")
 								local controllers = waitForChild(playerScripts, "Controllers")
-								local modules = waitForChild(ReplicatedStorage, "Modules")
+								local modules2 = waitForChild(ReplicatedStorage, "Modules")
 								local playerModules = waitForChild(playerScripts, "Modules")
 								local clientReplicatedClasses = waitForChild(playerModules, "ClientReplicatedClasses")
 								local remotes = waitForChild(ReplicatedStorage, "Remotes")
@@ -193803,16 +193803,16 @@ local function f10149()
 								local lobby = require(lobbyModule)
 								local pagesModule = waitForChild(userInterface, "Pages", true)
 								local matchmakingInterface = waitForChild(lobbyModule, "Matchmaking", true)
-								local constants = waitForChild(modules, "CONSTANTS", true)
-								local enumLibrary = waitForChild(modules, "EnumLibrary", true)
-								local inputLibrary = waitForChild(modules, "InputLibrary", true)
-								local seasonLibrary = waitForChild(modules, "SeasonLibrary", true)
-								local cosmeticLibrary = waitForChild(modules, "CosmeticLibrary", true)
-								local itemLibrary = waitForChild(modules, "ItemLibrary", true)
-								local duelLibrary = waitForChild(modules, "DuelLibrary", true)
-								local utility = waitForChild(modules, "Utility", true)
-								local playerDataUtility = waitForChild(modules, "PlayerDataUtility", true)
-								local taskLibrary = waitForChild(modules, "TaskLibrary", true)
+								local constants = waitForChild(modules2, "CONSTANTS", true)
+								local enumLibrary = waitForChild(modules2, "EnumLibrary", true)
+								local inputLibrary = waitForChild(modules2, "InputLibrary", true)
+								local seasonLibrary = waitForChild(modules2, "SeasonLibrary", true)
+								local cosmeticLibrary = waitForChild(modules2, "CosmeticLibrary", true)
+								local itemLibrary = waitForChild(modules2, "ItemLibrary", true)
+								local duelLibrary = waitForChild(modules2, "DuelLibrary", true)
+								local utility = waitForChild(modules2, "Utility", true)
+								local playerDataUtility = waitForChild(modules2, "PlayerDataUtility", true)
+								local taskLibrary = waitForChild(modules2, "TaskLibrary", true)
 								local playerDataController = waitForChild(controllers, "PlayerDataController", true)
 								local matchmakingController = waitForChild(controllers, "MatchmakingController", true)
 								local leaderboardController = waitForChild(controllers, "LeaderboardController", true)
@@ -193840,7 +193840,7 @@ local function f10149()
 								local serverOsTime = waitForChild(ReplicatedStorage, table.create(2), true)
 								local playerModule = waitForChild(localPlayer, table.create(2), true)
 								local GameModules = {
-									Modules = modules,
+									Modules = modules2,
 									Controllers = controllers,
 									UserInterface = userInterface,
 									Equipment = equipment,
@@ -193907,27 +193907,27 @@ local function f10149()
 							end
 
 							f10500 = "ao"
-							local v4814 = f10536
-							local v4815 = f10537
+							local modules = f10536
+							local loadModule_ao = f10537
 
 							f11098 = function()
-								local t1076 = v4814.cache.ao
+								local t1076 = modules.cache.ao
 								if not t1076 then
-									t1076 = { c = v4815() }
-									v4814.cache.ao = t1076
+									t1076 = { c = loadModule_ao() }
+									modules.cache.ao = t1076
 								end
 								return t1076.c
 							end
 
 							f10536[f10500] = f11098
-							local v4816 = f10536
+							local modules = f10536
 							local v4817 = v387
 
 							f10537 = function()
-								local Result = v4816.b()
-								local sameInstance = v4816.ag()
-								local getField = v4816.ah()
-								local invoke = v4816.ai()
+								local Result = modules.b()
+								local sameInstance = modules.ag()
+								local getField = modules.ah()
+								local invoke = modules.ai()
 								local Players = cloneref(game:GetService("Players"))
 								local DuelerCloneSpoof = {}
 								DuelerCloneSpoof.__index = DuelerCloneSpoof
@@ -193994,7 +193994,7 @@ local function f10149()
 										return Result.VOID_OK
 									end
 									local preloadCharacterModel = getField(
-										v4816.ao.ClientDueler,
+										modules.ao.ClientDueler,
 										"_PreloadCharacterModel"
 									)
 									if preloadCharacterModel == nil then
@@ -194091,24 +194091,24 @@ local function f10149()
 							end
 
 							f10500 = "ap"
-							local v4833 = f10536
-							local v4834 = f10537
+							local modules = f10536
+							local loadModule_ap = f10537
 
 							f11098 = function()
-								local t1084 = v4833.cache.ap
+								local t1084 = modules.cache.ap
 								if not t1084 then
-									t1084 = { c = v4834() }
-									v4833.cache.ap = t1084
+									t1084 = { c = loadModule_ap() }
+									modules.cache.ap = t1084
 								end
 								return t1084.c
 							end
 
 							f10536[f10500] = f11098
-							local v4835 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Trove = v4835.q()
-								local forEachGui = v4835.X()
+								local Trove = modules.q()
+								local forEachGui = modules.X()
 								local ThumbnailSpoofer = {}
 								ThumbnailSpoofer.__index = ThumbnailSpoofer
 								local junk = r
@@ -194322,30 +194322,30 @@ local function f10149()
 							end
 
 							f10500 = "aq"
-							local v4847 = f10536
-							local v4848 = f10537
+							local modules = f10536
+							local loadModule_aq = f10537
 
 							f11098 = function()
-								local t1092 = v4847.cache.aq
+								local t1092 = modules.cache.aq
 								if not t1092 then
-									t1092 = { c = v4848() }
-									v4847.cache.aq = t1092
+									t1092 = { c = loadModule_aq() }
+									modules.cache.aq = t1092
 								end
 								return t1092.c
 							end
 
 							f10536[f10500] = f11098
-							local v4849 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local AvatarDecorator = v4849.af()
-								v4849.B()
-								local DuelerCloneSpoof = v4849.ap()
-								local ThumbnailSpoofer = v4849.aq()
-								v4849.E()
-								local Trove = v4849.q()
-								local resolveSpoof = v4849.ae()
-								local onConfigChanged = v4849.aa()
+								local AvatarDecorator = modules.af()
+								modules.B()
+								local DuelerCloneSpoof = modules.ap()
+								local ThumbnailSpoofer = modules.aq()
+								modules.E()
+								local Trove = modules.q()
+								local resolveSpoof = modules.ae()
+								local onConfigChanged = modules.aa()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local AvatarSpoofer = {}
 								AvatarSpoofer.__index = AvatarSpoofer
@@ -194431,38 +194431,38 @@ local function f10149()
 							end
 
 							f10500 = "ar"
-							local v4862 = f10536
-							local v4863 = f10537
+							local modules = f10536
+							local loadModule_ar = f10537
 
 							f11098 = function()
-								local t1097 = v4862.cache.ar
+								local t1097 = modules.cache.ar
 								if not t1097 then
-									t1097 = { c = v4863() }
-									v4862.cache.ar = t1097
+									t1097 = { c = loadModule_ar() }
+									modules.cache.ar = t1097
 								end
 								return t1097.c
 							end
 
 							f10536[f10500] = f11098
-							local v4864 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ErrorReporter = v4864.c()
-								local ChatSpoofer = v4864.z()
-								v4864.H()
-								local Config = v4864.y()
-								local DisplayOrders = v4864.I()
-								local ErrorSink = v4864.J()
-								local Notifications = v4864.K()
-								local GeneralState = v4864.D()
-								local RootTrove = v4864.r()
-								local TagNotifier = v4864.R()
-								local NotificationBinding = v4864.O()
-								local PlayerIdentities = v4864.F()
-								local PlayerRegistry = v4864.E()
-								local PlayerTags = v4864.G()
-								local Theme = v4864.T()
-								local NotifyPaths = v4864.U()
+								local ErrorReporter = modules.c()
+								local ChatSpoofer = modules.z()
+								modules.H()
+								local Config = modules.y()
+								local DisplayOrders = modules.I()
+								local ErrorSink = modules.J()
+								local Notifications = modules.K()
+								local GeneralState = modules.D()
+								local RootTrove = modules.r()
+								local TagNotifier = modules.R()
+								local NotificationBinding = modules.O()
+								local PlayerIdentities = modules.F()
+								local PlayerRegistry = modules.E()
+								local PlayerTags = modules.G()
+								local Theme = modules.T()
+								local NotifyPaths = modules.U()
 
 								local function initCore(...)
 									local function getNotification(key)
@@ -194478,7 +194478,7 @@ local function f10149()
 									))
 									local errorReporter = RootTrove:Add(ErrorReporter.new())
 									ErrorSink.use(errorReporter)
-									local transport = v4864.V().new("https://ef756e5d1c644c419528953e333d55ad@analytics.kicia.cc/1")
+									local transport = modules.V().new("https://ef756e5d1c644c419528953e333d55ad@analytics.kicia.cc/1")
 									if transport ~= nil then
 										errorReporter:SetTransport(transport)
 									end
@@ -194507,8 +194507,8 @@ local function f10149()
 									local playerTags = RootTrove:Add(PlayerTags.new(playerRegistry))
 									RootTrove:Add(TagNotifier.new(playerTags, playerRegistry))
 									RootTrove:Add(ChatSpoofer.new())
-									RootTrove:Add(v4864.ab().new(playerIdentities))
-									local avatarSpoofer = RootTrove:Add(v4864.ar().new(playerRegistry))
+									RootTrove:Add(modules.ab().new(playerIdentities))
+									local avatarSpoofer = RootTrove:Add(modules.ar().new(playerRegistry))
 
 									local function armAvatarSpoofer()
 										avatarSpoofer:Arm()
@@ -194533,14 +194533,14 @@ local function f10149()
 							end
 
 							f10500 = "as"
-							local v4890 = f10536
-							local v4891 = f10537
+							local modules = f10536
+							local loadModule_as = f10537
 
 							f11098 = function(...)
-								local t1099 = v4890.cache.as
+								local t1099 = modules.cache.as
 								if not t1099 then
-									t1099 = { c = v4891() }
-									v4890.cache.as = t1099
+									t1099 = { c = loadModule_as() }
+									modules.cache.as = t1099
 								end
 								return t1099.c
 							end
@@ -194795,23 +194795,23 @@ local function f10149()
 							end
 
 							f10500 = "at"
-							local v4913 = f10536
-							local v4914 = f10537
+							local modules = f10536
+							local loadModule_at = f10537
 
 							f11098 = function()
-								local t1107 = v4913.cache.at
+								local t1107 = modules.cache.at
 								if not t1107 then
-									t1107 = { c = v4914() }
-									v4913.cache.at = t1107
+									t1107 = { c = loadModule_at() }
+									modules.cache.at = t1107
 								end
 								return t1107.c
 							end
 
 							f10536[f10500] = f11098
-							local v4915 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local DisplayOrder = v4915.I()
+								local DisplayOrder = modules.I()
 
 								local function createScreenGui()
 									local screenGui = Instance.new("ScreenGui")
@@ -194826,23 +194826,23 @@ local function f10149()
 							end
 
 							f10500 = "au"
-							local v4918 = f10536
-							local v4919 = f10537
+							local modules = f10536
+							local loadModule_au = f10537
 
 							f11098 = function()
-								local t1108 = v4918.cache.au
+								local t1108 = modules.cache.au
 								if not t1108 then
-									t1108 = { c = v4919() }
-									v4918.cache.au = t1108
+									t1108 = { c = loadModule_au() }
+									modules.cache.au = t1108
 								end
 								return t1108.c
 							end
 
 							f10536[f10500] = f11098
-							local v4920 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local newHudGui = v4920.au()
+								local newHudGui = modules.au()
 								local FovCircle = {}
 								FovCircle.__index = FovCircle
 
@@ -194939,19 +194939,19 @@ local function f10149()
 							end
 
 							f10500 = "av"
-							local v4934 = f10536
-							local v4935 = f10537
+							local modules = f10536
+							local loadModule_av = f10537
 
 							f11098 = function(...)
 								local t1112, v4936
-								if v4934.cache.av then
-									t1112 = { c = v4935() }
+								if modules.cache.av then
+									t1112 = { c = loadModule_av() }
 								else
 									repeat
 										v4936 = not not false
 									until not v4936
 								end
-								v4934.cache.av = t1112
+								modules.cache.av = t1112
 								return t1112.c
 							end
 
@@ -195048,24 +195048,24 @@ local function f10149()
 							end
 
 							f10500 = "aw"
-							local v4942 = f10536
-							local v4943 = f10537
+							local modules = f10536
+							local loadModule_aw = f10537
 
 							f11098 = function()
-								local t1115 = v4942.cache.aw
+								local t1115 = modules.cache.aw
 								if not t1115 then
-									t1115 = { c = v4943() }
-									v4942.cache.aw = t1115
+									t1115 = { c = loadModule_aw() }
+									modules.cache.aw = t1115
 								end
 								return t1115.c
 							end
 
 							f10536[f10500] = f11098
-							local v4944 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								local t1116 = {}
-								local v4945 = v4944.aw()
+								local v4945 = modules.aw()
 
 								function t1116.new(...)
 									local v4946
@@ -195103,14 +195103,14 @@ local function f10149()
 							end
 
 							f10500 = "ax"
-							local v4951 = f10536
-							local v4952 = f10537
+							local modules = f10536
+							local loadModule_ax = f10537
 
 							f11098 = function()
-								local t1118 = v4951.cache.ax
+								local t1118 = modules.cache.ax
 								if not t1118 then
-									t1118 = { c = v4952() }
-									v4951.cache.ax = t1118
+									t1118 = { c = loadModule_ax() }
+									modules.cache.ax = t1118
 								end
 								return t1118.c
 							end
@@ -195122,14 +195122,14 @@ local function f10149()
 							end
 
 							f10500 = "ay"
-							local v4953 = f10536
-							local v4954 = f10537
+							local modules = f10536
+							local loadModule_ay = f10537
 
 							f11098 = function()
-								local t1119 = v4953.cache.ay
+								local t1119 = modules.cache.ay
 								if not t1119 then
-									t1119 = { c = v4954() }
-									v4953.cache.ay = t1119
+									t1119 = { c = loadModule_ay() }
+									modules.cache.ay = t1119
 								end
 								return t1119.c
 							end
@@ -195297,26 +195297,26 @@ local function f10149()
 							end
 
 							f10500 = "az"
-							local v4970 = f10536
-							local v4971 = f10537
+							local modules = f10536
+							local loadModule_az = f10537
 
 							f11098 = function()
-								local t1124 = v4970.cache.az
+								local t1124 = modules.cache.az
 								if not t1124 then
-									t1124 = { c = v4971() }
-									v4970.cache.az = t1124
+									t1124 = { c = loadModule_az() }
+									modules.cache.az = t1124
 								end
 								return t1124.c
 							end
 
 							f10536[f10500] = f11098
-							local v4972 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Result = v4972.b()
-								v4972.ay()
-								v4972.az()
-								local getOverlayGui = v4972.au()
+								local Result = modules.b()
+								modules.ay()
+								modules.az()
+								local getOverlayGui = modules.au()
 								local UserInputService = cloneref(game:GetService("UserInputService"))
 								local FovOverlay = {}
 								FovOverlay.__index = FovOverlay
@@ -195408,47 +195408,47 @@ local function f10149()
 							end
 
 							f10500 = "aA"
-							local v4981 = f10536
-							local v4982 = f10537
+							local modules = f10536
+							local loadModule_aA = f10537
 
 							f11098 = function()
-								local t1128 = v4981.cache.aA
+								local t1128 = modules.cache.aA
 								if not t1128 then
-									t1128 = { c = v4982() }
-									v4981.cache.aA = t1128
+									t1128 = { c = loadModule_aA() }
+									modules.cache.aA = t1128
 								end
 								return t1128.c
 							end
 
 							f10536[f10500] = f11098
-							local v4983 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v4983.h()
-								v4983.ay()
-								v4983.aA()
+								modules.h()
+								modules.ay()
+								modules.aA()
 								return nil
 							end
 
 							f10500 = "aB"
-							local v4984 = f10536
-							local v4985 = f10537
+							local modules = f10536
+							local loadModule_aB = f10537
 
 							f11098 = function()
-								local t1129 = v4984.cache.aB
+								local t1129 = modules.cache.aB
 								if not t1129 then
-									t1129 = { c = v4985() }
-									v4984.cache.aB = t1129
+									t1129 = { c = loadModule_aB() }
+									modules.cache.aB = t1129
 								end
 								return t1129.c
 							end
 
 							f10536[f10500] = f11098
-							local v4986 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v4986.t()
-								local Trove = v4986.q()
+								local Signal = modules.t()
+								local Trove = modules.q()
 								local CharacterContext = {}
 								CharacterContext.__index = CharacterContext
 
@@ -195568,14 +195568,14 @@ local function f10149()
 							end
 
 							f10500 = "aC"
-							local v4993 = f10536
-							local v4994 = f10537
+							local modules = f10536
+							local loadModule_aC = f10537
 
 							f11098 = function()
-								local t1135 = v4993.cache.aC
+								local t1135 = modules.cache.aC
 								if not t1135 then
-									t1135 = { c = v4994() }
-									v4993.cache.aC = t1135
+									t1135 = { c = loadModule_aC() }
+									modules.cache.aC = t1135
 								end
 								return t1135.c
 							end
@@ -195665,7 +195665,7 @@ local function f10149()
 							end
 
 							f10500 = "aD"
-							local v5001 = f10536
+							local modules = f10536
 							local v5002 = f10537
 
 							f11098 = function()
@@ -195674,7 +195674,7 @@ local function f10149()
 									local v5004 = {}
 									while true do
 										v5004.c = v5002()
-										local cache2 = v5001.cache
+										local cache2 = modules.cache
 										cache2.aD = v5004
 										v5003 = not not false
 										if not v5003 then
@@ -195746,13 +195746,13 @@ local function f10149()
 							end
 
 							f10500 = "aE"
-							local v5007 = f10536
+							local modules = f10536
 							local v5008 = f10537
 
 							f11098 = function(...)
-								if v5007.cache.aE then
+								if modules.cache.aE then
 									(nil).c = nil
-									v5007.cache.aE = nil
+									modules.cache.aE = nil
 									return (nil).c
 								end
 								local v5009
@@ -195765,17 +195765,17 @@ local function f10149()
 							end
 
 							f10536[f10500] = f11098
-							local v5010 = f10536
+							local modules = f10536
 							local v5011 = v387
 
 							f10537 = function()
-								v5010.aj()
-								local Result = v5010.b()
-								local getField = v5010.ah()
-								local FighterController = v5010.ao().FighterController
-								local ClientFighterCharacterJoints2 = v5010.ao().ClientFighterCharacterJoints
-								local UpdateCameraRotationRemote2 = v5010.ao().UpdateCameraRotationRemote
-								local RotationCodec = v5010.aE()
+								modules.aj()
+								local Result = modules.b()
+								local getField = modules.ah()
+								local FighterController = modules.ao().FighterController
+								local ClientFighterCharacterJoints2 = modules.ao().ClientFighterCharacterJoints
+								local UpdateCameraRotationRemote2 = modules.ao().UpdateCameraRotationRemote
+								local RotationCodec = modules.aE()
 								local ViewAngleDriver = {}
 								ViewAngleDriver.__index = ViewAngleDriver
 
@@ -196020,26 +196020,26 @@ local function f10149()
 							end
 
 							f10500 = "aF"
-							local v5030 = f10536
-							local v5031 = f10537
+							local modules = f10536
+							local loadModule_aF = f10537
 
 							f11098 = function()
-								local t1145 = v5030.cache.aF
+								local t1145 = modules.cache.aF
 								if not t1145 then
-									t1145 = { c = v5031() }
-									v5030.cache.aF = t1145
+									t1145 = { c = loadModule_aF() }
+									modules.cache.aF = t1145
 								end
 								return t1145.c
 							end
 
 							f10536[f10500] = f11098
-							local v5032 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5032.aC()
-								local RootDesync = v5032.aD()
-								local Trove = v5032.q()
-								local ViewAngleDriver = v5032.aF()
+								modules.aC()
+								local RootDesync = modules.aD()
+								local Trove = modules.q()
+								local ViewAngleDriver = modules.aF()
 								local headOffset = Vector3.new(0, 1.75, 0)
 								local CharacterController = {}
 								CharacterController.__index = CharacterController
@@ -196171,27 +196171,27 @@ local function f10149()
 							end
 
 							f10500 = "aG"
-							local v5045 = f10536
-							local v5046 = f10537
+							local modules = f10536
+							local loadModule_aG = f10537
 
 							f11098 = function()
-								local t1152 = v5045.cache.aG
+								local t1152 = modules.cache.aG
 								if not t1152 then
-									t1152 = { c = v5046() }
-									v5045.cache.aG = t1152
+									t1152 = { c = loadModule_aG() }
+									modules.cache.aG = t1152
 								end
 								return t1152.c
 							end
 
 							f10536[f10500] = f11098
-							local v5047 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								return v5047.t().new().Connect
+								return modules.t().new().Connect
 							end
 
 							f10500 = "aH"
-							local v5048 = f10536
+							local modules = f10536
 							local v5049 = f10537
 
 							f11098 = function(...)
@@ -196213,21 +196213,21 @@ local function f10149()
 										v5051 = nil
 										f11534 = nil
 										v5052 = nil
-									until not v5048.cache
+									until not modules.cache
 									t1153 = {}
 									v5050 = v5049()
 								end
 								t1153.c = v5050
-								v5048.cache.aH = t1153
+								modules.cache.aH = t1153
 								return t1153.c
 							end
 
 							f10536[f10500] = f11098
-							local v5053 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5053.t()
-								local bindSignal = v5053.aH()
+								modules.t()
+								local bindSignal = modules.aH()
 
 								local function noop()
 									local v5055 = string.byte("\172\187\0202\139", 3, 5)
@@ -196242,24 +196242,24 @@ local function f10149()
 							end
 
 							f10500 = "aI"
-							local v5057 = f10536
-							local v5058 = f10537
+							local modules = f10536
+							local loadModule_aI = f10537
 
 							f11098 = function()
-								local t1154 = v5057.cache.aI
+								local t1154 = modules.cache.aI
 								if not t1154 then
-									t1154 = { c = v5058() }
-									v5057.cache.aI = t1154
+									t1154 = { c = loadModule_aI() }
+									modules.cache.aI = t1154
 								end
 								return t1154.c
 							end
 
 							f10536[f10500] = f11098
-							local v5059 = f10536
+							local modules = f10536
 							local v5060 = rawget3
 
 							f10537 = function()
-								v5059.aj()
+								modules.aj()
 
 								local function f11536(...)
 									local v5061, v5062
@@ -196271,32 +196271,32 @@ local function f10149()
 							end
 
 							f10500 = "aJ"
-							local v5063 = f10536
-							local v5064 = f10537
+							local modules = f10536
+							local loadModule_aJ = f10537
 
 							f11098 = function()
-								local t1155 = v5063.cache.aJ
+								local t1155 = modules.cache.aJ
 								if not t1155 then
-									t1155 = { c = v5064() }
-									v5063.cache.aJ = t1155
+									t1155 = { c = loadModule_aJ() }
+									modules.cache.aJ = t1155
 								end
 								return t1155.c
 							end
 
 							f10536[f10500] = f11098
-							local v5065 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CharacterContext = v5065.aC()
-								v5065.aj()
-								v5065.al()
-								local Signal = v5065.t()
-								local Trove = v5065.q()
-								local connectSignal = v5065.aI()
-								local bindSignal = v5065.aH()
-								local callMethod = v5065.aJ()
-								local getField = v5065.ah()
-								local invoke = v5065.ai()
+								local CharacterContext = modules.aC()
+								modules.aj()
+								modules.al()
+								local Signal = modules.t()
+								local Trove = modules.q()
+								local connectSignal = modules.aI()
+								local bindSignal = modules.aH()
+								local callMethod = modules.aJ()
+								local getField = modules.ah()
+								local invoke = modules.ai()
 								local LocalFighterState = {}
 								LocalFighterState.__index = LocalFighterState
 
@@ -196472,21 +196472,21 @@ local function f10149()
 							end
 
 							f10500 = "aK"
-							local v5087 = f10536
-							local v5088 = f10537
+							local modules = f10536
+							local loadModule_aK = f10537
 
 							f11098 = function(...)
 								local v5089 = nil
-								if not v5087.cache.aK then
-									local t1161 = { c = v5088() }
-									v5087.cache.aK = t1161
+								if not modules.cache.aK then
+									local t1161 = { c = loadModule_aK() }
+									modules.cache.aK = t1161
 									v5089 = t1161.c
 								end
 								return v5089
 							end
 
 							f10536[f10500] = f11098
-							local v5090 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								local f11545 = bit32.rshift
@@ -196514,24 +196514,24 @@ local function f10149()
 							end
 
 							f10500 = "aL"
-							local v5093 = f10536
-							local v5094 = f10537
+							local modules = f10536
+							local loadModule_aL = f10537
 
 							f11098 = function()
-								local t1162 = v5093.cache.aL
+								local t1162 = modules.cache.aL
 								if not t1162 then
-									t1162 = { c = v5094() }
-									v5093.cache.aL = t1162
+									t1162 = { c = loadModule_aL() }
+									modules.cache.aL = t1162
 								end
 								return t1162.c
 							end
 
 							f10536[f10500] = f11098
-							local v5095 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Trove = v5095.q()
-								local getRankForElo = v5095.aL()
+								local Trove = modules.q()
+								local getRankForElo = modules.aL()
 								local RankTracker = {}
 								RankTracker.__index = RankTracker
 
@@ -196568,24 +196568,24 @@ local function f10149()
 							end
 
 							f10500 = "aM"
-							local v5098 = f10536
-							local v5099 = f10537
+							local modules = f10536
+							local loadModule_aM = f10537
 
 							f11098 = function()
-								local t1165 = v5098.cache.aM
+								local t1165 = modules.cache.aM
 								if not t1165 then
-									t1165 = { c = v5099() }
-									v5098.cache.aM = t1165
+									t1165 = { c = loadModule_aM() }
+									modules.cache.aM = t1165
 								end
 								return t1165.c
 							end
 
 							f10536[f10500] = f11098
-							local v5100 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5100.al()
-								local safeIndex = v5100.ah()
+								modules.al()
+								local safeIndex = modules.ah()
 								local CustomView = {}
 								CustomView.__index = CustomView
 								CustomView.__type = "CustomView"
@@ -196601,24 +196601,24 @@ local function f10149()
 							end
 
 							f10500 = "aN"
-							local v5104 = f10536
-							local v5105 = f10537
+							local modules = f10536
+							local loadModule_aN = f10537
 
 							f11098 = function()
-								local t1168 = v5104.cache.aN
+								local t1168 = modules.cache.aN
 								if not t1168 then
-									t1168 = { c = v5105() }
-									v5104.cache.aN = t1168
+									t1168 = { c = loadModule_aN() }
+									modules.cache.aN = t1168
 								end
 								return t1168.c
 							end
 
 							f10536[f10500] = f11098
-							local v5106 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5106.al()
-								local getField = v5106.ah()
+								modules.al()
+								local getField = modules.ah()
 								local GunView = {}
 								GunView.__index = GunView
 								GunView.__type = "GunView"
@@ -196645,24 +196645,24 @@ local function f10149()
 							end
 
 							f10500 = "aO"
-							local v5110 = f10536
-							local v5111 = f10537
+							local modules = f10536
+							local loadModule_aO = f10537
 
 							f11098 = function()
-								local t1171 = v5110.cache.aO
+								local t1171 = modules.cache.aO
 								if not t1171 then
-									t1171 = { c = v5111() }
-									v5110.cache.aO = t1171
+									t1171 = { c = loadModule_aO() }
+									modules.cache.aO = t1171
 								end
 								return t1171.c
 							end
 
 							f10536[f10500] = f11098
-							local v5112 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5112.al()
-								local getField = v5112.ah()
+								modules.al()
+								local getField = modules.ah()
 								local MeleeView = {}
 								MeleeView.__index = MeleeView
 								MeleeView.__type = "MeleeView"
@@ -196695,24 +196695,24 @@ local function f10149()
 							end
 
 							f10500 = "aP"
-							local v5119 = f10536
-							local v5120 = f10537
+							local modules = f10536
+							local loadModule_aP = f10537
 
 							f11098 = function()
-								local t1174 = v5119.cache.aP
+								local t1174 = modules.cache.aP
 								if not t1174 then
-									t1174 = { c = v5120() }
-									v5119.cache.aP = t1174
+									t1174 = { c = loadModule_aP() }
+									modules.cache.aP = t1174
 								end
 								return t1174.c
 							end
 
 							f10536[f10500] = f11098
-							local v5121 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5121.al()
-								local log = v5121.ah()
+								modules.al()
+								local log = modules.ah()
 								local ThrowableView = {}
 								ThrowableView.__index = ThrowableView
 								ThrowableView.__type = "ThrowableView"
@@ -196732,11 +196732,11 @@ local function f10149()
 							end
 
 							f10500 = "aQ"
-							local v5125 = f10536
+							local modules = f10536
 							local v5126 = f10537
 
 							f11098 = function()
-								if v5125.cache.aQ then
+								if modules.cache.aQ then
 								end
 								local t1176 = {}
 								local v5127 = v5126()
@@ -196745,24 +196745,24 @@ local function f10149()
 									f11548 = f11548("\234\197")
 								until not f11548
 								t1176.c = v5127
-								v5125.cache.aQ = t1176
+								modules.cache.aQ = t1176
 								return t1176.c
 							end
 
 							f10536[f10500] = f11098
-							local v5128 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CustomView = v5128.aN()
-								v5128.aj()
-								local GunView = v5128.aO()
-								v5128.al()
-								local MeleeView = v5128.aP()
-								local Signal = v5128.t()
-								local ThrowableView = v5128.aQ()
-								local Trove = v5128.q()
-								local bindSignal = v5128.aH()
-								local getField = v5128.ah()
+								local CustomView = modules.aN()
+								modules.aj()
+								local GunView = modules.aO()
+								modules.al()
+								local MeleeView = modules.aP()
+								local Signal = modules.t()
+								local ThrowableView = modules.aQ()
+								local Trove = modules.q()
+								local bindSignal = modules.aH()
+								local getField = modules.ah()
 								local RemoteItemObserver = {}
 								RemoteItemObserver.__index = RemoteItemObserver
 
@@ -196917,31 +196917,31 @@ local function f10149()
 							end
 
 							f10500 = "aR"
-							local v5147 = f10536
-							local v5148 = f10537
+							local modules = f10536
+							local loadModule_aR = f10537
 
 							f11098 = function()
-								local t1180 = v5147.cache.aR
+								local t1180 = modules.cache.aR
 								if not t1180 then
-									t1180 = { c = v5148() }
-									v5147.cache.aR = t1180
+									t1180 = { c = loadModule_aR() }
+									modules.cache.aR = t1180
 								end
 								return t1180.c
 							end
 
 							f10536[f10500] = f11098
-							local v5149 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CharacterState = v5149.aC()
-								v5149.aj()
-								v5149.aK()
-								local RankTracker = v5149.aM()
-								local ItemObserver = v5149.aR()
-								local Signal = v5149.t()
-								local Trove = v5149.q()
-								local getAttribute = v5149.aJ()
-								local getField = v5149.ah()
+								local CharacterState = modules.aC()
+								modules.aj()
+								modules.aK()
+								local RankTracker = modules.aM()
+								local ItemObserver = modules.aR()
+								local Signal = modules.t()
+								local Trove = modules.q()
+								local getAttribute = modules.aJ()
+								local getField = modules.ah()
 								local RemoteFighterState = {}
 								RemoteFighterState.__index = RemoteFighterState
 
@@ -197065,30 +197065,30 @@ local function f10149()
 							end
 
 							f10500 = "aS"
-							local v5162 = f10536
-							local v5163 = f10537
+							local modules = f10536
+							local loadModule_aS = f10537
 
 							f11098 = function()
-								local t1183 = v5162.cache.aS
+								local t1183 = modules.cache.aS
 								if not t1183 then
-									t1183 = { c = v5163() }
-									v5162.cache.aS = t1183
+									t1183 = { c = loadModule_aS() }
+									modules.cache.aS = t1183
 								end
 								return t1183.c
 							end
 
 							f10536[f10500] = f11098
-							local v5164 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5164.aj()
-								local Trove = v5164.q()
-								local safeIndex = v5164.ah()
-								local FighterController = v5164.ao().FighterController
-								local LocalFighter = v5164.aK()
-								local RemoteFighter = v5164.aS()
-								local Signal = v5164.t()
-								local connect = v5164.aH()
+								modules.aj()
+								local Trove = modules.q()
+								local safeIndex = modules.ah()
+								local FighterController = modules.ao().FighterController
+								local LocalFighter = modules.aK()
+								local RemoteFighter = modules.aS()
+								local Signal = modules.t()
+								local connect = modules.aH()
 								local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local Fighters = {}
 								Fighters.__index = Fighters
@@ -197326,8 +197326,8 @@ local function f10149()
 							end
 
 							f10500 = "aT"
-							local v5197 = f10536
-							local v5198 = f10537
+							local modules = f10536
+							local loadModule_aT = f10537
 
 							f11098 = function(...)
 								local cache = nil
@@ -197336,21 +197336,21 @@ local function f10149()
 									string.unpack("<i8", "\253\1\0\0\0\0\0\0"),
 									112
 								) + -17679
-								local t1189 = v5197.cache.aT
+								local t1189 = modules.cache.aT
 								if not t1189 then
-									t1189 = { c = v5198() }
-									cache = v5197.cache
+									t1189 = { c = loadModule_aT() }
+									cache = modules.cache
 								end
 								cache.aT = t1189
 								return t1189.c
 							end
 
 							f10536[f10500] = f11098
-							local v5200 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local EnumLibrary2 = v5200.ao().EnumLibrary
-								local safeIndex = v5200.ah()
+								local EnumLibrary2 = modules.ao().EnumLibrary
+								local safeIndex = modules.ah()
 								local toEnum = safeIndex(EnumLibrary2, "_to_enum")
 								local fromEnum = safeIndex(EnumLibrary2, "_from_enum")
 								local EnumCodec = {}
@@ -197367,27 +197367,27 @@ local function f10149()
 							end
 
 							f10500 = "aU"
-							local v5203 = f10536
-							local v5204 = f10537
+							local modules = f10536
+							local loadModule_aU = f10537
 
 							f11098 = function()
-								local t1191 = v5203.cache.aU
+								local t1191 = modules.cache.aU
 								if not t1191 then
-									t1191 = { c = v5204() }
-									v5203.cache.aU = t1191
+									t1191 = { c = loadModule_aU() }
+									modules.cache.aU = t1191
 								end
 								return t1191.c
 							end
 
 							f10536[f10500] = f11098
-							local v5205 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5205.al()
-								local v5206 = v5205.t()
-								local v5207 = v5205.q()
-								local aH2 = v5205.aH
-								local v5208 = v5205.ah()
+								modules.al()
+								local v5206 = modules.t()
+								local v5207 = modules.q()
+								local aH2 = modules.aH
+								local v5208 = modules.ah()
 								local ItemInterfaceAdapter = {}
 								ItemInterfaceAdapter.__index = ItemInterfaceAdapter
 
@@ -197428,30 +197428,30 @@ local function f10149()
 							end
 
 							f10500 = "aV"
-							local v5211 = f10536
-							local v5212 = f10537
+							local modules = f10536
+							local loadModule_aV = f10537
 
 							f11098 = function()
-								local t1194 = v5211.cache.aV
+								local t1194 = modules.cache.aV
 								if not t1194 then
-									t1194 = { c = v5212() }
-									v5211.cache.aV = t1194
+									t1194 = { c = loadModule_aV() }
+									modules.cache.aV = t1194
 								end
 								return t1194.c
 							end
 
 							f10536[f10500] = f11098
-							local v5213 = f10536
+							local modules = f10536
 							local v5214 = v387
 
 							f10537 = function()
-								local Codec = v5213.aU()
-								v5213.aj()
-								local ItemInterfaceAdapter = v5213.aV()
-								v5213.al()
-								local getField = v5213.ah()
-								local safeCall = v5213.ai()
-								local UseItemRemote = v5213.ao().UseItemRemote
+								local Codec = modules.aU()
+								modules.aj()
+								local ItemInterfaceAdapter = modules.aV()
+								modules.al()
+								local getField = modules.ah()
+								local safeCall = modules.ai()
+								local UseItemRemote = modules.ao().UseItemRemote
 								local ClientItem = {}
 								ClientItem.__index = ClientItem
 
@@ -197582,14 +197582,14 @@ local function f10149()
 							end
 
 							f10500 = "aW"
-							local v5230 = f10536
-							local v5231 = f10537
+							local modules = f10536
+							local loadModule_aW = f10537
 
 							f11098 = function()
-								local t1201 = v5230.cache.aW
+								local t1201 = modules.cache.aW
 								if not t1201 then
-									t1201 = { c = v5231() }
-									v5230.cache.aW = t1201
+									t1201 = { c = loadModule_aW() }
+									modules.cache.aW = t1201
 								end
 								return t1201.c
 							end
@@ -197620,23 +197620,23 @@ local function f10149()
 							end
 
 							f10500 = "aX"
-							local v5235 = f10536
-							local v5236 = f10537
+							local modules = f10536
+							local loadModule_aX = f10537
 
 							f11098 = function()
-								local t1204 = v5235.cache.aX
+								local t1204 = modules.cache.aX
 								if not t1204 then
-									t1204 = { c = v5236() }
-									v5235.cache.aX = t1204
+									t1204 = { c = loadModule_aX() }
+									modules.cache.aX = t1204
 								end
 								return t1204.c
 							end
 
 							f10536[f10500] = f11098
-							local v5237 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CFrameCodec = v5237.aX()
+								local CFrameCodec = modules.aX()
 
 								local function resolveHitPoint(origin, hit)
 									if hit == nil then
@@ -197661,31 +197661,31 @@ local function f10149()
 							end
 
 							f10500 = "aY"
-							local v5240 = f10536
-							local v5241 = f10537
+							local modules = f10536
+							local loadModule_aY = f10537
 
 							f11098 = function()
-								local t1205 = v5240.cache.aY
+								local t1205 = modules.cache.aY
 								if not t1205 then
-									t1205 = { c = v5241() }
-									v5240.cache.aY = t1205
+									t1205 = { c = loadModule_aY() }
+									modules.cache.aY = t1205
 								end
 								return t1205.c
 							end
 
 							f10536[f10500] = f11098
-							local v5242 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local partCodec = v5242.aX()
-								local remoteCodec = v5242.aU()
-								v5242.aj()
-								local ItemInterface = v5242.aV()
-								v5242.al()
-								local safeIndex = v5242.ah()
-								local safeCall = v5242.ai()
-								local UseItemRemote = v5242.ao().UseItemRemote
-								local encodeShot = v5242.aY()
+								local partCodec = modules.aX()
+								local remoteCodec = modules.aU()
+								modules.aj()
+								local ItemInterface = modules.aV()
+								modules.al()
+								local safeIndex = modules.ah()
+								local safeCall = modules.ai()
+								local UseItemRemote = modules.ao().UseItemRemote
+								local encodeShot = modules.aY()
 								local GunItem = {}
 								GunItem.__index = GunItem
 
@@ -197829,31 +197829,31 @@ local function f10149()
 							end
 
 							f10500 = "aZ"
-							local v5263 = f10536
-							local v5264 = f10537
+							local modules = f10536
+							local loadModule_aZ = f10537
 
 							f11098 = function()
-								local t1210 = v5263.cache.aZ
+								local t1210 = modules.cache.aZ
 								if not t1210 then
-									t1210 = { c = v5264() }
-									v5263.cache.aZ = t1210
+									t1210 = { c = loadModule_aZ() }
+									modules.cache.aZ = t1210
 								end
 								return t1210.c
 							end
 
 							f10536[f10500] = f11098
-							local v5265 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Vector3Codec = v5265.aX()
-								local StringCodec = v5265.aU()
-								v5265.aj()
-								local ItemInterface = v5265.aV()
-								v5265.al()
-								local getField = v5265.ah()
-								local call = v5265.ai()
-								local UseItemRemote = v5265.ao().UseItemRemote
-								local encodeHit = v5265.aY()
+								local Vector3Codec = modules.aX()
+								local StringCodec = modules.aU()
+								modules.aj()
+								local ItemInterface = modules.aV()
+								modules.al()
+								local getField = modules.ah()
+								local call = modules.ai()
+								local UseItemRemote = modules.ao().UseItemRemote
+								local encodeHit = modules.aY()
 								local MeleeItem = {}
 								MeleeItem.__index = MeleeItem
 
@@ -197960,7 +197960,7 @@ local function f10149()
 							end
 
 							f10500 = "a_"
-							local v5283 = f10536
+							local modules = f10536
 							local v5284 = f10537
 
 							f11098 = function(...)
@@ -197969,21 +197969,21 @@ local function f10149()
 								if not (v5285 and 16) then
 									(nil).c = nil
 								end
-								v5283.cache.a_ = nil
+								modules.cache.a_ = nil
 								return (nil).c
 							end
 
 							f10536[f10500] = f11098
-							local v5286 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Codec = v5286.aU()
-								v5286.aj()
-								local ItemInterface = v5286.aV()
-								v5286.al()
-								local getField = v5286.ah()
-								local call = v5286.ai()
-								local UseItemRemote9 = v5286.ao().UseItemRemote
+								local Codec = modules.aU()
+								modules.aj()
+								local ItemInterface = modules.aV()
+								modules.al()
+								local getField = modules.ah()
+								local call = modules.ai()
+								local UseItemRemote9 = modules.ao().UseItemRemote
 								local Throwable = {}
 								Throwable.__index = Throwable
 
@@ -198061,32 +198061,32 @@ local function f10149()
 							end
 
 							f10500 = "a0"
-							local v5305 = f10536
-							local v5306 = f10537
+							local modules = f10536
+							local loadModule_a0 = f10537
 
 							f11098 = function()
-								local t1222 = v5305.cache.a0
+								local t1222 = modules.cache.a0
 								if not t1222 then
-									t1222 = { c = v5306() }
-									v5305.cache.a0 = t1222
+									t1222 = { c = loadModule_a0() }
+									modules.cache.a0 = t1222
 								end
 								return t1222.c
 							end
 
 							f10536[f10500] = f11098
-							local v5307 = f10536
+							local modules = f10536
 							local v5308 = rawget3
 
 							f10537 = function()
-								v5307.aG()
-								local GunItem = v5307.aW()
-								v5307.aT()
-								local ThrowableItem = v5307.aZ()
-								v5307.al()
-								local MeleeItem = v5307.a_()
-								local Signal = v5307.t()
-								local CustomItem = v5307.a0()
-								local Trove = v5307.q()
+								modules.aG()
+								local GunItem = modules.aW()
+								modules.aT()
+								local ThrowableItem = modules.aZ()
+								modules.al()
+								local MeleeItem = modules.a_()
+								local Signal = modules.t()
+								local CustomItem = modules.a0()
+								local Trove = modules.q()
 								local ItemBehaviors = {}
 								ItemBehaviors.__index = ItemBehaviors
 
@@ -198365,49 +198365,49 @@ local function f10149()
 							end
 
 							f10500 = "a1"
-							local v5332 = f10536
-							local v5333 = f10537
+							local modules = f10536
+							local loadModule_a1 = f10537
 
 							f11098 = function()
-								local t1233 = v5332.cache.a1
+								local t1233 = modules.cache.a1
 								if not t1233 then
-									t1233 = { c = v5333() }
-									v5332.cache.a1 = t1233
+									t1233 = { c = loadModule_a1() }
+									modules.cache.a1 = t1233
 								end
 								return t1233.c
 							end
 
 							f10536[f10500] = f11098
-							local v5334 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								return v5334.t().new().Once
+								return modules.t().new().Once
 							end
 
 							f10500 = "a2"
-							local v5335 = f10536
-							local v5336 = f10537
+							local modules = f10536
+							local loadModule_a2 = f10537
 
 							f11098 = function()
-								local t1234 = v5335.cache.a2
+								local t1234 = modules.cache.a2
 								if not t1234 then
-									t1234 = { c = v5336() }
-									v5335.cache.a2 = t1234
+									t1234 = { c = loadModule_a2() }
+									modules.cache.a2 = t1234
 								end
 								return t1234.c
 							end
 
 							f10536[f10500] = f11098
-							local v5337 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5337.aT()
-								local Promise = v5337.A()
-								local PickWeaponsRemote2 = v5337.ao().PickWeaponsRemote
-								local ShootingRangeTrashItemsEvent2 = v5337.ao().ShootingRangeTrashItemsEvent
-								v5337.t()
-								local callMethod = v5337.aJ()
-								local connectOnce = v5337.a2()
+								modules.aT()
+								local Promise = modules.A()
+								local PickWeaponsRemote2 = modules.ao().PickWeaponsRemote
+								local ShootingRangeTrashItemsEvent2 = modules.ao().ShootingRangeTrashItemsEvent
+								modules.t()
+								local callMethod = modules.aJ()
+								local connectOnce = modules.a2()
 								local LoadoutPicker = {}
 								LoadoutPicker.__index = LoadoutPicker
 
@@ -198489,29 +198489,29 @@ local function f10149()
 							end
 
 							f10500 = "a3"
-							local v5342 = f10536
-							local v5343 = f10537
+							local modules = f10536
+							local loadModule_a3 = f10537
 
 							f11098 = function()
-								local t1237 = v5342.cache.a3
+								local t1237 = modules.cache.a3
 								if not t1237 then
-									t1237 = { c = v5343() }
-									v5342.cache.a3 = t1237
+									t1237 = { c = loadModule_a3() }
+									modules.cache.a3 = t1237
 								end
 								return t1237.c
 							end
 
 							f10536[f10500] = f11098
-							local v5344 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CharacterController = v5344.aG()
-								v5344.aT()
-								local ItemBehaviors = v5344.a1()
-								local LoadoutPicker = v5344.a3()
-								v5344.aK()
-								local Signal = v5344.t()
-								local Trove = v5344.q()
+								local CharacterController = modules.aG()
+								modules.aT()
+								local ItemBehaviors = modules.a1()
+								local LoadoutPicker = modules.a3()
+								modules.aK()
+								local Signal = modules.t()
+								local Trove = modules.q()
 								local PlayerContext = {}
 								PlayerContext.__index = PlayerContext
 
@@ -198619,8 +198619,8 @@ local function f10149()
 							end
 
 							f10500 = "a4"
-							local v5358 = f10536
-							local v5359 = f10537
+							local modules = f10536
+							local loadModule_a4 = f10537
 
 							f11098 = function(...)
 								local t1240, v5360, v5361
@@ -198633,8 +198633,8 @@ local function f10149()
 											_continue605 = true
 										end
 									else
-										t1240 = { c = v5359() }
-										v5358.cache.a4 = t1240
+										t1240 = { c = loadModule_a4() }
+										modules.cache.a4 = t1240
 									end
 									if _continue605 then
 										continue
@@ -198654,30 +198654,30 @@ local function f10149()
 							end
 
 							f10500 = "a5"
-							local v5362 = f10536
-							local v5363 = f10537
+							local modules = f10536
+							local loadModule_a5 = f10537
 
 							f11098 = function()
-								local t1241 = v5362.cache.a5
+								local t1241 = modules.cache.a5
 								if not t1241 then
-									t1241 = { c = v5363() }
-									v5362.cache.a5 = t1241
+									t1241 = { c = loadModule_a5() }
+									modules.cache.a5 = t1241
 								end
 								return t1241.c
 							end
 
 							f10536[f10500] = f11098
-							local v5364 = f10536
+							local modules = f10536
 							local v5365 = rawget3
 
 							f10537 = function()
-								local CircleRing = v5364.av()
-								local Spring = v5364.ax()
-								v5364.aB()
-								v5364.a4()
-								v5364.aw()
-								local screenCenter = v5364.a5()
-								local v5369 = v5364.ai()
+								local CircleRing = modules.av()
+								local Spring = modules.ax()
+								modules.aB()
+								modules.a4()
+								modules.aw()
+								local screenCenter = modules.a5()
+								local v5369 = modules.ai()
 								local AimIndicators = {}
 								AimIndicators.__index = AimIndicators
 								local springSpeed = 15
@@ -198799,14 +198799,14 @@ local function f10149()
 							end
 
 							f10500 = "a6"
-							local v5379 = f10536
-							local v5380 = f10537
+							local modules = f10536
+							local loadModule_a6 = f10537
 
 							f11098 = function()
-								local t1250 = v5379.cache.a6
+								local t1250 = modules.cache.a6
 								if not t1250 then
-									t1250 = { c = v5380() }
-									v5379.cache.a6 = t1250
+									t1250 = { c = loadModule_a6() }
+									modules.cache.a6 = t1250
 								end
 								return t1250.c
 							end
@@ -198854,14 +198854,14 @@ local function f10149()
 							end
 
 							f10500 = "a7"
-							local v5383 = f10536
-							local v5384 = f10537
+							local modules = f10536
+							local loadModule_a7 = f10537
 
 							f11098 = function()
-								local t1253 = v5383.cache.a7
+								local t1253 = modules.cache.a7
 								if not t1253 then
-									t1253 = { c = v5384() }
-									v5383.cache.a7 = t1253
+									t1253 = { c = loadModule_a7() }
+									modules.cache.a7 = t1253
 								end
 								return t1253.c
 							end
@@ -198880,23 +198880,23 @@ local function f10149()
 							end
 
 							f10500 = "a8"
-							local v5386 = f10536
-							local v5387 = f10537
+							local modules = f10536
+							local loadModule_a8 = f10537
 
 							f11098 = function()
-								local t1255 = v5386.cache.a8
+								local t1255 = modules.cache.a8
 								if not t1255 then
-									t1255 = { c = v5387() }
-									v5386.cache.a8 = t1255
+									t1255 = { c = loadModule_a8() }
+									modules.cache.a8 = t1255
 								end
 								return t1255.c
 							end
 
 							f10536[f10500] = f11098
-							local v5388 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local newHudGui = v5388.au()
+								local newHudGui = modules.au()
 								local CoreGui = cloneref(game:GetService("CoreGui"))
 								local CrosshairGeometry = {}
 								CrosshairGeometry.__index = CrosshairGeometry
@@ -198947,25 +198947,25 @@ local function f10149()
 							end
 
 							f10500 = "a9"
-							local v5394 = f10536
-							local v5395 = f10537
+							local modules = f10536
+							local loadModule_a9 = f10537
 
 							f11098 = function()
-								local t1259 = v5394.cache.a9
+								local t1259 = modules.cache.a9
 								if not t1259 then
-									t1259 = { c = v5395() }
-									v5394.cache.a9 = t1259
+									t1259 = { c = loadModule_a9() }
+									modules.cache.a9 = t1259
 								end
 								return t1259.c
 							end
 
 							f10536[f10500] = f11098
-							local v5396 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CrosshairGeometry = v5396.a9()
-								local Ring = v5396.aA()
-								local loadAsset = v5396.az()
+								local CrosshairGeometry = modules.a9()
+								local Ring = modules.aA()
+								local loadAsset = modules.az()
 								local CrosshairRing = {}
 								CrosshairRing.__index = CrosshairRing
 
@@ -198992,7 +198992,7 @@ local function f10149()
 							end
 
 							f10500 = "ba"
-							local v5402 = f10536
+							local modules = f10536
 							local v5403 = f10537
 
 							f11098 = function(...)
@@ -199010,24 +199010,24 @@ local function f10149()
 									f11597(v5406, v5407),
 									(string.len("\184\202"))
 								) + -24349
-								if not v5402.cache.ba then
+								if not modules.cache.ba then
 									t1263 = {}
 									v5404 = v5403()
 								end
 								t1263.c = v5404
-								v5402.cache.ba = t1263
+								modules.cache.ba = t1263
 								return t1263.c
 							end
 
 							f10536[f10500] = f11098
-							local v5408 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Camera = v5408.a8()
-								local CustomFov = v5408.ba()
-								v5408.aA()
-								v5408.h()
-								local Result = v5408.b()
+								local Camera = modules.a8()
+								local CustomFov = modules.ba()
+								modules.aA()
+								modules.h()
+								local Result = modules.b()
 								local FovMeasurement = {}
 								FovMeasurement.__index = FovMeasurement
 
@@ -199145,14 +199145,14 @@ local function f10149()
 							end
 
 							f10500 = "bb"
-							local v5418 = f10536
-							local v5419 = f10537
+							local modules = f10536
+							local loadModule_bb = f10537
 
 							f11098 = function()
-								local t1274 = v5418.cache.bb
+								local t1274 = modules.cache.bb
 								if not t1274 then
-									t1274 = { c = v5419() }
-									v5418.cache.bb = t1274
+									t1274 = { c = loadModule_bb() }
+									modules.cache.bb = t1274
 								end
 								return t1274.c
 							end
@@ -199170,14 +199170,14 @@ local function f10149()
 							end
 
 							f10500 = "bc"
-							local v5420 = f10536
-							local v5421 = f10537
+							local modules = f10536
+							local loadModule_bc = f10537
 
 							f11098 = function()
-								local t1276 = v5420.cache.bc
+								local t1276 = modules.cache.bc
 								if not t1276 then
-									t1276 = { c = v5421() }
-									v5420.cache.bc = t1276
+									t1276 = { c = loadModule_bc() }
+									modules.cache.bc = t1276
 								end
 								return t1276.c
 							end
@@ -199195,24 +199195,24 @@ local function f10149()
 							end
 
 							f10500 = "bd"
-							local v5422 = f10536
-							local v5423 = f10537
+							local modules = f10536
+							local loadModule_bd = f10537
 
 							f11098 = function()
-								local t1277 = v5422.cache.bd
+								local t1277 = modules.cache.bd
 								if not t1277 then
-									t1277 = { c = v5423() }
-									v5422.cache.bd = t1277
+									t1277 = { c = loadModule_bd() }
+									modules.cache.bd = t1277
 								end
 								return t1277.c
 							end
 
 							f10536[f10500] = f11098
-							local v5424 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v5425 = v5424.bc()
-								local v5426 = v5424.bd()
+								local v5425 = modules.bc()
+								local v5426 = modules.bd()
 								local v5427 = table.create(12, 0)
 								local v5428 = table.create(12, 0)
 								local v5429 = table.create(96, 0)
@@ -199304,14 +199304,14 @@ local function f10149()
 							end
 
 							f10500 = "be"
-							local v5435 = f10536
-							local v5436 = f10537
+							local modules = f10536
+							local loadModule_be = f10537
 
 							f11098 = function()
-								local t1281 = v5435.cache.be
+								local t1281 = modules.cache.be
 								if not t1281 then
-									t1281 = { c = v5436() }
-									v5435.cache.be = t1281
+									t1281 = { c = loadModule_be() }
+									modules.cache.be = t1281
 								end
 								return t1281.c
 							end
@@ -199692,25 +199692,25 @@ local function f10149()
 							end
 
 							f10500 = "bf"
-							local v5512 = f10536
-							local v5513 = f10537
+							local modules = f10536
+							local loadModule_bf = f10537
 
 							f11098 = function()
-								local t1294 = v5512.cache.bf
+								local t1294 = modules.cache.bf
 								if not t1294 then
-									t1294 = { c = v5513() }
-									v5512.cache.bf = t1294
+									t1294 = { c = loadModule_bf() }
+									modules.cache.bf = t1294
 								end
 								return t1294.c
 							end
 
 							f10536[f10500] = f11098
-							local v5514 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Controllers = v5514.ao()
-								local getField = v5514.ah()
-								local call = v5514.ai()
+								local Controllers = modules.ao()
+								local getField = modules.ah()
+								local call = modules.ai()
 								local CameraController = Controllers.CameraController
 								local CameraRotation = {}
 
@@ -199730,14 +199730,14 @@ local function f10149()
 							end
 
 							f10500 = "bg"
-							local v5517 = f10536
-							local v5518 = f10537
+							local modules = f10536
+							local loadModule_bg = f10537
 
 							f11098 = function()
-								local t1297 = v5517.cache.bg
+								local t1297 = modules.cache.bg
 								if not t1297 then
-									t1297 = { c = v5518() }
-									v5517.cache.bg = t1297
+									t1297 = { c = loadModule_bg() }
+									modules.cache.bg = t1297
 								end
 								return t1297.c
 							end
@@ -199802,53 +199802,53 @@ local function f10149()
 							end
 
 							f10500 = "bh"
-							local v5535 = f10536
-							local v5536 = f10537
+							local modules = f10536
+							local loadModule_bh = f10537
 
 							f11098 = function()
-								local t1300 = v5535.cache.bh
+								local t1300 = modules.cache.bh
 								if not t1300 then
-									t1300 = { c = v5536() }
-									v5535.cache.bh = t1300
+									t1300 = { c = loadModule_bh() }
+									modules.cache.bh = t1300
 								end
 								return t1300.c
 							end
 
 							f10536[f10500] = f11098
-							local v5537 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5537.p()
-								v5537.ay()
-								local v5538 = v5537.a5()
+								modules.p()
+								modules.ay()
+								local v5538 = modules.a5()
 								local function f11616()
 								end
 								return f11616
 							end
 
 							f10500 = "bi"
-							local v5539 = f10536
-							local v5540 = f10537
+							local modules = f10536
+							local loadModule_bi = f10537
 
 							f11098 = function()
-								local t1301 = v5539.cache.bi
+								local t1301 = modules.cache.bi
 								if not t1301 then
-									t1301 = { c = v5540() }
-									v5539.cache.bi = t1301
+									t1301 = { c = loadModule_bi() }
+									modules.cache.bi = t1301
 								end
 								return t1301.c
 							end
 
 							f10536[f10500] = f11098
-							local v5541 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local AimMath = v5541.bg()
-								v5541.p()
-								v5541.be()
-								v5541.bf()
-								v5541.bh()
-								v5541.bi()
+								local AimMath = modules.bg()
+								modules.p()
+								modules.be()
+								modules.bf()
+								modules.bh()
+								modules.bi()
 								local Workspace2 = game:GetService("Workspace")
 								local AimSmoothing = {}
 								function AimSmoothing.lookAtCamera()
@@ -199880,14 +199880,14 @@ local function f10149()
 							end
 
 							f10500 = "bj"
-							local v5543 = f10536
-							local v5544 = f10537
+							local modules = f10536
+							local loadModule_bj = f10537
 
 							f11098 = function()
-								local t1303 = v5543.cache.bj
+								local t1303 = modules.cache.bj
 								if not t1303 then
-									t1303 = { c = v5544() }
-									v5543.cache.bj = t1303
+									t1303 = { c = loadModule_bj() }
+									modules.cache.bj = t1303
 								end
 								return t1303.c
 							end
@@ -199947,32 +199947,32 @@ local function f10149()
 							end
 
 							f10500 = "bk"
-							local v5547 = f10536
-							local v5548 = f10537
+							local modules = f10536
+							local loadModule_bk = f10537
 
 							f11098 = function()
-								local t1306 = v5547.cache.bk
+								local t1306 = modules.cache.bk
 								if not t1306 then
-									t1306 = { c = v5548() }
-									v5547.cache.bk = t1306
+									t1306 = { c = loadModule_bk() }
+									modules.cache.bk = t1306
 								end
 								return t1306.c
 							end
 
 							f10536[f10500] = f11098
-							local v5549 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5549.ak()
-								v5549.aj()
-								local Trove = v5549.q()
-								local getField = v5549.ah()
-								local EnemyController2 = v5549.ao().EnemyController
-								v5549.aT()
-								v5549.a4()
-								local Signal = v5549.t()
-								local bindSignal = v5549.aH()
-								local callMethod = v5549.aJ()
+								modules.ak()
+								modules.aj()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local EnemyController2 = modules.ao().EnemyController
+								modules.aT()
+								modules.a4()
+								local Signal = modules.t()
+								local bindSignal = modules.aH()
+								local callMethod = modules.aJ()
 
 								local function swapRemove(list, indexOf, value)
 									local index = indexOf[value]
@@ -200230,25 +200230,25 @@ local function f10149()
 							end
 
 							f10500 = "bl"
-							local v5575 = f10536
-							local v5576 = f10537
+							local modules = f10536
+							local loadModule_bl = f10537
 
 							f11098 = function()
-								local t1310 = v5575.cache.bl
+								local t1310 = modules.cache.bl
 								if not t1310 then
-									t1310 = { c = v5576() }
-									v5575.cache.bl = t1310
+									t1310 = { c = loadModule_bl() }
+									modules.cache.bl = t1310
 								end
 								return t1310.c
 							end
 
 							f10536[f10500] = f11098
-							local v5577 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5577.bl()
-								v5577.a4()
-								local Trove = v5577.q()
+								modules.bl()
+								modules.a4()
+								local Trove = modules.q()
 								local CollectionService = cloneref(game:GetService("CollectionService"))
 
 								local function swapRemove(list, index)
@@ -200540,24 +200540,24 @@ local function f10149()
 							end
 
 							f10500 = "bm"
-							local v5602 = f10536
-							local v5603 = f10537
+							local modules = f10536
+							local loadModule_bm = f10537
 
 							f11098 = function()
-								local t1315 = v5602.cache.bm
+								local t1315 = modules.cache.bm
 								if not t1315 then
-									t1315 = { c = v5603() }
-									v5602.cache.bm = t1315
+									t1315 = { c = loadModule_bm() }
+									modules.cache.bm = t1315
 								end
 								return t1315.c
 							end
 
 							f10536[f10500] = f11098
-							local v5604 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5604.a4()
-								v5604.bm()
+								modules.a4()
+								modules.bm()
 								local VisibilityChecker = {}
 								VisibilityChecker.__index = VisibilityChecker
 
@@ -200636,24 +200636,24 @@ local function f10149()
 							end
 
 							f10500 = "bn"
-							local v5611 = f10536
-							local v5612 = f10537
+							local modules = f10536
+							local loadModule_bn = f10537
 
 							f11098 = function()
-								local t1320 = v5611.cache.bn
+								local t1320 = modules.cache.bn
 								if not t1320 then
-									t1320 = { c = v5612() }
-									v5611.cache.bn = t1320
+									t1320 = { c = loadModule_bn() }
+									modules.cache.bn = t1320
 								end
 								return t1320.c
 							end
 
 							f10536[f10500] = f11098
-							local v5613 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5613.aT()
-								v5613.a4()
+								modules.aT()
+								modules.a4()
 								local riotShieldName = "Riot Shield"
 								local pi = math.pi
 								local eyeOffset = Vector3.new(0, 1.75, 0)
@@ -200755,23 +200755,23 @@ local function f10149()
 							end
 
 							f10500 = "bo"
-							local v5619 = f10536
-							local v5620 = f10537
+							local modules = f10536
+							local loadModule_bo = f10537
 
 							f11098 = function()
-								local t1322 = v5619.cache.bo
+								local t1322 = modules.cache.bo
 								if not t1322 then
-									t1322 = { c = v5620() }
-									v5619.cache.bo = t1322
+									t1322 = { c = loadModule_bo() }
+									modules.cache.bo = t1322
 								end
 								return t1322.c
 							end
 
 							f10536[f10500] = f11098
-							local v5621 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5621.a4()
+								modules.a4()
 								local defaultOptions = table.create(2)
 								local sniperOptions = table.create(2)
 								local defaultProfile = {
@@ -200841,29 +200841,29 @@ local function f10149()
 							end
 
 							f10500 = "bp"
-							local v5629 = f10536
-							local v5630 = f10537
+							local modules = f10536
+							local loadModule_bp = f10537
 
 							f11098 = function()
-								local t1330 = v5629.cache.bp
+								local t1330 = modules.cache.bp
 								if not t1330 then
-									t1330 = { c = v5630() }
-									v5629.cache.bp = t1330
+									t1330 = { c = loadModule_bp() }
+									modules.cache.bp = t1330
 								end
 								return t1330.c
 							end
 
 							f10536[f10500] = f11098
-							local v5631 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5631.aC()
-								v5631.bn()
-								v5631.aT()
-								v5631.a4()
-								local Protection = v5631.bo()
-								v5631.ay()
-								local TargetProfiles = v5631.bp()
+								modules.aC()
+								modules.bn()
+								modules.aT()
+								modules.a4()
+								local Protection = modules.bo()
+								modules.ay()
+								local TargetProfiles = modules.bp()
 								local passesConditions = (function(c0)
 									return (function(T)
 									local U = T[0]
@@ -200949,27 +200949,27 @@ local function f10149()
 							end
 
 							f10500 = "bq"
-							local v5639 = f10536
-							local v5640 = f10537
+							local modules = f10536
+							local loadModule_bq = f10537
 
 							f11098 = function()
-								local t1339 = v5639.cache.bq
+								local t1339 = modules.cache.bq
 								if not t1339 then
-									t1339 = { c = v5640() }
-									v5639.cache.bq = t1339
+									t1339 = { c = loadModule_bq() }
+									modules.cache.bq = t1339
 								end
 								return t1339.c
 							end
 
 							f10536[f10500] = f11098
-							local v5641 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5641.p()
-								v5641.bq()
-								v5641.ay()
-								local Trove = v5641.q()
-								local Config = v5641.y()
+								modules.p()
+								modules.bq()
+								modules.ay()
+								local Trove = modules.q()
+								local Config = modules.y()
 								local UserInputService = cloneref(game:GetService("UserInputService"))
 								local TargetLock = {}
 								TargetLock.__index = TargetLock
@@ -201053,23 +201053,23 @@ local function f10149()
 							end
 
 							f10500 = "br"
-							local v5649 = f10536
-							local v5650 = f10537
+							local modules = f10536
+							local loadModule_br = f10537
 
 							f11098 = function()
-								local t1342 = v5649.cache.br
+								local t1342 = modules.cache.br
 								if not t1342 then
-									t1342 = { c = v5650() }
-									v5649.cache.br = t1342
+									t1342 = { c = loadModule_br() }
+									modules.cache.br = t1342
 								end
 								return t1342.c
 							end
 
 							f10536[f10500] = f11098
-							local v5651 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5651.a4()
+								modules.a4()
 
 								local function f11652()
 									bit32.bxor(nil, nil)
@@ -201083,41 +201083,41 @@ local function f10149()
 							end
 
 							f10500 = "bs"
-							local v5652 = f10536
-							local v5653 = f10537
+							local modules = f10536
+							local loadModule_bs = f10537
 
 							f11098 = function()
-								local t1343 = v5652.cache.bs
+								local t1343 = modules.cache.bs
 								if not t1343 then
-									t1343 = { c = v5653() }
-									v5652.cache.bs = t1343
+									t1343 = { c = loadModule_bs() }
+									modules.cache.bs = t1343
 								end
 								return t1343.c
 							end
 
 							f10536[f10500] = f11098
-							local v5654 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5654.a7()
-								local Config = v5654.y()
-								v5654.aB()
-								local FovMeasurement = v5654.bb()
-								local v5657 = v5654.be()
-								local Notifications = v5654.O()
-								v5654.a4()
-								v5654.b()
-								local v5659 = v5654.bf()
-								local AimMath = v5654.bj()
-								local v5661 = v5654.bh()
-								local Acquisition = v5654.bk()
-								local TargetLock = v5654.br()
-								v5654.bq()
-								v5654.ay()
-								local Trove = v5654.q()
-								v5654.C()
-								local projectTarget = v5654.bi()
-								local TargetSelection = v5654.bs()
+								modules.a7()
+								local Config = modules.y()
+								modules.aB()
+								local FovMeasurement = modules.bb()
+								local v5657 = modules.be()
+								local Notifications = modules.O()
+								modules.a4()
+								modules.b()
+								local v5659 = modules.bf()
+								local AimMath = modules.bj()
+								local v5661 = modules.bh()
+								local Acquisition = modules.bk()
+								local TargetLock = modules.br()
+								modules.bq()
+								modules.ay()
+								local Trove = modules.q()
+								modules.C()
+								local projectTarget = modules.bi()
+								local TargetSelection = modules.bs()
 
 								local function notifyWarning(err)
 									local notifications = Notifications.Get()
@@ -201250,26 +201250,26 @@ local function f10149()
 							end
 
 							f10500 = "bt"
-							local v5675 = f10536
-							local v5676 = f10537
+							local modules = f10536
+							local loadModule_bt = f10537
 
 							f11098 = function()
-								local t1353 = v5675.cache.bt
+								local t1353 = modules.cache.bt
 								if not t1353 then
-									t1353 = { c = v5676() }
-									v5675.cache.bt = t1353
+									t1353 = { c = loadModule_bt() }
+									modules.cache.bt = t1353
 								end
 								return t1353.c
 							end
 
 							f10536[f10500] = f11098
-							local v5677 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v5678 = v5677.y()
-								v5677.aT()
-								v5677.a4()
-								local v5679 = v5677.q()
+								local v5678 = modules.y()
+								modules.aT()
+								modules.a4()
+								local v5679 = modules.q()
 								local AlwaysBackstab = {}
 								AlwaysBackstab.__index = AlwaysBackstab
 
@@ -201306,14 +201306,14 @@ local function f10149()
 							end
 
 							f10500 = "bu"
-							local v5682 = f10536
-							local v5683 = f10537
+							local modules = f10536
+							local loadModule_bu = f10537
 
 							f11098 = function()
-								local t1356 = v5682.cache.bu
+								local t1356 = modules.cache.bu
 								if not t1356 then
-									t1356 = { c = v5683() }
-									v5682.cache.bu = t1356
+									t1356 = { c = loadModule_bu() }
+									modules.cache.bu = t1356
 								end
 								return t1356.c
 							end
@@ -201339,27 +201339,27 @@ local function f10149()
 							end
 
 							f10500 = "bv"
-							local v5685 = f10536
-							local v5686 = f10537
+							local modules = f10536
+							local loadModule_bv = f10537
 
 							f11098 = function()
-								local t1361 = v5685.cache.bv
+								local t1361 = modules.cache.bv
 								if not t1361 then
-									t1361 = { c = v5686() }
-									v5685.cache.bv = t1361
+									t1361 = { c = loadModule_bv() }
+									modules.cache.bv = t1361
 								end
 								return t1361.c
 							end
 
 							f10536[f10500] = f11098
-							local v5687 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Animations = v5687.bv()
-								v5687.aC()
-								local Config = v5687.y()
-								v5687.a4()
-								local Trove = v5687.q()
+								local Animations = modules.bv()
+								modules.aC()
+								local Config = modules.y()
+								modules.a4()
+								local Trove = modules.q()
 								local RunService = cloneref(game:GetService("RunService"))
 								local priority = Enum.AnimationPriority.Action4
 								local AnimationPlayer = {}
@@ -201560,26 +201560,26 @@ local function f10149()
 							end
 
 							f10500 = "bw"
-							local v5696 = f10536
-							local v5697 = f10537
+							local modules = f10536
+							local loadModule_bw = f10537
 
 							f11098 = function()
-								local t1364 = v5696.cache.bw
+								local t1364 = modules.cache.bw
 								if not t1364 then
-									t1364 = { c = v5697() }
-									v5696.cache.bw = t1364
+									t1364 = { c = loadModule_bw() }
+									modules.cache.bw = t1364
 								end
 								return t1364.c
 							end
 
 							f10536[f10500] = f11098
-							local v5698 = f10536
+							local modules = f10536
 							local v5699 = rawget3
 
 							f10537 = function()
-								v5698.am()
-								v5698.aj()
-								local getAttribute = v5698.aJ()
+								modules.am()
+								modules.aj()
+								local getAttribute = modules.aJ()
 
 								local function getDueler(duel, player)
 									local cached = v5699(v5699(duel, "_duelers_by_player"), player)
@@ -201606,34 +201606,34 @@ local function f10149()
 							end
 
 							f10500 = "bx"
-							local v5704 = f10536
-							local v5705 = f10537
+							local modules = f10536
+							local loadModule_bx = f10537
 
 							f11098 = function()
-								local t1365 = v5704.cache.bx
+								local t1365 = modules.cache.bx
 								if not t1365 then
-									t1365 = { c = v5705() }
-									v5704.cache.bx = t1365
+									t1365 = { c = loadModule_bx() }
+									modules.cache.bx = t1365
 								end
 								return t1365.c
 							end
 
 							f10536[f10500] = f11098
-							local v5706 = f10536
+							local modules = f10536
 							local v5707 = rawget3
 
 							f10537 = function()
-								v5706.am()
-								v5706.aj()
-								v5706.aK()
-								local Trove = v5706.q()
-								local call = v5706.ai()
-								local PagesModule2 = v5706.ao().PagesModule
-								local Signal = v5706.t()
-								local connect = v5706.aH()
-								local findDueler = v5706.bx()
-								local getData = v5706.aJ()
-								local connectOnce = v5706.a2()
+								modules.am()
+								modules.aj()
+								modules.aK()
+								local Trove = modules.q()
+								local call = modules.ai()
+								local PagesModule2 = modules.ao().PagesModule
+								local Signal = modules.t()
+								local connect = modules.aH()
+								local findDueler = modules.bx()
+								local getData = modules.aJ()
+								local connectOnce = modules.a2()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local LocalDuelState = {}
 								LocalDuelState.__index = LocalDuelState
@@ -201883,31 +201883,31 @@ local function f10149()
 							end
 
 							f10500 = "by"
-							local v5737 = f10536
-							local v5738 = f10537
+							local modules = f10536
+							local loadModule_by = f10537
 
 							f11098 = function()
-								local t1369 = v5737.cache.by
+								local t1369 = modules.cache.by
 								if not t1369 then
-									t1369 = { c = v5738() }
-									v5737.cache.by = t1369
+									t1369 = { c = loadModule_by() }
+									modules.cache.by = t1369
 								end
 								return t1369.c
 							end
 
 							f10536[f10500] = f11098
-							local v5739 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5739.am()
-								v5739.aj()
-								local Trove = v5739.q()
-								local DuelController2 = v5739.ao().DuelController
-								local LocalDuelState = v5739.by()
-								local Signal = v5739.t()
-								local connect = v5739.aH()
-								local findDueler = v5739.bx()
-								local getField = v5739.ah()
+								modules.am()
+								modules.aj()
+								local Trove = modules.q()
+								local DuelController2 = modules.ao().DuelController
+								local LocalDuelState = modules.by()
+								local Signal = modules.t()
+								local connect = modules.aH()
+								local findDueler = modules.bx()
+								local getField = modules.ah()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local Duelers = {}
 								Duelers.__index = Duelers
@@ -202055,28 +202055,28 @@ local function f10149()
 							end
 
 							f10500 = "bz"
-							local v5763 = f10536
-							local v5764 = f10537
+							local modules = f10536
+							local loadModule_bz = f10537
 
 							f11098 = function()
-								local t1372 = v5763.cache.bz
+								local t1372 = modules.cache.bz
 								if not t1372 then
-									t1372 = { c = v5764() }
-									v5763.cache.bz = t1372
+									t1372 = { c = loadModule_bz() }
+									modules.cache.bz = t1372
 								end
 								return t1372.c
 							end
 
 							f10536[f10500] = f11098
-							local v5765 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v5765.y()
-								v5765.bz()
-								v5765.a4()
-								local Trove = v5765.q()
-								local getField = v5765.ah()
-								local VoteEvent2 = v5765.ao().VoteEvent
+								local Config = modules.y()
+								modules.bz()
+								modules.a4()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local VoteEvent2 = modules.ao().VoteEvent
 
 								local function isWeaponBanned(context, weaponName)
 									local data = getField(context.fighterState.inner, "Data")
@@ -202322,14 +202322,14 @@ local function f10149()
 							end
 
 							f10500 = "bA"
-							local v5788 = f10536
-							local v5789 = f10537
+							local modules = f10536
+							local loadModule_bA = f10537
 
 							f11098 = function()
-								local t1379 = v5788.cache.bA
+								local t1379 = modules.cache.bA
 								if not t1379 then
-									t1379 = { c = v5789() }
-									v5788.cache.bA = t1379
+									t1379 = { c = loadModule_bA() }
+									modules.cache.bA = t1379
 								end
 								return t1379.c
 							end
@@ -202357,14 +202357,14 @@ local function f10149()
 							end
 
 							f10500 = "bB"
-							local v5790 = f10536
-							local v5791 = f10537
+							local modules = f10536
+							local loadModule_bB = f10537
 
 							f11098 = function()
-								local t1382 = v5790.cache.bB
+								local t1382 = modules.cache.bB
 								if not t1382 then
-									t1382 = { c = v5791() }
-									v5790.cache.bB = t1382
+									t1382 = { c = loadModule_bB() }
+									modules.cache.bB = t1382
 								end
 								return t1382.c
 							end
@@ -202397,30 +202397,30 @@ local function f10149()
 							end
 
 							f10500 = "bC"
-							local v5792 = f10536
-							local v5793 = f10537
+							local modules = f10536
+							local loadModule_bC = f10537
 
 							f11098 = function()
-								local t1385 = v5792.cache.bC
+								local t1385 = modules.cache.bC
 								if not t1385 then
-									t1385 = { c = v5793() }
-									v5792.cache.bC = t1385
+									t1385 = { c = loadModule_bC() }
+									modules.cache.bC = t1385
 								end
 								return t1385.c
 							end
 
 							f10536[f10500] = f11098
-							local v5794 = f10536
+							local modules = f10536
 							local v5795 = rawget3
 							local v5796 = v387
 
 							f10537 = function()
-								local Binding = v5794.bC()
-								v5794.am()
-								local Result = v5794.b()
-								local ReplicatedController2 = v5794.ao().ReplicatedController
-								local remoteCodec = v5794.aU()
-								local ErrorReporter = v5794.ac()
+								local Binding = modules.bC()
+								modules.am()
+								local Result = modules.b()
+								local ReplicatedController2 = modules.ao().ReplicatedController
+								local remoteCodec = modules.aU()
+								local ErrorReporter = modules.ac()
 								local ReplicateHook = {}
 								ReplicateHook.__index = ReplicateHook
 
@@ -202573,35 +202573,35 @@ local function f10149()
 							end
 
 							f10500 = "bD"
-							local v5814 = f10536
-							local v5815 = f10537
+							local modules = f10536
+							local loadModule_bD = f10537
 
 							f11098 = function()
-								local t1391 = v5814.cache.bD
+								local t1391 = modules.cache.bD
 								if not t1391 then
-									t1391 = { c = v5815() }
-									v5814.cache.bD = t1391
+									t1391 = { c = loadModule_bD() }
+									modules.cache.bD = t1391
 								end
 								return t1391.c
 							end
 
 							f10536[f10500] = f11098
-							local v5816 = f10536
+							local modules = f10536
 							local v5817 = rawget3
 
 							f10537 = function()
-								v5816.am()
-								local Debounce = v5816.bB()
-								local Trove = v5816.q()
-								local call = v5816.ai()
-								local ArcadeController2 = v5816.ao().ArcadeController
-								local Config = v5816.y()
-								local DuelLibrary3 = v5816.ao().DuelLibrary
-								local StringCodec = v5816.aU()
-								local MatchmakingController2 = v5816.ao().MatchmakingController
-								local MatchmakingInterface2 = v5816.ao().MatchmakingInterface
-								v5816.bD()
-								local connect = v5816.aH()
+								modules.am()
+								local Debounce = modules.bB()
+								local Trove = modules.q()
+								local call = modules.ai()
+								local ArcadeController2 = modules.ao().ArcadeController
+								local Config = modules.y()
+								local DuelLibrary3 = modules.ao().DuelLibrary
+								local StringCodec = modules.aU()
+								local MatchmakingController2 = modules.ao().MatchmakingController
+								local MatchmakingInterface2 = modules.ao().MatchmakingInterface
+								modules.bD()
+								local connect = modules.aH()
 								local AutoQueue = {}
 								AutoQueue.__index = AutoQueue
 
@@ -202741,26 +202741,26 @@ local function f10149()
 							end
 
 							f10500 = "bE"
-							local v5829 = f10536
-							local v5830 = f10537
+							local modules = f10536
+							local loadModule_bE = f10537
 
 							f11098 = function()
-								local t1395 = v5829.cache.bE
+								local t1395 = modules.cache.bE
 								if not t1395 then
-									t1395 = { c = v5830() }
-									v5829.cache.bE = t1395
+									t1395 = { c = loadModule_bE() }
+									modules.cache.bE = t1395
 								end
 								return t1395.c
 							end
 
 							f10536[f10500] = f11098
-							local v5831 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local settings = v5831.y()
-								v5831.bD()
-								local Trove = v5831.q()
-								local RespawnNowRemote2 = v5831.ao().RespawnNowRemote
+								local settings = modules.y()
+								modules.bD()
+								local Trove = modules.q()
+								local RespawnNowRemote2 = modules.ao().RespawnNowRemote
 								local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local AutoRespawn = {}
 								AutoRespawn.__index = AutoRespawn
@@ -202803,14 +202803,14 @@ local function f10149()
 							end
 
 							f10500 = "bF"
-							local v5835 = f10536
-							local v5836 = f10537
+							local modules = f10536
+							local loadModule_bF = f10537
 
 							f11098 = function()
-								local t1398 = v5835.cache.bF
+								local t1398 = modules.cache.bF
 								if not t1398 then
-									t1398 = { c = v5836() }
-									v5835.cache.bF = t1398
+									t1398 = { c = loadModule_bF() }
+									modules.cache.bF = t1398
 								end
 								return t1398.c
 							end
@@ -202836,24 +202836,24 @@ local function f10149()
 							end
 
 							f10500 = "bG"
-							local v5837 = f10536
-							local v5838 = f10537
+							local modules = f10536
+							local loadModule_bG = f10537
 
 							f11098 = function()
-								local t1401 = v5837.cache.bG
+								local t1401 = modules.cache.bG
 								if not t1401 then
-									t1401 = { c = v5838() }
-									v5837.cache.bG = t1401
+									t1401 = { c = loadModule_bG() }
+									modules.cache.bG = t1401
 								end
 								return t1401.c
 							end
 
 							f10536[f10500] = f11098
-							local v5839 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Spring = v5839.aw()
-								local Trove = v5839.q()
+								local Spring = modules.aw()
+								local Trove = modules.q()
 								local defaultConfig = {
 									Color = Color3.fromRGB(120, 220, 255),
 									Width = 0.06,
@@ -202945,31 +202945,31 @@ local function f10149()
 							end
 
 							f10500 = "bH"
-							local v5849 = f10536
-							local v5850 = f10537
+							local modules = f10536
+							local loadModule_bH = f10537
 
 							f11098 = function()
-								local t1405 = v5849.cache.bH
+								local t1405 = modules.cache.bH
 								if not t1405 then
-									t1405 = { c = v5850() }
-									v5849.cache.bH = t1405
+									t1405 = { c = loadModule_bH() }
+									modules.cache.bH = t1405
 								end
 								return t1405.c
 							end
 
 							f10536[f10500] = f11098
-							local v5851 = f10536
+							local modules = f10536
 							local v5852 = rawget3
 
 							f10537 = function()
-								local TracerTextures = v5851.bG()
-								local Tracer = v5851.bH()
-								local settings = v5851.y()
-								local EnumCodec = v5851.aU()
-								v5851.a4()
-								v5851.bD()
-								local Trove = v5851.q()
-								local invoke = v5851.ai()
+								local TracerTextures = modules.bG()
+								local Tracer = modules.bH()
+								local settings = modules.y()
+								local EnumCodec = modules.aU()
+								modules.a4()
+								modules.bD()
+								local Trove = modules.q()
+								local invoke = modules.ai()
 								local BulletTracers = {}
 								BulletTracers.__index = BulletTracers
 								local minGlow = 1
@@ -203120,26 +203120,26 @@ local function f10149()
 							end
 
 							f10500 = "bI"
-							local v5872 = f10536
-							local v5873 = f10537
+							local modules = f10536
+							local loadModule_bI = f10537
 
 							f11098 = function()
-								local t1412 = v5872.cache.bI
+								local t1412 = modules.cache.bI
 								if not t1412 then
-									t1412 = { c = v5873() }
-									v5872.cache.bI = t1412
+									t1412 = { c = loadModule_bI() }
+									modules.cache.bI = t1412
 								end
 								return t1412.c
 							end
 
 							f10536[f10500] = f11098
-							local v5874 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5874.aT()
-								local Signal = v5874.t()
-								local Trove = v5874.q()
-								v5874.B()
+								modules.aT()
+								local Signal = modules.t()
+								local Trove = modules.q()
+								modules.B()
 								local CharacterAppearances = {}
 								CharacterAppearances.__index = CharacterAppearances
 
@@ -203258,23 +203258,23 @@ local function f10149()
 							end
 
 							f10500 = "bJ"
-							local v5883 = f10536
-							local v5884 = f10537
+							local modules = f10536
+							local loadModule_bJ = f10537
 
 							f11098 = function()
-								local t1417 = v5883.cache.bJ
+								local t1417 = modules.cache.bJ
 								if not t1417 then
-									t1417 = { c = v5884() }
-									v5883.cache.bJ = t1417
+									t1417 = { c = loadModule_bJ() }
+									modules.cache.bJ = t1417
 								end
 								return t1417.c
 							end
 
 							f10536[f10500] = f11098
-							local v5885 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Trove = v5885.q()
+								local Trove = modules.q()
 								local AppearanceOverride = {}
 								AppearanceOverride.__index = AppearanceOverride
 
@@ -203757,29 +203757,29 @@ local function f10149()
 							end
 
 							f10500 = "bK"
-							local v5909 = f10536
-							local v5910 = f10537
+							local modules = f10536
+							local loadModule_bK = f10537
 
 							f11098 = function()
-								local t1425 = v5909.cache.bK
+								local t1425 = modules.cache.bK
 								if not t1425 then
-									t1425 = { c = v5910() }
-									v5909.cache.bK = t1425
+									t1425 = { c = loadModule_bK() }
+									modules.cache.bK = t1425
 								end
 								return t1425.c
 							end
 
 							f10536[f10500] = f11098
-							local v5911 = f10536
+							local modules = f10536
 							local v5912 = rawget3
 							local v5913 = v387
 
 							f10537 = function()
-								v5911.aj()
-								local Result = v5911.b()
-								local call = v5911.ai()
-								local Visibility = v5911.ao().ClientFighterCharacterVisibility
-								v5911.a4()
+								modules.aj()
+								local Result = modules.b()
+								local call = modules.ai()
+								local Visibility = modules.ao().ClientFighterCharacterVisibility
+								modules.a4()
 								local CharacterVisibilityHook = {}
 								CharacterVisibilityHook.__index = CharacterVisibilityHook
 
@@ -203991,14 +203991,14 @@ local function f10149()
 							end
 
 							f10500 = "bL"
-							local v5929 = f10536
-							local v5930 = f10537
+							local modules = f10536
+							local loadModule_bL = f10537
 
 							f11098 = function()
-								local t1429 = v5929.cache.bL
+								local t1429 = modules.cache.bL
 								if not t1429 then
-									t1429 = { c = v5930() }
-									v5929.cache.bL = t1429
+									t1429 = { c = loadModule_bL() }
+									modules.cache.bL = t1429
 								end
 								return t1429.c
 							end
@@ -204018,24 +204018,24 @@ local function f10149()
 							end
 
 							f10500 = "bM"
-							local v5931 = f10536
-							local v5932 = f10537
+							local modules = f10536
+							local loadModule_bM = f10537
 
 							f11098 = function()
-								local t1430 = v5931.cache.bM
+								local t1430 = modules.cache.bM
 								if not t1430 then
-									t1430 = { c = v5932() }
-									v5931.cache.bM = t1430
+									t1430 = { c = loadModule_bM() }
+									modules.cache.bM = t1430
 								end
 								return t1430.c
 							end
 
 							f10536[f10500] = f11098
-							local v5933 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Trove = v5933.q()
-								local cloneArchivable = v5933.bM()
+								local Trove = modules.q()
+								local cloneArchivable = modules.bM()
 								local removedClasses = {
 									LocalScript = true,
 									Script = true,
@@ -204131,23 +204131,23 @@ local function f10149()
 							end
 
 							f10500 = "bN"
-							local v5940 = f10536
-							local v5941 = f10537
+							local modules = f10536
+							local loadModule_bN = f10537
 
 							f11098 = function()
-								local t1441 = v5940.cache.bN
+								local t1441 = modules.cache.bN
 								if not t1441 then
-									t1441 = { c = v5941() }
-									v5940.cache.bN = t1441
+									t1441 = { c = loadModule_bN() }
+									modules.cache.bN = t1441
 								end
 								return t1441.c
 							end
 
 							f10536[f10500] = f11098
-							local v5942 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Promise = v5942.A()
+								local Promise = modules.A()
 
 								local function waitForChild(parent, name, timeout)
 									local function executor(resolve, reject)
@@ -204190,28 +204190,28 @@ local function f10149()
 							end
 
 							f10500 = "bO"
-							local v5948 = f10536
-							local v5949 = f10537
+							local modules = f10536
+							local loadModule_bO = f10537
 
 							f11098 = function()
-								local t1442 = v5948.cache.bO
+								local t1442 = modules.cache.bO
 								if not t1442 then
-									t1442 = { c = v5949() }
-									v5948.cache.bO = t1442
+									t1442 = { c = loadModule_bO() }
+									modules.cache.bO = t1442
 								end
 								return t1442.c
 							end
 
 							f10536[f10500] = f11098
-							local v5950 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CharacterClone = v5950.bN()
-								v5950.bL()
-								local Promise = v5950.A()
-								local Trove = v5950.q()
-								local cloneCharacter = v5950.bM()
-								local waitForModel = v5950.bO()
+								local CharacterClone = modules.bN()
+								modules.bL()
+								local Promise = modules.A()
+								local Trove = modules.q()
+								local cloneCharacter = modules.bM()
+								local waitForModel = modules.bO()
 								local HttpService = cloneref(game:GetService("HttpService"))
 								local CollectionService = cloneref(game:GetService("CollectionService"))
 								local Replica = {}
@@ -204323,23 +204323,23 @@ local function f10149()
 							end
 
 							f10500 = "bP"
-							local v5961 = f10536
-							local v5962 = f10537
+							local modules = f10536
+							local loadModule_bP = f10537
 
 							f11098 = function()
-								local t1445 = v5961.cache.bP
+								local t1445 = modules.cache.bP
 								if not t1445 then
-									t1445 = { c = v5962() }
-									v5961.cache.bP = t1445
+									t1445 = { c = loadModule_bP() }
+									modules.cache.bP = t1445
 								end
 								return t1445.c
 							end
 
 							f10536[f10500] = f11098
-							local v5963 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local getField = v5963.ah()
+								local getField = modules.ah()
 
 								local function isLocalViewModel(viewModel)
 									local clientItem = getField(viewModel, "ClientItem")
@@ -204359,27 +204359,27 @@ local function f10149()
 							end
 
 							f10500 = "bQ"
-							local v5968 = f10536
-							local v5969 = f10537
+							local modules = f10536
+							local loadModule_bQ = f10537
 
 							f11098 = function()
-								local t1446 = v5968.cache.bQ
+								local t1446 = modules.cache.bQ
 								if not t1446 then
-									t1446 = { c = v5969() }
-									v5968.cache.bQ = t1446
+									t1446 = { c = loadModule_bQ() }
+									modules.cache.bQ = t1446
 								end
 								return t1446.c
 							end
 
 							f10536[f10500] = f11098
-							local v5970 = f10536
+							local modules = f10536
 							local v5971 = v387
 
 							f10537 = function()
-								local Result = v5970.b()
-								local getField = v5970.ah()
-								local ClientViewModel = v5970.ao().ClientViewModel
-								local isLocalViewModel = v5970.bQ()
+								local Result = modules.b()
+								local getField = modules.ah()
+								local ClientViewModel = modules.ao().ClientViewModel
+								local isLocalViewModel = modules.bQ()
 								local ViewModelRenderHook = {}
 								ViewModelRenderHook.__index = ViewModelRenderHook
 
@@ -204445,30 +204445,30 @@ local function f10149()
 							end
 
 							f10500 = "bR"
-							local v5979 = f10536
-							local v5980 = f10537
+							local modules = f10536
+							local loadModule_bR = f10537
 
 							f11098 = function()
-								local t1449 = v5979.cache.bR
+								local t1449 = modules.cache.bR
 								if not t1449 then
-									t1449 = { c = v5980() }
-									v5979.cache.bR = t1449
+									t1449 = { c = loadModule_bR() }
+									modules.cache.bR = t1449
 								end
 								return t1449.c
 							end
 
 							f10536[f10500] = f11098
-							local v5981 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v5981.bJ()
-								local VisibilityHook = v5981.bL()
-								v5981.aT()
-								v5981.a4()
-								local BodyReplica = v5981.bP()
-								local Signal = v5981.t()
-								local Trove = v5981.q()
-								local ViewModelRenderHook = v5981.bR()
+								modules.bJ()
+								local VisibilityHook = modules.bL()
+								modules.aT()
+								modules.a4()
+								local BodyReplica = modules.bP()
+								local Signal = modules.t()
+								local Trove = modules.q()
+								local ViewModelRenderHook = modules.bR()
 								local LocalBodyView = {}
 								LocalBodyView.__index = LocalBodyView
 
@@ -204687,27 +204687,27 @@ local function f10149()
 							end
 
 							f10500 = "bS"
-							local v5995 = f10536
-							local v5996 = f10537
+							local modules = f10536
+							local loadModule_bS = f10537
 
 							f11098 = function()
-								local t1452 = v5995.cache.bS
+								local t1452 = modules.cache.bS
 								if not t1452 then
-									t1452 = { c = v5996() }
-									v5995.cache.bS = t1452
+									t1452 = { c = loadModule_bS() }
+									modules.cache.bS = t1452
 								end
 								return t1452.c
 							end
 
 							f10536[f10500] = f11098
-							local v5997 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local BodyMaterial = v5997.bK()
-								v5997.aC()
-								v5997.bS()
-								v5997.a4()
-								local Trove = v5997.q()
+								local BodyMaterial = modules.bK()
+								modules.aC()
+								modules.bS()
+								modules.a4()
+								local Trove = modules.q()
 								local LocalBodyAppearance = {}
 								LocalBodyAppearance.__index = LocalBodyAppearance
 
@@ -204911,26 +204911,26 @@ local function f10149()
 							end
 
 							f10500 = "bT"
-							local v6001 = f10536
-							local v6002 = f10537
+							local modules = f10536
+							local loadModule_bT = f10537
 
 							f11098 = function()
-								local t1455 = v6001.cache.bT
+								local t1455 = modules.cache.bT
 								if not t1455 then
-									t1455 = { c = v6002() }
-									v6001.cache.bT = t1455
+									t1455 = { c = loadModule_bT() }
+									modules.cache.bT = t1455
 								end
 								return t1455.c
 							end
 
 							f10536[f10500] = f11098
-							local v6003 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v6003.y()
-								v6003.bT()
-								local Materials = v6003.l()
-								local Trove = v6003.q()
+								local Config = modules.y()
+								modules.bT()
+								local Materials = modules.l()
+								local Trove = modules.q()
 								local CharacterChams = {}
 								CharacterChams.__index = CharacterChams
 
@@ -205014,26 +205014,26 @@ local function f10149()
 							end
 
 							f10500 = "bU"
-							local v6009 = f10536
-							local v6010 = f10537
+							local modules = f10536
+							local loadModule_bU = f10537
 
 							f11098 = function()
-								local t1459 = v6009.cache.bU
+								local t1459 = modules.cache.bU
 								if not t1459 then
-									t1459 = { c = v6010() }
-									v6009.cache.bU = t1459
+									t1459 = { c = loadModule_bU() }
+									modules.cache.bU = t1459
 								end
 								return t1459.c
 							end
 
 							f10536[f10500] = f11098
-							local v6011 = f10536
+							local modules = f10536
 							local v6012 = rawget3
 
 							f10537 = function()
-								v6011.aj()
-								v6011.a4()
-								local Signal = v6011.t()
+								modules.aj()
+								modules.a4()
+								local Signal = modules.t()
 								local FighterPrototype = {}
 								FighterPrototype.__index = FighterPrototype
 
@@ -205073,14 +205073,14 @@ local function f10149()
 							end
 
 							f10500 = "bV"
-							local v6015 = f10536
-							local v6016 = f10537
+							local modules = f10536
+							local loadModule_bV = f10537
 
 							f11098 = function()
-								local t1462 = v6015.cache.bV
+								local t1462 = modules.cache.bV
 								if not t1462 then
-									t1462 = { c = v6016() }
-									v6015.cache.bV = t1462
+									t1462 = { c = loadModule_bV() }
+									modules.cache.bV = t1462
 								end
 								return t1462.c
 							end
@@ -205147,24 +205147,24 @@ local function f10149()
 							end
 
 							f10500 = "bW"
-							local v6028 = f10536
-							local v6029 = f10537
+							local modules = f10536
+							local loadModule_bW = f10537
 
 							f11098 = function()
-								local t1464 = v6028.cache.bW
+								local t1464 = modules.cache.bW
 								if not t1464 then
-									t1464 = { c = v6029() }
-									v6028.cache.bW = t1464
+									t1464 = { c = loadModule_bW() }
+									modules.cache.bW = t1464
 								end
 								return t1464.c
 							end
 
 							f10536[f10500] = f11098
-							local v6030 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorEffects = v6030.bW()
-								local Trove = v6030.q()
+								local ColorEffects = modules.bW()
+								local Trove = modules.q()
 								local Modes = { None = "None", Rainbow = "Rainbow", Breathing = "Breathing" }
 								local ColorAnimator = {}
 								ColorAnimator.__index = ColorAnimator
@@ -205288,25 +205288,25 @@ local function f10149()
 							end
 
 							f10500 = "bX"
-							local v6040 = f10536
-							local v6041 = f10537
+							local modules = f10536
+							local loadModule_bX = f10537
 
 							f11098 = function()
-								local t1471 = v6040.cache.bX
+								local t1471 = modules.cache.bX
 								if not t1471 then
-									t1471 = { c = v6041() }
-									v6040.cache.bX = t1471
+									t1471 = { c = loadModule_bX() }
+									modules.cache.bX = t1471
 								end
 								return t1471.c
 							end
 
 							f10536[f10500] = f11098
-							local v6042 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6042.q()
-								local Services = v6042.L()
-								local Util = v6042.N()
+								modules.q()
+								local Services = modules.L()
+								local Util = modules.N()
 								local UserInputService = Services.UserInputService
 								local Interaction = {}
 								local findScrollingAncestor2 = Util.findScrollingAncestor
@@ -205447,25 +205447,25 @@ local function f10149()
 							end
 
 							f10500 = "bY"
-							local v6045 = f10536
-							local v6046 = f10537
+							local modules = f10536
+							local loadModule_bY = f10537
 
 							f11098 = function()
-								local t1475 = v6045.cache.bY
+								local t1475 = modules.cache.bY
 								if not t1475 then
-									t1475 = { c = v6046() }
-									v6045.cache.bY = t1475
+									t1475 = { c = loadModule_bY() }
+									modules.cache.bY = t1475
 								end
 								return t1475.c
 							end
 
 							f10536[f10500] = f11098
-							local v6047 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6047.q()
-								v6047.C()
-								v6047.T()
+								modules.q()
+								modules.C()
+								modules.T()
 								local Row = {}
 								Row.__index = Row
 								local mediumFont = Font.new(
@@ -205873,28 +205873,28 @@ local function f10149()
 							end
 
 							f10500 = "bZ"
-							local v6080 = f10536
-							local v6081 = f10537
+							local modules = f10536
+							local loadModule_bZ = f10537
 
 							f11098 = function()
-								local t1486 = v6080.cache.bZ
+								local t1486 = modules.cache.bZ
 								if not t1486 then
-									t1486 = { c = v6081() }
-									v6080.cache.bZ = t1486
+									t1486 = { c = loadModule_bZ() }
+									modules.cache.bZ = t1486
 								end
 								return t1486.c
 							end
 
 							f10536[f10500] = f11098
-							local v6082 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6082.t()
-								v6082.q()
-								v6082.C()
-								local Input = v6082.bY()
-								v6082.bZ()
-								local Theme = v6082.T()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Input = modules.bY()
+								modules.bZ()
+								local Theme = modules.T()
 								local white = Color3.fromRGB(255, 255, 255)
 								local hoverTween = TweenInfo.new(
 									0.15,
@@ -206343,23 +206343,23 @@ local function f10149()
 							end
 
 							f10500 = "b_"
-							local v6143 = f10536
-							local v6144 = f10537
+							local modules = f10536
+							local loadModule_b_ = f10537
 
 							f11098 = function()
-								local t1519 = v6143.cache.b_
+								local t1519 = modules.cache.b_
 								if not t1519 then
-									t1519 = { c = v6144() }
-									v6143.cache.b_ = t1519
+									t1519 = { c = loadModule_b_() }
+									modules.cache.b_ = t1519
 								end
 								return t1519.c
 							end
 
 							f10536[f10500] = f11098
-							local v6145 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6145.C()
+								modules.C()
 								local ColorStops = {}
 
 								function ColorStops.clone(stops)
@@ -206471,24 +206471,24 @@ local function f10149()
 							end
 
 							f10500 = "b0"
-							local v6153 = f10536
-							local v6154 = f10537
+							local modules = f10536
+							local loadModule_b0 = f10537
 
 							f11098 = function()
-								local t1529 = v6153.cache.b0
+								local t1529 = modules.cache.b0
 								if not t1529 then
-									t1529 = { c = v6154() }
-									v6153.cache.b0 = t1529
+									t1529 = { c = loadModule_b0() }
+									modules.cache.b0 = t1529
 								end
 								return t1529.c
 							end
 
 							f10536[f10500] = f11098
-							local v6155 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6155.t()
-								local services = v6155.L()
+								local Signal = modules.t()
+								local services = modules.L()
 								local GuiService = services.GuiService
 								local UserInputService = services.UserInputService
 								local Device = {
@@ -206627,23 +206627,23 @@ local function f10149()
 							end
 
 							f10500 = "b1"
-							local v6166 = f10536
-							local v6167 = f10537
+							local modules = f10536
+							local loadModule_b1 = f10537
 
 							f11098 = function()
-								local t1535 = v6166.cache.b1
+								local t1535 = modules.cache.b1
 								if not t1535 then
-									t1535 = { c = v6167() }
-									v6166.cache.b1 = t1535
+									t1535 = { c = loadModule_b1() }
+									modules.cache.b1 = t1535
 								end
 								return t1535.c
 							end
 
 							f10536[f10500] = f11098
-							local v6168 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6168.T()
+								modules.T()
 								local Glow = {}
 
 								function Glow.addGlow(batch, gui, options)
@@ -206669,27 +206669,27 @@ local function f10149()
 							end
 
 							f10500 = "b2"
-							local v6173 = f10536
-							local v6174 = f10537
+							local modules = f10536
+							local loadModule_b2 = f10537
 
 							f11098 = function()
-								local t1537 = v6173.cache.b2
+								local t1537 = modules.cache.b2
 								if not t1537 then
-									t1537 = { c = v6174() }
-									v6173.cache.b2 = t1537
+									t1537 = { c = loadModule_b2() }
+									modules.cache.b2 = t1537
 								end
 								return t1537.c
 							end
 
 							f10536[f10500] = f11098
-							local v6175 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6175.q()
-								local Glow = v6175.b2()
-								v6175.C()
-								local Theme = v6175.T()
-								local MenuUtil = v6175.N()
+								modules.q()
+								local Glow = modules.b2()
+								modules.C()
+								local Theme = modules.T()
+								local MenuUtil = modules.N()
 								local Popover = {}
 								Popover.__index = Popover
 
@@ -206966,30 +206966,30 @@ local function f10149()
 							end
 
 							f10500 = "b3"
-							local v6216 = f10536
-							local v6217 = f10537
+							local modules = f10536
+							local loadModule_b3 = f10537
 
 							f11098 = function()
-								local t1552 = v6216.cache.b3
+								local t1552 = modules.cache.b3
 								if not t1552 then
-									t1552 = { c = v6217() }
-									v6216.cache.b3 = t1552
+									t1552 = { c = loadModule_b3() }
+									modules.cache.b3 = t1552
 								end
 								return t1552.c
 							end
 
 							f10536[f10500] = f11098
-							local v6218 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6218.t()
-								v6218.q()
-								v6218.C()
-								local Popup = v6218.b1()
-								local Input = v6218.bY()
-								local Overlay = v6218.b3()
-								v6218.bZ()
-								local Theme = v6218.T()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Popup = modules.b1()
+								local Input = modules.bY()
+								local Overlay = modules.b3()
+								modules.bZ()
+								local Theme = modules.T()
 								local font = Font.new(
 									"rbxassetid://12187365364",
 									Enum.FontWeight.Medium,
@@ -207963,28 +207963,28 @@ local function f10149()
 							end
 
 							f10500 = "b4"
-							local v6310 = f10536
-							local v6311 = f10537
+							local modules = f10536
+							local loadModule_b4 = f10537
 
 							f11098 = function()
-								local t1590 = v6310.cache.b4
+								local t1590 = modules.cache.b4
 								if not t1590 then
-									t1590 = { c = v6311() }
-									v6310.cache.b4 = t1590
+									t1590 = { c = loadModule_b4() }
+									modules.cache.b4 = t1590
 								end
 								return t1590.c
 							end
 
 							f10536[f10500] = f11098
-							local v6312 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6312.t()
-								v6312.q()
-								v6312.C()
-								local Clicks = v6312.bY()
-								v6312.bZ()
-								local MathUtil = v6312.N()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Clicks = modules.bY()
+								modules.bZ()
+								local MathUtil = modules.N()
 								local font = Font.new(
 									"rbxassetid://12187365364",
 									Enum.FontWeight.SemiBold,
@@ -208360,28 +208360,28 @@ local function f10149()
 							end
 
 							f10500 = "b5"
-							local v6364 = f10536
-							local v6365 = f10537
+							local modules = f10536
+							local loadModule_b5 = f10537
 
 							f11098 = function()
-								local t1604 = v6364.cache.b5
+								local t1604 = modules.cache.b5
 								if not t1604 then
-									t1604 = { c = v6365() }
-									v6364.cache.b5 = t1604
+									t1604 = { c = loadModule_b5() }
+									modules.cache.b5 = t1604
 								end
 								return t1604.c
 							end
 
 							f10536[f10500] = f11098
-							local v6366 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6366.t()
-								v6366.q()
-								v6366.C()
-								local Clicks = v6366.bY()
-								v6366.bZ()
-								local MathUtil = v6366.N()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Clicks = modules.bY()
+								modules.bZ()
+								local MathUtil = modules.N()
 								local tweenInfo = TweenInfo.new(
 									0.15,
 									Enum.EasingStyle.Quad,
@@ -208716,32 +208716,32 @@ local function f10149()
 							end
 
 							f10500 = "b6"
-							local v6417 = f10536
-							local v6418 = f10537
+							local modules = f10536
+							local loadModule_b6 = f10537
 
 							f11098 = function()
-								local t1619 = v6417.cache.b6
+								local t1619 = modules.cache.b6
 								if not t1619 then
-									t1619 = { c = v6418() }
-									v6417.cache.b6 = t1619
+									t1619 = { c = loadModule_b6() }
+									modules.cache.b6 = t1619
 								end
 								return t1619.c
 							end
 
 							f10536[f10500] = f11098
-							local v6419 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local GradientUtil = v6419.b0()
-								v6419.C()
-								local Dropdown = v6419.b4()
-								local Interaction = v6419.bY()
-								v6419.b3()
-								local RangeSlider = v6419.b5()
-								local Row = v6419.bZ()
-								local Slider = v6419.b6()
-								local Theme = v6419.T()
-								local Pointer = v6419.N()
+								local GradientUtil = modules.b0()
+								modules.C()
+								local Dropdown = modules.b4()
+								local Interaction = modules.bY()
+								modules.b3()
+								local RangeSlider = modules.b5()
+								local Row = modules.bZ()
+								local Slider = modules.b6()
+								local Theme = modules.T()
+								local Pointer = modules.N()
 								local mediumFont = Font.new(
 									"rbxassetid://12187365364",
 									Enum.FontWeight.Medium,
@@ -209897,31 +209897,31 @@ local function f10149()
 							end
 
 							f10500 = "b7"
-							local v6599 = f10536
-							local v6600 = f10537
+							local modules = f10536
+							local loadModule_b7 = f10537
 
 							f11098 = function()
-								local t1652 = v6599.cache.b7
+								local t1652 = modules.cache.b7
 								if not t1652 then
-									t1652 = { c = v6600() }
-									v6599.cache.b7 = t1652
+									t1652 = { c = loadModule_b7() }
+									modules.cache.b7 = t1652
 								end
 								return t1652.c
 							end
 
 							f10536[f10500] = f11098
-							local v6601 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6601.t()
-								v6601.q()
-								local ColorPanel = v6601.b7()
-								local Stops = v6601.b0()
-								v6601.C()
-								local menuStyle = v6601.b1()
-								local inputUtil = v6601.bY()
-								local Popup = v6601.b3()
-								v6601.bZ()
+								local Signal = modules.t()
+								modules.q()
+								local ColorPanel = modules.b7()
+								local Stops = modules.b0()
+								modules.C()
+								local menuStyle = modules.b1()
+								local inputUtil = modules.bY()
+								local Popup = modules.b3()
+								modules.bZ()
 								local white = Color3.fromRGB(255, 255, 255)
 								local ColorPicker = {}
 								ColorPicker.__index = ColorPicker
@@ -210471,24 +210471,24 @@ local function f10149()
 							end
 
 							f10500 = "b8"
-							local v6656 = f10536
-							local v6657 = f10537
+							local modules = f10536
+							local loadModule_b8 = f10537
 
 							f11098 = function()
-								local t1669 = v6656.cache.b8
+								local t1669 = modules.cache.b8
 								if not t1669 then
-									t1669 = { c = v6657() }
-									v6656.cache.b8 = t1669
+									t1669 = { c = loadModule_b8() }
+									modules.cache.b8 = t1669
 								end
 								return t1669.c
 							end
 
 							f10536[f10500] = f11098
-							local v6658 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6658.C()
-								v6658.b8()
+								modules.C()
+								modules.b8()
 								local SliderBinding = {}
 
 								function SliderBinding.bind(slider, source)
@@ -210529,24 +210529,24 @@ local function f10149()
 							end
 
 							f10500 = "b9"
-							local v6663 = f10536
-							local v6664 = f10537
+							local modules = f10536
+							local loadModule_b9 = f10537
 
 							f11098 = function()
-								local t1671 = v6663.cache.b9
+								local t1671 = modules.cache.b9
 								if not t1671 then
-									t1671 = { c = v6664() }
-									v6663.cache.b9 = t1671
+									t1671 = { c = loadModule_b9() }
+									modules.cache.b9 = t1671
 								end
 								return t1671.c
 							end
 
 							f10536[f10500] = f11098
-							local v6665 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6665.q()
-								v6665.C()
+								modules.q()
+								modules.C()
 								local Binding = {}
 
 								function Binding.bind(trove, store, widget, path, options)
@@ -210662,26 +210662,26 @@ local function f10149()
 							end
 
 							f10500 = "ca"
-							local v6673 = f10536
-							local v6674 = f10537
+							local modules = f10536
+							local loadModule_ca = f10537
 
 							f11098 = function()
-								local t1673 = v6673.cache.ca
+								local t1673 = modules.cache.ca
 								if not t1673 then
-									t1673 = { c = v6674() }
-									v6673.cache.ca = t1673
+									t1673 = { c = loadModule_ca() }
+									modules.cache.ca = t1673
 								end
 								return t1673.c
 							end
 
 							f10536[f10500] = f11098
-							local v6675 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6675.t()
-								v6675.q()
-								v6675.C()
-								v6675.bZ()
+								modules.t()
+								modules.q()
+								modules.C()
+								modules.bZ()
 								local Divider = {}
 								Divider.__index = Divider
 								local font = Font.new(
@@ -210792,28 +210792,28 @@ local function f10149()
 							end
 
 							f10500 = "cb"
-							local v6687 = f10536
-							local v6688 = f10537
+							local modules = f10536
+							local loadModule_cb = f10537
 
 							f11098 = function()
-								local t1677 = v6687.cache.cb
+								local t1677 = modules.cache.cb
 								if not t1677 then
-									t1677 = { c = v6688() }
-									v6687.cache.cb = t1677
+									t1677 = { c = loadModule_cb() }
+									modules.cache.cb = t1677
 								end
 								return t1677.c
 							end
 
 							f10536[f10500] = f11098
-							local v6689 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6689.t()
-								v6689.q()
-								v6689.C()
-								local Interaction = v6689.bY()
-								v6689.bZ()
-								local Theme = v6689.T()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Interaction = modules.bY()
+								modules.bZ()
+								local Theme = modules.T()
 								local pressTweenInfo = TweenInfo.new(
 									0.1,
 									Enum.EasingStyle.Quad,
@@ -211020,33 +211020,33 @@ local function f10149()
 							end
 
 							f10500 = "cc"
-							local v6710 = f10536
-							local v6711 = f10537
+							local modules = f10536
+							local loadModule_cc = f10537
 
 							f11098 = function()
-								local t1691 = v6710.cache.cc
+								local t1691 = modules.cache.cc
 								if not t1691 then
-									t1691 = { c = v6711() }
-									v6710.cache.cc = t1691
+									t1691 = { c = loadModule_cc() }
+									modules.cache.cc = t1691
 								end
 								return t1691.c
 							end
 
 							f10536[f10500] = f11098
-							local v6712 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6712.t()
-								v6712.q()
-								v6712.C()
-								local Dropdown = v6712.b4()
-								local Platform = v6712.b1()
-								local Interaction = v6712.bY()
-								local Popover = v6712.b3()
-								local Row = v6712.bZ()
-								local Theme = v6712.T()
-								local Toggle = v6712.cc()
-								local Keys = v6712.N()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Dropdown = modules.b4()
+								local Platform = modules.b1()
+								local Interaction = modules.bY()
+								local Popover = modules.b3()
+								local Row = modules.bZ()
+								local Theme = modules.T()
+								local Toggle = modules.cc()
+								local Keys = modules.N()
 								local font = Font.new(
 									"rbxassetid://12187365364",
 									Enum.FontWeight.Medium,
@@ -211707,26 +211707,26 @@ local function f10149()
 							end
 
 							f10500 = "cd"
-							local v6767 = f10536
-							local v6768 = f10537
+							local modules = f10536
+							local loadModule_cd = f10537
 
 							f11098 = function()
-								local t1722 = v6767.cache.cd
+								local t1722 = modules.cache.cd
 								if not t1722 then
-									t1722 = { c = v6768() }
-									v6767.cache.cd = t1722
+									t1722 = { c = loadModule_cd() }
+									modules.cache.cd = t1722
 								end
 								return t1722.c
 							end
 
 							f10536[f10500] = f11098
-							local v6769 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6769.t()
-								v6769.q()
-								v6769.C()
-								v6769.bZ()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								modules.bZ()
 								local CardRow = {}
 								CardRow.__index = CardRow
 								local font = Font.new(
@@ -211991,28 +211991,28 @@ local function f10149()
 							end
 
 							f10500 = "ce"
-							local v6786 = f10536
-							local v6787 = f10537
+							local modules = f10536
+							local loadModule_ce = f10537
 
 							f11098 = function()
-								local t1726 = v6786.cache.ce
+								local t1726 = modules.cache.ce
 								if not t1726 then
-									t1726 = { c = v6787() }
-									v6786.cache.ce = t1726
+									t1726 = { c = loadModule_ce() }
+									modules.cache.ce = t1726
 								end
 								return t1726.c
 							end
 
 							f10536[f10500] = f11098
-							local v6788 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6788.t()
-								v6788.q()
-								v6788.C()
-								local Input = v6788.bY()
-								v6788.bZ()
-								local Theme = v6788.T()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Input = modules.bY()
+								modules.bZ()
+								local Theme = modules.T()
 								local ListBox = {}
 								ListBox.__index = ListBox
 
@@ -212487,23 +212487,23 @@ local function f10149()
 							end
 
 							f10500 = "cf"
-							local v6840 = f10536
-							local v6841 = f10537
+							local modules = f10536
+							local loadModule_cf = f10537
 
 							f11098 = function()
-								local t1742 = v6840.cache.cf
+								local t1742 = modules.cache.cf
 								if not t1742 then
-									t1742 = { c = v6841() }
-									v6840.cache.cf = t1742
+									t1742 = { c = loadModule_cf() }
+									modules.cache.cf = t1742
 								end
 								return t1742.c
 							end
 
 							f10536[f10500] = f11098
-							local v6842 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6842.T()
+								modules.T()
 								local LayoutUtil = {}
 
 								function LayoutUtil.nextLayoutOrder(parent)
@@ -212565,28 +212565,28 @@ local function f10149()
 							end
 
 							f10500 = "cg"
-							local v6852 = f10536
-							local v6853 = f10537
+							local modules = f10536
+							local loadModule_cg = f10537
 
 							f11098 = function()
-								local t1744 = v6852.cache.cg
+								local t1744 = modules.cache.cg
 								if not t1744 then
-									t1744 = { c = v6853() }
-									v6852.cache.cg = t1744
+									t1744 = { c = loadModule_cg() }
+									modules.cache.cg = t1744
 								end
 								return t1744.c
 							end
 
 							f10536[f10500] = f11098
-							local v6854 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v6854.t()
-								v6854.q()
-								v6854.C()
-								v6854.bZ()
-								local Layout = v6854.cg()
-								local Theme = v6854.T()
+								modules.t()
+								modules.q()
+								modules.C()
+								modules.bZ()
+								local Layout = modules.cg()
+								local Theme = modules.T()
 								local font = Font.new(
 									"rbxassetid://12187365364",
 									Enum.FontWeight.SemiBold,
@@ -212829,27 +212829,27 @@ local function f10149()
 							end
 
 							f10500 = "ch"
-							local v6880 = f10536
-							local v6881 = f10537
+							local modules = f10536
+							local loadModule_ch = f10537
 
 							f11098 = function()
-								local t1760 = v6880.cache.ch
+								local t1760 = modules.cache.ch
 								if not t1760 then
-									t1760 = { c = v6881() }
-									v6880.cache.ch = t1760
+									t1760 = { c = loadModule_ch() }
+									modules.cache.ch = t1760
 								end
 								return t1760.c
 							end
 
 							f10536[f10500] = f11098
-							local v6882 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6882.t()
-								v6882.q()
-								v6882.C()
-								local Clicks = v6882.bY()
-								v6882.bZ()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Clicks = modules.bY()
+								modules.bZ()
 								local font = Font.new(
 									"rbxassetid://12187365364",
 									Enum.FontWeight.Medium,
@@ -213190,28 +213190,28 @@ local function f10149()
 							end
 
 							f10500 = "ci"
-							local v6921 = f10536
-							local v6922 = f10537
+							local modules = f10536
+							local loadModule_ci = f10537
 
 							f11098 = function()
-								local t1770 = v6921.cache.ci
+								local t1770 = modules.cache.ci
 								if not t1770 then
-									t1770 = { c = v6922() }
-									v6921.cache.ci = t1770
+									t1770 = { c = loadModule_ci() }
+									modules.cache.ci = t1770
 								end
 								return t1770.c
 							end
 
 							f10536[f10500] = f11098
-							local v6923 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6923.t()
-								v6923.q()
-								v6923.C()
-								local Clicks = v6923.bY()
-								v6923.bZ()
-								local Theme = v6923.T()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Clicks = modules.bY()
+								modules.bZ()
+								local Theme = modules.T()
 								local titleFont = Font.new(
 									"rbxassetid://12187365364",
 									Enum.FontWeight.SemiBold,
@@ -213816,27 +213816,27 @@ local function f10149()
 							end
 
 							f10500 = "cj"
-							local v6992 = f10536
-							local v6993 = f10537
+							local modules = f10536
+							local loadModule_cj = f10537
 
 							f11098 = function()
-								local t1794 = v6992.cache.cj
+								local t1794 = modules.cache.cj
 								if not t1794 then
-									t1794 = { c = v6993() }
-									v6992.cache.cj = t1794
+									t1794 = { c = loadModule_cj() }
+									modules.cache.cj = t1794
 								end
 								return t1794.c
 							end
 
 							f10536[f10500] = f11098
-							local v6994 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v6994.t()
-								v6994.q()
-								v6994.C()
-								v6994.bZ()
-								local Theme = v6994.T()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								modules.bZ()
+								local Theme = modules.T()
 								local Input = {}
 								Input.__index = Input
 								local font = Font.new(
@@ -214069,26 +214069,26 @@ local function f10149()
 							end
 
 							f10500 = "ck"
-							local v7019 = f10536
-							local v7020 = f10537
+							local modules = f10536
+							local loadModule_ck = f10537
 
 							f11098 = function()
-								local t1805 = v7019.cache.ck
+								local t1805 = modules.cache.ck
 								if not t1805 then
-									t1805 = { c = v7020() }
-									v7019.cache.ck = t1805
+									t1805 = { c = loadModule_ck() }
+									modules.cache.ck = t1805
 								end
 								return t1805.c
 							end
 
 							f10536[f10500] = f11098
-							local v7021 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7021.q()
-								v7021.C()
-								local Input = v7021.bY()
-								v7021.bZ()
+								modules.q()
+								modules.C()
+								local Input = modules.bY()
+								modules.bZ()
 								local ViewportPreview = {}
 								ViewportPreview.__index = ViewportPreview
 
@@ -214391,47 +214391,47 @@ local function f10149()
 							end
 
 							f10500 = "cl"
-							local v7055 = f10536
-							local v7056 = f10537
+							local modules = f10536
+							local loadModule_cl = f10537
 
 							f11098 = function()
-								local t1812 = v7055.cache.cl
+								local t1812 = modules.cache.cl
 								if not t1812 then
-									t1812 = { c = v7056() }
-									v7055.cache.cl = t1812
+									t1812 = { c = loadModule_cl() }
+									modules.cache.cl = t1812
 								end
 								return t1812.c
 							end
 
 							f10536[f10500] = f11098
-							local v7057 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v7057.t()
-								v7057.q()
-								local ConfigBinding = v7057.ca()
-								local Button = v7057.b_()
-								local ColorPicker = v7057.b8()
-								v7057.C()
-								local Divider = v7057.cb()
-								local Dropdown = v7057.b4()
-								local Keybind = v7057.cd()
-								local Label = v7057.ce()
-								local List = v7057.cf()
-								local MultiSection = v7057.ch()
-								local ReorderList = v7057.ci()
-								local Platform = v7057.b1()
-								local Clicks = v7057.bY()
-								local Popover = v7057.b3()
-								local RangeSlider = v7057.b5()
-								local Row = v7057.bZ()
-								local Layout = v7057.cg()
-								local CardGrid = v7057.cj()
-								local Slider = v7057.b6()
-								local TextBox = v7057.ck()
-								local Theme = v7057.T()
-								local Toggle = v7057.cc()
-								local Viewport = v7057.cl()
+								local Signal = modules.t()
+								modules.q()
+								local ConfigBinding = modules.ca()
+								local Button = modules.b_()
+								local ColorPicker = modules.b8()
+								modules.C()
+								local Divider = modules.cb()
+								local Dropdown = modules.b4()
+								local Keybind = modules.cd()
+								local Label = modules.ce()
+								local List = modules.cf()
+								local MultiSection = modules.ch()
+								local ReorderList = modules.ci()
+								local Platform = modules.b1()
+								local Clicks = modules.bY()
+								local Popover = modules.b3()
+								local RangeSlider = modules.b5()
+								local Row = modules.bZ()
+								local Layout = modules.cg()
+								local CardGrid = modules.cj()
+								local Slider = modules.b6()
+								local TextBox = modules.ck()
+								local Theme = modules.T()
+								local Toggle = modules.cc()
+								local Viewport = modules.cl()
 								local Section = {}
 								Section.__index = Section
 
@@ -215183,27 +215183,27 @@ local function f10149()
 							end
 
 							f10500 = "cm"
-							local v7163 = f10536
-							local v7164 = f10537
+							local modules = f10536
+							local loadModule_cm = f10537
 
 							f11098 = function()
-								local t1849 = v7163.cache.cm
+								local t1849 = modules.cache.cm
 								if not t1849 then
-									t1849 = { c = v7164() }
-									v7163.cache.cm = t1849
+									t1849 = { c = loadModule_cm() }
+									modules.cache.cm = t1849
 								end
 								return t1849.c
 							end
 
 							f10536[f10500] = f11098
-							local v7165 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7165.q()
-								local Section = v7165.cm()
-								v7165.C()
-								local MultiSection = v7165.ch()
-								v7165.T()
+								modules.q()
+								local Section = modules.cm()
+								modules.C()
+								local MultiSection = modules.ch()
+								modules.T()
 								local PageColumns = {}
 								PageColumns.__index = PageColumns
 
@@ -215398,24 +215398,24 @@ local function f10149()
 							end
 
 							f10500 = "cn"
-							local v7185 = f10536
-							local v7186 = f10537
+							local modules = f10536
+							local loadModule_cn = f10537
 
 							f11098 = function()
-								local t1853 = v7185.cache.cn
+								local t1853 = modules.cache.cn
 								if not t1853 then
-									t1853 = { c = v7186() }
-									v7185.cache.cn = t1853
+									t1853 = { c = loadModule_cn() }
+									modules.cache.cn = t1853
 								end
 								return t1853.c
 							end
 
 							f10536[f10500] = f11098
-							local v7187 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7187.q()
-								local Services = v7187.L()
+								modules.q()
+								local Services = modules.L()
 								local UserInputService = Services.UserInputService
 								local RunService = Services.RunService
 								local HttpService2 = Services.HttpService
@@ -215494,25 +215494,25 @@ local function f10149()
 							end
 
 							f10500 = "co"
-							local v7190 = f10536
-							local v7191 = f10537
+							local modules = f10536
+							local loadModule_co = f10537
 
 							f11098 = function()
-								local t1857 = v7190.cache.co
+								local t1857 = modules.cache.co
 								if not t1857 then
-									t1857 = { c = v7191() }
-									v7190.cache.co = t1857
+									t1857 = { c = loadModule_co() }
+									modules.cache.co = t1857
 								end
 								return t1857.c
 							end
 
 							f10536[f10500] = f11098
-							local v7192 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7192.q()
-								v7192.C()
-								local UserInputService = v7192.L().UserInputService
+								modules.q()
+								modules.C()
+								local UserInputService = modules.L().UserInputService
 								local KeybindCapture = {}
 								KeybindCapture.__index = KeybindCapture
 
@@ -215631,26 +215631,26 @@ local function f10149()
 							end
 
 							f10500 = "cp"
-							local v7199 = f10536
-							local v7200 = f10537
+							local modules = f10536
+							local loadModule_cp = f10537
 
 							f11098 = function()
-								local t1861 = v7199.cache.cp
+								local t1861 = modules.cache.cp
 								if not t1861 then
-									t1861 = { c = v7200() }
-									v7199.cache.cp = t1861
+									t1861 = { c = loadModule_cp() }
+									modules.cache.cp = t1861
 								end
 								return t1861.c
 							end
 
 							f10536[f10500] = f11098
-							local v7201 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7201.q()
-								v7201.C()
-								local Platform = v7201.b1()
-								local Theme = v7201.T()
+								modules.q()
+								modules.C()
+								local Platform = modules.b1()
+								local Theme = modules.T()
 								local fadeTweenInfo = TweenInfo.new(
 									0.4,
 									Enum.EasingStyle.Quad,
@@ -216038,28 +216038,28 @@ local function f10149()
 							end
 
 							f10500 = "cq"
-							local v7241 = f10536
-							local v7242 = f10537
+							local modules = f10536
+							local loadModule_cq = f10537
 
 							f11098 = function()
-								local t1873 = v7241.cache.cq
+								local t1873 = modules.cache.cq
 								if not t1873 then
-									t1873 = { c = v7242() }
-									v7241.cache.cq = t1873
+									t1873 = { c = loadModule_cq() }
+									modules.cache.cq = t1873
 								end
 								return t1873.c
 							end
 
 							f10536[f10500] = f11098
-							local v7243 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7243.q()
-								v7243.C()
-								local inputUtil = v7243.bY()
-								local services = v7243.L()
-								local theme = v7243.T()
-								local guiUtil = v7243.N()
+								modules.q()
+								modules.C()
+								local inputUtil = modules.bY()
+								local services = modules.L()
+								local theme = modules.T()
+								local guiUtil = modules.N()
 								local UserInputService = services.UserInputService
 								local font = Font.new(
 									"rbxassetid://12187365364",
@@ -216498,26 +216498,26 @@ local function f10149()
 							end
 
 							f10500 = "cr"
-							local v7280 = f10536
-							local v7281 = f10537
+							local modules = f10536
+							local loadModule_cr = f10537
 
 							f11098 = function()
-								local t1896 = v7280.cache.cr
+								local t1896 = modules.cache.cr
 								if not t1896 then
-									t1896 = { c = v7281() }
-									v7280.cache.cr = t1896
+									t1896 = { c = loadModule_cr() }
+									modules.cache.cr = t1896
 								end
 								return t1896.c
 							end
 
 							f10536[f10500] = f11098
-							local v7282 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7282.t()
-								v7282.q()
-								v7282.C()
-								local UserInputService = v7282.L().UserInputService
+								modules.t()
+								modules.q()
+								modules.C()
+								local UserInputService = modules.L().UserInputService
 								local PopupManager = {}
 								PopupManager.__index = PopupManager
 
@@ -216951,14 +216951,14 @@ local function f10149()
 							end
 
 							f10500 = "cs"
-							local v7311 = f10536
-							local v7312 = f10537
+							local modules = f10536
+							local loadModule_cs = f10537
 
 							f11098 = function()
-								local t1913 = v7311.cache.cs
+								local t1913 = modules.cache.cs
 								if not t1913 then
-									t1913 = { c = v7312() }
-									v7311.cache.cs = t1913
+									t1913 = { c = loadModule_cs() }
+									modules.cache.cs = t1913
 								end
 								return t1913.c
 							end
@@ -216976,29 +216976,29 @@ local function f10149()
 							end
 
 							f10500 = "ct"
-							local v7314 = f10536
-							local v7315 = f10537
+							local modules = f10536
+							local loadModule_ct = f10537
 
 							f11098 = function()
-								local t1914 = v7314.cache.ct
+								local t1914 = modules.cache.ct
 								if not t1914 then
-									t1914 = { c = v7315() }
-									v7314.cache.ct = t1914
+									t1914 = { c = loadModule_ct() }
+									modules.cache.ct = t1914
 								end
 								return t1914.c
 							end
 
 							f10536[f10500] = f11098
-							local v7316 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7316.q()
-								local fuzzyScore = v7316.ct()
-								local Glow = v7316.b2()
-								v7316.C()
-								local Services = v7316.L()
-								local Theme = v7316.T()
-								local MenuUtil = v7316.N()
+								modules.q()
+								local fuzzyScore = modules.ct()
+								local Glow = modules.b2()
+								modules.C()
+								local Services = modules.L()
+								local Theme = modules.T()
+								local MenuUtil = modules.N()
 								local UserInputService = Services.UserInputService
 								local RunService = Services.RunService
 								local font = Font.new(
@@ -217476,28 +217476,28 @@ local function f10149()
 							end
 
 							f10500 = "cu"
-							local v7365 = f10536
-							local v7366 = f10537
+							local modules = f10536
+							local loadModule_cu = f10537
 
 							f11098 = function()
-								local t1945 = v7365.cache.cu
+								local t1945 = modules.cache.cu
 								if not t1945 then
-									t1945 = { c = v7366() }
-									v7365.cache.cu = t1945
+									t1945 = { c = loadModule_cu() }
+									modules.cache.cu = t1945
 								end
 								return t1945.c
 							end
 
 							f10536[f10500] = f11098
-							local v7367 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v7367.t()
-								v7367.q()
-								v7367.C()
-								local SectionGrid = v7367.cn()
-								local Platform = v7367.b1()
-								local Theme = v7367.T()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local SectionGrid = modules.cn()
+								local Platform = modules.b1()
+								local Theme = modules.T()
 								local Page = {}
 								Page.__index = Page
 
@@ -217768,25 +217768,25 @@ local function f10149()
 							end
 
 							f10500 = "cv"
-							local v7392 = f10536
-							local v7393 = f10537
+							local modules = f10536
+							local loadModule_cv = f10537
 
 							f11098 = function()
-								local t1955 = v7392.cache.cv
+								local t1955 = modules.cache.cv
 								if not t1955 then
-									t1955 = { c = v7393() }
-									v7392.cache.cv = t1955
+									t1955 = { c = loadModule_cv() }
+									modules.cache.cv = t1955
 								end
 								return t1955.c
 							end
 
 							f10536[f10500] = f11098
-							local v7394 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7394.q()
-								v7394.C()
-								local Theme = v7394.T()
+								modules.q()
+								modules.C()
+								local Theme = modules.T()
 								local TabHeader = {}
 								local boldFont = Font.new(
 									"rbxassetid://12187365364",
@@ -218123,26 +218123,26 @@ local function f10149()
 							end
 
 							f10500 = "cw"
-							local v7433 = f10536
-							local v7434 = f10537
+							local modules = f10536
+							local loadModule_cw = f10537
 
 							f11098 = function()
-								local t1974 = v7433.cache.cw
+								local t1974 = modules.cache.cw
 								if not t1974 then
-									t1974 = { c = v7434() }
-									v7433.cache.cw = t1974
+									t1974 = { c = loadModule_cw() }
+									modules.cache.cw = t1974
 								end
 								return t1974.c
 							end
 
 							f10536[f10500] = f11098
-							local v7435 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v7435.t()
-								v7435.q()
-								v7435.C()
-								local Theme = v7435.T()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local Theme = modules.T()
 								local TabButton = {}
 								TabButton.__index = TabButton
 								local font = Font.new(
@@ -218245,27 +218245,27 @@ local function f10149()
 							end
 
 							f10500 = "cx"
-							local v7444 = f10536
-							local v7445 = f10537
+							local modules = f10536
+							local loadModule_cx = f10537
 
 							f11098 = function()
-								local t1982 = v7444.cache.cx
+								local t1982 = modules.cache.cx
 								if not t1982 then
-									t1982 = { c = v7445() }
-									v7444.cache.cx = t1982
+									t1982 = { c = loadModule_cx() }
+									modules.cache.cx = t1982
 								end
 								return t1982.c
 							end
 
 							f10536[f10500] = f11098
-							local v7446 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7446.q()
-								local Glow = v7446.b2()
-								v7446.C()
-								local SidebarButton = v7446.cx()
-								v7446.T()
+								modules.q()
+								local Glow = modules.b2()
+								modules.C()
+								local SidebarButton = modules.cx()
+								modules.T()
 								local Sidebar = {}
 								Sidebar.__index = Sidebar
 
@@ -218408,31 +218408,31 @@ local function f10149()
 							end
 
 							f10500 = "cy"
-							local v7468 = f10536
-							local v7469 = f10537
+							local modules = f10536
+							local loadModule_cy = f10537
 
 							f11098 = function()
-								local t1988 = v7468.cache.cy
+								local t1988 = modules.cache.cy
 								if not t1988 then
-									t1988 = { c = v7469() }
-									v7468.cache.cy = t1988
+									t1988 = { c = loadModule_cy() }
+									modules.cache.cy = t1988
 								end
 								return t1988.c
 							end
 
 							f10536[f10500] = f11098
-							local v7470 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v7470.t()
-								v7470.q()
-								v7470.C()
-								local SectionGrid = v7470.cn()
-								local SubPage = v7470.cv()
-								local TabHeader = v7470.cw()
-								v7470.cy()
-								v7470.cx()
-								local Theme = v7470.T()
+								local Signal = modules.t()
+								modules.q()
+								modules.C()
+								local SectionGrid = modules.cn()
+								local SubPage = modules.cv()
+								local TabHeader = modules.cw()
+								modules.cy()
+								modules.cx()
+								local Theme = modules.T()
 								local Tab = {}
 								Tab.__index = Tab
 
@@ -218669,29 +218669,29 @@ local function f10149()
 							end
 
 							f10500 = "cz"
-							local v7486 = f10536
-							local v7487 = f10537
+							local modules = f10536
+							local loadModule_cz = f10537
 
 							f11098 = function()
-								local t1996 = v7486.cache.cz
+								local t1996 = modules.cache.cz
 								if not t1996 then
-									t1996 = { c = v7487() }
-									v7486.cache.cz = t1996
+									t1996 = { c = loadModule_cz() }
+									modules.cache.cz = t1996
 								end
 								return t1996.c
 							end
 
 							f10536[f10500] = f11098
-							local v7488 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7488.q()
-								v7488.C()
-								v7488.cn()
-								local platform = v7488.b1()
-								v7488.cz()
-								local theme = v7488.T()
-								local configUtil = v7488.N()
+								modules.q()
+								modules.C()
+								modules.cn()
+								local platform = modules.b1()
+								modules.cz()
+								local theme = modules.T()
+								local configUtil = modules.N()
 								local GeneralSettingsTab = {}
 
 								local function buildMenuSection(menu, actions, tab)
@@ -219129,26 +219129,26 @@ local function f10149()
 							end
 
 							f10500 = "cA"
-							local v7514 = f10536
-							local v7515 = f10537
+							local modules = f10536
+							local loadModule_cA = f10537
 
 							f11098 = function()
-								local t2041 = v7514.cache.cA
+								local t2041 = modules.cache.cA
 								if not t2041 then
-									t2041 = { c = v7515() }
-									v7514.cache.cA = t2041
+									t2041 = { c = loadModule_cA() }
+									modules.cache.cA = t2041
 								end
 								return t2041.c
 							end
 
 							f10536[f10500] = f11098
-							local v7516 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7516.t()
-								v7516.q()
-								local services = v7516.L()
-								local Theme = v7516.T()
+								modules.t()
+								modules.q()
+								local services = modules.L()
+								local Theme = modules.T()
 								local UserInputService18 = services.UserInputService
 								local Tooltip = {}
 								Tooltip.__index = Tooltip
@@ -219279,23 +219279,23 @@ local function f10149()
 							end
 
 							f10500 = "cB"
-							local v7528 = f10536
-							local v7529 = f10537
+							local modules = f10536
+							local loadModule_cB = f10537
 
 							f11098 = function()
-								local t2045 = v7528.cache.cB
+								local t2045 = modules.cache.cB
 								if not t2045 then
-									t2045 = { c = v7529() }
-									v7528.cache.cB = t2045
+									t2045 = { c = loadModule_cB() }
+									modules.cache.cB = t2045
 								end
 								return t2045.c
 							end
 
 							f10536[f10500] = f11098
-							local v7530 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local TweenService4 = v7530.L().TweenService
+								local TweenService4 = modules.L().TweenService
 								local Tweener = {}
 								Tweener.__index = Tweener
 
@@ -219361,23 +219361,23 @@ local function f10149()
 							end
 
 							f10500 = "cC"
-							local v7533 = f10536
-							local v7534 = f10537
+							local modules = f10536
+							local loadModule_cC = f10537
 
 							f11098 = function()
-								local t2048 = v7533.cache.cC
+								local t2048 = modules.cache.cC
 								if not t2048 then
-									t2048 = { c = v7534() }
-									v7533.cache.cC = t2048
+									t2048 = { c = loadModule_cC() }
+									modules.cache.cC = t2048
 								end
 								return t2048.c
 							end
 
 							f10536[f10500] = f11098
-							local v7535 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local RunService7 = v7535.L().RunService
+								local RunService7 = modules.L().RunService
 								local FpsCounter = {}
 								FpsCounter.__index = FpsCounter
 
@@ -219455,27 +219455,27 @@ local function f10149()
 							end
 
 							f10500 = "cD"
-							local v7542 = f10536
-							local v7543 = f10537
+							local modules = f10536
+							local loadModule_cD = f10537
 
 							f11098 = function()
-								local t2051 = v7542.cache.cD
+								local t2051 = modules.cache.cD
 								if not t2051 then
-									t2051 = { c = v7543() }
-									v7542.cache.cD = t2051
+									t2051 = { c = loadModule_cD() }
+									modules.cache.cD = t2051
 								end
 								return t2051.c
 							end
 
 							f10536[f10500] = f11098
-							local v7544 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7544.q()
-								v7544.C()
-								local FpsClock = v7544.cD()
-								local Platform = v7544.b1()
-								local Theme = v7544.T()
+								modules.q()
+								modules.C()
+								local FpsClock = modules.cD()
+								local Platform = modules.b1()
+								local Theme = modules.T()
 								local Watermark = {}
 								Watermark.__index = Watermark
 
@@ -219641,23 +219641,23 @@ local function f10149()
 							end
 
 							f10500 = "cE"
-							local v7568 = f10536
-							local v7569 = f10537
+							local modules = f10536
+							local loadModule_cE = f10537
 
 							f11098 = function()
-								local t2056 = v7568.cache.cE
+								local t2056 = modules.cache.cE
 								if not t2056 then
-									t2056 = { c = v7569() }
-									v7568.cache.cE = t2056
+									t2056 = { c = loadModule_cE() }
+									modules.cache.cE = t2056
 								end
 								return t2056.c
 							end
 
 							f10536[f10500] = f11098
-							local v7570 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Platform = v7570.b1()
+								local Platform = modules.b1()
 								local MenuSizing = {}
 
 								function MenuSizing.currentViewport()
@@ -219781,32 +219781,32 @@ local function f10149()
 							end
 
 							f10500 = "cF"
-							local v7583 = f10536
-							local v7584 = f10537
+							local modules = f10536
+							local loadModule_cF = f10537
 
 							f11098 = function()
-								local t2064 = v7583.cache.cF
+								local t2064 = modules.cache.cF
 								if not t2064 then
-									t2064 = { c = v7584() }
-									v7583.cache.cF = t2064
+									t2064 = { c = loadModule_cF() }
+									modules.cache.cF = t2064
 								end
 								return t2064.c
 							end
 
 							f10536[f10500] = f11098
-							local v7585 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7585.q()
-								local Glow = v7585.b2()
-								v7585.C()
-								local Platform = v7585.b1()
-								local Services = v7585.L()
-								local SidePanel = v7585.cy()
-								local Page = v7585.cz()
-								local Theme = v7585.T()
-								local Util = v7585.N()
-								local MenuSizing = v7585.cF()
+								modules.q()
+								local Glow = modules.b2()
+								modules.C()
+								local Platform = modules.b1()
+								local Services = modules.L()
+								local SidePanel = modules.cy()
+								local Page = modules.cz()
+								local Theme = modules.T()
+								local Util = modules.N()
+								local MenuSizing = modules.cF()
 								local Window = {}
 								Window.__index = Window
 
@@ -220293,42 +220293,42 @@ local function f10149()
 							end
 
 							f10500 = "cG"
-							local v7639 = f10536
-							local v7640 = f10537
+							local modules = f10536
+							local loadModule_cG = f10537
 
 							f11098 = function()
-								local t2081 = v7639.cache.cG
+								local t2081 = modules.cache.cG
 								if not t2081 then
-									t2081 = { c = v7640() }
-									v7639.cache.cG = t2081
+									t2081 = { c = loadModule_cG() }
+									modules.cache.cG = t2081
 								end
 								return t2081.c
 							end
 
 							f10536[f10500] = f11098
-							local v7641 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v7641.t()
-								local Trove = v7641.q()
-								v7641.C()
-								local Cursor = v7641.co()
-								local MenuState = v7641.D()
-								local KeybindCapture = v7641.cp()
-								local KeybindList = v7641.cq()
-								local MobileButtons = v7641.cr()
-								local Overlays = v7641.cs()
-								local Platform = v7641.b1()
-								local SearchPalette = v7641.cu()
-								local Services = v7641.L()
-								local SettingsTab = v7641.cA()
-								v7641.cz()
-								local Theme = v7641.T()
-								local Tooltip = v7641.cB()
-								local Tweener = v7641.cC()
-								local MenuUtil = v7641.N()
-								local Watermark = v7641.cE()
-								local Window = v7641.cG()
+								local Signal = modules.t()
+								local Trove = modules.q()
+								modules.C()
+								local Cursor = modules.co()
+								local MenuState = modules.D()
+								local KeybindCapture = modules.cp()
+								local KeybindList = modules.cq()
+								local MobileButtons = modules.cr()
+								local Overlays = modules.cs()
+								local Platform = modules.b1()
+								local SearchPalette = modules.cu()
+								local Services = modules.L()
+								local SettingsTab = modules.cA()
+								modules.cz()
+								local Theme = modules.T()
+								local Tooltip = modules.cB()
+								local Tweener = modules.cC()
+								local MenuUtil = modules.N()
+								local Watermark = modules.cE()
+								local Window = modules.cG()
 								local UserInputService = Services.UserInputService
 								local RunService = Services.RunService
 								local Menu = {}
@@ -221153,47 +221153,47 @@ local function f10149()
 							end
 
 							f10500 = "cH"
-							local v7703 = f10536
-							local v7704 = f10537
+							local modules = f10536
+							local loadModule_cH = f10537
 
 							f11098 = function()
-								local t2103 = v7703.cache.cH
+								local t2103 = modules.cache.cH
 								if not t2103 then
-									t2103 = { c = v7704() }
-									v7703.cache.cH = t2103
+									t2103 = { c = loadModule_cH() }
+									modules.cache.cH = t2103
 								end
 								return t2103.c
 							end
 
 							f10536[f10500] = f11098
-							local v7705 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7705.b_()
-								local ColorBinding = v7705.b9()
-								v7705.b8()
-								v7705.cm()
-								v7705.C()
-								v7705.cb()
-								v7705.b4()
-								local GeneralState = v7705.D()
-								v7705.cn()
-								v7705.cd()
-								v7705.ce()
-								v7705.cf()
-								local Menu = v7705.cH()
-								v7705.ch()
-								local Notifications = v7705.O()
-								v7705.ci()
-								v7705.cv()
-								v7705.b5()
-								v7705.bZ()
-								v7705.cj()
-								v7705.b6()
-								v7705.cz()
-								v7705.ck()
-								v7705.cc()
-								v7705.cl()
+								modules.b_()
+								local ColorBinding = modules.b9()
+								modules.b8()
+								modules.cm()
+								modules.C()
+								modules.cb()
+								modules.b4()
+								local GeneralState = modules.D()
+								modules.cn()
+								modules.cd()
+								modules.ce()
+								modules.cf()
+								local Menu = modules.cH()
+								modules.ch()
+								local Notifications = modules.O()
+								modules.ci()
+								modules.cv()
+								modules.b5()
+								modules.bZ()
+								modules.cj()
+								modules.b6()
+								modules.cz()
+								modules.ck()
+								modules.cc()
+								modules.cl()
 								local UiLibrary = {
 									Menu = Menu,
 									Notifications = Notifications,
@@ -221204,25 +221204,25 @@ local function f10149()
 							end
 
 							f10500 = "cI"
-							local v7710 = f10536
-							local v7711 = f10537
+							local modules = f10536
+							local loadModule_cI = f10537
 
 							f11098 = function()
-								local t2105 = v7710.cache.cI
+								local t2105 = modules.cache.cI
 								if not t2105 then
-									t2105 = { c = v7711() }
-									v7710.cache.cI = t2105
+									t2105 = { c = loadModule_cI() }
+									modules.cache.cI = t2105
 								end
 								return t2105.c
 							end
 
 							f10536[f10500] = f11098
-							local v7712 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v7713 = v7712.bX()
-								local v7714 = v7712.y()
-								local ColorBinding3 = v7712.cI().ColorBinding
+								local v7713 = modules.bX()
+								local v7714 = modules.y()
+								local ColorBinding3 = modules.cI().ColorBinding
 								local t2106 = {}
 								local v7715 = nil
 
@@ -221696,14 +221696,14 @@ local function f10149()
 							end
 
 							f10500 = "cJ"
-							local v7758 = f10536
-							local v7759 = f10537
+							local modules = f10536
+							local loadModule_cJ = f10537
 
 							f11098 = function()
-								local t2148 = v7758.cache.cJ
+								local t2148 = modules.cache.cJ
 								if not t2148 then
-									t2148 = { c = v7759() }
-									v7758.cache.cJ = t2148
+									t2148 = { c = loadModule_cJ() }
+									modules.cache.cJ = t2148
 								end
 								return t2148.c
 							end
@@ -221732,23 +221732,23 @@ local function f10149()
 							end
 
 							f10500 = "cK"
-							local v7763 = f10536
-							local v7764 = f10537
+							local modules = f10536
+							local loadModule_cK = f10537
 
 							f11098 = function()
-								local t2149 = v7763.cache.cK
+								local t2149 = modules.cache.cK
 								if not t2149 then
-									t2149 = { c = v7764() }
-									v7763.cache.cK = t2149
+									t2149 = { c = loadModule_cK() }
+									modules.cache.cK = t2149
 								end
 								return t2149.c
 							end
 
 							f10536[f10500] = f11098
-							local v7765 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local getField = v7765.ah()
+								local getField = modules.ah()
 
 								local function fireSignal(signal)
 									local meta = getmetatable(signal)
@@ -221770,30 +221770,30 @@ local function f10149()
 							end
 
 							f10500 = "cL"
-							local v7770 = f10536
-							local v7771 = f10537
+							local modules = f10536
+							local loadModule_cL = f10537
 
 							f11098 = function()
-								local t2150 = v7770.cache.cL
+								local t2150 = modules.cache.cL
 								if not t2150 then
-									t2150 = { c = v7771() }
-									v7770.cache.cL = t2150
+									t2150 = { c = loadModule_cL() }
+									modules.cache.cL = t2150
 								end
 								return t2150.c
 							end
 
 							f10536[f10500] = f11098
-							local v7772 = f10536
+							local modules = f10536
 							local v7773 = rawget3
 							local v7774 = v387
 
 							f10537 = function()
-								local Result = v7772.b()
-								local callMethod = v7772.cK()
-								local PlayerDataController3 = v7772.ao().PlayerDataController
-								local ErrorReporter = v7772.ac()
-								local connectSignal = v7772.aH()
-								local DataPaths = v7772.cL()
+								local Result = modules.b()
+								local callMethod = modules.cK()
+								local PlayerDataController3 = modules.ao().PlayerDataController
+								local ErrorReporter = modules.ac()
+								local connectSignal = modules.aH()
+								local DataPaths = modules.cL()
 								local DataHook = {}
 								DataHook.__index = DataHook
 
@@ -221933,31 +221933,31 @@ local function f10149()
 							end
 
 							f10500 = "cM"
-							local v7786 = f10536
-							local v7787 = f10537
+							local modules = f10536
+							local loadModule_cM = f10537
 
 							f11098 = function()
-								local t2155 = v7786.cache.cM
+								local t2155 = modules.cache.cM
 								if not t2155 then
-									t2155 = { c = v7787() }
-									v7786.cache.cM = t2155
+									t2155 = { c = loadModule_cM() }
+									modules.cache.cM = t2155
 								end
 								return t2155.c
 							end
 
 							f10536[f10500] = f11098
-							local v7788 = f10536
+							local modules = f10536
 							local v7789 = rawget3
 
 							f10537 = function()
-								v7788.aC()
-								v7788.ak()
-								local MechanicsController = v7788.ao().MechanicsController
-								v7788.a4()
-								local Promise = v7788.A()
-								local Signal = v7788.t()
-								local Trove = v7788.q()
-								local call = v7788.ai()
+								modules.aC()
+								modules.ak()
+								local MechanicsController = modules.ao().MechanicsController
+								modules.a4()
+								local Promise = modules.A()
+								local Signal = modules.t()
+								local Trove = modules.q()
+								local call = modules.ai()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 
 								local function getQuickMeleeStart()
@@ -222071,14 +222071,14 @@ local function f10149()
 							end
 
 							f10500 = "cN"
-							local v7798 = f10536
-							local v7799 = f10537
+							local modules = f10536
+							local loadModule_cN = f10537
 
 							f11098 = function()
-								local t2159 = v7798.cache.cN
+								local t2159 = modules.cache.cN
 								if not t2159 then
-									t2159 = { c = v7799() }
-									v7798.cache.cN = t2159
+									t2159 = { c = loadModule_cN() }
+									modules.cache.cN = t2159
 								end
 								return t2159.c
 							end
@@ -222182,25 +222182,25 @@ local function f10149()
 							end
 
 							f10500 = "cO"
-							local v7815 = f10536
-							local v7816 = f10537
+							local modules = f10536
+							local loadModule_cO = f10537
 
 							f11098 = function()
-								local t2163 = v7815.cache.cO
+								local t2163 = modules.cache.cO
 								if not t2163 then
-									t2163 = { c = v7816() }
-									v7815.cache.cO = t2163
+									t2163 = { c = loadModule_cO() }
+									modules.cache.cO = t2163
 								end
 								return t2163.c
 							end
 
 							f10536[f10500] = f11098
-							local v7817 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7817.g()
-								local priorityLayers = v7817.cO()
-								local Signal = v7817.t()
+								modules.g()
+								local priorityLayers = modules.cO()
+								local Signal = modules.t()
 								local EmoteLayers = {}
 								EmoteLayers.__index = EmoteLayers
 
@@ -222349,14 +222349,14 @@ local function f10149()
 							end
 
 							f10500 = "cP"
-							local v7829 = f10536
-							local v7830 = f10537
+							local modules = f10536
+							local loadModule_cP = f10537
 
 							f11098 = function()
-								local t2173 = v7829.cache.cP
+								local t2173 = modules.cache.cP
 								if not t2173 then
-									t2173 = { c = v7830() }
-									v7829.cache.cP = t2173
+									t2173 = { c = loadModule_cP() }
+									modules.cache.cP = t2173
 								end
 								return t2173.c
 							end
@@ -222369,35 +222369,35 @@ local function f10149()
 							end
 
 							f10500 = "cQ"
-							local v7831 = f10536
-							local v7832 = f10537
+							local modules = f10536
+							local loadModule_cQ = f10537
 
 							f11098 = function()
-								local t2175 = v7831.cache.cQ
+								local t2175 = modules.cache.cQ
 								if not t2175 then
-									t2175 = { c = v7832() }
-									v7831.cache.cQ = t2175
+									t2175 = { c = loadModule_cQ() }
+									modules.cache.cQ = t2175
 								end
 								return t2175.c
 							end
 
 							f10536[f10500] = f11098
-							local v7833 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7833.g()
+								modules.g()
 								return nil
 							end
 
 							f10500 = "cR"
-							local v7834 = f10536
-							local v7835 = f10537
+							local modules = f10536
+							local loadModule_cR = f10537
 
 							f11098 = function()
-								local t2176 = v7834.cache.cR
+								local t2176 = modules.cache.cR
 								if not t2176 then
-									t2176 = { c = v7835() }
-									v7834.cache.cR = t2176
+									t2176 = { c = loadModule_cR() }
+									modules.cache.cR = t2176
 								end
 								return t2176.c
 							end
@@ -222417,24 +222417,24 @@ local function f10149()
 							end
 
 							f10500 = "cS"
-							local v7837 = f10536
-							local v7838 = f10537
+							local modules = f10536
+							local loadModule_cS = f10537
 
 							f11098 = function()
-								local t2178 = v7837.cache.cS
+								local t2178 = modules.cache.cS
 								if not t2178 then
-									t2178 = { c = v7838() }
-									v7837.cache.cS = t2178
+									t2178 = { c = loadModule_cS() }
+									modules.cache.cS = t2178
 								end
 								return t2178.c
 							end
 
 							f10536[f10500] = f11098
-							local v7839 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7839.g()
-								local toSet = v7839.cS()
+								modules.g()
+								local toSet = modules.cS()
 								local itemTypes = table.create(4)
 								local allTypes = table.create(5)
 								local itemTypeSet = toSet(itemTypes)
@@ -222451,30 +222451,30 @@ local function f10149()
 							end
 
 							f10500 = "cT"
-							local v7844 = f10536
-							local v7845 = f10537
+							local modules = f10536
+							local loadModule_cT = f10537
 
 							f11098 = function()
-								local t2180 = v7844.cache.cT
+								local t2180 = modules.cache.cT
 								if not t2180 then
-									t2180 = { c = v7845() }
-									v7844.cache.cT = t2180
+									t2180 = { c = loadModule_cT() }
+									modules.cache.cT = t2180
 								end
 								return t2180.c
 							end
 
 							f10536[f10500] = f11098
-							local v7846 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7846.g()
-								local getField = v7846.ah()
-								local CosmeticLibrary = v7846.ao().CosmeticLibrary
-								local ItemLibrary = v7846.ao().ItemLibrary
-								local CosmeticSentinels = v7846.cQ()
-								local Signal = v7846.t()
-								v7846.cR()
-								local CosmeticTypes = v7846.cT()
+								modules.g()
+								local getField = modules.ah()
+								local CosmeticLibrary = modules.ao().CosmeticLibrary
+								local ItemLibrary = modules.ao().ItemLibrary
+								local CosmeticSentinels = modules.cQ()
+								local Signal = modules.t()
+								modules.cR()
+								local CosmeticTypes = modules.cT()
 								local NONE_COSMETIC = CosmeticSentinels.NONE_COSMETIC
 								local RANDOM_COSMETIC = CosmeticSentinels.RANDOM_COSMETIC
 								local CosmeticCatalog = {}
@@ -222697,27 +222697,27 @@ local function f10149()
 							end
 
 							f10500 = "cU"
-							local v7866 = f10536
-							local v7867 = f10537
+							local modules = f10536
+							local loadModule_cU = f10537
 
 							f11098 = function()
-								local t2192 = v7866.cache.cU
+								local t2192 = modules.cache.cU
 								if not t2192 then
-									t2192 = { c = v7867() }
-									v7866.cache.cU = t2192
+									t2192 = { c = loadModule_cU() }
+									modules.cache.cU = t2192
 								end
 								return t2192.c
 							end
 
 							f10536[f10500] = f11098
-							local v7868 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7868.g()
-								v7868.cP()
-								local Signal = v7868.t()
-								v7868.cU()
-								local Trove = v7868.q()
+								modules.g()
+								modules.cP()
+								local Signal = modules.t()
+								modules.cU()
+								local Trove = modules.q()
 
 								local function sameSelection(a, b)
 									local slot = nil
@@ -222813,25 +222813,25 @@ local function f10149()
 							end
 
 							f10500 = "cV"
-							local v7876 = f10536
-							local v7877 = f10537
+							local modules = f10536
+							local loadModule_cV = f10537
 
 							f11098 = function()
-								local t2199 = v7876.cache.cV
+								local t2199 = modules.cache.cV
 								if not t2199 then
-									t2199 = { c = v7877() }
-									v7876.cache.cV = t2199
+									t2199 = { c = loadModule_cV() }
+									modules.cache.cV = t2199
 								end
 								return t2199.c
 							end
 
 							f10536[f10500] = f11098
-							local v7878 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7878.cM()
-								v7878.cV()
-								local Trove = v7878.q()
+								modules.cM()
+								modules.cV()
+								local Trove = modules.q()
 								local EQUIPPED_EMOTES = "EquippedEmotes"
 								local Equipped = {}
 								Equipped.__index = Equipped
@@ -222897,33 +222897,33 @@ local function f10149()
 							end
 
 							f10500 = "cW"
-							local v7884 = f10536
-							local v7885 = f10537
+							local modules = f10536
+							local loadModule_cW = f10537
 
 							f11098 = function()
-								local t2202 = v7884.cache.cW
+								local t2202 = modules.cache.cW
 								if not t2202 then
-									t2202 = { c = v7885() }
-									v7884.cache.cW = t2202
+									t2202 = { c = loadModule_cW() }
+									modules.cache.cW = t2202
 								end
 								return t2202.c
 							end
 
 							f10536[f10500] = f11098
-							local v7886 = f10536
+							local modules = f10536
 							local v7887 = rawget3
 
 							f10537 = function()
-								v7886.g()
-								local Result = v7886.b()
-								local Signal = v7886.t()
-								local safeCall = v7886.ai()
-								local Emotes = v7886.ao().Emotes
-								local MechanicsController = v7886.ao().MechanicsController
-								local PickEmote2 = v7886.ao().PickEmote
-								v7886.ak()
-								v7886.a4()
-								v7886.cV()
+								modules.g()
+								local Result = modules.b()
+								local Signal = modules.t()
+								local safeCall = modules.ai()
+								local Emotes = modules.ao().Emotes
+								local MechanicsController = modules.ao().MechanicsController
+								local PickEmote2 = modules.ao().PickEmote
+								modules.ak()
+								modules.a4()
+								modules.cV()
 								local UseEmoteHook = {}
 								UseEmoteHook.__index = UseEmoteHook
 
@@ -223083,34 +223083,34 @@ local function f10149()
 							end
 
 							f10500 = "cX"
-							local v7900 = f10536
-							local v7901 = f10537
+							local modules = f10536
+							local loadModule_cX = f10537
 
 							f11098 = function()
-								local t2209 = v7900.cache.cX
+								local t2209 = modules.cache.cX
 								if not t2209 then
-									t2209 = { c = v7901() }
-									v7900.cache.cX = t2209
+									t2209 = { c = loadModule_cX() }
+									modules.cache.cX = t2209
 								end
 								return t2209.c
 							end
 
 							f10536[f10500] = f11098
-							local v7902 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7902.g()
-								v7902.cM()
-								local EmoteCancellation = v7902.cN()
-								v7902.ak()
-								local EmoteEquipped = v7902.cW()
-								local EmoteIntent = v7902.cP()
-								v7902.a4()
-								local EmoteResolver = v7902.cV()
-								v7902.b()
-								v7902.cU()
-								local Trove = v7902.q()
-								local EmoteUse = v7902.cX()
+								modules.g()
+								modules.cM()
+								local EmoteCancellation = modules.cN()
+								modules.ak()
+								local EmoteEquipped = modules.cW()
+								local EmoteIntent = modules.cP()
+								modules.a4()
+								local EmoteResolver = modules.cV()
+								modules.b()
+								modules.cU()
+								local Trove = modules.q()
+								local EmoteUse = modules.cX()
 								local Emotes = {}
 								Emotes.__index = Emotes
 
@@ -223168,14 +223168,14 @@ local function f10149()
 							end
 
 							f10500 = "cY"
-							local v7914 = f10536
-							local v7915 = f10537
+							local modules = f10536
+							local loadModule_cY = f10537
 
 							f11098 = function()
-								local t2213 = v7914.cache.cY
+								local t2213 = modules.cache.cY
 								if not t2213 then
-									t2213 = { c = v7915() }
-									v7914.cache.cY = t2213
+									t2213 = { c = loadModule_cY() }
+									modules.cache.cY = t2213
 								end
 								return t2213.c
 							end
@@ -223193,24 +223193,24 @@ local function f10149()
 							end
 
 							f10500 = "cZ"
-							local v7917 = f10536
-							local v7918 = f10537
+							local modules = f10536
+							local loadModule_cZ = f10537
 
 							f11098 = function()
-								local t2214 = v7917.cache.cZ
+								local t2214 = modules.cache.cZ
 								if not t2214 then
-									t2214 = { c = v7918() }
-									v7917.cache.cZ = t2214
+									t2214 = { c = loadModule_cZ() }
+									modules.cache.cZ = t2214
 								end
 								return t2214.c
 							end
 
 							f10536[f10500] = f11098
-							local v7919 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v7919.t()
-								local deepEqual = v7919.cZ()
+								local Signal = modules.t()
+								local deepEqual = modules.cZ()
 								local Proposals = {}
 								Proposals.__index = Proposals
 
@@ -223318,27 +223318,27 @@ local function f10149()
 							end
 
 							f10500 = "c_"
-							local v7931 = f10536
-							local v7932 = f10537
+							local modules = f10536
+							local loadModule_c_ = f10537
 
 							f11098 = function()
-								local t2221 = v7931.cache.c_
+								local t2221 = modules.cache.c_
 								if not t2221 then
-									t2221 = { c = v7932() }
-									v7931.cache.c_ = t2221
+									t2221 = { c = loadModule_c_() }
+									modules.cache.c_ = t2221
 								end
 								return t2221.c
 							end
 
 							f10536[f10500] = f11098
-							local v7933 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7933.c_()
-								local Signal = v7933.t()
-								v7933.cU()
-								local Trove = v7933.q()
-								local deepEqual = v7933.cZ()
+								modules.c_()
+								local Signal = modules.t()
+								modules.cU()
+								local Trove = modules.q()
+								local deepEqual = modules.cZ()
 
 								local function filterProposed(proposed, predicate)
 									local result = {}
@@ -223436,26 +223436,26 @@ local function f10149()
 							end
 
 							f10500 = "c0"
-							local v7943 = f10536
-							local v7944 = f10537
+							local modules = f10536
+							local loadModule_c0 = f10537
 
 							f11098 = function()
-								local t2226 = v7943.cache.c0
+								local t2226 = modules.cache.c0
 								if not t2226 then
-									t2226 = { c = v7944() }
-									v7943.cache.c0 = t2226
+									t2226 = { c = loadModule_c0() }
+									modules.cache.c0 = t2226
 								end
 								return t2226.c
 							end
 
 							f10536[f10500] = f11098
-							local v7945 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v7945.g()
-								local Signal = v7945.t()
-								local deepEqual = v7945.cZ()
-								local CosmeticTypes = v7945.cT()
+								modules.g()
+								local Signal = modules.t()
+								local deepEqual = modules.cZ()
+								local CosmeticTypes = modules.cT()
 								local ProposedEquips = {}
 								ProposedEquips.__index = ProposedEquips
 
@@ -223576,24 +223576,24 @@ local function f10149()
 							end
 
 							f10500 = "c1"
-							local v7961 = f10536
-							local v7962 = f10537
+							local modules = f10536
+							local loadModule_c1 = f10537
 
 							f11098 = function()
-								local t2234 = v7961.cache.c1
+								local t2234 = modules.cache.c1
 								if not t2234 then
-									t2234 = { c = v7962() }
-									v7961.cache.c1 = t2234
+									t2234 = { c = loadModule_c1() }
+									modules.cache.c1 = t2234
 								end
 								return t2234.c
 							end
 
 							f10536[f10500] = f11098
-							local v7963 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local t2235 = v7963.ao()
-								local v7964 = v7963.ah()
+								local t2235 = modules.ao()
+								local v7964 = modules.ah()
 								local SeasonLibrary4 = t2235.SeasonLibrary
 
 								local function loadRankProfile()
@@ -223695,24 +223695,24 @@ local function f10149()
 							end
 
 							f10500 = "c2"
-							local v7981 = f10536
-							local v7982 = f10537
+							local modules = f10536
+							local loadModule_c2 = f10537
 
 							f11098 = function()
-								local t2248 = v7981.cache.c2
+								local t2248 = modules.cache.c2
 								if not t2248 then
-									t2248 = { c = v7982() }
-									v7981.cache.c2 = t2248
+									t2248 = { c = loadModule_c2() }
+									modules.cache.c2 = t2248
 								end
 								return t2248.c
 							end
 
 							f10536[f10500] = f11098
-							local v7983 = f10536
+							local modules = f10536
 
 							local function globalTrove()
-								local SeasonCharms = v7983.c2()
-								local Signal = v7983.t()
+								local SeasonCharms = modules.c2()
+								local Signal = modules.t()
 								local RankCharmOverrides = {}
 								RankCharmOverrides.__index = RankCharmOverrides
 
@@ -223783,29 +223783,29 @@ local function f10149()
 							end
 
 							f10500 = "c3"
-							local v7986 = f10536
-							local v7987 = f10537
+							local modules = f10536
+							local loadModule_c3 = f10537
 
 							f11098 = function()
-								local t2255 = v7986.cache.c3
+								local t2255 = modules.cache.c3
 								if not t2255 then
-									t2255 = { c = v7987() }
-									v7986.cache.c3 = t2255
+									t2255 = { c = loadModule_c3() }
+									modules.cache.c3 = t2255
 								end
 								return t2255.c
 							end
 
 							f10536[f10500] = f11098
-							local v7988 = f10536
+							local modules = f10536
 							local v7989 = rawget3
 
 							f10537 = function()
-								local RequestBinding = v7988.bC()
-								local ErrorReporter = v7988.ac()
-								local Result = v7988.b()
-								local isSameInstance = v7988.ag()
-								local RequestProfileFunction2 = v7988.ao().RequestProfileFunction
-								local ViewProfile2 = v7988.ao().ViewProfile
+								local RequestBinding = modules.bC()
+								local ErrorReporter = modules.ac()
+								local Result = modules.b()
+								local isSameInstance = modules.ag()
+								local RequestProfileFunction2 = modules.ao().RequestProfileFunction
+								local ViewProfile2 = modules.ao().ViewProfile
 								local RequestDataHook = {}
 								RequestDataHook.__index = RequestDataHook
 
@@ -223990,24 +223990,24 @@ local function f10149()
 							end
 
 							f10500 = "c4"
-							local v8007 = f10536
-							local v8008 = f10537
+							local modules = f10536
+							local loadModule_c4 = f10537
 
 							f11098 = function()
-								local t2265 = v8007.cache.c4
+								local t2265 = modules.cache.c4
 								if not t2265 then
-									t2265 = { c = v8008() }
-									v8007.cache.c4 = t2265
+									t2265 = { c = loadModule_c4() }
+									modules.cache.c4 = t2265
 								end
 								return t2265.c
 							end
 
 							f10536[f10500] = f11098
-							local v8009 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8009.g()
-								v8009.cR()
+								modules.g()
+								modules.cR()
 								local slotKeys = { Skin = "skin", Wrap = "wrap", Charm = "charm", Finisher = "finisher" }
 								local CosmeticSelection = {}
 
@@ -224134,24 +224134,24 @@ local function f10149()
 							end
 
 							f10500 = "c5"
-							local v8018 = f10536
-							local v8019 = f10537
+							local modules = f10536
+							local loadModule_c5 = f10537
 
 							f11098 = function()
-								local t2271 = v8018.cache.c5
+								local t2271 = modules.cache.c5
 								if not t2271 then
-									t2271 = { c = v8019() }
-									v8018.cache.c5 = t2271
+									t2271 = { c = loadModule_c5() }
+									modules.cache.c5 = t2271
 								end
 								return t2271.c
 							end
 
 							f10536[f10500] = f11098
-							local v8020 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CosmeticSelection = v8020.c5()
-								local Trove = v8020.q()
+								local CosmeticSelection = modules.c5()
+								local Trove = modules.q()
 								local Players = cloneref(game:GetService("Players"))
 								local Store = {}
 								Store.__index = Store
@@ -224271,25 +224271,25 @@ local function f10149()
 							end
 
 							f10500 = "c6"
-							local v8036 = f10536
-							local v8037 = f10537
+							local modules = f10536
+							local loadModule_c6 = f10537
 
 							f11098 = function()
-								local t2276 = v8036.cache.c6
+								local t2276 = modules.cache.c6
 								if not t2276 then
-									t2276 = { c = v8037() }
-									v8036.cache.c6 = t2276
+									t2276 = { c = loadModule_c6() }
+									modules.cache.c6 = t2276
 								end
 								return t2276.c
 							end
 
 							f10536[f10500] = f11098
-							local v8038 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local getField = v8038.cK()
-								local Equipment = v8038.ao().Equipment
-								local Lobby2 = v8038.ao().Lobby
+								local getField = modules.cK()
+								local Equipment = modules.ao().Equipment
+								local Lobby2 = modules.ao().Lobby
 
 								local function bindMethod(object, methodName)
 									local method = getField(
@@ -224344,24 +224344,24 @@ local function f10149()
 							end
 
 							f10500 = "c7"
-							local v8047 = f10536
-							local v8048 = f10537
+							local modules = f10536
+							local loadModule_c7 = f10537
 
 							f11098 = function()
-								local t2279 = v8047.cache.c7
+								local t2279 = modules.cache.c7
 								if not t2279 then
-									t2279 = { c = v8048() }
-									v8047.cache.c7 = t2279
+									t2279 = { c = loadModule_c7() }
+									modules.cache.c7 = t2279
 								end
 								return t2279.c
 							end
 
 							f10536[f10500] = f11098
-							local v8049 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local cosmeticConstants = v8049.cQ()
-								v8049.c5()
+								local cosmeticConstants = modules.cQ()
+								modules.c5()
 								local NONE_COSMETIC = cosmeticConstants.NONE_COSMETIC
 
 								local function areWrapsEqual(a, b)
@@ -224443,23 +224443,23 @@ local function f10149()
 							end
 
 							f10500 = "c8"
-							local v8057 = f10536
-							local v8058 = f10537
+							local modules = f10536
+							local loadModule_c8 = f10537
 
 							f11098 = function()
-								local t2282 = v8057.cache.c8
+								local t2282 = modules.cache.c8
 								if not t2282 then
-									t2282 = { c = v8058() }
-									v8057.cache.c8 = t2282
+									t2282 = { c = loadModule_c8() }
+									modules.cache.c8 = t2282
 								end
 								return t2282.c
 							end
 
 							f10536[f10500] = f11098
-							local v8059 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8059.c5()
+								modules.c5()
 
 								local function buildWeaponCosmetics(weaponName, loadout)
 									local weapon = { Name = weaponName }
@@ -224492,27 +224492,27 @@ local function f10149()
 							end
 
 							f10500 = "c9"
-							local v8061 = f10536
-							local v8062 = f10537
+							local modules = f10536
+							local loadModule_c9 = f10537
 
 							f11098 = function()
-								local t2288 = v8061.cache.c9
+								local t2288 = modules.cache.c9
 								if not t2288 then
-									t2288 = { c = v8062() }
-									v8061.cache.c9 = t2288
+									t2288 = { c = loadModule_c9() }
+									modules.cache.c9 = t2288
 								end
 								return t2288.c
 							end
 
 							f10536[f10500] = f11098
-							local v8063 = f10536
+							local modules = f10536
 							local v8064 = rawget3
 
 							f10537 = function()
-								v8063.c4()
-								local Result = v8063.b()
-								v8063.c6()
-								local buildWeaponCosmetics = v8063.c9()
+								modules.c4()
+								local Result = modules.b()
+								modules.c6()
+								local buildWeaponCosmetics = modules.c9()
 								local FavoriteWeaponsMask = {}
 								FavoriteWeaponsMask.__index = FavoriteWeaponsMask
 
@@ -224573,25 +224573,25 @@ local function f10149()
 							end
 
 							f10500 = "da"
-							local v8071 = f10536
-							local v8072 = f10537
+							local modules = f10536
+							local loadModule_da = f10537
 
 							f11098 = function()
-								local t2291 = v8071.cache.da
+								local t2291 = modules.cache.da
 								if not t2291 then
-									t2291 = { c = v8072() }
-									v8071.cache.da = t2291
+									t2291 = { c = loadModule_da() }
+									modules.cache.da = t2291
 								end
 								return t2291.c
 							end
 
 							f10536[f10500] = f11098
-							local v8073 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Codec = v8073.aU()
-								v8073.c3()
-								local getField = v8073.ah()
+								local Codec = modules.aU()
+								modules.c3()
+								local getField = modules.ah()
 								local CharmPayload = {}
 
 								function CharmPayload.findCharmPayload(data)
@@ -224661,37 +224661,37 @@ local function f10149()
 							end
 
 							f10500 = "db"
-							local v8087 = f10536
-							local v8088 = f10537
+							local modules = f10536
+							local loadModule_db = f10537
 
 							f11098 = function()
-								local t2293 = v8087.cache.db
+								local t2293 = modules.cache.db
 								if not t2293 then
-									t2293 = { c = v8088() }
-									v8087.cache.db = t2293
+									t2293 = { c = loadModule_db() }
+									modules.cache.db = t2293
 								end
 								return t2293.c
 							end
 
 							f10536[f10500] = f11098
-							local v8089 = f10536
+							local modules = f10536
 							local v8090 = v387
 							local v8091 = rawget3
 
 							f10537 = function()
-								v8089.cM()
-								local Result = v8089.b()
-								local getField = v8089.cK()
-								local PlayerDataController = v8089.ao().PlayerDataController
-								local PlayerDataUtility = v8089.ao().PlayerDataUtility
-								v8089.c1()
-								local CharmPayload = v8089.db()
-								v8089.c3()
-								v8089.c5()
-								local CosmeticSentinels = v8089.cQ()
-								v8089.c6()
-								local CosmeticTypes = v8089.cT()
-								local buildWeaponCosmetics = v8089.c9()
+								modules.cM()
+								local Result = modules.b()
+								local getField = modules.cK()
+								local PlayerDataController = modules.ao().PlayerDataController
+								local PlayerDataUtility = modules.ao().PlayerDataUtility
+								modules.c1()
+								local CharmPayload = modules.db()
+								modules.c3()
+								modules.c5()
+								local CosmeticSentinels = modules.cQ()
+								modules.c6()
+								local CosmeticTypes = modules.cT()
+								local buildWeaponCosmetics = modules.c9()
 								local Players = cloneref(game:GetService("Players"))
 								local hookedMethodName = "GetWeaponData\0ohaio"
 								local NONE_COSMETIC = CosmeticSentinels.NONE_COSMETIC
@@ -224935,32 +224935,32 @@ local function f10149()
 							end
 
 							f10500 = "dc"
-							local v8124 = f10536
-							local v8125 = f10537
+							local modules = f10536
+							local loadModule_dc = f10537
 
 							f11098 = function()
-								local t2301 = v8124.cache.dc
+								local t2301 = modules.cache.dc
 								if not t2301 then
-									t2301 = { c = v8125() }
-									v8124.cache.dc = t2301
+									t2301 = { c = loadModule_dc() }
+									modules.cache.dc = t2301
 								end
 								return t2301.c
 							end
 
 							f10536[f10500] = f11098
-							local v8126 = f10536
+							local modules = f10536
 							local v8127 = v387
 
 							f10537 = function()
-								local Result = v8126.b()
-								local getField = v8126.ah()
-								local invoke = v8126.ai()
-								local CosmeticViewportFrame2 = v8126.ao().CosmeticViewportFrame
-								local PlayerDataUtility4 = v8126.ao().PlayerDataUtility
-								v8126.c3()
+								local Result = modules.b()
+								local getField = modules.ah()
+								local invoke = modules.ai()
+								local CosmeticViewportFrame2 = modules.ao().CosmeticViewportFrame
+								local PlayerDataUtility4 = modules.ao().PlayerDataUtility
+								modules.c3()
 								local hookedMethodName = "GetSeasonInfo\0ohaio"
 								local charmBySeason = {}
-								local seasonCharms = v8126.c2().SEASON_CHARMS
+								local seasonCharms = modules.c2().SEASON_CHARMS
 								local index = nil
 								while true do
 									local seasonCharm
@@ -225068,35 +225068,35 @@ local function f10149()
 							end
 
 							f10500 = "dd"
-							local v8138 = f10536
-							local v8139 = f10537
+							local modules = f10536
+							local loadModule_dd = f10537
 
 							f11098 = function()
-								local t2307 = v8138.cache.dd
+								local t2307 = modules.cache.dd
 								if not t2307 then
-									t2307 = { c = v8139() }
-									v8138.cache.dd = t2307
+									t2307 = { c = loadModule_dd() }
+									modules.cache.dd = t2307
 								end
 								return t2307.c
 							end
 
 							f10536[f10500] = f11098
-							local v8140 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8140.cM()
-								v8140.ac()
-								v8140.c1()
-								v8140.c3()
-								v8140.c4()
-								v8140.c5()
-								local Store = v8140.c6()
-								local Trove = v8140.q()
-								local equipmentScene2 = v8140.c7().equipmentScene
-								local selectionEquality = v8140.c8()
-								local FavoriteItemsHook = v8140.da()
-								local ItemDataHook = v8140.dc()
-								local SeasonInfoHook = v8140.dd()
+								modules.cM()
+								modules.ac()
+								modules.c1()
+								modules.c3()
+								modules.c4()
+								modules.c5()
+								local Store = modules.c6()
+								local Trove = modules.q()
+								local equipmentScene2 = modules.c7().equipmentScene
+								local selectionEquality = modules.c8()
+								local FavoriteItemsHook = modules.da()
+								local ItemDataHook = modules.dc()
+								local SeasonInfoHook = modules.dd()
 								local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local areSelectionsEqual3 = selectionEquality.areSelectionsEqual
 
@@ -225253,27 +225253,27 @@ local function f10149()
 							end
 
 							f10500 = "de"
-							local v8154 = f10536
-							local v8155 = f10537
+							local modules = f10536
+							local loadModule_de = f10537
 
 							f11098 = function()
-								local t2311 = v8154.cache.de
+								local t2311 = modules.cache.de
 								if not t2311 then
-									t2311 = { c = v8155() }
-									v8154.cache.de = t2311
+									t2311 = { c = loadModule_de() }
+									modules.cache.de = t2311
 								end
 								return t2311.c
 							end
 
 							f10536[f10500] = f11098
-							local v8156 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8156.g()
-								local priorityLayers = v8156.cO()
-								local selectionUtil = v8156.c5()
-								v8156.cR()
-								local CosmeticTypes = v8156.cT()
+								modules.g()
+								local priorityLayers = modules.cO()
+								local selectionUtil = modules.c5()
+								modules.cR()
+								local CosmeticTypes = modules.cT()
 								local CosmeticLayers = {}
 								CosmeticLayers.__index = CosmeticLayers
 
@@ -225635,30 +225635,30 @@ local function f10149()
 							end
 
 							f10500 = "df"
-							local v8195 = f10536
-							local v8196 = f10537
+							local modules = f10536
+							local loadModule_df = f10537
 
 							f11098 = function()
-								local t2333 = v8195.cache.df
+								local t2333 = modules.cache.df
 								if not t2333 then
-									t2333 = { c = v8196() }
-									v8195.cache.df = t2333
+									t2333 = { c = loadModule_df() }
+									modules.cache.df = t2333
 								end
 								return t2333.c
 							end
 
 							f10536[f10500] = f11098
-							local v8197 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8197.g()
-								local cosmeticTypes = v8197.cT().item
-								v8197.c0()
-								v8197.df()
-								v8197.c1()
-								local CosmeticSelection = v8197.c5()
-								v8197.cU()
-								local CosmeticConstants = v8197.cQ()
+								modules.g()
+								local cosmeticTypes = modules.cT().item
+								modules.c0()
+								modules.df()
+								modules.c1()
+								local CosmeticSelection = modules.c5()
+								modules.cU()
+								local CosmeticConstants = modules.cQ()
 								local NONE_COSMETIC = CosmeticConstants.NONE_COSMETIC
 								local RANDOM_COSMETIC = CosmeticConstants.RANDOM_COSMETIC
 								local SelectionResolver = {}
@@ -225869,25 +225869,25 @@ local function f10149()
 							end
 
 							f10500 = "dg"
-							local v8210 = f10536
-							local v8211 = f10537
+							local modules = f10536
+							local loadModule_dg = f10537
 
 							f11098 = function()
-								local t2342 = v8210.cache.dg
+								local t2342 = modules.cache.dg
 								if not t2342 then
-									t2342 = { c = v8211() }
-									v8210.cache.dg = t2342
+									t2342 = { c = loadModule_dg() }
+									modules.cache.dg = t2342
 								end
 								return t2342.c
 							end
 
 							f10536[f10500] = f11098
-							local v8212 = f10536
+							local modules = f10536
 							local v8213 = rawget3
 
 							f10537 = function()
-								local waitForPath = v8212.W()
-								local CosmeticLibrary = v8212.ao().CosmeticLibrary
+								local waitForPath = modules.W()
+								local CosmeticLibrary = modules.ao().CosmeticLibrary
 								local wrapsFolder = waitForPath(
 									cloneref(game:GetService("Players")).LocalPlayer,
 									(table.create(3))
@@ -226187,28 +226187,28 @@ local function f10149()
 							end
 
 							f10500 = "dh"
-							local v8240 = f10536
-							local v8241 = f10537
+							local modules = f10536
+							local loadModule_dh = f10537
 
 							f11098 = function()
-								local t2354 = v8240.cache.dh
+								local t2354 = modules.cache.dh
 								if not t2354 then
-									t2354 = { c = v8241() }
-									v8240.cache.dh = t2354
+									t2354 = { c = loadModule_dh() }
+									modules.cache.dh = t2354
 								end
 								return t2354.c
 							end
 
 							f10536[f10500] = f11098
-							local v8242 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local getField = v8242.ah()
-								local FighterController = v8242.ao().FighterController
-								local CosmeticConstants = v8242.cQ()
-								v8242.c5()
-								v8242.c6()
-								local WrapUtil = v8242.dh()
+								local getField = modules.ah()
+								local FighterController = modules.ao().FighterController
+								local CosmeticConstants = modules.cQ()
+								modules.c5()
+								modules.c6()
+								local WrapUtil = modules.dh()
 								local Players = cloneref(game:GetService("Players"))
 								local NONE_COSMETIC = CosmeticConstants.NONE_COSMETIC
 								local CosmeticPlacer = {}
@@ -226287,32 +226287,32 @@ local function f10149()
 							end
 
 							f10500 = "di"
-							local v8252 = f10536
-							local v8253 = f10537
+							local modules = f10536
+							local loadModule_di = f10537
 
 							f11098 = function()
-								local t2358 = v8252.cache.di
+								local t2358 = modules.cache.di
 								if not t2358 then
-									t2358 = { c = v8253() }
-									v8252.cache.di = t2358
+									t2358 = { c = loadModule_di() }
+									modules.cache.di = t2358
 								end
 								return t2358.c
 							end
 
 							f10536[f10500] = f11098
-							local v8254 = f10536
+							local modules = f10536
 							local v8255 = v387
 
 							f10537 = function()
-								v8254.ac()
-								local Result = v8254.b()
-								local Trove = v8254.q()
-								local getField = v8254.ah()
-								local FighterController = v8254.ao().FighterController
-								local CosmeticPlacer = v8254.di()
-								v8254.c6()
-								local WrapUtil = v8254.dh()
-								local waitForPath = v8254.W()
+								modules.ac()
+								local Result = modules.b()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local FighterController = modules.ao().FighterController
+								local CosmeticPlacer = modules.di()
+								modules.c6()
+								local WrapUtil = modules.dh()
+								local waitForPath = modules.W()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local fireFolder = waitForPath(
 									waitForPath(LocalPlayer, (table.create(2))),
@@ -226464,29 +226464,29 @@ local function f10149()
 							end
 
 							f10500 = "dj"
-							local v8273 = f10536
-							local v8274 = f10537
+							local modules = f10536
+							local loadModule_dj = f10537
 
 							f11098 = function()
-								local t2362 = v8273.cache.dj
+								local t2362 = modules.cache.dj
 								if not t2362 then
-									t2362 = { c = v8274() }
-									v8273.cache.dj = t2362
+									t2362 = { c = loadModule_dj() }
+									modules.cache.dj = t2362
 								end
 								return t2362.c
 							end
 
 							f10536[f10500] = f11098
-							local v8275 = f10536
+							local modules = f10536
 							local v8276 = v387
 
 							f10537 = function()
-								local Result = v8275.b()
-								local CosmeticApply = v8275.di()
-								v8275.c6()
-								local Trove = v8275.q()
-								local getField = v8275.ah()
-								local waitForPath = v8275.W()
+								local Result = modules.b()
+								local CosmeticApply = modules.di()
+								modules.c6()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local waitForPath = modules.W()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local viewModels = waitForPath(
 									waitForPath(LocalPlayer, (table.create(2))),
@@ -226565,29 +226565,29 @@ local function f10149()
 							end
 
 							f10500 = "dk"
-							local v8291 = f10536
-							local v8292 = f10537
+							local modules = f10536
+							local loadModule_dk = f10537
 
 							f11098 = function()
-								local t2365 = v8291.cache.dk
+								local t2365 = modules.cache.dk
 								if not t2365 then
-									t2365 = { c = v8292() }
-									v8291.cache.dk = t2365
+									t2365 = { c = loadModule_dk() }
+									modules.cache.dk = t2365
 								end
 								return t2365.c
 							end
 
 							f10536[f10500] = f11098
-							local v8293 = f10536
+							local modules = f10536
 							local v8294 = v387
 
 							f10537 = function()
-								local Result = v8293.b()
-								local CosmeticPlacer = v8293.di()
-								v8293.c6()
-								local Trove = v8293.q()
-								local getField = v8293.ah()
-								local waitForPath = v8293.W()
+								local Result = modules.b()
+								local CosmeticPlacer = modules.di()
+								modules.c6()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local waitForPath = modules.W()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local cosmeticsFolder = waitForPath(
 									waitForPath(LocalPlayer, (table.create(2))),
@@ -226654,28 +226654,28 @@ local function f10149()
 							end
 
 							f10500 = "dl"
-							local v8307 = f10536
-							local v8308 = f10537
+							local modules = f10536
+							local loadModule_dl = f10537
 
 							f11098 = function()
-								local t2368 = v8307.cache.dl
+								local t2368 = modules.cache.dl
 								if not t2368 then
-									t2368 = { c = v8308() }
-									v8307.cache.dl = t2368
+									t2368 = { c = loadModule_dl() }
+									modules.cache.dl = t2368
 								end
 								return t2368.c
 							end
 
 							f10536[f10500] = f11098
-							local v8309 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8309.ac()
-								local Result = v8309.b()
-								local CosmeticPlacer = v8309.di()
-								v8309.c6()
-								local Trove = v8309.q()
-								local waitForChild = v8309.W()
+								modules.ac()
+								local Result = modules.b()
+								local CosmeticPlacer = modules.di()
+								modules.c6()
+								local Trove = modules.q()
+								local waitForChild = modules.W()
 								local CollectionService = cloneref(game:GetService("CollectionService"))
 								local viewModels = waitForChild(
 									waitForChild(
@@ -226837,29 +226837,29 @@ local function f10149()
 							end
 
 							f10500 = "dm"
-							local v8327 = f10536
-							local v8328 = f10537
+							local modules = f10536
+							local loadModule_dm = f10537
 
 							f11098 = function()
-								local t2371 = v8327.cache.dm
+								local t2371 = modules.cache.dm
 								if not t2371 then
-									t2371 = { c = v8328() }
-									v8327.cache.dm = t2371
+									t2371 = { c = loadModule_dm() }
+									modules.cache.dm = t2371
 								end
 								return t2371.c
 							end
 
 							f10536[f10500] = f11098
-							local v8329 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8329.ac()
-								local SkinHook = v8329.dj()
-								local WrapHook = v8329.dk()
-								v8329.b()
-								local CharmHook = v8329.dl()
-								v8329.c6()
-								local FinisherHook = v8329.dm()
+								modules.ac()
+								local SkinHook = modules.dj()
+								local WrapHook = modules.dk()
+								modules.b()
+								local CharmHook = modules.dl()
+								modules.c6()
+								local FinisherHook = modules.dm()
 								local CosmeticHooks = {}
 								CosmeticHooks.__index = CosmeticHooks
 
@@ -226906,27 +226906,27 @@ local function f10149()
 							end
 
 							f10500 = "dn"
-							local v8340 = f10536
-							local v8341 = f10537
+							local modules = f10536
+							local loadModule_dn = f10537
 
 							f11098 = function()
-								local t2374 = v8340.cache.dn
+								local t2374 = modules.cache.dn
 								if not t2374 then
-									t2374 = { c = v8341() }
-									v8340.cache.dn = t2374
+									t2374 = { c = loadModule_dn() }
+									modules.cache.dn = t2374
 								end
 								return t2374.c
 							end
 
 							f10536[f10500] = f11098
-							local v8342 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8342.bJ()
-								v8342.aT()
-								local Trove = v8342.q()
-								local cloneCharacter = v8342.bM()
-								local waitForModel = v8342.bO()
+								modules.bJ()
+								modules.aT()
+								local Trove = modules.q()
+								local cloneCharacter = modules.bM()
+								local waitForModel = modules.bO()
 								local strippedClasses = {
 									LocalScript = true,
 									Script = true,
@@ -227120,33 +227120,33 @@ local function f10149()
 							end
 
 							f10500 = "dp"
-							local v8358 = f10536
-							local v8359 = f10537
+							local modules = f10536
+							local loadModule_dp = f10537
 
 							f11098 = function()
-								local t2379 = v8358.cache.dp
+								local t2379 = modules.cache.dp
 								if not t2379 then
-									t2379 = { c = v8359() }
-									v8358.cache.dp = t2379
+									t2379 = { c = loadModule_dp() }
+									modules.cache.dp = t2379
 								end
 								return t2379.c
 							end
 
 							f10536[f10500] = f11098
-							local v8360 = f10536
+							local modules = f10536
 							local v8361 = v387
 
 							f10537 = function()
-								v8360.ak()
-								local Result = v8360.b()
-								local ClientEntity2 = v8360.ao().ClientEntity
-								v8360.aT()
-								local Finishers3 = v8360.ao().Finishers
-								local CosmeticSentinels = v8360.cQ()
-								v8360.dp()
-								v8360.c6()
-								local cloneCharacter = v8360.bM()
-								local getField = v8360.ah()
+								modules.ak()
+								local Result = modules.b()
+								local ClientEntity2 = modules.ao().ClientEntity
+								modules.aT()
+								local Finishers3 = modules.ao().Finishers
+								local CosmeticSentinels = modules.cQ()
+								modules.dp()
+								modules.c6()
+								local cloneCharacter = modules.bM()
+								local getField = modules.ah()
 								local Players = cloneref(game:GetService("Players"))
 								local hookedMethodName = "_PlayFinisher\0hello"
 								local NONE_COSMETIC = CosmeticSentinels.NONE_COSMETIC
@@ -227375,24 +227375,24 @@ local function f10149()
 							end
 
 							f10500 = "dq"
-							local v8385 = f10536
-							local v8386 = f10537
+							local modules = f10536
+							local loadModule_dq = f10537
 
 							f11098 = function()
-								local t2390 = v8385.cache.dq
+								local t2390 = modules.cache.dq
 								if not t2390 then
-									t2390 = { c = v8386() }
-									v8385.cache.dq = t2390
+									t2390 = { c = loadModule_dq() }
+									modules.cache.dq = t2390
 								end
 								return t2390.c
 							end
 
 							f10536[f10500] = f11098
-							local v8387 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local cosmeticConstants = v8387.cQ()
-								v8387.c5()
+								local cosmeticConstants = modules.cQ()
+								modules.c5()
 								local NONE_COSMETIC = cosmeticConstants.NONE_COSMETIC
 
 								local function applyChoice(itemName, data, choice, encodeKey, resolveMetadata)
@@ -227443,34 +227443,34 @@ local function f10149()
 							end
 
 							f10500 = "dr"
-							local v8392 = f10536
-							local v8393 = f10537
+							local modules = f10536
+							local loadModule_dr = f10537
 
 							f11098 = function()
-								local t2394 = v8392.cache.dr
+								local t2394 = modules.cache.dr
 								if not t2394 then
-									t2394 = { c = v8393() }
-									v8392.cache.dr = t2394
+									t2394 = { c = loadModule_dr() }
+									modules.cache.dr = t2394
 								end
 								return t2394.c
 							end
 
 							f10536[f10500] = f11098
-							local v8394 = f10536
+							local modules = f10536
 							local v8395 = rawget3
 							local v8396 = v387
 
 							f10537 = function()
-								v8394.al()
-								local Result = v8394.b()
-								local ClientItem = v8394.ao().ClientItem
-								local Codec = v8394.aU()
-								v8394.c3()
-								local CharmPayload = v8394.db()
-								local Signal = v8394.t()
-								v8394.c6()
-								local Trove = v8394.q()
-								local applyViewModelCosmetics = v8394.dr()
+								modules.al()
+								local Result = modules.b()
+								local ClientItem = modules.ao().ClientItem
+								local Codec = modules.aU()
+								modules.c3()
+								local CharmPayload = modules.db()
+								local Signal = modules.t()
+								modules.c6()
+								local Trove = modules.q()
+								local applyViewModelCosmetics = modules.dr()
 								local Players = cloneref(game:GetService("Players"))
 								local LocalPlayer = Players.LocalPlayer
 								local ViewModelHook = {}
@@ -227654,23 +227654,23 @@ local function f10149()
 							end
 
 							f10500 = "ds"
-							local v8415 = f10536
-							local v8416 = f10537
+							local modules = f10536
+							local loadModule_ds = f10537
 
 							f11098 = function()
-								local t2404 = v8415.cache.ds
+								local t2404 = modules.cache.ds
 								if not t2404 then
-									t2404 = { c = v8416() }
-									v8415.cache.ds = t2404
+									t2404 = { c = loadModule_ds() }
+									modules.cache.ds = t2404
 								end
 								return t2404.c
 							end
 
 							f10536[f10500] = f11098
-							local v8417 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local StringCodec = v8417.aU()
+								local StringCodec = modules.aU()
 
 								local function encodeKeys(table)
 									local result = {}
@@ -227693,35 +227693,35 @@ local function f10149()
 							end
 
 							f10500 = "dt"
-							local v8422 = f10536
-							local v8423 = f10537
+							local modules = f10536
+							local loadModule_dt = f10537
 
 							f11098 = function()
-								local t2406 = v8422.cache.dt
+								local t2406 = modules.cache.dt
 								if not t2406 then
-									t2406 = { c = v8423() }
-									v8422.cache.dt = t2406
+									t2406 = { c = loadModule_dt() }
+									modules.cache.dt = t2406
 								end
 								return t2406.c
 							end
 
 							f10536[f10500] = f11098
-							local v8424 = f10536
+							local modules = f10536
 							local v8425 = v387
 
 							f10537 = function()
-								v8424.al()
-								local Trove = v8424.q()
-								local getField = v8424.ah()
-								local ClientItem = v8424.ao().ClientItem
-								local ClientViewModel = v8424.ao().ClientViewModel
-								v8424.aT()
-								v8424.c3()
-								v8424.c5()
-								v8424.ds()
-								local ViewModelBuilder = v8424.dr()
-								local RankCharmApplier = v8424.dt()
-								local areViewModelSelectionsEqual3 = v8424.c8().areViewModelSelectionsEqual
+								modules.al()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local ClientItem = modules.ao().ClientItem
+								local ClientViewModel = modules.ao().ClientViewModel
+								modules.aT()
+								modules.c3()
+								modules.c5()
+								modules.ds()
+								local ViewModelBuilder = modules.dr()
+								local RankCharmApplier = modules.dt()
+								local areViewModelSelectionsEqual3 = modules.c8().areViewModelSelectionsEqual
 								local RemoteViewModelRefresher = {}
 								RemoteViewModelRefresher.__index = RemoteViewModelRefresher
 
@@ -227842,24 +227842,24 @@ local function f10149()
 							end
 
 							f10500 = "du"
-							local v8442 = f10536
-							local v8443 = f10537
+							local modules = f10536
+							local loadModule_du = f10537
 
 							f11098 = function()
-								local t2413 = v8442.cache.du
+								local t2413 = modules.cache.du
 								if not t2413 then
-									t2413 = { c = v8443() }
-									v8442.cache.du = t2413
+									t2413 = { c = loadModule_du() }
+									modules.cache.du = t2413
 								end
 								return t2413.c
 							end
 
 							f10536[f10500] = f11098
-							local v8444 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8444.al()
-								local notifier = { rebuilt = v8444.t().new() }
+								modules.al()
+								local notifier = { rebuilt = modules.t().new() }
 
 								function notifier.notifyRebuilt(view)
 									notifier.rebuilt:Fire(view)
@@ -227869,38 +227869,38 @@ local function f10149()
 							end
 
 							f10500 = "dv"
-							local v8445 = f10536
-							local v8446 = f10537
+							local modules = f10536
+							local loadModule_dv = f10537
 
 							f11098 = function()
-								local t2415 = v8445.cache.dv
+								local t2415 = modules.cache.dv
 								if not t2415 then
-									t2415 = { c = v8446() }
-									v8445.cache.dv = t2415
+									t2415 = { c = loadModule_dv() }
+									modules.cache.dv = t2415
 								end
 								return t2415.c
 							end
 
 							f10536[f10500] = f11098
-							local v8447 = f10536
+							local modules = f10536
 							local v8448 = v387
 
 							f10537 = function()
-								v8447.al()
-								local Trove = v8447.q()
-								local getField = v8447.ah()
-								local ClientItem8 = v8447.ao().ClientItem
-								local ClientViewModel = v8447.ao().ClientViewModel
-								v8447.aT()
-								v8447.a4()
-								v8447.c3()
-								local CosmeticData = v8447.db()
-								local CosmeticConstants = v8447.c2()
-								v8447.c5()
-								v8447.ds()
-								local SeasonCharms = v8447.dv()
-								local CosmeticReload = v8447.dr()
-								local CharmPayload = v8447.dt()
+								modules.al()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local ClientItem8 = modules.ao().ClientItem
+								local ClientViewModel = modules.ao().ClientViewModel
+								modules.aT()
+								modules.a4()
+								modules.c3()
+								local CosmeticData = modules.db()
+								local CosmeticConstants = modules.c2()
+								modules.c5()
+								modules.ds()
+								local SeasonCharms = modules.dv()
+								local CosmeticReload = modules.dr()
+								local CharmPayload = modules.dt()
 								local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local ViewModelReloader = {}
 								ViewModelReloader.__index = ViewModelReloader
@@ -228088,40 +228088,40 @@ local function f10149()
 							end
 
 							f10500 = "dw"
-							local v8481 = f10536
-							local v8482 = f10537
+							local modules = f10536
+							local loadModule_dw = f10537
 
 							f11098 = function()
-								local t2423 = v8481.cache.dw
+								local t2423 = modules.cache.dw
 								if not t2423 then
-									t2423 = { c = v8482() }
-									v8481.cache.dw = t2423
+									t2423 = { c = loadModule_dw() }
+									modules.cache.dw = t2423
 								end
 								return t2423.c
 							end
 
 							f10536[f10500] = f11098
-							local v8483 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8483.bJ()
-								local CosmeticConstants = v8483.cQ()
-								local Deployables = v8483.dn()
-								v8483.ac()
-								v8483.aT()
-								local FinisherCloneCache = v8483.dp()
-								local FinisherHook = v8483.dq()
-								v8483.a4()
-								v8483.c3()
-								local RemoteViewModelRefresher = v8483.du()
-								local SeasonRanks = v8483.c2()
-								v8483.c5()
-								v8483.t()
-								local Store = v8483.c6()
-								local Trove = v8483.q()
-								local ViewModelHook = v8483.ds()
-								local ViewModelReloader = v8483.dw()
-								local SelectionCompare = v8483.c8()
+								modules.bJ()
+								local CosmeticConstants = modules.cQ()
+								local Deployables = modules.dn()
+								modules.ac()
+								modules.aT()
+								local FinisherCloneCache = modules.dp()
+								local FinisherHook = modules.dq()
+								modules.a4()
+								modules.c3()
+								local RemoteViewModelRefresher = modules.du()
+								local SeasonRanks = modules.c2()
+								modules.c5()
+								modules.t()
+								local Store = modules.c6()
+								local Trove = modules.q()
+								local ViewModelHook = modules.ds()
+								local ViewModelReloader = modules.dw()
+								local SelectionCompare = modules.c8()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local NONE_COSMETIC = CosmeticConstants.NONE_COSMETIC
 								local areSelectionsEqual = SelectionCompare.areSelectionsEqual
@@ -228317,42 +228317,42 @@ local function f10149()
 							end
 
 							f10500 = "dx"
-							local v8511 = f10536
-							local v8512 = f10537
+							local modules = f10536
+							local loadModule_dx = f10537
 
 							f11098 = function()
-								local t2431 = v8511.cache.dx
+								local t2431 = modules.cache.dx
 								if not t2431 then
-									t2431 = { c = v8512() }
-									v8511.cache.dx = t2431
+									t2431 = { c = loadModule_dx() }
+									modules.cache.dx = t2431
 								end
 								return t2431.c
 							end
 
 							f10536[f10500] = f11098
-							local v8513 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8513.bJ()
-								v8513.g()
-								v8513.cM()
-								local DataMasker = v8513.de()
-								v8513.ac()
-								v8513.c0()
-								v8513.aT()
-								local Intent = v8513.df()
-								local Resolver = v8513.dg()
-								v8513.c1()
-								v8513.a4()
-								v8513.c3()
-								local Rendering = v8513.dx()
-								v8513.c4()
-								local CosmeticSelection = v8513.c5()
-								v8513.cU()
-								local cosmeticConstants = v8513.cQ()
-								v8513.cR()
-								local Trove = v8513.q()
-								local CosmeticTypes = v8513.cT()
+								modules.bJ()
+								modules.g()
+								modules.cM()
+								local DataMasker = modules.de()
+								modules.ac()
+								modules.c0()
+								modules.aT()
+								local Intent = modules.df()
+								local Resolver = modules.dg()
+								modules.c1()
+								modules.a4()
+								modules.c3()
+								local Rendering = modules.dx()
+								modules.c4()
+								local CosmeticSelection = modules.c5()
+								modules.cU()
+								local cosmeticConstants = modules.cQ()
+								modules.cR()
+								local Trove = modules.q()
+								local CosmeticTypes = modules.cT()
 								local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local Items = {}
 								Items.__index = Items
@@ -228610,14 +228610,14 @@ local function f10149()
 							end
 
 							f10500 = "dy"
-							local v8534 = f10536
-							local v8535 = f10537
+							local modules = f10536
+							local loadModule_dy = f10537
 
 							f11098 = function()
-								local t2437 = v8534.cache.dy
+								local t2437 = modules.cache.dy
 								if not t2437 then
-									t2437 = { c = v8535() }
-									v8534.cache.dy = t2437
+									t2437 = { c = loadModule_dy() }
+									modules.cache.dy = t2437
 								end
 								return t2437.c
 							end
@@ -228630,31 +228630,31 @@ local function f10149()
 							end
 
 							f10500 = "dz"
-							local v8536 = f10536
-							local v8537 = f10537
+							local modules = f10536
+							local loadModule_dz = f10537
 
 							f11098 = function()
-								local t2439 = v8536.cache.dz
+								local t2439 = modules.cache.dz
 								if not t2439 then
-									t2439 = { c = v8537() }
-									v8536.cache.dz = t2439
+									t2439 = { c = loadModule_dz() }
+									modules.cache.dz = t2439
 								end
 								return t2439.c
 							end
 
 							f10536[f10500] = f11098
-							local v8538 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8538.cP()
-								v8538.c_()
-								v8538.dy()
-								v8538.df()
-								v8538.c1()
-								v8538.c3()
-								local SeasonRanks = v8538.c2()
-								v8538.cU()
-								v8538.cR()
+								modules.cP()
+								modules.c_()
+								modules.dy()
+								modules.df()
+								modules.c1()
+								modules.c3()
+								local SeasonRanks = modules.c2()
+								modules.cU()
+								modules.cR()
 								local CosmeticsState = {}
 								local VERSION = 1
 
@@ -228864,25 +228864,25 @@ local function f10149()
 							end
 
 							f10500 = "dA"
-							local v8558 = f10536
-							local v8559 = f10537
+							local modules = f10536
+							local loadModule_dA = f10537
 
 							f11098 = function()
-								local t2458 = v8558.cache.dA
+								local t2458 = modules.cache.dA
 								if not t2458 then
-									t2458 = { c = v8559() }
-									v8558.cache.dA = t2458
+									t2458 = { c = loadModule_dA() }
+									modules.cache.dA = t2458
 								end
 								return t2458.c
 							end
 
 							f10536[f10500] = f11098
-							local v8560 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8560.cM()
-								v8560.c0()
-								local Trove = v8560.q()
+								modules.cM()
+								modules.c0()
+								local Trove = modules.q()
 								local dataKey = "FavoritedCosmetics"
 								local Favorited = {}
 								Favorited.__index = Favorited
@@ -228933,27 +228933,27 @@ local function f10149()
 							end
 
 							f10500 = "dB"
-							local v8563 = f10536
-							local v8564 = f10537
+							local modules = f10536
+							local loadModule_dB = f10537
 
 							f11098 = function()
-								local t2462 = v8563.cache.dB
+								local t2462 = modules.cache.dB
 								if not t2462 then
-									t2462 = { c = v8564() }
-									v8563.cache.dB = t2462
+									t2462 = { c = loadModule_dB() }
+									modules.cache.dB = t2462
 								end
 								return t2462.c
 							end
 
 							f10536[f10500] = f11098
-							local v8565 = f10536
+							local modules = f10536
 							local v8566 = rawget3
 
 							f10537 = function()
-								v8565.g()
-								local Result = v8565.b()
-								local Signal = v8565.t()
-								local EquipEmote2 = v8565.ao().EquipEmote
+								modules.g()
+								local Result = modules.b()
+								local Signal = modules.t()
+								local EquipEmote2 = modules.ao().EquipEmote
 								local EmoteEquipWheel = {}
 								EmoteEquipWheel.__index = EmoteEquipWheel
 
@@ -229033,25 +229033,25 @@ local function f10149()
 							end
 
 							f10500 = "dC"
-							local v8573 = f10536
-							local v8574 = f10537
+							local modules = f10536
+							local loadModule_dC = f10537
 
 							f11098 = function()
-								local t2467 = v8573.cache.dC
+								local t2467 = modules.cache.dC
 								if not t2467 then
-									t2467 = { c = v8574() }
-									v8573.cache.dC = t2467
+									t2467 = { c = loadModule_dC() }
+									modules.cache.dC = t2467
 								end
 								return t2467.c
 							end
 
 							f10536[f10500] = f11098
-							local v8575 = f10536
+							local modules = f10536
 							local v8576 = rawget3
 
 							f10537 = function()
-								v8575.g()
-								local equipmentState = v8576(v8575.ao().Equipment, "EquipmentState")
+								modules.g()
+								local equipmentState = v8576(modules.ao().Equipment, "EquipmentState")
 								local CosmeticsPage = {}
 
 								function CosmeticsPage.getSelectedItem()
@@ -229074,27 +229074,27 @@ local function f10149()
 							end
 
 							f10500 = "dD"
-							local v8578 = f10536
-							local v8579 = f10537
+							local modules = f10536
+							local loadModule_dD = f10537
 
 							f11098 = function()
-								local t2469 = v8578.cache.dD
+								local t2469 = modules.cache.dD
 								if not t2469 then
-									t2469 = { c = v8579() }
-									v8578.cache.dD = t2469
+									t2469 = { c = loadModule_dD() }
+									modules.cache.dD = t2469
 								end
 								return t2469.c
 							end
 
 							f10536[f10500] = f11098
-							local v8580 = f10536
+							local modules = f10536
 							local v8581 = rawget3
 
 							f10537 = function()
-								local Promise = v8580.A()
-								local Equipment = v8580.ao().Equipment
+								local Promise = modules.A()
+								local Equipment = modules.ao().Equipment
 								local slotsContainer = v8581(
-									v8580.cK()(Equipment, (table.create(3))),
+									modules.cK()(Equipment, (table.create(3))),
 									"Container"
 								)
 
@@ -229110,29 +229110,29 @@ local function f10149()
 							end
 
 							f10500 = "dE"
-							local v8584 = f10536
-							local v8585 = f10537
+							local modules = f10536
+							local loadModule_dE = f10537
 
 							f11098 = function()
-								local t2470 = v8584.cache.dE
+								local t2470 = modules.cache.dE
 								if not t2470 then
-									t2470 = { c = v8585() }
-									v8584.cache.dE = t2470
+									t2470 = { c = loadModule_dE() }
+									modules.cache.dE = t2470
 								end
 								return t2470.c
 							end
 
 							f10536[f10500] = f11098
-							local v8586 = f10536
+							local modules = f10536
 							local v8587 = rawget3
 
 							f10537 = function()
-								v8586.g()
-								v8586.cM()
-								v8586.c1()
-								local CustomizeScreen = v8586.dD()
-								local Signal = v8586.t()
-								local waitForButton = v8586.dE()
+								modules.g()
+								modules.cM()
+								modules.c1()
+								local CustomizeScreen = modules.dD()
+								local Signal = modules.t()
+								local waitForButton = modules.dE()
 								local OnlyUseFavorites = {}
 								OnlyUseFavorites.__index = OnlyUseFavorites
 
@@ -229211,24 +229211,24 @@ local function f10149()
 							end
 
 							f10500 = "dF"
-							local v8600 = f10536
-							local v8601 = f10537
+							local modules = f10536
+							local loadModule_dF = f10537
 
 							f11098 = function()
-								local t2473 = v8600.cache.dF
+								local t2473 = modules.cache.dF
 								if not t2473 then
-									t2473 = { c = v8601() }
-									v8600.cache.dF = t2473
+									t2473 = { c = loadModule_dF() }
+									modules.cache.dF = t2473
 								end
 								return t2473.c
 							end
 
 							f10536[f10500] = f11098
-							local v8602 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v8602.t()
-								local getSlotButton = v8602.dE()
+								local Signal = modules.t()
+								local getSlotButton = modules.dE()
 								local FavoritedButton = {}
 								FavoritedButton.__index = FavoritedButton
 
@@ -229271,28 +229271,28 @@ local function f10149()
 							end
 
 							f10500 = "dG"
-							local v8606 = f10536
-							local v8607 = f10537
+							local modules = f10536
+							local loadModule_dG = f10537
 
 							f11098 = function()
-								local t2476 = v8606.cache.dG
+								local t2476 = modules.cache.dG
 								if not t2476 then
-									t2476 = { c = v8607() }
-									v8606.cache.dG = t2476
+									t2476 = { c = loadModule_dG() }
+									modules.cache.dG = t2476
 								end
 								return t2476.c
 							end
 
 							f10536[f10500] = f11098
-							local v8608 = f10536
+							local modules = f10536
 							local v8609 = rawget3
 							local v8610 = v387
 
 							f10537 = function()
-								local Result = v8608.b()
-								local Signal = v8608.t()
-								local Equipment7 = v8608.ao().Equipment
-								local CosmeticsPage = v8608.dD()
+								local Result = modules.b()
+								local Signal = modules.t()
+								local Equipment7 = modules.ao().Equipment
+								local CosmeticsPage = modules.dD()
 								local InvertedState = {}
 								InvertedState.__index = InvertedState
 
@@ -229386,26 +229386,26 @@ local function f10149()
 							end
 
 							f10500 = "dH"
-							local v8621 = f10536
-							local v8622 = f10537
+							local modules = f10536
+							local loadModule_dH = f10537
 
 							f11098 = function()
-								local t2481 = v8621.cache.dH
+								local t2481 = modules.cache.dH
 								if not t2481 then
-									t2481 = { c = v8622() }
-									v8621.cache.dH = t2481
+									t2481 = { c = loadModule_dH() }
+									modules.cache.dH = t2481
 								end
 								return t2481.c
 							end
 
 							f10536[f10500] = f11098
-							local v8623 = f10536
+							local modules = f10536
 							local v8624 = rawget3
 
 							f10537 = function()
-								local Result = v8623.b()
-								local findPath = v8623.cK()
-								local Equipment = v8623.ao().Equipment
+								local Result = modules.b()
+								local findPath = modules.cK()
+								local Equipment = modules.ao().Equipment
 								local RemoteEventBlocker = {}
 								RemoteEventBlocker.__index = RemoteEventBlocker
 
@@ -229500,28 +229500,28 @@ local function f10149()
 							end
 
 							f10500 = "dI"
-							local v8637 = f10536
-							local v8638 = f10537
+							local modules = f10536
+							local loadModule_dI = f10537
 
 							f11098 = function()
-								local t2486 = v8637.cache.dI
+								local t2486 = modules.cache.dI
 								if not t2486 then
-									t2486 = { c = v8638() }
-									v8637.cache.dI = t2486
+									t2486 = { c = loadModule_dI() }
+									modules.cache.dI = t2486
 								end
 								return t2486.c
 							end
 
 							f10536[f10500] = f11098
-							local v8639 = f10536
+							local modules = f10536
 							local v8640 = rawget3
 							local v8641 = v387
 
 							f10537 = function()
-								v8639.g()
-								local Result = v8639.b()
-								local Signal = v8639.t()
-								local CosmeticSlot2 = v8639.ao().CosmeticSlot
+								modules.g()
+								local Result = modules.b()
+								local Signal = modules.t()
+								local CosmeticSlot2 = modules.ao().CosmeticSlot
 								local SlotBinder = {}
 								SlotBinder.__index = SlotBinder
 
@@ -229608,38 +229608,38 @@ local function f10149()
 							end
 
 							f10500 = "dJ"
-							local v8650 = f10536
-							local v8651 = f10537
+							local modules = f10536
+							local loadModule_dJ = f10537
 
 							f11098 = function()
-								local t2491 = v8650.cache.dJ
+								local t2491 = modules.cache.dJ
 								if not t2491 then
-									t2491 = { c = v8651() }
-									v8650.cache.dJ = t2491
+									t2491 = { c = loadModule_dJ() }
+									modules.cache.dJ = t2491
 								end
 								return t2491.c
 							end
 
 							f10536[f10500] = f11098
-							local v8652 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8652.g()
-								v8652.cM()
-								local EmoteSlots = v8652.dC()
-								v8652.ac()
-								local OnlyUseFavoritesToggle = v8652.dF()
-								local FavoriteButton = v8652.dG()
-								local WrapPicker = v8652.dH()
-								local CosmeticChoice = v8652.c5()
-								v8652.c1()
-								local CosmeticsPageHook = v8652.dI()
-								local CosmeticsPage = v8652.dD()
-								local SlotSelector = v8652.dJ()
-								local cosmeticConstants = v8652.cQ()
-								v8652.cR()
-								local Trove = v8652.q()
-								local CosmeticTypes = v8652.cT()
+								modules.g()
+								modules.cM()
+								local EmoteSlots = modules.dC()
+								modules.ac()
+								local OnlyUseFavoritesToggle = modules.dF()
+								local FavoriteButton = modules.dG()
+								local WrapPicker = modules.dH()
+								local CosmeticChoice = modules.c5()
+								modules.c1()
+								local CosmeticsPageHook = modules.dI()
+								local CosmeticsPage = modules.dD()
+								local SlotSelector = modules.dJ()
+								local cosmeticConstants = modules.cQ()
+								modules.cR()
+								local Trove = modules.q()
+								local CosmeticTypes = modules.cT()
 								local NONE_COSMETIC18 = cosmeticConstants.NONE_COSMETIC
 								local CosmeticInteractions = {}
 								CosmeticInteractions.__index = CosmeticInteractions
@@ -229777,26 +229777,26 @@ local function f10149()
 							end
 
 							f10500 = "dK"
-							local v8674 = f10536
-							local v8675 = f10537
+							local modules = f10536
+							local loadModule_dK = f10537
 
 							f11098 = function()
-								local t2501 = v8674.cache.dK
+								local t2501 = modules.cache.dK
 								if not t2501 then
-									t2501 = { c = v8675() }
-									v8674.cache.dK = t2501
+									t2501 = { c = loadModule_dK() }
+									modules.cache.dK = t2501
 								end
 								return t2501.c
 							end
 
 							f10536[f10500] = f11098
-							local v8676 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8676.cM()
-								v8676.cU()
-								local Trove = v8676.q()
-								local refreshSelectionScene = v8676.c7().cosmeticsSelectionScene
+								modules.cM()
+								modules.cU()
+								local Trove = modules.q()
+								local refreshSelectionScene = modules.c7().cosmeticsSelectionScene
 								local inventoryField = "CosmeticInventory"
 								local Inventory = {}
 								Inventory.__index = Inventory
@@ -229853,31 +229853,31 @@ local function f10149()
 							end
 
 							f10500 = "dL"
-							local v8679 = f10536
-							local v8680 = f10537
+							local modules = f10536
+							local loadModule_dL = f10537
 
 							f11098 = function()
-								local t2505 = v8679.cache.dL
+								local t2505 = modules.cache.dL
 								if not t2505 then
-									t2505 = { c = v8680() }
-									v8679.cache.dL = t2505
+									t2505 = { c = loadModule_dL() }
+									modules.cache.dL = t2505
 								end
 								return t2505.c
 							end
 
 							f10536[f10500] = f11098
-							local v8681 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8681.cM()
-								v8681.ac()
-								local FavoritedHook = v8681.dB()
-								v8681.c0()
-								local InteractionsHook = v8681.dK()
-								local InventoryHook = v8681.dL()
-								v8681.c1()
-								v8681.cU()
-								local Trove = v8681.q()
+								modules.cM()
+								modules.ac()
+								local FavoritedHook = modules.dB()
+								modules.c0()
+								local InteractionsHook = modules.dK()
+								local InventoryHook = modules.dL()
+								modules.c1()
+								modules.cU()
+								local Trove = modules.q()
 								local Unlocker = {}
 								Unlocker.__index = Unlocker
 
@@ -229948,14 +229948,14 @@ local function f10149()
 							end
 
 							f10500 = "dM"
-							local v8691 = f10536
-							local v8692 = f10537
+							local modules = f10536
+							local loadModule_dM = f10537
 
 							f11098 = function()
-								local t2508 = v8691.cache.dM
+								local t2508 = modules.cache.dM
 								if not t2508 then
-									t2508 = { c = v8692() }
-									v8691.cache.dM = t2508
+									t2508 = { c = loadModule_dM() }
+									modules.cache.dM = t2508
 								end
 								return t2508.c
 							end
@@ -230035,23 +230035,23 @@ local function f10149()
 							end
 
 							f10500 = "dN"
-							local v8707 = f10536
-							local v8708 = f10537
+							local modules = f10536
+							local loadModule_dN = f10537
 
 							f11098 = function()
-								local t2512 = v8707.cache.dN
+								local t2512 = modules.cache.dN
 								if not t2512 then
-									t2512 = { c = v8708() }
-									v8707.cache.dN = t2512
+									t2512 = { c = loadModule_dN() }
+									modules.cache.dN = t2512
 								end
 								return t2512.c
 							end
 
 							f10536[f10500] = f11098
-							local v8709 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local BitOps = v8709.dN()
+								local BitOps = modules.dN()
 								local bxor3 = BitOps.bxor
 								local band2 = BitOps.band
 								local mul323 = BitOps.mul32
@@ -230086,25 +230086,25 @@ local function f10149()
 							end
 
 							f10500 = "dO"
-							local v8717 = f10536
-							local v8718 = f10537
+							local modules = f10536
+							local loadModule_dO = f10537
 
 							f11098 = function()
-								local t2515 = v8717.cache.dO
+								local t2515 = modules.cache.dO
 								if not t2515 then
-									t2515 = { c = v8718() }
-									v8717.cache.dO = t2515
+									t2515 = { c = loadModule_dO() }
+									modules.cache.dO = t2515
 								end
 								return t2515.c
 							end
 
 							f10536[f10500] = f11098
-							local v8719 = f10536
+							local modules = f10536
 							local v8720 = rawget3
 
 							f10537 = function()
-								v8719.g()
-								local CosmeticLibrary6 = v8719.ao().CosmeticLibrary
+								modules.g()
+								local CosmeticLibrary6 = modules.ao().CosmeticLibrary
 								local index = {
 									Skins = {},
 									Wraps = {},
@@ -230163,26 +230163,26 @@ local function f10149()
 							end
 
 							f10500 = "dP"
-							local v8729 = f10536
-							local v8730 = f10537
+							local modules = f10536
+							local loadModule_dP = f10537
 
 							f11098 = function()
-								local t2517 = v8729.cache.dP
+								local t2517 = modules.cache.dP
 								if not t2517 then
-									t2517 = { c = v8730() }
-									v8729.cache.dP = t2517
+									t2517 = { c = loadModule_dP() }
+									modules.cache.dP = t2517
 								end
 								return t2517.c
 							end
 
 							f10536[f10500] = f11098
-							local v8731 = f10536
+							local modules = f10536
 							local v8732 = rawget3
 
 							f10537 = function()
-								v8731.o()
+								modules.o()
 								local names = {}
-								local items = v8732(v8731.ao().ItemLibrary, "Items")
+								local items = v8732(modules.ao().ItemLibrary, "Items")
 								local name = nil
 								while true do
 									local _
@@ -230199,26 +230199,26 @@ local function f10149()
 							end
 
 							f10500 = "dQ"
-							local v8734 = f10536
-							local v8735 = f10537
+							local modules = f10536
+							local loadModule_dQ = f10537
 
 							f11098 = function()
-								local t2519 = v8734.cache.dQ
+								local t2519 = modules.cache.dQ
 								if not t2519 then
-									t2519 = { c = v8735() }
-									v8734.cache.dQ = t2519
+									t2519 = { c = loadModule_dQ() }
+									modules.cache.dQ = t2519
 								end
 								return t2519.c
 							end
 
 							f10536[f10500] = f11098
-							local v8736 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CosmeticSentinels = v8736.cQ()
-								local Hash = v8736.dO()
-								local CosmeticNames = v8736.dP()
-								v8736.dQ()
+								local CosmeticSentinels = modules.cQ()
+								local Hash = modules.dO()
+								local CosmeticNames = modules.dP()
+								modules.dQ()
 								local nameByHash = {}
 								local hashByName = {}
 
@@ -230273,27 +230273,27 @@ local function f10149()
 							end
 
 							f10500 = "dR"
-							local v8745 = f10536
-							local v8746 = f10537
+							local modules = f10536
+							local loadModule_dR = f10537
 
 							f11098 = function()
-								local t2525 = v8745.cache.dR
+								local t2525 = modules.cache.dR
 								if not t2525 then
-									t2525 = { c = v8746() }
-									v8745.cache.dR = t2525
+									t2525 = { c = loadModule_dR() }
+									modules.cache.dR = t2525
 								end
 								return t2525.c
 							end
 
 							f10536[f10500] = f11098
-							local v8747 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8747.cV()
-								v8747.ac()
-								local ItemHashes = v8747.dR()
-								local Result = v8747.b()
-								v8747.c5()
+								modules.cV()
+								modules.ac()
+								local ItemHashes = modules.dR()
+								local Result = modules.b()
+								modules.c5()
 								local InventoryCodec = {}
 
 								local function encodeItem(reporter, itemName, selection)
@@ -230689,14 +230689,14 @@ local function f10149()
 							end
 
 							f10500 = "dS"
-							local v8834 = f10536
-							local v8835 = f10537
+							local modules = f10536
+							local loadModule_dS = f10537
 
 							f11098 = function()
-								local t2538 = v8834.cache.dS
+								local t2538 = modules.cache.dS
 								if not t2538 then
-									t2538 = { c = v8835() }
-									v8834.cache.dS = t2538
+									t2538 = { c = loadModule_dS() }
+									modules.cache.dS = t2538
 								end
 								return t2538.c
 							end
@@ -230758,23 +230758,23 @@ local function f10149()
 							end
 
 							f10500 = "dT"
-							local v8850 = f10536
-							local v8851 = f10537
+							local modules = f10536
+							local loadModule_dT = f10537
 
 							f11098 = function()
-								local t2542 = v8850.cache.dT
+								local t2542 = modules.cache.dT
 								if not t2542 then
-									t2542 = { c = v8851() }
-									v8850.cache.dT = t2542
+									t2542 = { c = loadModule_dT() }
+									modules.cache.dT = t2542
 								end
 								return t2542.c
 							end
 
 							f10536[f10500] = f11098
-							local v8852 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local BitOps = v8852.dN()
+								local BitOps = modules.dN()
 								local bxor = BitOps.bxor
 								local rshift2 = BitOps.rshift
 								local mul32 = BitOps.mul32
@@ -230798,23 +230798,23 @@ local function f10149()
 							end
 
 							f10500 = "dU"
-							local v8864 = f10536
-							local v8865 = f10537
+							local modules = f10536
+							local loadModule_dU = f10537
 
 							f11098 = function()
-								local t2544 = v8864.cache.dU
+								local t2544 = modules.cache.dU
 								if not t2544 then
-									t2544 = { c = v8865() }
-									v8864.cache.dU = t2544
+									t2544 = { c = loadModule_dU() }
+									modules.cache.dU = t2544
 								end
 								return t2544.c
 							end
 
 							f10536[f10500] = f11098
-							local v8866 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Result = v8866.b()
+								local Result = modules.b()
 
 								local function pcallRequest(options)
 									local response, ok
@@ -230829,32 +230829,32 @@ local function f10149()
 							end
 
 							f10500 = "dV"
-							local v8870 = f10536
-							local v8871 = f10537
+							local modules = f10536
+							local loadModule_dV = f10537
 
 							f11098 = function()
-								local t2545 = v8870.cache.dV
+								local t2545 = modules.cache.dV
 								if not t2545 then
-									t2545 = { c = v8871() }
-									v8870.cache.dV = t2545
+									t2545 = { c = loadModule_dV() }
+									modules.cache.dV = t2545
 								end
 								return t2545.c
 							end
 
 							f10536[f10500] = f11098
-							local v8872 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ErrorReporter = v8872.ac()
-								local PeerCodec = v8872.dO()
-								local Promise = v8872.A()
-								local PeerProtocol = v8872.dT()
-								local Result = v8872.b()
-								local Signal = v8872.t()
-								local Trove = v8872.q()
-								local settings = v8872.y()
-								local hashUserId = v8872.dU()
-								local httpRequest = v8872.dV()
+								local ErrorReporter = modules.ac()
+								local PeerCodec = modules.dO()
+								local Promise = modules.A()
+								local PeerProtocol = modules.dT()
+								local Result = modules.b()
+								local Signal = modules.t()
+								local Trove = modules.q()
+								local settings = modules.y()
+								local hashUserId = modules.dU()
+								local httpRequest = modules.dV()
 								local Players = cloneref(game:GetService("Players"))
 								local baseUrl = "https://user.kicia.cc"
 								local localPlayer = Players.LocalPlayer
@@ -231203,30 +231203,30 @@ local function f10149()
 							end
 
 							f10500 = "dW"
-							local v8902 = f10536
-							local v8903 = f10537
+							local modules = f10536
+							local loadModule_dW = f10537
 
 							f11098 = function()
-								local t2562 = v8902.cache.dW
+								local t2562 = modules.cache.dW
 								if not t2562 then
-									t2562 = { c = v8903() }
-									v8902.cache.dW = t2562
+									t2562 = { c = loadModule_dW() }
+									modules.cache.dW = t2562
 								end
 								return t2562.c
 							end
 
 							f10536[f10500] = f11098
-							local v8904 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v8904.y()
-								v8904.cV()
-								v8904.ac()
-								v8904.dy()
-								local Result = v8904.b()
-								local Trove = v8904.q()
-								local Payload = v8904.dS()
-								v8904.dW()
+								local Config = modules.y()
+								modules.cV()
+								modules.ac()
+								modules.dy()
+								local Result = modules.b()
+								local Trove = modules.q()
+								local Payload = modules.dS()
+								modules.dW()
 								local Bridge = {}
 								Bridge.__index = Bridge
 
@@ -231367,46 +231367,46 @@ local function f10149()
 							end
 
 							f10500 = "dX"
-							local v8914 = f10536
-							local v8915 = f10537
+							local modules = f10536
+							local loadModule_dX = f10537
 
 							f11098 = function()
-								local t2566 = v8914.cache.dX
+								local t2566 = modules.cache.dX
 								if not t2566 then
-									t2566 = { c = v8915() }
-									v8914.cache.dX = t2566
+									t2566 = { c = loadModule_dX() }
+									modules.cache.dX = t2566
 								end
 								return t2566.c
 							end
 
 							f10536[f10500] = f11098
-							local v8916 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8916.bJ()
-								v8916.g()
-								v8916.cM()
-								local Emotes = v8916.cY()
-								local ErrorReporter = v8916.ac()
-								local FavoritedIntent = v8916.c_()
-								local FavoritedResolver = v8916.c0()
-								v8916.aT()
-								local Items = v8916.dy()
-								local layerPriorities = v8916.dz()
-								local OnlyUseFavoritesState = v8916.c1()
-								v8916.a4()
-								local RankCharm = v8916.c3()
-								v8916.c4()
-								v8916.b()
-								v8916.c5()
-								local Signal = v8916.t()
-								local CosmeticsSnapshot = v8916.dA()
-								local Catalog = v8916.cU()
-								v8916.cR()
-								local Trove = v8916.q()
-								local UnlockerController = v8916.dM()
-								local UserServerBridge = v8916.dX()
-								v8916.dW()
+								modules.bJ()
+								modules.g()
+								modules.cM()
+								local Emotes = modules.cY()
+								local ErrorReporter = modules.ac()
+								local FavoritedIntent = modules.c_()
+								local FavoritedResolver = modules.c0()
+								modules.aT()
+								local Items = modules.dy()
+								local layerPriorities = modules.dz()
+								local OnlyUseFavoritesState = modules.c1()
+								modules.a4()
+								local RankCharm = modules.c3()
+								modules.c4()
+								modules.b()
+								modules.c5()
+								local Signal = modules.t()
+								local CosmeticsSnapshot = modules.dA()
+								local Catalog = modules.cU()
+								modules.cR()
+								local Trove = modules.q()
+								local UnlockerController = modules.dM()
+								local UserServerBridge = modules.dX()
+								modules.dW()
 								local UNLOCKER = layerPriorities.Unlocker
 								local SKIN_CHANGER = layerPriorities.SkinChanger
 
@@ -231778,51 +231778,51 @@ local function f10149()
 							end
 
 							f10500 = "dY"
-							local v8940 = f10536
-							local v8941 = f10537
+							local modules = f10536
+							local loadModule_dY = f10537
 
 							f11098 = function()
-								local t2588 = v8940.cache.dY
+								local t2588 = modules.cache.dY
 								if not t2588 then
-									t2588 = { c = v8941() }
-									v8940.cache.dY = t2588
+									t2588 = { c = loadModule_dY() }
+									modules.cache.dY = t2588
 								end
 								return t2588.c
 							end
 
 							f10536[f10500] = f11098
-							local v8942 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8942.g()
+								modules.g()
 								return (table.create(7))
 							end
 
 							f10500 = "dZ"
-							local v8943 = f10536
-							local v8944 = f10537
+							local modules = f10536
+							local loadModule_dZ = f10537
 
 							f11098 = function()
-								local t2589 = v8943.cache.dZ
+								local t2589 = modules.cache.dZ
 								if not t2589 then
-									t2589 = { c = v8944() }
-									v8943.cache.dZ = t2589
+									t2589 = { c = loadModule_dZ() }
+									modules.cache.dZ = t2589
 								end
 								return t2589.c
 							end
 
 							f10536[f10500] = f11098
-							local v8945 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ConfigManager = v8945.f()
-								v8945.dY()
-								local Signal = v8945.t()
-								v8945.dA()
-								v8945.cR()
-								local toSet = v8945.cS()
-								local Rarities = v8945.dZ()
-								local CosmeticTypes = v8945.cT()
+								local ConfigManager = modules.f()
+								modules.dY()
+								local Signal = modules.t()
+								modules.dA()
+								modules.cR()
+								local toSet = modules.cS()
+								local Rarities = modules.dZ()
+								local CosmeticTypes = modules.cT()
 								local defaults = {
 									version = 1,
 									runtimeEnabled = false,
@@ -231907,30 +231907,30 @@ local function f10149()
 							end
 
 							f10500 = "d_"
-							local v8950 = f10536
-							local v8951 = f10537
+							local modules = f10536
+							local loadModule_d_ = f10537
 
 							f11098 = function()
-								local t2599 = v8950.cache.d_
+								local t2599 = modules.cache.d_
 								if not t2599 then
-									t2599 = { c = v8951() }
-									v8950.cache.d_ = t2599
+									t2599 = { c = loadModule_d_() }
+									modules.cache.d_ = t2599
 								end
 								return t2599.c
 							end
 
 							f10536[f10500] = f11098
-							local v8952 = f10536
+							local modules = f10536
 
 							f10537 = function(...)
-								local v8953 = v8952.f()
-								v8952.g()
-								v8952.dY()
-								v8952.t()
-								v8952.dA()
-								local v8954 = v8952.d_()
-								v8952.cR()
-								local v8955 = v8952.q()
+								local v8953 = modules.f()
+								modules.g()
+								modules.dY()
+								modules.t()
+								modules.dA()
+								local v8954 = modules.d_()
+								modules.cR()
+								local v8955 = modules.q()
 								local v8956 = "kiciahook/rivals_v3/cosmetics"
 								local v8957 = string.format("%s/states", tostring(v8956))
 								local core_config2 = "core_config"
@@ -232255,25 +232255,25 @@ local function f10149()
 							end
 
 							f10500 = "d0"
-							local v8972 = f10536
-							local v8973 = f10537
+							local modules = f10536
+							local loadModule_d0 = f10537
 
 							f11098 = function()
-								local t2619 = v8972.cache.d0
+								local t2619 = modules.cache.d0
 								if not t2619 then
-									t2619 = { c = v8973() }
-									v8972.cache.d0 = t2619
+									t2619 = { c = loadModule_d0() }
+									modules.cache.d0 = t2619
 								end
 								return t2619.c
 							end
 
 							f10536[f10500] = f11098
-							local v8974 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8974.a4()
-								local Signal = v8974.t()
-								local Trove = v8974.q()
+								modules.a4()
+								local Signal = modules.t()
+								local Trove = modules.q()
 								local CollectionService = cloneref(game:GetService("CollectionService"))
 								local CurrentMap = {}
 								CurrentMap.__index = CurrentMap
@@ -232363,23 +232363,23 @@ local function f10149()
 							end
 
 							f10500 = "d1"
-							local v8981 = f10536
-							local v8982 = f10537
+							local modules = f10536
+							local loadModule_d1 = f10537
 
 							f11098 = function()
-								local t2623 = v8981.cache.d1
+								local t2623 = modules.cache.d1
 								if not t2623 then
-									t2623 = { c = v8982() }
-									v8981.cache.d1 = t2623
+									t2623 = { c = loadModule_d1() }
+									modules.cache.d1 = t2623
 								end
 								return t2623.c
 							end
 
 							f10536[f10500] = f11098
-							local v8983 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v8983.p()
+								modules.p()
 								local ImageOverlay = {}
 								ImageOverlay.__index = ImageOverlay
 
@@ -232433,14 +232433,14 @@ local function f10149()
 							end
 
 							f10500 = "d2"
-							local v8987 = f10536
-							local v8988 = f10537
+							local modules = f10536
+							local loadModule_d2 = f10537
 
 							f11098 = function()
-								local t2626 = v8987.cache.d2
+								local t2626 = modules.cache.d2
 								if not t2626 then
-									t2626 = { c = v8988() }
-									v8987.cache.d2 = t2626
+									t2626 = { c = loadModule_d2() }
+									modules.cache.d2 = t2626
 								end
 								return t2626.c
 							end
@@ -232476,23 +232476,23 @@ local function f10149()
 							end
 
 							f10500 = "d3"
-							local v8993 = f10536
-							local v8994 = f10537
+							local modules = f10536
+							local loadModule_d3 = f10537
 
 							f11098 = function()
-								local t2629 = v8993.cache.d3
+								local t2629 = modules.cache.d3
 								if not t2629 then
-									t2629 = { c = v8994() }
-									v8993.cache.d3 = t2629
+									t2629 = { c = loadModule_d3() }
+									modules.cache.d3 = t2629
 								end
 								return t2629.c
 							end
 
 							f10536[f10500] = f11098
-							local v8995 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local sampleSequence = v8995.d3()
+								local sampleSequence = modules.d3()
 								local BorderAnimations = { BAND_HALF_WIDTH = 0.4, BAND_OFFSETS = table.create(3) }
 								local shimmerSpeed = 0.5
 								local shimmerAmplitude = 0.5
@@ -232563,23 +232563,23 @@ local function f10149()
 							end
 
 							f10500 = "d4"
-							local v9010 = f10536
-							local v9011 = f10537
+							local modules = f10536
+							local loadModule_d4 = f10537
 
 							f11098 = function()
-								local t2631 = v9010.cache.d4
+								local t2631 = modules.cache.d4
 								if not t2631 then
-									t2631 = { c = v9011() }
-									v9010.cache.d4 = t2631
+									t2631 = { c = loadModule_d4() }
+									modules.cache.d4 = t2631
 								end
 								return t2631.c
 							end
 
 							f10536[f10500] = f11098
-							local v9012 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local BorderAnimations = v9012.d4()
+								local BorderAnimations = modules.d4()
 								local TextAnimations = {}
 								local bandOffsets = table.create(3)
 								TextAnimations.shimmerOffset = BorderAnimations.shimmerOffset
@@ -232709,26 +232709,26 @@ local function f10149()
 							end
 
 							f10500 = "d5"
-							local v9039 = f10536
-							local v9040 = f10537
+							local modules = f10536
+							local loadModule_d5 = f10537
 
 							f11098 = function()
-								local t2635 = v9039.cache.d5
+								local t2635 = modules.cache.d5
 								if not t2635 then
-									t2635 = { c = v9040() }
-									v9039.cache.d5 = t2635
+									t2635 = { c = loadModule_d5() }
+									modules.cache.d5 = t2635
 								end
 								return t2635.c
 							end
 
 							f10536[f10500] = f11098
-							local v9041 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local TextAnimations = v9041.d5()
-								v9041.p()
-								local Fonts = v9041.K()
-								local Trove = v9041.q()
+								local TextAnimations = modules.d5()
+								modules.p()
+								local Fonts = modules.K()
+								local Trove = modules.q()
 								local EspText = {}
 								EspText.__index = EspText
 
@@ -232845,24 +232845,24 @@ local function f10149()
 							end
 
 							f10500 = "d6"
-							local v9051 = f10536
-							local v9052 = f10537
+							local modules = f10536
+							local loadModule_d6 = f10537
 
 							f11098 = function()
-								local t2638 = v9051.cache.d6
+								local t2638 = modules.cache.d6
 								if not t2638 then
-									t2638 = { c = v9052() }
-									v9051.cache.d6 = t2638
+									t2638 = { c = loadModule_d6() }
+									modules.cache.d6 = t2638
 								end
 								return t2638.c
 							end
 
 							f10536[f10500] = f11098
-							local v9053 = f10536
+							local modules = f10536
 
 							f10537 = function(...)
 								local crc = nil
-								local ensureFolderPath = v9053.e()
+								local ensureFolderPath = modules.e()
 								local crcTable = table.create(256, 0)
 								local byte = -1
 								local folderReady
@@ -233078,25 +233078,25 @@ local function f10149()
 							end
 
 							f10500 = "d7"
-							local v9105 = f10536
-							local v9106 = f10537
+							local modules = f10536
+							local loadModule_d7 = f10537
 
 							f11098 = function()
-								local t2641 = v9105.cache.d7
+								local t2641 = modules.cache.d7
 								if not t2641 then
-									t2641 = { c = v9106() }
-									v9105.cache.d7 = t2641
+									t2641 = { c = loadModule_d7() }
+									modules.cache.d7 = t2641
 								end
 								return t2641.c
 							end
 
 							f10536[f10500] = f11098
-							local v9107 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v9107.y()
-								v9107.p()
-								local LineTextures = v9107.d7()
+								local Config = modules.y()
+								modules.p()
+								local LineTextures = modules.d7()
 								local ContentProvider = cloneref(game:GetService("ContentProvider"))
 								local CrosshairTextures = {}
 								CrosshairTextures.__index = CrosshairTextures
@@ -233383,30 +233383,30 @@ local function f10149()
 							end
 
 							f10500 = "d8"
-							local v9133 = f10536
-							local v9134 = f10537
+							local modules = f10536
+							local loadModule_d8 = f10537
 
 							f11098 = function()
-								local t2647 = v9133.cache.d8
+								local t2647 = modules.cache.d8
 								if not t2647 then
-									t2647 = { c = v9134() }
-									v9133.cache.d8 = t2647
+									t2647 = { c = loadModule_d8() }
+									modules.cache.d8 = t2647
 								end
 								return t2647.c
 							end
 
 							f10536[f10500] = f11098
-							local v9135 = f10536
+							local modules = f10536
 							local v9136 = v387
 
 							f10537 = function()
-								v9135.a1()
-								v9135.al()
-								v9135.a4()
-								local Result = v9135.b()
-								local Trove = v9135.q()
-								local Crosshair2 = v9135.ao().Crosshair
-								local getField = v9135.ah()
+								modules.a1()
+								modules.al()
+								modules.a4()
+								local Result = modules.b()
+								local Trove = modules.q()
+								local Crosshair2 = modules.ao().Crosshair
+								local getField = modules.ah()
 								local NativeCrosshairHook = {}
 								NativeCrosshairHook.__index = NativeCrosshairHook
 
@@ -233632,34 +233632,34 @@ local function f10149()
 							end
 
 							f10500 = "d9"
-							local v9152 = f10536
-							local v9153 = f10537
+							local modules = f10536
+							local loadModule_d9 = f10537
 
 							f11098 = function()
-								local t2655 = v9152.cache.d9
+								local t2655 = modules.cache.d9
 								if not t2655 then
-									t2655 = { c = v9153() }
-									v9152.cache.d9 = t2655
+									t2655 = { c = loadModule_d9() }
+									modules.cache.d9 = t2655
 								end
 								return t2655.c
 							end
 
 							f10536[f10500] = f11098
-							local v9154 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v9154.y()
-								v9154.p()
-								local CrosshairImage = v9154.d2()
-								local CrosshairText = v9154.d6()
-								local DisplayOrder = v9154.I()
-								local CrosshairTextures = v9154.d8()
-								local Spring = v9154.ax()
-								v9154.d9()
-								local ColorEffects = v9154.d4()
-								v9154.aw()
-								local Trove = v9154.q()
-								local getScreenCenter = v9154.a5()
+								local Config = modules.y()
+								modules.p()
+								local CrosshairImage = modules.d2()
+								local CrosshairText = modules.d6()
+								local DisplayOrder = modules.I()
+								local CrosshairTextures = modules.d8()
+								local Spring = modules.ax()
+								modules.d9()
+								local ColorEffects = modules.d4()
+								modules.aw()
+								local Trove = modules.q()
+								local getScreenCenter = modules.a5()
 								local CustomCrosshair = {}
 								CustomCrosshair.__index = CustomCrosshair
 
@@ -233997,14 +233997,14 @@ local function f10149()
 							end
 
 							f10500 = "ea"
-							local v9185 = f10536
-							local v9186 = f10537
+							local modules = f10536
+							local loadModule_ea = f10537
 
 							f11098 = function()
-								local t2663 = v9185.cache.ea
+								local t2663 = modules.cache.ea
 								if not t2663 then
-									t2663 = { c = v9186() }
-									v9185.cache.ea = t2663
+									t2663 = { c = loadModule_ea() }
+									modules.cache.ea = t2663
 								end
 								return t2663.c
 							end
@@ -234054,14 +234054,14 @@ local function f10149()
 							end
 
 							f10500 = "eb"
-							local v9189 = f10536
-							local v9190 = f10537
+							local modules = f10536
+							local loadModule_eb = f10537
 
 							f11098 = function()
-								local t2665 = v9189.cache.eb
+								local t2665 = modules.cache.eb
 								if not t2665 then
-									t2665 = { c = v9190() }
-									v9189.cache.eb = t2665
+									t2665 = { c = loadModule_eb() }
+									modules.cache.eb = t2665
 								end
 								return t2665.c
 							end
@@ -234073,14 +234073,14 @@ local function f10149()
 							end
 
 							f10500 = "ec"
-							local v9191 = f10536
-							local v9192 = f10537
+							local modules = f10536
+							local loadModule_ec = f10537
 
 							f11098 = function()
-								local t2666 = v9191.cache.ec
+								local t2666 = modules.cache.ec
 								if not t2666 then
-									t2666 = { c = v9192() }
-									v9191.cache.ec = t2666
+									t2666 = { c = loadModule_ec() }
+									modules.cache.ec = t2666
 								end
 								return t2666.c
 							end
@@ -234108,27 +234108,27 @@ local function f10149()
 							end
 
 							f10500 = "ed"
-							local v9195 = f10536
-							local v9196 = f10537
+							local modules = f10536
+							local loadModule_ed = f10537
 
 							f11098 = function()
-								local t2667 = v9195.cache.ed
+								local t2667 = modules.cache.ed
 								if not t2667 then
-									t2667 = { c = v9196() }
-									v9195.cache.ed = t2667
+									t2667 = { c = loadModule_ed() }
+									modules.cache.ed = t2667
 								end
 								return t2667.c
 							end
 
 							f10536[f10500] = f11098
-							local v9197 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Hash = v9197.dO()
-								local Promise = v9197.A()
-								local Trove = v9197.q()
-								local ensureFolderPath = v9197.e()
-								local getExtension = v9197.ed()
+								local Hash = modules.dO()
+								local Promise = modules.A()
+								local Trove = modules.q()
+								local ensureFolderPath = modules.e()
+								local getExtension = modules.ed()
 								local extensions = table.create(2)
 								local cacheFolder = "kiciahook/rivals_v3/remote_sounds"
 
@@ -234234,30 +234234,30 @@ local function f10149()
 							end
 
 							f10500 = "ee"
-							local v9216 = f10536
-							local v9217 = f10537
+							local modules = f10536
+							local loadModule_ee = f10537
 
 							f11098 = function()
-								local t2671 = v9216.cache.ee
+								local t2671 = modules.cache.ee
 								if not t2671 then
-									t2671 = { c = v9217() }
-									v9216.cache.ee = t2671
+									t2671 = { c = loadModule_ee() }
+									modules.cache.ee = t2671
 								end
 								return t2671.c
 							end
 
 							f10536[f10500] = f11098
-							local v9218 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local SoundId = v9218.eb()
-								local ConfigManager = v9218.f()
-								local defaultSounds = v9218.ec()
-								local ErrorReporter = v9218.ac()
-								v9218.ee()
-								local Result = v9218.b()
-								local Signal = v9218.t()
-								local Trove = v9218.q()
+								local SoundId = modules.eb()
+								local ConfigManager = modules.f()
+								local defaultSounds = modules.ec()
+								local ErrorReporter = modules.ac()
+								modules.ee()
+								local Result = modules.b()
+								local Signal = modules.t()
+								local Trove = modules.q()
 								local ContentProvider = cloneref(game:GetService("ContentProvider"))
 								local saveFolder = "kiciahook/rivals_v3"
 								local fileName = "custom_sounds.json"
@@ -234604,32 +234604,32 @@ local function f10149()
 							end
 
 							f10500 = "ef"
-							local v9248 = f10536
-							local v9249 = f10537
+							local modules = f10536
+							local loadModule_ef = f10537
 
 							f11098 = function()
-								local t2684 = v9248.cache.ef
+								local t2684 = modules.cache.ef
 								if not t2684 then
-									t2684 = { c = v9249() }
-									v9248.cache.ef = t2684
+									t2684 = { c = loadModule_ef() }
+									modules.cache.ef = t2684
 								end
 								return t2684.c
 							end
 
 							f10536[f10500] = f11098
-							local v9250 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local settings = v9250.y()
-								v9250.a4()
-								local Trove = v9250.q()
-								local bindSignal = v9250.aH()
-								local callMethod = v9250.aJ()
-								local getField = v9250.ah()
-								local invoke = v9250.ai()
-								local ControlsController2 = v9250.ao().ControlsController
-								local FighterController10 = v9250.ao().FighterController
-								local controlTypes = v9250.n()
+								local settings = modules.y()
+								modules.a4()
+								local Trove = modules.q()
+								local bindSignal = modules.aH()
+								local callMethod = modules.aJ()
+								local getField = modules.ah()
+								local invoke = modules.ai()
+								local ControlsController2 = modules.ao().ControlsController
+								local FighterController10 = modules.ao().FighterController
+								local controlTypes = modules.n()
 								local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local replicateControls = getField(
 									getField(getmetatable(FighterController10), "__index"),
@@ -234795,25 +234795,25 @@ local function f10149()
 							end
 
 							f10500 = "eg"
-							local v9263 = f10536
-							local v9264 = f10537
+							local modules = f10536
+							local loadModule_eg = f10537
 
 							f11098 = function()
-								local t2689 = v9263.cache.eg
+								local t2689 = modules.cache.eg
 								if not t2689 then
-									t2689 = { c = v9264() }
-									v9263.cache.eg = t2689
+									t2689 = { c = loadModule_eg() }
+									modules.cache.eg = t2689
 								end
 								return t2689.c
 							end
 
 							f10536[f10500] = f11098
-							local v9265 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v9265.y()
-								v9265.a4()
-								local Trove = v9265.q()
+								local Config = modules.y()
+								modules.a4()
+								local Trove = modules.q()
 								local Drops = {}
 								Drops.__index = Drops
 
@@ -234893,24 +234893,24 @@ local function f10149()
 							end
 
 							f10500 = "eh"
-							local v9272 = f10536
-							local v9273 = f10537
+							local modules = f10536
+							local loadModule_eh = f10537
 
 							f11098 = function()
-								local t2692 = v9272.cache.eh
+								local t2692 = modules.cache.eh
 								if not t2692 then
-									t2692 = { c = v9273() }
-									v9272.cache.eh = t2692
+									t2692 = { c = loadModule_eh() }
+									modules.cache.eh = t2692
 								end
 								return t2692.c
 							end
 
 							f10536[f10500] = f11098
-							local v9274 = f10536
+							local modules = f10536
 							local v9275 = rawget3
 
 							f10537 = function()
-								local ItemLibrary = v9274.ao().ItemLibrary
+								local ItemLibrary = modules.ao().ItemLibrary
 
 								local function getItemClass(itemName)
 									local item = v9275(v9275(ItemLibrary, "Items"), itemName)
@@ -234924,29 +234924,29 @@ local function f10149()
 							end
 
 							f10500 = "ei"
-							local v9278 = f10536
-							local v9279 = f10537
+							local modules = f10536
+							local loadModule_ei = f10537
 
 							f11098 = function()
-								local t2693 = v9278.cache.ei
+								local t2693 = modules.cache.ei
 								if not t2693 then
-									t2693 = { c = v9279() }
-									v9278.cache.ei = t2693
+									t2693 = { c = loadModule_ei() }
+									modules.cache.ei = t2693
 								end
 								return t2693.c
 							end
 
 							f10536[f10500] = f11098
-							local v9280 = f10536
+							local modules = f10536
 							local v9281 = rawget3
 
 							f10537 = function()
-								local Config = v9280.y()
-								v9280.al()
-								v9280.aK()
-								v9280.a4()
-								v9280.q()
-								local getGunCategory = v9280.ei()
+								local Config = modules.y()
+								modules.al()
+								modules.aK()
+								modules.a4()
+								modules.q()
+								local getGunCategory = modules.ei()
 
 								local function trackEquippedGun(fighterState, trove)
 									local function onEquippedItemChanged(item)
@@ -234991,30 +234991,30 @@ local function f10149()
 							end
 
 							f10500 = "ej"
-							local v9286 = f10536
-							local v9287 = f10537
+							local modules = f10536
+							local loadModule_ej = f10537
 
 							f11098 = function()
-								local t2694 = v9286.cache.ej
+								local t2694 = modules.cache.ej
 								if not t2694 then
-									t2694 = { c = v9287() }
-									v9286.cache.ej = t2694
+									t2694 = { c = loadModule_ej() }
+									modules.cache.ej = t2694
 								end
 								return t2694.c
 							end
 
 							f10536[f10500] = f11098
-							local v9288 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v9288.y()
-								v9288.C()
-								local PathUtils = v9288.s()
-								v9288.a4()
-								local Signal = v9288.t()
-								local Trove = v9288.q()
-								local appendPath = v9288.j()
-								local bindProfile = v9288.ej()
+								local Config = modules.y()
+								modules.C()
+								local PathUtils = modules.s()
+								modules.a4()
+								local Signal = modules.t()
+								local Trove = modules.q()
+								local appendPath = modules.j()
+								local bindProfile = modules.ej()
 
 								local function isKeybindPath(path)
 									local isKeybind
@@ -235175,23 +235175,23 @@ local function f10149()
 							end
 
 							f10500 = "ek"
-							local v9304 = f10536
-							local v9305 = f10537
+							local modules = f10536
+							local loadModule_ek = f10537
 
 							f11098 = function()
-								local t2698 = v9304.cache.ek
+								local t2698 = modules.cache.ek
 								if not t2698 then
-									t2698 = { c = v9305() }
-									v9304.cache.ek = t2698
+									t2698 = { c = loadModule_ek() }
+									modules.cache.ek = t2698
 								end
 								return t2698.c
 							end
 
 							f10536[f10500] = f11098
-							local v9306 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v9306.p()
+								modules.p()
 								local LookKinds = {}
 								local none = {
 									kind = "None",
@@ -235237,14 +235237,14 @@ local function f10149()
 							end
 
 							f10500 = "el"
-							local v9309 = f10536
-							local v9310 = f10537
+							local modules = f10536
+							local loadModule_el = f10537
 
 							f11098 = function()
-								local t2702 = v9309.cache.el
+								local t2702 = modules.cache.el
 								if not t2702 then
-									t2702 = { c = v9310() }
-									v9309.cache.el = t2702
+									t2702 = { c = loadModule_el() }
+									modules.cache.el = t2702
 								end
 								return t2702.c
 							end
@@ -235256,25 +235256,25 @@ local function f10149()
 							end
 
 							f10500 = "em"
-							local v9311 = f10536
-							local v9312 = f10537
+							local modules = f10536
+							local loadModule_em = f10537
 
 							f11098 = function()
-								local t2703 = v9311.cache.em
+								local t2703 = modules.cache.em
 								if not t2703 then
-									t2703 = { c = v9312() }
-									v9311.cache.em = t2703
+									t2703 = { c = loadModule_em() }
+									modules.cache.em = t2703
 								end
 								return t2703.c
 							end
 
 							f10536[f10500] = f11098
-							local v9313 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Spring = v9313.aw()
-								local Fonts = v9313.d3()
-								v9313.em()
+								local Spring = modules.aw()
+								local Fonts = modules.d3()
+								modules.em()
 								local HealthBar = {}
 								HealthBar.__index = HealthBar
 								HealthBar.__type = "Bar"
@@ -235485,14 +235485,14 @@ local function f10149()
 							end
 
 							f10500 = "en"
-							local v9334 = f10536
-							local v9335 = f10537
+							local modules = f10536
+							local loadModule_en = f10537
 
 							f11098 = function()
-								local t2706 = v9334.cache.en
+								local t2706 = modules.cache.en
 								if not t2706 then
-									t2706 = { c = v9335() }
-									v9334.cache.en = t2706
+									t2706 = { c = loadModule_en() }
+									modules.cache.en = t2706
 								end
 								return t2706.c
 							end
@@ -235517,26 +235517,26 @@ local function f10149()
 							end
 
 							f10500 = "eo"
-							local v9339 = f10536
-							local v9340 = f10537
+							local modules = f10536
+							local loadModule_eo = f10537
 
 							f11098 = function()
-								local t2708 = v9339.cache.eo
+								local t2708 = modules.cache.eo
 								if not t2708 then
-									t2708 = { c = v9340() }
-									v9339.cache.eo = t2708
+									t2708 = { c = loadModule_eo() }
+									modules.cache.eo = t2708
 								end
 								return t2708.c
 							end
 
 							f10536[f10500] = f11098
-							local v9341 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Flipbook = v9341.d5()
-								local Fonts = v9341.d3()
-								local Look = v9341.el()
-								local Colors = v9341.eo()
+								local Flipbook = modules.d5()
+								local Fonts = modules.d3()
+								local Look = modules.el()
+								local Colors = modules.eo()
 								local cornerAnchors = table.create(4)
 								local cornerOffsets = table.create(4)
 								local cornerSizes = table.create(4)
@@ -235729,26 +235729,26 @@ local function f10149()
 							end
 
 							f10500 = "ep"
-							local v9378 = f10536
-							local v9379 = f10537
+							local modules = f10536
+							local loadModule_ep = f10537
 
 							f11098 = function()
-								local t2715 = v9378.cache.ep
+								local t2715 = modules.cache.ep
 								if not t2715 then
-									t2715 = { c = v9379() }
-									v9378.cache.ep = t2715
+									t2715 = { c = loadModule_ep() }
+									modules.cache.ep = t2715
 								end
 								return t2715.c
 							end
 
 							f10536[f10500] = f11098
-							local v9380 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Flipbook = v9380.d5()
-								local sampleColorSequence = v9380.d3()
-								local LookKinds = v9380.el()
-								local PingPong = v9380.eo()
+								local Flipbook = modules.d5()
+								local sampleColorSequence = modules.d3()
+								local LookKinds = modules.el()
+								local PingPong = modules.eo()
 								local keypointCount = 10
 
 								local function rainbowSequence(saturation, offset, time)
@@ -236012,26 +236012,26 @@ local function f10149()
 							end
 
 							f10500 = "eq"
-							local v9422 = f10536
-							local v9423 = f10537
+							local modules = f10536
+							local loadModule_eq = f10537
 
 							f11098 = function()
-								local t2724 = v9422.cache.eq
+								local t2724 = modules.cache.eq
 								if not t2724 then
-									t2724 = { c = v9423() }
-									v9422.cache.eq = t2724
+									t2724 = { c = loadModule_eq() }
+									modules.cache.eq = t2724
 								end
 								return t2724.c
 							end
 
 							f10536[f10500] = f11098
-							local v9424 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local LookKinds = v9424.el()
-								local CornerOutline = v9424.ep()
-								local FullOutline = v9424.eq()
-								v9424.em()
+								local LookKinds = modules.el()
+								local CornerOutline = modules.ep()
+								local FullOutline = modules.eq()
+								modules.em()
 								local BoundingBox = {}
 								BoundingBox.__index = BoundingBox
 								BoundingBox.__type = "BoundingBox"
@@ -236219,14 +236219,14 @@ local function f10149()
 							end
 
 							f10500 = "er"
-							local v9439 = f10536
-							local v9440 = f10537
+							local modules = f10536
+							local loadModule_er = f10537
 
 							f11098 = function()
-								local t2727 = v9439.cache.er
+								local t2727 = modules.cache.er
 								if not t2727 then
-									t2727 = { c = v9440() }
-									v9439.cache.er = t2727
+									t2727 = { c = loadModule_er() }
+									modules.cache.er = t2727
 								end
 								return t2727.c
 							end
@@ -236260,25 +236260,25 @@ local function f10149()
 							end
 
 							f10500 = "es"
-							local v9441 = f10536
-							local v9442 = f10537
+							local modules = f10536
+							local loadModule_es = f10537
 
 							f11098 = function()
-								local t2729 = v9441.cache.es
+								local t2729 = modules.cache.es
 								if not t2729 then
-									t2729 = { c = v9442() }
-									v9441.cache.es = t2729
+									t2729 = { c = loadModule_es() }
+									modules.cache.es = t2729
 								end
 								return t2729.c
 							end
 
 							f10536[f10500] = f11098
-							local v9443 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local BodyPartNames = v9443.es()
-								local Trove = v9443.q()
-								local RootTrove = v9443.r()
+								local BodyPartNames = modules.es()
+								local Trove = modules.q()
+								local RootTrove = modules.r()
 								local UserInputService = cloneref(game:GetService("UserInputService"))
 								local folder = RootTrove:Add(Instance.new("Folder"))
 								folder.Parent = gethui()
@@ -236511,23 +236511,23 @@ local function f10149()
 							end
 
 							f10500 = "et"
-							local v9457 = f10536
-							local v9458 = f10537
+							local modules = f10536
+							local loadModule_et = f10537
 
 							f11098 = function()
-								local t2737 = v9457.cache.et
+								local t2737 = modules.cache.et
 								if not t2737 then
-									t2737 = { c = v9458() }
-									v9457.cache.et = t2737
+									t2737 = { c = loadModule_et() }
+									modules.cache.et = t2737
 								end
 								return t2737.c
 							end
 
 							f10536[f10500] = f11098
-							local v9459 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v9460 = v9459.q()
+								local v9460 = modules.q()
 								local t_3 = t_
 								local v9461
 								v9461 = 0 < #(69493)[3]
@@ -236670,24 +236670,24 @@ local function f10149()
 							end
 
 							f10500 = "eu"
-							local v9470 = f10536
-							local v9471 = f10537
+							local modules = f10536
+							local loadModule_eu = f10537
 
 							f11098 = function()
-								local t2740 = v9470.cache.eu
+								local t2740 = modules.cache.eu
 								if not t2740 then
-									t2740 = { c = v9471() }
-									v9470.cache.eu = t2740
+									t2740 = { c = loadModule_eu() }
+									modules.cache.eu = t2740
 								end
 								return t2740.c
 							end
 
 							f10536[f10500] = f11098
-							local v9472 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local DisplayOrder = v9472.I()
-								local screenGui = v9472.r():Add(Instance.new("ScreenGui"))
+								local DisplayOrder = modules.I()
+								local screenGui = modules.r():Add(Instance.new("ScreenGui"))
 								screenGui.Enabled = true
 								screenGui.IgnoreGuiInset = true
 								screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -236697,14 +236697,14 @@ local function f10149()
 							end
 
 							f10500 = "ev"
-							local v9474 = f10536
-							local v9475 = f10537
+							local modules = f10536
+							local loadModule_ev = f10537
 
 							f11098 = function()
-								local t2742 = v9474.cache.ev
+								local t2742 = modules.cache.ev
 								if not t2742 then
-									t2742 = { c = v9475() }
-									v9474.cache.ev = t2742
+									t2742 = { c = loadModule_ev() }
+									modules.cache.ev = t2742
 								end
 								return t2742.c
 							end
@@ -236772,24 +236772,24 @@ local function f10149()
 							end
 
 							f10500 = "ew"
-							local v9476 = f10536
-							local v9477 = f10537
+							local modules = f10536
+							local loadModule_ew = f10537
 
 							f11098 = function()
-								local t2749 = v9476.cache.ew
+								local t2749 = modules.cache.ew
 								if not t2749 then
-									t2749 = { c = v9477() }
-									v9476.cache.ew = t2749
+									t2749 = { c = loadModule_ew() }
+									modules.cache.ew = t2749
 								end
 								return t2749.c
 							end
 
 							f10536[f10500] = f11098
-							local v9478 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v9478.em()
-								v9478.q()
+								modules.em()
+								modules.q()
 
 								local function buildUpdatable(Class, refresh, tick)
 									return ((function(c0,c1,c2)
@@ -236844,23 +236844,23 @@ local function f10149()
 							end
 
 							f10500 = "ex"
-							local v9479 = f10536
-							local v9480 = f10537
+							local modules = f10536
+							local loadModule_ex = f10537
 
 							f11098 = function()
-								local t2751 = v9479.cache.ex
+								local t2751 = modules.cache.ex
 								if not t2751 then
-									t2751 = { c = v9480() }
-									v9479.cache.ex = t2751
+									t2751 = { c = loadModule_ex() }
+									modules.cache.ex = t2751
 								end
 								return t2751.c
 							end
 
 							f10536[f10500] = f11098
-							local v9481 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v9481.ew()
+								modules.ew()
 
 								local function stackPosition(layout, offset)
 									local positionScale = layout.positionScale
@@ -236877,27 +236877,27 @@ local function f10149()
 							end
 
 							f10500 = "ey"
-							local v9482 = f10536
-							local v9483 = f10537
+							local modules = f10536
+							local loadModule_ey = f10537
 
 							f11098 = function()
-								local t2752 = v9482.cache.ey
+								local t2752 = modules.cache.ey
 								if not t2752 then
-									t2752 = { c = v9483() }
-									v9482.cache.ey = t2752
+									t2752 = { c = loadModule_ey() }
+									modules.cache.ey = t2752
 								end
 								return t2752.c
 							end
 
 							f10536[f10500] = f11098
-							local v9484 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v9484.em()
-								v9484.ew()
-								local Trove = v9484.q()
-								v9484.ex()
-								local stackPosition = v9484.ey()
+								modules.em()
+								modules.ew()
+								local Trove = modules.q()
+								modules.ex()
+								local stackPosition = modules.ey()
 								local Pane = {}
 								Pane.__index = Pane
 
@@ -236990,27 +236990,27 @@ local function f10149()
 							end
 
 							f10500 = "ez"
-							local v9496 = f10536
-							local v9497 = f10537
+							local modules = f10536
+							local loadModule_ez = f10537
 
 							f11098 = function()
-								local t2756 = v9496.cache.ez
+								local t2756 = modules.cache.ez
 								if not t2756 then
-									t2756 = { c = v9497() }
-									v9496.cache.ez = t2756
+									t2756 = { c = loadModule_ez() }
+									modules.cache.ez = t2756
 								end
 								return t2756.c
 							end
 
 							f10536[f10500] = f11098
-							local v9498 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local espFolder = v9498.ev()
-								local PanePresets = v9498.ew()
-								local Pane = v9498.ez()
-								local Trove = v9498.q()
-								v9498.ex()
+								local espFolder = modules.ev()
+								local PanePresets = modules.ew()
+								local Pane = modules.ez()
+								local Trove = modules.q()
+								modules.ex()
 								local CENTER_PANE_PRESET2 = PanePresets.CENTER_PANE_PRESET
 								local LEFT_PANE_PRESET2 = PanePresets.LEFT_PANE_PRESET
 								local RIGHT_PANE_PRESET2 = PanePresets.RIGHT_PANE_PRESET
@@ -237137,14 +237137,14 @@ local function f10149()
 							end
 
 							f10500 = "eA"
-							local v9510 = f10536
-							local v9511 = f10537
+							local modules = f10536
+							local loadModule_eA = f10537
 
 							f11098 = function()
-								local t2766 = v9510.cache.eA
+								local t2766 = modules.cache.eA
 								if not t2766 then
-									t2766 = { c = v9511() }
-									v9510.cache.eA = t2766
+									t2766 = { c = loadModule_eA() }
+									modules.cache.eA = t2766
 								end
 								return t2766.c
 							end
@@ -237162,14 +237162,14 @@ local function f10149()
 							end
 
 							f10500 = "eB"
-							local v9513 = f10536
-							local v9514 = f10537
+							local modules = f10536
+							local loadModule_eB = f10537
 
 							f11098 = function()
-								local t2767 = v9513.cache.eB
+								local t2767 = modules.cache.eB
 								if not t2767 then
-									t2767 = { c = v9514() }
-									v9513.cache.eB = t2767
+									t2767 = { c = loadModule_eB() }
+									modules.cache.eB = t2767
 								end
 								return t2767.c
 							end
@@ -237187,26 +237187,26 @@ local function f10149()
 							end
 
 							f10500 = "eC"
-							local v9516 = f10536
-							local v9517 = f10537
+							local modules = f10536
+							local loadModule_eC = f10537
 
 							f11098 = function()
-								local t2768 = v9516.cache.eC
+								local t2768 = modules.cache.eC
 								if not t2768 then
-									t2768 = { c = v9517() }
-									v9516.cache.eC = t2768
+									t2768 = { c = loadModule_eC() }
+									modules.cache.eC = t2768
 								end
 								return t2768.c
 							end
 
 							f10536[f10500] = f11098
-							local v9518 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local espFolder = v9518.ev()
-								local Trove = v9518.q()
-								local Projection = v9518.eB()
-								local Fonts = v9518.eC()
+								local espFolder = modules.ev()
+								local Trove = modules.q()
+								local Projection = modules.eB()
+								local Fonts = modules.eC()
 								local UserInputService = game:GetService("UserInputService")
 								local Tracer = {}
 								Tracer.__index = Tracer
@@ -237320,25 +237320,25 @@ local function f10149()
 							end
 
 							f10500 = "eD"
-							local v9527 = f10536
-							local v9528 = f10537
+							local modules = f10536
+							local loadModule_eD = f10537
 
 							f11098 = function()
-								local t2771 = v9527.cache.eD
+								local t2771 = modules.cache.eD
 								if not t2771 then
-									t2771 = { c = v9528() }
-									v9527.cache.eD = t2771
+									t2771 = { c = loadModule_eD() }
+									modules.cache.eD = t2771
 								end
 								return t2771.c
 							end
 
 							f10536[f10500] = f11098
-							local v9529 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local espFolder = v9529.ev()
-								local Trove = v9529.q()
-								local Fonts = v9529.eC()
+								local espFolder = modules.ev()
+								local Trove = modules.q()
+								local Fonts = modules.eC()
 								local HeadMarker = {}
 								HeadMarker.__index = HeadMarker
 								local strokeThickness = 1.5
@@ -237510,27 +237510,27 @@ local function f10149()
 							end
 
 							f10500 = "eE"
-							local v9555 = f10536
-							local v9556 = f10537
+							local modules = f10536
+							local loadModule_eE = f10537
 
 							f11098 = function()
-								local t2780 = v9555.cache.eE
+								local t2780 = modules.cache.eE
 								if not t2780 then
-									t2780 = { c = v9556() }
-									v9555.cache.eE = t2780
+									t2780 = { c = loadModule_eE() }
+									modules.cache.eE = t2780
 								end
 								return t2780.c
 							end
 
 							f10536[f10500] = f11098
-							local v9557 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local espFolder = v9557.ev()
-								local limbNames = v9557.es()
-								local Trove = v9557.q()
-								local Projection = v9557.eB()
-								local Fonts = v9557.eC()
+								local espFolder = modules.ev()
+								local limbNames = modules.es()
+								local Trove = modules.q()
+								local Projection = modules.eB()
+								local Fonts = modules.eC()
 								local Skeleton = {}
 								Skeleton.__index = Skeleton
 
@@ -237776,50 +237776,50 @@ local function f10149()
 							end
 
 							f10500 = "eF"
-							local v9571 = f10536
-							local v9572 = f10537
+							local modules = f10536
+							local loadModule_eF = f10537
 
 							f11098 = function()
-								local t2789 = v9571.cache.eF
+								local t2789 = modules.cache.eF
 								if not t2789 then
-									t2789 = { c = v9572() }
-									v9571.cache.eF = t2789
+									t2789 = { c = loadModule_eF() }
+									modules.cache.eF = t2789
 								end
 								return t2789.c
 							end
 
 							f10536[f10500] = f11098
-							local v9573 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v9573.aC()
-								v9573.p()
-								v9573.aT()
+								modules.aC()
+								modules.p()
+								modules.aT()
 								return nil
 							end
 
 							f10500 = "eG"
-							local v9574 = f10536
-							local v9575 = f10537
+							local modules = f10536
+							local loadModule_eG = f10537
 
 							f11098 = function()
-								local t2790 = v9574.cache.eG
+								local t2790 = modules.cache.eG
 								if not t2790 then
-									t2790 = { c = v9575() }
-									v9574.cache.eG = t2790
+									t2790 = { c = loadModule_eG() }
+									modules.cache.eG = t2790
 								end
 								return t2790.c
 							end
 
 							f10536[f10500] = f11098
-							local v9576 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v9576.et()
-								v9576.eE()
-								v9576.eF()
-								v9576.eD()
-								v9576.eG()
+								modules.et()
+								modules.eE()
+								modules.eF()
+								modules.eD()
+								modules.eG()
 								local EspRefreshers = {}
 								function EspRefreshers.ChamsRefresh()
 								end
@@ -237839,25 +237839,25 @@ local function f10149()
 							end
 
 							f10500 = "eH"
-							local v9577 = f10536
-							local v9578 = f10537
+							local modules = f10536
+							local loadModule_eH = f10537
 
 							f11098 = function()
-								local t2792 = v9577.cache.eH
+								local t2792 = modules.cache.eH
 								if not t2792 then
-									t2792 = { c = v9578() }
-									v9577.cache.eH = t2792
+									t2792 = { c = loadModule_eH() }
+									modules.cache.eH = t2792
 								end
 								return t2792.c
 							end
 
 							f10536[f10500] = f11098
-							local v9579 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v9579.r()
-								v9579.i()
-								local Trove = v9579.q()
+								local Config = modules.r()
+								modules.i()
+								local Trove = modules.q()
 								local UserInputService = cloneref(game:GetService("UserInputService"))
 
 								local function serializeBind(bind)
@@ -238055,27 +238055,27 @@ local function f10149()
 							end
 
 							f10500 = "eI"
-							local v9595 = f10536
-							local v9596 = f10537
+							local modules = f10536
+							local loadModule_eI = f10537
 
 							f11098 = function()
-								local t2797 = v9595.cache.eI
+								local t2797 = modules.cache.eI
 								if not t2797 then
-									t2797 = { c = v9596() }
-									v9595.cache.eI = t2797
+									t2797 = { c = loadModule_eI() }
+									modules.cache.eI = t2797
 								end
 								return t2797.c
 							end
 
 							f10536[f10500] = f11098
-							local v9597 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Keybind = v9597.i()
-								local KeybindController = v9597.eI()
-								local PathUtils = v9597.s()
-								local Trove = v9597.q()
-								local appendPath = v9597.j()
+								local Keybind = modules.i()
+								local KeybindController = modules.eI()
+								local PathUtils = modules.s()
+								local Trove = modules.q()
+								local appendPath = modules.j()
 								local KeybindRegistry = {}
 								local validKinds = { Always = true, Hold = true, Release = true, Tap = true, Toggle = true }
 
@@ -238240,23 +238240,23 @@ local function f10149()
 							end
 
 							f10500 = "eJ"
-							local v9616 = f10536
-							local v9617 = f10537
+							local modules = f10536
+							local loadModule_eJ = f10537
 
 							f11098 = function()
-								local t2803 = v9616.cache.eJ
+								local t2803 = modules.cache.eJ
 								if not t2803 then
-									t2803 = { c = v9617() }
-									v9616.cache.eJ = t2803
+									t2803 = { c = loadModule_eJ() }
+									modules.cache.eJ = t2803
 								end
 								return t2803.c
 							end
 
 							f10536[f10500] = f11098
-							local v9618 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local appendPath = v9618.j()
+								local appendPath = modules.j()
 
 								local function splitKeybindPath(path)
 									if path[#path] ~= "Keybind" then
@@ -238271,28 +238271,28 @@ local function f10149()
 							end
 
 							f10500 = "eK"
-							local v9620 = f10536
-							local v9621 = f10537
+							local modules = f10536
+							local loadModule_eK = f10537
 
 							f11098 = function()
-								local t2805 = v9620.cache.eK
+								local t2805 = modules.cache.eK
 								if not t2805 then
-									t2805 = { c = v9621() }
-									v9620.cache.eK = t2805
+									t2805 = { c = loadModule_eK() }
+									modules.cache.eK = t2805
 								end
 								return t2805.c
 							end
 
 							f10536[f10500] = f11098
-							local v9622 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local App = v9622.r()
-								local KeybindPaths = v9622.eJ()
-								local Trove = v9622.q()
-								local joinPath = v9622.j()
-								local settings = v9622.y()
-								local splitKeybindPath = v9622.eK()
+								local App = modules.r()
+								local KeybindPaths = modules.eJ()
+								local Trove = modules.q()
+								local joinPath = modules.j()
+								local settings = modules.y()
+								local splitKeybindPath = modules.eK()
 								local KeybindBridge = {}
 								KeybindBridge.__index = KeybindBridge
 
@@ -238396,25 +238396,25 @@ local function f10149()
 							end
 
 							f10500 = "eL"
-							local v9643 = f10536
-							local v9644 = f10537
+							local modules = f10536
+							local loadModule_eL = f10537
 
 							f11098 = function()
-								local t2809 = v9643.cache.eL
+								local t2809 = modules.cache.eL
 								if not t2809 then
-									t2809 = { c = v9644() }
-									v9643.cache.eL = t2809
+									t2809 = { c = loadModule_eL() }
+									modules.cache.eL = t2809
 								end
 								return t2809.c
 							end
 
 							f10536[f10500] = f11098
-							local v9645 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Look = v9645.el()
-								local Flipbook = v9645.d5()
-								v9645.em()
+								local Look = modules.el()
+								local Flipbook = modules.d5()
+								modules.em()
 								local EspLabel = {}
 								EspLabel.__index = EspLabel
 								EspLabel.__type = "Label"
@@ -238605,27 +238605,27 @@ local function f10149()
 							end
 
 							f10500 = "eM"
-							local v9655 = f10536
-							local v9656 = f10537
+							local modules = f10536
+							local loadModule_eM = f10537
 
 							f11098 = function()
-								local t2812 = v9655.cache.eM
+								local t2812 = modules.cache.eM
 								if not t2812 then
-									t2812 = { c = v9656() }
-									v9655.cache.eM = t2812
+									t2812 = { c = loadModule_eM() }
+									modules.cache.eM = t2812
 								end
 								return t2812.c
 							end
 
 							f10536[f10500] = f11098
-							local v9657 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Rank = v9657.el()
-								v9657.en()
-								v9657.er()
-								v9657.eM()
-								v9657.eG()
+								local Rank = modules.el()
+								modules.en()
+								modules.er()
+								modules.eM()
+								modules.eG()
 
 								local function formatText(formatting, isFlag, text)
 									local textCase
@@ -238718,20 +238718,20 @@ local function f10149()
 							end
 
 							f10500 = "eN"
-							local v9662 = f10536
-							local v9663 = f10537
+							local modules = f10536
+							local loadModule_eN = f10537
 
 							f11098 = function()
-								local t2814 = v9662.cache.eN
+								local t2814 = modules.cache.eN
 								if not t2814 then
-									t2814 = { c = v9663() }
-									v9662.cache.eN = t2814
+									t2814 = { c = loadModule_eN() }
+									modules.cache.eN = t2814
 								end
 								return t2814.c
 							end
 
 							f10536[f10500] = f11098
-							local v9664 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								return ((function(c0)
@@ -238751,50 +238751,50 @@ local function f10149()
 										end
 									end
 								end)({[0]=c0})
-								end)((v9664.eC())))
+								end)((modules.eC())))
 							end
 
 							f10500 = "eO"
-							local v9665 = f10536
-							local v9666 = f10537
+							local modules = f10536
+							local loadModule_eO = f10537
 
 							f11098 = function()
-								local t2815 = v9665.cache.eO
+								local t2815 = modules.cache.eO
 								if not t2815 then
-									t2815 = { c = v9666() }
-									v9665.cache.eO = t2815
+									t2815 = { c = loadModule_eO() }
+									modules.cache.eO = t2815
 								end
 								return t2815.c
 							end
 
 							f10536[f10500] = f11098
-							local v9667 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local LookKinds = v9667.el()
-								local Flipbook = v9667.d5()
-								local BarPane = v9667.en()
-								local BoundingBoxPane = v9667.er()
-								local ChamsPane = v9667.et()
-								v9667.aC()
-								local Config = v9667.y()
-								v9667.p()
-								local DynamicRectCalculator = v9667.eu()
-								local PlayerEsp = v9667.eA()
-								local TracerPane = v9667.eD()
-								v9667.aT()
-								local Fonts = v9667.K()
-								local HeadMarkerPane = v9667.eE()
-								local IndependentHandlers = v9667.eH()
-								local Keybinds = v9667.eL()
-								local TextPane = v9667.eM()
-								local PaneHandlers = v9667.eN()
-								v9667.F()
-								local SkeletonPane = v9667.eF()
-								local Trove = v9667.q()
-								local Updatables = v9667.ex()
-								v9667.eG()
-								local EspTypes = v9667.eO()
+								local LookKinds = modules.el()
+								local Flipbook = modules.d5()
+								local BarPane = modules.en()
+								local BoundingBoxPane = modules.er()
+								local ChamsPane = modules.et()
+								modules.aC()
+								local Config = modules.y()
+								modules.p()
+								local DynamicRectCalculator = modules.eu()
+								local PlayerEsp = modules.eA()
+								local TracerPane = modules.eD()
+								modules.aT()
+								local Fonts = modules.K()
+								local HeadMarkerPane = modules.eE()
+								local IndependentHandlers = modules.eH()
+								local Keybinds = modules.eL()
+								local TextPane = modules.eM()
+								local PaneHandlers = modules.eN()
+								modules.F()
+								local SkeletonPane = modules.eF()
+								local Trove = modules.q()
+								local Updatables = modules.ex()
+								modules.eG()
+								local EspTypes = modules.eO()
 								local Controller = {}
 								Controller.__index = Controller
 
@@ -239210,30 +239210,30 @@ local function f10149()
 							end
 
 							f10500 = "eP"
-							local v9702 = f10536
-							local v9703 = f10537
+							local modules = f10536
+							local loadModule_eP = f10537
 
 							f11098 = function()
-								local t2835 = v9702.cache.eP
+								local t2835 = modules.cache.eP
 								if not t2835 then
-									t2835 = { c = v9703() }
-									v9702.cache.eP = t2835
+									t2835 = { c = loadModule_eP() }
+									modules.cache.eP = t2835
 								end
 								return t2835.c
 							end
 
 							f10536[f10500] = f11098
-							local v9704 = f10536
+							local modules = f10536
 							local v9705 = rawget3
 
 							f10537 = function()
-								local InputBinding = v9704.bC()
-								local Result = v9704.b()
-								local UseItemRemote = v9704.ao().UseItemRemote
-								local ClientItem = v9704.ao().ClientItem
-								local ItemInputType = v9704.aU()
-								local ErrorReporter = v9704.ac()
-								local isDescendantOf = v9704.ag()
+								local InputBinding = modules.bC()
+								local Result = modules.b()
+								local UseItemRemote = modules.ao().UseItemRemote
+								local ClientItem = modules.ao().ClientItem
+								local ItemInputType = modules.aU()
+								local ErrorReporter = modules.ac()
+								local isDescendantOf = modules.ag()
 								local UseItemHook = {}
 								UseItemHook.__index = UseItemHook
 
@@ -239382,28 +239382,28 @@ local function f10149()
 							end
 
 							f10500 = "eQ"
-							local v9718 = f10536
-							local v9719 = f10537
+							local modules = f10536
+							local loadModule_eQ = f10537
 
 							f11098 = function()
-								local t2846 = v9718.cache.eQ
+								local t2846 = modules.cache.eQ
 								if not t2846 then
-									t2846 = { c = v9719() }
-									v9718.cache.eQ = t2846
+									t2846 = { c = loadModule_eQ() }
+									modules.cache.eQ = t2846
 								end
 								return t2846.c
 							end
 
 							f10536[f10500] = f11098
-							local v9720 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Vector3Codec = v9720.aX()
-								local Config = v9720.y()
-								v9720.aT()
-								v9720.eQ()
-								v9720.a4()
-								local Trove = v9720.q()
+								local Vector3Codec = modules.aX()
+								local Config = modules.y()
+								modules.aT()
+								modules.eQ()
+								modules.a4()
+								local Trove = modules.q()
 								local ExtendMeleeRange = {}
 								ExtendMeleeRange.__index = ExtendMeleeRange
 
@@ -239449,23 +239449,23 @@ local function f10149()
 							end
 
 							f10500 = "eR"
-							local v9725 = f10536
-							local v9726 = f10537
+							local modules = f10536
+							local loadModule_eR = f10537
 
 							f11098 = function()
-								local t2849 = v9725.cache.eR
+								local t2849 = modules.cache.eR
 								if not t2849 then
-									t2849 = { c = v9726() }
-									v9725.cache.eR = t2849
+									t2849 = { c = loadModule_eR() }
+									modules.cache.eR = t2849
 								end
 								return t2849.c
 							end
 
 							f10536[f10500] = f11098
-							local v9727 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Trove = v9727.q()
+								local Trove = modules.q()
 								local HttpService = cloneref(game:GetService("HttpService"))
 								local RunService = cloneref(game:GetService("RunService"))
 								local GameLoop = {}
@@ -239536,27 +239536,27 @@ local function f10149()
 							end
 
 							f10500 = "eS"
-							local v9731 = f10536
-							local v9732 = f10537
+							local modules = f10536
+							local loadModule_eS = f10537
 
 							f11098 = function()
-								local t2852 = v9731.cache.eS
+								local t2852 = modules.cache.eS
 								if not t2852 then
-									t2852 = { c = v9732() }
-									v9731.cache.eS = t2852
+									t2852 = { c = loadModule_eS() }
+									modules.cache.eS = t2852
 								end
 								return t2852.c
 							end
 
 							f10536[f10500] = f11098
-							local v9733 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v9734 = v9733.y()
-								v9733.aT()
-								local v9735 = v9733.O()
-								v9733.G()
-								local v9736 = v9733.q()
+								local v9734 = modules.y()
+								modules.aT()
+								local v9735 = modules.O()
+								modules.G()
+								local v9736 = modules.q()
 								local HackerDetector = {}
 								HackerDetector.__index = HackerDetector
 
@@ -239674,24 +239674,24 @@ local function f10149()
 							end
 
 							f10500 = "eT"
-							local v9744 = f10536
-							local v9745 = f10537
+							local modules = f10536
+							local loadModule_eT = f10537
 
 							f11098 = function()
-								local t2857 = v9744.cache.eT
+								local t2857 = modules.cache.eT
 								if not t2857 then
-									t2857 = { c = v9745() }
-									v9744.cache.eT = t2857
+									t2857 = { c = loadModule_eT() }
+									modules.cache.eT = t2857
 								end
 								return t2857.c
 							end
 
 							f10536[f10500] = f11098
-							local v9746 = f10536
+							local modules = f10536
 							local v9747 = rawget3
 
 							f10537 = function()
-								local Result = v9746.b()
+								local Result = modules.b()
 								local ConstantPatcher = {}
 								ConstantPatcher.__index = ConstantPatcher
 
@@ -239792,29 +239792,29 @@ local function f10149()
 							end
 
 							f10500 = "eU"
-							local v9758 = f10536
-							local v9759 = f10537
+							local modules = f10536
+							local loadModule_eU = f10537
 
 							f11098 = function()
-								local t2866 = v9758.cache.eU
+								local t2866 = modules.cache.eU
 								if not t2866 then
-									t2866 = { c = v9759() }
-									v9758.cache.eU = t2866
+									t2866 = { c = loadModule_eU() }
+									modules.cache.eU = t2866
 								end
 								return t2866.c
 							end
 
 							f10536[f10500] = f11098
-							local v9760 = f10536
+							local modules = f10536
 							local v9761 = rawget3
 							local v9762 = v387
 
 							f10537 = function()
-								local ConstantPatcher = v9760.eU()
-								v9760.al()
-								local Result = v9760.b()
-								local ClientViewModel = v9760.ao().ClientViewModel
-								local ViewModelAnimator2 = v9760.ao().ViewModelAnimator
+								local ConstantPatcher = modules.eU()
+								modules.al()
+								local Result = modules.b()
+								local ClientViewModel = modules.ao().ClientViewModel
+								local ViewModelAnimator2 = modules.ao().ViewModelAnimator
 								local PROXY_KEY = "\0)|b_TSODb35"
 								local fakeTrack = {}
 								function fakeTrack.Play()
@@ -239947,26 +239947,26 @@ local function f10149()
 							end
 
 							f10500 = "eV"
-							local v9771 = f10536
-							local v9772 = f10537
+							local modules = f10536
+							local loadModule_eV = f10537
 
 							f11098 = function()
-								local t2871 = v9771.cache.eV
+								local t2871 = modules.cache.eV
 								if not t2871 then
-									t2871 = { c = v9772() }
-									v9771.cache.eV = t2871
+									t2871 = { c = loadModule_eV() }
+									modules.cache.eV = t2871
 								end
 								return t2871.c
 							end
 
 							f10536[f10500] = f11098
-							local v9773 = f10536
+							local modules = f10536
 							local v9774 = rawget3
 							local v9775 = v387
 
 							f10537 = function()
-								local Result = v9773.b()
-								local CameraController = v9773.ao().CameraController
+								local Result = modules.b()
+								local CameraController = modules.ao().CameraController
 								local PROXY_KEY = "_camera_shaker\0mrrp"
 								local CameraShakeDisabler = {}
 								CameraShakeDisabler.__index = CameraShakeDisabler
@@ -240108,28 +240108,28 @@ local function f10149()
 							end
 
 							f10500 = "eW"
-							local v9789 = f10536
-							local v9790 = f10537
+							local modules = f10536
+							local loadModule_eW = f10537
 
 							f11098 = function()
-								local t2880 = v9789.cache.eW
+								local t2880 = modules.cache.eW
 								if not t2880 then
-									t2880 = { c = v9790() }
-									v9789.cache.eW = t2880
+									t2880 = { c = loadModule_eW() }
+									modules.cache.eW = t2880
 								end
 								return t2880.c
 							end
 
 							f10536[f10500] = f11098
-							local v9791 = f10536
+							local modules = f10536
 							local v9792 = rawget3
 
 							f10537 = function()
-								local Result = v9791.b()
-								local CameraController = v9791.ao().CameraController
-								v9791.bV()
-								v9791.ac()
-								v9791.t()
+								local Result = modules.b()
+								local CameraController = modules.ao().CameraController
+								modules.bV()
+								modules.ac()
+								modules.t()
 								local CameraSwayDisabler = {}
 								CameraSwayDisabler.__index = CameraSwayDisabler
 
@@ -240239,27 +240239,27 @@ local function f10149()
 							end
 
 							f10500 = "eX"
-							local v9798 = f10536
-							local v9799 = f10537
+							local modules = f10536
+							local loadModule_eX = f10537
 
 							f11098 = function()
-								local t2888 = v9798.cache.eX
+								local t2888 = modules.cache.eX
 								if not t2888 then
-									t2888 = { c = v9799() }
-									v9798.cache.eX = t2888
+									t2888 = { c = loadModule_eX() }
+									modules.cache.eX = t2888
 								end
 								return t2888.c
 							end
 
 							f10536[f10500] = f11098
-							local v9800 = f10536
+							local modules = f10536
 							local v9801 = rawget3
 							local v9802 = v387
 
 							f10537 = function()
-								v9800.al()
-								v9800.a4()
-								local Trove = v9800.q()
+								modules.al()
+								modules.a4()
+								local Trove = modules.q()
 								local EquipCooldownModifier = {}
 								EquipCooldownModifier.__index = EquipCooldownModifier
 
@@ -240396,30 +240396,30 @@ local function f10149()
 							end
 
 							f10500 = "eY"
-							local v9811 = f10536
-							local v9812 = f10537
+							local modules = f10536
+							local loadModule_eY = f10537
 
 							f11098 = function()
-								local t2895 = v9811.cache.eY
+								local t2895 = modules.cache.eY
 								if not t2895 then
-									t2895 = { c = v9812() }
-									v9811.cache.eY = t2895
+									t2895 = { c = loadModule_eY() }
+									modules.cache.eY = t2895
 								end
 								return t2895.c
 							end
 
 							f10536[f10500] = f11098
-							local v9813 = f10536
+							local modules = f10536
 							local v9814 = v387
 
 							f10537 = function()
-								local TrajectoryVisual = v9813.eU()
-								v9813.eQ()
-								v9813.al()
-								v9813.a4()
-								local Result = v9813.b()
-								local _ = v9813.ao().Throwable
-								local getField = v9813.ah()
+								local TrajectoryVisual = modules.eU()
+								modules.eQ()
+								modules.al()
+								modules.a4()
+								local Result = modules.b()
+								local _ = modules.ao().Throwable
+								local getField = modules.ah()
 								local hookPaths = table.create(1)
 
 								local function getFuseTime(grenade)
@@ -240563,29 +240563,29 @@ local function f10149()
 							end
 
 							f10500 = "eZ"
-							local v9829 = f10536
-							local v9830 = f10537
+							local modules = f10536
+							local loadModule_eZ = f10537
 
 							f11098 = function()
-								local t2900 = v9829.cache.eZ
+								local t2900 = modules.cache.eZ
 								if not t2900 then
-									t2900 = { c = v9830() }
-									v9829.cache.eZ = t2900
+									t2900 = { c = loadModule_eZ() }
+									modules.cache.eZ = t2900
 								end
 								return t2900.c
 							end
 
 							f10536[f10500] = f11098
-							local v9831 = f10536
+							local modules = f10536
 							local v9832 = v387
 
 							f10537 = function()
-								v9831.al()
-								v9831.aK()
-								v9831.a4()
-								local v9833 = v9831.q()
-								local v9834 = v9831.d()
-								local v9835 = v9831.ah()
+								modules.al()
+								modules.aK()
+								modules.a4()
+								local v9833 = modules.q()
+								local v9834 = modules.d()
+								local v9835 = modules.ah()
 								local t2901 = {}
 
 								function t2901.MaxDoubleJumps(p3745, p3746, p3747)
@@ -240851,29 +240851,29 @@ local function f10149()
 							end
 
 							f10500 = "e_"
-							local v9860 = f10536
-							local v9861 = f10537
+							local modules = f10536
+							local loadModule_e_ = f10537
 
 							f11098 = function()
-								local t2905 = v9860.cache.e_
+								local t2905 = modules.cache.e_
 								if not t2905 then
-									t2905 = { c = v9861() }
-									v9860.cache.e_ = t2905
+									t2905 = { c = loadModule_e_() }
+									modules.cache.e_ = t2905
 								end
 								return t2905.c
 							end
 
 							f10536[f10500] = f11098
-							local v9862 = f10536
+							local modules = f10536
 							local v9863 = rawget3
 							local v9864 = v387
 
 							f10537 = function()
-								v9862.al()
-								v9862.aK()
-								v9862.a4()
-								local v9865 = v9862.q()
-								local v9866 = v9862.dv()
+								modules.al()
+								modules.aK()
+								modules.a4()
+								local v9865 = modules.q()
+								local v9866 = modules.dv()
 								local t2906 = {
 									_sliding_spring = 0,
 									_sprinting_spring = 0,
@@ -241048,25 +241048,25 @@ local function f10149()
 							end
 
 							f10500 = "e0"
-							local v9883 = f10536
-							local v9884 = f10537
+							local modules = f10536
+							local loadModule_e0 = f10537
 
 							f11098 = function()
-								local t2909 = v9883.cache.e0
+								local t2909 = modules.cache.e0
 								if not t2909 then
-									t2909 = { c = v9884() }
-									v9883.cache.e0 = t2909
+									t2909 = { c = loadModule_e0() }
+									modules.cache.e0 = t2909
 								end
 								return t2909.c
 							end
 
 							f10536[f10500] = f11098
-							local v9885 = f10536
+							local modules = f10536
 							local v9886 = rawget3
 
 							f10537 = function()
-								v9885.eQ()
-								v9885.a4()
+								modules.eQ()
+								modules.a4()
 								local GunInputFlag = {}
 								GunInputFlag.__index = GunInputFlag
 
@@ -241111,25 +241111,25 @@ local function f10149()
 							end
 
 							f10500 = "e1"
-							local v9887 = f10536
-							local v9888 = f10537
+							local modules = f10536
+							local loadModule_e1 = f10537
 
 							f11098 = function()
-								local t2912 = v9887.cache.e1
+								local t2912 = modules.cache.e1
 								if not t2912 then
-									t2912 = { c = v9888() }
-									v9887.cache.e1 = t2912
+									t2912 = { c = loadModule_e1() }
+									modules.cache.e1 = t2912
 								end
 								return t2912.c
 							end
 
 							f10536[f10500] = f11098
-							local v9889 = f10536
+							local modules = f10536
 							local v9890 = rawget3
 
 							f10537 = function()
-								local Result = v9889.b()
-								local ClientItem = v9889.ao().ClientItem
+								local Result = modules.b()
+								local ClientItem = modules.ao().ClientItem
 								local RecoilModifier = {}
 								RecoilModifier.__index = RecoilModifier
 
@@ -241316,37 +241316,37 @@ local function f10149()
 							end
 
 							f10500 = "e2"
-							local v9913 = f10536
-							local v9914 = f10537
+							local modules = f10536
+							local loadModule_e2 = f10537
 
 							f11098 = function()
-								local t2921 = v9913.cache.e2
+								local t2921 = modules.cache.e2
 								if not t2921 then
-									t2921 = { c = v9914() }
-									v9913.cache.e2 = t2921
+									t2921 = { c = loadModule_e2() }
+									modules.cache.e2 = t2921
 								end
 								return t2921.c
 							end
 
 							f10536[f10500] = f11098
-							local v9915 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local AnimationDisabler = v9915.eV()
-								local CameraShakeDisabler = v9915.eW()
-								local CameraSwayDisabler = v9915.eX()
-								v9915.bV()
-								local Config = v9915.y()
-								local EquipCooldownModifier = v9915.eY()
-								local ErrorReporter = v9915.ac()
-								local GrenadeFuse = v9915.eZ()
-								local InfoModifier = v9915.e_()
-								v9915.eQ()
-								local MotionDisabler = v9915.e0()
-								local NoSpread = v9915.e1()
-								v9915.a4()
-								local RecoilModifier = v9915.e2()
-								local Trove = v9915.q()
+								local AnimationDisabler = modules.eV()
+								local CameraShakeDisabler = modules.eW()
+								local CameraSwayDisabler = modules.eX()
+								modules.bV()
+								local Config = modules.y()
+								local EquipCooldownModifier = modules.eY()
+								local ErrorReporter = modules.ac()
+								local GrenadeFuse = modules.eZ()
+								local InfoModifier = modules.e_()
+								modules.eQ()
+								local MotionDisabler = modules.e0()
+								local NoSpread = modules.e1()
+								modules.a4()
+								local RecoilModifier = modules.e2()
+								local Trove = modules.q()
 								local ItemModifiers = {}
 								ItemModifiers.__index = ItemModifiers
 
@@ -241685,29 +241685,29 @@ local function f10149()
 							end
 
 							f10500 = "e3"
-							local v9936 = f10536
-							local v9937 = f10537
+							local modules = f10536
+							local loadModule_e3 = f10537
 
 							f11098 = function()
-								local t2924 = v9936.cache.e3
+								local t2924 = modules.cache.e3
 								if not t2924 then
-									t2924 = { c = v9937() }
-									v9936.cache.e3 = t2924
+									t2924 = { c = loadModule_e3() }
+									modules.cache.e3 = t2924
 								end
 								return t2924.c
 							end
 
 							f10536[f10500] = f11098
-							local v9938 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v9938.y()
-								v9938.ak()
-								local Result = v9938.b()
-								local Trove = v9938.q()
-								local getField = v9938.ah()
-								local MechanicsController = v9938.ao().MechanicsController
-								local Keybinds = v9938.eL()
+								local Config = modules.y()
+								modules.ak()
+								local Result = modules.b()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local MechanicsController = modules.ao().MechanicsController
+								local Keybinds = modules.eL()
 								local JumpPower = {}
 								JumpPower.__index = JumpPower
 
@@ -241876,14 +241876,14 @@ local function f10149()
 							end
 
 							f10500 = "e4"
-							local v9962 = f10536
-							local v9963 = f10537
+							local modules = f10536
+							local loadModule_e4 = f10537
 
 							f11098 = function()
-								local t2930 = v9962.cache.e4
+								local t2930 = modules.cache.e4
 								if not t2930 then
-									t2930 = { c = v9963() }
-									v9962.cache.e4 = t2930
+									t2930 = { c = loadModule_e4() }
+									modules.cache.e4 = t2930
 								end
 								return t2930.c
 							end
@@ -242001,26 +242001,26 @@ local function f10149()
 							end
 
 							f10500 = "e5"
-							local v9972 = f10536
-							local v9973 = f10537
+							local modules = f10536
+							local loadModule_e5 = f10537
 
 							f11098 = function()
-								local t2937 = v9972.cache.e5
+								local t2937 = modules.cache.e5
 								if not t2937 then
-									t2937 = { c = v9973() }
-									v9972.cache.e5 = t2937
+									t2937 = { c = loadModule_e5() }
+									modules.cache.e5 = t2937
 								end
 								return t2937.c
 							end
 
 							f10536[f10500] = f11098
-							local v9974 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v9974.aC()
-								local settings = v9974.y()
-								v9974.p()
-								local PlayerModule = v9974.ao().PlayerModule
+								modules.aC()
+								local settings = modules.y()
+								modules.p()
+								local PlayerModule = modules.ao().PlayerModule
 								local UserInputService = cloneref(game:GetService("UserInputService"))
 
 								local function flatten(vector)
@@ -242103,26 +242103,26 @@ local function f10149()
 							end
 
 							f10500 = "e6"
-							local v9979 = f10536
-							local v9980 = f10537
+							local modules = f10536
+							local loadModule_e6 = f10537
 
 							f11098 = function()
-								local t2941 = v9979.cache.e6
+								local t2941 = modules.cache.e6
 								if not t2941 then
-									t2941 = { c = v9980() }
-									v9979.cache.e6 = t2941
+									t2941 = { c = loadModule_e6() }
+									modules.cache.e6 = t2941
 								end
 								return t2941.c
 							end
 
 							f10536[f10500] = f11098
-							local v9981 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v9981.aC()
-								local Config = v9981.y()
-								v9981.p()
-								local PlayerModule = v9981.ao().PlayerModule
+								modules.aC()
+								local Config = modules.y()
+								modules.p()
+								local PlayerModule = modules.ao().PlayerModule
 								local UserInputService = cloneref(game:GetService("UserInputService"))
 								local getMoveDirection = (function(c0,c1)
 									return (function(T)
@@ -242241,25 +242241,25 @@ local function f10149()
 							end
 
 							f10500 = "e7"
-							local v9987 = f10536
-							local v9988 = f10537
+							local modules = f10536
+							local loadModule_e7 = f10537
 
 							f11098 = function()
-								local t2946 = v9987.cache.e7
+								local t2946 = modules.cache.e7
 								if not t2946 then
-									t2946 = { c = v9988() }
-									v9987.cache.e7 = t2946
+									t2946 = { c = loadModule_e7() }
+									modules.cache.e7 = t2946
 								end
 								return t2946.c
 							end
 
 							f10536[f10500] = f11098
-							local v9989 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v9989.aC()
-								local Keybinds = v9989.eL()
-								local Trove = v9989.q()
+								modules.aC()
+								local Keybinds = modules.eL()
+								local Trove = modules.q()
 								local Noclip = {}
 								Noclip.__index = Noclip
 
@@ -242386,27 +242386,27 @@ local function f10149()
 							end
 
 							f10500 = "e8"
-							local v9996 = f10536
-							local v9997 = f10537
+							local modules = f10536
+							local loadModule_e8 = f10537
 
 							f11098 = function()
-								local t2949 = v9996.cache.e8
+								local t2949 = modules.cache.e8
 								if not t2949 then
-									t2949 = { c = v9997() }
-									v9996.cache.e8 = t2949
+									t2949 = { c = loadModule_e8() }
+									modules.cache.e8 = t2949
 								end
 								return t2949.c
 							end
 
 							f10536[f10500] = f11098
-							local v9998 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local AutoStrafe = v9998.e6()
-								local Flight = v9998.e7()
-								local Noclip = v9998.e8()
-								v9998.a4()
-								local Trove = v9998.q()
+								local AutoStrafe = modules.e6()
+								local Flight = modules.e7()
+								local Noclip = modules.e8()
+								modules.a4()
+								local Trove = modules.q()
 								local PhysicsController = {}
 								PhysicsController.__index = PhysicsController
 
@@ -242414,8 +242414,8 @@ local function f10149()
 									local self_ = "movement.physics_controller"
 									local trove = Trove.new(self_)
 									self_ = { _trove = trove }
-									local modules = { initialized = false }
-									self_._modules = modules
+									local modules2 = { initialized = false }
+									self_._modules = modules2
 									self_ = setmetatable(self_, PhysicsController)
 
 									local function onContext(context, contextTrove)
@@ -242423,8 +242423,8 @@ local function f10149()
 										local autoStrafe = AutoStrafe.new(character)
 										local flight = contextTrove:Add(Flight.new(character))
 										local noclip = contextTrove:Add(Noclip.new(character))
-										local modules2 = { initialized = true, autoStrafe = autoStrafe, flight = flight, noclip = noclip }
-										self_._modules = modules2
+										local modules2_2 = { initialized = true, autoStrafe = autoStrafe, flight = flight, noclip = noclip }
+										self_._modules = modules2_2
 									end
 
 									trove:Add(playerContext:ObserveContext("physics_controller", onContext))
@@ -242439,18 +242439,18 @@ local function f10149()
 								end
 
 								function PhysicsController.PreSimulationUpdate(self_, dt)
-									local modules = self_._modules
-									if modules.initialized then
-										modules.autoStrafe:Update(dt)
-										modules.flight:Update()
-										modules.noclip:Update()
+									local modules2 = self_._modules
+									if modules2.initialized then
+										modules2.autoStrafe:Update(dt)
+										modules2.flight:Update()
+										modules2.noclip:Update()
 									end
 								end
 
 								function PhysicsController.PreCameraRenderUpdate(self_)
-									local modules = self_._modules
-									if modules.initialized then
-										modules.flight:BlankVelocity()
+									local modules2 = self_._modules
+									if modules2.initialized then
+										modules2.flight:BlankVelocity()
 									end
 								end
 
@@ -242462,23 +242462,23 @@ local function f10149()
 							end
 
 							f10500 = "e9"
-							local v10008 = f10536
-							local v10009 = f10537
+							local modules = f10536
+							local loadModule_e9 = f10537
 
 							f11098 = function()
-								local t2954 = v10008.cache.e9
+								local t2954 = modules.cache.e9
 								if not t2954 then
-									t2954 = { c = v10009() }
-									v10008.cache.e9 = t2954
+									t2954 = { c = loadModule_e9() }
+									modules.cache.e9 = t2954
 								end
 								return t2954.c
 							end
 
 							f10536[f10500] = f11098
-							local v10010 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Trove = v10010.q()
+								local Trove = modules.q()
 								local GuardedInstance = {}
 								GuardedInstance.__index = GuardedInstance
 
@@ -242570,25 +242570,25 @@ local function f10149()
 							end
 
 							f10500 = "fa"
-							local v10017 = f10536
-							local v10018 = f10537
+							local modules = f10536
+							local loadModule_fa = f10537
 
 							f11098 = function()
-								local t2957 = v10017.cache.fa
+								local t2957 = modules.cache.fa
 								if not t2957 then
-									t2957 = { c = v10018() }
-									v10017.cache.fa = t2957
+									t2957 = { c = loadModule_fa() }
+									modules.cache.fa = t2957
 								end
 								return t2957.c
 							end
 
 							f10536[f10500] = f11098
-							local v10019 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10019.y()
-								local PropertyGuard = v10019.fa()
-								local Trove = v10019.q()
+								local Config = modules.y()
+								local PropertyGuard = modules.fa()
+								local Trove = modules.q()
 								local FovChanger = {}
 								FovChanger.__index = FovChanger
 
@@ -242666,24 +242666,24 @@ local function f10149()
 							end
 
 							f10500 = "fb"
-							local v10024 = f10536
-							local v10025 = f10537
+							local modules = f10536
+							local loadModule_fb = f10537
 
 							f11098 = function()
-								local t2960 = v10024.cache.fb
+								local t2960 = modules.cache.fb
 								if not t2960 then
-									t2960 = { c = v10025() }
-									v10024.cache.fb = t2960
+									t2960 = { c = loadModule_fb() }
+									modules.cache.fb = t2960
 								end
 								return t2960.c
 							end
 
 							f10536[f10500] = f11098
-							local v10026 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								local StretchedResolution = {}
-								local Config = v10026.y()
+								local Config = modules.y()
 
 								function StretchedResolution.GetMatrix()
 									local config = Config.data.StretchedResolution
@@ -242710,31 +242710,31 @@ local function f10149()
 							end
 
 							f10500 = "fc"
-							local v10029 = f10536
-							local v10030 = f10537
+							local modules = f10536
+							local loadModule_fc = f10537
 
 							f11098 = function()
-								local t2962 = v10029.cache.fc
+								local t2962 = modules.cache.fc
 								if not t2962 then
-									t2962 = { c = v10030() }
-									v10029.cache.fc = t2962
+									t2962 = { c = loadModule_fc() }
+									modules.cache.fc = t2962
 								end
 								return t2962.c
 							end
 
 							f10536[f10500] = f11098
-							local v10031 = f10536
+							local modules = f10536
 							local v10032 = rawget3
 
 							f10537 = function()
-								local Config = v10031.y()
-								local Keybinds = v10031.eL()
-								v10031.bS()
-								v10031.a4()
-								v10031.t()
-								local Trove = v10031.q()
-								v10031.bm()
-								local CameraController = v10031.ao().CameraController
+								local Config = modules.y()
+								local Keybinds = modules.eL()
+								modules.bS()
+								modules.a4()
+								modules.t()
+								local Trove = modules.q()
+								modules.bm()
+								local CameraController = modules.ao().CameraController
 
 								local function isFirstPerson()
 									local firstPerson
@@ -242831,30 +242831,30 @@ local function f10149()
 							end
 
 							f10500 = "fd"
-							local v10038 = f10536
-							local v10039 = f10537
+							local modules = f10536
+							local loadModule_fd = f10537
 
 							f11098 = function()
-								local t2966 = v10038.cache.fd
+								local t2966 = modules.cache.fd
 								if not t2966 then
-									t2966 = { c = v10039() }
-									v10038.cache.fd = t2966
+									t2966 = { c = loadModule_fd() }
+									modules.cache.fd = t2966
 								end
 								return t2966.c
 							end
 
 							f10536[f10500] = f11098
-							local v10040 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local FovChanger = v10040.fb()
-								v10040.bS()
-								v10040.a4()
-								local Signal = v10040.t()
-								local CameraShake = v10040.fc()
-								local ThirdPerson = v10040.fd()
-								local Trove = v10040.q()
-								v10040.bm()
+								local FovChanger = modules.fb()
+								modules.bS()
+								modules.a4()
+								local Signal = modules.t()
+								local CameraShake = modules.fc()
+								local ThirdPerson = modules.fd()
+								local Trove = modules.q()
+								modules.bm()
 								local RunService = cloneref(game:GetService("RunService"))
 								local HttpService = cloneref(game:GetService("HttpService"))
 								local PlayerCamera = {}
@@ -242925,24 +242925,24 @@ local function f10149()
 							end
 
 							f10500 = "fe"
-							local v10053 = f10536
-							local v10054 = f10537
+							local modules = f10536
+							local loadModule_fe = f10537
 
 							f11098 = function()
-								local t2969 = v10053.cache.fe
+								local t2969 = modules.cache.fe
 								if not t2969 then
-									t2969 = { c = v10054() }
-									v10053.cache.fe = t2969
+									t2969 = { c = loadModule_fe() }
+									modules.cache.fe = t2969
 								end
 								return t2969.c
 							end
 
 							f10536[f10500] = f11098
-							local v10055 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Materials = v10055.l()
-								local Trove = v10055.q()
+								local Materials = modules.l()
+								local Trove = modules.q()
 								local Cham = {}
 								Cham.__index = Cham
 
@@ -243018,25 +243018,25 @@ local function f10149()
 							end
 
 							f10500 = "ff"
-							local v10064 = f10536
-							local v10065 = f10537
+							local modules = f10536
+							local loadModule_ff = f10537
 
 							f11098 = function()
-								local t2973 = v10064.cache.ff
+								local t2973 = modules.cache.ff
 								if not t2973 then
-									t2973 = { c = v10065() }
-									v10064.cache.ff = t2973
+									t2973 = { c = loadModule_ff() }
+									modules.cache.ff = t2973
 								end
 								return t2973.c
 							end
 
 							f10536[f10500] = f11098
-							local v10066 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Spring = v10066.aw()
-								v10066.q()
-								local DisplayOrders = v10066.I()
+								local Spring = modules.aw()
+								modules.q()
+								local DisplayOrders = modules.I()
 								local screenGui = Instance.new("ScreenGui")
 								screenGui.IgnoreGuiInset = true
 								screenGui.ResetOnSpawn = false
@@ -243331,14 +243331,14 @@ local function f10149()
 							end
 
 							f10500 = "fg"
-							local v10094 = f10536
-							local v10095 = f10537
+							local modules = f10536
+							local loadModule_fg = f10537
 
 							f11098 = function()
-								local t2985 = v10094.cache.fg
+								local t2985 = modules.cache.fg
 								if not t2985 then
-									t2985 = { c = v10095() }
-									v10094.cache.fg = t2985
+									t2985 = { c = loadModule_fg() }
+									modules.cache.fg = t2985
 								end
 								return t2985.c
 							end
@@ -243362,14 +243362,14 @@ local function f10149()
 							end
 
 							f10500 = "fh"
-							local v10098 = f10536
-							local v10099 = f10537
+							local modules = f10536
+							local loadModule_fh = f10537
 
 							f11098 = function()
-								local t2986 = v10098.cache.fh
+								local t2986 = modules.cache.fh
 								if not t2986 then
-									t2986 = { c = v10099() }
-									v10098.cache.fh = t2986
+									t2986 = { c = loadModule_fh() }
+									modules.cache.fh = t2986
 								end
 								return t2986.c
 							end
@@ -243394,34 +243394,34 @@ local function f10149()
 							end
 
 							f10500 = "fi"
-							local v10103 = f10536
-							local v10104 = f10537
+							local modules = f10536
+							local loadModule_fi = f10537
 
 							f11098 = function()
-								local t2987 = v10103.cache.fi
+								local t2987 = modules.cache.fi
 								if not t2987 then
-									t2987 = { c = v10104() }
-									v10103.cache.fi = t2987
+									t2987 = { c = loadModule_fi() }
+									modules.cache.fi = t2987
 								end
 								return t2987.c
 							end
 
 							f10536[f10500] = f11098
-							local v10105 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local EliminationChams = v10105.ff()
-								local settings = v10105.y()
-								v10105.ef()
-								v10105.bl()
-								local ErrorReporter = v10105.ac()
-								local Notifier = v10105.O()
-								v10105.a4()
-								v10105.bD()
-								local KillFlash = v10105.fg()
-								local Trove = v10105.q()
-								local playSound = v10105.fh()
-								local getPlayerNames = v10105.fi()
+								local EliminationChams = modules.ff()
+								local settings = modules.y()
+								modules.ef()
+								modules.bl()
+								local ErrorReporter = modules.ac()
+								local Notifier = modules.O()
+								modules.a4()
+								modules.bD()
+								local KillFlash = modules.fg()
+								local Trove = modules.q()
+								local playSound = modules.fh()
+								local getPlayerNames = modules.fi()
 								local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local PlayerElimination = {}
 								PlayerElimination.__index = PlayerElimination
@@ -243583,26 +243583,26 @@ local function f10149()
 							end
 
 							f10500 = "fj"
-							local v10123 = f10536
-							local v10124 = f10537
+							local modules = f10536
+							local loadModule_fj = f10537
 
 							f11098 = function()
-								local t2992 = v10123.cache.fj
+								local t2992 = modules.cache.fj
 								if not t2992 then
-									t2992 = { c = v10124() }
-									v10123.cache.fj = t2992
+									t2992 = { c = loadModule_fj() }
+									modules.cache.fj = t2992
 								end
 								return t2992.c
 							end
 
 							f10536[f10500] = f11098
-							local v10125 = f10536
+							local modules = f10536
 							local v10126 = rawget3
 							local v10127 = v387
 
 							f10537 = function()
-								local Result = v10125.b()
-								local ClientViewModel = v10125.ao().ClientViewModel
+								local Result = modules.b()
+								local ClientViewModel = modules.ao().ClientViewModel
 								local NoGameHitsound = {}
 								NoGameHitsound.__index = NoGameHitsound
 
@@ -243659,34 +243659,34 @@ local function f10149()
 							end
 
 							f10500 = "fk"
-							local v10130 = f10536
-							local v10131 = f10537
+							local modules = f10536
+							local loadModule_fk = f10537
 
 							f11098 = function()
-								local t2995 = v10130.cache.fk
+								local t2995 = modules.cache.fk
 								if not t2995 then
-									t2995 = { c = v10131() }
-									v10130.cache.fk = t2995
+									t2995 = { c = loadModule_fk() }
+									modules.cache.fk = t2995
 								end
 								return t2995.c
 							end
 
 							f10536[f10500] = f11098
-							local v10132 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ChamsEffect = v10132.ff()
-								local settings = v10132.y()
-								v10132.ef()
-								local ErrorReporter = v10132.ac()
-								local NoGameHitsound = v10132.fk()
-								local notifications = v10132.O()
-								v10132.a4()
-								v10132.bD()
-								local HitFlash = v10132.fg()
-								local Trove = v10132.q()
-								local playSound = v10132.fh()
-								local getPlayerNames = v10132.fi()
+								local ChamsEffect = modules.ff()
+								local settings = modules.y()
+								modules.ef()
+								local ErrorReporter = modules.ac()
+								local NoGameHitsound = modules.fk()
+								local notifications = modules.O()
+								modules.a4()
+								modules.bD()
+								local HitFlash = modules.fg()
+								local Trove = modules.q()
+								local playSound = modules.fh()
+								local getPlayerNames = modules.fi()
 								local PlayerHit = {}
 								PlayerHit.__index = PlayerHit
 
@@ -243890,28 +243890,28 @@ local function f10149()
 							end
 
 							f10500 = "fl"
-							local v10157 = f10536
-							local v10158 = f10537
+							local modules = f10536
+							local loadModule_fl = f10537
 
 							f11098 = function()
-								local t3001 = v10157.cache.fl
+								local t3001 = modules.cache.fl
 								if not t3001 then
-									t3001 = { c = v10158() }
-									v10157.cache.fl = t3001
+									t3001 = { c = loadModule_fl() }
+									modules.cache.fl = t3001
 								end
 								return t3001.c
 							end
 
 							f10536[f10500] = f11098
-							local v10159 = f10536
+							local modules = f10536
 							local v10160 = rawget3
 
 							f10537 = function()
-								local Config = v10159.y()
-								v10159.a4()
-								v10159.bD()
-								local ItemInterfaceOther2 = v10159.ao().ItemInterfaceOther
-								v10159.q()
+								local Config = modules.y()
+								modules.a4()
+								modules.bD()
+								local ItemInterfaceOther2 = modules.ao().ItemInterfaceOther
+								modules.q()
 
 								local function bindNoAdsVignette(trove)
 									local applied = ItemInterfaceOther2
@@ -243954,28 +243954,28 @@ local function f10149()
 							end
 
 							f10500 = "fm"
-							local v10164 = f10536
-							local v10165 = f10537
+							local modules = f10536
+							local loadModule_fm = f10537
 
 							f11098 = function()
-								local t3002 = v10164.cache.fm
+								local t3002 = modules.cache.fm
 								if not t3002 then
-									t3002 = { c = v10165() }
-									v10164.cache.fm = t3002
+									t3002 = { c = loadModule_fm() }
+									modules.cache.fm = t3002
 								end
 								return t3002.c
 							end
 
 							f10536[f10500] = f11098
-							local v10166 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local settings = v10166.y()
-								local EnumCodec = v10166.aU()
-								v10166.a4()
-								v10166.bD()
-								v10166.q()
-								local getField = v10166.ah()
+								local settings = modules.y()
+								local EnumCodec = modules.aU()
+								modules.a4()
+								modules.bD()
+								modules.q()
+								local getField = modules.ah()
 
 								local function bindNoBurnEffect(trove, playerContext, replicator)
 									local binding = replicator:Reserve((table.create(1)))
@@ -244015,27 +244015,27 @@ local function f10149()
 							end
 
 							f10500 = "fn"
-							local v10170 = f10536
-							local v10171 = f10537
+							local modules = f10536
+							local loadModule_fn = f10537
 
 							f11098 = function()
-								local t3003 = v10170.cache.fn
+								local t3003 = modules.cache.fn
 								if not t3003 then
-									t3003 = { c = v10171() }
-									v10170.cache.fn = t3003
+									t3003 = { c = loadModule_fn() }
+									modules.cache.fn = t3003
 								end
 								return t3003.c
 							end
 
 							f10536[f10500] = f11098
-							local v10172 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local settings = v10172.y()
-								local remoteCodec = v10172.aU()
-								v10172.a4()
-								v10172.bD()
-								v10172.q()
+								local settings = modules.y()
+								local remoteCodec = modules.aU()
+								modules.a4()
+								modules.bD()
+								modules.q()
 
 								local function setupNoFlashbang_proto(trove, remoteHooks)
 									local hook = remoteHooks:Reserve((table.create(1)))
@@ -244064,31 +244064,31 @@ local function f10149()
 							end
 
 							f10500 = "fo"
-							local v10175 = f10536
-							local v10176 = f10537
+							local modules = f10536
+							local loadModule_fo = f10537
 
 							f11098 = function()
-								local t3004 = v10175.cache.fo
+								local t3004 = modules.cache.fo
 								if not t3004 then
-									t3004 = { c = v10176() }
-									v10175.cache.fo = t3004
+									t3004 = { c = loadModule_fo() }
+									modules.cache.fo = t3004
 								end
 								return t3004.c
 							end
 
 							f10536[f10500] = f11098
-							local v10177 = f10536
+							local modules = f10536
 							local v10178 = rawget3
 							local v10179 = v387
 
 							f10537 = function()
-								local settings = v10177.y()
-								v10177.ac()
-								local Result = v10177.b()
-								v10177.q()
+								local settings = modules.y()
+								modules.ac()
+								local Result = modules.b()
+								modules.q()
 								local function noop()
 								end
-								local Gun2 = v10177.ao().Gun
+								local Gun2 = modules.ao().Gun
 								local dummyKey = "_Tracers\0NoGunTracers"
 
 								local function setupNoGunTracers_proto(trove, reporter)
@@ -244157,25 +244157,25 @@ local function f10149()
 							end
 
 							f10500 = "fp"
-							local v10187 = f10536
-							local v10188 = f10537
+							local modules = f10536
+							local loadModule_fp = f10537
 
 							f11098 = function()
-								local t3006 = v10187.cache.fp
+								local t3006 = modules.cache.fp
 								if not t3006 then
-									t3006 = { c = v10188() }
-									v10187.cache.fp = t3006
+									t3006 = { c = loadModule_fp() }
+									modules.cache.fp = t3006
 								end
 								return t3006.c
 							end
 
 							f10536[f10500] = f11098
-							local v10189 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10189.y()
-								v10189.d9()
-								v10189.q()
+								local Config = modules.y()
+								modules.d9()
+								modules.q()
 
 								local function bind(trove, hud)
 									local function onChanged(enabled)
@@ -244205,28 +244205,28 @@ local function f10149()
 							end
 
 							f10500 = "fq"
-							local v10191 = f10536
-							local v10192 = f10537
+							local modules = f10536
+							local loadModule_fq = f10537
 
 							f11098 = function()
-								local t3007 = v10191.cache.fq
+								local t3007 = modules.cache.fq
 								if not t3007 then
-									t3007 = { c = v10192() }
-									v10191.cache.fq = t3007
+									t3007 = { c = loadModule_fq() }
+									modules.cache.fq = t3007
 								end
 								return t3007.c
 							end
 
 							f10536[f10500] = f11098
-							local v10193 = f10536
+							local modules = f10536
 							local v10194 = rawget3
 
 							f10537 = function()
-								local Config = v10193.y()
-								v10193.ac()
-								local Result = v10193.b()
-								v10193.q()
-								local ClientViewModel = v10193.ao().ClientViewModel
+								local Config = modules.y()
+								modules.ac()
+								local Result = modules.b()
+								modules.q()
+								local ClientViewModel = modules.ao().ClientViewModel
 								local fakeParticles = {}
 								function fakeParticles.PlayParticles()
 								end
@@ -244282,27 +244282,27 @@ local function f10149()
 							end
 
 							f10500 = "fr"
-							local v10199 = f10536
-							local v10200 = f10537
+							local modules = f10536
+							local loadModule_fr = f10537
 
 							f11098 = function()
-								local t3010 = v10199.cache.fr
+								local t3010 = modules.cache.fr
 								if not t3010 then
-									t3010 = { c = v10200() }
-									v10199.cache.fr = t3010
+									t3010 = { c = loadModule_fr() }
+									modules.cache.fr = t3010
 								end
 								return t3010.c
 							end
 
 							f10536[f10500] = f11098
-							local v10201 = f10536
+							local modules = f10536
 							local v10202 = rawget3
 							local v10203 = v387
 
 							f10537 = function()
-								v10201.al()
-								local Result = v10201.b()
-								local Scope2 = v10201.ao().Scope
+								modules.al()
+								local Result = modules.b()
+								local Scope2 = modules.ao().Scope
 								local ScopeOverlay = {}
 								ScopeOverlay.__index = ScopeOverlay
 
@@ -244382,25 +244382,25 @@ local function f10149()
 							end
 
 							f10500 = "fs"
-							local v10209 = f10536
-							local v10210 = f10537
+							local modules = f10536
+							local loadModule_fs = f10537
 
 							f11098 = function()
-								local t3014 = v10209.cache.fs
+								local t3014 = modules.cache.fs
 								if not t3014 then
-									t3014 = { c = v10210() }
-									v10209.cache.fs = t3014
+									t3014 = { c = loadModule_fs() }
+									modules.cache.fs = t3014
 								end
 								return t3014.c
 							end
 
 							f10536[f10500] = f11098
-							local v10211 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10211.y()
-								local ScopeHook = v10211.fs()
-								v10211.q()
+								local Config = modules.y()
+								local ScopeHook = modules.fs()
+								modules.q()
 
 								local function bind(trove)
 									local hook = trove:Add(ScopeHook.new())
@@ -244430,34 +244430,34 @@ local function f10149()
 							end
 
 							f10500 = "ft"
-							local v10215 = f10536
-							local v10216 = f10537
+							local modules = f10536
+							local loadModule_ft = f10537
 
 							f11098 = function()
-								local t3015 = v10215.cache.ft
+								local t3015 = modules.cache.ft
 								if not t3015 then
-									t3015 = { c = v10216() }
-									v10215.cache.ft = t3015
+									t3015 = { c = loadModule_ft() }
+									modules.cache.ft = t3015
 								end
 								return t3015.c
 							end
 
 							f10536[f10500] = f11098
-							local v10217 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ErrorReporter = v10217.ac()
-								v10217.d9()
-								v10217.a4()
-								v10217.bD()
-								local Trove = v10217.q()
-								local removeKillEffects = v10217.fm()
-								local removeCameraEffects = v10217.fn()
-								local removeScreenEffects = v10217.fo()
-								local removeVignette = v10217.fp()
-								local removeMisc = v10217.fq()
-								local removeOverlays = v10217.fr()
-								local removeParticles = v10217.ft()
+								local ErrorReporter = modules.ac()
+								modules.d9()
+								modules.a4()
+								modules.bD()
+								local Trove = modules.q()
+								local removeKillEffects = modules.fm()
+								local removeCameraEffects = modules.fn()
+								local removeScreenEffects = modules.fo()
+								local removeVignette = modules.fp()
+								local removeMisc = modules.fq()
+								local removeOverlays = modules.fr()
+								local removeParticles = modules.ft()
 								local Removables = {}
 								Removables.__index = Removables
 
@@ -244483,38 +244483,38 @@ local function f10149()
 							end
 
 							f10500 = "fu"
-							local v10229 = f10536
-							local v10230 = f10537
+							local modules = f10536
+							local loadModule_fu = f10537
 
 							f11098 = function()
-								local t3018 = v10229.cache.fu
+								local t3018 = modules.cache.fu
 								if not t3018 then
-									t3018 = { c = v10230() }
-									v10229.cache.fu = t3018
+									t3018 = { c = loadModule_fu() }
+									modules.cache.fu = t3018
 								end
 								return t3018.c
 							end
 
 							f10536[f10500] = f11098
-							local v10231 = f10536
+							local modules = f10536
 							local v10232 = rawget3
 
 							f10537 = function()
-								local TargetMeasurement = v10231.aX()
-								local settings = v10231.y()
-								v10231.aB()
-								v10231.eQ()
-								local KeybindBridge = v10231.eL()
-								local FovMeasurement = v10231.bb()
-								local Notifier = v10231.O()
-								v10231.a4()
-								v10231.b()
-								local Acquisition = v10231.bk()
-								v10231.bq()
-								v10231.ay()
-								local Trove = v10231.q()
-								v10231.C()
-								local screenTarget = v10231.bi()
+								local TargetMeasurement = modules.aX()
+								local settings = modules.y()
+								modules.aB()
+								modules.eQ()
+								local KeybindBridge = modules.eL()
+								local FovMeasurement = modules.bb()
+								local Notifier = modules.O()
+								modules.a4()
+								modules.b()
+								local Acquisition = modules.bk()
+								modules.bq()
+								modules.ay()
+								local Trove = modules.q()
+								modules.C()
+								local screenTarget = modules.bi()
 
 								local function notifyWarning(err)
 									local notifier = Notifier.Get()
@@ -244641,14 +244641,14 @@ local function f10149()
 							end
 
 							f10500 = "fv"
-							local v10244 = f10536
-							local v10245 = f10537
+							local modules = f10536
+							local loadModule_fv = f10537
 
 							f11098 = function()
-								local t3026 = v10244.cache.fv
+								local t3026 = modules.cache.fv
 								if not t3026 then
-									t3026 = { c = v10245() }
-									v10244.cache.fv = t3026
+									t3026 = { c = loadModule_fv() }
+									modules.cache.fv = t3026
 								end
 								return t3026.c
 							end
@@ -244660,23 +244660,23 @@ local function f10149()
 							end
 
 							f10500 = "fw"
-							local v10246 = f10536
-							local v10247 = f10537
+							local modules = f10536
+							local loadModule_fw = f10537
 
 							f11098 = function()
-								local t3027 = v10246.cache.fw
+								local t3027 = modules.cache.fw
 								if not t3027 then
-									t3027 = { c = v10247() }
-									v10246.cache.fw = t3027
+									t3027 = { c = loadModule_fw() }
+									modules.cache.fw = t3027
 								end
 								return t3027.c
 							end
 
 							f10536[f10500] = f11098
-							local v10248 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v10248.fw()
+								modules.fw()
 								local Skyboxes = {}
 								local greenHaze = {
 									SkyboxUp = "rbxassetid://160193458",
@@ -245667,28 +245667,28 @@ local function f10149()
 							end
 
 							f10500 = "fx"
-							local v10249 = f10536
-							local v10250 = f10537
+							local modules = f10536
+							local loadModule_fx = f10537
 
 							f11098 = function()
-								local t3101 = v10249.cache.fx
+								local t3101 = modules.cache.fx
 								if not t3101 then
-									t3101 = { c = v10250() }
-									v10249.cache.fx = t3101
+									t3101 = { c = loadModule_fx() }
+									modules.cache.fx = t3101
 								end
 								return t3101.c
 							end
 
 							f10536[f10500] = f11098
-							local v10251 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ConfigManager = v10251.f()
-								local defaultSkyboxes = v10251.fx()
-								local ErrorReporter = v10251.ac()
-								local Result = v10251.b()
-								local Signal = v10251.t()
-								v10251.fw()
+								local ConfigManager = modules.f()
+								local defaultSkyboxes = modules.fx()
+								local ErrorReporter = modules.ac()
+								local Result = modules.b()
+								local Signal = modules.t()
+								modules.fw()
 								local saveFolder = "kiciahook/rivals_v3"
 								local fileName = "skyboxes.json"
 								local filePath = string.format("%s/%s", tostring(saveFolder), tostring(fileName))
@@ -245927,26 +245927,26 @@ local function f10149()
 							end
 
 							f10500 = "fy"
-							local v10274 = f10536
-							local v10275 = f10537
+							local modules = f10536
+							local loadModule_fy = f10537
 
 							f11098 = function()
-								local t3111 = v10274.cache.fy
+								local t3111 = modules.cache.fy
 								if not t3111 then
-									t3111 = { c = v10275() }
-									v10274.cache.fy = t3111
+									t3111 = { c = loadModule_fy() }
+									modules.cache.fy = t3111
 								end
 								return t3111.c
 							end
 
 							f10536[f10500] = f11098
-							local v10276 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10276.y()
-								v10276.p()
-								v10276.aT()
-								local Trove = v10276.q()
+								local Config = modules.y()
+								modules.p()
+								modules.aT()
+								local Trove = modules.q()
 								local Players = cloneref(game:GetService("Players"))
 								local Workspace = cloneref(game:GetService("Workspace"))
 								local LocalPlayer = Players.LocalPlayer
@@ -246436,29 +246436,29 @@ local function f10149()
 							end
 
 							f10500 = "fz"
-							local v10329 = f10536
-							local v10330 = f10537
+							local modules = f10536
+							local loadModule_fz = f10537
 
 							f11098 = function()
-								local t3127 = v10329.cache.fz
+								local t3127 = modules.cache.fz
 								if not t3127 then
-									t3127 = { c = v10330() }
-									v10329.cache.fz = t3127
+									t3127 = { c = loadModule_fz() }
+									modules.cache.fz = t3127
 								end
 								return t3127.c
 							end
 
 							f10536[f10500] = f11098
-							local v10331 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local remoteCodec = v10331.aU()
-								local ErrorReporter = v10331.ac()
-								local Result = v10331.b()
-								local matchesInstance = v10331.ag()
-								local safeIndex = v10331.ah()
-								local MechanicsController = v10331.ao().MechanicsController
-								local UpdateStateRemote2 = v10331.ao().UpdateStateRemote
+								local remoteCodec = modules.aU()
+								local ErrorReporter = modules.ac()
+								local Result = modules.b()
+								local matchesInstance = modules.ag()
+								local safeIndex = modules.ah()
+								local MechanicsController = modules.ao().MechanicsController
+								local UpdateStateRemote2 = modules.ao().UpdateStateRemote
 								local updateServerState = safeIndex(
 									safeIndex(getmetatable(MechanicsController), "__index"),
 									"_UpdateServerState"
@@ -246604,54 +246604,54 @@ local function f10149()
 							end
 
 							f10500 = "fA"
-							local v10344 = f10536
-							local v10345 = f10537
+							local modules = f10536
+							local loadModule_fA = f10537
 
 							f11098 = function()
-								local t3136 = v10344.cache.fA
+								local t3136 = modules.cache.fA
 								if not t3136 then
-									t3136 = { c = v10345() }
-									v10344.cache.fA = t3136
+									t3136 = { c = loadModule_fA() }
+									modules.cache.fA = t3136
 								end
 								return t3136.c
 							end
 
 							f10536[f10500] = f11098
-							local v10346 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v10346.a4()
+								modules.a4()
 								local function f12877()
 								end
 								return f12877
 							end
 
 							f10500 = "fB"
-							local v10347 = f10536
-							local v10348 = f10537
+							local modules = f10536
+							local loadModule_fB = f10537
 
 							f11098 = function()
-								local t3137 = v10347.cache.fB
+								local t3137 = modules.cache.fB
 								if not t3137 then
-									t3137 = { c = v10348() }
-									v10347.cache.fB = t3137
+									t3137 = { c = loadModule_fB() }
+									modules.cache.fB = t3137
 								end
 								return t3137.c
 							end
 
 							f10536[f10500] = f11098
-							local v10349 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10349.y()
-								v10349.aT()
-								v10349.a4()
-								local Protection = v10349.bo()
-								local Trove = v10349.q()
-								local TargetProfiles = v10349.bp()
-								v10349.bm()
-								local call = v10349.ai()
-								local FireLock = v10349.fB()
+								local Config = modules.y()
+								modules.aT()
+								modules.a4()
+								local Protection = modules.bo()
+								local Trove = modules.q()
+								local TargetProfiles = modules.bp()
+								modules.bm()
+								local call = modules.ai()
+								local FireLock = modules.fB()
 								local Workspace = cloneref(game:GetService("Workspace"))
 
 								local function startShooting(context)
@@ -246795,26 +246795,26 @@ local function f10149()
 							end
 
 							f10500 = "fC"
-							local v10363 = f10536
-							local v10364 = f10537
+							local modules = f10536
+							local loadModule_fC = f10537
 
 							f11098 = function()
-								local t3142 = v10363.cache.fC
+								local t3142 = modules.cache.fC
 								if not t3142 then
-									t3142 = { c = v10364() }
-									v10363.cache.fC = t3142
+									t3142 = { c = loadModule_fC() }
+									modules.cache.fC = t3142
 								end
 								return t3142.c
 							end
 
 							f10536[f10500] = f11098
-							local v10365 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local settings = v10365.y()
-								v10365.bz()
-								v10365.a4()
-								local Trove = v10365.q()
+								local settings = modules.y()
+								modules.bz()
+								modules.a4()
+								local Trove = modules.q()
 								local CollectionService = cloneref(game:GetService("CollectionService"))
 								local localUserId = cloneref(game:GetService("Players")).LocalPlayer.UserId
 								local Tripmine = {}
@@ -246917,14 +246917,14 @@ local function f10149()
 							end
 
 							f10500 = "fD"
-							local v10375 = f10536
-							local v10376 = f10537
+							local modules = f10536
+							local loadModule_fD = f10537
 
 							f11098 = function()
-								local t3149 = v10375.cache.fD
+								local t3149 = modules.cache.fD
 								if not t3149 then
-									t3149 = { c = v10376() }
-									v10375.cache.fD = t3149
+									t3149 = { c = loadModule_fD() }
+									modules.cache.fD = t3149
 								end
 								return t3149.c
 							end
@@ -246936,29 +246936,29 @@ local function f10149()
 							end
 
 							f10500 = "fE"
-							local v10377 = f10536
-							local v10378 = f10537
+							local modules = f10536
+							local loadModule_fE = f10537
 
 							f11098 = function()
-								local t3150 = v10377.cache.fE
+								local t3150 = modules.cache.fE
 								if not t3150 then
-									t3150 = { c = v10378() }
-									v10377.cache.fE = t3150
+									t3150 = { c = loadModule_fE() }
+									modules.cache.fE = t3150
 								end
 								return t3150.c
 							end
 
 							f10536[f10500] = f11098
-							local v10379 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ChamsApplier = v10379.bK()
-								local Config = v10379.y()
-								v10379.p()
-								v10379.al()
-								local Materials = v10379.l()
-								local Trove = v10379.q()
-								v10379.fE()
+								local ChamsApplier = modules.bK()
+								local Config = modules.y()
+								modules.p()
+								modules.al()
+								local Materials = modules.l()
+								local Trove = modules.q()
+								modules.fE()
 								local ViewmodelChams = {}
 								ViewmodelChams.__index = ViewmodelChams
 								local scopes = table.create(2)
@@ -247226,26 +247226,26 @@ local function f10149()
 							end
 
 							f10500 = "fF"
-							local v10416 = f10536
-							local v10417 = f10537
+							local modules = f10536
+							local loadModule_fF = f10537
 
 							f11098 = function()
-								local t3161 = v10416.cache.fF
+								local t3161 = modules.cache.fF
 								if not t3161 then
-									t3161 = { c = v10417() }
-									v10416.cache.fF = t3161
+									t3161 = { c = loadModule_fF() }
+									modules.cache.fF = t3161
 								end
 								return t3161.c
 							end
 
 							f10536[f10500] = f11098
-							local v10418 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10418.y()
-								v10418.al()
-								local Trove = v10418.q()
-								v10418.fE()
+								local Config = modules.y()
+								modules.al()
+								local Trove = modules.q()
+								modules.fE()
 								local ViewmodelHighlight = {}
 								ViewmodelHighlight.__index = ViewmodelHighlight
 								local scopes = table.create(2)
@@ -247469,23 +247469,23 @@ local function f10149()
 							end
 
 							f10500 = "fG"
-							local v10449 = f10536
-							local v10450 = f10537
+							local modules = f10536
+							local loadModule_fG = f10537
 
 							f11098 = function()
-								local t3170 = v10449.cache.fG
+								local t3170 = modules.cache.fG
 								if not t3170 then
-									t3170 = { c = v10450() }
-									v10449.cache.fG = t3170
+									t3170 = { c = loadModule_fG() }
+									modules.cache.fG = t3170
 								end
 								return t3170.c
 							end
 
 							f10536[f10500] = f11098
-							local v10451 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Trove = v10451.q()
+								local Trove = modules.q()
 								local UGCValidationService = cloneref(game:GetService("UGCValidationService"))
 								local WireframeMesh = {}
 								WireframeMesh.__index = WireframeMesh
@@ -247729,28 +247729,28 @@ local function f10149()
 							end
 
 							f10500 = "fH"
-							local v10486 = f10536
-							local v10487 = f10537
+							local modules = f10536
+							local loadModule_fH = f10537
 
 							f11098 = function()
-								local t3183 = v10486.cache.fH
+								local t3183 = modules.cache.fH
 								if not t3183 then
-									t3183 = { c = v10487() }
-									v10486.cache.fH = t3183
+									t3183 = { c = loadModule_fH() }
+									modules.cache.fH = t3183
 								end
 								return t3183.c
 							end
 
 							f10536[f10500] = f11098
-							local v10488 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local settings = v10488.y()
-								v10488.p()
-								v10488.al()
-								local Trove = v10488.q()
-								v10488.fE()
-								local WireframeOutline = v10488.fH()
+								local settings = modules.y()
+								modules.p()
+								modules.al()
+								local Trove = modules.q()
+								modules.fE()
+								local WireframeOutline = modules.fH()
 								local ViewmodelWireframe = {}
 								ViewmodelWireframe.__index = ViewmodelWireframe
 								local groups = table.create(2)
@@ -247960,32 +247960,32 @@ local function f10149()
 							end
 
 							f10500 = "fI"
-							local v10514 = f10536
-							local v10515 = f10537
+							local modules = f10536
+							local loadModule_fI = f10537
 
 							f11098 = function()
-								local t3195 = v10514.cache.fI
+								local t3195 = modules.cache.fI
 								if not t3195 then
-									t3195 = { c = v10515() }
-									v10514.cache.fI = t3195
+									t3195 = { c = loadModule_fI() }
+									modules.cache.fI = t3195
 								end
 								return t3195.c
 							end
 
 							f10536[f10500] = f11098
-							local v10516 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ChamsRenderer = v10516.fF()
-								local settings = v10516.y()
-								local HighlightRenderer = v10516.fG()
-								v10516.al()
-								v10516.a4()
-								local Trove = v10516.q()
-								v10516.fE()
-								local rebuildNotifier = v10516.dv()
-								local WireframeRenderer = v10516.fI()
-								local safeIndex = v10516.ah()
+								local ChamsRenderer = modules.fF()
+								local settings = modules.y()
+								local HighlightRenderer = modules.fG()
+								modules.al()
+								modules.a4()
+								local Trove = modules.q()
+								modules.fE()
+								local rebuildNotifier = modules.dv()
+								local WireframeRenderer = modules.fI()
+								local safeIndex = modules.ah()
 								local ViewmodelLook = {}
 								ViewmodelLook.__index = ViewmodelLook
 								local surfaces = table.create(2)
@@ -248255,31 +248255,31 @@ local function f10149()
 							end
 
 							f10500 = "fJ"
-							local v10549 = f10536
-							local v10550 = f10537
+							local modules = f10536
+							local loadModule_fJ = f10537
 
 							f11098 = function()
-								local t3205 = v10549.cache.fJ
+								local t3205 = modules.cache.fJ
 								if not t3205 then
-									t3205 = { c = v10550() }
-									v10549.cache.fJ = t3205
+									t3205 = { c = loadModule_fJ() }
+									modules.cache.fJ = t3205
 								end
 								return t3205.c
 							end
 
 							f10536[f10500] = f11098
-							local v10551 = f10536
+							local modules = f10536
 							local v10552 = v387
 
 							f10537 = function()
-								local settings = v10551.y()
-								v10551.al()
-								local Result = v10551.b()
-								local Trove = v10551.q()
-								local getField = v10551.ah()
-								local ClientViewModel14 = v10551.ao().ClientViewModel
-								local ErrorReporter = v10551.ac()
-								local Hooks = v10551.bQ()
+								local settings = modules.y()
+								modules.al()
+								local Result = modules.b()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local ClientViewModel14 = modules.ao().ClientViewModel
+								local ErrorReporter = modules.ac()
+								local Hooks = modules.bQ()
 								local ViewModelOffset = {}
 								ViewModelOffset.__index = ViewModelOffset
 
@@ -248369,28 +248369,28 @@ local function f10149()
 							end
 
 							f10500 = "fK"
-							local v10562 = f10536
-							local v10563 = f10537
+							local modules = f10536
+							local loadModule_fK = f10537
 
 							f11098 = function()
-								local t3209 = v10562.cache.fK
+								local t3209 = modules.cache.fK
 								if not t3209 then
-									t3209 = { c = v10563() }
-									v10562.cache.fK = t3209
+									t3209 = { c = loadModule_fK() }
+									modules.cache.fK = t3209
 								end
 								return t3209.c
 							end
 
 							f10536[f10500] = f11098
-							local v10564 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10564.y()
-								local Keybinds = v10564.eL()
-								local Result = v10564.b()
-								local Trove = v10564.q()
-								local getField = v10564.ah()
-								local MechanicsController = v10564.ao().MechanicsController
+								local Config = modules.y()
+								local Keybinds = modules.eL()
+								local Result = modules.b()
+								local Trove = modules.q()
+								local getField = modules.ah()
+								local MechanicsController = modules.ao().MechanicsController
 								local getWalkSpeed = getField(
 									getField(getmetatable(MechanicsController), "__index"),
 									"_GetWalkSpeed"
@@ -248543,14 +248543,14 @@ local function f10149()
 							end
 
 							f10500 = "fL"
-							local v10574 = f10536
-							local v10575 = f10537
+							local modules = f10536
+							local loadModule_fL = f10537
 
 							f11098 = function()
-								local t3213 = v10574.cache.fL
+								local t3213 = modules.cache.fL
 								if not t3213 then
-									t3213 = { c = v10575() }
-									v10574.cache.fL = t3213
+									t3213 = { c = loadModule_fL() }
+									modules.cache.fL = t3213
 								end
 								return t3213.c
 							end
@@ -248576,30 +248576,30 @@ local function f10149()
 							end
 
 							f10500 = "fM"
-							local v10577 = f10536
-							local v10578 = f10537
+							local modules = f10536
+							local loadModule_fM = f10537
 
 							f11098 = function()
-								local t3218 = v10577.cache.fM
+								local t3218 = modules.cache.fM
 								if not t3218 then
-									t3218 = { c = v10578() }
-									v10577.cache.fM = t3218
+									t3218 = { c = loadModule_fM() }
+									modules.cache.fM = t3218
 								end
 								return t3218.c
 							end
 
 							f10536[f10500] = f11098
-							local v10579 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local AmbienceSounds = v10579.fM()
-								local SoundPath = v10579.eb()
-								local Config = v10579.y()
-								local ErrorReporter = v10579.ac()
-								v10579.A()
-								v10579.ee()
-								local Result = v10579.b()
-								local Trove = v10579.q()
+								local AmbienceSounds = modules.fM()
+								local SoundPath = modules.eb()
+								local Config = modules.y()
+								local ErrorReporter = modules.ac()
+								modules.A()
+								modules.ee()
+								local Result = modules.b()
+								local Trove = modules.q()
 								local SoundService = cloneref(game:GetService("SoundService"))
 
 								local function newLoopedSound()
@@ -248750,24 +248750,24 @@ local function f10149()
 							end
 
 							f10500 = "fN"
-							local v10599 = f10536
-							local v10600 = f10537
+							local modules = f10536
+							local loadModule_fN = f10537
 
 							f11098 = function()
-								local t3221 = v10599.cache.fN
+								local t3221 = modules.cache.fN
 								if not t3221 then
-									t3221 = { c = v10600() }
-									v10599.cache.fN = t3221
+									t3221 = { c = loadModule_fN() }
+									modules.cache.fN = t3221
 								end
 								return t3221.c
 							end
 
 							f10536[f10500] = f11098
-							local v10601 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Signal = v10601.t()
-								local Trove = v10601.q()
+								local Signal = modules.t()
+								local Trove = modules.q()
 								local EnsuredChildren = {}
 								EnsuredChildren.__index = EnsuredChildren
 
@@ -248870,26 +248870,26 @@ local function f10149()
 							end
 
 							f10500 = "fO"
-							local v10608 = f10536
-							local v10609 = f10537
+							local modules = f10536
+							local loadModule_fO = f10537
 
 							f11098 = function()
-								local t3224 = v10608.cache.fO
+								local t3224 = modules.cache.fO
 								if not t3224 then
-									t3224 = { c = v10609() }
-									v10608.cache.fO = t3224
+									t3224 = { c = loadModule_fO() }
+									modules.cache.fO = t3224
 								end
 								return t3224.c
 							end
 
 							f10536[f10500] = f11098
-							local v10610 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10610.y()
-								local EnsuredChildren = v10610.fO()
-								local PropertyGuard = v10610.fa()
-								local Trove = v10610.q()
+								local Config = modules.y()
+								local EnsuredChildren = modules.fO()
+								local PropertyGuard = modules.fa()
+								local Trove = modules.q()
 								local Lighting = cloneref(game:GetService("Lighting"))
 								local properties = table.create(6)
 								local enabledPath = table.create(2)
@@ -249001,25 +249001,25 @@ local function f10149()
 							end
 
 							f10500 = "fP"
-							local v10626 = f10536
-							local v10627 = f10537
+							local modules = f10536
+							local loadModule_fP = f10537
 
 							f11098 = function()
-								local t3227 = v10626.cache.fP
+								local t3227 = modules.cache.fP
 								if not t3227 then
-									t3227 = { c = v10627() }
-									v10626.cache.fP = t3227
+									t3227 = { c = loadModule_fP() }
+									modules.cache.fP = t3227
 								end
 								return t3227.c
 							end
 
 							f10536[f10500] = f11098
-							local v10628 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local settings = v10628.y()
-								local GuardedInstance = v10628.fa()
-								local Trove = v10628.q()
+								local settings = modules.y()
+								local GuardedInstance = modules.fa()
+								local Trove = modules.q()
 								local genericProperties = table.create(9)
 								local enabledPath = table.create(2)
 								local Lighting = cloneref(game:GetService("Lighting"))
@@ -249161,14 +249161,14 @@ local function f10149()
 							end
 
 							f10500 = "fQ"
-							local v10654 = f10536
-							local v10655 = f10537
+							local modules = f10536
+							local loadModule_fQ = f10537
 
 							f11098 = function()
-								local t3230 = v10654.cache.fQ
+								local t3230 = modules.cache.fQ
 								if not t3230 then
-									t3230 = { c = v10655() }
-									v10654.cache.fQ = t3230
+									t3230 = { c = loadModule_fQ() }
+									modules.cache.fQ = t3230
 								end
 								return t3230.c
 							end
@@ -249208,14 +249208,14 @@ local function f10149()
 							end
 
 							f10500 = "fR"
-							local v10657 = f10536
-							local v10658 = f10537
+							local modules = f10536
+							local loadModule_fR = f10537
 
 							f11098 = function()
-								local t3232 = v10657.cache.fR
+								local t3232 = modules.cache.fR
 								if not t3232 then
-									t3232 = { c = v10658() }
-									v10657.cache.fR = t3232
+									t3232 = { c = loadModule_fR() }
+									modules.cache.fR = t3232
 								end
 								return t3232.c
 							end
@@ -249239,14 +249239,14 @@ local function f10149()
 							end
 
 							f10500 = "fS"
-							local v10660 = f10536
-							local v10661 = f10537
+							local modules = f10536
+							local loadModule_fS = f10537
 
 							f11098 = function()
-								local t3234 = v10660.cache.fS
+								local t3234 = modules.cache.fS
 								if not t3234 then
-									t3234 = { c = v10661() }
-									v10660.cache.fS = t3234
+									t3234 = { c = loadModule_fS() }
+									modules.cache.fS = t3234
 								end
 								return t3234.c
 							end
@@ -249258,14 +249258,14 @@ local function f10149()
 							end
 
 							f10500 = "fT"
-							local v10662 = f10536
-							local v10663 = f10537
+							local modules = f10536
+							local loadModule_fT = f10537
 
 							f11098 = function()
-								local t3235 = v10662.cache.fT
+								local t3235 = modules.cache.fT
 								if not t3235 then
-									t3235 = { c = v10663() }
-									v10662.cache.fT = t3235
+									t3235 = { c = loadModule_fT() }
+									modules.cache.fT = t3235
 								end
 								return t3235.c
 							end
@@ -249283,14 +249283,14 @@ local function f10149()
 							end
 
 							f10500 = "fU"
-							local v10665 = f10536
-							local v10666 = f10537
+							local modules = f10536
+							local loadModule_fU = f10537
 
 							f11098 = function()
-								local t3236 = v10665.cache.fU
+								local t3236 = modules.cache.fU
 								if not t3236 then
-									t3236 = { c = v10666() }
-									v10665.cache.fU = t3236
+									t3236 = { c = loadModule_fU() }
+									modules.cache.fU = t3236
 								end
 								return t3236.c
 							end
@@ -249308,14 +249308,14 @@ local function f10149()
 							end
 
 							f10500 = "fV"
-							local v10668 = f10536
-							local v10669 = f10537
+							local modules = f10536
+							local loadModule_fV = f10537
 
 							f11098 = function()
-								local t3237 = v10668.cache.fV
+								local t3237 = modules.cache.fV
 								if not t3237 then
-									t3237 = { c = v10669() }
-									v10668.cache.fV = t3237
+									t3237 = { c = loadModule_fV() }
+									modules.cache.fV = t3237
 								end
 								return t3237.c
 							end
@@ -249333,14 +249333,14 @@ local function f10149()
 							end
 
 							f10500 = "fW"
-							local v10671 = f10536
-							local v10672 = f10537
+							local modules = f10536
+							local loadModule_fW = f10537
 
 							f11098 = function()
-								local t3238 = v10671.cache.fW
+								local t3238 = modules.cache.fW
 								if not t3238 then
-									t3238 = { c = v10672() }
-									v10671.cache.fW = t3238
+									t3238 = { c = loadModule_fW() }
+									modules.cache.fW = t3238
 								end
 								return t3238.c
 							end
@@ -249358,29 +249358,29 @@ local function f10149()
 							end
 
 							f10500 = "fX"
-							local v10674 = f10536
-							local v10675 = f10537
+							local modules = f10536
+							local loadModule_fX = f10537
 
 							f11098 = function()
-								local t3239 = v10674.cache.fX
+								local t3239 = modules.cache.fX
 								if not t3239 then
-									t3239 = { c = v10675() }
-									v10674.cache.fX = t3239
+									t3239 = { c = loadModule_fX() }
+									modules.cache.fX = t3239
 								end
 								return t3239.c
 							end
 
 							f10536[f10500] = f11098
-							local v10676 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local BoltConstants = v10676.fS()
-								v10676.fT()
-								local cubicBezier = v10676.fU()
-								local defaultOpacityProfile = v10676.fV()
-								local defaultRadialProfile = v10676.fW()
-								local noise = v10676.fX()
-								local sampleColorSequence = v10676.d3()
+								local BoltConstants = modules.fS()
+								modules.fT()
+								local cubicBezier = modules.fU()
+								local defaultOpacityProfile = modules.fV()
+								local defaultRadialProfile = modules.fW()
+								local noise = modules.fX()
+								local sampleColorSequence = modules.d3()
 								local RunService = cloneref(game:GetService("RunService"))
 								local part = Instance.new("Part")
 								local smooth = Enum.SurfaceType.Smooth
@@ -249630,14 +249630,14 @@ local function f10149()
 							end
 
 							f10500 = "fY"
-							local v10695 = f10536
-							local v10696 = f10537
+							local modules = f10536
+							local loadModule_fY = f10537
 
 							f11098 = function()
-								local t3242 = v10695.cache.fY
+								local t3242 = modules.cache.fY
 								if not t3242 then
-									t3242 = { c = v10696() }
-									v10695.cache.fY = t3242
+									t3242 = { c = loadModule_fY() }
+									modules.cache.fY = t3242
 								end
 								return t3242.c
 							end
@@ -249687,14 +249687,14 @@ local function f10149()
 							end
 
 							f10500 = "fZ"
-							local v10700 = f10536
-							local v10701 = f10537
+							local modules = f10536
+							local loadModule_fZ = f10537
 
 							f11098 = function()
-								local t3246 = v10700.cache.fZ
+								local t3246 = modules.cache.fZ
 								if not t3246 then
-									t3246 = { c = v10701() }
-									v10700.cache.fZ = t3246
+									t3246 = { c = loadModule_fZ() }
+									modules.cache.fZ = t3246
 								end
 								return t3246.c
 							end
@@ -249715,14 +249715,14 @@ local function f10149()
 							end
 
 							f10500 = "f_"
-							local v10702 = f10536
-							local v10703 = f10537
+							local modules = f10536
+							local loadModule_f_ = f10537
 
 							f11098 = function()
-								local t3247 = v10702.cache.f_
+								local t3247 = modules.cache.f_
 								if not t3247 then
-									t3247 = { c = v10703() }
-									v10702.cache.f_ = t3247
+									t3247 = { c = loadModule_f_() }
+									modules.cache.f_ = t3247
 								end
 								return t3247.c
 							end
@@ -249738,28 +249738,28 @@ local function f10149()
 							end
 
 							f10500 = "f0"
-							local v10704 = f10536
-							local v10705 = f10537
+							local modules = f10536
+							local loadModule_f0 = f10537
 
 							f11098 = function()
-								local t3248 = v10704.cache.f0
+								local t3248 = modules.cache.f0
 								if not t3248 then
-									t3248 = { c = v10705() }
-									v10704.cache.f0 = t3248
+									t3248 = { c = loadModule_f0() }
+									modules.cache.f0 = t3248
 								end
 								return t3248.c
 							end
 
 							f10536[f10500] = f11098
-							local v10706 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v10706.m()
-								local Trove = v10706.q()
-								local LightningConstants = v10706.fZ()
-								local Bolt = v10706.fY()
-								local perpendicularAxes = v10706.f_()
-								local randomRange = v10706.f0()
+								modules.m()
+								local Trove = modules.q()
+								local LightningConstants = modules.fZ()
+								local Bolt = modules.fY()
+								local perpendicularAxes = modules.f_()
+								local randomRange = modules.f0()
 
 								local function randomFork(origin, direction, length, axisA, axisB, fork)
 									local originFraction = randomRange(
@@ -249944,14 +249944,14 @@ local function f10149()
 							end
 
 							f10500 = "f1"
-							local v10739 = f10536
-							local v10740 = f10537
+							local modules = f10536
+							local loadModule_f1 = f10537
 
 							f11098 = function()
-								local t3253 = v10739.cache.f1
+								local t3253 = modules.cache.f1
 								if not t3253 then
-									t3253 = { c = v10740() }
-									v10739.cache.f1 = t3253
+									t3253 = { c = loadModule_f1() }
+									modules.cache.f1 = t3253
 								end
 								return t3253.c
 							end
@@ -249981,14 +249981,14 @@ local function f10149()
 							end
 
 							f10500 = "f2"
-							local v10744 = f10536
-							local v10745 = f10537
+							local modules = f10536
+							local loadModule_f2 = f10537
 
 							f11098 = function()
-								local t3254 = v10744.cache.f2
+								local t3254 = modules.cache.f2
 								if not t3254 then
-									t3254 = { c = v10745() }
-									v10744.cache.f2 = t3254
+									t3254 = { c = loadModule_f2() }
+									modules.cache.f2 = t3254
 								end
 								return t3254.c
 							end
@@ -250057,29 +250057,29 @@ local function f10149()
 							end
 
 							f10500 = "f3"
-							local v10758 = f10536
-							local v10759 = f10537
+							local modules = f10536
+							local loadModule_f3 = f10537
 
 							f11098 = function()
-								local t3256 = v10758.cache.f3
+								local t3256 = modules.cache.f3
 								if not t3256 then
-									t3256 = { c = v10759() }
-									v10758.cache.f3 = t3256
+									t3256 = { c = loadModule_f3() }
+									modules.cache.f3 = t3256
 								end
 								return t3256.c
 							end
 
 							f10536[f10500] = f11098
-							local v10760 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v10760.m()
-								local Trove = v10760.q()
-								local randomConeDirection = v10760.f2()
-								local Constants = v10760.f3()
-								local LightningBolt = v10760.fY()
-								local perpendicular = v10760.f_()
-								local randomRange = v10760.f0()
+								modules.m()
+								local Trove = modules.q()
+								local randomConeDirection = modules.f2()
+								local Constants = modules.f3()
+								local LightningBolt = modules.fY()
+								local perpendicular = modules.f_()
+								local randomRange = modules.f0()
 
 								local function newEmitter(texture)
 									local particleEmitter = Instance.new("ParticleEmitter")
@@ -250324,14 +250324,14 @@ local function f10149()
 							end
 
 							f10500 = "f4"
-							local v10793 = f10536
-							local v10794 = f10537
+							local modules = f10536
+							local loadModule_f4 = f10537
 
 							f11098 = function()
-								local t3265 = v10793.cache.f4
+								local t3265 = modules.cache.f4
 								if not t3265 then
-									t3265 = { c = v10794() }
-									v10793.cache.f4 = t3265
+									t3265 = { c = loadModule_f4() }
+									modules.cache.f4 = t3265
 								end
 								return t3265.c
 							end
@@ -250358,27 +250358,27 @@ local function f10149()
 							end
 
 							f10500 = "f5"
-							local v10796 = f10536
-							local v10797 = f10537
+							local modules = f10536
+							local loadModule_f5 = f10537
 
 							f11098 = function()
-								local t3267 = v10796.cache.f5
+								local t3267 = modules.cache.f5
 								if not t3267 then
-									t3267 = { c = v10797() }
-									v10796.cache.f5 = t3267
+									t3267 = { c = loadModule_f5() }
+									modules.cache.f5 = t3267
 								end
 								return t3267.c
 							end
 
 							f10536[f10500] = f11098
-							local v10798 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v10798.m()
-								local v10799 = v10798.q()
-								local v10800 = v10798.f5()
-								local v10801 = v10798.fY()
-								local v10802 = v10798.f0()
+								modules.m()
+								local v10799 = modules.q()
+								local v10800 = modules.f5()
+								local v10801 = modules.fY()
+								local v10802 = modules.f0()
 								local v10803 = Random.new()
 								local LightningSparks = {}
 								LightningSparks.__index = LightningSparks
@@ -250531,23 +250531,23 @@ local function f10149()
 							end
 
 							f10500 = "f6"
-							local v10821 = f10536
-							local v10822 = f10537
+							local modules = f10536
+							local loadModule_f6 = f10537
 
 							f11098 = function()
-								local t3273 = v10821.cache.f6
+								local t3273 = modules.cache.f6
 								if not t3273 then
-									t3273 = { c = v10822() }
-									v10821.cache.f6 = t3273
+									t3273 = { c = loadModule_f6() }
+									modules.cache.f6 = t3273
 								end
 								return t3273.c
 							end
 
 							f10536[f10500] = f11098
-							local v10823 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local cloneArchivable = v10823.bM()
+								local cloneArchivable = modules.bM()
 								local Workspace = cloneref(game:GetService("Workspace"))
 								local hiddenCFrame = CFrame.new(0, 1000000000, 0)
 
@@ -250673,14 +250673,14 @@ local function f10149()
 							end
 
 							f10500 = "f7"
-							local v10838 = f10536
-							local v10839 = f10537
+							local modules = f10536
+							local loadModule_f7 = f10537
 
 							f11098 = function()
-								local t3277 = v10838.cache.f7
+								local t3277 = modules.cache.f7
 								if not t3277 then
-									t3277 = { c = v10839() }
-									v10838.cache.f7 = t3277
+									t3277 = { c = loadModule_f7() }
+									modules.cache.f7 = t3277
 								end
 								return t3277.c
 							end
@@ -250692,32 +250692,32 @@ local function f10149()
 							end
 
 							f10500 = "f8"
-							local v10840 = f10536
-							local v10841 = f10537
+							local modules = f10536
+							local loadModule_f8 = f10537
 
 							f11098 = function()
-								local t3278 = v10840.cache.f8
+								local t3278 = modules.cache.f8
 								if not t3278 then
-									t3278 = { c = v10841() }
-									v10840.cache.f8 = t3278
+									t3278 = { c = loadModule_f8() }
+									modules.cache.f8 = t3278
 								end
 								return t3278.c
 							end
 
 							f10536[f10500] = f11098
-							local v10842 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Constants = v10842.fR()
-								local LightningBolt = v10842.fY()
-								local LightningBranch = v10842.f1()
-								local LightningExplosion = v10842.f4()
-								local LightningSparks = v10842.f6()
-								local PartCache = v10842.f7()
-								local Trove = v10842.q()
-								v10842.f8()
-								local randomRange = v10842.f0()
-								local sampleSequence = v10842.d3()
+								local Constants = modules.fR()
+								local LightningBolt = modules.fY()
+								local LightningBranch = modules.f1()
+								local LightningExplosion = modules.f4()
+								local LightningSparks = modules.f6()
+								local PartCache = modules.f7()
+								local Trove = modules.q()
+								modules.f8()
+								local randomRange = modules.f0()
+								local sampleSequence = modules.d3()
 								local TweenService = cloneref(game:GetService("TweenService"))
 								local Workspace = cloneref(game:GetService("Workspace"))
 
@@ -251108,24 +251108,24 @@ local function f10149()
 							end
 
 							f10500 = "f9"
-							local v10894 = f10536
-							local v10895 = f10537
+							local modules = f10536
+							local loadModule_f9 = f10537
 
 							f11098 = function()
-								local t3290 = v10894.cache.f9
+								local t3290 = modules.cache.f9
 								if not t3290 then
-									t3290 = { c = v10895() }
-									v10894.cache.f9 = t3290
+									t3290 = { c = loadModule_f9() }
+									modules.cache.f9 = t3290
 								end
 								return t3290.c
 							end
 
 							f10536[f10500] = f11098
-							local v10896 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10896.y()
-								local Trove = v10896.q()
+								local Config = modules.y()
+								local Trove = modules.q()
 								local Lighting = cloneref(game:GetService("Lighting"))
 								local MotionBlur = {}
 								MotionBlur.__index = MotionBlur
@@ -251232,24 +251232,24 @@ local function f10149()
 							end
 
 							f10500 = "ga"
-							local v10904 = f10536
-							local v10905 = f10537
+							local modules = f10536
+							local loadModule_ga = f10537
 
 							f11098 = function()
-								local t3293 = v10904.cache.ga
+								local t3293 = modules.cache.ga
 								if not t3293 then
-									t3293 = { c = v10905() }
-									v10904.cache.ga = t3293
+									t3293 = { c = loadModule_ga() }
+									modules.cache.ga = t3293
 								end
 								return t3293.c
 							end
 
 							f10536[f10500] = f11098
-							local v10906 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local PropertyGuard = v10906.fa()
-								local Trove = v10906.q()
+								local PropertyGuard = modules.fa()
+								local Trove = modules.q()
 								local EffectOverride = {}
 								EffectOverride.__index = EffectOverride
 
@@ -251326,26 +251326,26 @@ local function f10149()
 							end
 
 							f10500 = "gb"
-							local v10912 = f10536
-							local v10913 = f10537
+							local modules = f10536
+							local loadModule_gb = f10537
 
 							f11098 = function()
-								local t3297 = v10912.cache.gb
+								local t3297 = modules.cache.gb
 								if not t3297 then
-									t3297 = { c = v10913() }
-									v10912.cache.gb = t3297
+									t3297 = { c = loadModule_gb() }
+									modules.cache.gb = t3297
 								end
 								return t3297.c
 							end
 
 							f10536[f10500] = f11098
-							local v10914 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10914.y()
-								local EffectOverride = v10914.gb()
-								v10914.fa()
-								local Trove = v10914.q()
+								local Config = modules.y()
+								local EffectOverride = modules.gb()
+								modules.fa()
+								local Trove = modules.q()
 								local Lighting = cloneref(game:GetService("Lighting"))
 
 								local function identity(value)
@@ -251487,27 +251487,27 @@ local function f10149()
 							end
 
 							f10500 = "gc"
-							local v10927 = f10536
-							local v10928 = f10537
+							local modules = f10536
+							local loadModule_gc = f10537
 
 							f11098 = function()
-								local t3305 = v10927.cache.gc
+								local t3305 = modules.cache.gc
 								if not t3305 then
-									t3305 = { c = v10928() }
-									v10927.cache.gc = t3305
+									t3305 = { c = loadModule_gc() }
+									modules.cache.gc = t3305
 								end
 								return t3305.c
 							end
 
 							f10536[f10500] = f11098
-							local v10929 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v10929.y()
-								local EnsuredChildren = v10929.fO()
-								local PropertyGuard = v10929.fa()
-								v10929.fy()
-								local Trove = v10929.q()
+								local Config = modules.y()
+								local EnsuredChildren = modules.fO()
+								local PropertyGuard = modules.fa()
+								modules.fy()
+								local Trove = modules.q()
 								local Lighting = cloneref(game:GetService("Lighting"))
 								local skyProperties = table.create(12)
 								local enabledPath = table.create(2)
@@ -251623,14 +251623,14 @@ local function f10149()
 							end
 
 							f10500 = "gd"
-							local v10947 = f10536
-							local v10948 = f10537
+							local modules = f10536
+							local loadModule_gd = f10537
 
 							f11098 = function()
-								local t3308 = v10947.cache.gd
+								local t3308 = modules.cache.gd
 								if not t3308 then
-									t3308 = { c = v10948() }
-									v10947.cache.gd = t3308
+									t3308 = { c = loadModule_gd() }
+									modules.cache.gd = t3308
 								end
 								return t3308.c
 							end
@@ -251689,27 +251689,27 @@ local function f10149()
 							end
 
 							f10500 = "ge"
-							local v10961 = f10536
-							local v10962 = f10537
+							local modules = f10536
+							local loadModule_ge = f10537
 
 							f11098 = function()
-								local t3313 = v10961.cache.ge
+								local t3313 = modules.cache.ge
 								if not t3313 then
-									t3313 = { c = v10962() }
-									v10961.cache.ge = t3313
+									t3313 = { c = loadModule_ge() }
+									modules.cache.ge = t3313
 								end
 								return t3313.c
 							end
 
 							f10536[f10500] = f11098
-							local v10963 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local SoundPath = v10963.eb()
-								local WeatherConstants = v10963.ge()
-								local Config = v10963.y()
-								v10963.f9()
-								local Trove = v10963.q()
+								local SoundPath = modules.eb()
+								local WeatherConstants = modules.ge()
+								local Config = modules.y()
+								modules.f9()
+								local Trove = modules.q()
 								local SoundService = cloneref(game:GetService("SoundService"))
 								local Workspace = cloneref(game:GetService("Workspace"))
 								local Players = cloneref(game:GetService("Players"))
@@ -252079,23 +252079,23 @@ local function f10149()
 							end
 
 							f10500 = "gf"
-							local v11011 = f10536
-							local v11012 = f10537
+							local modules = f10536
+							local loadModule_gf = f10537
 
 							f11098 = function()
-								local t3323 = v11011.cache.gf
+								local t3323 = modules.cache.gf
 								if not t3323 then
-									t3323 = { c = v11012() }
-									v11011.cache.gf = t3323
+									t3323 = { c = loadModule_gf() }
+									modules.cache.gf = t3323
 								end
 								return t3323.c
 							end
 
 							f10536[f10500] = f11098
-							local v11013 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11013.gc()
+								modules.gc()
 								local v11014 = table.create(5)
 								local v11015
 								v11015.properties = table.create(3)
@@ -252110,37 +252110,37 @@ local function f10149()
 							end
 
 							f10500 = "gg"
-							local v11019 = f10536
-							local v11020 = f10537
+							local modules = f10536
+							local loadModule_gg = f10537
 
 							f11098 = function()
-								local t3324 = v11019.cache.gg
+								local t3324 = modules.cache.gg
 								if not t3324 then
-									t3324 = { c = v11020() }
-									v11019.cache.gg = t3324
+									t3324 = { c = loadModule_gg() }
+									modules.cache.gg = t3324
 								end
 								return t3324.c
 							end
 
 							f10536[f10500] = f11098
 							f10500 = "gh"
-							local v11021 = f10536
-							local v11022 = f10537
+							local modules = f10536
+							local loadModule_gh = f10537
 
 							f11098 = function()
-								local t3325 = v11021.cache.gh
+								local t3325 = modules.cache.gh
 								if not t3325 then
-									t3325 = { c = v11022() }
-									v11021.cache.gh = t3325
+									t3325 = { c = loadModule_gh() }
+									modules.cache.gh = t3325
 								end
 								return t3325.c
 							end
 
 							f10536[f10500] = f11098
-							local v11023 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ConfigManager = v11023.f()
+								local ConfigManager = modules.f()
 								local ConfigStore = {}
 								ConfigStore.__index = ConfigStore
 
@@ -252187,14 +252187,14 @@ local function f10149()
 							end
 
 							f10500 = "gi"
-							local v11026 = f10536
-							local v11027 = f10537
+							local modules = f10536
+							local loadModule_gi = f10537
 
 							f11098 = function()
-								local t3329 = v11026.cache.gi
+								local t3329 = modules.cache.gi
 								if not t3329 then
-									t3329 = { c = v11027() }
-									v11026.cache.gi = t3329
+									t3329 = { c = loadModule_gi() }
+									modules.cache.gi = t3329
 								end
 								return t3329.c
 							end
@@ -252320,14 +252320,14 @@ local function f10149()
 							end
 
 							f10500 = "gj"
-							local v11038 = f10536
-							local v11039 = f10537
+							local modules = f10536
+							local loadModule_gj = f10537
 
 							f11098 = function()
-								local t3331 = v11038.cache.gj
+								local t3331 = modules.cache.gj
 								if not t3331 then
-									t3331 = { c = v11039() }
-									v11038.cache.gj = t3331
+									t3331 = { c = loadModule_gj() }
+									modules.cache.gj = t3331
 								end
 								return t3331.c
 							end
@@ -252339,24 +252339,24 @@ local function f10149()
 							end
 
 							f10500 = "gk"
-							local v11040 = f10536
-							local v11041 = f10537
+							local modules = f10536
+							local loadModule_gk = f10537
 
 							f11098 = function()
-								local t3332 = v11040.cache.gk
+								local t3332 = modules.cache.gk
 								if not t3332 then
-									t3332 = { c = v11041() }
-									v11040.cache.gk = t3332
+									t3332 = { c = loadModule_gk() }
+									modules.cache.gk = t3332
 								end
 								return t3332.c
 							end
 
 							f10536[f10500] = f11098
-							local v11042 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Base64 = v11042.gj()
-								v11042.gk()
+								local Base64 = modules.gj()
+								modules.gk()
 								local RecordingCodec = {}
 								local actionIds = {
 									Move = 1,
@@ -252671,29 +252671,29 @@ local function f10149()
 							end
 
 							f10500 = "gl"
-							local v11083 = f10536
-							local v11084 = f10537
+							local modules = f10536
+							local loadModule_gl = f10537
 
 							f11098 = function()
-								local t3353 = v11083.cache.gl
+								local t3353 = modules.cache.gl
 								if not t3353 then
-									t3353 = { c = v11084() }
-									v11083.cache.gl = t3353
+									t3353 = { c = loadModule_gl() }
+									modules.cache.gl = t3353
 								end
 								return t3353.c
 							end
 
 							f10536[f10500] = f11098
-							local v11085 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local FileStore = v11085.gi()
-								local ErrorReporter = v11085.ac()
-								local Codec = v11085.gl()
-								local Result = v11085.b()
-								local Signal = v11085.t()
-								v11085.gk()
-								local Trove = v11085.q()
+								local FileStore = modules.gi()
+								local ErrorReporter = modules.ac()
+								local Codec = modules.gl()
+								local Result = modules.b()
+								local Signal = modules.t()
+								modules.gk()
+								local Trove = modules.q()
 								local RecordedMovements = {}
 								RecordedMovements.__index = RecordedMovements
 								local savePath = "kiciahook/rivals_v3/movement_recorder"
@@ -252851,27 +252851,27 @@ local function f10149()
 							end
 
 							f10500 = "gm"
-							local v11103 = f10536
-							local v11104 = f10537
+							local modules = f10536
+							local loadModule_gm = f10537
 
 							f11098 = function()
-								local t3359 = v11103.cache.gm
+								local t3359 = modules.cache.gm
 								if not t3359 then
-									t3359 = { c = v11104() }
-									v11103.cache.gm = t3359
+									t3359 = { c = loadModule_gm() }
+									modules.cache.gm = t3359
 								end
 								return t3359.c
 							end
 
 							f10536[f10500] = f11098
-							local v11105 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v11106 = v11105.ac()
-								v11105.aj()
-								local v11107 = v11105.b()
-								local v11108 = v11105.ag()
-								local QuickAttackFunction2 = v11105.ao().QuickAttackFunction
+								local v11106 = modules.ac()
+								modules.aj()
+								local v11107 = modules.b()
+								local v11108 = modules.ag()
+								local QuickAttackFunction2 = modules.ao().QuickAttackFunction
 								local v11109 = cloneref(game:GetService("ReplicatedStorage"))
 								local t3360 = {}
 								t3360.__index = t3360
@@ -252948,34 +252948,34 @@ local function f10149()
 							end
 
 							f10500 = "gn"
-							local v11113 = f10536
-							local v11114 = f10537
+							local modules = f10536
+							local loadModule_gn = f10537
 
 							f11098 = function()
-								local t3368 = v11113.cache.gn
+								local t3368 = modules.cache.gn
 								if not t3368 then
-									t3368 = { c = v11114() }
-									v11113.cache.gn = t3368
+									t3368 = { c = loadModule_gn() }
+									modules.cache.gn = t3368
 								end
 								return t3368.c
 							end
 
 							f10536[f10500] = f11098
-							local v11115 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local CameraRotation = v11115.bg()
-								v11115.aC()
-								v11115.aj()
-								v11115.eQ()
-								v11115.a1()
-								local QuickAttackHook = v11115.gn()
-								v11115.gk()
-								local getField = v11115.ah()
-								local invoke = v11115.ai()
-								local InputLibrary2 = v11115.ao().InputLibrary
-								local MechanicsController13 = v11115.ao().MechanicsController
-								local PlayerModule7 = v11115.ao().PlayerModule
+								local CameraRotation = modules.bg()
+								modules.aC()
+								modules.aj()
+								modules.eQ()
+								modules.a1()
+								local QuickAttackHook = modules.gn()
+								modules.gk()
+								local getField = modules.ah()
+								local invoke = modules.ai()
+								local InputLibrary2 = modules.ao().InputLibrary
+								local MechanicsController13 = modules.ao().MechanicsController
+								local PlayerModule7 = modules.ao().PlayerModule
 								local UserInputService = cloneref(game:GetService("UserInputService"))
 
 								local function getMoveVector()
@@ -253231,25 +253231,25 @@ local function f10149()
 							end
 
 							f10500 = "go"
-							local v11135 = f10536
-							local v11136 = f10537
+							local modules = f10536
+							local loadModule_go = f10537
 
 							f11098 = function()
-								local t3386 = v11135.cache.go
+								local t3386 = modules.cache.go
 								if not t3386 then
-									t3386 = { c = v11136() }
-									v11135.cache.go = t3386
+									t3386 = { c = loadModule_go() }
+									modules.cache.go = t3386
 								end
 								return t3386.c
 							end
 
 							f10536[f10500] = f11098
-							local v11137 = f10536
+							local modules = f10536
 							local v11138 = rawget3
 							local v11139 = v387
 
 							f10537 = function()
-								local PlayerModule = v11137.ao().PlayerModule
+								local PlayerModule = modules.ao().PlayerModule
 								local MoveVectorHook = {}
 								MoveVectorHook.__index = MoveVectorHook
 
@@ -253285,33 +253285,33 @@ local function f10149()
 							end
 
 							f10500 = "gp"
-							local v11142 = f10536
-							local v11143 = f10537
+							local modules = f10536
+							local loadModule_gp = f10537
 
 							f11098 = function()
-								local t3389 = v11142.cache.gp
+								local t3389 = modules.cache.gp
 								if not t3389 then
-									t3389 = { c = v11143() }
-									v11142.cache.gp = t3389
+									t3389 = { c = loadModule_gp() }
+									modules.cache.gp = t3389
 								end
 								return t3389.c
 							end
 
 							f10536[f10500] = f11098
-							local v11144 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11144.a7()
-								local CameraRotation = v11144.bg()
-								v11144.aC()
-								local Config = v11144.y()
-								v11144.aj()
-								v11144.a1()
-								local MoveVectorHook = v11144.gp()
-								v11144.gk()
-								local getField = v11144.ah()
-								local safeCall = v11144.ai()
-								local MechanicsController = v11144.ao().MechanicsController
+								modules.a7()
+								local CameraRotation = modules.bg()
+								modules.aC()
+								local Config = modules.y()
+								modules.aj()
+								modules.a1()
+								local MoveVectorHook = modules.gp()
+								modules.gk()
+								local getField = modules.ah()
+								local safeCall = modules.ai()
+								local MechanicsController = modules.ao().MechanicsController
 								local MovementReplay = {}
 								MovementReplay.__index = MovementReplay
 								local cameraClaimName = "MovementRecorder.Replay"
@@ -253660,25 +253660,25 @@ local function f10149()
 							end
 
 							f10500 = "gq"
-							local v11179 = f10536
-							local v11180 = f10537
+							local modules = f10536
+							local loadModule_gq = f10537
 
 							f11098 = function()
-								local t3402 = v11179.cache.gq
+								local t3402 = modules.cache.gq
 								if not t3402 then
-									t3402 = { c = v11180() }
-									v11179.cache.gq = t3402
+									t3402 = { c = loadModule_gq() }
+									modules.cache.gq = t3402
 								end
 								return t3402.c
 							end
 
 							f10536[f10500] = f11098
-							local v11181 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Theme = v11181.T()
-								v11181.gk()
-								local Trove = v11181.q()
+								local Theme = modules.T()
+								modules.gk()
+								local Trove = modules.q()
 								local TextService = cloneref(game:GetService("TextService"))
 								local font = Font.new(
 									"rbxassetid://12187365364",
@@ -253877,25 +253877,25 @@ local function f10149()
 							end
 
 							f10500 = "gr"
-							local v11224 = f10536
-							local v11225 = f10537
+							local modules = f10536
+							local loadModule_gr = f10537
 
 							f11098 = function()
-								local t3407 = v11224.cache.gr
+								local t3407 = modules.cache.gr
 								if not t3407 then
-									t3407 = { c = v11225() }
-									v11224.cache.gr = t3407
+									t3407 = { c = loadModule_gr() }
+									modules.cache.gr = t3407
 								end
 								return t3407.c
 							end
 
 							f10536[f10500] = f11098
-							local v11226 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Theme = v11226.T()
-								v11226.gk()
-								local Trove = v11226.q()
+								local Theme = modules.T()
+								modules.gk()
+								local Trove = modules.q()
 								local TextService = cloneref(game:GetService("TextService"))
 								local font = Font.new(
 									"rbxassetid://12187365364",
@@ -254069,30 +254069,30 @@ local function f10149()
 							end
 
 							f10500 = "gs"
-							local v11258 = f10536
-							local v11259 = f10537
+							local modules = f10536
+							local loadModule_gs = f10537
 
 							f11098 = function()
-								local t3414 = v11258.cache.gs
+								local t3414 = modules.cache.gs
 								if not t3414 then
-									t3414 = { c = v11259() }
-									v11258.cache.gs = t3414
+									t3414 = { c = loadModule_gs() }
+									modules.cache.gs = t3414
 								end
 								return t3414.c
 							end
 
 							f10536[f10500] = f11098
-							local v11260 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v11260.y()
-								v11260.bz()
-								local WaypointMarker = v11260.gr()
-								v11260.a4()
-								v11260.gm()
-								local RouteMarker = v11260.gs()
-								v11260.gk()
-								local Trove = v11260.q()
+								local Config = modules.y()
+								modules.bz()
+								local WaypointMarker = modules.gr()
+								modules.a4()
+								modules.gm()
+								local RouteMarker = modules.gs()
+								modules.gk()
+								local Trove = modules.q()
 								local Waypoints = {}
 								Waypoints.__index = Waypoints
 
@@ -254439,39 +254439,39 @@ local function f10149()
 							end
 
 							f10500 = "gt"
-							local v11296 = f10536
-							local v11297 = f10537
+							local modules = f10536
+							local loadModule_gt = f10537
 
 							f11098 = function()
-								local t3427 = v11296.cache.gt
+								local t3427 = modules.cache.gt
 								if not t3427 then
-									t3427 = { c = v11297() }
-									v11296.cache.gt = t3427
+									t3427 = { c = loadModule_gt() }
+									modules.cache.gt = t3427
 								end
 								return t3427.c
 							end
 
 							f10536[f10500] = f11098
-							local v11298 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11298.a7()
-								v11298.aC()
-								local settings = v11298.y()
-								v11298.d1()
-								v11298.bz()
-								local remoteCodec = v11298.aU()
-								v11298.eQ()
-								local notifications = v11298.O()
-								v11298.a4()
-								local RecordingPersistence = v11298.gm()
-								local MotionRecorder = v11298.go()
-								local MotionReplayer = v11298.gq()
-								v11298.bD()
-								v11298.t()
-								v11298.gk()
-								local Trove = v11298.q()
-								local Waypoints = v11298.gt()
+								modules.a7()
+								modules.aC()
+								local settings = modules.y()
+								modules.d1()
+								modules.bz()
+								local remoteCodec = modules.aU()
+								modules.eQ()
+								local notifications = modules.O()
+								modules.a4()
+								local RecordingPersistence = modules.gm()
+								local MotionRecorder = modules.go()
+								local MotionReplayer = modules.gq()
+								modules.bD()
+								modules.t()
+								modules.gk()
+								local Trove = modules.q()
+								local Waypoints = modules.gt()
 								local recordStatePath = table.create(4)
 								local replayStatePath = table.create(4)
 
@@ -255009,54 +255009,54 @@ local function f10149()
 							end
 
 							f10500 = "gu"
-							local v11319 = f10536
-							local v11320 = f10537
+							local modules = f10536
+							local loadModule_gu = f10537
 
 							f11098 = function()
-								local t3438 = v11319.cache.gu
+								local t3438 = modules.cache.gu
 								if not t3438 then
-									t3438 = { c = v11320() }
-									v11319.cache.gu = t3438
+									t3438 = { c = loadModule_gu() }
+									modules.cache.gu = t3438
 								end
 								return t3438.c
 							end
 
 							f10536[f10500] = f11098
-							local v11321 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11321.bt()
-								v11321.C()
-								v11321.d0()
-								v11321.dY()
-								v11321.ef()
-								v11321.D()
-								v11321.gu()
-								v11321.F()
-								v11321.fv()
-								v11321.fy()
+								modules.bt()
+								modules.C()
+								modules.d0()
+								modules.dY()
+								modules.ef()
+								modules.D()
+								modules.gu()
+								modules.F()
+								modules.fv()
+								modules.fy()
 								return nil
 							end
 
 							f10500 = "gv"
-							local v11322 = f10536
-							local v11323 = f10537
+							local modules = f10536
+							local loadModule_gv = f10537
 
 							f11098 = function()
-								local t3439 = v11322.cache.gv
+								local t3439 = modules.cache.gv
 								if not t3439 then
-									t3439 = { c = v11323() }
-									v11322.cache.gv = t3439
+									t3439 = { c = loadModule_gv() }
+									modules.cache.gv = t3439
 								end
 								return t3439.c
 							end
 
 							f10536[f10500] = f11098
-							local v11324 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v11324.y()
-								v11324.C()
+								local Config = modules.y()
+								modules.C()
 								local Persistence = {}
 
 								function Persistence:SaveToFile(name, data)
@@ -255105,24 +255105,24 @@ local function f10149()
 							end
 
 							f10500 = "gw"
-							local v11326 = f10536
-							local v11327 = f10537
+							local modules = f10536
+							local loadModule_gw = f10537
 
 							f11098 = function()
-								local t3441 = v11326.cache.gw
+								local t3441 = modules.cache.gw
 								if not t3441 then
-									t3441 = { c = v11327() }
-									v11326.cache.gw = t3441
+									t3441 = { c = loadModule_gw() }
+									modules.cache.gw = t3441
 								end
 								return t3441.c
 							end
 
 							f10536[f10500] = f11098
-							local v11328 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11328.cI()
-								local weaponNames = v11328.dQ()
+								modules.cI()
+								local weaponNames = modules.dQ()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -255143,24 +255143,24 @@ local function f10149()
 							end
 
 							f10500 = "gx"
-							local v11330 = f10536
-							local v11331 = f10537
+							local modules = f10536
+							local loadModule_gx = f10537
 
 							f11098 = function()
-								local t3447 = v11330.cache.gx
+								local t3447 = modules.cache.gx
 								if not t3447 then
-									t3447 = { c = v11331() }
-									v11330.cache.gx = t3447
+									t3447 = { c = loadModule_gx() }
+									modules.cache.gx = t3447
 								end
 								return t3447.c
 							end
 
 							f10536[f10500] = f11098
-							local v11332 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								local maps = {}
-								local mapOrder = v11332.ao().DuelLibrary.MapOrder
+								local mapOrder = modules.ao().DuelLibrary.MapOrder
 								local index = nil
 								while true do
 									local map
@@ -255174,28 +255174,28 @@ local function f10149()
 							end
 
 							f10500 = "gy"
-							local v11335 = f10536
-							local v11336 = f10537
+							local modules = f10536
+							local loadModule_gy = f10537
 
 							f11098 = function()
-								local t3449 = v11335.cache.gy
+								local t3449 = modules.cache.gy
 								if not t3449 then
-									t3449 = { c = v11336() }
-									v11335.cache.gy = t3449
+									t3449 = { c = loadModule_gy() }
+									modules.cache.gy = t3449
 								end
 								return t3449.c
 							end
 
 							f10536[f10500] = f11098
-							local v11337 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local concat = v11337.j()
-								local settings = v11337.y()
-								v11337.cI()
-								local mapNames = v11337.gy()
-								local Constants2 = v11337.ao().Constants
-								local ItemLibrary6 = v11337.ao().ItemLibrary
+								local concat = modules.j()
+								local settings = modules.y()
+								modules.cI()
+								local mapNames = modules.gy()
+								local Constants2 = modules.ao().Constants
+								local ItemLibrary6 = modules.ao().ItemLibrary
 								local slots = table.create(4)
 
 								local function groupWeaponsByClass(includeNone)
@@ -255391,23 +255391,23 @@ local function f10149()
 							end
 
 							f10500 = "gz"
-							local v11362 = f10536
-							local v11363 = f10537
+							local modules = f10536
+							local loadModule_gz = f10537
 
 							f11098 = function()
-								local t3470 = v11362.cache.gz
+								local t3470 = modules.cache.gz
 								if not t3470 then
-									t3470 = { c = v11363() }
-									v11362.cache.gz = t3470
+									t3470 = { c = loadModule_gz() }
+									modules.cache.gz = t3470
 								end
 								return t3470.c
 							end
 
 							f10536[f10500] = f11098
-							local v11364 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11364.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -255429,26 +255429,26 @@ local function f10149()
 							end
 
 							f10500 = "gA"
-							local v11365 = f10536
-							local v11366 = f10537
+							local modules = f10536
+							local loadModule_gA = f10537
 
 							f11098 = function()
-								local t3476 = v11365.cache.gA
+								local t3476 = modules.cache.gA
 								if not t3476 then
-									t3476 = { c = v11366() }
-									v11365.cache.gA = t3476
+									t3476 = { c = loadModule_gA() }
+									modules.cache.gA = t3476
 								end
 								return t3476.c
 							end
 
 							f10536[f10500] = f11098
-							local v11367 = f10536
+							local modules = f10536
 							local v11368 = rawget3
 
 							f10537 = function()
-								local ServerOsTime2 = v11367.ao().ServerOsTime
-								local DuelLibrary = v11367.ao().DuelLibrary
-								local now = v11367.ai()(ServerOsTime2.Get, ServerOsTime2)
+								local ServerOsTime2 = modules.ao().ServerOsTime
+								local DuelLibrary = modules.ao().DuelLibrary
+								local now = modules.ai()(ServerOsTime2.Get, ServerOsTime2)
 								local queues = v11368(DuelLibrary, "MatchmakingQueues")
 								local modes = {}
 								local queueOrder = v11368(DuelLibrary, "MatchmakingQueueOrder")
@@ -255481,24 +255481,24 @@ local function f10149()
 							end
 
 							f10500 = "gB"
-							local v11377 = f10536
-							local v11378 = f10537
+							local modules = f10536
+							local loadModule_gB = f10537
 
 							f11098 = function()
-								local t3478 = v11377.cache.gB
+								local t3478 = modules.cache.gB
 								if not t3478 then
-									t3478 = { c = v11378() }
-									v11377.cache.gB = t3478
+									t3478 = { c = loadModule_gB() }
+									modules.cache.gB = t3478
 								end
 								return t3478.c
 							end
 
 							f10536[f10500] = f11098
-							local v11379 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local queueModes = v11379.gB()
-								v11379.cI()
+								local queueModes = modules.gB()
+								modules.cI()
 
 								local function buildAutoQueueSection(tab)
 									local addSection = tab.AddSection
@@ -255516,23 +255516,23 @@ local function f10149()
 							end
 
 							f10500 = "gC"
-							local v11381 = f10536
-							local v11382 = f10537
+							local modules = f10536
+							local loadModule_gC = f10537
 
 							f11098 = function()
-								local t3483 = v11381.cache.gC
+								local t3483 = modules.cache.gC
 								if not t3483 then
-									t3483 = { c = v11382() }
-									v11381.cache.gC = t3483
+									t3483 = { c = loadModule_gC() }
+									modules.cache.gC = t3483
 								end
 								return t3483.c
 							end
 
 							f10536[f10500] = f11098
-							local v11383 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11383.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -255547,24 +255547,24 @@ local function f10149()
 							end
 
 							f10500 = "gD"
-							local v11384 = f10536
-							local v11385 = f10537
+							local modules = f10536
+							local loadModule_gD = f10537
 
 							f11098 = function()
-								local t3487 = v11384.cache.gD
+								local t3487 = modules.cache.gD
 								if not t3487 then
-									t3487 = { c = v11385() }
-									v11384.cache.gD = t3487
+									t3487 = { c = loadModule_gD() }
+									modules.cache.gD = t3487
 								end
 								return t3487.c
 							end
 
 							f10536[f10500] = f11098
-							local v11386 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11386.cI()
-								local voteOptions = v11386.gy()
+								modules.cI()
+								local voteOptions = modules.gy()
 
 								local function buildAutoVoteSection_proto(column)
 									local addSection = column.AddSection
@@ -255582,24 +255582,24 @@ local function f10149()
 							end
 
 							f10500 = "gE"
-							local v11388 = f10536
-							local v11389 = f10537
+							local modules = f10536
+							local loadModule_gE = f10537
 
 							f11098 = function()
-								local t3493 = v11388.cache.gE
+								local t3493 = modules.cache.gE
 								if not t3493 then
-									t3493 = { c = v11389() }
-									v11388.cache.gE = t3493
+									t3493 = { c = loadModule_gE() }
+									modules.cache.gE = t3493
 								end
 								return t3493.c
 							end
 
 							f10536[f10500] = f11098
-							local v11390 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v11390.cJ()
-								v11390.cI()
+								local ColorBinding = modules.cJ()
+								modules.cI()
 
 								local function buildHackerDetectorSection(tab)
 									local addSection = tab.AddSection
@@ -255624,24 +255624,24 @@ local function f10149()
 							end
 
 							f10500 = "gF"
-							local v11392 = f10536
-							local v11393 = f10537
+							local modules = f10536
+							local loadModule_gF = f10537
 
 							f11098 = function()
-								local t3500 = v11392.cache.gF
+								local t3500 = modules.cache.gF
 								if not t3500 then
-									t3500 = { c = v11393() }
-									v11392.cache.gF = t3500
+									t3500 = { c = loadModule_gF() }
+									modules.cache.gF = t3500
 								end
 								return t3500.c
 							end
 
 							f10536[f10500] = f11098
-							local v11394 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v11395 = v11394.cJ()
-								v11394.cI()
+								local v11395 = modules.cJ()
+								modules.cI()
 
 								local function f13155(p4410)
 									local f13156 = p4410.AddSection
@@ -255677,23 +255677,23 @@ local function f10149()
 							end
 
 							f10500 = "gG"
-							local v11396 = f10536
-							local v11397 = f10537
+							local modules = f10536
+							local loadModule_gG = f10537
 
 							f11098 = function()
-								local t3508 = v11396.cache.gG
+								local t3508 = modules.cache.gG
 								if not t3508 then
-									t3508 = { c = v11397() }
-									v11396.cache.gG = t3508
+									t3508 = { c = loadModule_gG() }
+									modules.cache.gG = t3508
 								end
 								return t3508.c
 							end
 
 							f10536[f10500] = f11098
-							local v11398 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11398.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -255711,33 +255711,33 @@ local function f10149()
 							end
 
 							f10500 = "gH"
-							local v11399 = f10536
-							local v11400 = f10537
+							local modules = f10536
+							local loadModule_gH = f10537
 
 							f11098 = function()
-								local t3513 = v11399.cache.gH
+								local t3513 = modules.cache.gH
 								if not t3513 then
-									t3513 = { c = v11400() }
-									v11399.cache.gH = t3513
+									t3513 = { c = loadModule_gH() }
+									modules.cache.gH = t3513
 								end
 								return t3513.c
 							end
 
 							f10536[f10500] = f11098
-							local v11401 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11401.cI()
-								v11401.gv()
-								local buildAutoQueue = v11401.gx()
-								local buildAutoVote = v11401.gz()
-								local buildAutoRespawn = v11401.gA()
-								local buildAutoLoadout = v11401.gC()
-								local buildAutoBan = v11401.gD()
-								local buildAutoPickup = v11401.gE()
-								local buildHackerDetector = v11401.gF()
-								local buildModDetector = v11401.gG()
-								local buildAutoTripmine = v11401.gH()
+								modules.cI()
+								modules.gv()
+								local buildAutoQueue = modules.gx()
+								local buildAutoVote = modules.gz()
+								local buildAutoRespawn = modules.gA()
+								local buildAutoLoadout = modules.gC()
+								local buildAutoBan = modules.gD()
+								local buildAutoPickup = modules.gE()
+								local buildHackerDetector = modules.gF()
+								local buildModDetector = modules.gG()
+								local buildAutoTripmine = modules.gH()
 								local icons = {
 									Automation = "rbxassetid://70979486241131",
 									Detection = "rbxassetid://132868138496209",
@@ -255787,47 +255787,47 @@ local function f10149()
 							end
 
 							f10500 = "gI"
-							local v11413 = f10536
-							local v11414 = f10537
+							local modules = f10536
+							local loadModule_gI = f10537
 
 							f11098 = function()
-								local t3523 = v11413.cache.gI
+								local t3523 = modules.cache.gI
 								if not t3523 then
-									t3523 = { c = v11414() }
-									v11413.cache.gI = t3523
+									t3523 = { c = loadModule_gI() }
+									modules.cache.gI = t3523
 								end
 								return t3523.c
 							end
 
 							f10536[f10500] = f11098
-							local v11415 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11415.t()
-								v11415.cI()
+								modules.t()
+								modules.cI()
 								return nil
 							end
 
 							f10500 = "gJ"
-							local v11416 = f10536
-							local v11417 = f10537
+							local modules = f10536
+							local loadModule_gJ = f10537
 
 							f11098 = function()
-								local t3524 = v11416.cache.gJ
+								local t3524 = modules.cache.gJ
 								if not t3524 then
-									t3524 = { c = v11417() }
-									v11416.cache.gJ = t3524
+									t3524 = { c = loadModule_gJ() }
+									modules.cache.gJ = t3524
 								end
 								return t3524.c
 							end
 
 							f10536[f10500] = f11098
-							local v11418 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11418.gJ()
-								local Config = v11418.y()
-								local TargetProfiles = v11418.bp()
+								modules.gJ()
+								local Config = modules.y()
+								local TargetProfiles = modules.bp()
 
 								local function bindProfileOptions(_, controls)
 									local gunSpecificPath = table.create(3)
@@ -255877,27 +255877,27 @@ local function f10149()
 							end
 
 							f10500 = "gK"
-							local v11426 = f10536
-							local v11427 = f10537
+							local modules = f10536
+							local loadModule_gK = f10537
 
 							f11098 = function()
-								local t3528 = v11426.cache.gK
+								local t3528 = modules.cache.gK
 								if not t3528 then
-									t3528 = { c = v11427() }
-									v11426.cache.gK = t3528
+									t3528 = { c = loadModule_gK() }
+									modules.cache.gK = t3528
 								end
 								return t3528.c
 							end
 
 							f10536[f10500] = f11098
-							local v11428 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								local function path()
 									return (table.create(2))
 								end
 
-								local ColorBindingModule = v11428.cJ()
+								local ColorBindingModule = modules.cJ()
 
 								local function buildFovCircleOptions(section, configPath)
 									local addToggle = section.AddToggle
@@ -255960,7 +255960,7 @@ local function f10149()
 									addSlider3(animatedGroup, speedDegSSliderOptions)
 								end
 
-								local ColorBinding4 = v11428.cI().ColorBinding
+								local ColorBinding4 = modules.cI().ColorBinding
 
 								local function buildCustomOptions(group, basePath)
 									local addTextBox = group.AddTextBox
@@ -256040,25 +256040,25 @@ local function f10149()
 							end
 
 							f10500 = "gL"
-							local v11436 = f10536
-							local v11437 = f10537
+							local modules = f10536
+							local loadModule_gL = f10537
 
 							f11098 = function()
-								local t3556 = v11436.cache.gL
+								local t3556 = modules.cache.gL
 								if not t3556 then
-									t3556 = { c = v11437() }
-									v11436.cache.gL = t3556
+									t3556 = { c = loadModule_gL() }
+									modules.cache.gL = t3556
 								end
 								return t3556.c
 							end
 
 							f10536[f10500] = f11098
-							local v11438 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11438.gJ()
-								v11438.cI()
-								local concat = v11438.j()
+								modules.gJ()
+								modules.cI()
+								local concat = modules.j()
 								local general = "General"
 
 								local function build(section, weapon, profiles, weapons)
@@ -256139,24 +256139,24 @@ local function f10149()
 							end
 
 							f10500 = "gM"
-							local v11444 = f10536
-							local v11445 = f10537
+							local modules = f10536
+							local loadModule_gM = f10537
 
 							f11098 = function()
-								local t3563 = v11444.cache.gM
+								local t3563 = modules.cache.gM
 								if not t3563 then
-									t3563 = { c = v11445() }
-									v11444.cache.gM = t3563
+									t3563 = { c = loadModule_gM() }
+									modules.cache.gM = t3563
 								end
 								return t3563.c
 							end
 
 							f10536[f10500] = f11098
-							local v11446 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11446.gJ()
-								v11446.cI()
+								modules.gJ()
+								modules.cI()
 
 								local function buildTargetConditions(section, _)
 									local AddMultiDropdown31 = section.AddMultiDropdown
@@ -256239,27 +256239,27 @@ local function f10149()
 							end
 
 							f10500 = "gN"
-							local v11451 = f10536
-							local v11452 = f10537
+							local modules = f10536
+							local loadModule_gN = f10537
 
 							f11098 = function()
-								local t3577 = v11451.cache.gN
+								local t3577 = modules.cache.gN
 								if not t3577 then
-									t3577 = { c = v11452() }
-									v11451.cache.gN = t3577
+									t3577 = { c = loadModule_gN() }
+									modules.cache.gN = t3577
 								end
 								return t3577.c
 							end
 
 							f10536[f10500] = f11098
-							local v11453 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11453.gJ()
-								v11453.cI()
-								local buildHitParts = v11453.gL()
-								local buildProfileRow = v11453.gM()
-								local buildTargetOptions = v11453.gN()
+								modules.gJ()
+								modules.cI()
+								local buildHitParts = modules.gL()
+								local buildProfileRow = modules.gM()
+								local buildTargetOptions = modules.gN()
 
 								local function buildTargetingTab_proto(column, profiles, weaponType, weapon, weapons)
 									local addMultiSection = column.AddMultiSection
@@ -256279,24 +256279,24 @@ local function f10149()
 							end
 
 							f10500 = "gO"
-							local v11461 = f10536
-							local v11462 = f10537
+							local modules = f10536
+							local loadModule_gO = f10537
 
 							f11098 = function()
-								local t3580 = v11461.cache.gO
+								local t3580 = modules.cache.gO
 								if not t3580 then
-									t3580 = { c = v11462() }
-									v11461.cache.gO = t3580
+									t3580 = { c = loadModule_gO() }
+									modules.cache.gO = t3580
 								end
 								return t3580.c
 							end
 
 							f10536[f10500] = f11098
-							local v11463 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11463.cI()
-								local joinPath = v11463.j()
+								modules.cI()
+								local joinPath = modules.j()
 
 								local function addKeybindToggle(section, label, modes, configPath, inKeybindList, listLabel)
 									if listLabel == nil then
@@ -256334,26 +256334,26 @@ local function f10149()
 							end
 
 							f10500 = "gP"
-							local v11466 = f10536
-							local v11467 = f10537
+							local modules = f10536
+							local loadModule_gP = f10537
 
 							f11098 = function()
-								local t3585 = v11466.cache.gP
+								local t3585 = modules.cache.gP
 								if not t3585 then
-									t3585 = { c = v11467() }
-									v11466.cache.gP = t3585
+									t3585 = { c = loadModule_gP() }
+									modules.cache.gP = t3585
 								end
 								return t3585.c
 							end
 
 							f10536[f10500] = f11098
-							local v11468 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11468.gJ()
-								v11468.cI()
-								local v11469 = v11468.gO()
-								local v11470 = v11468.gP()
+								modules.gJ()
+								modules.cI()
+								local v11469 = modules.gO()
+								local v11470 = modules.gP()
 
 								local function f13218(p4450)
 									local addSection = p4450.AddSection
@@ -256493,26 +256493,26 @@ local function f10149()
 							end
 
 							f10500 = "gQ"
-							local v11476 = f10536
-							local v11477 = f10537
+							local modules = f10536
+							local loadModule_gQ = f10537
 
 							f11098 = function()
-								local t3615 = v11476.cache.gQ
+								local t3615 = modules.cache.gQ
 								if not t3615 then
-									t3615 = { c = v11477() }
-									v11476.cache.gQ = t3615
+									t3615 = { c = loadModule_gQ() }
+									modules.cache.gQ = t3615
 								end
 								return t3615.c
 							end
 
 							f10536[f10500] = f11098
-							local v11478 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11478.gJ()
-								v11478.cI()
-								local addHitChanceOptions = v11478.gO()
-								local addTargetOptions = v11478.gP()
+								modules.gJ()
+								modules.cI()
+								local addHitChanceOptions = modules.gO()
+								local addTargetOptions = modules.gP()
 
 								local function buildMain(page)
 									local addSection = page.AddSection
@@ -256562,27 +256562,27 @@ local function f10149()
 							end
 
 							f10500 = "gR"
-							local v11481 = f10536
-							local v11482 = f10537
+							local modules = f10536
+							local loadModule_gR = f10537
 
 							f11098 = function()
-								local t3621 = v11481.cache.gR
+								local t3621 = modules.cache.gR
 								if not t3621 then
-									t3621 = { c = v11482() }
-									v11481.cache.gR = t3621
+									t3621 = { c = loadModule_gR() }
+									modules.cache.gR = t3621
 								end
 								return t3621.c
 							end
 
 							f10536[f10500] = f11098
-							local v11483 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11483.gJ()
-								v11483.cI()
-								local buildPerWeaponSettings = v11483.gM()
-								local buildTargetSettings = v11483.gN()
-								local addActivationControls = v11483.gP()
+								modules.gJ()
+								modules.cI()
+								local buildPerWeaponSettings = modules.gM()
+								local buildTargetSettings = modules.gN()
+								local addActivationControls = modules.gP()
 
 								local function buildTriggerbotMainSection_proto(column)
 									local addSection = column.AddSection
@@ -256644,24 +256644,24 @@ local function f10149()
 							end
 
 							f10500 = "gS"
-							local v11490 = f10536
-							local v11491 = f10537
+							local modules = f10536
+							local loadModule_gS = f10537
 
 							f11098 = function()
-								local t3632 = v11490.cache.gS
+								local t3632 = modules.cache.gS
 								if not t3632 then
-									t3632 = { c = v11491() }
-									v11490.cache.gS = t3632
+									t3632 = { c = loadModule_gS() }
+									modules.cache.gS = t3632
 								end
 								return t3632.c
 							end
 
 							f10536[f10500] = f11098
-							local v11492 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11492.cI()
-								local addTargetOptions = v11492.gP()
+								modules.cI()
+								local addTargetOptions = modules.gP()
 
 								local function buildGeneral(section)
 									addTargetOptions(
@@ -256728,24 +256728,24 @@ local function f10149()
 							end
 
 							f10500 = "gT"
-							local v11495 = f10536
-							local v11496 = f10537
+							local modules = f10536
+							local loadModule_gT = f10537
 
 							f11098 = function()
-								local t3644 = v11495.cache.gT
+								local t3644 = modules.cache.gT
 								if not t3644 then
-									t3644 = { c = v11496() }
-									v11495.cache.gT = t3644
+									t3644 = { c = loadModule_gT() }
+									modules.cache.gT = t3644
 								end
 								return t3644.c
 							end
 
 							f10536[f10500] = f11098
-							local v11497 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11497.cI()
-								local addKeybindToggle = v11497.gP()
+								modules.cI()
+								local addKeybindToggle = modules.gP()
 
 								local function buildShootOptions(section)
 									addKeybindToggle(
@@ -256848,24 +256848,24 @@ local function f10149()
 							end
 
 							f10500 = "gU"
-							local v11503 = f10536
-							local v11504 = f10537
+							local modules = f10536
+							local loadModule_gU = f10537
 
 							f11098 = function()
-								local t3662 = v11503.cache.gU
+								local t3662 = modules.cache.gU
 								if not t3662 then
-									t3662 = { c = v11504() }
-									v11503.cache.gU = t3662
+									t3662 = { c = loadModule_gU() }
+									modules.cache.gU = t3662
 								end
 								return t3662.c
 							end
 
 							f10536[f10500] = f11098
-							local v11505 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11505.cI()
-								local addKeybindToggle = v11505.gP()
+								modules.cI()
+								local addKeybindToggle = modules.gP()
 
 								local function buildKnifeShootOptions(section)
 									addKeybindToggle(
@@ -256982,31 +256982,31 @@ local function f10149()
 							end
 
 							f10500 = "gV"
-							local v11511 = f10536
-							local v11512 = f10537
+							local modules = f10536
+							local loadModule_gV = f10537
 
 							f11098 = function()
-								local t3685 = v11511.cache.gV
+								local t3685 = modules.cache.gV
 								if not t3685 then
-									t3685 = { c = v11512() }
-									v11511.cache.gV = t3685
+									t3685 = { c = loadModule_gV() }
+									modules.cache.gV = t3685
 								end
 								return t3685.c
 							end
 
 							f10536[f10500] = f11098
-							local v11513 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local weaponNames = v11513.dQ()
-								v11513.gJ()
-								local Config = v11513.y()
-								v11513.cI()
-								local TargetProfiles = v11513.bp()
-								local registerProfile = v11513.gK()
-								local buildAimbotPage = v11513.gQ()
-								local buildSilentAimPage = v11513.gR()
-								local buildTriggerbotPage = v11513.gS()
+								local weaponNames = modules.dQ()
+								modules.gJ()
+								local Config = modules.y()
+								modules.cI()
+								local TargetProfiles = modules.bp()
+								local registerProfile = modules.gK()
+								local buildAimbotPage = modules.gQ()
+								local buildSilentAimPage = modules.gR()
+								local buildTriggerbotPage = modules.gS()
 								local icons = {
 									Combat = "rbxassetid://99199363807265",
 									Aimbot = "rbxassetid://83752373575368",
@@ -257054,7 +257054,7 @@ local function f10149()
 									local targetOptions2 = { defaultTargetParts = TargetProfiles.DEFAULT_PROFILE.AvailableOptions }
 									local weaponOptions2 = { allWeapons = weaponNames }
 									register2("SilentAim", buildSilentAim(silentAimGrid, targetOptions2, Config, weaponOptions2))
-									local buildFlickbot = v11513.gT()
+									local buildFlickbot = modules.gT()
 									local addTab4 = combatTab.AddTab
 									local flickbotTabOptions = {
 										Label = "Flickbot",
@@ -257087,7 +257087,7 @@ local function f10149()
 										Description = "Aggressive targeting, weapon priority, and evasive movement."
 									}
 									local ragebotTab = addTab6(combatTab, ragebotTabOptions)
-									local buildRagebot = v11513.gV()
+									local buildRagebot = modules.gV()
 									local grid5 = ragebotTab.Grid
 									local gridOptions5 = { Columns = 2 }
 									buildRagebot(grid5(ragebotTab, gridOptions5))
@@ -257097,33 +257097,33 @@ local function f10149()
 							end
 
 							f10500 = "gW"
-							local v11524 = f10536
-							local v11525 = f10537
+							local modules = f10536
+							local loadModule_gW = f10537
 
 							f11098 = function()
-								local t3710 = v11524.cache.gW
+								local t3710 = modules.cache.gW
 								if not t3710 then
-									t3710 = { c = v11525() }
-									v11524.cache.gW = t3710
+									t3710 = { c = loadModule_gW() }
+									modules.cache.gW = t3710
 								end
 								return t3710.c
 							end
 
 							f10536[f10500] = f11098
-							local v11526 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local LookKinds = v11526.el()
-								local BarPane = v11526.en()
-								local BoundingBoxPane = v11526.er()
-								local Config = v11526.y()
-								v11526.em()
-								local Fonts = v11526.K()
-								local TextPane = v11526.eM()
-								local PanePresets = v11526.ew()
-								local Trove = v11526.q()
-								v11526.cI()
-								local panePosition = v11526.ey()
+								local LookKinds = modules.el()
+								local BarPane = modules.en()
+								local BoundingBoxPane = modules.er()
+								local Config = modules.y()
+								modules.em()
+								local Fonts = modules.K()
+								local TextPane = modules.eM()
+								local PanePresets = modules.ew()
+								local Trove = modules.q()
+								modules.cI()
+								local panePosition = modules.ey()
 								local PlayerEsp = {}
 								PlayerEsp.__index = PlayerEsp
 
@@ -257496,24 +257496,24 @@ local function f10149()
 							end
 
 							f10500 = "gX"
-							local v11567 = f10536
-							local v11568 = f10537
+							local modules = f10536
+							local loadModule_gX = f10537
 
 							f11098 = function()
-								local t3724 = v11567.cache.gX
+								local t3724 = modules.cache.gX
 								if not t3724 then
-									t3724 = { c = v11568() }
-									v11567.cache.gX = t3724
+									t3724 = { c = loadModule_gX() }
+									modules.cache.gX = t3724
 								end
 								return t3724.c
 							end
 
 							f10536[f10500] = f11098
-							local v11569 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ensureFolder = v11569.e()
-								local detectExtension = v11569.ed()
+								local ensureFolder = modules.e()
+								local detectExtension = modules.ed()
 								local HttpService = cloneref(game:GetService("HttpService"))
 								local folder = "kiciahook/rivals_v3/esp_images"
 								local cachePath = string.format("%s/cache.json", tostring(folder))
@@ -257726,25 +257726,25 @@ local function f10149()
 							end
 
 							f10500 = "gY"
-							local v11594 = f10536
-							local v11595 = f10537
+							local modules = f10536
+							local loadModule_gY = f10537
 
 							f11098 = function()
-								local t3733 = v11594.cache.gY
+								local t3733 = modules.cache.gY
 								if not t3733 then
-									t3733 = { c = v11595() }
-									v11594.cache.gY = t3733
+									t3733 = { c = loadModule_gY() }
+									modules.cache.gY = t3733
 								end
 								return t3733.c
 							end
 
 							f10536[f10500] = f11098
-							local v11596 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v11596.y()
-								local ImageFiles = v11596.gY()
-								v11596.cI()
+								local Config = modules.y()
+								local ImageFiles = modules.gY()
+								modules.cI()
 								local NONE = "None"
 
 								local function withNone(names)
@@ -257850,24 +257850,24 @@ local function f10149()
 							end
 
 							f10500 = "gZ"
-							local v11611 = f10536
-							local v11612 = f10537
+							local modules = f10536
+							local loadModule_gZ = f10537
 
 							f11098 = function()
-								local t3739 = v11611.cache.gZ
+								local t3739 = modules.cache.gZ
 								if not t3739 then
-									t3739 = { c = v11612() }
-									v11611.cache.gZ = t3739
+									t3739 = { c = loadModule_gZ() }
+									modules.cache.gZ = t3739
 								end
 								return t3739.c
 							end
 
 							f10536[f10500] = f11098
-							local v11613 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local addColorOptions = v11613.gZ()
-								v11613.cI()
+								local addColorOptions = modules.gZ()
+								modules.cI()
 
 								local function build(section, _)
 									local addToggle = section.AddToggle
@@ -257892,26 +257892,26 @@ local function f10149()
 							end
 
 							f10500 = "g_"
-							local v11616 = f10536
-							local v11617 = f10537
+							local modules = f10536
+							local loadModule_g_ = f10537
 
 							f11098 = function()
-								local t3744 = v11616.cache.g_
+								local t3744 = modules.cache.g_
 								if not t3744 then
-									t3744 = { c = v11617() }
-									v11616.cache.g_ = t3744
+									t3744 = { c = loadModule_g_() }
+									modules.cache.g_ = t3744
 								end
 								return t3744.c
 							end
 
 							f10536[f10500] = f11098
-							local v11618 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local colorBindings = v11618.cJ()
-								v11618.cI()
-								local addActivationControls = v11618.gP()
-								local v11621 = v11618.g_()
+								local colorBindings = modules.cJ()
+								modules.cI()
+								local addActivationControls = modules.gP()
+								local v11621 = modules.g_()
 
 								local function buildEspSection_proto(section, espName)
 									local function configPath()
@@ -258415,27 +258415,27 @@ local function f10149()
 							end
 
 							f10500 = "g0"
-							local v11630 = f10536
-							local v11631 = f10537
+							local modules = f10536
+							local loadModule_g0 = f10537
 
 							f11098 = function()
-								local t3884 = v11630.cache.g0
+								local t3884 = modules.cache.g0
 								if not t3884 then
-									t3884 = { c = v11631() }
-									v11630.cache.g0 = t3884
+									t3884 = { c = loadModule_g0() }
+									modules.cache.g0 = t3884
 								end
 								return t3884.c
 							end
 
 							f10536[f10500] = f11098
-							local v11632 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local EspPreview = v11632.gX()
-								v11632.cI()
-								local buildFactionSections = v11632.g0()
-								local addKeybindToggle = v11632.gP()
-								local RootTrove = v11632.r()
+								local EspPreview = modules.gX()
+								modules.cI()
+								local buildFactionSections = modules.g0()
+								local addKeybindToggle = modules.gP()
+								local RootTrove = modules.r()
 								local Players = cloneref(game:GetService("Players"))
 								local previewUserId = 1
 
@@ -258553,24 +258553,24 @@ local function f10149()
 							end
 
 							f10500 = "g1"
-							local v11650 = f10536
-							local v11651 = f10537
+							local modules = f10536
+							local loadModule_g1 = f10537
 
 							f11098 = function()
-								local t3891 = v11650.cache.g1
+								local t3891 = modules.cache.g1
 								if not t3891 then
-									t3891 = { c = v11651() }
-									v11650.cache.g1 = t3891
+									t3891 = { c = loadModule_g1() }
+									modules.cache.g1 = t3891
 								end
 								return t3891.c
 							end
 
 							f10536[f10500] = f11098
-							local v11652 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Fonts = v11652.K()
-								v11652.cI()
+								local Fonts = modules.K()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -258687,24 +258687,24 @@ local function f10149()
 							end
 
 							f10500 = "g2"
-							local v11656 = f10536
-							local v11657 = f10537
+							local modules = f10536
+							local loadModule_g2 = f10537
 
 							f11098 = function()
-								local t3918 = v11656.cache.g2
+								local t3918 = modules.cache.g2
 								if not t3918 then
-									t3918 = { c = v11657() }
-									v11656.cache.g2 = t3918
+									t3918 = { c = loadModule_g2() }
+									modules.cache.g2 = t3918
 								end
 								return t3918.c
 							end
 
 							f10536[f10500] = f11098
-							local v11658 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v11658.cJ()
-								v11658.cI()
+								local ColorBinding = modules.cJ()
+								modules.cI()
 
 								local function buildSoundVisualizerOptions(section, _)
 									local addDropdown = section.AddDropdown
@@ -258765,27 +258765,27 @@ local function f10149()
 							end
 
 							f10500 = "g3"
-							local v11662 = f10536
-							local v11663 = f10537
+							local modules = f10536
+							local loadModule_g3 = f10537
 
 							f11098 = function()
-								local t3929 = v11662.cache.g3
+								local t3929 = modules.cache.g3
 								if not t3929 then
-									t3929 = { c = v11663() }
-									v11662.cache.g3 = t3929
+									t3929 = { c = loadModule_g3() }
+									modules.cache.g3 = t3929
 								end
 								return t3929.c
 							end
 
 							f10536[f10500] = f11098
-							local v11664 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11664.cI()
-								v11664.gv()
-								local buildPlayersPage = v11664.g1()
-								local buildAppearancePage = v11664.g2()
-								local buildSoundPage = v11664.g3()
+								modules.cI()
+								modules.gv()
+								local buildPlayersPage = modules.g1()
+								local buildAppearancePage = modules.g2()
+								local buildSoundPage = modules.g3()
 								local icons = {
 									ESP = "rbxassetid://127234874352422",
 									Main = "rbxassetid://85332511060401",
@@ -258837,24 +258837,24 @@ local function f10149()
 							end
 
 							f10500 = "g4"
-							local v11668 = f10536
-							local v11669 = f10537
+							local modules = f10536
+							local loadModule_g4 = f10537
 
 							f11098 = function()
-								local t3942 = v11668.cache.g4
+								local t3942 = modules.cache.g4
 								if not t3942 then
-									t3942 = { c = v11669() }
-									v11668.cache.g4 = t3942
+									t3942 = { c = loadModule_g4() }
+									modules.cache.g4 = t3942
 								end
 								return t3942.c
 							end
 
 							f10536[f10500] = f11098
-							local v11670 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Animations = v11670.bv()
-								v11670.cI()
+								local Animations = modules.bv()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -258894,25 +258894,25 @@ local function f10149()
 							end
 
 							f10500 = "g5"
-							local v11672 = f10536
-							local v11673 = f10537
+							local modules = f10536
+							local loadModule_g5 = f10537
 
 							f11098 = function()
-								local t3951 = v11672.cache.g5
+								local t3951 = modules.cache.g5
 								if not t3951 then
-									t3951 = { c = v11673() }
-									v11672.cache.g5 = t3951
+									t3951 = { c = loadModule_g5() }
+									modules.cache.g5 = t3951
 								end
 								return t3951.c
 							end
 
 							f10536[f10500] = f11098
-							local v11674 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v11674.cJ()
-								local Materials = v11674.l()
-								v11674.cI()
+								local ColorBinding = modules.cJ()
+								local Materials = modules.l()
+								modules.cI()
 
 								local function buildTarget(section, _)
 									local addToggle = section.AddToggle
@@ -258941,24 +258941,24 @@ local function f10149()
 							end
 
 							f10500 = "g6"
-							local v11677 = f10536
-							local v11678 = f10537
+							local modules = f10536
+							local loadModule_g6 = f10537
 
 							f11098 = function()
-								local t3959 = v11677.cache.g6
+								local t3959 = modules.cache.g6
 								if not t3959 then
-									t3959 = { c = v11678() }
-									v11677.cache.g6 = t3959
+									t3959 = { c = loadModule_g6() }
+									modules.cache.g6 = t3959
 								end
 								return t3959.c
 							end
 
 							f10536[f10500] = f11098
-							local v11679 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11679.cI()
-								local buildColorSection = v11679.g6()
+								modules.cI()
+								local buildColorSection = modules.g6()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -258970,24 +258970,24 @@ local function f10149()
 							end
 
 							f10500 = "g7"
-							local v11681 = f10536
-							local v11682 = f10537
+							local modules = f10536
+							local loadModule_g7 = f10537
 
 							f11098 = function()
-								local t3961 = v11681.cache.g7
+								local t3961 = modules.cache.g7
 								if not t3961 then
-									t3961 = { c = v11682() }
-									v11681.cache.g7 = t3961
+									t3961 = { c = loadModule_g7() }
+									modules.cache.g7 = t3961
 								end
 								return t3961.c
 							end
 
 							f10536[f10500] = f11098
-							local v11683 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local addImagePicker = v11683.gZ()
-								v11683.cI()
+								local addImagePicker = modules.gZ()
+								modules.cI()
 
 								local function build(section)
 									local addSlider = section.AddSlider
@@ -259018,24 +259018,24 @@ local function f10149()
 							end
 
 							f10500 = "g8"
-							local v11685 = f10536
-							local v11686 = f10537
+							local modules = f10536
+							local loadModule_g8 = f10537
 
 							f11098 = function()
-								local t3965 = v11685.cache.g8
+								local t3965 = modules.cache.g8
 								if not t3965 then
-									t3965 = { c = v11686() }
-									v11685.cache.g8 = t3965
+									t3965 = { c = loadModule_g8() }
+									modules.cache.g8 = t3965
 								end
 								return t3965.c
 							end
 
 							f10536[f10500] = f11098
-							local v11687 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinder = v11687.cJ()
-								v11687.cI()
+								local ColorBinder = modules.cJ()
+								modules.cI()
 								local gradientSettings = table.create(4)
 
 								local function buildGradientToggles(section)
@@ -259061,25 +259061,25 @@ local function f10149()
 							end
 
 							f10500 = "g9"
-							local v11691 = f10536
-							local v11692 = f10537
+							local modules = f10536
+							local loadModule_g9 = f10537
 
 							f11098 = function()
-								local t3970 = v11691.cache.g9
+								local t3970 = modules.cache.g9
 								if not t3970 then
-									t3970 = { c = v11692() }
-									v11691.cache.g9 = t3970
+									t3970 = { c = loadModule_g9() }
+									modules.cache.g9 = t3970
 								end
 								return t3970.c
 							end
 
 							f10536[f10500] = f11098
-							local v11693 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinder = v11693.cJ()
-								v11693.cI()
-								local buildImageOptions = v11693.g8()
+								local ColorBinder = modules.cJ()
+								modules.cI()
+								local buildImageOptions = modules.g8()
 
 								local function buildLineOptions(group)
 									local addSlider = group.AddSlider
@@ -259130,7 +259130,7 @@ local function f10149()
 									addSlider4(outlineGroup, outlineThicknessSliderOptions)
 								end
 
-								local buildAnimationOptions = v11693.g9()
+								local buildAnimationOptions = modules.g9()
 
 								local function buildCrosshairSection(tab)
 									local addSection = tab.AddSection
@@ -259177,25 +259177,25 @@ local function f10149()
 							end
 
 							f10500 = "ha"
-							local v11699 = f10536
-							local v11700 = f10537
+							local modules = f10536
+							local loadModule_ha = f10537
 
 							f11098 = function()
-								local t3991 = v11699.cache.ha
+								local t3991 = modules.cache.ha
 								if not t3991 then
-									t3991 = { c = v11700() }
-									v11699.cache.ha = t3991
+									t3991 = { c = loadModule_ha() }
+									modules.cache.ha = t3991
 								end
 								return t3991.c
 							end
 
 							f10536[f10500] = f11098
-							local v11701 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v11701.cJ()
-								v11701.cI()
-								local appendPath = v11701.j()
+								local ColorBinding = modules.cJ()
+								modules.cI()
+								local appendPath = modules.j()
 
 								local function path(parts)
 									return (appendPath(parts, {}))
@@ -259295,23 +259295,23 @@ local function f10149()
 							end
 
 							f10500 = "hb"
-							local v11706 = f10536
-							local v11707 = f10537
+							local modules = f10536
+							local loadModule_hb = f10537
 
 							f11098 = function()
-								local t4016 = v11706.cache.hb
+								local t4016 = modules.cache.hb
 								if not t4016 then
-									t4016 = { c = v11707() }
-									v11706.cache.hb = t4016
+									t4016 = { c = loadModule_hb() }
+									modules.cache.hb = t4016
 								end
 								return t4016.c
 							end
 
 							f10536[f10500] = f11098
-							local v11708 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11708.cI()
+								modules.cI()
 
 								local function build(section)
 									local addToggle = section.AddToggle
@@ -259337,23 +259337,23 @@ local function f10149()
 							end
 
 							f10500 = "hc"
-							local v11710 = f10536
-							local v11711 = f10537
+							local modules = f10536
+							local loadModule_hc = f10537
 
 							f11098 = function()
-								local t4021 = v11710.cache.hc
+								local t4021 = modules.cache.hc
 								if not t4021 then
-									t4021 = { c = v11711() }
-									v11710.cache.hc = t4021
+									t4021 = { c = loadModule_hc() }
+									modules.cache.hc = t4021
 								end
 								return t4021.c
 							end
 
 							f10536[f10500] = f11098
-							local v11712 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11712.cI()
+								modules.cI()
 
 								local function buildCrosshairAnimationOptions(section, styleDropdown)
 									local addToggle = section.AddToggle
@@ -259406,26 +259406,26 @@ local function f10149()
 							end
 
 							f10500 = "hd"
-							local v11715 = f10536
-							local v11716 = f10537
+							local modules = f10536
+							local loadModule_hd = f10537
 
 							f11098 = function()
-								local t4034 = v11715.cache.hd
+								local t4034 = modules.cache.hd
 								if not t4034 then
-									t4034 = { c = v11716() }
-									v11715.cache.hd = t4034
+									t4034 = { c = loadModule_hd() }
+									modules.cache.hd = t4034
 								end
 								return t4034.c
 							end
 
 							f10536[f10500] = f11098
-							local v11717 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11717.cI()
-								local buildAnimationControls = v11717.hb()
-								local v11719 = v11717.hc()
-								local v11720 = v11717.hd()
+								modules.cI()
+								local buildAnimationControls = modules.hb()
+								local v11719 = modules.hc()
+								local v11720 = modules.hd()
 
 								local function buildEffectsSection(tab, styleDropdown)
 									local addSection = tab.AddSection
@@ -259447,26 +259447,26 @@ local function f10149()
 							end
 
 							f10500 = "he"
-							local v11721 = f10536
-							local v11722 = f10537
+							local modules = f10536
+							local loadModule_he = f10537
 
 							f11098 = function()
-								local t4038 = v11721.cache.he
+								local t4038 = modules.cache.he
 								if not t4038 then
-									t4038 = { c = v11722() }
-									v11721.cache.he = t4038
+									t4038 = { c = loadModule_he() }
+									modules.cache.he = t4038
 								end
 								return t4038.c
 							end
 
 							f10536[f10500] = f11098
-							local v11723 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v11723.cJ()
-								local Fonts = v11723.K()
-								v11723.cI()
-								local addAnimationOptions = v11723.hb()
+								local ColorBinding = modules.cJ()
+								local Fonts = modules.K()
+								modules.cI()
+								local addAnimationOptions = modules.hb()
 
 								local function buildTextOverlayOptions(section)
 									local addTextBox = section.AddTextBox
@@ -259548,26 +259548,26 @@ local function f10149()
 							end
 
 							f10500 = "hf"
-							local v11728 = f10536
-							local v11729 = f10537
+							local modules = f10536
+							local loadModule_hf = f10537
 
 							f11098 = function()
-								local t4056 = v11728.cache.hf
+								local t4056 = modules.cache.hf
 								if not t4056 then
-									t4056 = { c = v11729() }
-									v11728.cache.hf = t4056
+									t4056 = { c = loadModule_hf() }
+									modules.cache.hf = t4056
 								end
 								return t4056.c
 							end
 
 							f10536[f10500] = f11098
-							local v11730 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local buildMainSection = v11730.ha()
-								local buildExtras = v11730.he()
-								local buildFooter = v11730.hf()
-								v11730.cI()
+								local buildMainSection = modules.ha()
+								local buildExtras = modules.he()
+								local buildFooter = modules.hf()
+								modules.cI()
 
 								local function build(page)
 									buildExtras(page, (buildMainSection(page)))
@@ -259578,25 +259578,25 @@ local function f10149()
 							end
 
 							f10500 = "hg"
-							local v11734 = f10536
-							local v11735 = f10537
+							local modules = f10536
+							local loadModule_hg = f10537
 
 							f11098 = function()
-								local t4057 = v11734.cache.hg
+								local t4057 = modules.cache.hg
 								if not t4057 then
-									t4057 = { c = v11735() }
-									v11734.cache.hg = t4057
+									t4057 = { c = loadModule_hg() }
+									modules.cache.hg = t4057
 								end
 								return t4057.c
 							end
 
 							f10536[f10500] = f11098
-							local v11736 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11736.cI()
-								local DeviceTypes = v11736.n()
-								local deviceOptions = v11736.k()(DeviceTypes)
+								modules.cI()
+								local DeviceTypes = modules.n()
+								local deviceOptions = modules.k()(DeviceTypes)
 
 								local function buildDeviceSpoofSection_proto(column)
 									local addSection = column.AddSection
@@ -259614,23 +259614,23 @@ local function f10149()
 							end
 
 							f10500 = "hh"
-							local v11739 = f10536
-							local v11740 = f10537
+							local modules = f10536
+							local loadModule_hh = f10537
 
 							f11098 = function()
-								local t4063 = v11739.cache.hh
+								local t4063 = modules.cache.hh
 								if not t4063 then
-									t4063 = { c = v11740() }
-									v11739.cache.hh = t4063
+									t4063 = { c = loadModule_hh() }
+									modules.cache.hh = t4063
 								end
 								return t4063.c
 							end
 
 							f10536[f10500] = f11098
-							local v11741 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11741.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -259648,24 +259648,24 @@ local function f10149()
 							end
 
 							f10500 = "hi"
-							local v11742 = f10536
-							local v11743 = f10537
+							local modules = f10536
+							local loadModule_hi = f10537
 
 							f11098 = function()
-								local t4068 = v11742.cache.hi
+								local t4068 = modules.cache.hi
 								if not t4068 then
-									t4068 = { c = v11743() }
-									v11742.cache.hi = t4068
+									t4068 = { c = loadModule_hi() }
+									modules.cache.hi = t4068
 								end
 								return t4068.c
 							end
 
 							f10536[f10500] = f11098
-							local v11744 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11744.cI()
-								local addKeybindToggle = v11744.gP()
+								modules.cI()
+								local addKeybindToggle = modules.gP()
 
 								local function addSliderGroup(section, label, _, tooltip, slider)
 									local toggle = addKeybindToggle(
@@ -259756,23 +259756,23 @@ local function f10149()
 							end
 
 							f10500 = "hj"
-							local v11748 = f10536
-							local v11749 = f10537
+							local modules = f10536
+							local loadModule_hj = f10537
 
 							f11098 = function()
-								local t4086 = v11748.cache.hj
+								local t4086 = modules.cache.hj
 								if not t4086 then
-									t4086 = { c = v11749() }
-									v11748.cache.hj = t4086
+									t4086 = { c = loadModule_hj() }
+									modules.cache.hj = t4086
 								end
 								return t4086.c
 							end
 
 							f10536[f10500] = f11098
-							local v11750 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11750.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -259802,23 +259802,23 @@ local function f10149()
 							end
 
 							f10500 = "hk"
-							local v11751 = f10536
-							local v11752 = f10537
+							local modules = f10536
+							local loadModule_hk = f10537
 
 							f11098 = function()
-								local t4095 = v11751.cache.hk
+								local t4095 = modules.cache.hk
 								if not t4095 then
-									t4095 = { c = v11752() }
-									v11751.cache.hk = t4095
+									t4095 = { c = loadModule_hk() }
+									modules.cache.hk = t4095
 								end
 								return t4095.c
 							end
 
 							f10536[f10500] = f11098
-							local v11753 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11753.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -259851,24 +259851,24 @@ local function f10149()
 							end
 
 							f10500 = "hl"
-							local v11754 = f10536
-							local v11755 = f10537
+							local modules = f10536
+							local loadModule_hl = f10537
 
 							f11098 = function()
-								local t4101 = v11754.cache.hl
+								local t4101 = modules.cache.hl
 								if not t4101 then
-									t4101 = { c = v11755() }
-									v11754.cache.hl = t4101
+									t4101 = { c = loadModule_hl() }
+									modules.cache.hl = t4101
 								end
 								return t4101.c
 							end
 
 							f10536[f10500] = f11098
-							local v11756 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11756.cI()
-								local addKeybindToggle = v11756.gP()
+								modules.cI()
+								local addKeybindToggle = modules.gP()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -259914,24 +259914,24 @@ local function f10149()
 							end
 
 							f10500 = "hm"
-							local v11758 = f10536
-							local v11759 = f10537
+							local modules = f10536
+							local loadModule_hm = f10537
 
 							f11098 = function()
-								local t4109 = v11758.cache.hm
+								local t4109 = modules.cache.hm
 								if not t4109 then
-									t4109 = { c = v11759() }
-									v11758.cache.hm = t4109
+									t4109 = { c = loadModule_hm() }
+									modules.cache.hm = t4109
 								end
 								return t4109.c
 							end
 
 							f10536[f10500] = f11098
-							local v11760 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11760.gu()
-								v11760.cI()
+								modules.gu()
+								modules.cI()
 
 								local function addControlKeybind(section, enabledToggle, label, listLabel, _)
 									local addKeybind = section.AddKeybind
@@ -260102,25 +260102,25 @@ local function f10149()
 							end
 
 							f10500 = "hn"
-							local v11767 = f10536
-							local v11768 = f10537
+							local modules = f10536
+							local loadModule_hn = f10537
 
 							f11098 = function()
-								local t4137 = v11767.cache.hn
+								local t4137 = modules.cache.hn
 								if not t4137 then
-									t4137 = { c = v11768() }
-									v11767.cache.hn = t4137
+									t4137 = { c = loadModule_hn() }
+									modules.cache.hn = t4137
 								end
 								return t4137.c
 							end
 
 							f10536[f10500] = f11098
-							local v11769 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v11769.y()
-								v11769.cI()
-								local appendPath = v11769.j()
+								local Config = modules.y()
+								modules.cI()
+								local appendPath = modules.j()
 
 								local function bindNumberTextBox(textBox, path)
 									local value = Config:Get(path)
@@ -260214,33 +260214,33 @@ local function f10149()
 							end
 
 							f10500 = "ho"
-							local v11780 = f10536
-							local v11781 = f10537
+							local modules = f10536
+							local loadModule_ho = f10537
 
 							f11098 = function()
-								local t4149 = v11780.cache.ho
+								local t4149 = modules.cache.ho
 								if not t4149 then
-									t4149 = { c = v11781() }
-									v11780.cache.ho = t4149
+									t4149 = { c = loadModule_ho() }
+									modules.cache.ho = t4149
 								end
 								return t4149.c
 							end
 
 							f10536[f10500] = f11098
-							local v11782 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11782.cI()
-								v11782.gv()
-								local buildBodyColor = v11782.g5()
-								local buildLoopAnimations = v11782.g7()
-								local buildCrosshair = v11782.hg()
-								local buildDeviceSpoof = v11782.hh()
-								local buildCameraFov = v11782.hi()
-								local buildMovement = v11782.hj()
-								local buildRemovables = v11782.hk()
-								local buildStretchedRes = v11782.hl()
-								local buildThirdPerson = v11782.hm()
+								modules.cI()
+								modules.gv()
+								local buildBodyColor = modules.g5()
+								local buildLoopAnimations = modules.g7()
+								local buildCrosshair = modules.hg()
+								local buildDeviceSpoof = modules.hh()
+								local buildCameraFov = modules.hi()
+								local buildMovement = modules.hj()
+								local buildRemovables = modules.hk()
+								local buildStretchedRes = modules.hl()
+								local buildThirdPerson = modules.hm()
 								local icons = {
 									Player = "rbxassetid://114567720540659",
 									Movement = "rbxassetid://114280087699339",
@@ -260272,7 +260272,7 @@ local function f10149()
 									buildMovement(movementGrid)
 									local movementRecorder = context.movementRecorder
 									if movementRecorder then
-										v11782.hn()(movementRecorder, movementGrid)
+										modules.hn()(movementRecorder, movementGrid)
 									end
 									local addTab3 = playerTab.AddTab
 									local cameraTabOptions = {
@@ -260331,30 +260331,30 @@ local function f10149()
 									local gridOptions6 = { Columns = 2 }
 									local spoofGrid = grid6(spoofTab, gridOptions6)
 									buildDeviceSpoof(spoofGrid)
-									v11782.ho()(spoofGrid)
+									modules.ho()(spoofGrid)
 								end
 
 								return build
 							end
 
 							f10500 = "hp"
-							local v11797 = f10536
-							local v11798 = f10537
+							local modules = f10536
+							local loadModule_hp = f10537
 
 							f11098 = function()
-								local t4171 = v11797.cache.hp
+								local t4171 = modules.cache.hp
 								if not t4171 then
-									t4171 = { c = v11798() }
-									v11797.cache.hp = t4171
+									t4171 = { c = loadModule_hp() }
+									modules.cache.hp = t4171
 								end
 								return t4171.c
 							end
 
 							f10536[f10500] = f11098
-							local v11799 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11799.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -260369,24 +260369,24 @@ local function f10149()
 							end
 
 							f10500 = "hq"
-							local v11800 = f10536
-							local v11801 = f10537
+							local modules = f10536
+							local loadModule_hq = f10537
 
 							f11098 = function()
-								local t4175 = v11800.cache.hq
+								local t4175 = modules.cache.hq
 								if not t4175 then
-									t4175 = { c = v11801() }
-									v11800.cache.hq = t4175
+									t4175 = { c = loadModule_hq() }
+									modules.cache.hq = t4175
 								end
 								return t4175.c
 							end
 
 							f10536[f10500] = f11098
-							local v11802 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11802.cI()
-								v11802.gv()
+								modules.cI()
+								modules.gv()
 								local faceFields = table.create(6)
 
 								local function buildCustomSkyboxesSection(deps, tab)
@@ -260470,24 +260470,24 @@ local function f10149()
 							end
 
 							f10500 = "hr"
-							local v11810 = f10536
-							local v11811 = f10537
+							local modules = f10536
+							local loadModule_hr = f10537
 
 							f11098 = function()
-								local t4187 = v11810.cache.hr
+								local t4187 = modules.cache.hr
 								if not t4187 then
-									t4187 = { c = v11811() }
-									v11810.cache.hr = t4187
+									t4187 = { c = loadModule_hr() }
+									modules.cache.hr = t4187
 								end
 								return t4187.c
 							end
 
 							f10536[f10500] = f11098
-							local v11812 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11812.cI()
-								v11812.gv()
+								modules.cI()
+								modules.gv()
 
 								local function build(context, page)
 									local customSounds = context.customSounds
@@ -260539,25 +260539,25 @@ local function f10149()
 							end
 
 							f10500 = "hs"
-							local v11816 = f10536
-							local v11817 = f10537
+							local modules = f10536
+							local loadModule_hs = f10537
 
 							f11098 = function()
-								local t4195 = v11816.cache.hs
+								local t4195 = modules.cache.hs
 								if not t4195 then
-									t4195 = { c = v11817() }
-									v11816.cache.hs = t4195
+									t4195 = { c = loadModule_hs() }
+									modules.cache.hs = t4195
 								end
 								return t4195.c
 							end
 
 							f10536[f10500] = f11098
-							local v11818 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Fonts = v11818.K()
-								v11818.O()
-								v11818.cI()
+								local Fonts = modules.K()
+								modules.O()
+								modules.cI()
 								local sides = table.create(6)
 
 								local function buildNotificationsSection(tab)
@@ -260593,24 +260593,24 @@ local function f10149()
 							end
 
 							f10500 = "ht"
-							local v11821 = f10536
-							local v11822 = f10537
+							local modules = f10536
+							local loadModule_ht = f10537
 
 							f11098 = function()
-								local t4203 = v11821.cache.ht
+								local t4203 = modules.cache.ht
 								if not t4203 then
-									t4203 = { c = v11822() }
-									v11821.cache.ht = t4203
+									t4203 = { c = loadModule_ht() }
+									modules.cache.ht = t4203
 								end
 								return t4203.c
 							end
 
 							f10536[f10500] = f11098
-							local v11823 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11823.cI()
-								v11823.gv()
+								modules.cI()
+								modules.gv()
 
 								local function build(context, page)
 									local addSection = page.AddSection
@@ -260636,29 +260636,29 @@ local function f10149()
 							end
 
 							f10500 = "hu"
-							local v11825 = f10536
-							local v11826 = f10537
+							local modules = f10536
+							local loadModule_hu = f10537
 
 							f11098 = function()
-								local t4207 = v11825.cache.hu
+								local t4207 = modules.cache.hu
 								if not t4207 then
-									t4207 = { c = v11826() }
-									v11825.cache.hu = t4207
+									t4207 = { c = loadModule_hu() }
+									modules.cache.hu = t4207
 								end
 								return t4207.c
 							end
 
 							f10536[f10500] = f11098
-							local v11827 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11827.cI()
-								v11827.gv()
-								local buildMenuSettings = v11827.hq()
-								local buildContentSection = v11827.hr()
-								local buildContentSection2 = v11827.hs()
-								local buildScriptSection = v11827.ht()
-								local buildConfigSection = v11827.hu()
+								modules.cI()
+								modules.gv()
+								local buildMenuSettings = modules.hq()
+								local buildContentSection = modules.hr()
+								local buildContentSection2 = modules.hs()
+								local buildScriptSection = modules.ht()
+								local buildConfigSection = modules.hu()
 								local icons = {
 									Script = "rbxassetid://93918366472395",
 									Content = "rbxassetid://114050057679028"
@@ -260689,24 +260689,24 @@ local function f10149()
 							end
 
 							f10500 = "hv"
-							local v11835 = f10536
-							local v11836 = f10537
+							local modules = f10536
+							local loadModule_hv = f10537
 
 							f11098 = function()
-								local t4215 = v11835.cache.hv
+								local t4215 = modules.cache.hv
 								if not t4215 then
-									t4215 = { c = v11836() }
-									v11835.cache.hv = t4215
+									t4215 = { c = loadModule_hv() }
+									modules.cache.hv = t4215
 								end
 								return t4215.c
 							end
 
 							f10536[f10500] = f11098
-							local v11837 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11837.cI()
-								v11837.gv()
+								modules.cI()
+								modules.gv()
 
 								local function build(context, section)
 									local cosmeticsConfig = context.cosmeticsConfig
@@ -260827,27 +260827,27 @@ local function f10149()
 							end
 
 							f10500 = "hw"
-							local v11846 = f10536
-							local v11847 = f10537
+							local modules = f10536
+							local loadModule_hw = f10537
 
 							f11098 = function()
-								local t4226 = v11846.cache.hw
+								local t4226 = modules.cache.hw
 								if not t4226 then
-									t4226 = { c = v11847() }
-									v11846.cache.hw = t4226
+									t4226 = { c = loadModule_hw() }
+									modules.cache.hw = t4226
 								end
 								return t4226.c
 							end
 
 							f10536[f10500] = f11098
-							local v11848 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11848.g()
-								v11848.cI()
-								v11848.gv()
-								local Rarities = v11848.dZ()
-								local CosmeticTypes = v11848.cT()
+								modules.g()
+								modules.cI()
+								modules.gv()
+								local Rarities = modules.dZ()
+								local CosmeticTypes = modules.cT()
 
 								local function buildCosmeticsMainTab(deps, tab)
 									local addSection = tab.AddSection
@@ -260951,32 +260951,32 @@ local function f10149()
 							end
 
 							f10500 = "hx"
-							local v11855 = f10536
-							local v11856 = f10537
+							local modules = f10536
+							local loadModule_hx = f10537
 
 							f11098 = function()
-								local t4242 = v11855.cache.hx
+								local t4242 = modules.cache.hx
 								if not t4242 then
-									t4242 = { c = v11856() }
-									v11855.cache.hx = t4242
+									t4242 = { c = loadModule_hx() }
+									modules.cache.hx = t4242
 								end
 								return t4242.c
 							end
 
 							f10536[f10500] = f11098
-							local v11857 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local RankCharms = v11857.c2()
-								v11857.cI()
-								v11857.gv()
-								local wrapRenderer = v11857.dh()
-								local cosmeticImages = v11857.dP()
-								local weaponNames = v11857.dQ()
-								local buildConfigsSection = v11857.hw()
-								local fuzzyMatch = v11857.ct()
-								local cosmeticsGeneral = v11857.hx()
-								local findDescendant = v11857.W()
+								local RankCharms = modules.c2()
+								modules.cI()
+								modules.gv()
+								local wrapRenderer = modules.dh()
+								local cosmeticImages = modules.dP()
+								local weaponNames = modules.dQ()
+								local buildConfigsSection = modules.hw()
+								local fuzzyMatch = modules.ct()
+								local cosmeticsGeneral = modules.hx()
+								local findDescendant = modules.W()
 								local playerAssets = findDescendant(
 									cloneref(game:GetService("Players")).LocalPlayer,
 									(table.create(2))
@@ -261628,25 +261628,25 @@ local function f10149()
 							end
 
 							f10500 = "hy"
-							local v11920 = f10536
-							local v11921 = f10537
+							local modules = f10536
+							local loadModule_hy = f10537
 
 							f11098 = function()
-								local t4312 = v11920.cache.hy
+								local t4312 = modules.cache.hy
 								if not t4312 then
-									t4312 = { c = v11921() }
-									v11920.cache.hy = t4312
+									t4312 = { c = loadModule_hy() }
+									modules.cache.hy = t4312
 								end
 								return t4312.c
 							end
 
 							f10536[f10500] = f11098
-							local v11922 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local tracerStyles = v11922.bG()
-								local colorBindings = v11922.cJ()
-								v11922.cI()
+								local tracerStyles = modules.bG()
+								local colorBindings = modules.cJ()
+								modules.cI()
 
 								local function buildBulletTracersSection_proto(column)
 									local addSection = column.AddSection
@@ -261743,24 +261743,24 @@ local function f10149()
 							end
 
 							f10500 = "hz"
-							local v11926 = f10536
-							local v11927 = f10537
+							local modules = f10536
+							local loadModule_hz = f10537
 
 							f11098 = function()
-								local t4331 = v11926.cache.hz
+								local t4331 = modules.cache.hz
 								if not t4331 then
-									t4331 = { c = v11927() }
-									v11926.cache.hz = t4331
+									t4331 = { c = loadModule_hz() }
+									modules.cache.hz = t4331
 								end
 								return t4331.c
 							end
 
 							f10536[f10500] = f11098
-							local v11928 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11928.cI()
-								local addColorSection = v11928.g6()
+								modules.cI()
+								local addColorSection = modules.g6()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -261778,26 +261778,26 @@ local function f10149()
 							end
 
 							f10500 = "hA"
-							local v11932 = f10536
-							local v11933 = f10537
+							local modules = f10536
+							local loadModule_hA = f10537
 
 							f11098 = function()
-								local t4335 = v11932.cache.hA
+								local t4335 = modules.cache.hA
 								if not t4335 then
-									t4335 = { c = v11933() }
-									v11932.cache.hA = t4335
+									t4335 = { c = loadModule_hA() }
+									modules.cache.hA = t4335
 								end
 								return t4335.c
 							end
 
 							f10536[f10500] = f11098
-							local v11934 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v11934.cJ()
-								local Materials = v11934.l()
-								v11934.cI()
-								v11934.gv()
+								local ColorBinding = modules.cJ()
+								local Materials = modules.l()
+								modules.cI()
+								modules.gv()
 
 								local function build(context, page)
 									local addSection = page.AddSection
@@ -261902,26 +261902,26 @@ local function f10149()
 							end
 
 							f10500 = "hB"
-							local v11939 = f10536
-							local v11940 = f10537
+							local modules = f10536
+							local loadModule_hB = f10537
 
 							f11098 = function()
-								local t4361 = v11939.cache.hB
+								local t4361 = modules.cache.hB
 								if not t4361 then
-									t4361 = { c = v11940() }
-									v11939.cache.hB = t4361
+									t4361 = { c = loadModule_hB() }
+									modules.cache.hB = t4361
 								end
 								return t4361.c
 							end
 
 							f10536[f10500] = f11098
-							local v11941 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v11941.cJ()
-								local Materials = v11941.l()
-								v11941.cI()
-								v11941.gv()
+								local ColorBinding = modules.cJ()
+								local Materials = modules.l()
+								modules.cI()
+								modules.gv()
 
 								local function buildHitFeedbackSection(deps, tab)
 									local addSection = tab.AddSection
@@ -262053,24 +262053,24 @@ local function f10149()
 							end
 
 							f10500 = "hC"
-							local v11947 = f10536
-							local v11948 = f10537
+							local modules = f10536
+							local loadModule_hC = f10537
 
 							f11098 = function()
-								local t4391 = v11947.cache.hC
+								local t4391 = modules.cache.hC
 								if not t4391 then
-									t4391 = { c = v11948() }
-									v11947.cache.hC = t4391
+									t4391 = { c = loadModule_hC() }
+									modules.cache.hC = t4391
 								end
 								return t4391.c
 							end
 
 							f10536[f10500] = f11098
-							local v11949 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v11949.cJ()
-								v11949.cI()
+								local ColorBinding = modules.cJ()
+								modules.cI()
 
 								local function buildTarget(section, _)
 									local addToggle = section.AddToggle
@@ -262123,23 +262123,23 @@ local function f10149()
 							end
 
 							f10500 = "hD"
-							local v11954 = f10536
-							local v11955 = f10537
+							local modules = f10536
+							local loadModule_hD = f10537
 
 							f11098 = function()
-								local t4402 = v11954.cache.hD
+								local t4402 = modules.cache.hD
 								if not t4402 then
-									t4402 = { c = v11955() }
-									v11954.cache.hD = t4402
+									t4402 = { c = loadModule_hD() }
+									modules.cache.hD = t4402
 								end
 								return t4402.c
 							end
 
 							f10536[f10500] = f11098
-							local v11956 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11956.cI()
+								modules.cI()
 
 								local function buildAnimationTab(column)
 									local addSection = column.AddSection
@@ -262175,23 +262175,23 @@ local function f10149()
 							end
 
 							f10500 = "hE"
-							local v11957 = f10536
-							local v11958 = f10537
+							local modules = f10536
+							local loadModule_hE = f10537
 
 							f11098 = function()
-								local t4414 = v11957.cache.hE
+								local t4414 = modules.cache.hE
 								if not t4414 then
-									t4414 = { c = v11958() }
-									v11957.cache.hE = t4414
+									t4414 = { c = loadModule_hE() }
+									modules.cache.hE = t4414
 								end
 								return t4414.c
 							end
 
 							f10536[f10500] = f11098
-							local v11959 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11959.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -262242,23 +262242,23 @@ local function f10149()
 							end
 
 							f10500 = "hF"
-							local v11960 = f10536
-							local v11961 = f10537
+							local modules = f10536
+							local loadModule_hF = f10537
 
 							f11098 = function()
-								local t4424 = v11960.cache.hF
+								local t4424 = modules.cache.hF
 								if not t4424 then
-									t4424 = { c = v11961() }
-									v11960.cache.hF = t4424
+									t4424 = { c = loadModule_hF() }
+									modules.cache.hF = t4424
 								end
 								return t4424.c
 							end
 
 							f10536[f10500] = f11098
-							local v11962 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11962.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -262276,23 +262276,23 @@ local function f10149()
 							end
 
 							f10500 = "hG"
-							local v11963 = f10536
-							local v11964 = f10537
+							local modules = f10536
+							local loadModule_hG = f10537
 
 							f11098 = function()
-								local t4429 = v11963.cache.hG
+								local t4429 = modules.cache.hG
 								if not t4429 then
-									t4429 = { c = v11964() }
-									v11963.cache.hG = t4429
+									t4429 = { c = loadModule_hG() }
+									modules.cache.hG = t4429
 								end
 								return t4429.c
 							end
 
 							f10536[f10500] = f11098
-							local v11965 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11965.cI()
+								modules.cI()
 
 								local function addPercentModifier(section, label, _, min, max)
 									local addToggle = section.AddToggle
@@ -262367,24 +262367,24 @@ local function f10149()
 							end
 
 							f10500 = "hH"
-							local v11969 = f10536
-							local v11970 = f10537
+							local modules = f10536
+							local loadModule_hH = f10537
 
 							f11098 = function()
-								local t4451 = v11969.cache.hH
+								local t4451 = modules.cache.hH
 								if not t4451 then
-									t4451 = { c = v11970() }
-									v11969.cache.hH = t4451
+									t4451 = { c = loadModule_hH() }
+									modules.cache.hH = t4451
 								end
 								return t4451.c
 							end
 
 							f10536[f10500] = f11098
-							local v11971 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v11971.cJ()
-								v11971.cI()
+								local ColorBinding = modules.cJ()
+								modules.cI()
 
 								local function addBeamOptions(section, _)
 									local addToggle = section.AddToggle
@@ -262424,34 +262424,34 @@ local function f10149()
 							end
 
 							f10500 = "hI"
-							local v11976 = f10536
-							local v11977 = f10537
+							local modules = f10536
+							local loadModule_hI = f10537
 
 							f11098 = function()
-								local t4460 = v11976.cache.hI
+								local t4460 = modules.cache.hI
 								if not t4460 then
-									t4460 = { c = v11977() }
-									v11976.cache.hI = t4460
+									t4460 = { c = loadModule_hI() }
+									modules.cache.hI = t4460
 								end
 								return t4460.c
 							end
 
 							f10536[f10500] = f11098
-							local v11978 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v11978.cI()
-								v11978.gv()
-								local buildBulletTracers = v11978.hz()
-								local v11980 = v11978.hA()
-								local buildKillFeedback = v11978.hB()
-								local buildHitFeedback = v11978.hC()
-								local v11983 = v11978.hD()
-								local v11984 = v11978.hE()
-								local v11985 = v11978.hF()
-								local buildMuzzleEffects = v11978.hG()
-								local buildWeaponStats = v11978.hH()
-								local v11988 = v11978.hI()
+								modules.cI()
+								modules.gv()
+								local buildBulletTracers = modules.hz()
+								local v11980 = modules.hA()
+								local buildKillFeedback = modules.hB()
+								local buildHitFeedback = modules.hC()
+								local v11983 = modules.hD()
+								local v11984 = modules.hE()
+								local v11985 = modules.hF()
+								local buildMuzzleEffects = modules.hG()
+								local buildWeaponStats = modules.hH()
+								local v11988 = modules.hI()
 								local icons = {
 									Weapon = "rbxassetid://121406454377051",
 									Stats = "rbxassetid://128279962545721",
@@ -262523,24 +262523,24 @@ local function f10149()
 							end
 
 							f10500 = "hJ"
-							local v11992 = f10536
-							local v11993 = f10537
+							local modules = f10536
+							local loadModule_hJ = f10537
 
 							f11098 = function()
-								local t4476 = v11992.cache.hJ
+								local t4476 = modules.cache.hJ
 								if not t4476 then
-									t4476 = { c = v11993() }
-									v11992.cache.hJ = t4476
+									t4476 = { c = loadModule_hJ() }
+									modules.cache.hJ = t4476
 								end
 								return t4476.c
 							end
 
 							f10536[f10500] = f11098
-							local v11994 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ambienceSounds = v11994.fM()
-								v11994.cI()
+								local ambienceSounds = modules.fM()
+								modules.cI()
 
 								local function buildAmbienceSection(tab)
 									local addSection = tab.AddSection
@@ -262574,24 +262574,24 @@ local function f10149()
 							end
 
 							f10500 = "hK"
-							local v11996 = f10536
-							local v11997 = f10537
+							local modules = f10536
+							local loadModule_hK = f10537
 
 							f11098 = function()
-								local t4484 = v11996.cache.hK
+								local t4484 = modules.cache.hK
 								if not t4484 then
-									t4484 = { c = v11997() }
-									v11996.cache.hK = t4484
+									t4484 = { c = loadModule_hK() }
+									modules.cache.hK = t4484
 								end
 								return t4484.c
 							end
 
 							f10536[f10500] = f11098
-							local v11998 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v11999 = v11998.cJ()
-								v11998.cI()
+								local v11999 = modules.cJ()
+								modules.cI()
 
 								local function buildAtmosphereSection(tab)
 									local addSection = tab.AddSection
@@ -262650,23 +262650,23 @@ local function f10149()
 							end
 
 							f10500 = "hL"
-							local v12000 = f10536
-							local v12001 = f10537
+							local modules = f10536
+							local loadModule_hL = f10537
 
 							f11098 = function()
-								local t4495 = v12000.cache.hL
+								local t4495 = modules.cache.hL
 								if not t4495 then
-									t4495 = { c = v12001() }
-									v12000.cache.hL = t4495
+									t4495 = { c = loadModule_hL() }
+									modules.cache.hL = t4495
 								end
 								return t4495.c
 							end
 
 							f10536[f10500] = f11098
-							local v12002 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12002.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -262702,24 +262702,24 @@ local function f10149()
 							end
 
 							f10500 = "hM"
-							local v12003 = f10536
-							local v12004 = f10537
+							local modules = f10536
+							local loadModule_hM = f10537
 
 							f11098 = function()
-								local t4502 = v12003.cache.hM
+								local t4502 = modules.cache.hM
 								if not t4502 then
-									t4502 = { c = v12004() }
-									v12003.cache.hM = t4502
+									t4502 = { c = loadModule_hM() }
+									modules.cache.hM = t4502
 								end
 								return t4502.c
 							end
 
 							f10536[f10500] = f11098
-							local v12005 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local colorBinder = v12005.cJ()
-								v12005.cI()
+								local colorBinder = modules.cJ()
+								modules.cI()
 
 								local function buildColorCorrectionSection_proto(tab)
 									local addSection = tab.AddSection
@@ -262765,23 +262765,23 @@ local function f10149()
 							end
 
 							f10500 = "hN"
-							local v12007 = f10536
-							local v12008 = f10537
+							local modules = f10536
+							local loadModule_hN = f10537
 
 							f11098 = function()
-								local t4511 = v12007.cache.hN
+								local t4511 = modules.cache.hN
 								if not t4511 then
-									t4511 = { c = v12008() }
-									v12007.cache.hN = t4511
+									t4511 = { c = loadModule_hN() }
+									modules.cache.hN = t4511
 								end
 								return t4511.c
 							end
 
 							f10536[f10500] = f11098
-							local v12009 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12009.cI()
+								modules.cI()
 
 								local function buildColorGradingSection(grid)
 									local addSection = grid.AddSection
@@ -262803,23 +262803,23 @@ local function f10149()
 							end
 
 							f10500 = "hO"
-							local v12010 = f10536
-							local v12011 = f10537
+							local modules = f10536
+							local loadModule_hO = f10537
 
 							f11098 = function()
-								local t4517 = v12010.cache.hO
+								local t4517 = modules.cache.hO
 								if not t4517 then
-									t4517 = { c = v12011() }
-									v12010.cache.hO = t4517
+									t4517 = { c = loadModule_hO() }
+									modules.cache.hO = t4517
 								end
 								return t4517.c
 							end
 
 							f10536[f10500] = f11098
-							local v12012 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12012.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -262868,24 +262868,24 @@ local function f10149()
 							end
 
 							f10500 = "hP"
-							local v12013 = f10536
-							local v12014 = f10537
+							local modules = f10536
+							local loadModule_hP = f10537
 
 							f11098 = function()
-								local t4525 = v12013.cache.hP
+								local t4525 = modules.cache.hP
 								if not t4525 then
-									t4525 = { c = v12014() }
-									v12013.cache.hP = t4525
+									t4525 = { c = loadModule_hP() }
+									modules.cache.hP = t4525
 								end
 								return t4525.c
 							end
 
 							f10536[f10500] = f11098
-							local v12015 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v12015.cJ()
-								v12015.cI()
+								local ColorBinding = modules.cJ()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -263048,24 +263048,24 @@ local function f10149()
 							end
 
 							f10500 = "hQ"
-							local v12017 = f10536
-							local v12018 = f10537
+							local modules = f10536
+							local loadModule_hQ = f10537
 
 							f11098 = function()
-								local t4568 = v12017.cache.hQ
+								local t4568 = modules.cache.hQ
 								if not t4568 then
-									t4568 = { c = v12018() }
-									v12017.cache.hQ = t4568
+									t4568 = { c = loadModule_hQ() }
+									modules.cache.hQ = t4568
 								end
 								return t4568.c
 							end
 
 							f10536[f10500] = f11098
-							local v12019 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v12020 = v12019.cJ()
-								v12019.cI()
+								local v12020 = modules.cJ()
+								modules.cI()
 
 								local function packArgs(...)
 									local args = table.create(2)
@@ -263321,23 +263321,23 @@ local function f10149()
 							end
 
 							f10500 = "hR"
-							local v12024 = f10536
-							local v12025 = f10537
+							local modules = f10536
+							local loadModule_hR = f10537
 
 							f11098 = function()
-								local t4609 = v12024.cache.hR
+								local t4609 = modules.cache.hR
 								if not t4609 then
-									t4609 = { c = v12025() }
-									v12024.cache.hR = t4609
+									t4609 = { c = loadModule_hR() }
+									modules.cache.hR = t4609
 								end
 								return t4609.c
 							end
 
 							f10536[f10500] = f11098
-							local v12026 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12026.cI()
+								modules.cI()
 
 								local function buildMotionBlurSection(tab)
 									local addSection = tab.AddSection
@@ -263370,24 +263370,24 @@ local function f10149()
 							end
 
 							f10500 = "hS"
-							local v12027 = f10536
-							local v12028 = f10537
+							local modules = f10536
+							local loadModule_hS = f10537
 
 							f11098 = function()
-								local t4615 = v12027.cache.hS
+								local t4615 = modules.cache.hS
 								if not t4615 then
-									t4615 = { c = v12028() }
-									v12027.cache.hS = t4615
+									t4615 = { c = loadModule_hS() }
+									modules.cache.hS = t4615
 								end
 								return t4615.c
 							end
 
 							f10536[f10500] = f11098
-							local v12029 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12029.cI()
-								v12029.gv()
+								modules.cI()
+								modules.gv()
 
 								local function buildSkyboxSection(deps, tab)
 									local addSection = tab.AddSection
@@ -263415,23 +263415,23 @@ local function f10149()
 							end
 
 							f10500 = "hT"
-							local v12031 = f10536
-							local v12032 = f10537
+							local modules = f10536
+							local loadModule_hT = f10537
 
 							f11098 = function()
-								local t4621 = v12031.cache.hT
+								local t4621 = modules.cache.hT
 								if not t4621 then
-									t4621 = { c = v12032() }
-									v12031.cache.hT = t4621
+									t4621 = { c = loadModule_hT() }
+									modules.cache.hT = t4621
 								end
 								return t4621.c
 							end
 
 							f10536[f10500] = f11098
-							local v12033 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12033.cI()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -263464,24 +263464,24 @@ local function f10149()
 							end
 
 							f10500 = "hU"
-							local v12034 = f10536
-							local v12035 = f10537
+							local modules = f10536
+							local loadModule_hU = f10537
 
 							f11098 = function()
-								local t4627 = v12034.cache.hU
+								local t4627 = modules.cache.hU
 								if not t4627 then
-									t4627 = { c = v12035() }
-									v12034.cache.hU = t4627
+									t4627 = { c = loadModule_hU() }
+									modules.cache.hU = t4627
 								end
 								return t4627.c
 							end
 
 							f10536[f10500] = f11098
-							local v12036 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local ColorBinding = v12036.cJ()
-								v12036.cI()
+								local ColorBinding = modules.cJ()
+								modules.cI()
 
 								local function build(page)
 									local addSection = page.AddSection
@@ -263576,36 +263576,36 @@ local function f10149()
 							end
 
 							f10500 = "hV"
-							local v12038 = f10536
-							local v12039 = f10537
+							local modules = f10536
+							local loadModule_hV = f10537
 
 							f11098 = function()
-								local t4643 = v12038.cache.hV
+								local t4643 = modules.cache.hV
 								if not t4643 then
-									t4643 = { c = v12039() }
-									v12038.cache.hV = t4643
+									t4643 = { c = loadModule_hV() }
+									modules.cache.hV = t4643
 								end
 								return t4643.c
 							end
 
 							f10536[f10500] = f11098
-							local v12040 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12040.cI()
-								v12040.gv()
-								local buildSky5 = v12040.hK()
-								local buildSky2 = v12040.hL()
-								local buildEffects3 = v12040.hM()
-								local buildEffects1 = v12040.hN()
-								local buildEffects2 = v12040.hO()
-								local buildEffects5 = v12040.hP()
-								local buildLighting = v12040.hQ()
-								local buildSky4 = v12040.hR()
-								local buildEffects6 = v12040.hS()
-								local buildSkybox = v12040.hT()
-								local buildEffects4 = v12040.hU()
-								local buildSky3 = v12040.hV()
+								modules.cI()
+								modules.gv()
+								local buildSky5 = modules.hK()
+								local buildSky2 = modules.hL()
+								local buildEffects3 = modules.hM()
+								local buildEffects1 = modules.hN()
+								local buildEffects2 = modules.hO()
+								local buildEffects5 = modules.hP()
+								local buildLighting = modules.hQ()
+								local buildSky4 = modules.hR()
+								local buildEffects6 = modules.hS()
+								local buildSkybox = modules.hT()
+								local buildEffects4 = modules.hU()
+								local buildSky3 = modules.hV()
 								local icons = {
 									World = "rbxassetid://125685532120024",
 									Lighting = "rbxassetid://139232691165198",
@@ -263668,35 +263668,35 @@ local function f10149()
 							end
 
 							f10500 = "hW"
-							local v12055 = f10536
-							local v12056 = f10537
+							local modules = f10536
+							local loadModule_hW = f10537
 
 							f11098 = function()
-								local t4656 = v12055.cache.hW
+								local t4656 = modules.cache.hW
 								if not t4656 then
-									t4656 = { c = v12056() }
-									v12055.cache.hW = t4656
+									t4656 = { c = loadModule_hW() }
+									modules.cache.hW = t4656
 								end
 								return t4656.c
 							end
 
 							f10536[f10500] = f11098
-							local v12057 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12057.ek()
-								local ui = v12057.cI()
-								v12057.gv()
-								local persistence = v12057.gw()
-								local v12060 = v12057.gI()
-								local v12061 = v12057.gW()
-								local v12062 = v12057.g4()
-								local rootTrove = v12057.r()
-								local v12064 = v12057.hp()
-								local v12065 = v12057.hv()
-								local v12066 = v12057.hy()
-								local v12067 = v12057.hJ()
-								local v12068 = v12057.hW()
+								modules.ek()
+								local ui = modules.cI()
+								modules.gv()
+								local persistence = modules.gw()
+								local v12060 = modules.gI()
+								local v12061 = modules.gW()
+								local v12062 = modules.g4()
+								local rootTrove = modules.r()
+								local v12064 = modules.hp()
+								local v12065 = modules.hv()
+								local v12066 = modules.hy()
+								local v12067 = modules.hJ()
+								local v12068 = modules.hW()
 								local localPlayer = cloneref(game:GetService("Players")).LocalPlayer
 
 								local function buildMainMenu_proto(app)
@@ -263749,30 +263749,30 @@ local function f10149()
 							end
 
 							f10500 = "hX"
-							local v12071 = f10536
-							local v12072 = f10537
+							local modules = f10536
+							local loadModule_hX = f10537
 
 							f11098 = function()
-								local t4658 = v12071.cache.hX
+								local t4658 = modules.cache.hX
 								if not t4658 then
-									t4658 = { c = v12072() }
-									v12071.cache.hX = t4658
+									t4658 = { c = loadModule_hX() }
+									modules.cache.hX = t4658
 								end
 								return t4658.c
 							end
 
 							f10536[f10500] = f11098
-							local v12073 = f10536
+							local modules = f10536
 							local v12074 = v387
 
 							f10537 = function()
-								local Result = v12073.b()
-								local getField = v12073.ah()
-								local callOriginal = v12073.ai()
-								local LeaderboardController2 = v12073.ao().LeaderboardController
-								local SeasonLibrary = v12073.ao().SeasonLibrary
-								local ErrorReporter = v12073.ac()
-								local DataPaths = v12073.cL()
+								local Result = modules.b()
+								local getField = modules.ah()
+								local callOriginal = modules.ai()
+								local LeaderboardController2 = modules.ao().LeaderboardController
+								local SeasonLibrary = modules.ao().SeasonLibrary
+								local ErrorReporter = modules.ac()
+								local DataPaths = modules.cL()
 								local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 								local highestEloBoard = "Highest ELO"
 								local hookedMethodName = "GetRankingByUserID\0kicia"
@@ -264004,14 +264004,14 @@ local function f10149()
 							end
 
 							f10500 = "hY"
-							local v12100 = f10536
-							local v12101 = f10537
+							local modules = f10536
+							local loadModule_hY = f10537
 
 							f11098 = function()
-								local t4666 = v12100.cache.hY
+								local t4666 = modules.cache.hY
 								if not t4666 then
-									t4666 = { c = v12101() }
-									v12100.cache.hY = t4666
+									t4666 = { c = loadModule_hY() }
+									modules.cache.hY = t4666
 								end
 								return t4666.c
 							end
@@ -264075,27 +264075,27 @@ local function f10149()
 							end
 
 							f10500 = "hZ"
-							local v12102 = f10536
-							local v12103 = f10537
+							local modules = f10536
+							local loadModule_hZ = f10537
 
 							f11098 = function()
-								local t4669 = v12102.cache.hZ
+								local t4669 = modules.cache.hZ
 								if not t4669 then
-									t4669 = { c = v12103() }
-									v12102.cache.hZ = t4669
+									t4669 = { c = loadModule_hZ() }
+									modules.cache.hZ = t4669
 								end
 								return t4669.c
 							end
 
 							f10536[f10500] = f11098
-							local v12104 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local AttributeBinding = v12104.hZ()
-								v12104.E()
-								local Trove = v12104.q()
-								local forEachPlayerInScope = v12104.Z()
-								local getSpoofProfile = v12104._()
+								local AttributeBinding = modules.hZ()
+								modules.E()
+								local Trove = modules.q()
+								local forEachPlayerInScope = modules.Z()
+								local getSpoofProfile = modules._()
 								local AttributeSink = {}
 								AttributeSink.__index = AttributeSink
 
@@ -264251,26 +264251,26 @@ local function f10149()
 							end
 
 							f10500 = "h_"
-							local v12116 = f10536
-							local v12117 = f10537
+							local modules = f10536
+							local loadModule_h_ = f10537
 
 							f11098 = function()
-								local t4677 = v12116.cache.h_
+								local t4677 = modules.cache.h_
 								if not t4677 then
-									t4677 = { c = v12117() }
-									v12116.cache.h_ = t4677
+									t4677 = { c = loadModule_h_() }
+									modules.cache.h_ = t4677
 								end
 								return t4677.c
 							end
 
 							f10536[f10500] = f11098
-							local v12118 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v12118.y()
-								v12118.hY()
+								local Config = modules.y()
+								modules.hY()
 								local LeaderboardRankSpoof = {}
-								local getSpoofSettings = v12118._()
+								local getSpoofSettings = modules._()
 
 								local function getRank(player)
 									local settings = getSpoofSettings(player)
@@ -264322,14 +264322,14 @@ local function f10149()
 							end
 
 							f10500 = "h0"
-							local v12123 = f10536
-							local v12124 = f10537
+							local modules = f10536
+							local loadModule_h0 = f10537
 
 							f11098 = function()
-								local t4681 = v12123.cache.h0
+								local t4681 = modules.cache.h0
 								if not t4681 then
-									t4681 = { c = v12124() }
-									v12123.cache.h0 = t4681
+									t4681 = { c = loadModule_h0() }
+									modules.cache.h0 = t4681
 								end
 								return t4681.c
 							end
@@ -264399,28 +264399,28 @@ local function f10149()
 							end
 
 							f10500 = "h1"
-							local v12125 = f10536
-							local v12126 = f10537
+							local modules = f10536
+							local loadModule_h1 = f10537
 
 							f11098 = function()
-								local t4684 = v12125.cache.h1
+								local t4684 = modules.cache.h1
 								if not t4684 then
-									t4684 = { c = v12126() }
-									v12125.cache.h1 = t4684
+									t4684 = { c = loadModule_h1() }
+									modules.cache.h1 = t4684
 								end
 								return t4684.c
 							end
 
 							f10536[f10500] = f11098
-							local v12127 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local GuardedValue = v12127.h1()
-								v12127.E()
-								local Trove = v12127.q()
-								local forEachInScope = v12127.Z()
-								local getPlayerSettings = v12127._()
-								local waitForPath = v12127.W()
+								local GuardedValue = modules.h1()
+								modules.E()
+								local Trove = modules.q()
+								local forEachInScope = modules.Z()
+								local getPlayerSettings = modules._()
+								local waitForPath = modules.W()
 								local EloSpoofer = {}
 								EloSpoofer.__index = EloSpoofer
 
@@ -264517,26 +264517,26 @@ local function f10149()
 							end
 
 							f10500 = "h2"
-							local v12136 = f10536
-							local v12137 = f10537
+							local modules = f10536
+							local loadModule_h2 = f10537
 
 							f11098 = function()
-								local t4692 = v12136.cache.h2
+								local t4692 = modules.cache.h2
 								if not t4692 then
-									t4692 = { c = v12137() }
-									v12136.cache.h2 = t4692
+									t4692 = { c = loadModule_h2() }
+									modules.cache.h2 = t4692
 								end
 								return t4692.c
 							end
 
 							f10536[f10500] = f11098
-							local v12138 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v12138.y()
-								v12138.c4()
+								local Config = modules.y()
+								modules.c4()
 								local PlayerSpooferStats = {}
-								local getSpoofSettings = v12138._()
+								local getSpoofSettings = modules._()
 
 								local function applyStats(call)
 									local settings = getSpoofSettings(call.player)
@@ -264604,28 +264604,28 @@ local function f10149()
 							end
 
 							f10500 = "h3"
-							local v12142 = f10536
-							local v12143 = f10537
+							local modules = f10536
+							local loadModule_h3 = f10537
 
 							f11098 = function()
-								local t4695 = v12142.cache.h3
+								local t4695 = modules.cache.h3
 								if not t4695 then
-									t4695 = { c = v12143() }
-									v12142.cache.h3 = t4695
+									t4695 = { c = loadModule_h3() }
+									modules.cache.h3 = t4695
 								end
 								return t4695.c
 							end
 
 							f10536[f10500] = f11098
-							local v12144 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local settings = v12144.y()
-								v12144.cM()
-								local SeasonLibrary6 = v12144.ao().SeasonLibrary
+								local settings = modules.y()
+								modules.cM()
+								local SeasonLibrary6 = modules.ao().SeasonLibrary
 								local RankedEloSpoof = {}
 								local dataKey = "Seasons"
-								local getField = v12144.ah()
+								local getField = modules.ah()
 
 								local function buildSeasons(dataHook)
 									local original = dataHook:GetOriginal(dataKey)
@@ -264684,33 +264684,33 @@ local function f10149()
 							end
 
 							f10500 = "h4"
-							local v12157 = f10536
-							local v12158 = f10537
+							local modules = f10536
+							local loadModule_h4 = f10537
 
 							f11098 = function()
-								local t4697 = v12157.cache.h4
+								local t4697 = modules.cache.h4
 								if not t4697 then
-									t4697 = { c = v12158() }
-									v12157.cache.h4 = t4697
+									t4697 = { c = loadModule_h4() }
+									modules.cache.h4 = t4697
 								end
 								return t4697.c
 							end
 
 							f10536[f10500] = f11098
-							local v12159 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12159.cM()
-								v12159.hY()
-								v12159.E()
-								v12159.c4()
-								local Trove = v12159.q()
-								local onConfigChanged = v12159.aa()
-								local AttributeSink = v12159.h_()
-								local LeaderboardRankHook = v12159.h0()
-								local LeaderstatSink = v12159.h2()
-								local RequestBinding = v12159.h3()
-								local DataHook = v12159.h4()
+								modules.cM()
+								modules.hY()
+								modules.E()
+								modules.c4()
+								local Trove = modules.q()
+								local onConfigChanged = modules.aa()
+								local AttributeSink = modules.h_()
+								local LeaderboardRankHook = modules.h0()
+								local LeaderstatSink = modules.h2()
+								local RequestBinding = modules.h3()
+								local DataHook = modules.h4()
 								local StatSpoofer = {}
 								StatSpoofer.__index = StatSpoofer
 								local attributeKeys = table.create(8)
@@ -264806,26 +264806,26 @@ local function f10149()
 							end
 
 							f10500 = "h5"
-							local v12174 = f10536
-							local v12175 = f10537
+							local modules = f10536
+							local loadModule_h5 = f10537
 
 							f11098 = function()
-								local t4700 = v12174.cache.h5
+								local t4700 = modules.cache.h5
 								if not t4700 then
-									t4700 = { c = v12175() }
-									v12174.cache.h5 = t4700
+									t4700 = { c = loadModule_h5() }
+									modules.cache.h5 = t4700
 								end
 								return t4700.c
 							end
 
 							f10536[f10500] = f11098
-							local v12176 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v12176.y()
-								v12176.a4()
-								local Trove = v12176.q()
-								local call = v12176.ai()
+								local Config = modules.y()
+								modules.a4()
+								local Trove = modules.q()
+								local call = modules.ai()
 								local Workspace = cloneref(game:GetService("Workspace"))
 								local triggerPath = table.create(4)
 								local LongJump = {}
@@ -264907,14 +264907,14 @@ local function f10149()
 							end
 
 							f10500 = "h6"
-							local v12186 = f10536
-							local v12187 = f10537
+							local modules = f10536
+							local loadModule_h6 = f10537
 
 							f11098 = function()
-								local t4705 = v12186.cache.h6
+								local t4705 = modules.cache.h6
 								if not t4705 then
-									t4705 = { c = v12187() }
-									v12186.cache.h6 = t4705
+									t4705 = { c = loadModule_h6() }
+									modules.cache.h6 = t4705
 								end
 								return t4705.c
 							end
@@ -264941,34 +264941,34 @@ local function f10149()
 							end
 
 							f10500 = "h7"
-							local v12189 = f10536
-							local v12190 = f10537
+							local modules = f10536
+							local loadModule_h7 = f10537
 
 							f11098 = function()
-								local t4707 = v12189.cache.h7
+								local t4707 = modules.cache.h7
 								if not t4707 then
-									t4707 = { c = v12190() }
-									v12189.cache.h7 = t4707
+									t4707 = { c = loadModule_h7() }
+									modules.cache.h7 = t4707
 								end
 								return t4707.c
 							end
 
 							f10536[f10500] = f11098
-							local v12191 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12191.a7()
-								local Humanizer = v12191.h7()
-								v12191.ay()
-								local Trove = v12191.q()
-								local invoke = v12191.ai()
-								local CameraController10 = v12191.ao().CameraController
-								local settings = v12191.y()
-								local KeybindBridge = v12191.eL()
-								v12191.bb()
-								v12191.a4()
-								local TrajectoryGenerator = v12191.bf()
-								v12191.bq()
+								modules.a7()
+								local Humanizer = modules.h7()
+								modules.ay()
+								local Trove = modules.q()
+								local invoke = modules.ai()
+								local CameraController10 = modules.ao().CameraController
+								local settings = modules.y()
+								local KeybindBridge = modules.eL()
+								modules.bb()
+								modules.a4()
+								local TrajectoryGenerator = modules.bf()
+								modules.bq()
 								local Workspace = cloneref(game:GetService("Workspace"))
 								local claimName = "Flickbot"
 								local Flickbot = {}
@@ -265191,14 +265191,14 @@ local function f10149()
 							end
 
 							f10500 = "h8"
-							local v12213 = f10536
-							local v12214 = f10537
+							local modules = f10536
+							local loadModule_h8 = f10537
 
 							f11098 = function()
-								local t4720 = v12213.cache.h8
+								local t4720 = modules.cache.h8
 								if not t4720 then
-									t4720 = { c = v12214() }
-									v12213.cache.h8 = t4720
+									t4720 = { c = loadModule_h8() }
+									modules.cache.h8 = t4720
 								end
 								return t4720.c
 							end
@@ -265210,24 +265210,24 @@ local function f10149()
 							end
 
 							f10500 = "h9"
-							local v12215 = f10536
-							local v12216 = f10537
+							local modules = f10536
+							local loadModule_h9 = f10537
 
 							f11098 = function()
-								local t4721 = v12215.cache.h9
+								local t4721 = modules.cache.h9
 								if not t4721 then
-									t4721 = { c = v12216() }
-									v12215.cache.h9 = t4721
+									t4721 = { c = loadModule_h9() }
+									modules.cache.h9 = t4721
 								end
 								return t4721.c
 							end
 
 							f10536[f10500] = f11098
-							local v12217 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12217.aT()
-								v12217.h9()
+								modules.aT()
+								modules.h9()
 								local riotShieldName = "Riot Shield"
 
 								local function getRiotShieldSide(fighterState)
@@ -265258,26 +265258,26 @@ local function f10149()
 							end
 
 							f10500 = "ia"
-							local v12221 = f10536
-							local v12222 = f10537
+							local modules = f10536
+							local loadModule_ia = f10537
 
 							f11098 = function()
-								local t4723 = v12221.cache.ia
+								local t4723 = modules.cache.ia
 								if not t4723 then
-									t4723 = { c = v12222() }
-									v12221.cache.ia = t4723
+									t4723 = { c = loadModule_ia() }
+									modules.cache.ia = t4723
 								end
 								return t4723.c
 							end
 
 							f10536[f10500] = f11098
-							local v12223 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12223.aS()
-								v12223.h9()
-								v12223.aF()
-								local getRiotShieldSide = v12223.ia()
+								modules.aS()
+								modules.h9()
+								modules.aF()
+								local getRiotShieldSide = modules.ia()
 								local rng = Random.new()
 								local DefensiveAngles = {}
 
@@ -265324,14 +265324,14 @@ local function f10149()
 							end
 
 							f10500 = "ib"
-							local v12230 = f10536
-							local v12231 = f10537
+							local modules = f10536
+							local loadModule_ib = f10537
 
 							f11098 = function()
-								local t4726 = v12230.cache.ib
+								local t4726 = modules.cache.ib
 								if not t4726 then
-									t4726 = { c = v12231() }
-									v12230.cache.ib = t4726
+									t4726 = { c = loadModule_ib() }
+									modules.cache.ib = t4726
 								end
 								return t4726.c
 							end
@@ -265371,26 +265371,26 @@ local function f10149()
 							end
 
 							f10500 = "ic"
-							local v12234 = f10536
-							local v12235 = f10537
+							local modules = f10536
+							local loadModule_ic = f10537
 
 							f11098 = function()
-								local t4728 = v12234.cache.ic
+								local t4728 = modules.cache.ic
 								if not t4728 then
-									t4728 = { c = v12235() }
-									v12234.cache.ic = t4728
+									t4728 = { c = loadModule_ic() }
+									modules.cache.ic = t4728
 								end
 								return t4728.c
 							end
 
 							f10536[f10500] = f11098
-							local v12236 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12236.aC()
-								local Config = v12236.y()
-								v12236.aT()
-								v12236.G()
+								modules.aC()
+								local Config = modules.y()
+								modules.aT()
+								modules.G()
 
 								local function isValidTarget(fighter)
 									if not (fighter.isEnemy and not fighter:IsInvincible()) then
@@ -265475,14 +265475,14 @@ local function f10149()
 							end
 
 							f10500 = "id"
-							local v12245 = f10536
-							local v12246 = f10537
+							local modules = f10536
+							local loadModule_id = f10537
 
 							f11098 = function()
-								local t4732 = v12245.cache.id
+								local t4732 = modules.cache.id
 								if not t4732 then
-									t4732 = { c = v12246() }
-									v12245.cache.id = t4732
+									t4732 = { c = loadModule_id() }
+									modules.cache.id = t4732
 								end
 								return t4732.c
 							end
@@ -265507,29 +265507,29 @@ local function f10149()
 							end
 
 							f10500 = "ie"
-							local v12250 = f10536
-							local v12251 = f10537
+							local modules = f10536
+							local loadModule_ie = f10537
 
 							f11098 = function()
-								local t4735 = v12250.cache.ie
+								local t4735 = modules.cache.ie
 								if not t4735 then
-									t4735 = { c = v12251() }
-									v12250.cache.ie = t4735
+									t4735 = { c = loadModule_ie() }
+									modules.cache.ie = t4735
 								end
 								return t4735.c
 							end
 
 							f10536[f10500] = f11098
-							local v12252 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v12252.y()
-								v12252.aZ()
-								v12252.e5()
-								local ShootLock = v12252.ic()
-								v12252.id()
-								local getVerticalSide = v12252.ia()
-								local lookAt = v12252.ie()
+								local Config = modules.y()
+								modules.aZ()
+								modules.e5()
+								local ShootLock = modules.ic()
+								modules.id()
+								local getVerticalSide = modules.ia()
+								local lookAt = modules.ie()
 								local aboveOffset = Vector3.new(0, -0.7, 0.05)
 								local belowOffset = Vector3.new(0, -3.85, 0.05)
 								local aboveOrigin = {
@@ -265632,30 +265632,30 @@ local function f10149()
 							end
 
 							f10500 = "ig"
-							local v12265 = f10536
-							local v12266 = f10537
+							local modules = f10536
+							local loadModule_ig = f10537
 
 							f11098 = function()
-								local t4743 = v12265.cache.ig
+								local t4743 = modules.cache.ig
 								if not t4743 then
-									t4743 = { c = v12266() }
-									v12265.cache.ig = t4743
+									t4743 = { c = loadModule_ig() }
+									modules.cache.ig = t4743
 								end
 								return t4743.c
 							end
 
 							f10536[f10500] = f11098
-							local v12267 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12267.aG()
-								local settings = v12267.y()
-								v12267.a_()
-								v12267.e5()
-								local ShootLock = v12267.ic()
-								v12267.id()
-								local getVerticalSide = v12267.ia()
-								local lookAtFrom = v12267.ie()
+								modules.aG()
+								local settings = modules.y()
+								modules.a_()
+								modules.e5()
+								local ShootLock = modules.ic()
+								modules.id()
+								local getVerticalSide = modules.ia()
+								local lookAtFrom = modules.ie()
 								local aboveOffset = Vector3.new(0, -0.7, 0.05)
 								local belowOffset = Vector3.new(0, -3.85, 0.05)
 								local pi24 = math.pi
@@ -265838,14 +265838,14 @@ local function f10149()
 							end
 
 							f10500 = "ih"
-							local v12290 = f10536
-							local v12291 = f10537
+							local modules = f10536
+							local loadModule_ih = f10537
 
 							f11098 = function()
-								local t4753 = v12290.cache.ih
+								local t4753 = modules.cache.ih
 								if not t4753 then
-									t4753 = { c = v12291() }
-									v12290.cache.ih = t4753
+									t4753 = { c = loadModule_ih() }
+									modules.cache.ih = t4753
 								end
 								return t4753.c
 							end
@@ -265875,27 +265875,27 @@ local function f10149()
 							end
 
 							f10500 = "ii"
-							local v12294 = f10536
-							local v12295 = f10537
+							local modules = f10536
+							local loadModule_ii = f10537
 
 							f11098 = function()
-								local t4754 = v12294.cache.ii
+								local t4754 = modules.cache.ii
 								if not t4754 then
-									t4754 = { c = v12295() }
-									v12294.cache.ii = t4754
+									t4754 = { c = loadModule_ii() }
+									modules.cache.ii = t4754
 								end
 								return t4754.c
 							end
 
 							f10536[f10500] = f11098
-							local v12296 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v12296.y()
-								v12296.aT()
-								v12296.a4()
-								local Trove = v12296.q()
-								local randomEvasionCFrame = v12296.ii()
+								local Config = modules.y()
+								modules.aT()
+								modules.a4()
+								local Trove = modules.q()
+								local randomEvasionCFrame = modules.ii()
 								local CollectionService = cloneref(game:GetService("CollectionService"))
 								local rng = Random.new()
 								local probeSize = Vector3.new(5, 5, 5)
@@ -266164,25 +266164,25 @@ local function f10149()
 							end
 
 							f10500 = "ij"
-							local v12328 = f10536
-							local v12329 = f10537
+							local modules = f10536
+							local loadModule_ij = f10537
 
 							f11098 = function()
-								local t4760 = v12328.cache.ij
+								local t4760 = modules.cache.ij
 								if not t4760 then
-									t4760 = { c = v12329() }
-									v12328.cache.ij = t4760
+									t4760 = { c = loadModule_ij() }
+									modules.cache.ij = t4760
 								end
 								return t4760.c
 							end
 
 							f10536[f10500] = f11098
-							local v12330 = f10536
+							local modules = f10536
 
 							f10537 = function()
 								local RandomEvasion = {}
-								local Config = v12330.y()
-								local randomPointInShell = v12330.ii()
+								local Config = modules.y()
+								local randomPointInShell = modules.ii()
 								local rng = Random.new()
 								local farAway = 1073741824
 
@@ -266214,26 +266214,26 @@ local function f10149()
 							end
 
 							f10500 = "ik"
-							local v12340 = f10536
-							local v12341 = f10537
+							local modules = f10536
+							local loadModule_ik = f10537
 
 							f11098 = function()
-								local t4763 = v12340.cache.ik
+								local t4763 = modules.cache.ik
 								if not t4763 then
-									t4763 = { c = v12341() }
-									v12340.cache.ik = t4763
+									t4763 = { c = loadModule_ik() }
+									modules.cache.ik = t4763
 								end
 								return t4763.c
 							end
 
 							f10536[f10500] = f11098
-							local v12342 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v12343 = v12342.y()
-								v12342.aT()
-								v12342.id()
-								local v12344 = v12342.q()
+								local v12343 = modules.y()
+								modules.aT()
+								modules.id()
+								local v12344 = modules.q()
 								local v12345 = 4194304
 
 								local function exceedsThreshold(vector)
@@ -266312,25 +266312,25 @@ local function f10149()
 							end
 
 							f10500 = "il"
-							local v12351 = f10536
-							local v12352 = f10537
+							local modules = f10536
+							local loadModule_il = f10537
 
 							f11098 = function()
-								local t4768 = v12351.cache.il
+								local t4768 = modules.cache.il
 								if not t4768 then
-									t4768 = { c = v12352() }
-									v12351.cache.il = t4768
+									t4768 = { c = loadModule_il() }
+									modules.cache.il = t4768
 								end
 								return t4768.c
 							end
 
 							f10536[f10500] = f11098
-							local v12353 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v12353.y()
+								local Config = modules.y()
 								local TranslocateTarget = {}
-								local randomPointInShell = v12353.ii()
+								local randomPointInShell = modules.ii()
 								local CollectionService = cloneref(game:GetService("CollectionService"))
 
 								function TranslocateTarget.compute(root, useKillPart)
@@ -266368,25 +266368,25 @@ local function f10149()
 							end
 
 							f10500 = "im"
-							local v12359 = f10536
-							local v12360 = f10537
+							local modules = f10536
+							local loadModule_im = f10537
 
 							f11098 = function()
-								local t4771 = v12359.cache.im
+								local t4771 = modules.cache.im
 								if not t4771 then
-									t4771 = { c = v12360() }
-									v12359.cache.im = t4771
+									t4771 = { c = loadModule_im() }
+									modules.cache.im = t4771
 								end
 								return t4771.c
 							end
 
 							f10536[f10500] = f11098
-							local v12361 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local Config = v12361.y()
-								v12361.a1()
-								v12361.a4()
+								local Config = modules.y()
+								modules.a1()
+								modules.a4()
 								local ActionPlanner = {}
 
 								local function getSlot(entry)
@@ -266495,24 +266495,24 @@ local function f10149()
 							end
 
 							f10500 = "io"
-							local v12371 = f10536
-							local v12372 = f10537
+							local modules = f10536
+							local loadModule_io = f10537
 
 							f11098 = function()
-								local t4781 = v12371.cache.io
+								local t4781 = modules.cache.io
 								if not t4781 then
-									t4781 = { c = v12372() }
-									v12371.cache.io = t4781
+									t4781 = { c = loadModule_io() }
+									modules.cache.io = t4781
 								end
 								return t4781.c
 							end
 
 							f10536[f10500] = f11098
-							local v12373 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12373.a1()
-								v12373.h9()
+								modules.a1()
+								modules.h9()
 								local riotShieldName = "Riot Shield"
 
 								local function getRiotShieldState(itemObserver)
@@ -266529,42 +266529,42 @@ local function f10149()
 							end
 
 							f10500 = "ip"
-							local v12376 = f10536
-							local v12377 = f10537
+							local modules = f10536
+							local loadModule_ip = f10537
 
 							f11098 = function()
-								local t4782 = v12376.cache.ip
+								local t4782 = modules.cache.ip
 								if not t4782 then
-									t4782 = { c = v12377() }
-									v12376.cache.ip = t4782
+									t4782 = { c = loadModule_ip() }
+									modules.cache.ip = t4782
 								end
 								return t4782.c
 							end
 
 							f10536[f10500] = f11098
-							local v12378 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12378.aG()
-								local Config = v12378.y()
-								local Defense = v12378.ib()
-								v12378.aT()
-								local HitscanStrategy = v12378.ig()
-								v12378.a1()
-								local Keybinds = v12378.eL()
-								local MeleeStrategy = v12378.ih()
-								v12378.e5()
-								v12378.a4()
-								v12378.G()
-								local ProjectileBreakerTeleport = v12378.ij()
-								local RandomEvasion = v12378.ik()
-								local SpatialLimitGate = v12378.il()
-								v12378.fA()
-								local TargetSelection = v12378.id()
-								local Translocate = v12378.im()
-								local Trove = v12378.q()
-								local ActionPlanner = v12378.io()
-								local getEquippedItem = v12378.ip()
+								modules.aG()
+								local Config = modules.y()
+								local Defense = modules.ib()
+								modules.aT()
+								local HitscanStrategy = modules.ig()
+								modules.a1()
+								local Keybinds = modules.eL()
+								local MeleeStrategy = modules.ih()
+								modules.e5()
+								modules.a4()
+								modules.G()
+								local ProjectileBreakerTeleport = modules.ij()
+								local RandomEvasion = modules.ik()
+								local SpatialLimitGate = modules.il()
+								modules.fA()
+								local TargetSelection = modules.id()
+								local Translocate = modules.im()
+								local Trove = modules.q()
+								local ActionPlanner = modules.io()
+								local getEquippedItem = modules.ip()
 								local defaultFallenHeight = workspace.FallenPartsDestroyHeight
 								local Ragebot = {}
 								Ragebot.__index = Ragebot
@@ -266846,28 +266846,28 @@ local function f10149()
 							end
 
 							f10500 = "iq"
-							local v12414 = f10536
-							local v12415 = f10537
+							local modules = f10536
+							local loadModule_iq = f10537
 
 							f11098 = function()
-								local t4789 = v12414.cache.iq
+								local t4789 = modules.cache.iq
 								if not t4789 then
-									t4789 = { c = v12415() }
-									v12414.cache.iq = t4789
+									t4789 = { c = loadModule_iq() }
+									modules.cache.iq = t4789
 								end
 								return t4789.c
 							end
 
 							f10536[f10500] = f11098
-							local v12416 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12416.aT()
-								local Keybinds = v12416.eL()
-								v12416.a4()
-								v12416.G()
-								local TargetSelection = v12416.id()
-								local Trove = v12416.q()
+								modules.aT()
+								local Keybinds = modules.eL()
+								modules.a4()
+								modules.G()
+								local TargetSelection = modules.id()
+								local Trove = modules.q()
 								local Ragebot = {}
 								Ragebot.__index = Ragebot
 
@@ -266957,23 +266957,23 @@ local function f10149()
 							end
 
 							f10500 = "ir"
-							local v12423 = f10536
-							local v12424 = f10537
+							local modules = f10536
+							local loadModule_ir = f10537
 
 							f11098 = function()
-								local t4793 = v12423.cache.ir
+								local t4793 = modules.cache.ir
 								if not t4793 then
-									t4793 = { c = v12424() }
-									v12423.cache.ir = t4793
+									t4793 = { c = loadModule_ir() }
+									modules.cache.ir = t4793
 								end
 								return t4793.c
 							end
 
 							f10536[f10500] = f11098
-							local v12425 = f10536
+							local modules = f10536
 
 							f10537 = function(...)
-								local v12426 = v12425.iq()
+								local v12426 = modules.iq()
 								local t4794 = { pSioJmJXhXvwkZDKuxhydLCFHEqTEJOR = true }
 								local t4795 = {
 									UtXUuLIEoQuUfkMOAxDCYXfQnBvapEgp = true,
@@ -267330,33 +267330,33 @@ local function f10149()
 								if not t4795[v12427] then
 									return v12426
 								end
-								v12428 = v12425.ir()
+								v12428 = modules.ir()
 								return v12428
 							end
 
 							f10500 = "is"
-							local v12495 = f10536
-							local v12496 = f10537
+							local modules = f10536
+							local loadModule_is = f10537
 
 							f11098 = function()
-								local t4802 = v12495.cache.is
+								local t4802 = modules.cache.is
 								if not t4802 then
-									t4802 = { c = v12496() }
-									v12495.cache.is = t4802
+									t4802 = { c = loadModule_is() }
+									modules.cache.is = t4802
 								end
 								return t4802.c
 							end
 
 							f10536[f10500] = f11098
-							local v12497 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local settings = v12497.y()
-								v12497.aZ()
-								local ShootLock = v12497.ic()
-								v12497.id()
-								local getVerticalSide = v12497.ia()
-								local lookAtFrom = v12497.ie()
+								local settings = modules.y()
+								modules.aZ()
+								local ShootLock = modules.ic()
+								modules.id()
+								local getVerticalSide = modules.ia()
+								local lookAtFrom = modules.ie()
 								local aboveOffset = Vector3.new(0, 0.5, 0)
 								local belowOffset = Vector3.new(0, -3, 0)
 								local HeadShotPlanner = {}
@@ -267436,29 +267436,29 @@ local function f10149()
 							end
 
 							f10500 = "it"
-							local v12513 = f10536
-							local v12514 = f10537
+							local modules = f10536
+							local loadModule_it = f10537
 
 							f11098 = function()
-								local t4807 = v12513.cache.it
+								local t4807 = modules.cache.it
 								if not t4807 then
-									t4807 = { c = v12514() }
-									v12513.cache.it = t4807
+									t4807 = { c = loadModule_it() }
+									modules.cache.it = t4807
 								end
 								return t4807.c
 							end
 
 							f10536[f10500] = f11098
-							local v12515 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12515.aG()
-								local settings = v12515.y()
-								v12515.a_()
-								local ShootLock = v12515.ic()
-								v12515.id()
-								local getVerticalSide = v12515.ia()
-								local lookAtFrom = v12515.ie()
+								modules.aG()
+								local settings = modules.y()
+								modules.a_()
+								local ShootLock = modules.ic()
+								modules.id()
+								local getVerticalSide = modules.ia()
+								local lookAtFrom = modules.ie()
 								local aboveOffset = Vector3.new(0, 0, 0)
 								local belowOffset = Vector3.new(0, -3, 0)
 
@@ -267553,36 +267553,36 @@ local function f10149()
 							end
 
 							f10500 = "iu"
-							local v12531 = f10536
-							local v12532 = f10537
+							local modules = f10536
+							local loadModule_iu = f10537
 
 							f11098 = function()
-								local t4813 = v12531.cache.iu
+								local t4813 = modules.cache.iu
 								if not t4813 then
-									t4813 = { c = v12532() }
-									v12531.cache.iu = t4813
+									t4813 = { c = loadModule_iu() }
+									modules.cache.iu = t4813
 								end
 								return t4813.c
 							end
 
 							f10536[f10500] = f11098
-							local v12533 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								v12533.aG()
-								local Config = v12533.y()
-								v12533.aT()
-								local HitscanStrategy = v12533.it()
-								v12533.a1()
-								local Keybinds = v12533.eL()
-								local MeleeStrategy = v12533.iu()
-								v12533.a4()
-								v12533.G()
-								local RandomEvasion = v12533.ik()
-								local SpatialLimitGate = v12533.il()
-								local TargetSelection = v12533.id()
-								local Trove = v12533.q()
-								local ActionPlanner = v12533.io()
+								modules.aG()
+								local Config = modules.y()
+								modules.aT()
+								local HitscanStrategy = modules.it()
+								modules.a1()
+								local Keybinds = modules.eL()
+								local MeleeStrategy = modules.iu()
+								modules.a4()
+								modules.G()
+								local RandomEvasion = modules.ik()
+								local SpatialLimitGate = modules.il()
+								local TargetSelection = modules.id()
+								local Trove = modules.q()
+								local ActionPlanner = modules.io()
 								local defaultFallenHeight = workspace.FallenPartsDestroyHeight
 								local LegitRagebot = {}
 								LegitRagebot.__index = LegitRagebot
@@ -267782,90 +267782,90 @@ local function f10149()
 							end
 
 							f10500 = "iv"
-							local v12558 = f10536
-							local v12559 = f10537
+							local modules = f10536
+							local loadModule_iv = f10537
 
 							f11098 = function()
-								local t4819 = v12558.cache.iv
+								local t4819 = modules.cache.iv
 								if not t4819 then
-									t4819 = { c = v12559() }
-									v12558.cache.iv = t4819
+									t4819 = { c = loadModule_iv() }
+									modules.cache.iv = t4819
 								end
 								return t4819.c
 							end
 
 							f10536[f10500] = f11098
-							local v12560 = f10536
+							local modules = f10536
 
 							f10537 = function()
-								local v12561 = v12560.a6()
-								local v12562 = v12560.bt()
-								local v12563 = v12560.bu()
-								local v12564 = v12560.bw()
-								local v12565 = v12560.bA()
-								local v12566 = v12560.bE()
-								local v12567 = v12560.bF()
-								v12560.H()
-								local v12568 = v12560.bI()
-								local v12569 = v12560.a7()
-								local v12570 = v12560.bJ()
-								local v12571 = v12560.bU()
-								local v12572 = v12560.bV()
-								local v12573 = v12560.bX()
-								local v12574 = v12560.cJ()
-								local Config = v12560.y()
-								local v12576 = v12560.dY()
-								local v12577 = v12560.d0()
-								local v12578 = v12560.d1()
-								local v12579 = v12560.ea()
-								local v12580 = v12560.ef()
-								local v12581 = v12560.cM()
-								local v12582 = v12560.eg()
-								local v12583 = v12560.eh()
-								local v12584 = v12560.bz()
-								local v12585 = v12560.ek()
-								local v12586 = v12560.bl()
-								local v12587 = v12560.bn()
-								local Executor = v12560.J()
-								local v12589 = v12560.eP()
-								local v12590 = v12560.eR()
-								local v12591 = v12560.aT()
-								local Fonts = v12560.K()
-								local v12593 = v12560.eS()
-								local rootTrove = v12560.r()
-								local v12595 = v12560.eT()
-								local v12596 = v12560.eQ()
-								local v12597 = v12560.e3()
-								local v12598 = v12560.e4()
-								local v12599 = v12560.bT()
-								local v12600 = v12560.bS()
-								local v12601 = v12560.d9()
-								local Notifications = v12560.O()
-								local v12603 = v12560.e5()
-								local v12604 = v12560.e9()
-								local v12605 = v12560.fe()
-								local v12606 = v12560.a4()
-								local v12607 = v12560.fj()
-								local v12608 = v12560.fl()
-								local v12609 = v12560.ee()
-								local v12610 = v12560.fu()
-								local v12611 = v12560.bD()
-								local v12612 = v12560.c4()
-								local v12613 = v12560.fv()
-								local v12614 = v12560.fy()
-								local v12615 = v12560.fz()
-								local v12616 = v12560.fA()
-								local v12617 = v12560.bq()
-								local v12618 = v12560.fC()
-								local v12619 = v12560.fD()
-								local v12620 = v12560.dW()
-								local v12621 = v12560.fJ()
-								local v12622 = v12560.fK()
-								local v12623 = v12560.fL()
-								local v12624 = v12560.fN()
-								local v12625 = v12560.bm()
-								local v12626 = v12560.gh()
-								local startMenu = v12560.hX()
+								local v12561 = modules.a6()
+								local v12562 = modules.bt()
+								local v12563 = modules.bu()
+								local v12564 = modules.bw()
+								local v12565 = modules.bA()
+								local v12566 = modules.bE()
+								local v12567 = modules.bF()
+								modules.H()
+								local v12568 = modules.bI()
+								local v12569 = modules.a7()
+								local v12570 = modules.bJ()
+								local v12571 = modules.bU()
+								local v12572 = modules.bV()
+								local v12573 = modules.bX()
+								local v12574 = modules.cJ()
+								local Config = modules.y()
+								local v12576 = modules.dY()
+								local v12577 = modules.d0()
+								local v12578 = modules.d1()
+								local v12579 = modules.ea()
+								local v12580 = modules.ef()
+								local v12581 = modules.cM()
+								local v12582 = modules.eg()
+								local v12583 = modules.eh()
+								local v12584 = modules.bz()
+								local v12585 = modules.ek()
+								local v12586 = modules.bl()
+								local v12587 = modules.bn()
+								local Executor = modules.J()
+								local v12589 = modules.eP()
+								local v12590 = modules.eR()
+								local v12591 = modules.aT()
+								local Fonts = modules.K()
+								local v12593 = modules.eS()
+								local rootTrove = modules.r()
+								local v12595 = modules.eT()
+								local v12596 = modules.eQ()
+								local v12597 = modules.e3()
+								local v12598 = modules.e4()
+								local v12599 = modules.bT()
+								local v12600 = modules.bS()
+								local v12601 = modules.d9()
+								local Notifications = modules.O()
+								local v12603 = modules.e5()
+								local v12604 = modules.e9()
+								local v12605 = modules.fe()
+								local v12606 = modules.a4()
+								local v12607 = modules.fj()
+								local v12608 = modules.fl()
+								local v12609 = modules.ee()
+								local v12610 = modules.fu()
+								local v12611 = modules.bD()
+								local v12612 = modules.c4()
+								local v12613 = modules.fv()
+								local v12614 = modules.fy()
+								local v12615 = modules.fz()
+								local v12616 = modules.fA()
+								local v12617 = modules.bq()
+								local v12618 = modules.fC()
+								local v12619 = modules.fD()
+								local v12620 = modules.dW()
+								local v12621 = modules.fJ()
+								local v12622 = modules.fK()
+								local v12623 = modules.fL()
+								local v12624 = modules.fN()
+								local v12625 = modules.bm()
+								local v12626 = modules.gh()
+								local startMenu = modules.hX()
 
 								local function start(context)
 									local playerRegistry = context.playerRegistry
@@ -267912,8 +267912,8 @@ local function f10149()
 									v12574.setAnimator(colorAnimator)
 									local v12631 = rootTrove:Add(v12612.new())
 									local v12632 = rootTrove:Add(v12581.new())
-									local t4822 = v12560.hY()
-									local t4823 = v12560.h5()
+									local t4822 = modules.hY()
+									local t4823 = modules.h5()
 									local v12633 = rootTrove:Add(t4822.new())
 									rootTrove:Add(t4823.new(playerRegistry, v12631:Reserve(), v12632, v12633))
 									local v12634 = rootTrove:Add(v12570.new(v12628, decoratorFactory))
@@ -267958,7 +267958,7 @@ local function f10149()
 									rootTrove:Add(v12622.new(isThirdPerson))
 									rootTrove:Add(v12623.new())
 									rootTrove:Add(v12598.new())
-									rootTrove:Add(v12560.h6().new(v12636))
+									rootTrove:Add(modules.h6().new(v12636))
 									local v12654 = v12587.new(v12638, v12636)
 									local v12655 = v12617.new(v12628, v12654, v12636)
 									f14102 = v12652
@@ -267985,8 +267985,8 @@ local function f10149()
 									local v12660 = add6(f14102, f14103(v12659, (table.create(2))))
 									f14102 = nil
 									f14103 = nil
-									local t4827 = v12560.h8()
-									local t4828 = v12560.is()
+									local t4827 = modules.h8()
+									local t4828 = modules.is()
 									f14102 = rootTrove:Add(t4827.new(aimbot, v12636, v12655, v12656))
 									f14104 = v12647
 									f14103 = rootTrove:Add(t4828.new(v12628, playerTags, v12636, v12646, f14104))
@@ -268019,7 +268019,7 @@ local function f10149()
 									f14104 = t4834
 									local v12668 = t4834.Add(f14104, v12568.new(v12645, v12636))
 									f14104 = nil
-									local t4835 = v12560.gu()
+									local t4835 = modules.gu()
 									local add9 = rootTrove.Add
 									t4835.new(
 										v12636,
@@ -268075,14 +268075,14 @@ local function f10149()
 							end
 
 							f10500 = "iw"
-							local v12673 = f10536
-							local v12674 = f10537
+							local modules = f10536
+							local loadModule_iw = f10537
 
 							f11098 = function()
-								local t4837 = v12673.cache.iw
+								local t4837 = modules.cache.iw
 								if not t4837 then
-									t4837 = { c = v12674() }
-									v12673.cache.iw = t4837
+									t4837 = { c = loadModule_iw() }
+									modules.cache.iw = t4837
 								end
 								return t4837.c
 							end
@@ -268217,12 +268217,12 @@ local function f10149()
 						return v12685
 					end
 
-					local byte = string.byte
+					local v12686 = string.byte
 					local v12687 = string.rep(" ", 8)
 
 					local function f14124()
 						local v12688, v12689, v12690, v12691
-						v12691, v12690, v12689, v12688 = byte(v12687, 1, 4)
+						v12691, v12690, v12689, v12688 = v12686(v12687, 1, 4)
 						return f14122(v12688, 64) * 16777216 + f14122(v12689, 32) * 65536 + f14122(v12690, 16) * 256 + f14122(v12691, 8)
 					end
 

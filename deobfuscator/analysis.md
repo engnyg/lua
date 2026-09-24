@@ -438,7 +438,7 @@ f10418 = { lo % 256, (lo - lo % 256) / 256, hi % 256, (hi - hi % 256) / 256 }
 
 - **不改名**：`f1`（Luarmor 執行環境：位元組碼反序列化、雜湊、驗證連線、TutorialState 識別碼），以及載入器序段（包含 `LUARMOR_*` 的函式開頭，到它最後一個 `while true do` 為止）。這些是第三方授權服務的程式碼，不是腳本本身，本工具不替它的授權檢查與反竄改機制做標註。範圍由程式碼特徵自動推算，不寫死行號。
 - **改名**：其餘部分，也就是遊戲功能模組（Triggerbot、Chams、Replay、UI 等）。
-- **`names.json` 的 `_skip`**：列在這裡的函式（`"f1560"` 或範圍 `"f1560-f1633"`，連同它們內部的所有巢狀函式）不套用任何規則，包括自動規則。用途是躲避偵測或保護腳本本身的程式碼（第 16.3 節）。
+- **`names.json` 的 `_skip`**：列在這裡的函式（`"f1560"`、範圍 `"f1560-f1633"`，或包住某個函式的匿名函式 `"f14122^"`，連同它們內部的所有巢狀函式）不套用任何規則，包括自動規則。用途是躲避偵測或保護腳本本身的程式碼（第 16.3 節）。
 
 ### 15.2 規則
 
@@ -447,7 +447,7 @@ f10418 = { lo % 256, (lo - lo % 256) / 256, hi % 256, (hi - hi % 256) / 256 }
 | 規則 | 依據 | 例子 | 數量 |
 |---|---|---|---|
 | Instance.new | `local v = Instance.new("UICorner")` | `uiCorner` | 1,203 |
-| field | `local v = a.b.Character` | `character` | 1,864 |
+| field | `local v = a.b.Character` | `character` | 1,844 |
 | string index | `local v = a["Host"]` | `host` | 1 |
 | signal handler | 函式被傳給 `x.RenderStepped:Connect(f)`，而且只對應一個訊號 | `onRenderStepped` | 145 |
 | assigned to field | 函式被存進欄位 `t._reconcile = f`，而且只有這一個欄位名稱 | `_reconcile` | 8 |
@@ -456,8 +456,9 @@ f10418 = { lo % 256, (lo - lo % 256) / 256, hi % 256, (hi - hi % 256) / 256 }
 | lazy module getter | `local t = X.cache.KEY; if not t then t = { c = load() } … end; return t.c` | `lazyModule_KEY` | 514 |
 | class trove label | `function T.new` 建立 `_trove = Trove.new("a.KillFeed")`：類別 `T` 和回傳它的載入函式 | `KillFeed`、`loadKillFeed` | 270 |
 | prototype copy | 獨立原型和內嵌副本逐 token 相同（變數依宣告順序配對）：原型沿用內嵌副本的名稱，函式本身加 `_proto` | `hookEquipCooldown_proto(self_, item)` | 12,095 |
-| prototype copy (upvalue) | 同上，原型裡的 `upN` 取內嵌副本在同一位置的變數名稱 | `up2` → `restore` | 3,103 |
-| duplicate copy | 載入器 `f10409` 裡深層巢狀的模組程式碼，和其他地方已命名的函式逐 token 相同（已命名那邊的 `upN` 可以對應任何名稱）：沿用已命名函式的名稱，連函式本身的名稱一起 | `v6449` → `header` | 16,466 |
+| prototype copy (upvalue) | 同上，原型裡的 `upN` 取內嵌副本在同一位置的變數名稱 | `up2` → `restore` | 3,126 |
+| duplicate copy | 載入器 `f10409` 裡深層巢狀的模組程式碼，和其他地方已命名的函式逐 token 相同（已命名那邊的 `upN` 可以對應任何名稱）：沿用已命名函式的名稱，連函式本身的名稱一起 | `v6449` → `header` | 16,378 |
+| module registry | 載入器登錄每個模組的寫法：`local A = R; local B = L; getter = function() … A.cache.KEY … { c = B() } … end`。有別名去讀 `.cache` 的 R 就是模組登錄表，它的別名都叫 `modules`；B 是 `loadModule_KEY` | `v4115` → `modules`、`v4116` → `loadModule_y` | 1,619 |
 
 數量是目前的輸出（包含手動名稱之後才能推得的名稱）。手動名稱優先：同一個變數有手動名稱時，自動規則不會蓋過它。
 
@@ -480,7 +481,9 @@ duplicate copy 的細節：
 - 方法隱含的 `self` 沒有對應的 token，不改。
 - 模組層級的獨立原型不在這條規則的範圍，留給 prototype copy 處理。
 
-自動規則共 38,046 筆。加上第 16 節的手動改名 24,338 筆，總共 62,384 筆；完整對照（行號、舊名、新名、規則）在 `kicia_optimized_report.json` 的 `renames`。
+module registry 的細節：同一個作用域裡有一千多個登錄表別名，全部叫 `modules`，也就是同一個名稱重複宣告，後面的宣告遮蔽前面的。只有在前一個別名的所有引用都出現在下一個宣告之前時才這樣做，否則那個別名保持原名；改名後的綁定檢查會確認沒有任何引用改指到別的宣告。
+
+自動規則共 39,580 筆。加上第 16 節的手動改名 24,338 筆，總共 63,918 筆；完整對照（行號、舊名、新名、規則）在 `kicia_optimized_report.json` 的 `renames`。
 
 ---
 
@@ -544,7 +547,9 @@ duplicate copy 的細節：
 
 - 開頭約 3,600 行幾乎全是獨立原型，對應的內嵌版本在 `f10409` 裡。
 - `f10409`（約 110,000 行）是載入器（Luarmor 序段已排除），裡面是整份模組程式碼的第二份副本，而且是深層巢狀、上值已經換成真正變數的版本（例如第 208,856 行的顏色選擇器）。這份副本由 duplicate copy 規則（第 15.2 節）沿用上面 27 個模組的名稱，開頭的獨立原型再由 prototype copy 規則接著命名。
-- `f10409` 裡沒有宣告名稱的區域變數從 16,993 個降到 7,414 個。剩下的多半是模組之間的接線（`local v3969 = f10536` 這類載入函式別名），以及載入器本身的執行程式碼，不是任何已命名函式的副本。
+- `f10409` 裡沒有名稱的 `local` 宣告從 16,993 個降到 5,814 個。模組之間的接線（登錄表別名 `modules`、各模組的 `loadModule_KEY`）由 module registry 規則命名。剩下的：
+  - 約 3,500 個在 108 份位元組碼反序列化閉包裡（`_skip` 的 `fN^` 項目，刻意不命名，見第 16.3 節）；
+  - 約 2,300 個零散的暫存變數、載入器開頭的稽核設定，以及 `(nil)[v]` 這類反編譯殘留，不是任何已命名函式的副本。
 
 每個模組的做法相同：讀一段程式碼、寫下名稱、用工具檢查。常見的錯誤有三種，工具都會直接報出來：
 
@@ -564,6 +569,7 @@ duplicate copy 的細節：
 - 遊戲反作弊繞過與完整性檢查：`f1523`、`f1527`、`f1529`、`f1531`–`f1546`
 - 竄改與呼叫堆疊檢查：`f7294`（`tostring` 竄改檢查）、`f9235`、`f9597`、`f11105`、`f11112`（檢查 `FireServer` 周圍的呼叫堆疊）
 - 管理員偵測：`f1560`–`f1633`（包含 `ModDetector` 類別）、群組掃描 `f7204`–`f7233`、`f11374`–`f11382`、設定頁 `f9480`、`f9484`–`f9485`、`f13155`
+- 載入器的位元組碼反序列化閉包，和 `checkclosure` / `iscclosure` 掛鉤稽核一起執行：108 份匿名閉包，用 `fN^` 寫在 `_skip`（`"f14122^"` 表示「包住 `f14122` 宣告的那個函式」，給沒有名稱的 `x = function()` 用）
 - 瞄準擬人化（讓甩槍看起來像人手移動，包含神經網路權重）：`f2969`–`f2973`、`f7098`–`f7105`、`f7407`
 
 完整清單在 `names.json` 的 `_skip`（還包括上面各類在其他位置的副本）。同一段程式碼常常在檔案裡出現好幾次（獨立原型、內嵌版本、`f10409` 裡的副本），所以每找到一段，都用特徵字串（例如 `"hook_thread"`、`sentry_key=`）搜尋整份檔案，把所有副本一起加入。

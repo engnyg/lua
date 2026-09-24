@@ -225,6 +225,40 @@ class ToolTest(unittest.TestCase):
                                                    'v1': 'scaled', 'v2': 'box'}})
         self.assertIn('local function f10(p5)', out)
 
+    def test_module_registry(self):
+        src = ('local function f1()\n'
+               '\tlocal f5 = {}\n'
+               '\tlocal f6 = nil\n'
+               '\tlocal f7 = nil\n'
+               '\tf6 = function()\n'
+               '\t\treturn 1\n'
+               '\tend\n'
+               '\tlocal v1 = f5\n'
+               '\tlocal v2 = f6\n'
+               '\tf7 = function()\n'
+               '\t\tlocal t1 = v1.cache.y\n'
+               '\t\tif not t1 then\n'
+               '\t\t\tt1 = { c = v2() }\n'
+               '\t\t\tv1.cache.y = t1\n'
+               '\t\tend\n'
+               '\t\treturn t1.c\n'
+               '\tend\n'
+               '\tf5.y = f7\n'
+               '\tlocal v3 = f5\n'
+               '\tf6 = function()\n'
+               '\t\treturn v3.y()\n'
+               '\tend\n'
+               '\treturn f6\n'
+               'end\n')
+        out = o.auto_rename(src, {}, [], {})
+        self.assertIn('local modules = f5\n\tlocal loadModule_y = f6\n', out)
+        self.assertIn('t1 = { c = loadModule_y() }', out)
+        self.assertIn('local modules = f5\n\tf6 = function()\n\t\treturn modules.y()', out)
+        # an alias still used after the next one is left alone
+        late = src.replace('\t\treturn v3.y()\n', '\t\treturn v3.y(v1)\n')
+        out = o.auto_rename(late, {}, [], {})
+        self.assertIn('local v3 = f5', out)
+
     def test_class_from_trove_label(self):
         src = ('local function f1()\n'
                '\tlocal function f2()\n'
@@ -288,6 +322,25 @@ class ToolTest(unittest.TestCase):
         out, renames = self.rename(src, skip=[(1, 4)])
         self.assertEqual(out, src)
         self.assertEqual(renames, [])
+
+    def test_skip_enclosing_anonymous_function(self):
+        src = ('local function f1()\n'
+               '\tlocal v9 = game.Workspace\n'
+               '\tlocal v1 = nil\n'
+               '\tv1 = function()\n'
+               '\t\tlocal v2 = game.Players\n'
+               '\t\tlocal function f2(p1)\n'
+               '\t\t\treturn p1\n'
+               '\t\tend\n'
+               '\t\treturn f2(v2)\n'
+               '\tend\n'
+               '\treturn v1, v9\n'
+               'end\n')
+        out = o.auto_rename(src, {}, [], {'_skip': ['f2^']})
+        self.assertIn('local v2 = game.Players', out)
+        self.assertIn('local workspace = game.Workspace', out)
+        with self.assertRaises(SystemExit):
+            o.auto_rename(src, {}, [], {'_skip': ['f1^']})
 
 
 if __name__ == '__main__':

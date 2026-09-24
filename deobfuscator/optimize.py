@@ -186,6 +186,8 @@ _RULE_DOCS = {
     'prototype copy (upvalue)': ('同上，原型的 `upN` 取內嵌副本在同一位置的變數名稱', '`up2` → `restore`'),
     'duplicate copy': ('載入器裡深層巢狀的模組程式碼和已命名的函式逐 token 相同（已命名那邊的 `upN` 可對應任何名稱）：沿用已命名函式的名稱',
                        '`v6449` → `header`'),
+    'module registry': ('載入器登錄模組的寫法 `local A = R; local B = L; getter … A.cache.KEY … { c = B() }`：R 的別名都叫 `modules`（同一作用域重複宣告，前一個不再被使用時才可以），B 是 `loadModule_KEY`',
+                        '`v4115` → `modules`、`v4116` → `loadModule_y`'),
     'manual': ('`names.json` 人工命名', '`loadEquipCooldownModifier`'),
     'manual (upvalue)': ('`names.json` 人工命名的上值', '`up0` → `settings`'),
 }
@@ -282,6 +284,7 @@ class Renamer:
         self.assigned = {}                            # new name -> [scope ranges]
         self.proto_copies = []                        # (prototype body, inline body)
         self.dup_copies = []                          # (copy body, named body)
+        self.shadowed = set()                         # decls that may redeclare their name
 
     # -- source helpers ----------------------------------------------------
     def line_of(self, pos):
@@ -353,8 +356,18 @@ class Renamer:
 
     def skip_functions(self, specs):
         """Leave whole functions alone: `"f12"` or a range `"f12-f40"` (every
-        named function numbered in between)."""
+        named function numbered in between). `"f12^"`: the function that
+        encloses f12's declaration, for code in anonymous `x = function()`."""
         for spec in specs:
+            m = re.fullmatch(r'f(\d+)\^', spec)
+            if m:
+                span = self.fn_by_name.get('f' + m.group(1))
+                outer = span and self.scope_of(span[0])
+                if not outer or outer == (0, len(self.data)):
+                    self.errors.append(f'_skip: no enclosing function for {spec}')
+                else:
+                    self.skip.append(outer)
+                continue
             m = re.fullmatch(r'f(\d+)(?:-f(\d+))?', spec)
             if not m:
                 self.errors.append(f'_skip: bad entry {spec!r}')
@@ -599,6 +612,58 @@ class Renamer:
             if i < len(self.names) and self.names[i][0] == pos and self.names[i][4] \
                     and not self.skipped(pos):
                 self.propose(self.names[i][3], 'lazyModule_' + m.group(4), 'lazy module getter')
+
+    def rule_module_registry(self):
+        """The loader registers every module as
+            key = "y"; local A = R; local B = L
+            getter = function() … A.cache.y … { c = B() } … end
+            local C = R; L = function() … C.y() … end   (the next module body)
+        R, whose aliases index `.cache`, is the module registry: every alias is
+        `modules`, redeclared in the same scope (each one shadows the last;
+        allowed only while an alias is not used past the next one). B is the
+        loader of module KEY: `loadModule_KEY`."""
+        alias_rx = re.compile(rb'(?m)^[ \t]*local ([vtf]\d+) = ([A-Za-z_]\w*)[ \t]*\r?$')
+        aliases = {}                                  # aliased decl -> [alias decl ids]
+        for m in alias_rx.finditer(self.data):
+            d, r = self.name_at(m.start(1)), self.name_at(m.start(2))
+            if not d or not d[4] or not r or r[4] or r[3] < 0 or self.skipped(m.start(1)):
+                continue
+            if any(self.is_write(i) for i in self.refs.get(d[3], [])):
+                continue
+            aliases.setdefault(r[3], []).append(d[3])
+        loader_rx = re.compile(rb'\{ c = ([vtf]\d+)\(\) \}')
+        for decls in aliases.values():
+            loaders = []
+            for a in decls:
+                for i in self.refs.get(a, []):
+                    n = self.names[i]
+                    m = re.match(rb'\.cache\.(\w+)', self.data[n[1]:n[1] + 80])
+                    if m:
+                        loaders.append((self.scope_of(n[0]), m.group(1).decode()))
+            if not loaders:
+                continue                              # not the registry
+            groups = {}
+            for a in decls:
+                if a in self.proposals:
+                    continue
+                pos = self.names[self.decl_index[a]][0]
+                groups.setdefault(self.scope_of(pos), []).append((pos, a))
+            for scope, items in groups.items():
+                if 'modules' in self.used(scope):
+                    continue
+                last_ref = -1
+                for pos, a in sorted(items):
+                    if pos <= last_ref:
+                        continue                      # the previous alias is used past here
+                    self.propose(a, 'modules', 'module registry')
+                    self.shadowed.add(a)
+                    last_ref = max([self.names[i][0] for i in self.refs.get(a, [])] + [pos])
+            for (s, e), key in loaders:
+                m = loader_rx.search(self.data, s, e)
+                b = m and self.name_at(m.start(1))
+                if b and not b[4] and b[3] >= 0 and b[3] in self.decl_index \
+                        and not any(self.is_write(i) for i in self.refs.get(b[3], [])):
+                    self.propose(b[3], 'loadModule_' + key, 'module registry')
 
     def rule_classes(self):
         """`function t.new(...)` whose object gets `_trove = Trove.new("a.b.Label")`
@@ -990,13 +1055,25 @@ class Renamer:
         order = sorted(self.proposals.items(),
                        key=lambda kv: (kv[1][1] != 'manual', self.names[self.decl_index[kv[0]]][0]))
         done_manual = False
+        shadow_ok = {}
         for decl_id, (base, rule) in order:
             if rule != 'manual' and not done_manual:
                 upvalues(manual=False)
                 done_manual = True
             d = self.names[self.decl_index[decl_id]]
             scope = self.scope_of(d[0])
-            cand = self.pick(base, scope, strict=rule == 'manual')
+            if decl_id in self.shadowed:
+                # same name redeclared in one scope: fine while the group owns it
+                key = (scope, base)
+                if key not in shadow_ok:
+                    shadow_ok[key] = self.free(base, scope)
+                    if shadow_ok[key]:
+                        self.take(base, scope)
+                if not shadow_ok[key]:
+                    continue
+                cand = base
+            else:
+                cand = self.pick(base, scope, strict=rule == 'manual')
             if cand is None:
                 if rule == 'manual':
                     self.errors.append(f'{d[2]} -> {base}: name already used in scope')
@@ -1047,6 +1124,7 @@ def auto_rename(src: str, report: dict, skip_lines, manual=None) -> str:
     r.rule_sections()
     r.rule_ui_elements()
     r.rule_lazy_modules()
+    r.rule_module_registry()
     r.rule_classes()
     r.rule_local_value()
     r.rule_duplicate_copies()
