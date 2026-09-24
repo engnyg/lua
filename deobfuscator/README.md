@@ -62,24 +62,55 @@ s45 ← key mod 2^45,  s8 ← key mod 255 + 2,  prev ← 77
 
 用 `full-moon`（支援 Luau 語法的解析器）檢查：輸出沒有引入任何語法錯誤。唯一的錯誤是原始檔第 13 行本來就有的反編譯殘留 `up3;(`，工具保留原樣。
 
+## 第二階段：可讀性優化（optimize.py）
+
+```bash
+cargo build --release --manifest-path luau-tool/Cargo.toml   # 需要 Rust
+python3 optimize.py kicia_deobfuscated.lua -o kicia_optimized.lua
+```
+
+會產生：
+- `kicia_optimized.lua`：優化後的程式碼。和 `kicia_deobfuscated.lua` 相比，只有兩處解密器還原時各多了 2 行：第 2274 行之後的行號要加 2，第 158256 行之後要加 4
+- `kicia_optimized_report.md`：給人看的報告
+- `kicia_optimized_report.json`：完整資料（每一處殘留、不透明條件、改名對照）
+
+| 步驟 | 做了什麼 | 結果 |
+|---|---|---|
+| 1. 還原反編譯殘留 | `_G["table.create"]` → `table.create`、`_G["bit32.bxor"]` → `bit32.bxor`、`up3;(` → `up3(`，並補回解密器被弄壞的 4 位元組拆分 | 2,739 處；整份檔案第一次能被 Luau 解析器完整解析 |
+| 2. 不透明條件 | 列出全部 133 處 `V = not not C`，以及照字面解讀不會執行的程式碼，並判斷那段程式碼像陷阱還是像真實邏輯 | **只列報告，不刪除**（原因見 analysis.md 第 13 節） |
+| 3. 自動改名 | 依程式碼本身的線索替 `vN` / `tN` / `fN` 取名，例如 `Instance.new("UICorner")` → `uiCorner`、`:Connect(f)` → `onRenderStepped` | 3,461 個名稱；不動 Luarmor 的執行環境與載入器 |
+
+`luau-tool` 是用 [full-moon](https://crates.io/crates/full_moon)（Luau 解析器）寫的小工具，提供 `check`（語法檢查）、`predicates`（不透明條件分析）、`resolve`（作用域解析）三個子命令。Python 只套用它回傳的位元組範圍修改，所以沒改到的地方格式完全不變。
+
+改名完成後會重新解析整份檔案，確認每一個變數引用指向的宣告都和改名前相同；如果有任何不同，就不會寫出檔案。
+
+**注意：這份檔案是反編譯器把各個函式原型分別倒出來的結果，`up0`–`up101` 這些上值從來沒有被宣告，所以無法直接執行。** 詳見 analysis.md 第 12 節。
+
 ## 測試
 
 ```bash
-python3 -m unittest test_deobfuscator
+python3 -m unittest test_deobfuscator test_optimize   # test_optimize 的部分測試需要先建置 luau-tool
 ```
 
 ## 檔案
 
 ```
 deobfuscator/
-├── deobfuscator.py                  主程式
-├── test_deobfuscator.py             單元測試
+├── deobfuscator.py                  第一階段：字串解密
+├── optimize.py                      第二階段：可讀性優化
+├── luau-tool/                       Rust 輔助工具（語法檢查、條件分析、作用域解析）
+├── test_deobfuscator.py             第一階段的測試
+├── test_optimize.py                 第二階段的測試
 ├── analysis.md                      完整逆向分析與解謎過程
-├── kicia_deobfuscated.lua           輸出
+├── kicia_deobfuscated.lua           第一階段輸出
 ├── kicia_deobfuscated_strings.json  字串對照表
+├── kicia_optimized.lua              第二階段輸出
+├── kicia_optimized_report.md        第二階段報告
+├── kicia_optimized_report.json      第二階段完整資料
 └── README.md                        本檔案
 ```
 
 ## 需求
 
-Python 3.8 以上，不需要其他套件。安裝 `lupa`（`pip install lupa`）後，還會多做一次 Lua 5.4 的字面值檢查。
+- 第一階段：Python 3.8 以上，不需要其他套件。安裝 `lupa`（`pip install lupa`）後，還會多做一次 Lua 5.4 的字面值檢查。
+- 第二階段：另外需要 Rust（建置 `luau-tool`）。
