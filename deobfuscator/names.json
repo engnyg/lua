@@ -25230,7 +25230,23 @@
     "v161": "bit_"
   },
   "f5009": {
-    "v396": "cycleCount"
+    "v396": "cycleCount",
+    "up0": "watchdogRunning",
+    "up1": "watchdogDisabled",
+    "up2": "heartbeat",
+    "up3": "aliveStreak",
+    "up4": "healthLevel",
+    "up5": "errorTriggered",
+    "up6": "isEnabled",
+    "up7": "isVerified",
+    "up8": "errorCode1",
+    "up9": "errorCode2",
+    "up12": "scriptId",
+    "up13": "versionFormatter",
+    "up14": "versionData",
+    "up15": "tickSnapshot",
+    "up16": "clockFn",
+    "up17": "waitFn"
   },
   "f6019": {
     "f6020": "request",

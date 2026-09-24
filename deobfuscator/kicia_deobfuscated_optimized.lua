@@ -72672,49 +72672,49 @@ local function f4735()
 	end
 
 	local function luarmorWatchdog()
-		up0 = true
+		watchdogRunning = true
 		local cycleCount = 200
 		while true do
 			cycleCount = cycleCount + 1
-			if not (up1 or not (250 <= cycleCount)) then
+			if not (watchdogDisabled or not (250 <= cycleCount)) then
 				cycleCount = 0
-				if up2 then
-					up3 = up3 + 1
-					if 4 < up3 then
-						up3 = 0
-						if up4 < 10 then
-							up4 = up4 + 1
+				if heartbeat then
+					aliveStreak = aliveStreak + 1
+					if 4 < aliveStreak then
+						aliveStreak = 0
+						if healthLevel < 10 then
+							healthLevel = healthLevel + 1
 						end
 					end
 				else
-					up4 = up4 - 1
-					if up4 <= 0 then
-						up5 = true
-						up6 = false
-						up7 = false
-						up8 = 1
-						up9 = 2
+					healthLevel = healthLevel - 1
+					if healthLevel <= 0 then
+						errorTriggered = true
+						isEnabled = false
+						isVerified = false
+						errorCode1 = 1
+						errorCode2 = 2
 						writefile(
 							"luarmor-error-log.txt",
 							"[0x2001] " ..
-								up12 .. " v: " .. up13(up14)
+								scriptId .. " v: " .. versionFormatter(versionData)
 						)
 					end
 				end
-				up2 = false
+				heartbeat = false
 			end
-			up15 = up16()
-			up17(0.18)
-			if up15 == up16() then
-				up5 = true
-				up6 = false
-				up7 = false
-				up8 = 1
-				up9 = 2
+			tickSnapshot = clockFn()
+			waitFn(0.18)
+			if tickSnapshot == clockFn() then
+				errorTriggered = true
+				isEnabled = false
+				isVerified = false
+				errorCode1 = 1
+				errorCode2 = 2
 				writefile(
 					"luarmor-error-log.txt",
 					"[0x2022] " ..
-						up12 .. " v: " .. up13(up14)
+						scriptId .. " v: " .. versionFormatter(versionData)
 				)
 			end
 		end

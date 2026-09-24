@@ -3966,6 +3966,102 @@
  ],
  "renames": [
   {
+   "line": 72675,
+   "old": "up0",
+   "new": "watchdogRunning",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72679,
+   "old": "up1",
+   "new": "watchdogDisabled",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72681,
+   "old": "up2",
+   "new": "heartbeat",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72682,
+   "old": "up3",
+   "new": "aliveStreak",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72685,
+   "old": "up4",
+   "new": "healthLevel",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72692,
+   "old": "up5",
+   "new": "errorTriggered",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72693,
+   "old": "up6",
+   "new": "isEnabled",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72694,
+   "old": "up7",
+   "new": "isVerified",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72695,
+   "old": "up8",
+   "new": "errorCode1",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72696,
+   "old": "up9",
+   "new": "errorCode2",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72700,
+   "old": "up12",
+   "new": "scriptId",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72700,
+   "old": "up13",
+   "new": "versionFormatter",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72700,
+   "old": "up14",
+   "new": "versionData",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72706,
+   "old": "up15",
+   "new": "tickSnapshot",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72706,
+   "old": "up16",
+   "new": "clockFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 72707,
+   "old": "up17",
+   "new": "waitFn",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 106825,
    "old": "up0",
    "new": "normalParams",

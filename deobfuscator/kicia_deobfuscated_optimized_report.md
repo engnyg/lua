@@ -58,7 +58,7 @@
 
 ## 自動改名
 
-共改名 64890 個反編譯器產生的名稱（`vN` / `tN` / `fN`），完整對照在 JSON 報告的 `renames`。改名後重新解析整份檔案，每個變數引用指向的宣告都和改名前相同。
+共改名 64906 個反編譯器產生的名稱（`vN` / `tN` / `fN`），完整對照在 JSON 報告的 `renames`。改名後重新解析整份檔案，每個變數引用指向的宣告都和改名前相同。
 
 不改名的範圍（Luarmor 執行環境與載入器）：第 1–3284 行、第 158122–160364 行。另外 `names.json` 的 `_skip` 列出的函式（躲避偵測的程式碼）也不改名。
 
@@ -79,4 +79,4 @@
 | duplicate copy | 載入器裡深層巢狀的模組程式碼和已命名的函式逐 token 相同（已命名那邊的 `upN` 可對應任何名稱）：沿用已命名函式的名稱 | `v6449` → `header` | 16389 |
 | module registry | 載入器登錄模組的寫法 `local A = R; local B = L; getter … A.cache.KEY … { c = B() }`：R 的別名都叫 `modules`（同一作用域重複宣告，前一個不再被使用時才可以），B 是 `loadModule_KEY` | `v4115` → `modules`、`v4116` → `loadModule_y` | 1619 |
 | manual | `names.json` 人工命名 | `loadEquipCooldownModifier` | 25173 |
-| manual (upvalue) | `names.json` 人工命名的上值 | `up0` → `settings` | 126 |
+| manual (upvalue) | `names.json` 人工命名的上值 | `up0` → `settings` | 142 |
