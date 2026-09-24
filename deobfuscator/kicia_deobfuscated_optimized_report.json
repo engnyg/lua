@@ -3966,6 +3966,12 @@
  ],
  "renames": [
   {
+   "line": 13568,
+   "old": "up0",
+   "new": "modTracker",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 27252,
    "old": "up0",
    "new": "getProp",
@@ -4023,6 +4029,12 @@
    "line": 27278,
    "old": "up9",
    "new": "serverUrl",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 34310,
+   "old": "up0",
+   "new": "getProp",
    "rule": "manual (upvalue)"
   },
   {
@@ -4668,6 +4680,54 @@
    "rule": "manual (upvalue)"
   },
   {
+   "line": 139108,
+   "old": "up0",
+   "new": "hookCheck",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 139109,
+   "old": "up1",
+   "new": "tamperResult",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 139112,
+   "old": "up2",
+   "new": "rootCallbackCheck",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 139116,
+   "old": "up3",
+   "new": "originalThreadCheck",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 139121,
+   "old": "up4",
+   "new": "debugInfo",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 139122,
+   "old": "up5",
+   "new": "expectedFuncName",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 139134,
+   "old": "up6",
+   "new": "fireServerRef",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 139140,
+   "old": "up7",
+   "new": "expectedFunc4",
+   "rule": "manual (upvalue)"
+  },
+  {
    "line": 148258,
    "old": "up0",
    "new": "modules",
@@ -5103,6 +5163,84 @@
    "line": 113163,
    "old": "up27",
    "new": "runDeferred",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 74595,
+   "old": "up0",
+   "new": "erf",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 74595,
+   "old": "up1",
+   "new": "sqrt2",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 74602,
+   "old": "up0",
+   "new": "normalCdf",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 74611,
+   "old": "up0",
+   "new": "sqrt2Pi",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 74618,
+   "old": "up0",
+   "new": "curvatureNorm",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 74631,
+   "old": "up0",
+   "new": "pi",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 74643,
+   "old": "up0",
+   "new": "gaussianFn",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 74691,
+   "old": "up0",
+   "new": "humanizerClass",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 125159,
+   "old": "up0",
+   "new": "setMetaRef",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 125159,
+   "old": "up1",
+   "new": "origStringMeta",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 125160,
+   "old": "up2",
+   "new": "callstackChecker",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 125164,
+   "old": "up4",
+   "new": "callstackData",
+   "rule": "manual (upvalue)"
+  },
+  {
+   "line": 34798,
+   "old": "up0",
+   "new": "getProp",
    "rule": "manual (upvalue)"
   },
   {
