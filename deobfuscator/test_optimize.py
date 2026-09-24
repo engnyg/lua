@@ -166,6 +166,70 @@ class ToolTest(unittest.TestCase):
         out = o.auto_rename(src, {}, [], {'_comment': 'top', 'f1': {'_comment': 'why', 'p1': 'player'}})
         self.assertIn('local function f1(player)', out)
 
+    def test_prototype_copy_takes_inline_names(self):
+        src = ('local function f1()\n'
+               '\tlocal function f2(p1, p2)\n'
+               '\t\tlocal v1 = p2 * up0.scale\n'
+               '\t\tup1(p1, v1)\n'
+               '\tend\n'
+               '\tlocal function f3()\n'
+               '\t\tlocal v2 = game.Workspace\n'
+               '\t\tlocal t1 = {}\n'
+               '\t\tfunction t1:_SetSize(p3)\n'
+               '\t\t\tlocal v3 = p3 * v2.scale\n'
+               '\t\t\tapply(self, v3)\n'
+               '\t\tend\n'
+               '\t\treturn t1\n'
+               '\tend\n'
+               '\treturn f2, f3\n'
+               'end\n')
+        out = o.auto_rename(src, {}, [], {'f1': {'p3': 'size', 'v3': 'scaled'}})
+        # up1 is `apply` in the inline copy, a global: not an upvalue, left alone
+        self.assertIn('local function setSize_proto(self_, size)', out)
+        self.assertIn('local scaled = size * workspace.scale', out)
+        self.assertIn('up1(self_, scaled)', out)
+
+    def test_class_from_trove_label(self):
+        src = ('local function f1()\n'
+               '\tlocal function f2()\n'
+               '\t\tlocal v1 = up0.q()\n'
+               '\t\tlocal t1 = {}\n'
+               '\t\tt1.__index = t1\n'
+               '\t\tfunction t1.new(p1)\n'
+               '\t\t\tlocal t2 = { _trove = v1.new("combat.kill_feed"), _player = p1 }\n'
+               '\t\t\treturn setmetatable(t2, t1)\n'
+               '\t\tend\n'
+               '\t\tfunction t1:Destroy()\n'
+               '\t\t\tself._trove:Destroy()\n'
+               '\t\tend\n'
+               '\t\treturn t1\n'
+               '\tend\n'
+               '\tlocal function f3(p2)\n'
+               '\t\tp2._trove:Destroy()\n'
+               '\tend\n'
+               '\treturn f2, f3\n'
+               'end\n')
+        out = o.auto_rename(src, {}, [], {})
+        self.assertIn('local function loadKillFeed()', out)
+        self.assertIn('local KillFeed = {}', out)
+        self.assertIn('local function destroyKillFeed_proto(self_)', out)
+
+    def test_prototype_copy_needs_same_tokens(self):
+        src = ('local function f1()\n'
+               '\tlocal function f2(p1)\n'
+               '\t\treturn p1 + 1\n'
+               '\tend\n'
+               '\tlocal function f3()\n'
+               '\t\tlocal function f4(p2)\n'
+               '\t\t\treturn p2 + 2\n'
+               '\t\tend\n'
+               '\t\treturn f4\n'
+               '\tend\n'
+               '\treturn f2, f3\n'
+               'end\n')
+        out = o.auto_rename(src, {}, [], {'f1': {'f4': 'addTwo', 'p2': 'value'}})
+        self.assertIn('local function f2(p1)', out)
+
     def test_manual_upvalue_is_per_prototype(self):
         src = ('local function f1()\n'
                '\tlocal x = up0.a\n'

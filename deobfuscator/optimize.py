@@ -179,6 +179,13 @@ _RULE_DOCS = {
                            '`lazyModule_dJ`'),
     'UI element label': ('`AddToggle(section, { Label = "Auto Save" })` 的回傳值與選項表',
                          '`autoSaveToggle`、`autoSaveToggleOptions`'),
+    'class trove label': ('`function T.new` 建立 `_trove = Trove.new("a.KillFeed")`：類別與載入它的函式',
+                          '`KillFeed`、`loadKillFeed`'),
+    'prototype copy': ('獨立原型和內嵌副本逐 token 相同：沿用內嵌副本的名稱',
+                       '`hookEquipCooldown_proto(self_, item)`'),
+    'prototype copy (upvalue)': ('同上，原型的 `upN` 取內嵌副本在同一位置的變數名稱', '`up2` → `restore`'),
+    'manual': ('`names.json` 人工命名', '`loadEquipCooldownModifier`'),
+    'manual (upvalue)': ('`names.json` 人工命名的上值', '`up0` → `settings`'),
 }
 
 
@@ -219,7 +226,8 @@ def write_markdown(report: dict, path: str, out_name: str) -> None:
            '完整對照在 JSON 報告的 `renames`。改名後重新解析整份檔案，'
            '每個變數引用指向的宣告都和改名前相同。', '',
            '不改名的範圍（Luarmor 執行環境與載入器）：'
-           + '、'.join(f'第 {a}–{b} 行' for a, b in report.get('excluded_lines', [])) + '。', '',
+           + '、'.join(f'第 {a}–{b} 行' for a, b in report.get('excluded_lines', [])) + '。'
+           '另外 `names.json` 的 `_skip` 列出的函式（躲避偵測的程式碼）也不改名。', '',
            '| 規則 | 依據 | 例子 | 數量 |', '|---|---|---|---|']
     for key, (why, example) in _RULE_DOCS.items():
         md.append(f'| {key} | {why} | {example} | {rules.get(key, 0)} |')
@@ -264,14 +272,20 @@ class Renamer:
         self.fn_by_name = {name: (s, e) for name, s, e in res['functions']}
         self.bodies = [tuple(b) for b in res['bodies']]    # sorted by start
         self.body_starts = [b[0] for b in self.bodies]
-        self.skip = skip_ranges
+        self.skip = list(skip_ranges)
         self.proposals = {}                           # decl id -> (name, rule)
         self.free_renames = []                        # (scope, old, new, [name indexes])
         self.errors = []
         self.used_cache = {}
         self.assigned = {}                            # new name -> [scope ranges]
+        self.proto_copies = []                        # (prototype body, inline body)
 
     # -- source helpers ----------------------------------------------------
+    def line_of(self, pos):
+        if not hasattr(self, '_newlines'):
+            self._newlines = [m.start() for m in re.finditer(rb'\n', self.data)]
+        return bisect.bisect_left(self._newlines, pos) + 1
+
     def line_around(self, pos):
         s = self.data.rfind(b'\n', 0, pos) + 1
         e = self.data.find(b'\n', pos)
@@ -287,7 +301,18 @@ class Renamer:
                     and re.match(r'\s*(?:,\s*[\w.\[\]"]+\s*)*(?:=(?!=)|[-+*/%^.]{1,2}=)', after))
 
     def skipped(self, pos):
-        return any(a <= pos < b for a, b in self.skip)
+        if getattr(self, '_skip_key', None) != len(self.skip):
+            merged = []
+            for a, b in sorted(self.skip):
+                if merged and a <= merged[-1][1]:
+                    merged[-1][1] = max(merged[-1][1], b)
+                else:
+                    merged.append([a, b])
+            self._skip_key = len(self.skip)
+            self._skip_merged = merged
+            self._skip_starts = [a for a, _ in merged]
+        i = bisect.bisect_right(self._skip_starts, pos) - 1
+        return i >= 0 and pos < self._skip_merged[i][1]
 
     # -- scopes ------------------------------------------------------------
     def scope_of(self, pos):
@@ -322,6 +347,21 @@ class Renamer:
         if decl_id in self.proposals or not name or not _IDENT.fullmatch(name):
             return
         self.proposals[decl_id] = (name, rule)
+
+    def skip_functions(self, specs):
+        """Leave whole functions alone: `"f12"` or a range `"f12-f40"` (every
+        named function numbered in between)."""
+        for spec in specs:
+            m = re.fullmatch(r'f(\d+)(?:-f(\d+))?', spec)
+            if not m:
+                self.errors.append(f'_skip: bad entry {spec!r}')
+                continue
+            lo, hi = int(m.group(1)), int(m.group(2) or m.group(1))
+            found = [(s, e) for name, (s, e) in self.fn_by_name.items()
+                     if re.fullmatch(r'f\d+', name) and lo <= int(name[1:]) <= hi]
+            if not found:
+                self.errors.append(f'_skip: no function in {spec}')
+            self.skip.extend(found)
 
     def rule_manual(self, table: dict):
         """Curated names: {scope function: {old: new}}. A name declared in the
@@ -557,6 +597,278 @@ class Renamer:
                     and not self.skipped(pos):
                 self.propose(self.names[i][3], 'lazyModule_' + m.group(4), 'lazy module getter')
 
+    def rule_classes(self):
+        """`function t.new(...)` whose object gets `_trove = Trove.new("a.b.Label")`
+        → t is `Label` and the function that builds and returns t is `loadLabel`."""
+        rx = re.compile(r'(?m)^[ \t]*function (t\d+)\.new\(')
+        for m in rx.finditer(self.src):
+            pos = len(self.src[:m.start(1)].encode('utf-8'))
+            owner = self.name_at(pos)
+            if owner is None or owner[3] < 0 or self.skipped(pos):
+                continue
+            s = pos + len(m.group(1)) + len('.new')
+            i = bisect.bisect_left(self.body_starts, s)
+            if i >= len(self.bodies) or self.bodies[i][0] != s:
+                continue
+            text = self.data[s:self.bodies[i][1]].decode('utf-8')
+            label = re.search(r'_trove = \w+\.new\("([^"]+)"\)', text)
+            label = label and label.group(1)
+            if not label:
+                v = re.search(r'local (\w+) = \w+\.new\("([^"]+)"\)', text)
+                if v and re.search(r'_trove = ' + v.group(1) + r'\b', text):
+                    label = v.group(2)
+            if not label:
+                continue
+            last = re.split(r'[.:/]', label)[-1]
+            words = [w for w in re.split(r'[_\W]+', last) if w]
+            if not words or not words[0][0].isalpha():
+                continue
+            cls = ''.join(w[0].upper() + w[1:] for w in words)
+            self.propose(owner[3], cls, 'class trove label')
+            # the loader: declares t, returns it last
+            d = self.names[self.decl_index[owner[3]]]
+            body = self.scope_of(d[0])
+            tail = self.data[max(body[0], body[1] - 200):body[1]].decode('utf-8', 'replace')
+            if not re.search(r'return ' + re.escape(d[2]) + r'\s*end$', tail):
+                continue
+            ls = self.line_around(body[0])[0]
+            head = self.data[ls:body[0]].decode('utf-8')
+            f = re.search(r'local function (f\d+)$', head)
+            if f:
+                fn = self.name_at(ls + len(head[:f.start(1)].encode('utf-8')))
+                if fn and fn[4]:
+                    self.propose(fn[3], 'load' + cls, 'class trove label')
+
+    # -- prototype copies -------------------------------------------------------
+    _TOKEN = re.compile(rb'''
+        \s+
+      | --\[(?P<c>=*)\[.*?\](?P=c)\]
+      | --[^\n]*
+      | \[(?P<s>=*)\[.*?\](?P=s)\]
+      | "(?:[^"\\\n]|\\.|\\\n)*"
+      | '(?:[^'\\\n]|\\.|\\\n)*'
+      | `(?:[^`\\]|\\.)*`
+      | 0[xX][\w]+ | (?:\d[\d_]*\.?[\d_]*|\.\d[\d_]*)(?:[eE][+-]?\d+)?
+      | [A-Za-z_]\w*
+      | \.\.\.|\.\.=?|//=?|[=~<>]=|->|::|[-+*/%^]=
+      | .''', re.S | re.X)
+
+    def tokens(self):
+        """(start, end) of every token in the file, comments and spaces left out."""
+        if not hasattr(self, '_tokens'):
+            toks = []
+            for m in self._TOKEN.finditer(self.data):
+                c = self.data[m.start()]
+                if c in b' \t\r\n' or self.data.startswith(b'--', m.start()):
+                    continue
+                toks.append((m.start(), m.end()))
+            self._tokens = toks
+            self._token_starts = [t[0] for t in toks]
+        return self._tokens
+
+    def body_shape(self, body):
+        """Token shape of a function body with variables replaced by the order
+        of their declaration inside it. Free names stay as ('F', name).
+        Returns (key, decl ids in order, free token positions) or None."""
+        s, e = body
+        toks = self.tokens()
+        lo = bisect.bisect_left(self._token_starts, s)
+        hi = bisect.bisect_left(self._token_starts, e)
+        decls, order = [], {}
+        # a method's implicit self (zero-width at the colon) comes first
+        head = self.data[max(0, s - 200):s]
+        m = re.search(rb':\s*[A-Za-z_]\w*\s*$', head)
+        if m:
+            colon = s - len(head) + m.start()
+            d = self.name_at(colon)
+            if d and d[4] and d[2] == 'self':
+                order[d[3]] = 0
+                decls.append(d[3])
+        # parameters: only how many there are (a method's self is not written)
+        close = next((i for i in range(lo, hi) if self.data[toks[i][0]:toks[i][1]] == b')'), None)
+        if close is None or self.data[toks[lo][0]:toks[lo][1]] != b'(':
+            return None
+        params = [self.name_at(ts) for ts, _ in toks[lo + 1:close]]
+        params = [p for p in params if p and p[4]]
+        for p in params:
+            order[p[3]] = len(decls)
+            decls.append(p[3])
+        vararg = any(self.data[ts:te] == b'...' for ts, te in toks[lo + 1:close])
+        shape, frees = [('P', len(decls), vararg)], []
+        for ts, te in toks[close + 1:hi]:
+            n = self.name_at(ts)
+            if n is None or n[1] != te:
+                shape.append(self.data[ts:te])
+                continue
+            if n[4]:
+                order[n[3]] = len(decls)
+                decls.append(n[3])
+                shape.append(('D', order[n[3]]))
+            elif n[3] in order:
+                shape.append(('D', order[n[3]]))
+            else:
+                shape.append('F')
+                frees.append(self.index_at(ts))
+        return tuple(shape), decls, frees
+
+    def final_name(self, decl_id, keep_own=True):
+        """The name a declaration will get: its proposal, else (keep_own) its
+        decompiler name without the counter (`LocalPlayer5` → `LocalPlayer`)
+        unless that is a placeholder. The implicit self becomes self_."""
+        if decl_id in self.proposals:
+            return self.proposals[decl_id][0]
+        name = self.names[self.decl_index[decl_id]][2]
+        if name == 'self':
+            return 'self_'
+        if not keep_own:
+            return None
+        name = re.sub(r'(?<=[A-Za-z_])\d+$', '', name)
+        return None if re.fullmatch(r'[vtfp]\d*|up\d*|_+', name) else name
+
+    def inline_name(self, body):
+        """Name of an inline function: `local function f` → f's name,
+        `function T:_Method(` → `method` (`newT` for T.new when T is named)."""
+        s = body[0]
+        ls = self.line_around(s)[0]
+        head = self.data[ls:s].decode('utf-8')
+        m = re.search(r'function ([\w.:]+)$', head)
+        if not m:
+            return None
+        pos = ls + len(head[:m.start(1)].encode('utf-8'))   # first name in the path
+        parts = re.split(r'[.:]', m.group(1))
+        if len(parts) == 1:
+            d = self.name_at(pos)
+            return d and d[4] and self.final_name(d[3])
+        method = parts[-1]
+        if method.startswith('__'):
+            return 'meta' + method[2:3].upper() + method[3:]
+        method = method.lstrip('_')
+        if not method:
+            return None
+        method = method[0].lower() + method[1:]
+        if len(parts) == 2 and method.lower() in self._GENERIC_METHODS:
+            owner = self.name_at(pos)
+            cls = owner and owner[3] >= 0 and self.final_name(owner[3], keep_own=False)
+            if cls and cls[0].isupper():
+                return method + cls
+        return method
+
+    _GENERIC_METHODS = {'new', 'destroy', 'initialize', 'init', 'start', 'stop', 'update',
+                        'reset', 'clear', 'load', 'get', 'set', 'enable', 'disable',
+                        'setenabled', 'refresh', 'render', 'step', 'cleanup', 'connect',
+                        'disconnect', 'prerender', 'apply', 'revert'}
+
+    def rule_prototype_copies(self):
+        """The decompiler dumps every closure twice: as a standalone prototype
+        `local function fN` at module level (outer variables as upN) and inline
+        where it is defined. When a prototype's tokens equal an inline copy's
+        with variables matched by declaration order, the prototype takes the
+        inline copy's names: its own locals, its upvalues, and `name_proto`."""
+        file_scope = (0, len(self.data))
+        body_of = {}                                   # body -> (name token, enclosing body)
+        top_bodies = set()
+        protos = []                                    # (name token, body, module body)
+        for fname, (s, e) in self.fn_by_name.items():
+            i = bisect.bisect_left(self.body_starts, s)
+            if i >= len(self.bodies) or self.bodies[i][1] > e:
+                continue
+            body = self.bodies[i]
+            decl = self.name_at(self.data.index(fname.encode(), s))
+            if decl is None or not decl[4]:
+                continue
+            outer = self.scope_of(s)
+            if outer == file_scope:
+                top_bodies.add(body)
+            body_of[body] = (decl, outer)
+        for body, (decl, outer) in body_of.items():
+            if outer in top_bodies and not self.skipped(body[0]):
+                protos.append((decl, body, outer))
+        proto_bodies = {p[1] for p in protos}
+
+        # bucket every body inside a module by shape (free names as wildcards)
+        buckets = {}
+        shapes = {}
+        for body in self.bodies:
+            if body in top_bodies or self.skipped(body[0]):
+                continue
+            shape = self.body_shape(body)
+            if shape is None:
+                continue
+            shapes[body] = shape
+            buckets.setdefault(shape[0], []).append(body)
+
+        module_decls = {}
+        for n in self.names:
+            if n[4]:
+                sc = self.scope_of(n[0])
+                if sc in top_bodies or sc == file_scope:
+                    module_decls.setdefault(sc, set()).add(n[2])
+        file_names = module_decls.get(file_scope, set())
+
+        for decl, body, module in protos:
+            if body not in shapes:
+                continue
+            key, decls, frees = shapes[body]
+            cands = [b for b in buckets.get(key, ()) if b not in proto_bodies
+                     and module[0] <= b[0] < module[1]]
+            matched = []
+            for c in cands:
+                _, cdecls, cfrees = shapes[c]
+                if len(cdecls) != len(decls):
+                    continue
+                ok = True
+                for pi, ci in zip(frees, cfrees):
+                    pn, cn = self.names[pi], self.names[ci]
+                    if re.fullmatch(r'up\d+', pn[2]):
+                        continue
+                    if pn[2] != cn[2]:
+                        ok = False
+                        break
+                if ok:
+                    matched.append(c)
+            if not matched:
+                continue
+            self.proto_copies.append((body, matched[0]))
+
+            def unanimous(values):
+                vals = {v for v in values if v}
+                return vals.pop() if len(vals) == 1 else None
+
+            # the prototype's own name
+            if decl[3] not in self.proposals:
+                base = unanimous(self.inline_name(c) for c in matched)
+                if base and not base.endswith('_proto'):
+                    self.propose(decl[3], base + '_proto', 'prototype copy')
+            # its declarations, by declaration order
+            for k, d in enumerate(decls):
+                if d in self.proposals:
+                    continue
+                name = unanimous(self.final_name(shapes[c][1][k], keep_own=False)
+                                 for c in matched)
+                if name and name != self.names[self.decl_index[d]][2]:
+                    self.propose(d, name, 'prototype copy')
+            # its upvalues, per innermost body (upN is numbered per prototype)
+            groups = {}
+            for j, pi in enumerate(frees):
+                pn = self.names[pi]
+                if not re.fullmatch(r'up\d+', pn[2]):
+                    continue
+                names = set()
+                for c in matched:
+                    cn = self.names[shapes[c][2][j]]
+                    names.add(self.final_name(cn[3]) if cn[3] >= 0 else None)
+                g = groups.setdefault((self.scope_of(pn[0]), pn[2]), [set(), []])
+                g[0] |= names
+                g[1].append(pi)
+            forbidden = self.used(body) | module_decls.get(module, set()) | file_names
+            for (scope, old), (names, refs) in groups.items():
+                if len(names) != 1:
+                    continue
+                new = names.pop()
+                if new and new not in forbidden and _IDENT.fullmatch(new) \
+                        and not re.fullmatch(r'up\d+', new):
+                    self.free_renames.append((scope, old, new, refs, 'prototype copy (upvalue)'))
+
     # -- assignment ------------------------------------------------------------
     def pick(self, base, scope, strict):
         """`base`, or `base2`, `base3`… (`base_2` if base ends in a digit)."""
@@ -575,20 +887,31 @@ class Renamer:
 
     def edits(self):
         edits, applied = [], []
-        for scope, old, new, refs in self.free_renames:
-            if not self.free(new, scope):
-                self.errors.append(f'{old} -> {new}: name already used in scope')
-                continue
-            self.take(new, scope)
-            edits += [{'start': self.names[i][0], 'end': self.names[i][1], 'text': new}
-                      for i in refs]
-            applied.append({'line': self.data.count(b'\n', 0, self.names[refs[0]][0]) + 1,
-                            'old': old, 'new': new, 'rule': 'manual (upvalue)'})
+
+        def upvalues(manual):
+            for scope, old, new, refs, *rule in self.free_renames:
+                if bool(rule) == manual:
+                    continue
+                if not self.free(new, scope):
+                    if manual:
+                        self.errors.append(f'{old} -> {new}: name already used in scope')
+                    continue
+                self.take(new, scope)
+                edits.extend({'start': self.names[i][0], 'end': self.names[i][1], 'text': new}
+                             for i in refs)
+                applied.append({'line': self.line_of(self.names[refs[0]][0]),
+                                'old': old, 'new': new,
+                                'rule': rule[0] if rule else 'manual (upvalue)'})
 
         # curated names first, then evidence-based ones, each in source order
+        upvalues(manual=True)
         order = sorted(self.proposals.items(),
                        key=lambda kv: (kv[1][1] != 'manual', self.names[self.decl_index[kv[0]]][0]))
+        done_manual = False
         for decl_id, (base, rule) in order:
+            if rule != 'manual' and not done_manual:
+                upvalues(manual=False)
+                done_manual = True
             d = self.names[self.decl_index[decl_id]]
             scope = self.scope_of(d[0])
             cand = self.pick(base, scope, strict=rule == 'manual')
@@ -599,8 +922,10 @@ class Renamer:
             self.take(cand, scope)
             for idx in [self.decl_index[decl_id]] + self.refs.get(decl_id, []):
                 edits.append({'start': self.names[idx][0], 'end': self.names[idx][1], 'text': cand})
-            applied.append({'line': self.data.count(b'\n', 0, d[0]) + 1,
+            applied.append({'line': self.line_of(d[0]),
                             'old': d[2], 'new': cand, 'rule': rule})
+        if not done_manual:
+            upvalues(manual=False)
         return edits, applied
 
 
@@ -634,12 +959,15 @@ def auto_rename(src: str, report: dict, skip_lines, manual=None) -> str:
     skip = [(line_starts[a - 1], line_starts[b] if b < len(line_starts) else len(data))
             for a, b in skip_lines]
     r = Renamer(src, skip)
+    r.skip_functions((manual or {}).get('_skip', []))
     r.rule_manual(manual or {})
     r.rule_function_refs()
     r.rule_sections()
     r.rule_ui_elements()
     r.rule_lazy_modules()
+    r.rule_classes()
     r.rule_local_value()
+    r.rule_prototype_copies()
     edits, applied = r.edits()
     if r.errors:
         sys.exit('names.json problems:\n  ' + '\n  '.join(r.errors))
@@ -648,6 +976,8 @@ def auto_rename(src: str, report: dict, skip_lines, manual=None) -> str:
     if signature(out) != before:
         sys.exit('rename changed variable binding; aborting')
     report['renames'] = applied
+    report['prototype_copies'] = [{'line': r.line_of(p[0]), 'copy_of_line': r.line_of(c[0])}
+                                  for p, c in r.proto_copies]
     return out
 
 

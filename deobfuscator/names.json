@@ -1,5 +1,15 @@
 {
   "_comment": "Curated names: {scope function: {old name: new name}}. Names declared in the scope rename that binding; otherwise free names (upN) inside the scope are renamed. `_proto` marks the decompiler's standalone copy of a closure that also appears inline under the plain name.",
+  "_skip_comment": "Functions left alone by every rule, manual or automatic: they exist to evade detection (Luarmor heartbeat and tamper checks, game anti-cheat bypass and integrity scan, moderator detector).",
+  "_skip": [
+    "f5009",
+    "f10555-f10560",
+    "f1523",
+    "f1527",
+    "f1529",
+    "f1531-f1546",
+    "f1560-f1633"
+  ],
   "f588": {
     "f589": "syncAutoConfigControls_proto",
     "f590": "refreshConfigsAndControls_proto",
