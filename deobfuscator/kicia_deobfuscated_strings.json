@@ -1,0 +1,2830 @@
+[
+ {
+  "key": 146033344648,
+  "cipher": "\"OH\\r\\168\\171\"",
+  "plain": "\"print\"",
+  "text": "print",
+  "sites": 2
+ },
+ {
+  "key": 173951484066,
+  "cipher": "\"Z\"",
+  "plain": "\"\\\"\"",
+  "text": "\"",
+  "sites": 2
+ },
+ {
+  "key": 256632127727,
+  "cipher": "\"\\222U\\224\\t\"",
+  "plain": "\"Data\"",
+  "text": "Data",
+  "sites": 3
+ },
+ {
+  "key": 281328943366,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 285624041738,
+  "cipher": "\"\\204=\\165,\"",
+  "plain": "\"Host\"",
+  "text": "Host",
+  "sites": 1
+ },
+ {
+  "key": 318911054121,
+  "cipher": "\"|\\153\\251\\252\\129+\\213c\\238\\189\\031]\\198\"",
+  "plain": "\"ScriptVersion\"",
+  "text": "ScriptVersion",
+  "sites": 1
+ },
+ {
+  "key": 434878710165,
+  "cipher": "\"\\182\\163/Pv\\178\"",
+  "plain": "\"random\"",
+  "text": "random",
+  "sites": 2
+ },
+ {
+  "key": 446690230688,
+  "cipher": "\"\\237\\238q\\243\\0025\"",
+  "plain": "\"random\"",
+  "text": "random",
+  "sites": 1
+ },
+ {
+  "key": 458501751211,
+  "cipher": "\"\\158\\226\\202\\\\\\232\\159\"",
+  "plain": "\"random\"",
+  "text": "random",
+  "sites": 2
+ },
+ {
+  "key": 709765005973,
+  "cipher": "\"\\206\\224\\168?\\226v\\231\\019\\029\"",
+  "plain": "\"[0x2022] \"",
+  "text": "[0x2022] ",
+  "sites": 2
+ },
+ {
+  "key": 758084862658,
+  "cipher": "\"\\202Be\\155Q\\245>\"",
+  "plain": "\"connect\"",
+  "text": "connect",
+  "sites": 1
+ },
+ {
+  "key": 805330944750,
+  "cipher": "\"9\"",
+  "plain": "\" \"",
+  "text": " ",
+  "sites": 3
+ },
+ {
+  "key": 957806936956,
+  "cipher": "\"\\229\\215\"",
+  "plain": "\")\\n\"",
+  "text": ")\n",
+  "sites": 3
+ },
+ {
+  "key": 1184373376079,
+  "cipher": "\"\\221\\209\\n=o\\017\"",
+  "plain": "\"/auth/\"",
+  "text": "/auth/",
+  "sites": 1
+ },
+ {
+  "key": 1198332445788,
+  "cipher": "\"\\011h\\003\"",
+  "plain": "\"Lua\"",
+  "text": "Lua",
+  "sites": 2
+ },
+ {
+  "key": 1284234413228,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 1377652802819,
+  "cipher": "\"\\166\\222\\202\\158\\1593\\166ye\\241v\\251\\148W\\162\\200<\\128\\148(\\221\\175\\180\\233/p\\147\\233F\\232\\165\\163\\136\\185\\170\\001\\172\\250\\235\\173k\"",
+  "plain": "\"Old script, please use the latest version\"",
+  "text": "Old script, please use the latest version",
+  "sites": 1
+ },
+ {
+  "key": 1458185897294,
+  "cipher": "\"nG\\178p\\189\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 3
+ },
+ {
+  "key": 1527981245839,
+  "cipher": "\"\\008\"",
+  "plain": "\"0\"",
+  "text": "0",
+  "sites": 1
+ },
+ {
+  "key": 1597776594384,
+  "cipher": "\"Q\\t\\222t?\\167\\240\\222K|Jn\\228\\232[\\172OO\\133\\025\\130\\206\\171\\203\\024\\190&\"",
+  "plain": "\"au4-roblox-auth.luarmor.net\"",
+  "text": "au4-roblox-auth.luarmor.net",
+  "sites": 2
+ },
+ {
+  "key": 1674014590487,
+  "cipher": "\"$\"",
+  "plain": "\"%\"",
+  "text": "%",
+  "sites": 2
+ },
+ {
+  "key": 1700858955312,
+  "cipher": "\"\\183\\001\"",
+  "plain": "\"Id\"",
+  "text": "Id",
+  "sites": 2
+ },
+ {
+  "key": 1801793767054,
+  "cipher": "\"]F\\213\\251\\200_\\178F\\020\\156:\\132P\\020@C\\245\\005rT\\147\\137\\228\\134\\r\\254\\141{\\211\"",
+  "plain": "\"] [PONG] Server ---> Client \\n\"",
+  "text": "] [PONG] Server ---> Client \n",
+  "sites": 3
+ },
+ {
+  "key": 1803941316240,
+  "cipher": "\"\\214\\240x\\235\\156NC\\182\\231{\\193cx\\215d\"",
+  "plain": "\"__OBJECT_ACTIVE\"",
+  "text": "__OBJECT_ACTIVE",
+  "sites": 2
+ },
+ {
+  "key": 1858703820483,
+  "cipher": "\"\\167Q\\174\"",
+  "plain": "\"&v=\"",
+  "text": "&v=",
+  "sites": 1
+ },
+ {
+  "key": 2067016091525,
+  "cipher": "\"<\\165\\018]\\1795\\142\"",
+  "plain": "\"Players\"",
+  "text": "Players",
+  "sites": 1
+ },
+ {
+  "key": 2211975661580,
+  "cipher": "\"0Mz'W!\\018\\031\\179uwA\\241\"",
+  "plain": "\":80/wshttpemu\"",
+  "text": ":80/wshttpemu",
+  "sites": 3
+ },
+ {
+  "key": 2290361206869,
+  "cipher": "\"\\144\\144T\\182[\\138\\011\\021\\232z\"",
+  "plain": "\"ScriptWare\"",
+  "text": "ScriptWare",
+  "sites": 1
+ },
+ {
+  "key": 2297877629020,
+  "cipher": "\"\\211:<?S\\222\\017[!\\164Yl\\240F\\230\\\"\\193\\251\\128\\220a\\029\\252\\133\\194\\135\\163\"",
+  "plain": "\"as2-roblox-auth.luarmor.net\"",
+  "text": "as2-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 2340828612740,
+  "cipher": "\"6\\143K\\188=\\r\\226\\146\\248&\\176;\\003\\231\\195\\134\\133\\143\\248\\204_\\184\\222\\229\\157\\254\\025\"",
+  "plain": "\"eu1-roblox-auth.luarmor.net\"",
+  "text": "eu1-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 2422435481808,
+  "cipher": "\"\\138J\\234w\\251\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 3
+ },
+ {
+  "key": 2453574945005,
+  "cipher": "\"\\255u\\007\\188\"",
+  "plain": "\"Name\"",
+  "text": "Name",
+  "sites": 1
+ },
+ {
+  "key": 2476124211458,
+  "cipher": "\"r\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 2506189900062,
+  "cipher": "\"z\\144\\199zz\\217\\030\\184 .t\\004\\248Hc\\184\\169BB\\254G\\191\\005\\223\\237t\\220i\"",
+  "plain": "\" - Trying failover EU host..\"",
+  "text": " - Trying failover EU host..",
+  "sites": 2
+ },
+ {
+  "key": 2558804855119,
+  "cipher": "\"\\148\\235A|\\017\\230\\0113\\2209x\\022|\\149\\178\\167\\141\\242\\182\\164\\019x\\130\\238\"",
+  "plain": "\"] [CONNECT] Reconnected\\n\"",
+  "text": "] [CONNECT] Reconnected\n",
+  "sites": 3
+ },
+ {
+  "key": 2572763924828,
+  "cipher": "\"s\\146p: \\167\\177_\\228\\255\\136kW\\246\\245\\253e\\146M\\245\\019T\\169IP\\021\\187\"",
+  "plain": "\"as3-roblox-auth.luarmor.net\"",
+  "text": "as3-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 2717723494883,
+  "cipher": "\"\\\\\\1927b`\\019\\180\"",
+  "plain": "\"Version\"",
+  "text": "Version",
+  "sites": 2
+ },
+ {
+  "key": 2741346535929,
+  "cipher": "\"\\205\\151q;\\138\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 3
+ },
+ {
+  "key": 2761748253196,
+  "cipher": "\"\\220eg'\"",
+  "plain": "\"find\"",
+  "text": "find",
+  "sites": 1
+ },
+ {
+  "key": 2793961490986,
+  "cipher": "\"%\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 2953953905343,
+  "cipher": "\"\\015\"",
+  "plain": "\"?\"",
+  "text": "?",
+  "sites": 1
+ },
+ {
+  "key": 3140790684525,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 3206290934698,
+  "cipher": "\">^S\\159\\159\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 3448963992716,
+  "cipher": "\"\\226XO\\140q\\210K\\180:%\\205B\\254\\182.y\\229\\163\\245\\219v$\\209Y\\171\\006f\"",
+  "plain": "\"eu1-roblox-auth.luarmor.net\"",
+  "text": "eu1-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 3526275763412,
+  "cipher": "\"v\\150P\\222B\\136';\\166\\162\\1439\"",
+  "plain": "\"DataReceived\"",
+  "text": "DataReceived",
+  "sites": 4
+ },
+ {
+  "key": 3840891719161,
+  "cipher": "\"\\132\"",
+  "plain": "\"%\"",
+  "text": "%",
+  "sites": 1
+ },
+ {
+  "key": 3976187317879,
+  "cipher": "\"c>\\006\\003F\\162+y\"",
+  "plain": "\"/init?t=\"",
+  "text": "/init?t=",
+  "sites": 1
+ },
+ {
+  "key": 4026654723750,
+  "cipher": "\"-\\187\\163M\\025\\167\\217@\"",
+  "plain": "\"ScriptID\"",
+  "text": "ScriptID",
+  "sites": 1
+ },
+ {
+  "key": 4071753256656,
+  "cipher": "\"?\"",
+  "plain": "\"a\"",
+  "text": "a",
+  "sites": 1
+ },
+ {
+  "key": 4223155474269,
+  "cipher": "\"\\019\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 3
+ },
+ {
+  "key": 4318721413046,
+  "cipher": "\"f\\150\\187#\"",
+  "plain": "\"date\"",
+  "text": "date",
+  "sites": 1
+ },
+ {
+  "key": 4427172646939,
+  "cipher": "\"\\216\\021m\\142\\201m\\185\"",
+  "plain": "\"__index\"",
+  "text": "__index",
+  "sites": 2
+ },
+ {
+  "key": 4459385884729,
+  "cipher": "\"\\024J\\006u\\240\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 4490525347926,
+  "cipher": "\"\\246M\\198tb\\223\\184\\2464\"",
+  "plain": "\"OnMessage\"",
+  "text": "OnMessage",
+  "sites": 2
+ },
+ {
+  "key": 4505558192228,
+  "cipher": "\"O\\221\\216+\\241\\133\\255\\226;\\180\\016\\022\\027\\253\\203\\214\\140\\246l\\007\\148o\\130TO\\004\\nO\\140\\200\\000u?\\140u\\183\\132J\\245hS\\144\\030<\\219\\003\"",
+  "plain": "\"] [REQUEST] Client ---> Server, ObjectActive: \"",
+  "text": "] [REQUEST] Client ---> Server, ObjectActive: ",
+  "sites": 2
+ },
+ {
+  "key": 4536697655425,
+  "cipher": "\"\\1950\\131r\\170\\212E\\200\\170\\218Bil\"",
+  "plain": "\"[3] r_timeout\"",
+  "text": "[3] r_timeout",
+  "sites": 2
+ },
+ {
+  "key": 4772928065885,
+  "cipher": "\"`B\\166#\\255jI\\172]^\"",
+  "plain": "\"RunService\"",
+  "text": "RunService",
+  "sites": 1
+ },
+ {
+  "key": 4882453074371,
+  "cipher": "\"(\\204\\006\\168\"",
+  "plain": "\"time\"",
+  "text": "time",
+  "sites": 1
+ },
+ {
+  "key": 5129421230761,
+  "cipher": "\"\\236<\\200I\"",
+  "plain": "\"Wind\"",
+  "text": "Wind",
+  "sites": 1
+ },
+ {
+  "key": 5163782017737,
+  "cipher": "\"\\019\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 5187405058783,
+  "cipher": "\"\\132\"",
+  "plain": "\"%\"",
+  "text": "%",
+  "sites": 2
+ },
+ {
+  "key": 5342028600175,
+  "cipher": "\"\\180T}\\144E`\\233N0\\018\\159\\197\"",
+  "plain": "\"/auth/start/\"",
+  "text": "/auth/start/",
+  "sites": 1
+ },
+ {
+  "key": 5343102374768,
+  "cipher": "\"C\"",
+  "plain": "\"?\"",
+  "text": "?",
+  "sites": 1
+ },
+ {
+  "key": 5436520764359,
+  "cipher": "\"v\\220\\162\\204\"",
+  "plain": "\"time\"",
+  "text": "time",
+  "sites": 1
+ },
+ {
+  "key": 5502021014532,
+  "cipher": "\"\\231\"",
+  "plain": "\"!\"",
+  "text": "!",
+  "sites": 1
+ },
+ {
+  "key": 5635169064064,
+  "cipher": "\"[O\\242\\0037\\014\\186\"",
+  "plain": "\"/status\"",
+  "text": "/status",
+  "sites": 2
+ },
+ {
+  "key": 5914350458244,
+  "cipher": "\"\\138\"",
+  "plain": "\"!\"",
+  "text": "!",
+  "sites": 1
+ },
+ {
+  "key": 5940121048476,
+  "cipher": "\"\\145\\199\\235\\218\\154\\255A\\027\"",
+  "plain": "\"https://\"",
+  "text": "https://",
+  "sites": 1
+ },
+ {
+  "key": 5980924483010,
+  "cipher": "\"\\031\\244\\136j\\213\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 3
+ },
+ {
+  "key": 5991662228940,
+  "cipher": "\"\\011!\\238\\000\\255\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 6334196324107,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 6353524266781,
+  "cipher": "\"'G\\008\\177li2\\202\"",
+  "plain": "\"versions\"",
+  "text": "versions",
+  "sites": 2
+ },
+ {
+  "key": 6410434320210,
+  "cipher": "\"\\222\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 2
+ },
+ {
+  "key": 6450163980151,
+  "cipher": "\"e\\249\\024\\025\\161 \\251\\008\\2081\\171\\141\\127Q:\\247V\\012\\157\\2432\\028\\237a\\225\"",
+  "plain": "\" - Connecting to server..\"",
+  "text": " - Connecting to server..",
+  "sites": 1
+ },
+ {
+  "key": 6486672316313,
+  "cipher": "\"sf\\195\\170\\t\\245<\\019\"",
+  "plain": "\"Requests\"",
+  "text": "Requests",
+  "sites": 2
+ },
+ {
+  "key": 6507074033580,
+  "cipher": "\"\\020N\\188+\\204\\018\\227\\131`OM\\249P=\\163n\\206\\2432\"",
+  "plain": "\"] Ticket responded\\n\"",
+  "text": "] Ticket responded\n",
+  "sites": 3
+ },
+ {
+  "key": 6519959328696,
+  "cipher": "\";%\"",
+  "plain": "\"AU\"",
+  "text": "AU",
+  "sites": 2
+ },
+ {
+  "key": 6554320115672,
+  "cipher": "\"\\243\"",
+  "plain": "\"/\"",
+  "text": "/",
+  "sites": 2
+ },
+ {
+  "key": 6757263513749,
+  "cipher": "\">\\238W\\231\\186\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 2
+ },
+ {
+  "key": 6862493423863,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 2
+ },
+ {
+  "key": 6916182153513,
+  "cipher": "\"S\\1344\\0225\\167y%\\153\\151\\160p\\017F\"",
+  "plain": "\":443/wshttpemu\"",
+  "text": ":443/wshttpemu",
+  "sites": 3
+ },
+ {
+  "key": 7101945158102,
+  "cipher": "\"\\254\\177\\211\\200\\250\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 2
+ },
+ {
+  "key": 7107314031067,
+  "cipher": "\"\\154\\254+\\005n)\\173\\161d\\163\\227\\187\\2262\\186\"",
+  "plain": "\"OnMessageSignal\"",
+  "text": "OnMessageSignal",
+  "sites": 2
+ },
+ {
+  "key": 7167445408275,
+  "cipher": "\"\\031\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 7238314531413,
+  "cipher": "\"\\154p\\255\\171h\\015\\253<\\144\\234\\187\\020\\022\\154\\006\"",
+  "plain": "\"__OBJECT_ACTIVE\"",
+  "text": "__OBJECT_ACTIVE",
+  "sites": 3
+ },
+ {
+  "key": 7497094208326,
+  "cipher": "\"\\020/x-\\133\"",
+  "plain": "\"table\"",
+  "text": "table",
+  "sites": 2
+ },
+ {
+  "key": 7856808696981,
+  "cipher": "\"\\030\"",
+  "plain": "\"1\"",
+  "text": "1",
+  "sites": 1
+ },
+ {
+  "key": 7900833455294,
+  "cipher": "\"\\248~\\133\\207\\196r\\178\\244G\\251 /\\n\\030\\169\\154%m\\187W\\141{\\235\\246\\179\\243\\240\"",
+  "plain": "\"au3-roblox-auth.luarmor.net\"",
+  "text": "au3-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 7949153311979,
+  "cipher": "\"\\025\\247}t\\225\\001\\187\"",
+  "plain": "\"Krampus\"",
+  "text": "Krampus",
+  "sites": 1
+ },
+ {
+  "key": 7987809197327,
+  "cipher": "\"p\"",
+  "plain": "\"E\"",
+  "text": "E",
+  "sites": 1
+ },
+ {
+  "key": 8025391308082,
+  "cipher": "\"@\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 3
+ },
+ {
+  "key": 8061899644244,
+  "cipher": "\"\\196\\175\\140R\\1966\\251\\147\"",
+  "plain": "\"Requests\"",
+  "text": "Requests",
+  "sites": 3
+ },
+ {
+  "key": 8137063865754,
+  "cipher": "\"A\\209q\\131\\160\\177\\219\"",
+  "plain": "\"Players\"",
+  "text": "Players",
+  "sites": 2
+ },
+ {
+  "key": 8167129554358,
+  "cipher": "\"\\226\\254\\178K\\216\\255Z+Z\"",
+  "plain": "\"[0x2001] \"",
+  "text": "[0x2001] ",
+  "sites": 2
+ },
+ {
+  "key": 8205785439706,
+  "cipher": "\"\\136\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 3
+ },
+ {
+  "key": 8239072452089,
+  "cipher": "\"\\251k\\003\\137\"",
+  "plain": "\"Host\"",
+  "text": "Host",
+  "sites": 2
+ },
+ {
+  "key": 8460270018247,
+  "cipher": "\"\\197,r \\183r\\1669N\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 3
+ },
+ {
+  "key": 8461343792840,
+  "cipher": "\"\\1716y\\006\\132\\215\\001\\133#\\018\\021'\\012\\146H\\155\\195\\017\"",
+  "plain": "\"/auth/heartbeat?t=\"",
+  "text": "/auth/heartbeat?t=",
+  "sites": 2
+ },
+ {
+  "key": 8519327620862,
+  "cipher": "\"Q\\211s\\145*Q?\"",
+  "plain": "\"OnClose\"",
+  "text": "OnClose",
+  "sites": 3
+ },
+ {
+  "key": 8523622719234,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 8631000178534,
+  "cipher": "\"\\197\\025\\164\\153gN\\220\\189\\239\\159\\158\"",
+  "plain": "\"] [INFO] s4\"",
+  "text": "] [INFO] s4",
+  "sites": 1
+ },
+ {
+  "key": 8969239175329,
+  "cipher": "\"\\150\\184\\188@_\\170\\153\\019\\224\\218\\1655\"",
+  "plain": "\"SocketClosed\"",
+  "text": "SocketClosed",
+  "sites": 3
+ },
+ {
+  "key": 8988567118003,
+  "cipher": "\"\\142\\229\\173\"",
+  "plain": "\"&k=\"",
+  "text": "&k=",
+  "sites": 1
+ },
+ {
+  "key": 9071247761664,
+  "cipher": "\"\\159\\011\\208\\029\\209\"",
+  "plain": "\"match\"",
+  "text": "match",
+  "sites": 3
+ },
+ {
+  "key": 9220502430091,
+  "cipher": "\"\\227o\\137\\144\"",
+  "plain": "\"Data\"",
+  "text": "Data",
+  "sites": 2
+ },
+ {
+  "key": 9639274521361,
+  "cipher": "\"\\023GB\\147\\212y\\236\\024\\167&\\219\\243@y\\205\\190\\217\"",
+  "plain": "\";;lrm_is_diff_msg\"",
+  "text": ";;lrm_is_diff_msg",
+  "sites": 1
+ },
+ {
+  "key": 9663971337000,
+  "cipher": "\"\\207\\199us@\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 2
+ },
+ {
+  "key": 9666118886186,
+  "cipher": "\"\\177\\223\\189\\215\"",
+  "plain": "\"wrap\"",
+  "text": "wrap",
+  "sites": 1
+ },
+ {
+  "key": 9788529189788,
+  "cipher": "\"\\003ER\\150\\169\\174/D\\168\\171\\182\\025\\\\\\129i\\223kg\\005\\021\\233\\248\\2127\\249\\213\\158\\184\\027\\144\\031\\179\\180xO\\159\\127\\221\\128*\\028\\194TT\\189\\145\\233z\\n\"",
+  "plain": "\" - Failed to connect to WS, falling back to HTTP.\"",
+  "text": " - Failed to connect to WS, falling back to HTTP.",
+  "sites": 2
+ },
+ {
+  "key": 9831480173508,
+  "cipher": "\" \"",
+  "plain": "\"k\"",
+  "text": "k",
+  "sites": 1
+ },
+ {
+  "key": 9953890477110,
+  "cipher": "\"y\\142\\004\\231\\253\"",
+  "plain": "\"Nezur\"",
+  "text": "Nezur",
+  "sites": 1
+ },
+ {
+  "key": 10051603965073,
+  "cipher": "\",\\196P\\\\\"",
+  "plain": "\"PONG\"",
+  "text": "PONG",
+  "sites": 3
+ },
+ {
+  "key": 10209448830244,
+  "cipher": "\"\\202Tj\\137\\000\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 10233071871290,
+  "cipher": "\"\\170\\225\\211\\164\\006t=\\031\\209\\\\\\128W\\254\\215\\219\\217\\208\\249\\214K,\\170JOUZ\\243o\\144F\\180\\1443|\\169+E\\162\\005\\197\\239\\173\\243y\\2088$\\250\\024/7\\004q)\"",
+  "plain": "\"This script is outdated! Try using the latest version.\"",
+  "text": "This script is outdated! Try using the latest version.",
+  "sites": 2
+ },
+ {
+  "key": 10312531191172,
+  "cipher": "\"\\169d\\175m\"",
+  "plain": "\" v: \"",
+  "text": " v: ",
+  "sites": 2
+ },
+ {
+  "key": 10375883892159,
+  "cipher": "\"\\127\\132\\031\\028g\\n\"",
+  "plain": "\", ok: \"",
+  "text": ", ok: ",
+  "sites": 3
+ },
+ {
+  "key": 10378031441345,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 3
+ },
+ {
+  "key": 10561646896748,
+  "cipher": "\"\\242\\019\\150\\029>\"",
+  "plain": "\"table\"",
+  "text": "table",
+  "sites": 1
+ },
+ {
+  "key": 10601376556689,
+  "cipher": "\"\\011\\019\\005\\004\\2527\\137\"",
+  "plain": "\"Players\"",
+  "text": "Players",
+  "sites": 1
+ },
+ {
+  "key": 10607819204247,
+  "cipher": "\"\\022r\\130\\197\\200\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 10693721171687,
+  "cipher": "\"-\\209 \\r\\161\\128\\030\\181)\\162\\169\\194\\240\\156\\019\\200\\162s\\0212\\188p\\207(\\188\\240\\176\\157\\230\\002\\142\\167\\011\\226\\159&\\233\"",
+  "plain": "\" - Failed to load Luarmor client --> \"",
+  "text": " - Failed to load Luarmor client --> ",
+  "sites": 1
+ },
+ {
+  "key": 10709827790582,
+  "cipher": "\"\\024\\181K\\209D\\185\\135\\171\\164\\026\\170\\207R,\\249\\247\\160\\161\\209G\\140c\\160\"",
+  "plain": "\"] [INFO] Luarmor loaded\"",
+  "text": "] [INFO] Luarmor loaded",
+  "sites": 1
+ },
+ {
+  "key": 11135042529410,
+  "cipher": "\"\\211\\225\\215\\163\"",
+  "plain": "\"done\"",
+  "text": "done",
+  "sites": 1
+ },
+ {
+  "key": 11362682743126,
+  "cipher": "\"\\230v\"",
+  "plain": "\"-1\"",
+  "text": "-1",
+  "sites": 1
+ },
+ {
+  "key": 11388453333358,
+  "cipher": "\"\\248Ot\\178\\026\\\"\\163W\\188\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 2
+ },
+ {
+  "key": 11417445247369,
+  "cipher": "\"\\165A7e\"",
+  "plain": "\"huge\"",
+  "text": "huge",
+  "sites": 1
+ },
+ {
+  "key": 11422814120334,
+  "cipher": "\"\\r\\021\\240\\018\\225\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 11448584710566,
+  "cipher": "\"\\146?\\180M\\218\\\\\"",
+  "plain": "\"wss://\"",
+  "text": "wss://",
+  "sites": 3
+ },
+ {
+  "key": 11453953583531,
+  "cipher": "\"h\\177\\227\\015\\189\\1384\\185\\128\\r\\248H7\\209\\205\\244\"",
+  "plain": "\"ConnectionClosed\"",
+  "text": "ConnectionClosed",
+  "sites": 3
+ },
+ {
+  "key": 11500125891030,
+  "cipher": "\"k\\188*TG\\222\"",
+  "plain": "\"concat\"",
+  "text": "concat",
+  "sites": 1
+ },
+ {
+  "key": 11551667071494,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 11661192079980,
+  "cipher": "\"k(\\166.\\2433M\"",
+  "plain": "\"OnClose\"",
+  "text": "OnClose",
+  "sites": 4
+ },
+ {
+  "key": 11860914154278,
+  "cipher": "\"P+\\173\\t\"",
+  "plain": "\"Host\"",
+  "text": "Host",
+  "sites": 1
+ },
+ {
+  "key": 12085333044215,
+  "cipher": "\"\\252\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 12166939913283,
+  "cipher": "\".\"",
+  "plain": "\"O\"",
+  "text": "O",
+  "sites": 1
+ },
+ {
+  "key": 12225997515898,
+  "cipher": "\"\\215\\204\\161\\147q1\\177\\167\\170\\011O\\146&\\250\\134\\170g|\"",
+  "plain": "\" (ALREADY CLOSED)\\n\"",
+  "text": " (ALREADY CLOSED)\n",
+  "sites": 3
+ },
+ {
+  "key": 12251768106130,
+  "cipher": "\"\\175\\nP\\245\\156\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 3
+ },
+ {
+  "key": 12321563454675,
+  "cipher": "\"U\\245\\146]\\170\\143@8N@#\\176\\212\\228\\178\"",
+  "plain": "\"__OBJECT_ACTIVE\"",
+  "text": "__OBJECT_ACTIVE",
+  "sites": 2
+ },
+ {
+  "key": 12325858553047,
+  "cipher": "\"\\227\"",
+  "plain": "\"3\"",
+  "text": "3",
+  "sites": 1
+ },
+ {
+  "key": 12404244098336,
+  "cipher": "\"\\203%q\\241\\205e\\171\\179\\026\\144\\200.v\"",
+  "plain": "\"BindableEvent\"",
+  "text": "BindableEvent",
+  "sites": 2
+ },
+ {
+  "key": 12421424491824,
+  "cipher": "\"vx\\194#\"",
+  "plain": "\"Host\"",
+  "text": "Host",
+  "sites": 2
+ },
+ {
+  "key": 12545982344612,
+  "cipher": "\"\\200\"",
+  "plain": "\"\\n\"",
+  "text": "\n",
+  "sites": 2
+ },
+ {
+  "key": 12563162738100,
+  "cipher": "\"\\209\\157\\175\\188\"",
+  "plain": "\"Host\"",
+  "text": "Host",
+  "sites": 2
+ },
+ {
+  "key": 12700605886004,
+  "cipher": "\"\\n\"",
+  "plain": "\" \"",
+  "text": " ",
+  "sites": 3
+ },
+ {
+  "key": 12721007603271,
+  "cipher": "\"\\148\\243v\\159\\160\\235\\254v\\022\\198&3\\183[\\220h\\254q\\197\\142J\\025\\208K\\154\\157\\246]\"",
+  "plain": "\" - Loading Luarmor client...\"",
+  "text": " - Loading Luarmor client...",
+  "sites": 1
+ },
+ {
+  "key": 12781138980479,
+  "cipher": "\";+\\025\\153&\\188\\015\\128\\026\"",
+  "plain": "\"traceback\"",
+  "text": "traceback",
+  "sites": 1
+ },
+ {
+  "key": 12796171824781,
+  "cipher": "\"\\015\\210\\249~|\\227\\202\\248q\"",
+  "plain": "\"OnMessage\"",
+  "text": "OnMessage",
+  "sites": 4
+ },
+ {
+  "key": 12815499767455,
+  "cipher": "\"\\171\\192\\220JX\\200\\156\"",
+  "plain": "\"Sirhurt\"",
+  "text": "Sirhurt",
+  "sites": 1
+ },
+ {
+  "key": 12874557370070,
+  "cipher": "\"\\n\\230\\168\\228\\154T\\028\\183\\022\\226r\\177\\000\\0042f+\\129\\184\\202\\159\\193\\205\\164\\166\\128i\"",
+  "plain": "\"au2-roblox-auth.luarmor.net\"",
+  "text": "au2-roblox-auth.luarmor.net",
+  "sites": 2
+ },
+ {
+  "key": 12971197083440,
+  "cipher": "\"UC\\178}\"",
+  "plain": "\"date\"",
+  "text": "date",
+  "sites": 1
+ },
+ {
+  "key": 13170919157738,
+  "cipher": "\"4\\226\\014\\232\\014\"",
+  "plain": "\"error\"",
+  "text": "error",
+  "sites": 1
+ },
+ {
+  "key": 13202058620935,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 13208501268493,
+  "cipher": "\"$\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 13222460338202,
+  "cipher": "\"\\240\\230R\\240>\\184pcy\\016\\164\\025JH\\231\\014\\235b\\003\\008\\138b\\001\\249\\194\\004\\255\"",
+  "plain": "\"us1-roblox-auth.luarmor.net\"",
+  "text": "us1-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 13348091965583,
+  "cipher": "\"\\1510\\206\"",
+  "plain": "\"sub\"",
+  "text": "sub",
+  "sites": 1
+ },
+ {
+  "key": 13360977260699,
+  "cipher": "\"U\\213\\156\\142s`Q\\020;\\018\\198p\\167-\\154\\139]\\156\\225\\206\\239\\145\\158\\2072:\\000\"",
+  "plain": "\"http://mc.felinemastery.xyz\"",
+  "text": "http://mc.felinemastery.xyz",
+  "sites": 2
+ },
+ {
+  "key": 13362051035292,
+  "cipher": "\"\\226\\255\\210W,\\015\\226\\250ESIn\\195\\237\\222O\\184\\158,R\\173\\222\\226\\025\\017\\167\\176R\\229\\224\\251\"",
+  "plain": "\"[2] Unable to connect (timeout)\"",
+  "text": "[2] Unable to connect (timeout)",
+  "sites": 3
+ },
+ {
+  "key": 13445805453546,
+  "cipher": "\"\\133\\\\*\\136\\211\\201\\185\\206\\215j\"",
+  "plain": "\"StatusCode\"",
+  "text": "StatusCode",
+  "sites": 2
+ },
+ {
+  "key": 13544592716102,
+  "cipher": "\"\\196\\028p0\\225\\186\\219]\\246\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 3
+ },
+ {
+  "key": 13603650318717,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 13612240515461,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 2
+ },
+ {
+  "key": 13613314290054,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 2
+ },
+ {
+  "key": 13855987348072,
+  "cipher": "\"f\\204\\156\"",
+  "plain": "\"new\"",
+  "text": "new",
+  "sites": 2
+ },
+ {
+  "key": 14086848885567,
+  "cipher": "\"\\195K\\\\\\173\\155:\"",
+  "plain": "\"random\"",
+  "text": "random",
+  "sites": 1
+ },
+ {
+  "key": 14158791783298,
+  "cipher": "\"\\rl\\1903\\128\\248l\\136-%\\192js\\153c\\179\\238b\\157\\207\\209#\\200;\\238Nt\"",
+  "plain": "\"ca1-roblox-auth.luarmor.net\"",
+  "text": "ca1-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 14182414824344,
+  "cipher": "\"M\"",
+  "plain": "\"J\"",
+  "text": "J",
+  "sites": 1
+ },
+ {
+  "key": 14658096969043,
+  "cipher": "\"\\215\\151\\031]\\186]\\218A}\\226[{\\251\\017t\\146\\213\\167\\218\\147g\\020\\to\\196\\135:\\170\"",
+  "plain": "\"] [PING] Client ---> Server\\n\"",
+  "text": "] [PING] Client ---> Server\n",
+  "sites": 2
+ },
+ {
+  "key": 14824532030958,
+  "cipher": "\"\\231\\151|(\\168\\248]\\170\\254\\215\\233V\\231k\\136M\\172\\129\\168\"",
+  "plain": "\"luarmor-dbgfail.txt\"",
+  "text": "luarmor-dbgfail.txt",
+  "sites": 3
+ },
+ {
+  "key": 14892179830317,
+  "cipher": "\"6y\\014\\152\\246\"",
+  "plain": "\"Event\"",
+  "text": "Event",
+  "sites": 2
+ },
+ {
+  "key": 14951237432932,
+  "cipher": "\"\\145\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 2
+ },
+ {
+  "key": 14980229346943,
+  "cipher": "\"\\204*c\\136\\214\\175\\156\\235c\\228#\\163\\143\\018\\204\"",
+  "plain": "\"__OBJECT_ACTIVE\"",
+  "text": "__OBJECT_ACTIVE",
+  "sites": 3
+ },
+ {
+  "key": 15134852888335,
+  "cipher": "\"y\"",
+  "plain": "\"9\"",
+  "text": "9",
+  "sites": 1
+ },
+ {
+  "key": 15144516859672,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 15183172745020,
+  "cipher": "\"2\\224o\\143\"",
+  "plain": "\"Body\"",
+  "text": "Body",
+  "sites": 2
+ },
+ {
+  "key": 15193910490950,
+  "cipher": "\"MI\\186Vb\\245\\221\\195>\\219\\219\\148\\228\\197\\2258:\\228<d\\249\\232\\025\\157|\\139\\228q\\018\\229\\175\\139k\\017\\011\\202\\232\\154l|\\190\\2325\\144\\015\\240-\\210\\234\\162\\006\\158\\183\\227\\237j\\165\\205W\\001\\145\\189Q\\241\\233\\238&\\023\\156/\\205L\\234\\156\\138\\255\\134)\\132!\\019\\212\\131\\248\\015\\241J6\\188bM\\137\\152j\\172\\139jO6\\212\\171\\170e3\\19049\\2101\\188e7\\226\\005\\246\\137\\193s\\195\\179(\\247h\\169\\n\\217\\231l\\142\\234%\\157lnJ\\151`=\\136\\024\\016\\219\\031\\156\\161\\185\\200\\166\\t\\241\\127:\\175\\225#UWz6D\\168<\\245\\186.ph\\195\\199\\130\\200\\138#\\196\\182M\\214\\026y\\246\\029\\ns\\218z\\185\\\"\\180Q\\23411xM\\178\\027\\162\\190\\026\\148B\"",
+  "plain": "\"Cannot load Luarmor client (0x561c) task collision detected.. \\nYou are trying to execute 2 Luarmor scripts very frequently. Please wait 2-3 seconds after first one loads, then execute the other script.\"",
+  "text": "Cannot load Luarmor client (0x561c) task collision detected.. \nYou are trying to execute 2 Luarmor scripts very frequently. Please wait 2-3 seconds after first one loads, then execute the other script.",
+  "sites": 2
+ },
+ {
+  "key": 15233640150891,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 3
+ },
+ {
+  "key": 15250820544379,
+  "cipher": "\"s25z\\154\\234a\\131\\145\"",
+  "plain": "\"resp:fail\"",
+  "text": "resp:fail",
+  "sites": 3
+ },
+ {
+  "key": 15260484515716,
+  "cipher": "\"LY\\1333\\011w\\134\\174FP\\194 \\004\\177,y7\\005y\"",
+  "plain": "\"You are blacklisted\"",
+  "text": "You are blacklisted",
+  "sites": 1
+ },
+ {
+  "key": 15363566876644,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 2
+ },
+ {
+  "key": 15423698253852,
+  "cipher": "\"\\156\\156&\\216d,<\\149*\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 2
+ },
+ {
+  "key": 15444099971119,
+  "cipher": "\"\\232\\nl\\008\\221\\198\\244\\158\\162\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 2
+ },
+ {
+  "key": 15465575462979,
+  "cipher": "\"\\030\\197\\216\\\\\\025\\163\\155i\\1304i\\002af\\014\\181\\015\\174MD\\174\\131\\206\\208Z\\195\\163\"",
+  "plain": "\"as7-roblox-auth.luarmor.net\"",
+  "text": "as7-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 15481682081874,
+  "cipher": "\"Y\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 15506378897513,
+  "cipher": "\"\\229\\171\\027\\129\\190\\143\\178\\029\\245<<\\251}yL\"",
+  "plain": "\"] Packet sent!\\n\"",
+  "text": "] Packet sent!\n",
+  "sites": 2
+ },
+ {
+  "key": 15555772528791,
+  "cipher": "\"#\\144\\1440\\177J_\"",
+  "plain": "\"message\"",
+  "text": "message",
+  "sites": 2
+ },
+ {
+  "key": 15647043369196,
+  "cipher": "\"\\rq\\227\\197\\150\\196C\\012d5\\169P\\130\\023\\225R%\\162/\\160\\157\"",
+  "plain": "\"luarmor-error-log.txt\"",
+  "text": "luarmor-error-log.txt",
+  "sites": 2
+ },
+ {
+  "key": 15693215676695,
+  "cipher": "\"\\200tK\\173\\215\\207e8\\175\\212\\011Or\\171\\158\"",
+  "plain": "\"__OBJECT_ACTIVE\"",
+  "text": "__OBJECT_ACTIVE",
+  "sites": 2
+ },
+ {
+  "key": 15742609307973,
+  "cipher": "\"\\227t\\243=\\230\\148\\011\"",
+  "plain": "\"__index\"",
+  "text": "__index",
+  "sites": 2
+ },
+ {
+  "key": 16047561292385,
+  "cipher": "\"N\\235X\\233G\\012\\243\\241\\203\\163@s\\250\\190\\137\\214\\t\\2267j\\174\\247\\195\\241\\237\\001\\160\"",
+  "plain": "\"eu2-roblox-auth.luarmor.net\"",
+  "text": "eu2-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 16058299038315,
+  "cipher": "\"\\229\\232Z}%\\134\\210K`\"",
+  "plain": "\"incognito\"",
+  "text": "incognito",
+  "sites": 1
+ },
+ {
+  "key": 16176414243545,
+  "cipher": "\"X\\184mZ\"",
+  "plain": "\"time\"",
+  "text": "time",
+  "sites": 1
+ },
+ {
+  "key": 16177488018138,
+  "cipher": "\"2\\186\\006u\\237\\151?\\157\\214\\218\\026\"",
+  "plain": "\"|__(%d+)__|\"",
+  "text": "|__(%d+)__|",
+  "sites": 3
+ },
+ {
+  "key": 16200037284591,
+  "cipher": "\"\\005\\011$\\146\\ts\\018L\\\\\\133\\222\"",
+  "plain": "\"] [INFO] s5\"",
+  "text": "] [INFO] s5",
+  "sites": 1
+ },
+ {
+  "key": 16202184833777,
+  "cipher": "\",\\186lJ\\254\\246p\\224\"",
+  "plain": "\"LastPong\"",
+  "text": "LastPong",
+  "sites": 3
+ },
+ {
+  "key": 16394390485924,
+  "cipher": "\"\\188m\\224\"",
+  "plain": "\"new\"",
+  "text": "new",
+  "sites": 2
+ },
+ {
+  "key": 16547940252723,
+  "cipher": "\"\\226\\245\\174\"",
+  "plain": "\"Url\"",
+  "text": "Url",
+  "sites": 2
+ },
+ {
+  "key": 16629547121791,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 16740145904870,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 17011810876899,
+  "cipher": "\"\\209\\030p\\238\"",
+  "plain": "\"Host\"",
+  "text": "Host",
+  "sites": 1
+ },
+ {
+  "key": 17028991270387,
+  "cipher": "\" \"",
+  "plain": "\"\\n\"",
+  "text": "\n",
+  "sites": 3
+ },
+ {
+  "key": 17090196422188,
+  "cipher": "\"*\\211\\203v\\129\\012j\\218\\209A\\222\\015\\186[S\\135\\165w\\1725[tI\\n \\212\\199\"",
+  "plain": "\"au4-roblox-auth.luarmor.net\"",
+  "text": "au4-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 17147106475617,
+  "cipher": "\"d0\\166\\143,\"",
+  "plain": "\"error\"",
+  "text": "error",
+  "sites": 2
+ },
+ {
+  "key": 17162139319919,
+  "cipher": "\"\\178\\018Q\\147\\250:[\\134\\176\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 2
+ },
+ {
+  "key": 17214754274976,
+  "cipher": "\"\\207\\249D\\240\\136>\\028\\137\\129d\\195\\144\\214\\030\\184\\231\\139\\226\\150\\024\\179\"",
+  "plain": "\"luarmor-err-code0.txt\"",
+  "text": "luarmor-err-code0.txt",
+  "sites": 2
+ },
+ {
+  "key": 17304951340788,
+  "cipher": "\"\\127>\\184\\015\\133\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 3
+ },
+ {
+  "key": 17306025115381,
+  "cipher": "\"E\\143\\147\"",
+  "plain": "\"Url\"",
+  "text": "Url",
+  "sites": 3
+ },
+ {
+  "key": 17419845222239,
+  "cipher": "\"\\212/tO\\130\\027\\016\\196\\169\\177\"",
+  "plain": "\"argwhudata\"",
+  "text": "argwhudata",
+  "sites": 1
+ },
+ {
+  "key": 17472460177296,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 18034044289435,
+  "cipher": "\"7D\\020iH\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 18446373733147,
+  "cipher": "\"8&\\138\\180\\156\\\"6\\189\\188\\147`\"",
+  "plain": "\"] [INFO] s1\"",
+  "text": "] [INFO] s1",
+  "sites": 1
+ },
+ {
+  "key": 18561267614598,
+  "cipher": "\" `\\004\\162\\157\"",
+  "plain": "\"error\"",
+  "text": "error",
+  "sites": 1
+ },
+ {
+  "key": 18578448008086,
+  "cipher": "\"\\158\\177\\019U\"",
+  "plain": "\"PING\"",
+  "text": "PING",
+  "sites": 3
+ },
+ {
+  "key": 18649317131224,
+  "cipher": "\"=\"",
+  "plain": "\"\\\"\"",
+  "text": "\"",
+  "sites": 2
+ },
+ {
+  "key": 18668645073898,
+  "cipher": "\"v\\191\"",
+  "plain": "\"NX\"",
+  "text": "NX",
+  "sites": 1
+ },
+ {
+  "key": 18670792623084,
+  "cipher": "\"\\169\\192C<\\132\\166\"",
+  "plain": "\"Solara\"",
+  "text": "Solara",
+  "sites": 1
+ },
+ {
+  "key": 18739514197036,
+  "cipher": "\"j-F\\128\\162\\139WI\\202\\175\\\\\\209\\133E\\181p6\\159O\\023).O\\193\\218E\\030\\243&\\217K\\211\\155\\195\\173\\1735IR#\\026^v\\017v\\242\\243\\255g*6c-;/\\014\\158\\130\\159~\\212\\193\\22715fo,7\\169D\\202L\\n\\165\\219\\149\\136@\\152\\181\\146hn\\208OCDt\\158\"",
+  "plain": "\"[CRITICAL] received StatusCode = 0; most likely an executor problem. Re-execute the script\"",
+  "text": "[CRITICAL] received StatusCode = 0; most likely an executor problem. Re-execute the script",
+  "sites": 2
+ },
+ {
+  "key": 18772801209419,
+  "cipher": "\"\\211\\207k\"",
+  "plain": "\"new\"",
+  "text": "new",
+  "sites": 1
+ },
+ {
+  "key": 18783538955349,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 19030507111739,
+  "cipher": "\"\\236\\169g\\\\\\154\\181>2\"",
+  "plain": "\"tostring\"",
+  "text": "tostring",
+  "sites": 2
+ },
+ {
+  "key": 19126073050516,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 3
+ },
+ {
+  "key": 19243114481153,
+  "cipher": "\"\\137q\\219\\207\\131\\146\\245\\230B)\\011%\\r\\195\\168~\\188\\254\\151Q\\214En1?\\194h\\197p\\202>\\191\\128\\188\\166\"",
+  "plain": "\"https://eu1-roblox-auth.luarmor.net\"",
+  "text": "https://eu1-roblox-auth.luarmor.net",
+  "sites": 2
+ },
+ {
+  "key": 19333311546965,
+  "cipher": "\"'\\026L\\252\\146.\\025c\\151\\208\\248\\207\\149\\154\\r\\229I\\243\\026\\149\\181\\139k`+\\016\\002\"",
+  "plain": "\"as5-roblox-auth.luarmor.net\"",
+  "text": "as5-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 19446057879230,
+  "cipher": "\"\\210\\148~E\\164\"",
+  "plain": "\"flush\"",
+  "text": "flush",
+  "sites": 1
+ },
+ {
+  "key": 19614640490331,
+  "cipher": "\"\\159\\240\\254\\230\\024\\028\"",
+  "plain": "\"gmatch\"",
+  "text": "gmatch",
+  "sites": 1
+ },
+ {
+  "key": 19626452010854,
+  "cipher": "\",.[\\\"@+o>\\223\"",
+  "plain": "\"NOT_FOUND\"",
+  "text": "NOT_FOUND",
+  "sites": 3
+ },
+ {
+  "key": 19677993191318,
+  "cipher": "\"bp\\228\\206D\\024\\1659\\145\\143\\129bc\\145\\235\\171\\\\\\003\\127[\\2340x\\247[\\199GvH\\160Q\\147?\\225\\204\\163w\\tC\"",
+  "plain": "\"] [REQUEST] [!!!] OBJECT ACTIVE PASSED\\n\"",
+  "text": "] [REQUEST] [!!!] OBJECT ACTIVE PASSED\n",
+  "sites": 2
+ },
+ {
+  "key": 19714501527480,
+  "cipher": "\"\\182\\186\\142\\199\\t\\163\\189V 8\\195g\\230w\\148\\228\\193v\\199\\\\\\186\\212\\246\\174\\130H\\254\"",
+  "plain": "\"au2-roblox-auth.luarmor.net\"",
+  "text": "au2-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 19850870900791,
+  "cipher": "\"@I\\129\"",
+  "plain": "\"Mac\"",
+  "text": "Mac",
+  "sites": 1
+ },
+ {
+  "key": 19879862814802,
+  "cipher": "\"\\012\\2423\\140\\203\\204q\\2223\\023\\184\\t\\169\"",
+  "plain": "\"BindableEvent\"",
+  "text": "BindableEvent",
+  "sites": 2
+ },
+ {
+  "key": 20189109897586,
+  "cipher": "\"\\160\\129E\\217\\131Z\\005\\018\\024\"",
+  "plain": "\"Heartbeat\"",
+  "text": "Heartbeat",
+  "sites": 1
+ },
+ {
+  "key": 20241724852643,
+  "cipher": "\"_\\012\\235cw\\2309\\194\\132\\023,d\\224NS\\022X\\005\\019p\"",
+  "plain": "\"mc.felinemastery.xyz\"",
+  "text": "mc.felinemastery.xyz",
+  "sites": 1
+ },
+ {
+  "key": 20264274119096,
+  "cipher": "\"\\198\\162n!\\210\\002\\204y\"",
+  "plain": "\"Requests\"",
+  "text": "Requests",
+  "sites": 3
+ },
+ {
+  "key": 20296487356886,
+  "cipher": "\"\\240\\161\\251\\171\\150\\228~\\247\\214\\182\\166T\\188\\002\\n\\031\\004\\nlA!\\003P\\242\"",
+  "plain": "\"] [WARN] Server timeout\\n\"",
+  "text": "] [WARN] Server timeout\n",
+  "sites": 2
+ },
+ {
+  "key": 20310446426595,
+  "cipher": "\"\\188\"",
+  "plain": "\"I\"",
+  "text": "I",
+  "sites": 1
+ },
+ {
+  "key": 20447889574499,
+  "cipher": "\"w\\220\\189\"",
+  "plain": "\"new\"",
+  "text": "new",
+  "sites": 1
+ },
+ {
+  "key": 20544529287869,
+  "cipher": "\")\"",
+  "plain": "\"7\"",
+  "text": "7",
+  "sites": 1
+ },
+ {
+  "key": 20587480271589,
+  "cipher": "\"\\194\\219\\206\\154\\2251\\176\\229\"",
+  "plain": "\"https://\"",
+  "text": "https://",
+  "sites": 2
+ },
+ {
+  "key": 20659423169320,
+  "cipher": "\"\\178\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 3
+ },
+ {
+  "key": 20685193759552,
+  "cipher": "\"\\170\"",
+  "plain": "\"b\"",
+  "text": "b",
+  "sites": 1
+ },
+ {
+  "key": 21268253363551,
+  "cipher": "\"p<\\196O\\205\\0158s\"",
+  "plain": "\"ScriptID\"",
+  "text": "ScriptID",
+  "sites": 1
+ },
+ {
+  "key": 21285433757039,
+  "cipher": "\"\\184y\\139\\177~s\\r\\017\\174\\255$3\\217\\178v\\2472N_\\151S\\1428\"",
+  "plain": "\"Unable to connect to WS\"",
+  "text": "Unable to connect to WS",
+  "sites": 2
+ },
+ {
+  "key": 21377778372037,
+  "cipher": "\"\\198\\005\\158\\149\\150H\\031\\014\\031\\012\\163}g\\158\\031H\\004\\005\\208[\"",
+  "plain": "\"] Sending ticket...(\"",
+  "text": "] Sending ticket...(",
+  "sites": 3
+ },
+ {
+  "key": 21390663667153,
+  "cipher": "\"\\142YQ\\207\\186\\016\\149\"",
+  "plain": "\"REQUEST\"",
+  "text": "REQUEST",
+  "sites": 2
+ },
+ {
+  "key": 21595754614416,
+  "cipher": "\"\\135\\2218q\\250\\240\\249wO\\197\\186\"",
+  "plain": "\"LocalPlayer\"",
+  "text": "LocalPlayer",
+  "sites": 1
+ },
+ {
+  "key": 21697763200751,
+  "cipher": "\"$\\001C\\213\\234\\205?\\169\\200\\\"\\188@\\000\\188\\128\\027C\\244\\012\\203l\\224\\003p\\245\\187\\233\"",
+  "plain": "\"as6-roblox-auth.luarmor.net\"",
+  "text": "as6-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 21709574721274,
+  "cipher": "\",b@\\180%\\197\"",
+  "plain": "\"active\"",
+  "text": "active",
+  "sites": 2
+ },
+ {
+  "key": 21721386241797,
+  "cipher": "\"\\234\\023\\201\\008\"",
+  "plain": "\"PING\"",
+  "text": "PING",
+  "sites": 2
+ },
+ {
+  "key": 21769706098482,
+  "cipher": "\"\\227\\197\\200eba\\232\\t\"",
+  "plain": "\"Requests\"",
+  "text": "Requests",
+  "sites": 2
+ },
+ {
+  "key": 21845944094585,
+  "cipher": "\"n\\218\\192\\176\\129w\\151\\190\\193\\1756\"",
+  "plain": "\"[  ERROR  ]\"",
+  "text": "[  ERROR  ]",
+  "sites": 1
+ },
+ {
+  "key": 21935067385804,
+  "cipher": "\"\\222\\006\\189\\254ChVJX'\\161Kl\\129\"",
+  "plain": "\"Server timeout\"",
+  "text": "Server timeout",
+  "sites": 2
+ },
+ {
+  "key": 21953321553885,
+  "cipher": "\"\\252\"",
+  "plain": "\"s\"",
+  "text": "s",
+  "sites": 1
+ },
+ {
+  "key": 22063920336964,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 2
+ },
+ {
+  "key": 22071436759115,
+  "cipher": "\"\\194\\218Gp<\"",
+  "plain": "\"print\"",
+  "text": "print",
+  "sites": 2
+ },
+ {
+  "key": 22124051714172,
+  "cipher": "\"\\183b\\225(\\006\"",
+  "plain": "\"ws://\"",
+  "text": "ws://",
+  "sites": 3
+ },
+ {
+  "key": 22141232107660,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 2
+ },
+ {
+  "key": 22159486275741,
+  "cipher": "\"\\174\\191bRRQ*\\193\\216\\185'\\025\\154\\n\\158j\\006\\129\\242\\184\\187\\021\\021D\\245\\225tL\\179\\160(\"",
+  "plain": "\"Heartbeat failure [0x01]. ttl: \"",
+  "text": "Heartbeat failure [0x01]. ttl: ",
+  "sites": 3
+ },
+ {
+  "key": 22259347312890,
+  "cipher": "\"\\239\\232\\170\\191\\168\\155^Q\\134(\\151\\189m\\150\\196\"",
+  "plain": "\"__OBJECT_ACTIVE\"",
+  "text": "__OBJECT_ACTIVE",
+  "sites": 2
+ },
+ {
+  "key": 22269011284227,
+  "cipher": "\"\\1651f.\\012\\212\\170aY\\020\\138\\198\\007\\209a\\154\\252>\\160v\\031/\\167'\\018\\249s3\\138\\161~*>\"",
+  "plain": "\"] [RESPONSE] Server ---> Client: \"",
+  "text": "] [RESPONSE] Server ---> Client: ",
+  "sites": 3
+ },
+ {
+  "key": 22373167419748,
+  "cipher": "\"\\194\"",
+  "plain": "\"}\"",
+  "text": "}",
+  "sites": 2
+ },
+ {
+  "key": 22440815219107,
+  "cipher": "\"\\190\\203\\210Z\\214\\212\\025\\219\\144\\173p\\212\\188\\146\\025\\018\\018\\016\\133\\139\\193\\231\\141\\147\\221\\147\\217\"",
+  "plain": "\"http://mc.felinemastery.xyz\"",
+  "text": "http://mc.felinemastery.xyz",
+  "sites": 1
+ },
+ {
+  "key": 22630873322068,
+  "cipher": "\"*\\253\\137\\005\\172\\129[\\220\"",
+  "plain": "\"tostring\"",
+  "text": "tostring",
+  "sites": 2
+ },
+ {
+  "key": 22738250781368,
+  "cipher": "\"~\\148\\234\\238\\198\\138\"",
+  "plain": "\"Opcode\"",
+  "text": "Opcode",
+  "sites": 2
+ },
+ {
+  "key": 22757578724042,
+  "cipher": "\"\\233\\191\\012\"",
+  "plain": "\"3.4\"",
+  "text": "3.4",
+  "sites": 1
+ },
+ {
+  "key": 22876767703865,
+  "cipher": "\"H\\138\\028\\181T\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 2
+ },
+ {
+  "key": 22975554966421,
+  "cipher": "\"\\2286\\234N\\229\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 2
+ },
+ {
+  "key": 23326679258332,
+  "cipher": "\"\\188\\201\\031<\\247\\150\\244\\169-\\006\\018\"",
+  "plain": "\"|__(%d+)__|\"",
+  "text": "|__(%d+)__|",
+  "sites": 3
+ },
+ {
+  "key": 23336343229669,
+  "cipher": "\"Z_\\028\\178_A\\205\\1638\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 3
+ },
+ {
+  "key": 23381441762575,
+  "cipher": "\"P\\221{\\181\\235n\\227\"",
+  "plain": "\"getinfo\"",
+  "text": "getinfo",
+  "sites": 1
+ },
+ {
+  "key": 23438351816004,
+  "cipher": "\"J\\003\\167\"",
+  "plain": "\"new\"",
+  "text": "new",
+  "sites": 2
+ },
+ {
+  "key": 23510294713735,
+  "cipher": "\"n9\\171U\\136\"",
+  "plain": "\"error\"",
+  "text": "error",
+  "sites": 2
+ },
+ {
+  "key": 24089059219362,
+  "cipher": "\"\\002\\164\\245C\\127\\213\\\\\\162\\031N\"",
+  "plain": "\"__tostring\"",
+  "text": "__tostring",
+  "sites": 2
+ },
+ {
+  "key": 24172813637616,
+  "cipher": "\"D\\180\\156f\\239S\\239\"",
+  "plain": "\"request\"",
+  "text": "request",
+  "sites": 1
+ },
+ {
+  "key": 24231871240231,
+  "cipher": "\"\\157\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 24280191096916,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 24299519039590,
+  "cipher": "\"R\\249!\\235*\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 24300592814183,
+  "cipher": "\"\\209\\006D\"",
+  "plain": "\"!*t\"",
+  "text": "!*t",
+  "sites": 1
+ },
+ {
+  "key": 24314551883892,
+  "cipher": "\"i\"",
+  "plain": "\"{\"",
+  "text": "{",
+  "sites": 2
+ },
+ {
+  "key": 24407970273483,
+  "cipher": "\"w\\215\\134z\\184R\\216\\187\\135\\017w\\149\\1628\\245<t\\183\\218\\\"9\\180&\\154\\173oS\"",
+  "plain": "\"au5-roblox-auth.luarmor.net\"",
+  "text": "au5-roblox-auth.luarmor.net",
+  "sites": 2
+ },
+ {
+  "key": 24541118323015,
+  "cipher": "\"\\216xc\\022\\209\\167\\029\\211\\253\\025&\\168\\165\\162\\239_r\\215\\146m*\\250\\008\\190C\\229\\197\\218\\138\\1792y\\193\\003|\\021\\198)$\\183\\028\\014\\127\\167}\\137 H\\206\\220J\\198t\\221\\170\\165/\\129\\029`$'\\176\\252{v\\185j\\163M\\160\\tCEi\\004\\196z\\255]\\n\\016zx\\167\\254\\\\W\\168\\181\"",
+  "plain": "\"[CRITICAL] received StatusCode = 0; most likely an executor problem. Re-execute the script\"",
+  "text": "[CRITICAL] received StatusCode = 0; most likely an executor problem. Re-execute the script",
+  "sites": 2
+ },
+ {
+  "key": 24571184011619,
+  "cipher": "\"\\250\\193X\\028\"",
+  "plain": "\" v: \"",
+  "text": " v: ",
+  "sites": 2
+ },
+ {
+  "key": 24734397749755,
+  "cipher": "\"\\014\\162\\t\\231\\029\\182*\\207)\\183p\"",
+  "plain": "\"HttpService\"",
+  "text": "HttpService",
+  "sites": 2
+ },
+ {
+  "key": 24744061721092,
+  "cipher": "\"F\"",
+  "plain": "\"G\"",
+  "text": "G",
+  "sites": 1
+ },
+ {
+  "key": 24768758536731,
+  "cipher": "\"\\255\\189\\244\\203\\162\\218K\\216I\\131\\254\"",
+  "plain": "\"LocalPlayer\"",
+  "text": "LocalPlayer",
+  "sites": 2
+ },
+ {
+  "key": 24838553885276,
+  "cipher": "\"\\172\\015\\203V*\\147lM\\179R\\026\"",
+  "plain": "\"LocalPlayer\"",
+  "text": "LocalPlayer",
+  "sites": 3
+ },
+ {
+  "key": 24974923258587,
+  "cipher": "\"s\\182\\011\\031\"",
+  "plain": "\"Data\"",
+  "text": "Data",
+  "sites": 2
+ },
+ {
+  "key": 25162833812362,
+  "cipher": "\"=\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 2
+ },
+ {
+  "key": 25199342148524,
+  "cipher": "\"V\"",
+  "plain": "\"/\"",
+  "text": "/",
+  "sites": 1
+ },
+ {
+  "key": 25253030878174,
+  "cipher": "\"\\242~\\242\\192\\031\\156\"",
+  "plain": "\"Method\"",
+  "text": "Method",
+  "sites": 2
+ },
+ {
+  "key": 25338932845614,
+  "cipher": "\"M<\\173\\140\"",
+  "plain": "\"Host\"",
+  "text": "Host",
+  "sites": 2
+ },
+ {
+  "key": 25372219857997,
+  "cipher": "\"\\020\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 3
+ },
+ {
+  "key": 25466712022181,
+  "cipher": "\"\\234]\\254\\157\\027yP\"",
+  "plain": "\"Version\"",
+  "text": "Version",
+  "sites": 2
+ },
+ {
+  "key": 25551540215028,
+  "cipher": "\"\\137\\210\\171\\217\\r2\\137v\\146\"",
+  "plain": "\"websocket\"",
+  "text": "websocket",
+  "sites": 1
+ },
+ {
+  "key": 25562277960958,
+  "cipher": "\"\\185\\153\\142\\014\\004\\000Q\\015~a\\234\\008\\243\\250\\128\\\"\\185\\152v\\229Y\\160\\205M\\196\\184~\"",
+  "plain": "\"eu1-roblox-auth.luarmor.net\"",
+  "text": "eu1-roblox-auth.luarmor.net",
+  "sites": 2
+ },
+ {
+  "key": 25648179928398,
+  "cipher": "\">4z\\139p\"",
+  "plain": "\"Event\"",
+  "text": "Event",
+  "sites": 2
+ },
+ {
+  "key": 25758778711477,
+  "cipher": "\"$GBp\\229(\\220\"",
+  "plain": "\"Version\"",
+  "text": "Version",
+  "sites": 1
+ },
+ {
+  "key": 25825352736243,
+  "cipher": "\"\\031\\140C\\234\\224\\0128'uqF\\230\\160\\026)\\210\\223\\163\\139\\172\\132w\\172\\181\\245\\250\\246\"",
+  "plain": "\"au3-roblox-auth.luarmor.net\"",
+  "text": "au3-roblox-auth.luarmor.net",
+  "sites": 2
+ },
+ {
+  "key": 25839311805952,
+  "cipher": "\"\\136M\\165r\\0017j\\254\\186\\147Ds\\224x\\241\\151\\231]k\\137\\028\\184\\017f,\\138\\149\"",
+  "plain": "\"as1-roblox-auth.luarmor.net\"",
+  "text": "as1-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 25909107154497,
+  "cipher": "\"\\175\\1522\"",
+  "plain": "\"sub\"",
+  "text": "sub",
+  "sites": 1
+ },
+ {
+  "key": 25925213773392,
+  "cipher": "\"y\\193\\242QA\\127\\235\\022\\\"\\003\\134\\159.\\000\\005\\224\\130\\236\\239\\027\\254.\\224\\194\\197\\188\\188\"",
+  "plain": "\"au5-roblox-auth.luarmor.net\"",
+  "text": "au5-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 25999304220309,
+  "cipher": "\"\\170\\207n4%\\171It\\225\\127*\\209\\141\\158\\211\\246\\145U>%\"",
+  "plain": "\"] [INFO] s4-failover\"",
+  "text": "] [INFO] s4-failover",
+  "sites": 2
+ },
+ {
+  "key": 26022927261355,
+  "cipher": "\"\\221aK\\192\\216\\012q\\174n\\167\\\"\\232\\006\\199\\017:\\166y\\t=)\"",
+  "plain": "\"luarmor-error-log.txt\"",
+  "text": "luarmor-error-log.txt",
+  "sites": 2
+ },
+ {
+  "key": 26105607905016,
+  "cipher": "\"U0\\18973y\\172\\177\"",
+  "plain": "\"LastPong\"",
+  "text": "LastPong",
+  "sites": 2
+ },
+ {
+  "key": 26137821142806,
+  "cipher": "\"\\221O\\190w\\196!\\176\\224\\007\\187#\\202\\174gm\\217c\"",
+  "plain": "\"] Event assigned\\n\"",
+  "text": "] Event assigned\n",
+  "sites": 2
+ },
+ {
+  "key": 26167886831410,
+  "cipher": "\"i\\154\\024+|X6!\\178\\218\\187\\204\\206\\183A\\011\\007\\248<\\206\\028\\245\\222c\\174\\005\\023\\227\\240?Iz\\250a4S.\\240\\147t\\199\\0065\\004\\145\\011\\239\\203\\002.\\002\\179RLx\\205\\129\\021u\\227\\228\\171\\168\\150\\172\\226M~\\004k\\181K\\016j\\180\\171\\195\\229\\186Q`Os\\148\\164\\206G\\232\\203+\\165\\2371w\\233\\198\\006o\\143r\\008\\253\\219IJ\\228\\159L\\163q<\\148%\\135>w\\000\\248\\002\\226\\149\\148>\\132\\n\\186\\020$h%\\249\\141\\183n\\228\\206\\015\\1522\\142\\217\\027\\172\\174\\030\\136\\020_\\165\\174:6\\177\\167$\\174[\\132\\130'D\\184\\251]\\182\\185,\\237\\203\\208\\172t \\241G\\214\\233*1\\196#\\180\\205\\242\\196\\192\\248-V4\\129Um\\227\\019\\202\\245h+\\226<r\\213\\215p\\024\\224\\235g\\207\\027m\\209\\172YuP4\\019\\231b3+\\223\\201\\145?\\213\\189\\251\\244k\\136\\026\\198\\023\\163@<\\031M%\\014\\012\\166F\\203\\134\\199\\188w]\\187Sc\\223r[\\148T\\191\\183\\179\\179Q\\011\\208@\\141w\\205\\209\\170>\\171\\213\\151\\018\\212\\024-Lu\\246\\198\\190Yo\\236\\004\\254\\011\\234o\\250\\253\\236\\rZ\\149\\154I/\\205H\\181&\\200:\\227j\\n\\197\\016\\143\\225\\217\\027\\183\\\"\\153\\144\\227\\nW\\254\\\\\\180@\\251\\132\\127b\\128\\174a\\029\\158\\184\\185,\\019\\187\\178\\242\\247p\\132i\"",
+  "plain": "\"local t,r = ...\\nspawn(function() while wait() do pcall(function() game:GetService(\\\"CoreGui\\\").RobloxPromptGui.promptOverlay.ErrorPrompt.TitleFrame.ErrorTitle.Text = t\\ngame:GetService(\\\"CoreGui\\\").RobloxPromptGui.promptOverlay.ErrorPrompt.MessageArea.ErrorFrame.ErrorMessage.Text = r end) end end)\\ngame:GetService('Players').LocalPlayer:Kick(r)\\n        \"",
+  "text": "local t,r = ...\nspawn(function() while wait() do pcall(function() game:GetService(\"CoreGui\").RobloxPromptGui.promptOverlay.ErrorPrompt.TitleFrame.ErrorTitle.Text = t\ngame:GetService(\"CoreGui\").RobloxPromptGui.promptOverlay.ErrorPrompt.MessageArea.ErrorFrame.ErrorMessage.Text = r end) end end)\ngame:GetService('Players').LocalPlayer:Kick(r)\n        ",
+  "sites": 2
+ },
+ {
+  "key": 26309625077686,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 26579142500529,
+  "cipher": "\"L\\142\\217\\212\\244\\160\\231\\160C\\172\\182\"",
+  "plain": "\"] [INFO] s6\"",
+  "text": "] [INFO] s6",
+  "sites": 1
+ },
+ {
+  "key": 26705847902503,
+  "cipher": "\"Z\\185\\149\\247\\174\\030\\161\\141\\220\"",
+  "plain": "\"websocket\"",
+  "text": "websocket",
+  "sites": 1
+ },
+ {
+  "key": 26743430013258,
+  "cipher": "\"\\161\\183W\\210\\137G\\174\\t\"",
+  "plain": "\"LastPong\"",
+  "text": "LastPong",
+  "sites": 2
+ },
+ {
+  "key": 26759536632153,
+  "cipher": "\"Y4\\161\\128j\\n\\206\\018\\004\\2551z\\235\\219\\190\\220\\026C\\148\"",
+  "plain": "\"LocalizationService\"",
+  "text": "LocalizationService",
+  "sites": 2
+ },
+ {
+  "key": 26764905505118,
+  "cipher": "\"-O0\\128\\243\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 2
+ },
+ {
+  "key": 26792823644536,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 2
+ },
+ {
+  "key": 26856176345523,
+  "cipher": "\">RVz5\\150\\002A\\180;\\184\\196\\183\\181\\202\"",
+  "plain": "\"OnMessageSignal\"",
+  "text": "OnMessageSignal",
+  "sites": 2
+ },
+ {
+  "key": 26944225862149,
+  "cipher": "\"\\2501\\245\\132\\\"\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 2
+ },
+ {
+  "key": 27001135915578,
+  "cipher": "\"\\127\\000\\163\\179\\239\\249y\\205g\\245RE\"",
+  "plain": "\"DataReceived\"",
+  "text": "DataReceived",
+  "sites": 3
+ },
+ {
+  "key": 27265284465456,
+  "cipher": "\"\\002\\209\\252\\2074\\186vTX\\135\"",
+  "plain": "\"Argwhudata\"",
+  "text": "Argwhudata",
+  "sites": 1
+ },
+ {
+  "key": 27278169760572,
+  "cipher": "\"N=1MT {!\\211Z\\191R\\207'\\140\\200\\253|3\\169\\178\\183\\150U\\025c\"",
+  "plain": "\" - Unable to authenticate.\"",
+  "text": " - Unable to authenticate.",
+  "sites": 1
+ },
+ {
+  "key": 27328637166443,
+  "cipher": "\"\\012\"",
+  "plain": "\"\\n\"",
+  "text": "\n",
+  "sites": 3
+ },
+ {
+  "key": 27390916092837,
+  "cipher": "\"\\132\\141w\\195|l\\143>'\\247n\\175\\248+\\249\\226\\144<C!*\\177\\160\\233\\021\\002I\"",
+  "plain": "\"us2-roblox-auth.luarmor.net\"",
+  "text": "us2-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 27556277380159,
+  "cipher": "\"\\224\\212\\238\"",
+  "plain": "\"&s=\"",
+  "text": "&s=",
+  "sites": 2
+ },
+ {
+  "key": 27593859490914,
+  "cipher": "\"\\000Q8\\178\\017K1\\246R\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 3
+ },
+ {
+  "key": 27636810474634,
+  "cipher": "\"\\215\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 2
+ },
+ {
+  "key": 27769958524166,
+  "cipher": "\"o\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 2
+ },
+ {
+  "key": 27805393085735,
+  "cipher": "\"Y\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 2
+ },
+ {
+  "key": 27987934766545,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 28036254623230,
+  "cipher": "\"\\0302\\018I\\236\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 3
+ },
+ {
+  "key": 28147927180902,
+  "cipher": "\"\\196\\205X\"",
+  "plain": "\"err\"",
+  "text": "err",
+  "sites": 1
+ },
+ {
+  "key": 28215574980261,
+  "cipher": "\"O8\\150\\147\"",
+  "plain": "\"none\"",
+  "text": "none",
+  "sites": 1
+ },
+ {
+  "key": 28222017627819,
+  "cipher": "\"\\241\\199\\234^{\\015\\210n\\242\\206\\152\\147\"",
+  "plain": "\"SocketClosed\"",
+  "text": "SocketClosed",
+  "sites": 2
+ },
+ {
+  "key": 28383083816769,
+  "cipher": "\"l\\024\\178\\025+\\175\\tY\\029B\\234\\176\\150X\\023\"",
+  "plain": "\"Whitelist Error\"",
+  "text": "Whitelist Error",
+  "sites": 1
+ },
+ {
+  "key": 28489387501476,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 3
+ },
+ {
+  "key": 28825478949085,
+  "cipher": "\"\\158\\005\\232\\183M\\152\\162w\\231Y\\191\\203\\031\\168H\\018Cu\\188<\\171s\\200\\226N\\020\\133\\025n\\255\\209\\200\\180V\\192\\030\\199\\129v\"",
+  "plain": "\"] Attempting to reconnect to wshttpemu\\n\"",
+  "text": "] Attempting to reconnect to wshttpemu\n",
+  "sites": 3
+ },
+ {
+  "key": 28931782633792,
+  "cipher": "\"\\174\"",
+  "plain": "\"T\"",
+  "text": "T",
+  "sites": 1
+ },
+ {
+  "key": 28973659842919,
+  "cipher": "\"h\\016\\196\\\"\\236\"",
+  "plain": "\"Rebel\"",
+  "text": "Rebel",
+  "sites": 1
+ },
+ {
+  "key": 29034864994720,
+  "cipher": "\"\\128\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 3
+ },
+ {
+  "key": 29393505708782,
+  "cipher": "\"6c\\017\"",
+  "plain": "\"Url\"",
+  "text": "Url",
+  "sites": 3
+ },
+ {
+  "key": 29417128749828,
+  "cipher": "\"\\147\\208\\226r\\029\\014\\012\\029\"",
+  "plain": "\"versions\"",
+  "text": "versions",
+  "sites": 2
+ },
+ {
+  "key": 29455784635176,
+  "cipher": "\"\\245\\140.:\\174\\129O1!\\183\\\\\"",
+  "plain": "\"] [CLOSED] \"",
+  "text": "] [CLOSED] ",
+  "sites": 3
+ },
+ {
+  "key": 29485850323780,
+  "cipher": "\"\\197>x\\169\\018fL\"",
+  "plain": "\"Players\"",
+  "text": "Players",
+  "sites": 3
+ },
+ {
+  "key": 29684498623485,
+  "cipher": "\"\\210\\201\\222Q\\159{D\\181\\180\\253d\"",
+  "plain": "\"LocalPlayer\"",
+  "text": "LocalPlayer",
+  "sites": 3
+ },
+ {
+  "key": 29704900340752,
+  "cipher": "\"\\1514\\254\\208R\\184\\208nR\\151\\220\\193\\002\\191\\1547\"",
+  "plain": "\"] [INFO] s8-pass\"",
+  "text": "] [INFO] s8-pass",
+  "sites": 1
+ },
+ {
+  "key": 29730670930984,
+  "cipher": "\"2\\2521\\005\"",
+  "plain": "\"char\"",
+  "text": "char",
+  "sites": 1
+ },
+ {
+  "key": 29761810394181,
+  "cipher": "\"\\195wkZ\\144w\\200\\186\\168\\1644\\255\\201\\252U=\\131\\243\\006\\174KR!\\250\\179?\\195\\164\\203\\200\\249\\131\\225<=c\\008\\216H\\2452C\\236\\245\\005\\156\"",
+  "plain": "\"] !!!!!! ALERT !!!!!!!!! REQ TIMEOUT !!!!!!!!\\n\"",
+  "text": "] !!!!!! ALERT !!!!!!!!! REQ TIMEOUT !!!!!!!!\n",
+  "sites": 3
+ },
+ {
+  "key": 29848786136214,
+  "cipher": "\"\\023\\020\\024\"",
+  "plain": "\"Url\"",
+  "text": "Url",
+  "sites": 4
+ },
+ {
+  "key": 29989450607897,
+  "cipher": "\"+\\030H\\139\\251Z\"",
+  "plain": "\"Opcode\"",
+  "text": "Opcode",
+  "sites": 2
+ },
+ {
+  "key": 30015221198129,
+  "cipher": "\"f\\211\\159\\144\\186|\\152\"",
+  "plain": "\"connect\"",
+  "text": "connect",
+  "sites": 1
+ },
+ {
+  "key": 30187025133009,
+  "cipher": "\"\\005\\218\\157_\\154\\171yf\\184\\193\\138\\026T\\188\\011\\016#K\\128\\144:\\007\\197m\\210\\014\\252\"",
+  "plain": "\"au1-roblox-auth.luarmor.net\"",
+  "text": "au1-roblox-auth.luarmor.net",
+  "sites": 1
+ },
+ {
+  "key": 30249304059403,
+  "cipher": "\"\\198\\137\\162J\"",
+  "plain": "\"FAIL\"",
+  "text": "FAIL",
+  "sites": 3
+ },
+ {
+  "key": 30263263129112,
+  "cipher": "\"\\189o`\"",
+  "plain": "\"new\"",
+  "text": "new",
+  "sites": 1
+ },
+ {
+  "key": 30415739121318,
+  "cipher": "\"\\189[J\\156\\131h\"",
+  "plain": "\"format\"",
+  "text": "format",
+  "sites": 1
+ },
+ {
+  "key": 30505936187130,
+  "cipher": "\"J\"",
+  "plain": "\"l\"",
+  "text": "l",
+  "sites": 1
+ },
+ {
+  "key": 30562846240559,
+  "cipher": "\"rs\\254\"",
+  "plain": "\"GET\"",
+  "text": "GET",
+  "sites": 2
+ },
+ {
+  "key": 30737871499218,
+  "cipher": "\"\\235\\144\\243\\23326\\138\"",
+  "plain": "\"Headers\"",
+  "text": "Headers",
+  "sites": 2
+ },
+ {
+  "key": 30760420765671,
+  "cipher": "\"\\138\\203G|\"",
+  "plain": "\"Xeno\"",
+  "text": "Xeno",
+  "sites": 1
+ },
+ {
+  "key": 30815183269914,
+  "cipher": "\"\\144\\157\\026\\202J\\143\"",
+  "plain": "\"Opcode\"",
+  "text": "Opcode",
+  "sites": 3
+ },
+ {
+  "key": 30887126167645,
+  "cipher": "\"\\168)[\\004\"",
+  "plain": "\"Host\"",
+  "text": "Host",
+  "sites": 1
+ },
+ {
+  "key": 30941888671888,
+  "cipher": "\"6\\164p?\\177pjs'\\184]\"",
+  "plain": "\"LocalPlayer\"",
+  "text": "LocalPlayer",
+  "sites": 1
+ },
+ {
+  "key": 30952626417818,
+  "cipher": "\"\\244\\159\\237\\201L\\217X\\239\\180\\245$\\181G?\"",
+  "plain": "\"[ AUTH ERROR ]\"",
+  "text": "[ AUTH ERROR ]",
+  "sites": 1
+ },
+ {
+  "key": 30974101909678,
+  "cipher": "\"l\\205hnf\\2268}\\206\\025\\1781{\\011\\1981/\\224\\008\\179\\240\\027-\\r\\205#\\151\"",
+  "plain": "\"au1-roblox-auth.luarmor.net\"",
+  "text": "au1-roblox-auth.luarmor.net",
+  "sites": 2
+ },
+ {
+  "key": 31005241372875,
+  "cipher": "\"\\022\"",
+  "plain": "\"0\"",
+  "text": "0",
+  "sites": 1
+ },
+ {
+  "key": 31006315147468,
+  "cipher": "\" URU\\022\\156\\133D\\244\\018\\140\\156u\\238\\015*\"",
+  "plain": "\"ConnectionClosed\"",
+  "text": "ConnectionClosed",
+  "sites": 4
+ },
+ {
+  "key": 31126577901884,
+  "cipher": "\"\\172\"",
+  "plain": "\"j\"",
+  "text": "j",
+  "sites": 1
+ },
+ {
+  "key": 31749367165824,
+  "cipher": "\"\\188\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 3
+ },
+ {
+  "key": 31753662264196,
+  "cipher": "\"\\164\"",
+  "plain": "\"%\"",
+  "text": "%",
+  "sites": 1
+ },
+ {
+  "key": 31841711780822,
+  "cipher": "\"-\\n+\"",
+  "plain": "\"err\"",
+  "text": "err",
+  "sites": 1
+ },
+ {
+  "key": 31886810313728,
+  "cipher": "\"t\\168\\177E\\197\\134\\218\\030\\232\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 2
+ },
+ {
+  "key": 31900769383437,
+  "cipher": "\"X\\208\\128\\129\\142\\231\\006\\145\\130\\218\\154z\\231[\\253\\250\\028A\\140`;m\\\\\\243C\\167d_\\008\\235\\181\\159\\011\\024\\004\\204\\169\\172S\\rH\\235-E\\0079\\1519lH\\149-C3\\130)\\225\\020\\162{1\\228\\220\\158\"",
+  "plain": "\"invalid timezone - send this screenshot to developer and Federal\"",
+  "text": "invalid timezone - send this screenshot to developer and Federal",
+  "sites": 1
+ },
+ {
+  "key": 32087606162619,
+  "cipher": "\"U\\235\\251\\154\"",
+  "plain": "\"byte\"",
+  "text": "byte",
+  "sites": 1
+ },
+ {
+  "key": 32150958863606,
+  "cipher": "\"\\172\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 32213237790000,
+  "cipher": "\"\\242\\131\\241\\176\\153\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 3
+ },
+ {
+  "key": 32307729954184,
+  "cipher": "\"\\1532\\200F\\140\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 2
+ },
+ {
+  "key": 32507452028482,
+  "cipher": "\"\\195\\147@Qd\\143\\153|\\223\"",
+  "plain": "\"OnMessage\"",
+  "text": "OnMessage",
+  "sites": 3
+ },
+ {
+  "key": 32535370167900,
+  "cipher": "\"$H\\031\\148\\130\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 32549329237609,
+  "cipher": "\"\\192\\ra\\139\\231\\195\\012\"",
+  "plain": "\"__index\"",
+  "text": "__index",
+  "sites": 2
+ },
+ {
+  "key": 32580468700806,
+  "cipher": "\"\\003\\155\\250\\194\"",
+  "plain": "\"find\"",
+  "text": "find",
+  "sites": 1
+ },
+ {
+  "key": 32645968950979,
+  "cipher": "\"\\177\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 2
+ },
+ {
+  "key": 32829584406382,
+  "cipher": "\"\\150{G\\202\\217\\183S\\237[\\222j\\167V\\138#\\1438@O\\170\\132\\127\"",
+  "plain": "\"] [INFO] s4-kittenpass\"",
+  "text": "] [INFO] s4-kittenpass",
+  "sites": 2
+ },
+ {
+  "key": 32880051812253,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 32886494459811,
+  "cipher": "\"\\212\\216b\"",
+  "plain": "\"Url\"",
+  "text": "Url",
+  "sites": 2
+ },
+ {
+  "key": 33012126087192,
+  "cipher": "\"\\139L\"",
+  "plain": "\"*t\"",
+  "text": "*t",
+  "sites": 1
+ },
+ {
+  "key": 33022863833122,
+  "cipher": "\"\\007\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 3
+ },
+ {
+  "key": 33049708197947,
+  "cipher": "\"\\003\\174d\\163\\173\\015\\196\\248\\n\\148\\211g\\189\\226M\\252,\\146?T\\145^m\\161\\029J\\031mM\\158n\\001\\176D\\232\\133\\t\\2291r*\\138W\\145\\0190\\029\\152I\\176\\177\\147X^3\\153O\\219\\180\"",
+  "plain": "\"A fatal Luarmor error occurred, please restart your script.\"",
+  "text": "A fatal Luarmor error occurred, please restart your script.",
+  "sites": 3
+ },
+ {
+  "key": 33146347911317,
+  "cipher": "\"\\005fw\\137\\244\"",
+  "plain": "\"JobId\"",
+  "text": "JobId",
+  "sites": 1
+ },
+ {
+  "key": 33181782472886,
+  "cipher": "\"\\222J\\205\\174lw\\170\\t\\001\\159\\242Xx\\250i\"",
+  "plain": "\"OnMessageSignal\"",
+  "text": "OnMessageSignal",
+  "sites": 3
+ },
+ {
+  "key": 33316004297011,
+  "cipher": "\"\\235\"",
+  "plain": "\"Q\"",
+  "text": "Q",
+  "sites": 1
+ },
+ {
+  "key": 33354660182359,
+  "cipher": "\"K\\232\\176Q%Q\\148\\192\\017\\180t\\214\\139\\152\\2389\\218\\249\"",
+  "plain": "\"] [INFO] s4-kitten\"",
+  "text": "] [INFO] s4-kitten",
+  "sites": 2
+ },
+ {
+  "key": 33361102829917,
+  "cipher": "\"\\194\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 3
+ },
+ {
+  "key": 33365397928289,
+  "cipher": "\"\\183\\167\\019\\142\"",
+  "plain": "\"what\"",
+  "text": "what",
+  "sites": 2
+ },
+ {
+  "key": 33488882006484,
+  "cipher": "\"\\015s )\\130R\\2366K\\160\\146G\\162\"",
+  "plain": "\"ScriptVersion\"",
+  "text": "ScriptVersion",
+  "sites": 1
+ },
+ {
+  "key": 33512505047530,
+  "cipher": "\"\"",
+  "plain": "\"\"",
+  "text": "",
+  "sites": 1
+ },
+ {
+  "key": 33556529805843,
+  "cipher": "\"\\174zw[eO\\221\\186]'|\"",
+  "plain": "\"] [INFO] s3\"",
+  "text": "] [INFO] s3",
+  "sites": 1
+ },
+ {
+  "key": 33572636424738,
+  "cipher": "\"\\205\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 1
+ },
+ {
+  "key": 33601628338749,
+  "cipher": "\"\\029i\\\"\\207\\r\\254\\208\\235\\162\"",
+  "plain": "\"Websocket\"",
+  "text": "Websocket",
+  "sites": 3
+ },
+ {
+  "key": 33770210949850,
+  "cipher": "\"\\136\\002\\187\\230\\021\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 34008588909496,
+  "cipher": "\"\\177\"",
+  "plain": "\"?\"",
+  "text": "?",
+  "sites": 1
+ },
+ {
+  "key": 34172876422225,
+  "cipher": "\"v\"",
+  "plain": "\"[\"",
+  "text": "[",
+  "sites": 2
+ },
+ {
+  "key": 34227638926468,
+  "cipher": "\"\\204\\187\\185\\234\\208\\246\\162\\181.M\\251\"",
+  "plain": "\"] [INFO] s8\"",
+  "text": "] [INFO] s8",
+  "sites": 1
+ },
+ {
+  "key": 34266294811816,
+  "cipher": "\"\\213\\186cM\\154\"",
+  "plain": "\"clock\"",
+  "text": "clock",
+  "sites": 1
+ },
+ {
+  "key": 34310319570129,
+  "cipher": "\"\\220\\225\\200\\162\\212/\\159\\152\\017\\130\\001\\192\\160\\175\\215+\\170\\142-\\222\\01938\\151\\237#G\\250s}\\166a\\001\"",
+  "plain": "\"] Responded with something empty\\n\"",
+  "text": "] Responded with something empty\n",
+  "sites": 3
+ },
+ {
+  "key": 34490713701753,
+  "cipher": "\"z\\024\\216\\171\\148\\2523\\254\\223\\001\\222Q\\227{\\241\\197\\249\\\\\\011_h\\181\"",
+  "plain": "\"] ######## L_PASS: d: \"",
+  "text": "] ######## L_PASS: d: ",
+  "sites": 3
+ },
+ {
+  "key": 34774190194305,
+  "cipher": "\"\\174\\181j@\\003-\\232\\022\"",
+  "plain": "\"LastPong\"",
+  "text": "LastPong",
+  "sites": 2
+ },
+ {
+  "key": 34803182108316,
+  "cipher": "\"K\\026\\021\\0193\\018\\164\"",
+  "plain": "\"Players\"",
+  "text": "Players",
+  "sites": 3
+ },
+ {
+  "key": 34852575739594,
+  "cipher": "\"x\\212\\179\\192\\182-\"",
+  "plain": "\"random\"",
+  "text": "random",
+  "sites": 1
+ },
+ {
+  "key": 34886936526570,
+  "cipher": "\"'\\200\\247\\146 \\170_\\227\"",
+  "plain": "\"\\\"%s\\\":%s,\"",
+  "text": "\"%s\":%s,",
+  "sites": 2
+ },
+ {
+  "key": 34962100748080,
+  "cipher": "\"\\215\"",
+  "plain": "\"/\"",
+  "text": "/",
+  "sites": 1
+ }
+]

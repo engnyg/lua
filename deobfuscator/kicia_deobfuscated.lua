@@ -3,34 +3,35 @@ local function f1()
 	end
 
 	local function f3(...)
-
+		(nil)()
+		;(nil)()
 	end
 
 	local function f4(p1)
-		if p1 == "ÍÚþ" then
+		if p1 == "PONG" then
 			if up2 then
-				up3;("" ..
-					os["uTm|M"]() ..
-						"üGm´Å%Ü-·M$üÀý°Û¡P»l")
+				up3;("[" ..
+					os["clock"]() ..
+						"] [PONG] Server ---> Client \n")
 			end
-			up4["-=ø>z÷"] = tick()
+			up4["LastPong"] = tick()
 			return
 		end
-		local v1 = string[":éwäÞ"](
+		local v1 = string["match"](
 			p1,
-			"/îâÍhÁ¼3ì¼"
+			"|__(%d+)__|"
 		)
 		if up2 then
-			up3("o" ..
-				os["¸8ñJ"]() ..
-					"=ñEµJK@¿(g·ñ®ÜáB°RùèdÔZð" .. p1 .. "«")
+			up3("[" ..
+				os["clock"]() ..
+					"] [RESPONSE] Server ---> Client: " .. p1 .. "\n")
 		end
 		if not v1 then
-			return (up4["9ûÐ·±0÷¦æ¶³ê"]:Fire(p1))
+			return (up4["OnMessageSignal"]:Fire(p1))
 		end
-		local v2 = up4["s·D¿¶Ê¥"][v1 + 0]
+		local v2 = up4["Requests"][v1 + 0]
 		v2:Fire(p1:gsub(
-			"Ý·gá	}»pq ",
+			"|__(%d+)__|",
 			""
 		))
 		return (v2:Destroy())
@@ -38,39 +39,36 @@ local function f1()
 
 	local function f5()
 		local v3, v4
-		v4, v3 = up2(up3, up4[up5[up6("\23\20\24", 29848786136214)]])
+		v4, v3 = up2(up3, up4["Url"])
 		up0 = v4
 		up1 = v3
 		up7 = true
 	end
 
 	local function f6()
-		up0[up1[up2(" URU\22\156\133D\244\18\140\156u\238\15*", 31006315147468)]]:Connect(up3)
-		up0[up1[up2("v\150P\222B\136';\166\162\1439", 3526275763412)]]:Connect(up4)
+		up0["ConnectionClosed"]:Connect(up3)
+		up0["DataReceived"]:Connect(up4)
 	end
 
 	local function f7()
-		up0[up1[up2("k(\166.\2433M", 11661192079980)]]:Connect(up3)
-		up0[up1[up2("\15\210\249~|\227\202\248q", 12796171824781)]]:Connect(up4)
+		up0["OnClose"]:Connect(up3)
+		up0["OnMessage"]:Connect(up4)
 	end
 
 	local function f8(...)
 		local v5, v6
 		if up0 then
 			local f9 = up1
-			local v7 = up2[up3("\20", 25372219857997)]
-			local v8 = os[up2[up3("\31\244\136j\213", 5980924483010)]]()
+			local v7 = "["
+			local v8 = os["clock"]()
 			v6 = "\245\140.:\174\129O1!\183\\"
-			v5 = up2[up3(v6, 29455784635176)]
+			v5 = "] [CLOSED] "
 			f9(v7 .. v8 .. v5)
 		end
-		up4[up2[up3("\154p\255\171h\15\253<\144\234\187\20\22\154\6", 7238314531413)]] = false
-		if up4[up2[up3("\150\184\188@_\170\153\19\224\218\1655", 8969239175329)]] or up5 then
+		up4["__OBJECT_ACTIVE"] = false
+		if up4["SocketClosed"] or up5 then
 			if up0 then
-				up1(up2[up3(
-					"\215\204\161\147q1\177\167\170\11O\146&\250\134\170g|",
-					12225997515898
-				)])
+				up1(" (ALREADY CLOSED)\n")
 			end
 			return
 		end
@@ -89,16 +87,11 @@ local function f1()
 				f10 = up2[f10]
 				f11 = os
 				f12 = up3
-				f12 = f12("\242\131\241\176\153", 32213237790000)
-				f12 = up2[f12]
+				f12 = "clock"
 				f11 = f11[f12]
 				f11 = f11()
 				f12 = up3
-				f12 = f12(
-					"\158\5\232\183M\152\162w\231Y\191\203\31\168H\18Cu\188<\171s\200\226N\20\133\25n\255\209\200\180V\192\30\199\129v",
-					28825478949085
-				)
-				f12 = up2[f12]
+				f12 = "] Attempting to reconnect to wshttpemu\n"
 				f11 = f11 .. f12
 				f10 = f10 .. f11
 				f13(f10)
@@ -110,7 +103,7 @@ local function f1()
 
 			local function f14()
 				local v12, v13
-				v13, v12 = up2(up3, up4[up5[up6("\23\20\24", 29848786136214)]])
+				v13, v12 = up2(up3, up4["Url"])
 				f11 = v13
 				f12 = v12
 				f10 = true
@@ -123,56 +116,47 @@ local function f1()
 			if up0 then
 				local f15 = up1
 				f15(f10 ..
-					os[up2[up3("\175\nP\245\156", 12251768106130)]]() ..
-						up2[up3(
-							"z\24\216\171\148\2523\254\223\1\222Q\227{\241\197\249\\\11_h\181",
-							34490713701753
-						)] ..
+					os["clock"]() ..
+						"] ######## L_PASS: d: " ..
 							up11(34490713701753) ..
-								up2[up3("\127\132\31\28g\n", 10375883892159)] ..
-									up11(f11) .. up2[up3("\12", 27328637166443)])
+								", ok: " ..
+									up11(f11) .. "\n")
 			end
 			if not f10 then
 				up12 = false
 				v9 = 10
 				if up0 then
-					warn(up2[up3(
-						"\226\255\210W,\15\226\250ESIn\195\237\222O\184\158,R\173\222\226\25\17\167\176R\229\224\251",
-						13362051035292
-					)])
+					warn("[2] Unable to connect (timeout)")
 				end
 			end
 			if f11 then
 				if up0 then
-					up1(up2[up3("\194", 33361102829917)] ..
-						os[up2[up3("nG\178p\189", 1458185897294)]]() ..
-							up2[up3(
-								"\148\235A|\17\230\0113\2209x\22|\149\178\167\141\242\182\164\19x\130\238",
-								2558804855119
-							)])
+					up1("[" ..
+						os["clock"]() ..
+							"] [CONNECT] Reconnected\n")
 				end
-				up4[up2[up3("\204*c\136\214\175\156\235c\228#\163\143\18\204", 14980229346943)]] = true
-				up4[up2[up3("\196\28p0\225\186\219]\246", 13544592716102)]] = f12
+				up4["__OBJECT_ACTIVE"] = true
+				up4["Websocket"] = f12
 				up12 = up4
 				local v14 = f12
 				local Send = f12.Send
 				local f16 = up13
 				local t1 = {
-					[up2[up3("\144\157\26\202J\143", 30815183269914)]] = up2[up3("\158\177\19U", 18578448008086)],
-					[up2[up3("\222U\224\t", 256632127727)]] = {}
+					["Opcode"] = "PING",
+					["Data"] = {}
 				}
 				Send(v14, f16(t1))
 
 				local function f17()
-					f12[up1[up2("k(\166.\2433M", 11661192079980)]]:Connect(up3)
-					f12[up1[up2("\15\210\249~|\227\202\248q", 12796171824781)]]:Connect(up4)
+					f12["OnClose"]:Connect(up3)
+					f12["OnMessage"]:Connect(up4)
 				end
 
 				up8(f17)
 
 				local function f18()
-					f12[up1[up2(" URU\22\156\133D\244\18\140\156u\238\15*", 31006315147468)]]:Connect(up3)
-					f12[up1[up2("v\150P\222B\136';\166\162\1439", 3526275763412)]]:Connect(up4)
+					f12["ConnectionClosed"]:Connect(up3)
+					f12["DataReceived"]:Connect(up4)
 				end
 
 				up8(f18)
@@ -190,43 +174,43 @@ local function f1()
 	end
 
 	local function f20()
-		up0[up1[up2("\0Q8\178\17K1\246R", 27593859490914)]][up1[up2("Q\211s\145*Q?", 8519327620862)]]:Connect(up3)
-		up0[up1[up2("\197,r \183r\1669N", 8460270018247)]][up1[up2("\195\147@Qd\143\153|\223", 32507452028482)]]:Connect(up4)
+		up0["Websocket"]["OnClose"]:Connect(up3)
+		up0["Websocket"]["OnMessage"]:Connect(up4)
 	end
 
 	local function f21()
-		local v15 = up0[up1[up2("\29i\"\207\r\254\208\235\162", 33601628338749)]]
+		local v15 = up0["Websocket"]
 		v15:Connect(up3)
-		local t2 = up0[up1[up2("Z_\28\178_A\205\1638", 23336343229669)]]
-		t2[up1[up2("h\177\227\15\189\1384\185\128\r\248H7\209\205\244", 11453953583531)]]:Connect(up4)
+		local t2 = up0["Websocket"]
+		t2["ConnectionClosed"]:Connect(up4)
 	end
 
 	local function f22(p2)
 		local function f23(p3)
-			if p3 == "ÍÚþ" then
+			if p3 == "PONG" then
 				if up2 then
-					up3("" ..
-						os["uTm|M"]() ..
-							"üGm´Å%Ü-·M$üÀý°Û¡P»l")
+					up3("[" ..
+						os["clock"]() ..
+							"] [PONG] Server ---> Client \n")
 				end
-				p2["-=ø>z÷"] = tick()
+				p2["LastPong"] = tick()
 				return
 			end
-			local v16 = string[":éwäÞ"](
+			local v16 = string["match"](
 				p3,
-				"/îâÍhÁ¼3ì¼"
+				"|__(%d+)__|"
 			)
 			if up2 then
-				up3("o" ..
-					os["¸8ñJ"]() ..
-						"=ñEµJK@¿(g·ñ®ÜáB°RùèdÔZð" .. p3 .. "«")
+				up3("[" ..
+					os["clock"]() ..
+						"] [RESPONSE] Server ---> Client: " .. p3 .. "\n")
 			end
 			if not v16 then
-				return (p2["9ûÐ·±0÷¦æ¶³ê"]:Fire(p3))
+				return (p2["OnMessageSignal"]:Fire(p3))
 			end
-			local v17 = p2["s·D¿¶Ê¥"][v16 + 0]
+			local v17 = p2["Requests"][v16 + 0]
 			v17:Fire(p3:gsub(
-				"Ý·gá	}»pq ",
+				"|__(%d+)__|",
 				""
 			))
 			return (v17:Destroy())
@@ -238,19 +222,16 @@ local function f1()
 			local v19, v20
 			if up0 then
 				local f24 = up1
-				local v21 = up2[up3("\20", 25372219857997)]
-				local v22 = os[up2[up3("\31\244\136j\213", 5980924483010)]]()
+				local v21 = "["
+				local v22 = os["clock"]()
 				v20 = "\245\140.:\174\129O1!\183\\"
-				v19 = up2[up3(v20, 29455784635176)]
+				v19 = "] [CLOSED] "
 				f24(v21 .. v22 .. v19)
 			end
-			p2[up2[up3("\154p\255\171h\15\253<\144\234\187\20\22\154\6", 7238314531413)]] = false
-			if p2[up2[up3("\150\184\188@_\170\153\19\224\218\1655", 8969239175329)]] or up5 then
+			p2["__OBJECT_ACTIVE"] = false
+			if p2["SocketClosed"] or up5 then
 				if up0 then
-					up1(up2[up3(
-						"\215\204\161\147q1\177\167\170\11O\146&\250\134\170g|",
-						12225997515898
-					)])
+					up1(" (ALREADY CLOSED)\n")
 				end
 				return
 			end
@@ -269,16 +250,11 @@ local function f1()
 					f25 = up2[f25]
 					f26 = os
 					f27 = up3
-					f27 = f27("\242\131\241\176\153", 32213237790000)
-					f27 = up2[f27]
+					f27 = "clock"
 					f26 = f26[f27]
 					f26 = f26()
 					f27 = up3
-					f27 = f27(
-						"\158\5\232\183M\152\162w\231Y\191\203\31\168H\18Cu\188<\171s\200\226N\20\133\25n\255\209\200\180V\192\30\199\129v",
-						28825478949085
-					)
-					f27 = up2[f27]
+					f27 = "] Attempting to reconnect to wshttpemu\n"
 					f26 = f26 .. f27
 					f25 = f25 .. f26
 					f28(f25)
@@ -290,7 +266,7 @@ local function f1()
 
 				local function f29()
 					local v26, v27
-					v27, v26 = up2(up3, p2[up5[up6("\23\20\24", 29848786136214)]])
+					v27, v26 = up2(up3, p2["Url"])
 					f26 = v27
 					f27 = v26
 					f25 = true
@@ -303,56 +279,47 @@ local function f1()
 				if up0 then
 					local f30 = up1
 					f30(f25 ..
-						os[up2[up3("\175\nP\245\156", 12251768106130)]]() ..
-							up2[up3(
-								"z\24\216\171\148\2523\254\223\1\222Q\227{\241\197\249\\\11_h\181",
-								34490713701753
-							)] ..
+						os["clock"]() ..
+							"] ######## L_PASS: d: " ..
 								up11(34490713701753) ..
-									up2[up3("\127\132\31\28g\n", 10375883892159)] ..
-										up11(f26) .. up2[up3("\12", 27328637166443)])
+									", ok: " ..
+										up11(f26) .. "\n")
 				end
 				if not f25 then
 					up12 = false
 					v23 = 10
 					if up0 then
-						warn(up2[up3(
-							"\226\255\210W,\15\226\250ESIn\195\237\222O\184\158,R\173\222\226\25\17\167\176R\229\224\251",
-							13362051035292
-						)])
+						warn("[2] Unable to connect (timeout)")
 					end
 				end
 				if f26 then
 					if up0 then
-						up1(up2[up3("\194", 33361102829917)] ..
-							os[up2[up3("nG\178p\189", 1458185897294)]]() ..
-								up2[up3(
-									"\148\235A|\17\230\0113\2209x\22|\149\178\167\141\242\182\164\19x\130\238",
-									2558804855119
-								)])
+						up1("[" ..
+							os["clock"]() ..
+								"] [CONNECT] Reconnected\n")
 					end
-					p2[up2[up3("\204*c\136\214\175\156\235c\228#\163\143\18\204", 14980229346943)]] = true
-					p2[up2[up3("\196\28p0\225\186\219]\246", 13544592716102)]] = f27
+					p2["__OBJECT_ACTIVE"] = true
+					p2["Websocket"] = f27
 					up12 = p2
 					local v28 = f27
 					local Send2 = f27.Send
 					local f31 = up13
 					local t3 = {
-						[up2[up3("\144\157\26\202J\143", 30815183269914)]] = up2[up3("\158\177\19U", 18578448008086)],
-						[up2[up3("\222U\224\t", 256632127727)]] = {}
+						["Opcode"] = "PING",
+						["Data"] = {}
 					}
 					Send2(v28, f31(t3))
 
 					local function f32()
-						f27[up1[up2("k(\166.\2433M", 11661192079980)]]:Connect(v18)
-						f27[up1[up2("\15\210\249~|\227\202\248q", 12796171824781)]]:Connect(f23)
+						f27["OnClose"]:Connect(v18)
+						f27["OnMessage"]:Connect(f23)
 					end
 
 					up8(f32)
 
 					local function f33()
-						f27[up1[up2(" URU\22\156\133D\244\18\140\156u\238\15*", 31006315147468)]]:Connect(v18)
-						f27[up1[up2("v\150P\222B\136';\166\162\1439", 3526275763412)]]:Connect(f23)
+						f27["ConnectionClosed"]:Connect(v18)
+						f27["DataReceived"]:Connect(f23)
 					end
 
 					up8(f33)
@@ -370,48 +337,48 @@ local function f1()
 		end
 
 		local function f35()
-			p2[up1[up2("\0Q8\178\17K1\246R", 27593859490914)]][up1[up2("Q\211s\145*Q?", 8519327620862)]]:Connect(v18)
-			p2[up1[up2("\197,r \183r\1669N", 8460270018247)]][up1[up2("\195\147@Qd\143\153|\223", 32507452028482)]]:Connect(f23)
+			p2["Websocket"]["OnClose"]:Connect(v18)
+			p2["Websocket"]["OnMessage"]:Connect(f23)
 		end
 
 		up7(f35)
 
 		local function f36()
-			local v29 = p2[up1[up2("\29i\"\207\r\254\208\235\162", 33601628338749)]]
+			local v29 = p2["Websocket"]
 			v29:Connect(f23)
-			local t4 = p2[up1[up2("Z_\28\178_A\205\1638", 23336343229669)]]
+			local t4 = p2["Websocket"]
+			local _ = -2147465108 + (bit32.rrotate(
 				string.unpack(">i8", "\0\0\0\0\0\0\1\227"),
 				1
 			) + 279) + -18898
-			t4[up1[up2("h\177\227\15\189\1384\185\128\r\248H7\209\205\244", 11453953583531)]]:Connect(v18)
+			t4["ConnectionClosed"]:Connect(v18)
 		end
 
 		up7(f36)
-		p2["m`i×YN"] = tick()
+		p2["LastPong"] = tick()
 		while up9(10) do
 			if up2 then
-				up3("V" ..
-					os["(º¦ç"]() ..
-						"<iúVÑ=AËÏÁlæ&»ù£ÐyÅ)")
+				up3("[" ..
+					os["clock"]() ..
+						"] [PING] Client ---> Server\n")
 			end
-			if p2["&«Ñ¹­à1Å8RË©úE"] then
-				local t5 = p2["\²èðÚnºÏ"]
+			if p2["__OBJECT_ACTIVE"] then
+				local t5 = p2["Websocket"]
 				local Send3 = t5.Send
 				local f37 = up12
 				local t6 = {
-					["yé8«]"] = "w	â¢",
-					["^R"] = {}
+					["Opcode"] = "PING",
+					["Data"] = {}
 				}
 				Send3(t5, f37(t6))
-				if 20 < tick() - p2["ËXã<êa"] then
+				if 20 < tick() - p2["LastPong"] then
 					if up2 then
-						up3("" ..
-							os[",û¤"]() ..
-								"f~àû@R2IUÍÂ4©"Î«`Ú")
-						warn("y*5³êps??
-")
+						up3("[" ..
+							os["clock"]() ..
+								"] [WARN] Server timeout\n")
+						warn("Server timeout")
 					end
-					p2["B<üé}"]:Close()
+					p2["Websocket"]:Close()
 				end
 			end
 		end
@@ -443,6 +410,7 @@ local function f1()
 		local v37, v38, v39, v40
 		v40, v39, v38, v37 = up0(up1, 1, 4)
 		local v41 = up2(v37, 64)
+		local _ = up2(v38, 32) * 65536
 		return v41 * 16777216 + up2(v39, 16) * 256 + up2(v40, 8)
 	end
 
@@ -551,7 +519,6 @@ local function f1()
 	end
 
 	local function f43(p7, p8, p9)
-
 		local v62 = p7 / 2 ^ (p8 - 1) % 2 ^ (p9 - 1 - (p8 - 1) + 1)
 		return v62 - v62 % 1
 	end
@@ -603,7 +570,6 @@ local function f1()
 		end
 
 		local function f46(p12, p13, p14)
-
 			local v69 = p12 / 2 ^ (p13 - 1) % 2 ^ (p14 - 1 - (p13 - 1) + 1)
 			return v69 - v69 % 1
 		end
@@ -615,6 +581,7 @@ local function f1()
 			local v71, v72, v73, v74
 			v74, v73, v72, v71 = byte2(v70, 1, 4)
 			local v75 = f45(v71, 64)
+			local _ = f45(v72, 32) * 65536
 			return v75 * 16777216 + f45(v73, 16) * 256 + f45(v74, 8)
 		end
 
@@ -738,7 +705,6 @@ local function f1()
 			end
 
 			local function f53(p18, p19, p20)
-
 				local v96 = p18 / 2 ^ (p19 - 1) % 2 ^ (p20 - 1 - (p19 - 1) + 1)
 				return v96 - v96 % 1
 			end
@@ -750,6 +716,7 @@ local function f1()
 				local v98, v99, v100, v101
 				v101, v100, v99, v98 = byte3(v97, 1, 4)
 				local v102 = f52(v98, 64)
+				local _ = f52(v99, 32) * 65536
 				return v102 * 16777216 + f52(v100, 16) * 256 + f52(v101, 8)
 			end
 
@@ -1134,7 +1101,7 @@ local function f1()
 			f84()
 		end
 
-		t12[up2[up3("\192\ra\139\231\195\12", 32549329237609)]] = f83
+		t12["__index"] = f83
 		up0(up1({}, t12))
 	end
 
@@ -1153,6 +1120,7 @@ local function f1()
 	end
 
 	local function f87()
+		local _ = up0
 		while true do
 			up1:Wait()
 		end
@@ -1258,19 +1226,19 @@ local function f1()
 				break
 			end
 			local f106 = up1
-			local v194 = up2[up3("'\200\247\146 \170_\227", 34886936526570)]
-			v192 = up4(v193) == up2[up3("\20/x-\133", 7497094208326)]
+			local v194 = "\"%s\":%s,"
+			v192 = up4(v193) == "table"
 			v192 = v192 and up5(v193) or
-				up2[up3("=", 18649317131224)] .. v193 .. up2[up3("Z", 173951484066)]
+				"\"" .. v193 .. "\""
 			t15[#t15 + 1] = f106(v194, v190, v192)
 		end
-		return up2[up3("i", 24314551883892)] ..
-			up6(up7(t15), 0, -2) .. up2[up3("\194", 22373167419748)]
+		return "{" ..
+			up6(up7(t15), 0, -2) .. "}"
 	end
 
 	local function f107()
 		up0 = true
-		return (up1[up2("9", 805330944750)]:rep(16777215))
+		return ((" "):rep(16777215))
 	end
 
 	local function f108()
@@ -1480,7 +1448,7 @@ local function f1()
 
 	local function f129(_, p50)
 		local v245 = "6c\17"
-		local f130 = up0[up1(v245, 29393505708782)]
+		local f130 = "Url"
 		local v246, v247, v248
 		if p50 == f130 then
 			v246 = nil
@@ -1518,7 +1486,7 @@ local function f1()
 
 	local function f131(p51, p52, p53)
 		local t17 = {
-			["«û¤l<Ò"] = "¸D"
+			["Method"] = "GET"
 		}
 		local v249 = t17
 		if p52 then
@@ -1526,7 +1494,7 @@ local function f1()
 
 			local function f132(_, p54)
 				local v250 = "6c\17"
-				local f133 = up0[up1(v250, 29393505708782)]
+				local f133 = "Url"
 				local v251, v252, v253
 				if p54 == f133 then
 					v251 = nil
@@ -1562,25 +1530,25 @@ local function f1()
 				return (f133(v250, p54))
 			end
 
-			t18[" ¥®"] = f132
+			t18["__index"] = f132
 			v249 = up2(v249, t18)
 		else
-			t17["ò"] = p51
+			t17["Url"] = p51
 			v249 = t17
 		end
 		local t19 = up10(v249)
-		if t19[";1üÀ8"-"] == 0 then
+		if t19["StatusCode"] == 0 then
 			if up11 then
-				warn(")¼Tà8×/%WW<Ù<¥7Ï¬*¿¾Ù®¯üCß6Äê:ïeJ+ÒZj\-2 ÜD*}Ñ¡·uÅ1"òT@á^½fçÉ¬Y£B:Ú")
+				warn("[CRITICAL] received StatusCode = 0; most likely an executor problem. Re-execute the script")
 			end
 			writefile(
-				" ÖÕÉûý¹óÊIC¦~ØB-T",
-				"Ål{\°ÞÖ&¨Õz¢H­P*(.M?CY¨Sò:Û	E·¹®&¡§EÞã;À	O3"¬Cô¹o$ÊQ¬E|5Dñf·\geU±ø½CKXLM"
+				"luarmor-err-code0.txt",
+				"[CRITICAL] received StatusCode = 0; most likely an executor problem. Re-execute the script"
 			)
 		end
 		return 
-			t19["nwµ"],
-			t19["j²¹øgjj"]
+			t19["Body"],
+			t19["Headers"]
 		
 	end
 
@@ -1595,6 +1563,7 @@ local function f1()
 
 	local function f138(...)
 		(nil)[0] = nil + nil
+		;(nil)()
 		up85 = nil
 	end
 
@@ -1622,7 +1591,7 @@ local function f1()
 	end
 
 	local function f145(p56)
-		local v256 = WebsocketClient["ø=¾"](p56)
+		local v256 = WebsocketClient["new"](p56)
 		v256:Connect()
 		return v256
 	end
@@ -1661,7 +1630,7 @@ local function f1()
 		up0(v265, v266)
 		v265 = "\227t\243=\230\148\11"
 		v266 = 15742609307973
-		p61[up1[up2(v265, v266)]] = p61
+		p61["__index"] = p61
 		local v267 = up3()
 		v265 = false
 		v266 = nil
@@ -1682,36 +1651,26 @@ local function f1()
 		end
 		if not v265 then
 			up8 = false
-			error(up1[up2(
-				"\184y\139\177~s\r\17\174\255$3\217\178v\2472N_\151S\1428",
-				21285433757039
-			)])
+			error("Unable to connect to WS")
 		end
 		assert(v266, v268)
-		p61[up1[up2("\232\nl\8\221\198\244\158\162", 15444099971119)]] = v268
-		p61[up1[up2("\212\216b", 32886494459811)]] = p62
-		p61[up1[up2("\154\254+\5n)\173\161d\163\227\187\2262\186", 7107314031067)]] = Instance[up1[up2("f̜", 13855987348072)]](up1[up2(
-			"\12\2423\140\203\204q\2223\23\184\t\169",
-			19879862814802
-		)])
-		p61[up1[up2("\246M\198tb\223\184\2464", 4490525347926)]] = p61[up1[up2(
-			">RVz5\150\2A\180;\184\196\183\181\202",
-			26856176345523
-		)]][up1[up2(">4z\139p", 25648179928398)]]
-		p61[up1[up2("sf\195\170\t\245<\19", 6486672316313)]] = {}
-		p61[up1[up2("U\245\146]\170\143@8N@#\176\212\228\178", 12321563454675)]] = true
+		p61["Websocket"] = v268
+		p61["Url"] = p62
+		p61["OnMessageSignal"] = Instance["new"]("BindableEvent")
+		p61["OnMessage"] = p61["OnMessageSignal"]["Event"]
+		p61["Requests"] = {}
+		p61["__OBJECT_ACTIVE"] = true
 		up9(up10)(p61)
 		repeat
 			up11:Wait()
-		until p61[up1[up2("\174\181j@\3-\232\22", 34774190194305)]]
+		until p61["LastPong"]
 		return t20
 	end
 
 	local function f151()
-		if game:GetService("T%Ë8SäS¼w°X;"):GetCountryRegionForPlayerAsync(game:GetService("ÚlÏUü")["k¾µ:Ï íUÕ"]) == "°" then
+		if game:GetService("LocalizationService"):GetCountryRegionForPlayerAsync(game:GetService("Players")["LocalPlayer"]) == "AU" then
 			local t21 = _G["table.create"](5)
-
-			up2 = t21[math["ÜÛ6æ-ü"](1, 5)]
+			up2 = t21[math["random"](1, 5)]
 		end
 	end
 
@@ -1734,6 +1693,7 @@ local function f1()
 		_G["table.create"](61)
 		_G["table.create"](141)
 		_G["table.create"](166)
+		;(nil)()
 		return true
 	end
 
@@ -1741,10 +1701,7 @@ local function f1()
 	end
 
 	local function f161(p63, p64)
-		up0(up1[up2(
-			"i\154\24+|X6!\178\218\187\204\206\183A\11\7\248<\206\28\245\222c\174\5\23\227\240?Iz\250a4S.\240\147t\199\0065\4\145\11\239\203\2.\2\179RLx\205\129\21u\227\228\171\168\150\172\226M~\4k\181K\16j\180\171\195\229\186Q`Os\148\164\206G\232\203+\165\2371w\233\198\6o\143r\8\253\219IJ\228\159L\163q<\148%\135>w\0\248\2\226\149\148>\132\n\186\20$h%\249\141\183n\228\206\15\1522\142\217\27\172\174\30\136\20_\165\174:6\177\167$\174[\132\130'D\184\251]\182\185,\237\203\208\172t \241G\214\233*1\196#\180\205\242\196\192\248-V4\129Um\227\19\202\245h+\226<r\213\215p\24\224\235g\207\27m\209\172YuP4\19\231b3+\223\201\145?\213\189\251\244k\136\26\198\23\163@<\31M%\14\12\166F\203\134\199\188w]\187Sc\223r[\148T\191\183\179\179Q\11\208@\141w\205\209\170>\171\213\151\18\212\24-Lu\246\198\190Yo\236\4\254\11\234o\250\253\236\rZ\149\154I/\205H\181&\200:\227j\n\197\16\143\225\217\27\183\"\153\144\227\nW\254\\\180@\251\132\127b\128\174a\29\158\184\185,\19\187\178\242\247p\132i",
-			26167886831410
-		)])(p63, p64)
+		up0("local t,r = ...\nspawn(function() while wait() do pcall(function() game:GetService(\"CoreGui\").RobloxPromptGui.promptOverlay.ErrorPrompt.TitleFrame.ErrorTitle.Text = t\ngame:GetService(\"CoreGui\").RobloxPromptGui.promptOverlay.ErrorPrompt.MessageArea.ErrorFrame.ErrorMessage.Text = r end) end end)\ngame:GetService('Players').LocalPlayer:Kick(r)\n        ")(p63, p64)
 		while up3() do
 		end
 	end
@@ -1767,7 +1724,8 @@ local function f1()
 	end
 
 	local function f165(...)
-
+		(nil)()
+		;(nil)()
 	end
 
 	local function f166()
@@ -1775,16 +1733,13 @@ local function f1()
 
 	local function f167()
 		up0 = true
-		return (up1[up2("\n", 12700605886004)]:rep(16777215))
+		return ((" "):rep(16777215))
 	end
 
 	local function f168(p65)
 		if up0()[8753563] == 22044 and up1 ~= 11 then
 			if up2 then
-				warn(up3[up4(
-					"MI\186Vb\245\221\195>\219\219\148\228\197\2258:\228<d\249\232\25\157|\139\228q\18\229\175\139k\17\11\202\232\154l|\190\2325\144\15\240-\210\234\162\6\158\183\227\237j\165\205W\1\145\189Q\241\233\238&\23\156/\205L\234\156\138\255\134)\132!\19\212\131\248\15\241J6\188bM\137\152j\172\139jO6\212\171\170e3\19049\2101\188e7\226\5\246\137\193s\195\179(\247h\169\n\217\231l\142\234%\157lnJ\151`=\136\24\16\219\31\156\161\185\200\166\t\241\127:\175\225#UWz6D\168<\245\186.ph\195\199\130\200\138#\196\182M\214\26y\246\29\ns\218z\185\"\180Q\23411xM\178\27\162\190\26\148B",
-					15193910490950
-				)])
+				warn("Cannot load Luarmor client (0x561c) task collision detected.. \nYou are trying to execute 2 Luarmor scripts very frequently. Please wait 2-3 seconds after first one loads, then execute the other script.")
 			end
 
 			local function f169()
@@ -1812,17 +1767,17 @@ local function f1()
 
 		local function f170()
 			v274 = true
-			return (up1[up2("9", 805330944750)]:rep(16777215))
+			return ((" "):rep(16777215))
 		end
 
 		local t22 = {}
 
 		local function f171()
 			v274 = true
-			return (up1[up2("\n", 12700605886004)]:rep(16777215))
+			return ((" "):rep(16777215))
 		end
 
-		t22[up3[up4("\2\164\245C\127\213\\\162\31N", 24089059219362)]] = f171
+		t22["__tostring"] = f171
 		local v275 = up9({}, t22)
 		local f172 = up18
 		local v276 = nil
@@ -1833,7 +1788,7 @@ local function f1()
 				break
 			end
 			if not (v276 == -1 or up1 == 11 or
-				up8(v277)[up3[up4("\183\167\19\142", 33365397928289)]] ~= up3[up4("\11h\3", 1198332445788)]) then
+				up8(v277)["what"] ~= "Lua") then
 				v274 = true
 			end
 			if not (v277 == up19 or v277 == up10) then
@@ -1841,19 +1796,19 @@ local function f1()
 				local v279 = up10
 				local error2 = error
 				local v280 = getfenv()
-				v280[up3[up4("*\253\137\5\172\129[\220", 22630873322068)]] = f170
-				v280[up3[up4("d0\166\143,", 17147106475617)]] = f170
-				v280[up3[up4("\194\218Gp<", 22071436759115)]] = f170
+				v280["tostring"] = f170
+				v280["error"] = f170
+				v280["print"] = f170
 				if v276 == -1 then
 					if up1 ~= 5 then
-						up17(v277, up3[up4("", 22141232107660)])
+						up17(v277, "")
 					end
 				else
 					up17(v277, v275)
 				end
-				v280[up3[up4("\236\169g\\\154\181>2", 19030507111739)]] = v279
-				v280[up3[up4("OH\r\168\171", 146033344648)]] = v278
-				v280[up3[up4("n9\171U\136", 23510294713735)]] = error2
+				v280["tostring"] = v279
+				v280["print"] = v278
+				v280["error"] = error2
 			end
 		end
 		if v274 and up1 ~= 11 then
@@ -1876,7 +1831,9 @@ local function f1()
 
 	local function f175(...)
 		up0[nil] = nil - nil
-
+		;(nil)()
+		;(nil)()
+		;(nil)()
 	end
 
 	local function f176()
@@ -1951,22 +1908,16 @@ local function f1()
 			return
 		end
 		if up2 then
-			up3(up4[up5("\178", 20659423169320)] ..
-				os[up4[up5("\205\151q;\138", 2741346535929)]]() ..
-					up4[up5(
-						"\195wkZ\144w\200\186\168\1644\255\201\252U=\131\243\6\174KR!\250\179?\195\164\203\200\249\131\225<=c\8\216H\2452C\236\245\5\156",
-						29761810394181
-					)])
+			up3("[" ..
+				os["clock"]() ..
+					"] !!!!!! ALERT !!!!!!!!! REQ TIMEOUT !!!!!!!!\n")
 		end
-		local v290 = up6[up4[up5("\196\175\140R\1966\251\147", 8061899644244)]][up7]
-		v290:Fire(up4[up5("", 10378031441345)])
+		local v290 = up6["Requests"][up7]
+		v290:Fire("")
 		if up2 then
-			up3(up4[up5("\19", 4223155474269)] ..
-				os[up4[up5("\138J\234w\251", 2422435481808)]]() ..
-					up4[up5(
-						"\220\225\200\162\212/\159\152\17\130\1\192\160\175\215+\170\142-\222\01938\151\237#G\250s}\166a\1",
-						34310319570129
-					)])
+			up3("[" ..
+				os["clock"]() ..
+					"] Responded with something empty\n")
 		end
 		return (v290:Destroy())
 	end
@@ -2218,64 +2169,52 @@ local function f1()
 
 	local function f205(p77, p78)
 		if up0 then
-			up1(up2[up3("v", 34172876422225)] ..
-				os[up2[up3("\1532\200F\140", 32307729954184)]]() ..
-					up2[up3(
-						"O\221\216+\241\133\255\226;\180\16\22\27\253\203\214\140\246l\7\148o\130TO\4\nO\140\200\0u?\140u\183\132J\245hS\144\30<\219\3",
-						4505558192228
-					)] ..
-						up4(p77[up2[up3(
-							"\239\232\170\191\168\155^Q\134(\151\189m\150\196",
-							22259347312890
-						)]]) .. up2[up3("\200", 12545982344612)])
+			up1("[" ..
+				os["clock"]() ..
+					"] [REQUEST] Client ---> Server, ObjectActive: " ..
+						up4(p77["__OBJECT_ACTIVE"]) .. "\n")
 		end
 		local v344 = 0
-		while not p77[up2[up3("\214\240x\235\156NC\182\231{\193cx\215d", 1803941316240)]] do
+		while not p77["__OBJECT_ACTIVE"] do
 			v344 = v344 + 1
 			up5(0.1)
 			if 40 < v344 then
 				if up0 then
-					warn(up2[up3("\1950\131r\170\212E\200\170\218Bil", 4536697655425)])
+					warn("[3] r_timeout")
 				end
 				up6 = false
-				return up2[up3("", 22063920336964)]
+				return ""
 			end
 		end
 		if up0 then
-			up1(up2[up3("Y", 27805393085735)] ..
-				os[up2[up3("\207\199us@", 9663971337000)]]() ..
-					up2[up3(
-						"bp\228\206D\24\1659\145\143\129bc\145\235\171\\\3\127[\2340x\247[\199GvH\160Q\147?\225\204\163w\tC",
-						19677993191318
-					)])
+			up1("[" ..
+				os["clock"]() ..
+					"] [REQUEST] [!!!] OBJECT ACTIVE PASSED\n")
 		end
-		local v345 = math[up2[up3("\158\226\202\\\232\159", 458501751211)]](1, 99999999)
-		local t29 = Instance[up2[up3("J\3\167", 23438351816004)]](up2[up3(
-			"\203%q\241\205e\171\179\26\144\200.v",
-			12404244098336
-		)])
+		local v345 = math["random"](1, 99999999)
+		local t29 = Instance["new"]("BindableEvent")
 		if up0 then
-			up1(up2[up3("o", 27769958524166)] ..
-				os[up2[up3(">\238W\231\186", 6757263513749)]]() ..
-					up2[up3("\221O\190w\196!\176\224\7\187#\202\174gm\217c", 26137821142806)])
+			up1("[" ..
+				os["clock"]() ..
+					"] Event assigned\n")
 		end
-		p77[up2[up3("\227\197\200eba\232\t", 21769706098482)]][v345] = t29
-		local t30 = p77[up2[up3("\178\18Q\147\250:[\134\176", 17162139319919)]]
+		p77["Requests"][v345] = t29
+		local t30 = p77["Websocket"]
 		local Send4 = t30.Send
 		local f206 = up7
 		local t31 = {
-			[up2[up3("~\148\234\238\198\138", 22738250781368)]] = up2[up3("\142YQ\207\186\16\149", 21390663667153)],
-			[up2[up3("s\182\11\31", 24974923258587)]] = p78,
-			[up2[up3("\183\1", 1700858955312)]] = v345
+			["Opcode"] = "REQUEST",
+			["Data"] = p78,
+			["Id"] = v345
 		}
 		Send4(t30, f206(t31))
 		local v346 = up0
 		local v347 = v346
 		if v346 then
 			local f207 = up1
-			f207(up2[up3("\215", 27636810474634)] ..
-				os[up2[up3("-O0\128\243", 26764905505118)]]() ..
-					up2[up3("\229\171\27\129\190\143\178\29\245<<\251}yL", 15506378897513)])
+			f207("[" ..
+				os["clock"]() ..
+					"] Packet sent!\n")
 			v347 = f207
 		end
 		v347 = false
@@ -2286,37 +2225,31 @@ local function f1()
 				return
 			end
 			if up2 then
-				up3(up4[up5("\178", 20659423169320)] ..
-					os[up4[up5("\205\151q;\138", 2741346535929)]]() ..
-						up4[up5(
-							"\195wkZ\144w\200\186\168\1644\255\201\252U=\131\243\6\174KR!\250\179?\195\164\203\200\249\131\225<=c\8\216H\2452C\236\245\5\156",
-							29761810394181
-						)])
+				up3("[" ..
+					os["clock"]() ..
+						"] !!!!!! ALERT !!!!!!!!! REQ TIMEOUT !!!!!!!!\n")
 			end
-			local v348 = p77[up4[up5("\196\175\140R\1966\251\147", 8061899644244)]][v345]
-			v348:Fire(up4[up5("", 10378031441345)])
+			local v348 = p77["Requests"][v345]
+			v348:Fire("")
 			if up2 then
-				up3(up4[up5("\19", 4223155474269)] ..
-					os[up4[up5("\138J\234w\251", 2422435481808)]]() ..
-						up4[up5(
-							"\220\225\200\162\212/\159\152\17\130\1\192\160\175\215+\170\142-\222\01938\151\237#G\250s}\166a\1",
-							34310319570129
-						)])
+				up3("[" ..
+					os["clock"]() ..
+						"] Responded with something empty\n")
 			end
 			return (v348:Destroy())
 		end
 
 		up8(f208)
 		v347 = true
-		return (t29[up2[up3("6y\14\152\246", 14892179830317)]]:Wait())
+		return (t29["Event"]:Wait())
 	end
 
 	local function f209()
 	end
 
 	local function f210(p79)
-		p79["Ë.¸×ñÎr9$"] = true
-		"E¬Á××Þþâ":Close()
+		p79["SocketClosed"] = true
+		;("Websocket"):Close()
 	end
 
 	local function f211()
@@ -2338,6 +2271,7 @@ local function f1()
 			until up2 ~= 1
 			local v349 = up2 % 32
 			local v350 = up3(up1 / 2 ^ (13 - (up2 - v349) / 32)) % 4294967296 / 2 ^ v349
+			local _ = up3(v350 % 1 * 4294967296) + up3(v350)
 			up0 = _G["table.create"](4)
 		end
 		return (table.remove(up0))
@@ -2583,6 +2517,7 @@ local function f1()
 		local v361, f246
 		f246, v361 = ...
 		assert(up0(f246), "Parameter #1 to Promise.retry must be a function")
+		local _ = assert
 		local v362
 		v362 = type(v361) == "number"
 		assert(v362, "Parameter #2 to Promise.retry must be a number")
@@ -3520,6 +3455,7 @@ local function f297()
 		end
 
 		p7:Add(fighterState:OnItemRemovedSignal(f314))
+		local _ = next
 		local v9, v10
 		v10, v9 = fighterState:GetItems()
 		while true do
@@ -3581,6 +3517,7 @@ local function f297()
 			end
 
 			p13:Add(fighterState2:OnItemRemovedSignal(f321))
+			local _ = next
 			local v15, v16
 			v16, v15 = fighterState2:GetItems()
 			while true do
@@ -3684,6 +3621,7 @@ local function f297()
 	end
 
 	local function f330(p18, p19)
+		local _ = next
 		local v29, v30
 		v30, v29 = p18:GetItems()
 		while true do
@@ -3754,6 +3692,7 @@ local function f297()
 			if _continue32 then
 				continue
 			end
+			local _ = 29082 + (v33 + f340(v34)) + -29337
 			local t10 = ...
 			return (up0(t10.inner, "Entity"))
 		end
@@ -3983,6 +3922,7 @@ local function f297()
 				if _continue36 then
 					continue
 				end
+				local _ = 29082 + (v57 + f361(v58)) + -29337
 				local t16 = ...
 				return (v49(t16.inner, "Entity"))
 			end
@@ -3998,6 +3938,7 @@ local function f297()
 		end
 
 		function t13:GetItemById(p36)
+			local _ = next
 			local v59, v60
 			v60, v59 = self:GetItems()
 			while true do
@@ -4156,11 +4097,13 @@ local function f297()
 			v75 = #p47 < v74 + v76
 			v75 = v75 and 1 or 0
 			table.insert(v73, string.char(v75))
+			local _ = table.insert
 			string.pack("<I2I2", v76, bit32.band(bit32.bnot(v76), 65535))
 			table.insert()
 			table.insert(v73, string.sub(p47, v74, v74 + v76 - 1))
 			v74 = v74 + v76
 		until #p47 < v74
+		local _ = table.insert
 		string.pack(">I4", up0(p47))
 		table.insert()
 		return (table.concat(v73))
@@ -4336,11 +4279,13 @@ local function f297()
 				v123 = #p62 < v122 + v124
 				v123 = v123 and 1 or 0
 				table.insert(v121, string.char(v123))
+				local _ = table.insert
 				string.pack("<I2I2", v124, bit32.band(bit32.bnot(v124), 65535))
 				table.insert()
 				table.insert(v121, string.sub(p62, v122, v122 + v124 - 1))
 				v122 = v122 + v124
 			until #p62 < v122
+			local _ = table.insert
 			string.pack(">I4", f381(p62))
 			table.insert()
 			return (table.concat(v121))
@@ -5107,6 +5052,7 @@ local function f297()
 			return
 		end
 		p120._lastPositionSampleTime = v215
+		local _ = table.insert
 		local positions = p120._recording.positions
 		local t58 = {
 			offset = p120:_GetOffset(),
@@ -5341,6 +5287,7 @@ local function f297()
 	end
 
 	local function f459(p148, p149)
+		local _ = table.insert
 		local keypoints = p148._recording.keypoints
 		local t77 = { offset = p148:_GetOffset(), action = p149 }
 		table.insert(keypoints, t77)
@@ -5477,6 +5424,7 @@ local function f297()
 				return
 			end
 			self._lastPositionSampleTime = v240
+			local _ = table.insert
 			local positions2 = self._recording.positions
 			local t86 = {
 				offset = self:_GetOffset(),
@@ -5582,6 +5530,7 @@ local function f297()
 		end
 
 		function t79._Record(p163, p164)
+			local _ = table.insert
 			local keypoints2 = p163._recording.keypoints
 			local t94 = { offset = p163:_GetOffset(), action = p164 }
 			table.insert(keypoints2, t94)
@@ -6624,6 +6573,7 @@ local function f297()
 			).error)
 			return
 		end
+		local _ = setmetatable
 		local t121 = {}
 
 		function t121.__index(_, p251)
@@ -6876,11 +6826,13 @@ local function f297()
 
 	local function f562(...)
 		if not up0:IsA("ScreenGui") then
+			local _ = error
 			string.format("custom fov asset \"%s\" is not a ScreenGui", tostring(up1))
 			error()
 		end
 		local check = up0:FindFirstChild("check")
 		if check == nil or not check:IsA("GuiObject") then
+			local _ = error
 			string.format(
 				"custom fov asset \"%s\" is missing a top-level \"check\" GuiObject",
 				tostring(up1)
@@ -6889,6 +6841,7 @@ local function f297()
 		end
 		local container = up0:FindFirstChild("container")
 		if container == nil or not container:IsA("GuiObject") then
+			local _ = error
 			string.format(
 				"custom fov asset \"%s\" is missing a top-level \"container\" GuiObject",
 				tostring(up1)
@@ -6899,6 +6852,7 @@ local function f297()
 		local v333, v334
 		v334, v333 = up2(container, t133)
 		if not v334 then
+			local _ = error
 			if not v333 then
 				v333 = string.format(
 					"failed to load custom fov asset \"%s\" callbacks",
@@ -6927,6 +6881,7 @@ local function f297()
 		local t135, v336
 		v336, t135 = up1(f565)
 		if not v336 then
+			local _ = error
 			string.format(
 				"failed to load custom fov asset \"%s\": %s",
 				tostring(p271),
@@ -6936,17 +6891,20 @@ local function f297()
 		end
 		local v337 = t135[1]
 		if v337 == nil then
+			local _ = error
 			string.format("failed to load custom fov asset \"%s\"", tostring(p271))
 			error()
 		end
 
 		local function f566(...)
 			if not v337:IsA("ScreenGui") then
+				local _ = error
 				string.format("custom fov asset \"%s\" is not a ScreenGui", tostring(p271))
 				error()
 			end
 			local check2 = v337:FindFirstChild("check")
 			if check2 == nil or not check2:IsA("GuiObject") then
+				local _ = error
 				string.format(
 					"custom fov asset \"%s\" is missing a top-level \"check\" GuiObject",
 					tostring(p271)
@@ -6955,6 +6913,7 @@ local function f297()
 			end
 			local container2 = v337:FindFirstChild("container")
 			if container2 == nil or not container2:IsA("GuiObject") then
+				local _ = error
 				string.format(
 					"custom fov asset \"%s\" is missing a top-level \"container\" GuiObject",
 					tostring(p271)
@@ -6965,6 +6924,7 @@ local function f297()
 			local v338, v339
 			v339, v338 = up2(container2, t136)
 			if not v339 then
+				local _ = error
 				if not v338 then
 					v338 = string.format(
 						"failed to load custom fov asset \"%s\" callbacks",
@@ -8677,6 +8637,7 @@ local function f588()
 		}
 		local v66 = _G["table.create"](2)
 		local v67 = _G["table.create"](3)
+		local _ = table.freeze
 		local t107 = {
 			DEFAULT_MIN_BRANCHES = 3,
 			DEFAULT_MAX_BRANCHES = 4,
@@ -9584,6 +9545,7 @@ local function f588()
 			f747 = bit32.band
 			v121 = 57
 		end
+		local _ = 18070 + f748((f747(v121, (string.unpack(">i8", "\0\0\0\0\0\0\0\165"))))) + -18094
 		if next2 == nil then
 			up2:Disconnect()
 			up2 = nil
@@ -9661,6 +9623,7 @@ local function f588()
 				f753 = bit32.band
 				v127 = 57
 			end
+			local _ = 18070 + f754((f753(v127, (string.unpack(">i8", "\0\0\0\0\0\0\0\165"))))) + -18094
 			if next4 == nil then
 				up2:Disconnect()
 				up2 = nil
@@ -9674,6 +9637,7 @@ local function f588()
 	end
 
 	local function f755(p142)
+		local _ = assert
 		local v129
 		v129 = type(p142) == "number"
 		local _leave44 = false
@@ -9741,6 +9705,7 @@ local function f588()
 					f759 = bit32.band
 					v134 = 57
 				end
+				local _ = 18070 + f760((f759(v134, (string.unpack(">i8", "\0\0\0\0\0\0\0\165"))))) + -18094
 				if next6 == nil then
 					up2:Disconnect()
 					up2 = nil
@@ -9762,12 +9727,14 @@ local function f588()
 		end
 		local v136 = up0(up0(up0(up1, "CurrentSeason"), "RankProfile"), "Name")
 		local v137 = up0(up0(up1, "RankProfiles"), v136)
+		local _ = assert
 		local v138
 		v138 = not (v137 == nil)
 		assert(v138)
 		local v139 = up0(v137, "RanksOrder")
 		local v140 = up0(v137, "Ranks")
 		local v141 = rawlen(v139)
+		local _ = next
 		local v142 = nil
 		while true do
 			local v143
@@ -12488,6 +12455,7 @@ local function f940()
 	end
 
 	local function f958(...)
+		local _ = 17496 + bit32.bor(
 			math.modf(3.141592653589793) + 268,
 			4,
 			(string.len("\233\248"))
@@ -12580,6 +12548,7 @@ local function f940()
 			local f968 = string.len
 			local v26 = "\156B"
 			repeat
+				local _ = 23929 + (v25 + f968(v26)) + -24122
 				v25 = nil
 				f968 = nil
 				v26 = nil
@@ -12603,6 +12572,7 @@ local function f940()
 		) < p31
 		v27 = v27 and p27 or p27
 		local v28 = -1074517054 + (v27 - p27)
+		local _ = bit32.rshift
 		local v29
 		v29 = p27 < bit32.countrz((bit32.lrotate(
 			bit32.rshift(
@@ -12613,7 +12583,11 @@ local function f940()
 		)))
 		v29 = v29 and v28 or p30
 		local v30 = -1889366025 + bit32.rshift(v29, 30)
-
+		local _ = bit32.rshift
+		local _ = bit32.rshift
+		local _ = bit32.lrotate
+		local _ = bit32.rrotate
+		local _ = bit32.bxor
 		local v31
 		v31 = bit32.lrotate(v28 - p27, 20) == v28
 		v31 = v31 and p28 or v28
@@ -12624,7 +12598,8 @@ local function f940()
 			) - p29,
 			14
 		)
-
+		local _ = bit32.bnot
+		local _ = bit32.rshift
 		local v33
 		v33 = not (p29 + p29 - p30 - p30 - v28 == p30)
 		v33 = v33 and p30 or p29
@@ -12632,7 +12607,9 @@ local function f940()
 		v34 = bit32.rshift(v33, 13) < v32
 		v34 = v34 and v28 or v28
 		local v35 = -1949227275 + (bit32.bnot(v34 - v32) - p28)
-
+		local _ = bit32.bxor
+		local _ = bit32.rrotate
+		local _ = bit32.bxor
 		local v36
 		v36 = v35 < p28
 		v36 = v36 and p27 or p31
@@ -12643,7 +12620,12 @@ local function f940()
 		v38 = p27 < bit32.bxor(bit32.rrotate(v37, 7) - v35, p29, v30)
 		v38 = v38 and p30 or p30
 		local v39 = 3268053443 + (v38 + p31)
-
+		local _ = bit32.bxor
+		local _ = bit32.bxor
+		local _ = bit32.bor
+		local _ = bit32.bxor
+		local _ = bit32.rshift
+		local _ = bit32.rrotate
 		local v40
 		v40 = not (bit32.bor(p31 + p28 - v39 - v30 + v39) == v35)
 		v40 = v40 and v35 or p27
@@ -13515,6 +13497,7 @@ local function f940()
 		if v123 == nil or v124 == nil then
 			return (up0.err("ViewAngleDriver", "upvalue_search", "Utility upvalue index not found"))
 		end
+		local _ = debug.setupvalue
 		local t33 = {}
 
 		function t33.EncodeCameraRotation(_, p95)
@@ -13837,6 +13820,7 @@ local function f940()
 			local f1065 = bit32.bnot
 			local f1066 = string.len
 			repeat
+				local _ = -4294961389 + f1064((f1065((f1066("\n"))))) + -5716
 				f1064 = nil
 				f1065 = nil
 				f1066 = nil
@@ -13974,6 +13958,7 @@ local function f940()
 					local f1078 = bit32.bnot
 					local f1079 = string.len
 					repeat
+						local _ = -4294961389 + f1077((f1078((f1079("\n"))))) + -5716
 						f1077 = nil
 						f1078 = nil
 						f1079 = nil
@@ -16087,6 +16072,7 @@ local function f940()
 			v410, v409 = up1(v408, _callbackData)
 			if not v410 then
 				local err2 = up2.err
+				local _ = string.format
 				tostring(v407)
 				tostring(tostring(v409))
 				string.format()
@@ -16190,6 +16176,7 @@ local function f940()
 				v419, v418 = up1(v417, _callbackData2)
 				if not v419 then
 					local err3 = v412.err
+					local _ = string.format
 					tostring(v416)
 					tostring(tostring(v418))
 					string.format()
@@ -16686,6 +16673,7 @@ local function f1242()
 				"EmoteController upvalue not found at index 1 of PickEmote._PickByKey"
 			))
 		end
+		local _ = setmetatable
 		local t10 = {}
 
 		function t10.UseEmote(_, p20)
@@ -16944,7 +16932,8 @@ local function f1242()
 			return
 		end
 		local v51 = debug.getupvalue(up0, v49)
-
+		local _ = debug.setupvalue
+		local _ = setmetatable
 		local t18 = {}
 
 		function t18.__index(_, p39)
@@ -17102,7 +17091,8 @@ local function f1242()
 				return
 			end
 			local v63 = debug.getupvalue(v59, v61)
-
+			local _ = debug.setupvalue
+			local _ = setmetatable
 			local t22 = {}
 
 			function t22.__index(_, p47)
@@ -17276,6 +17266,7 @@ local function f1242()
 	end
 
 	local function f1305(p58)
+		local _ = assert
 		local v80
 		v80 = type(p58) == up0
 		assert(v80, string.format(up1, "Promise.race"))
@@ -19071,6 +19062,7 @@ local function f1242()
 		local v210 = false
 		local v211 = false
 		while not (v209 + 10 <= tick()) do
+			local _ = setmetatable
 			local v212 = getgc()
 			local t152 = { __mode = "kv" }
 			local v213 = setmetatable(v212, t152)
@@ -20753,6 +20745,7 @@ local function f1518()
 			local v24 = false
 			local v25 = false
 			while not (v23 + 10 <= tick()) do
+				local _ = setmetatable
 				local v26 = getgc()
 				local t11 = { __mode = "kv" }
 				local v27 = setmetatable(v26, t11)
@@ -21428,6 +21421,7 @@ local function f1518()
 		local v71 = "\0\0\0\0\0\0\0x"
 		local f1609, v72, t41
 		repeat
+			local _ = 14858 + (f1607(v68, v69, (f1608(v70, v71))) - 138) + -14486
 			f1607 = nil
 			v68 = nil
 			v69 = nil
@@ -21660,6 +21654,7 @@ local function f1518()
 			local v99 = "\0\0\0\0\0\0\0x"
 			local f1629, v100, t51
 			repeat
+				local _ = 14858 + (f1627(v96, v97, (f1628(v98, v99))) - 138) + -14486
 				f1627 = nil
 				v96 = nil
 				v97 = nil
@@ -21904,6 +21899,7 @@ local function f1518()
 		end
 
 		p69:Add(fighterState5:OnItemRemovedSignal(f1641))
+		local _ = next
 		local v121, v122
 		v122, v121 = fighterState5:GetItems()
 		while true do
@@ -21941,6 +21937,7 @@ local function f1518()
 			end
 
 			p74:Add(fighterState6:OnItemRemovedSignal(f1646))
+			local _ = next
 			local v124, v125
 			v125, v124 = fighterState6:GetItems()
 			while true do
@@ -22001,6 +21998,7 @@ local function f1518()
 		f1651 = p81._hookRestores
 		f1651[p82] = t64
 		f1651 = t64.equipCooldown
+		local _ = setmetatable
 		local t65 = {}
 
 		function t65.__index(_, p83)
@@ -22103,6 +22101,7 @@ local function f1518()
 				end
 
 				p95:Add(fighterState7:OnItemRemovedSignal(f1658))
+				local _ = next
 				local v133, v134
 				v134, v133 = fighterState7:GetItems()
 				while true do
@@ -22141,6 +22140,7 @@ local function f1518()
 			f1660 = self._hookRestores
 			f1660[p98] = t70
 			f1660 = t70.equipCooldown
+			local _ = setmetatable
 			local t71 = {}
 
 			function t71.__index(_, p99)
@@ -23374,6 +23374,7 @@ local function f1518()
 			local v234, v235
 			v235, v234 = up5(f1735)
 			if not (v235 and type(v234) == "string") then
+				local _ = string.format
 				tostring(up1)
 				tostring(tostring(v234))
 				string.format()
@@ -23387,6 +23388,7 @@ local function f1518()
 			local v236, v237
 			v237, v236 = up5(writefile, v233, v234)
 			if not v237 then
+				local _ = string.format
 				tostring(v233)
 				tostring(tostring(v236))
 				string.format()
@@ -23399,6 +23401,7 @@ local function f1518()
 			p191(v238)
 			return
 		end
+		local _ = string.format
 		tostring(v233)
 		tostring(tostring(v238))
 		string.format()
@@ -23418,6 +23421,7 @@ local function f1518()
 				local v243, v244
 				v244, v243 = up5(f1738)
 				if not (v244 and type(v243) == "string") then
+					local _ = string.format
 					tostring(p193)
 					tostring(tostring(v243))
 					string.format()
@@ -23434,6 +23438,7 @@ local function f1518()
 				local v245, v246
 				v246, v245 = up5(writefile, v242, v243)
 				if not v246 then
+					local _ = string.format
 					tostring(v242)
 					tostring(tostring(v245))
 					string.format()
@@ -23446,6 +23451,7 @@ local function f1518()
 				p194(v247)
 				return
 			end
+			local _ = string.format
 			tostring(v242)
 			tostring(tostring(v247))
 			string.format()
@@ -23576,6 +23582,7 @@ local function f1518()
 	end
 
 	local function f1752(p204)
+		local _ = setmetatable
 		local t132 = {
 			_objs = {},
 			_name = p204._name
@@ -23910,6 +23917,7 @@ local function f1518()
 			local v273 = 382
 			local v274 = 37
 			repeat
+				local _ = 19700 + f1805((f1806(v272, v273, v274))) + -19527
 				f1805 = nil
 				f1806 = nil
 				v272 = nil
@@ -24048,6 +24056,7 @@ local function f1518()
 				local v290 = 382
 				local v291 = 37
 				repeat
+					local _ = 19700 + f1819((f1820(v289, v290, v291))) + -19527
 					f1819 = nil
 					f1820 = nil
 					v289 = nil
@@ -24825,10 +24834,12 @@ local function f1864()
 
 	local function f1866(...)
 		local t1, f1867, t2, v1, f1868
+		local _ = bit32.countrz
 		local v2
 		v2 = not not false
 		if not v2 then
 			bit32.countrz(v2)
+			local _ = 27700 + (bit32.bor(
 				math.modf(3.141592653589793),
 				(string.byte("\131\197", 1, 1))
 			) + 430) + -28169
@@ -24942,10 +24953,12 @@ local function f1864()
 
 		function t4._Initialize(...)
 			local t6, f1879, t7, v13, f1880
+			local _ = bit32.countrz
 			local v14
 			v14 = not not false
 			if not v14 then
 				bit32.countrz(v14)
+				local _ = 27700 + (bit32.bor(
 					math.modf(3.141592653589793),
 					(string.byte("\131\197", 1, 1))
 				) + 430) + -28169
@@ -25380,6 +25393,7 @@ local function f1864()
 					"Utility upvalue index not found"
 				))
 			end
+			local _ = debug.setupvalue
 			local t15 = {}
 
 			function t15.EncodeCameraRotation(_, p51)
@@ -25401,6 +25415,7 @@ local function f1864()
 		end
 
 		function t13._Resolve(...)
+			local _ = 31377 + bit32.bxor(
 				bit32.rshift(string.byte(">dY\18\215", 1, 4), 9),
 				4
 			) + -31272
@@ -26491,6 +26506,7 @@ local function f1864()
 			if up0.Parent ~= nil then
 				local ReportResult = up1.ReportResult
 				local err4 = up2.err
+				local _ = string.format
 				tostring(up0:GetFullName())
 				string.format()
 				err4()
@@ -26543,6 +26559,7 @@ local function f1864()
 				if p137.Parent ~= nil then
 					local ReportResult3 = p136.ReportResult
 					local err6 = up2.err
+					local _ = string.format
 					tostring(p137:GetFullName())
 					string.format()
 					err6()
@@ -26728,6 +26745,7 @@ local function f1864()
 					if p161.Parent ~= nil then
 						local ReportResult5 = p160.ReportResult
 						local err8 = v132.err
+						local _ = string.format
 						tostring(p161:GetFullName())
 						string.format()
 						err8()
@@ -26934,7 +26952,6 @@ local function f1864()
 	end
 
 	local function f2020()
-
 	end
 
 	local function f2021(p168)
@@ -26984,6 +27001,7 @@ local function f1864()
 						break
 					end
 					if v163 == up3 then
+						local _ = setmetatable
 						local t70 = {}
 
 						function t70.GetPublicState()
@@ -27262,6 +27280,7 @@ local function f1864()
 		local t79 = f2044(t78)
 		if not t79.ok then
 			local _Report = up2._Report
+			local _ = string.format
 			tostring(tostring(t79.error))
 			string.format()
 			_Report()
@@ -27535,6 +27554,7 @@ local function f1864()
 		local f2069 = bit32.countrz
 		local v210, v211, v212
 		while true do
+			local _ = 29612 + (f2069((string.len("\212(8"))) + 231) + -29840
 			while true do
 				f2069 = nil
 				local t85, t86
@@ -27579,16 +27599,19 @@ local function f1864()
 		if not (p206.Type == "Linear" and p206.Strength ~= nil) then
 			return
 		end
+		local _ = math.max
 		local v216 = tonumber(p206.Speed)
 		if not v216 then
 			v216 = 0
 		end
 		local v217 = math.max(0.01, v216)
+		local _ = math.max
 		local v218 = tonumber(p206.Smoothing)
 		if not v218 then
 			v218 = 1
 		end
 		local v219 = math.max(0.01, v218)
+		local _ = math.max
 		local v220 = tonumber(p206.Strength)
 		if not v220 then
 			v220 = 0
@@ -27637,6 +27660,7 @@ local function f1864()
 			local f2077 = bit32.countrz
 			local v226, v227, v228
 			while true do
+				local _ = 29612 + (f2077((string.len("\212(8"))) + 231) + -29840
 				while true do
 					f2077 = nil
 					local t88, t89
@@ -27704,16 +27728,19 @@ local function f1864()
 			if not (p212.Type == "Linear" and p212.Strength ~= nil) then
 				return
 			end
+			local _ = math.max
 			local v235 = tonumber(p212.Speed)
 			if not v235 then
 				v235 = 0
 			end
 			local v236 = math.max(0.01, v235)
+			local _ = math.max
 			local v237 = tonumber(p212.Smoothing)
 			if not v237 then
 				v237 = 1
 			end
 			local v238 = math.max(0.01, v237)
+			local _ = math.max
 			local v239 = tonumber(p212.Strength)
 			if not v239 then
 				v239 = 0
@@ -29573,7 +29600,8 @@ local function f2186()
 		p11._upvalueIndex = v18
 		local v20 = debug.getupvalue(up1, v18)
 		p11._oldUpvalue = v20
-
+		local _ = debug.setupvalue
+		local _ = setmetatable
 		local t11 = {}
 
 		function t11.__index(_, p12)
@@ -31348,6 +31376,7 @@ local function f2186()
 			end
 		end
 
+
 		function t72:_Load()
 			if not (self._isArmed and self._restore == nil) then
 				return v128.VOID_OK
@@ -31462,6 +31491,7 @@ local function f2186()
 	end
 
 	local function f2312()
+		local _ = 24744 + bit32.countrz((bit32.bxor(
 			string.len("H"),
 			(math.modf(3.141592653589793))
 		))) + -24741
@@ -31855,6 +31885,7 @@ local function f2186()
 					if v189 then
 						v188 = t99[up3]
 					end
+					local _ = setmetatable
 					local t100 = {}
 					local v192 = v187
 
@@ -31961,6 +31992,7 @@ local function f2186()
 		v202.minThicknessMultiplier = 0.7
 		v202.maxThicknessMultiplier = 1
 		_host.addBolt(v202, up1.BOLT_PART_COUNT)
+		local _ = table.insert
 		local _bolts = p214._bolts
 		local t103 = {
 			bolt = v202,
@@ -32038,6 +32070,7 @@ local function f2186()
 				break
 			end
 			if v208 + up2 < v210 then
+				local _ = table.insert
 				local new7 = ColorSequenceKeypoint.new
 				p222:Lerp(p223, up3(v210, p224, (1 - p224) % 1))
 				new7()
@@ -32145,6 +32178,7 @@ local function f2186()
 			f2368 = bit32.countlz
 		end
 		repeat
+			local _ = 10059 + f2369((f2368(183))) + -10043
 			f2369 = nil
 			f2368 = nil
 		until _equippedItem.__type == "GunView"
@@ -32299,6 +32333,7 @@ local function f2186()
 		end
 
 		function t113._GetViewByInner()
+			local _ = 24744 + bit32.countrz((bit32.bxor(
 				string.len("H"),
 				(math.modf(3.141592653589793))
 			))) + -24741
@@ -32338,6 +32373,7 @@ local function f2186()
 				f2383 = bit32.countlz
 			end
 			repeat
+				local _ = 10059 + f2384((f2383(183))) + -10043
 				f2384 = nil
 				f2383 = nil
 			until _equippedItem4.__type == "GunView"
@@ -32574,16 +32610,19 @@ local function f2186()
 		local v250 = up1(up2, "UNIVERSAL_ELO_NAME")
 		local Value23 = up4.data.Misc.PlayerSpoofer.LocalPlayer.RankedElo.Value
 		local v251 = table.clone(GetOriginal3)
+		local _ = table.clone
 		local v252 = up1(v251, v249)
 		if not v252 then
 			v252 = {}
 		end
 		local v253 = table.clone(v252)
+		local _ = table.clone
 		local v254 = up1(v253, "RankedPerformances")
 		if not v254 then
 			v254 = {}
 		end
 		local v255 = table.clone(v254)
+		local _ = table.clone
 		local v256 = up1(v255, v250)
 		if not v256 then
 			v256 = {}
@@ -32636,16 +32675,19 @@ local function f2186()
 			local v262 = v259(SeasonLibrary, "UNIVERSAL_ELO_NAME")
 			local Value24 = v258.data.Misc.PlayerSpoofer.LocalPlayer.RankedElo.Value
 			local v263 = table.clone(GetOriginal4)
+			local _ = table.clone
 			local v264 = v259(v263, v261)
 			if not v264 then
 				v264 = {}
 			end
 			local v265 = table.clone(v264)
+			local _ = table.clone
 			local v266 = v259(v265, "RankedPerformances")
 			if not v266 then
 				v266 = {}
 			end
 			local v267 = table.clone(v266)
+			local _ = table.clone
 			local v268 = v259(v267, v262)
 			if not v268 then
 				v268 = {}
@@ -34219,6 +34261,7 @@ local function f2461()
 		local t34 = f2492(t32)
 		if not t34.ok then
 			local _Report3 = p44._Report
+			local _ = string.format
 			tostring(up2.formatError(t34.error))
 			string.format()
 			_Report3()
@@ -34295,6 +34338,7 @@ local function f2461()
 			local t36 = f2498(t35)
 			if not t36.ok then
 				local _Report5 = p49._Report
+				local _ = string.format
 				tostring(tostring(t36.error))
 				string.format()
 				_Report5()
@@ -34706,6 +34750,7 @@ local function f2461()
 			local t57 = f2530(t55)
 			if not t57.ok then
 				local _Report11 = self._Report
+				local _ = string.format
 				tostring(v76.formatError(t57.error))
 				string.format()
 				_Report11()
@@ -34781,6 +34826,7 @@ local function f2461()
 				local t59 = f2532(t58)
 				if not t59.ok then
 					local _Report13 = self._Report
+					local _ = string.format
 					tostring(tostring(t59.error))
 					string.format()
 					_Report13()
@@ -35934,6 +35980,7 @@ local function f2461()
 	end
 
 	local function f2629()
+		local _ = setmetatable
 		local t91 = { _handlerListHead = false, _proxyHandler = nil, _yieldedThreads = nil }
 		return (setmetatable(t91, up0))
 	end
@@ -35978,6 +36025,7 @@ local function f2461()
 		function t92.Disconnect()
 		end
 		t92.Destroy = t92.Disconnect
+		local _ = setmetatable
 		local t93 = {}
 
 		function t93.__index(_, p207)
@@ -35999,6 +36047,7 @@ local function f2461()
 		t94.__index = t94
 
 		function t94.new()
+			local _ = setmetatable
 			local t95 = { _handlerListHead = false, _proxyHandler = nil, _yieldedThreads = nil }
 			return (setmetatable(t95, t94))
 		end
@@ -36151,6 +36200,7 @@ local function f2461()
 			end
 		end)({[0]=c0})
 		end)(up1)
+		local _ = table.freeze
 		local t99 = { new = t94.new, Wrap = t94.Wrap, Is = t94.Is }
 		return (table.freeze(t99))
 	end
@@ -36182,6 +36232,7 @@ local function f2461()
 	local function f2641(p212)
 		local t100 = { buf = buffer.fromstring(up0.decode(p212)), off = 0 }
 		local v171 = up1(t100)
+		local _ = assert
 		string.format("unsupported recording format version %s", tostring(v171))
 		assert()
 		local v172 = up3(t100)
@@ -36614,6 +36665,7 @@ local function f2461()
 		function t114.decode(p260)
 			local t129 = { buf = buffer.fromstring(v195.decode(p260)), off = 0 }
 			local v222 = f2667(t129)
+			local _ = assert
 			string.format("unsupported recording format version %s", tostring(v222))
 			assert()
 			local v223 = f2671(t129)
@@ -39379,6 +39431,7 @@ local function f2770()
 			))
 		end
 		up4(v91, "CosmeticInverted", nil)
+		local _ = setmetatable
 		local t60 = {}
 
 		function t60.__index(_, p79)
@@ -39470,6 +39523,7 @@ local function f2770()
 				))
 			end
 			up4(v101, "CosmeticInverted", nil)
+			local _ = setmetatable
 			local t65 = {}
 
 			function t65.__index(_, p87)
@@ -40240,6 +40294,7 @@ local function f2770()
 	end
 
 	local function f2912()
+		local _ = table.find
 		local f2913 = up0._stack
 		local v160 = up1
 		local v161 = table.find(f2913, v160)
@@ -40272,6 +40327,7 @@ local function f2770()
 		local t102 = up2.new(t101, p149, p148:_ResolveTheme(p150), v163)
 
 		local function f2915()
+			local _ = table.find
 			local f2916 = p148._stack
 			local v164 = t102
 			local v165 = table.find(f2916, v164)
@@ -40296,6 +40352,7 @@ local function f2770()
 		local f2919 = bit32.band
 		local f2920 = string.byte
 		repeat
+			local _ = 2022 + f2919(f2920("@", 1, nil) + 153) + -2237
 			f2919 = nil
 			f2920 = nil
 			f2918 = up0[f2918(p151, "Side")]
@@ -40312,6 +40369,7 @@ local function f2770()
 			f2922 = bit32.band
 			v167 = 34
 		end
+		local _ = 16070 + f2922(v167, string.byte("\252g\8", 3, 3), 244) + -16067
 		t103.Accent = v168
 		t103.Background = p152:_Get("ThemeBackground")
 		t103.TextColor = p152:_Get("ThemeText")
@@ -40400,6 +40458,7 @@ local function f2770()
 	end
 
 	local function f2930()
+		local _ = assert
 		local v173 = up0
 		assert(v173, "Notifications is not ready yet")
 		return up0
@@ -40410,14 +40469,17 @@ local function f2770()
 		local v174 = 0
 		for v175, v176 in p159:gmatch("([^%%]*)%%(%w+)%%") do
 			if v175 ~= "" then
+				local _ = table.insert
 				local t107 = { Text = v175 }
 				table.insert(t106, t107)
 			end
 			local v177 = p160[v176]
 			if v177 == nil then
+				local _ = table.insert
 				local t108 = { Text = "%" .. v176 .. "%" }
 				table.insert(t106, t108)
 			else
+				local _ = table.insert
 				local t109 = { Text = v177, Accent = true }
 				table.insert(t106, t109)
 			end
@@ -40425,6 +40487,7 @@ local function f2770()
 		end
 		local sub = p159:sub(v174 + 1)
 		if sub ~= "" then
+			local _ = table.insert
 			local t110 = { Text = sub }
 			table.insert(t106, t110)
 		end
@@ -40455,14 +40518,17 @@ local function f2770()
 			local v180 = 0
 			for v181, v182 in p163:gmatch("([^%%]*)%%(%w+)%%") do
 				if v181 ~= "" then
+					local _ = table.insert
 					local t117 = { Text = v181 }
 					table.insert(t116, t117)
 				end
 				local v183 = p164[v182]
 				if v183 == nil then
+					local _ = table.insert
 					local t118 = { Text = "%" .. v182 .. "%" }
 					table.insert(t116, t118)
 				else
+					local _ = table.insert
 					local t119 = { Text = v183, Accent = true }
 					table.insert(t116, t119)
 				end
@@ -40470,6 +40536,7 @@ local function f2770()
 			end
 			local sub2 = p163:sub(v180 + 1)
 			if sub2 ~= "" then
+				local _ = table.insert
 				local t120 = { Text = sub2 }
 				table.insert(t116, t120)
 			end
@@ -40487,6 +40554,7 @@ local function f2770()
 			local f2936 = bit32.band
 			local f2937 = string.byte
 			repeat
+				local _ = 2022 + f2936(f2937("@", 1, nil) + 153) + -2237
 				f2936 = nil
 				f2937 = nil
 				f2935 = t112[f2935(self, "Side")]
@@ -40503,6 +40571,7 @@ local function f2770()
 				f2938 = bit32.band
 				v184 = 34
 			end
+			local _ = 16070 + f2938(v184, string.byte("\252g\8", 3, 3), 244) + -16067
 			t121.Accent = v185
 			t121.Background = self:_Get("ThemeBackground")
 			t121.TextColor = self:_Get("ThemeText")
@@ -40565,6 +40634,7 @@ local function f2770()
 			local t123 = v178.new(t122, p167, self:_ResolveTheme(p168), v191)
 
 			local function f2939()
+				local _ = table.find
 				local f2940 = self._stack
 				local v192 = t123
 				local v193 = table.find(f2940, v192)
@@ -40793,6 +40863,7 @@ local function f2770()
 	end
 
 	local function f2965(...)
+		local _ = 23950 + bit32.countlz((bit32.bxor(
 			math.modf(3.141592653589793),
 			string.unpack(">i8", "\0\0\0\0\0\0\0n"),
 			112
@@ -40870,6 +40941,7 @@ local function f2770()
 			local v223 = math.abs(v220) * f2972(0.88, 1.02)
 			local v224 = f2972(p185._correction_sigma_min, p185._correction_sigma_max)
 			local v225 = f2972(0.12, 0.18)
+			local _ = table.insert
 			local t130 = {
 				D = v223,
 				t0 = v214 * f2972(0.55, 0.68),
@@ -40887,6 +40959,7 @@ local function f2770()
 				local v228 = f2972(0.85, 1.05)
 				local v229 = f2972(0.1, 0.16)
 				local v230 = f2972(0.08, 0.12)
+				local _ = table.insert
 				local t131 = {
 					D = v227 * v228,
 					t0 = v214 * f2972(0.78, 0.88),
@@ -40968,6 +41041,7 @@ local function f2770()
 			local v255 = f2973(0, 1)
 			local _sdn_k2 = p185._sdn_k
 			local v256 = f2973(0, 1)
+			local _ = table.insert
 			local t135 = {
 				x = v245 + v236 + v233 * v252 * v253 + _sdn_k * v249 * v255,
 				y = v246 + v237 + v233 * v252 * v254 + _sdn_k2 * v249 * v256,
@@ -46888,6 +46962,7 @@ local function f3127()
 	end
 
 	local function f3317(p322)
+		local _ = setmetatable
 		local t207 = {
 			_objs = {},
 			_name = p322
@@ -47743,6 +47818,7 @@ local function f3127()
 			v298 = 300
 		end
 		t244.MaxWidth = v298
+		local _ = table.clone
 		local v299 = p375.Options
 		if not v299 then
 			v299 = {}
@@ -48677,6 +48753,7 @@ local function f3127()
 				v396 = 300
 			end
 			t278.MaxWidth = v396
+			local _ = table.clone
 			local v397 = p446.Options
 			if not v397 then
 				v397 = {}
@@ -49494,6 +49571,7 @@ local function f3438()
 		if _fighterState5 == nil then
 			return
 		end
+		local _ = next
 		local v16, v17
 		v17, v16 = _fighterState5:GetItems()
 		while true do
@@ -50948,6 +51026,7 @@ local function f3438()
 	local function f3559(p105)
 		local ReportResult8 = up0._errorReporter.ReportResult
 		local err14 = up1.err
+		local _ = string.format
 		tostring(up2)
 		tostring(tostring(p105))
 		string.format()
@@ -52666,6 +52745,7 @@ local function f3438()
 	end
 
 	local function f3678(p190, p191)
+		local _ = assert
 		local v293
 		v293 = type(p191) == "string"
 		assert(v293, "Menu.SetWatermarkUsername(username) -> expected string")
@@ -52731,7 +52811,6 @@ local function f3438()
 	end
 
 	local function f3684(...)
-
 		local f3685, f3686, _
 		_, f3686, f3685 = ...
 		local v303 = nil
@@ -52965,7 +53044,8 @@ local function f3438()
 		end
 
 		function t139.Update(...)
-
+			(nil)()
+			;(nil)()
 		end
 
 		function t139.ShouldRun()
@@ -53880,6 +53960,7 @@ local function f3730()
 		local _store3 = p31._store
 		local _errorReporter3 = p31._errorReporter
 		local v9 = getmetatable(f3756)
+		local _ = setmetatable
 		local t24 = {}
 
 		function t24.__newindex(p32, p33, p34)
@@ -53962,6 +54043,7 @@ local function f3730()
 			v17 = 150
 		end
 		t26.Height = v17
+		local _ = table.clone
 		local v18 = p41.Options
 		if not v18 then
 			v18 = {}
@@ -54060,6 +54142,7 @@ local function f3730()
 	end
 
 	local function f3776(p68, p69)
+		local _ = table.clone
 		if not p69 then
 			p69 = {}
 		end
@@ -54625,6 +54708,7 @@ local function f3730()
 				v91 = 150
 			end
 			t42.Height = v91
+			local _ = table.clone
 			local v92 = p120.Options
 			if not v92 then
 				v92 = {}
@@ -54727,6 +54811,7 @@ local function f3730()
 		end
 
 		function t34:SetOptions(p138)
+			local _ = table.clone
 			if not p138 then
 				p138 = {}
 			end
@@ -54859,6 +54944,7 @@ local function f3730()
 				string.format("Failed to find _camera_shaker constant in %s", tostring(v108))
 				return (err15())
 			end
+			local _ = table.insert
 			local t47 = { method = v109, index = v110, constant = "_camera_shaker" }
 			table.insert(t45, t47)
 		end
@@ -54988,8 +55074,6 @@ local function f3730()
 	local function f3827()
 		up0.p()
 		up0.ay()
-		local function f3828()
-		end
 		local v123 = up0.a5()
 		local function f3829()
 		end
@@ -55361,6 +55445,7 @@ local function f3730()
 	end
 
 	local function f3854(p209)
+		local _ = assert
 		local v147
 		v147 = not (p209 == nil)
 		assert(v147, "traceback is nil")
@@ -55711,6 +55796,7 @@ local function f3730()
 	local function f3881(...)
 		local v178, v179
 		v179, v178 = ...
+		local _ = assert
 		up0(v178)
 		assert(select(3, ...))
 		local _, v180
@@ -57904,6 +57990,7 @@ local function f4023()
 
 	local function f4033()
 		local v22 = up1(up0:GetControls(), "activeController")
+		local _ = assert
 		local v23
 		v23 = not (v22 == nil)
 		assert(v23, "no active controller to hook")
@@ -57942,6 +58029,7 @@ local function f4023()
 
 	local function f4038(...)
 		while true do
+			local _ = -5759994 + (bit32.rrotate(
 				string.unpack(">i8", "\0\0\0\0\0\0\0\176"),
 				17
 			) + 357) + -7297
@@ -58642,6 +58730,7 @@ local function f4023()
 					local v77, v78
 					v78, v77 = up5(f4094)
 					if not (v78 and type(v77) == "string") then
+						local _ = string.format
 						tostring(p65)
 						tostring(tostring(v77))
 						string.format()
@@ -58658,6 +58747,7 @@ local function f4023()
 					local v79, v80
 					v80, v79 = up5(writefile, v76, v77)
 					if not v80 then
+						local _ = string.format
 						tostring(v76)
 						tostring(tostring(v79))
 						string.format()
@@ -58670,6 +58760,7 @@ local function f4023()
 					p66(v81)
 					return
 				end
+				local _ = string.format
 				tostring(v76)
 				tostring(tostring(v81))
 				string.format()
@@ -58896,12 +58987,14 @@ local function f4023()
 	end
 
 	local function f4121(p85, p86, p87)
+		local _ = assert
 		local v93
 		v93 = p86 == nil
 		if not v93 then
 			v93 = up0(p86)
 		end
 		assert(v93, string.format(up1, "Promise:andThen"))
+		local _ = assert
 		local v94
 		v94 = p87 == nil
 		if not v94 then
@@ -59121,7 +59214,6 @@ local function f4023()
 		local v109 = p101
 
 		local function f4151(...)
-
 			local f4152, f4153, _
 			_, f4153, f4152 = ...
 			local v110 = nil
@@ -59201,7 +59293,6 @@ local function f4023()
 			local v123 = p108
 
 			local function f4159(...)
-
 				local f4160, f4161, _
 				_, f4161, f4160 = ...
 				local v124 = nil
@@ -63253,6 +63344,7 @@ local function f4378()
 		up0._resolvedById[up1] = false
 		local ReportResult9 = up0._errorReporter.ReportResult
 		local err16 = up2.err
+		local _ = string.format
 		tostring(up1)
 		tostring(tostring(p35))
 		string.format()
@@ -63274,6 +63366,7 @@ local function f4378()
 			p36._resolvedById[p37] = false
 			local ReportResult10 = p36._errorReporter.ReportResult
 			local err17 = up2.err
+			local _ = string.format
 			tostring(p37)
 			tostring(tostring(p39))
 			string.format()
@@ -63303,6 +63396,7 @@ local function f4378()
 	local function f4405(...)
 		local v49, v50
 		v50, v49 = ...
+		local _ = assert
 		up0(v49)
 		assert(select(3, ...))
 		local _, v51
@@ -63410,6 +63504,7 @@ local function f4378()
 			p58 = {}
 		end
 		local t16 = {}
+		local _ = math.clamp
 		local v55 = p58.size
 		if not v55 then
 			v55 = 1
@@ -63570,6 +63665,7 @@ local function f4378()
 				p63 = {}
 			end
 			local t22 = {}
+			local _ = math.clamp
 			local v81 = p63.size
 			if not v81 then
 				v81 = 1
@@ -63732,6 +63828,7 @@ local function f4378()
 			v103.minThicknessMultiplier = 0.7
 			v103.maxThicknessMultiplier = 1
 			_host4.addBolt(v103, t20.BOLT_PART_COUNT)
+			local _ = table.insert
 			local _bolts5 = self._bolts
 			local t26 = {
 				bolt = v103,
@@ -65228,7 +65325,9 @@ local function f4378()
 
 		function t94.WinstreakRefresh(...)
 			v207[nil] = nil - nil
-
+			;(nil)()
+			;(nil)()
+			;(nil)()
 		end
 
 		t94.WinstreakTick = t94.RankTick
@@ -65317,9 +65416,11 @@ local function f4378()
 
 	local function f4550(p185, p186, p187, ...)
 		assert(up0(p185), "Parameter #1 to Promise.retry must be a function")
+		local _ = assert
 		local v211
 		v211 = type(p186) == "number"
 		assert(v211, "Parameter #2 (times) to Promise.retry must be a number")
+		local _ = assert
 		local v212
 		v212 = type(p187) == "number"
 		assert(v212, "Parameter #3 (seconds) to Promise.retry must be a number")
@@ -66331,7 +66432,7 @@ local function f4378()
 	local function f4603(p272)
 		local Status = up0.Status
 		local v265
-		v265 = 275 <=
+		v265 = 275 <= math.modf(3.141592653589793)
 		if v265 then
 			p272._values = Status
 			local t138 = p272._queuedReject
@@ -66599,6 +66700,7 @@ local function f4378()
 			end
 			v280.Parent = p292._part
 			Extend25:Add(v280)
+			local _ = table.insert
 			local t147 = { emitter = v280, spec = t146 }
 			table.insert(v278, t147)
 		end
@@ -66851,6 +66953,7 @@ local function f4378()
 		local v291 = math.rad(80)
 		local v292 = math.rad(70)
 		local v293 = math.rad(110)
+		local _ = table.freeze
 		local t179 = {
 			BRIGHTSPOT_TEXTURE = "rbxassetid://243098098",
 			GLARE_TEXTURE = "rbxassetid://243660364",
@@ -66900,6 +67003,7 @@ local function f4378()
 
 	local function f4657(p302, p303, p304, p305)
 		p303.Color = up0(p304, p305)
+		local _ = table.insert
 		local _gradients = p302._gradients
 		local t181 = { gradient = p303, tokens = p304, times = p305 }
 		table.insert(_gradients, t181)
@@ -67045,6 +67149,7 @@ local function f4378()
 
 		function t186:BindGradient(p315, p316, p317)
 			p315.Color = f4667(p316, p317)
+			local _ = table.insert
 			local _gradients2 = self._gradients
 			local t192 = { gradient = p315, tokens = p316, times = p317 }
 			table.insert(_gradients2, t192)
@@ -67224,6 +67329,7 @@ local function f4378()
 		v320, v319 = up1(f4680)
 		up0 = false
 		if not v320 then
+			local _ = warn
 			string.format(
 				"Binding.bind('%s') -> failed to apply config value: %s",
 				tostring(table.concat(up3, "/")),
@@ -67262,6 +67368,7 @@ local function f4378()
 			v324, v323 = up1(f4683)
 			v322 = false
 			if not v324 then
+				local _ = warn
 				string.format(
 					"Binding.bind('%s') -> failed to apply config value: %s",
 					tostring(table.concat(p326, "/")),
@@ -67976,6 +68083,7 @@ local function f4378()
 				end
 				v400.Parent = self._part
 				Extend26:Add(v400)
+				local _ = table.insert
 				local t220 = { emitter = v400, spec = t219 }
 				table.insert(v398, t220)
 			end
@@ -68614,6 +68722,7 @@ local function f4735()
 	local function f4754(p14)
 		if type(p14) ~= up0 then
 			local t9 = { success = false }
+			local _ = string.format
 			tostring(type(p14))
 			t9.message = string.format()
 			t9.state = nil
@@ -68700,6 +68809,7 @@ local function f4735()
 		local v19
 		v19 = not not false
 		if not v19 then
+			local _ = ipairs
 			_G["bit32.bxor"](nil, nil)
 			ipairs(nil)
 		end
@@ -68844,6 +68954,7 @@ local function f4735()
 		local v32 = 283
 		local v33, v34
 		repeat
+			local _ = 2227 + f4774(v32, 2) + -3358
 			f4774 = nil
 			v32 = nil
 			v35 = ...
@@ -70491,6 +70602,7 @@ local function f4735()
 				end
 
 				p180:Add(fighterState20:OnItemRemovedSignal(f4911))
+				local _ = next
 				local v154, v155
 				v155, v154 = fighterState20:GetItems()
 				while true do
@@ -72296,6 +72408,7 @@ local function f4735()
 			if v376 == nil then
 				break
 			end
+			local _ = table.insert
 			local t137 = { source = v377 }
 			local t138 = { spring = up0.new(up1(), up2, up3), circleRing = nil, lastProperties = nil }
 			t137.state = t138
@@ -72407,6 +72520,7 @@ local function f4735()
 				if v388 == nil then
 					break
 				end
+				local _ = table.insert
 				local t145 = { source = v389 }
 				local t146 = {
 					spring = v383.new(v384(), v386, v387),
@@ -72503,7 +72617,6 @@ local function f4735()
 		end
 
 		function t143.Destroy()
-
 		end
 
 		return t143
@@ -72580,12 +72693,9 @@ local function f4735()
 						up8 = 1
 						up9 = 2
 						writefile(
-							up10[up11(
-								"\rq\227\197\150\196C\12d5\169P\130\23\225R%\162/\160\157",
-								15647043369196
-							)],
-							up10[up11("\226\254\178K\216\255Z+Z", 8167129554358)] ..
-								up12 .. up10[up11("\250\193X\28", 24571184011619)] .. up13(up14)
+							"luarmor-error-log.txt",
+							"[0x2001] " ..
+								up12 .. " v: " .. up13(up14)
 						)
 					end
 				end
@@ -72600,12 +72710,9 @@ local function f4735()
 				up8 = 1
 				up9 = 2
 				writefile(
-					up10[up11(
-						"\221aK\192\216\12q\174n\167\"\232\6\199\17:\166y\t=)",
-						26022927261355
-					)],
-					up10[up11("\206\224\168?\226v\231\19\29", 709765005973)] ..
-						up12 .. up10[up11("\169d\175m", 10312531191172)] .. up13(up14)
+					"luarmor-error-log.txt",
+					"[0x2022] " ..
+						up12 .. " v: " .. up13(up14)
 				)
 			end
 		end
@@ -73798,6 +73905,7 @@ local function f5042()
 			local function f5083(p54)
 				local ReportResult11 = p52._errorReporter.ReportResult
 				local err18 = up1.err
+				local _ = string.format
 				tostring(v46)
 				tostring(tostring(p54))
 				string.format()
@@ -73822,6 +73930,7 @@ local function f5042()
 		end
 		local ReportResult12 = p52._errorReporter.ReportResult
 		local err19 = up4.err
+		local _ = string.format
 		tostring(v46)
 		tostring(tostring(v50))
 		string.format()
@@ -73990,6 +74099,7 @@ local function f5042()
 				local function f5098(p61)
 					local ReportResult13 = self._errorReporter.ReportResult
 					local err20 = v61.err
+					local _ = string.format
 					tostring(v70)
 					tostring(tostring(p61))
 					string.format()
@@ -74014,6 +74124,7 @@ local function f5042()
 			end
 			local ReportResult14 = self._errorReporter.ReportResult
 			local err21 = v61.err
+			local _ = string.format
 			tostring(v70)
 			tostring(tostring(v74))
 			string.format()
@@ -74741,6 +74852,7 @@ local function f5042()
 				local v154 = math.abs(v151) * f5156(0.88, 1.02)
 				local v155 = f5156(self._correction_sigma_min, self._correction_sigma_max)
 				local v156 = f5156(0.12, 0.18)
+				local _ = table.insert
 				local t31 = {
 					D = v154,
 					t0 = v145 * f5156(0.55, 0.68),
@@ -74758,6 +74870,7 @@ local function f5042()
 					local v159 = f5156(0.85, 1.05)
 					local v160 = f5156(0.1, 0.16)
 					local v161 = f5156(0.08, 0.12)
+					local _ = table.insert
 					local t32 = {
 						D = v158 * v159,
 						t0 = v145 * f5156(0.78, 0.88),
@@ -74839,6 +74952,7 @@ local function f5042()
 				local v186 = f5157(0, 1)
 				local _sdn_k4 = self._sdn_k
 				local v187 = f5157(0, 1)
+				local _ = table.insert
 				local t36 = {
 					x = v176 + v167 + v164 * v183 * v184 + _sdn_k3 * v180 * v186,
 					y = v177 + v168 + v164 * v183 * v185 + _sdn_k4 * v180 * v187,
@@ -75225,6 +75339,7 @@ local function f5042()
 
 	local function f5192(p209)
 		local _chrome = p209._chrome
+		local _ = assert
 		local v217
 		v217 = not (_chrome == nil)
 		assert(v217, "menu chrome accessed during construction")
@@ -75485,6 +75600,7 @@ local function f5042()
 	end
 
 	local function f5213(p240, p241, p242)
+		local _ = assert
 		local v238
 		v238 = type(p241) == "boolean"
 		assert(v238, "Menu.SetVisible(state) -> expected boolean")
@@ -75715,6 +75831,7 @@ local function f5042()
 	end
 
 	local function f5237(p260, p261)
+		local _ = assert
 		local v244
 		v244 = type(p261) == "string"
 		assert(v244, "Menu.SetTitle(title) -> expected string")
@@ -75895,6 +76012,7 @@ local function f5042()
 
 		local function f5256(p285)
 			local _chrome2 = p285._chrome
+			local _ = assert
 			local v271
 			v271 = not (_chrome2 == nil)
 			assert(v271, "menu chrome accessed during construction")
@@ -76140,6 +76258,7 @@ local function f5042()
 		end
 
 		function t78:SetTitle(p295)
+			local _ = assert
 			local v292
 			v292 = type(p295) == "string"
 			assert(v292, "Menu.SetTitle(title) -> expected string")
@@ -76151,6 +76270,7 @@ local function f5042()
 		end
 
 		function t78:SetWatermarkUsername(p296)
+			local _ = assert
 			local v293
 			v293 = type(p296) == "string"
 			assert(v293, "Menu.SetWatermarkUsername(username) -> expected string")
@@ -76251,6 +76371,7 @@ local function f5042()
 		end
 
 		function t78:SetVisible(p312, p313)
+			local _ = assert
 			local v296
 			v296 = type(p312) == "boolean"
 			assert(v296, "Menu.SetVisible(state) -> expected boolean")
@@ -76415,6 +76536,7 @@ local function f5042()
 		end
 
 		local t89 = {}
+		local _ = setmetatable
 		local t90 = { __mode = "k" }
 		setmetatable(t89, t90)
 
@@ -80787,6 +80909,7 @@ local function f5396()
 			if v99 == nil then
 				break
 			end
+			local _ = table.insert
 			local t368 = { Name = v101, Image = up1(v101) }
 			if p108 then
 				v100 = p108(v101)
@@ -81155,6 +81278,7 @@ local function f5396()
 		local AddDropdown83 = t398.AddDropdown
 		local t400 = { Label = "Weapon" }
 		local v132 = _G["table.create"](1)
+		local _ = unpack
 		local v133 = up3
 		t400.Options = v132
 		t400.Default = up3[1]
@@ -81572,6 +81696,7 @@ local function f5396()
 				if v166 == nil then
 					break
 				end
+				local _ = table.insert
 				local t448 = { Name = v168, Image = f5587(v168) }
 				if p143 then
 					v167 = p143(v168)
@@ -81796,6 +81921,7 @@ local function f5396()
 			local AddDropdown86 = t467.AddDropdown
 			local t469 = { Label = "Weapon" }
 			local v194 = _G["table.create"](1)
+			local _ = unpack
 			local v195 = v154
 			t469.Options = v194
 			t469.Default = v154[1]
@@ -82394,6 +82520,7 @@ local function f5396()
 
 		p181._trove:Add(up3(v233, f5653))
 		p181._trove:Add(up3(v234, f5655))
+		local _ = next
 		local v242 = nil
 		while true do
 			local v243
@@ -82504,6 +82631,7 @@ local function f5396()
 
 			self._trove:Add(v249(v252, f5658))
 			self._trove:Add(v249(v253, f5660))
+			local _ = next
 			local v261 = nil
 			while true do
 				local v262
@@ -82651,6 +82779,7 @@ local function f5396()
 
 	local function f5666(...)
 		local v275 = nil
+		local _ = 17169 + bit32.bor(
 			string.byte("\rGך", 2, 4) + math.modf(3.141592653589793),
 			string.unpack("<i8", "\253\1\0\0\0\0\0\0"),
 			112
@@ -86455,6 +86584,7 @@ local function f5396()
 		local v534 = up0.d()
 		local v535 = up0.w()
 		local v536 = up0.x()
+		local _ = setmetatable
 		local t719 = { __index = v530 }
 		local t720 = setmetatable({}, t719)
 		t720.__index = t720
@@ -88532,6 +88662,7 @@ local function f5931()
 		local f6018 = math.ceil
 		local v128 = 3.141592653589793
 		repeat
+			local _ = -4294964773 + f6017(v127 + f6018(v128)) + -2384
 			f6017 = nil
 			v127 = nil
 			f6018 = nil
@@ -88544,30 +88675,24 @@ local function f5931()
 
 	local function f6019()
 		local f6020 = up1
-		local v129 = up2[up3[up4("vx\194#", 12421424491824)]]
-		local v130 = up3[up4("[O\242\0037\14\186", 5635169064064)]
+		local v129 = up2["Host"]
+		local v130 = "/status"
 		local v131
 		v131 = up5 == 9
 		if not v131 then
 			v131 = up5 == 15
 		end
 		up0 = f6020(v129 .. v130, v131)
-		local JSONDecode = up6:GetService(up3[up4(
-			"\14\162\t\231\29\182*\207)\183p",
-			24734397749755
-		)]):JSONDecode(up0)
-		if not JSONDecode[up3[up4(",b@\180%\197", 21709574721274)]] then
-			warn(JSONDecode[up3[up4("#\144\1440\177J_", 15555772528791)]])
+		local JSONDecode = up6:GetService("HttpService"):JSONDecode(up0)
+		if not JSONDecode["active"] then
+			warn(JSONDecode["message"])
 			up7()
 		end
-		if not JSONDecode[up3[up4("'G\8\177li2\202", 6353524266781)]][up2[up3[up4("\\\1927b`\19\180", 2717723494883)]]] then
-			warn(up3[up4(
-				"\170\225\211\164\6t=\31\209\\\128W\254\215\219\217\208\249\214K,\170JOUZ\243o\144F\180\1443|\169+E\162\5\197\239\173\243y\2088$\250\24/7\4q)",
-				10233071871290
-			)])
+		if not JSONDecode["versions"][up2["Version"]] then
+			warn("This script is outdated! Try using the latest version.")
 			up7()
 		end
-		local v132 = up3[up4("M<\173\140", 25338932845614)]
+		local v132 = "Host"
 		local v133 = up8
 		if v133 then
 			v133 = LT_R_RRT_H
@@ -88575,17 +88700,14 @@ local function f5931()
 		if not v133 then
 			v133 = up9
 			if v133 then
-				v133 = up3[up4(
-					"U\213\156\142s`Q\20;\18\198p\167-\154\139]\156\225\206\239\145\158\2072:\0",
-					13360977260699
-				)]
+				v133 = "http://mc.felinemastery.xyz"
 			end
 		end
 		if not v133 then
-			v133 = up3[up4("\194\219\206\154\2251\176\229", 20587480271589)] .. up10
+			v133 = "https://" .. up10
 		end
 		up2[v132] = v133
-		up11 = JSONDecode[up3[up4("\147\208\226r\29\14\12\29", 29417128749828)]][up2[up3[up4("\234]\254\157\27yP", 25466712022181)]]]
+		up11 = JSONDecode["versions"][up2["Version"]]
 	end
 
 	local function f6021(_, p130)
@@ -88919,6 +89041,7 @@ local function f5931()
 		local t109 = p140._attachments[1]
 		local v152 = t109.build(p141, p143)
 		t109.widget = v152
+		local _ = assert
 		local v153
 		v153 = not (v152 == nil)
 		assert(v153, "Row: bare row builder returned no root")
@@ -89232,6 +89355,7 @@ local function f5931()
 			local t118 = self._attachments[1]
 			local v182 = t118.build(p161, p163)
 			t118.widget = v182
+			local _ = assert
 			local v183
 			v183 = not (v182 == nil)
 			assert(v183, "Row: bare row builder returned no root")
@@ -89490,9 +89614,11 @@ local function f5931()
 		repeat
 			local v194 = getthreadidentity()
 			setthreadidentity(2)
+			local _ = table.pack
 			up0(select(2, ...))
 			t128 = table.pack()
 			local setthreadidentity4 = setthreadidentity
+			local _ = 13996 + bit32.rrotate(
 				bit32.lrotate(string.unpack(">i8", "\0\0\0\0\0\0\0s"), 14),
 				12
 			) + -14452
@@ -89508,9 +89634,11 @@ local function f5931()
 			repeat
 				local v195 = getthreadidentity()
 				setthreadidentity(2)
+				local _ = table.pack
 				up0(select(2, ...))
 				t129 = table.pack()
 				local setthreadidentity5 = setthreadidentity
+				local _ = 13996 + bit32.rrotate(
 					bit32.lrotate(string.unpack(">i8", "\0\0\0\0\0\0\0s"), 14),
 					12
 				) + -14452
@@ -90662,6 +90790,7 @@ local function f5931()
 						if v311 then
 							v310 = t153[v307]
 						end
+						local _ = setmetatable
 						local t154 = {}
 						local v314 = v309
 
@@ -90775,6 +90904,7 @@ local function f5931()
 		if v320 == nil then
 			return (up0.err("SlotBinder", "upvalue_lookup", "CosmeticSlot prototype not found"))
 		end
+		local _ = debug.setupvalue
 		local t157 = {}
 
 		function t157.__index(p261, p262)
@@ -90847,6 +90977,7 @@ local function f5931()
 					"CosmeticSlot prototype not found"
 				))
 			end
+			local _ = debug.setupvalue
 			local t161 = {}
 
 			function t161.__index(p266, p267)
@@ -91074,10 +91205,6 @@ local function f5931()
 		v345.FilterDescendantsInstances = {}
 		v345.BruteForceAllSlow = true
 		local v346 = 0.05
-		local function f6196()
-		end
-		local function f6197()
-		end
 
 		local function f6198(p294, p295)
 			return p294.Min + (p294.Max - p294.Min) * ((math.sin(os.clock() * (2 * math.pi * p295)) + 1) * 0.5)
@@ -91374,6 +91501,7 @@ local function f5931()
 		local f6217 = string.byte
 		local v370 = "U"
 		repeat
+			local _ = -750780201 + f6216(94 + f6217(v370, 1, nil), 22) + -214
 			f6216 = nil
 			f6217 = nil
 			v370 = nil
@@ -91543,6 +91671,7 @@ local function f5931()
 	local function f6231()
 		local t185 = { c = up1() }
 		up0.cache.a = t185
+		local _ = -3221205701 + bit32.rrotate(
 			bit32.lrotate(string.byte("\27", 1, nil), 1),
 			3
 		) + -19775
@@ -94104,6 +94233,7 @@ local function f6301()
 	local function f6367(p94, p95)
 		local v64
 		if p95 ~= nil then
+			local _ = next
 			local v65 = p94._storage[p95]
 			if not v65 then
 				v65 = {}
@@ -94301,6 +94431,7 @@ local function f6301()
 		function t43:IsNonEmpty(p132)
 			local v86
 			if p132 ~= nil then
+				local _ = next
 				local v87 = self._storage[p132]
 				if not v87 then
 					v87 = {}
@@ -95793,7 +95924,9 @@ local function f6301()
 				if type(t118) == up0 then
 					local Value60 = t118.Value
 					if typeof(Value60) == "Color3" then
+						local _ = table.insert
 						local t119 = {}
+						local _ = math.clamp
 						local v243 = tonumber(t118.Time)
 						if not v243 then
 							v243 = 0
@@ -95860,7 +95993,9 @@ local function f6301()
 					if type(t123) == up0 then
 						local Value61 = t123.Value
 						if typeof(Value61) == "Color3" then
+							local _ = table.insert
 							local t124 = {}
+							local _ = math.clamp
 							local v248 = tonumber(t123.Time)
 							if not v248 then
 								v248 = 0
@@ -96015,8 +96150,6 @@ local function f6301()
 		local v257 = up0.O()
 		up0.G()
 		local v258 = up0.q()
-		local function f6509()
-		end
 		local t132 = {}
 		t132.__index = t132
 
@@ -96163,6 +96296,7 @@ local function f6301()
 			end
 			local v269 = up0(f6517, v268)
 			local v270 = "Season " .. v268
+			local _ = table.insert
 			local t141 = { charmName = v270, seasonName = up0(v269, "Name"), version = v268 }
 			table.insert(t139, t141)
 			table.insert(t140, v270)
@@ -96253,6 +96387,7 @@ local function f6301()
 				end
 				local v282 = v272(f6525, v281)
 				local v283 = "Season " .. v281
+				local _ = table.insert
 				local t153 = { charmName = v283, seasonName = v272(v282, "Name"), version = v281 }
 				table.insert(t151, t153)
 				table.insert(t152, v283)
@@ -97375,6 +97510,7 @@ local function f6301()
 				end
 			end
 			if v295 ~= nil then
+				local _ = table.insert
 				local t238 = { hit = t237, score = v295 }
 				table.insert(t236, t238)
 			end
@@ -97657,6 +97793,7 @@ local function f6301()
 	end
 
 	local function f6546(p326, p327, p328, p329)
+		local _ = table.insert
 		local _registrations4 = p326._registrations
 		local t254 = { host = p327, section = p328, collect = p329 }
 		table.insert(_registrations4, t254)
@@ -97936,6 +98073,7 @@ local function f6301()
 		end
 
 		function t256:Register(p343, p344, p345)
+			local _ = table.insert
 			local _registrations5 = self._registrations
 			local t267 = { host = p343, section = p344, collect = p345 }
 			table.insert(_registrations5, t267)
@@ -97986,6 +98124,7 @@ local function f6301()
 					end
 				end
 				if v356 ~= nil then
+					local _ = table.insert
 					local t273 = { hit = t272, score = v356 }
 					table.insert(t271, t273)
 				end
@@ -98934,6 +99073,7 @@ local function f6301()
 		repeat
 			local _, t317
 			t317, _ = ...
+			local _ = setmetatable
 			local t318 = {
 				_objs = {},
 				_name = t317._name
@@ -99017,6 +99157,7 @@ local function f6301()
 		end
 
 		function t319.new(p405)
+			local _ = setmetatable
 			local t320 = {
 				_objs = {},
 				_name = p405
@@ -99042,6 +99183,7 @@ local function f6301()
 		end
 
 		function t319:Extend()
+			local _ = setmetatable
 			local t321 = {
 				_objs = {},
 				_name = self._name
@@ -99060,6 +99202,7 @@ local function f6301()
 			repeat
 				local _, t322
 				t322, _ = ...
+				local _ = setmetatable
 				local t323 = {
 					_objs = {},
 					_name = t322._name
@@ -99219,6 +99362,7 @@ local function f6301()
 					string.format("Failed to find _camera_shaker constant in %s", tostring(v488))
 					return (err22())
 				end
+				local _ = table.insert
 				local t330 = { method = v489, index = v490, constant = "_camera_shaker" }
 				table.insert(t328, t330)
 			end
@@ -99383,6 +99527,7 @@ local function f6301()
 			local _store4 = self._store
 			local _errorReporter4 = self._errorReporter
 			local v509 = getmetatable(f6630)
+			local _ = setmetatable
 			local t337 = {}
 
 			function t337.__newindex(p424, p425, p426)
@@ -99808,6 +99953,7 @@ local function f6301()
 		function t349.normalizeImport(p442)
 			if type(p442) ~= up0 then
 				local t363 = { success = false }
+				local _ = string.format
 				tostring(type(p442))
 				t363.message = string.format()
 				t363.state = nil
@@ -102315,6 +102461,7 @@ local function f6675()
 	end
 
 	local function f6816()
+		local _ = 28766 + bit32.bxor(
 			bit32.rrotate(string.byte("\178\224\198", 3, 3), 29),
 			46
 		) + -30223
@@ -102346,13 +102493,13 @@ local function f6675()
 		if not v198 then
 			v198 = up3
 			if v198 then
-				v198 = up4[up5("\183b\225(\6", 22124051714172)] ..
-					up6 .. up4[up5("0Mz'W!\18\31\179uwA\241", 2211975661580)]
+				v198 = "ws://" ..
+					up6 .. ":80/wshttpemu"
 			end
 		end
 		if not v198 then
-			v198 = up4[up5("\146?\180M\218\\", 11448584710566)] ..
-				up6 .. up4[up5("S\1344\0225\167y%\153\151\160p\17F", 6916182153513)]
+			v198 = "wss://" ..
+				up6 .. ":443/wshttpemu"
 		end
 		up0 = new97(t115, v198)
 	end
@@ -102369,24 +102516,21 @@ local function f6675()
 				if not v199 then
 					v199 = up3
 					if v199 then
-						v199 = up4[up5("\183b\225(\6", 22124051714172)] ..
-							up6 .. up4[up5("0Mz'W!\18\31\179uwA\241", 2211975661580)]
+						v199 = "ws://" ..
+							up6 .. ":80/wshttpemu"
 					end
 				end
 				if not v199 then
-					v199 = up4[up5("\146?\180M\218\\", 11448584710566)] ..
-						up6 .. up4[up5("S\1344\0225\167y%\153\151\160p\17F", 6916182153513)]
+					v199 = "wss://" ..
+						up6 .. ":443/wshttpemu"
 				end
 				up0 = new98(t116, v199)
 			end
 		until not up0(f6820)
 		up8(
 			75,
-			up5[up6("$", 1674014590487)],
-			up5[up6(
-				"\3ER\150\169\174/D\168\171\182\25\\\129i\223kg\5\21\233\248\2127\249\213\158\184\27\144\31\179\180xO\159\127\221\128*\28\194TT\189\145\233z\n",
-				9788529189788
-			)]
+			"%",
+			" - Failed to connect to WS, falling back to HTTP."
 		)
 		up1 = false
 		up9 = true
@@ -102985,6 +103129,7 @@ local function f6675()
 
 	local function f6860()
 		local v261 = Color3.fromRGB(214, 230, 255)
+		local _ = table.freeze
 		local t139 = {
 			PARTS_PRECREATE = 480,
 			PARTS_EXPANSION = 32,
@@ -103943,6 +104088,7 @@ local function f6675()
 	end
 
 	local function f6955()
+		local _ = table.freeze
 		local t211 = {
 			Desktop = "MouseKeyboard",
 			Mobile = "Touch",
@@ -104083,6 +104229,7 @@ local function f6675()
 				end
 				local Cross7 = (t220[2] - t220[1]):Cross(t220[3] - t220[1])
 				if not (Cross7.Magnitude < 1e-06) then
+					local _ = table.insert
 					local t221 = {
 						faceId = v323,
 						verts = GetFaceVertices,
@@ -104188,6 +104335,7 @@ local function f6675()
 					end
 					local Cross9 = (t229[2] - t229[1]):Cross(t229[3] - t229[1])
 					if not (Cross9.Magnitude < 1e-06) then
+						local _ = table.insert
 						local t230 = {
 							faceId = v345,
 							verts = GetFaceVertices2,
@@ -104438,6 +104586,7 @@ local function f6675()
 				"EmoteController upvalue not found"
 			))
 		end
+		local _ = debug.setupvalue
 		local t240 = {}
 
 		function t240.EquipEmote(_, p301, p302)
@@ -104495,6 +104644,7 @@ local function f6675()
 					"EmoteController upvalue not found"
 				))
 			end
+			local _ = debug.setupvalue
 			local t244 = {}
 
 			function t244.EquipEmote(_, p303, p304)
@@ -104734,6 +104884,7 @@ local function f6675()
 					break
 				end
 				if v410 + v404 < v412 then
+					local _ = table.insert
 					local new99 = ColorSequenceKeypoint.new
 					p311:Lerp(p312, f6998(v412, p313, (1 - p313) % 1))
 					new99()
@@ -105162,6 +105313,7 @@ local function f6675()
 		v444 = not not false
 		if v444 then
 			while t281._resolved[v443] do
+				local _ = -4294956281 + f7027(386) + -10625
 				f7027 = nil
 				t281, v443 = ...
 			end
@@ -105525,6 +105677,7 @@ local function f6675()
 			v501 = not not false
 			if v501 then
 				while t295._resolved[v500] do
+					local _ = -4294956281 + f7044(386) + -10625
 					f7044 = nil
 					t295, v500 = ...
 				end
@@ -105537,6 +105690,7 @@ local function f6675()
 
 	local function f7045(p353)
 		local t296 = {}
+		local _ = next
 		local v502, v503
 		while true do
 			local v504
@@ -105556,6 +105710,7 @@ local function f6675()
 
 		local function f7047(p354)
 			local t297 = {}
+			local _ = next
 			local v506, v507
 			while true do
 				local v508
@@ -105956,6 +106111,7 @@ local function f6675()
 			if v556 ~= nil then
 				for v557, v558 in debug.getconstants(v556) do
 					if v558 == "FireServer" then
+						local _ = table.insert
 						local t310 = { func = v556, constantIndex = v557 }
 						table.insert(t309, t310)
 						debug.setconstant(v556, v557, "GetChildren")
@@ -106045,6 +106201,7 @@ local function f6675()
 				if v568 ~= nil then
 					for v569, v570 in debug.getconstants(v568) do
 						if v570 == "FireServer" then
+							local _ = table.insert
 							local t314 = { func = v568, constantIndex = v569 }
 							table.insert(t313, t314)
 							debug.setconstant(v568, v569, "GetChildren")
@@ -107830,6 +107987,7 @@ local function f7069()
 			f7173 = bit32.band
 			v127 = string.unpack("<i8", "\134\1\0\0\0\0\0\0")
 		end
+		local _ = 25346 + (f7173(v127, 436, 278) + string.byte("&\145O\221", 1, 2)) + -25640
 		local t77 = { c = up1() }
 		up0.cache.am = t77
 		return t77.c
@@ -107939,6 +108097,7 @@ local function f7069()
 	end
 
 	local function f7182(p84, p85)
+		local _ = assert
 		local v128
 		v128 = p84._grid == nil
 		assert(v128, "Tab:AddTab() cannot be used on a tab that has a Grid")
@@ -108222,6 +108381,7 @@ local function f7069()
 		end
 
 		function t84:AddTab(p103)
+			local _ = assert
 			local v142
 			v142 = self._grid == nil
 			assert(v142, "Tab:AddTab() cannot be used on a tab that has a Grid")
@@ -108430,7 +108590,8 @@ local function f7069()
 	end
 
 	local function f7213(p113)
-
+		local _ = string.format
+		local _ = tostring
 		local v160 = up0
 
 		local function f7214(p114)
@@ -108465,7 +108626,8 @@ local function f7069()
 	local function f7215()
 
 		local function f7216(p115)
-
+			local _ = string.format
+			local _ = tostring
 			local v162 = up0
 
 			local function f7217(p116)
@@ -108512,7 +108674,8 @@ local function f7069()
 		local function f7220()
 
 			local function f7221(p117)
-
+				local _ = string.format
+				local _ = tostring
 				local v167 = up0
 
 				local function f7222(p118)
@@ -108597,7 +108760,8 @@ local function f7069()
 			local function f7230()
 
 				local function f7231(p120)
-
+					local _ = string.format
+					local _ = tostring
 					local v180 = v171
 
 					local function f7232(p121)
@@ -108744,6 +108908,7 @@ local function f7069()
 	end
 
 	local function f7242(p135)
+		local _ = assert
 		local v186
 		v186 = type(p135.currentVersion) == "number"
 		if v186 then
@@ -108822,6 +108987,7 @@ local function f7069()
 		end
 
 		function t121.new(p141)
+			local _ = assert
 			local v196
 			v196 = type(p141.currentVersion) == "number"
 			if v196 then
@@ -109102,9 +109268,11 @@ local function f7069()
 				break
 			end
 			if type(t151) == "string" then
+				local _ = table.insert
 				local t152 = { name = t151, path = _G["table.create"](2), transform = up0 }
 				table.insert(v215, t152)
 			else
+				local _ = table.insert
 				local t153 = { name = t151.name }
 				local v217 = _G["table.create"](2)
 				if t151.subKey then
@@ -109216,9 +109384,11 @@ local function f7069()
 					break
 				end
 				if type(t156) == "string" then
+					local _ = table.insert
 					local t157 = { name = t156, path = _G["table.create"](2), transform = f7257 }
 					table.insert(v227, t157)
 				else
+					local _ = table.insert
 					local t158 = { name = t156.name }
 					local v229 = _G["table.create"](2)
 					if t156.subKey then
@@ -111089,7 +111259,8 @@ local function f7069()
 			self._upvalueIndex = v386
 			local v388 = debug.getupvalue(v385, v386)
 			self._oldUpvalue = v388
-
+			local _ = debug.setupvalue
+			local _ = setmetatable
 			local t268 = {}
 
 			function t268.__index(_, p301)
@@ -111657,6 +111828,7 @@ local function f7069()
 				string.format("Failed to find '%s'", tostring(t286.name))
 				return (err39())
 			end
+			local _ = table.insert
 			local t287 = { method = v437, source = t286 }
 			table.insert(f7410, t287)
 		end
@@ -111676,6 +111848,7 @@ local function f7069()
 			for v441, v442 in debug.getconstants(method) do
 				if v442 == target5 then
 					debug.setconstant(method, v441, v439)
+					local _ = table.insert
 					local t289 = { method = method, index = v441, constant = v442 }
 					table.insert(_restores, t289)
 					v440 = true
@@ -111742,6 +111915,7 @@ local function f7069()
 					string.format("Failed to find '%s'", tostring(t294.name))
 					return (err41())
 				end
+				local _ = table.insert
 				local t295 = { method = v447, source = t294 }
 				table.insert(f7413, t295)
 			end
@@ -111761,6 +111935,7 @@ local function f7069()
 				for v451, v452 in debug.getconstants(method2) do
 					if v452 == target6 then
 						debug.setconstant(method2, v451, v449)
+						local _ = table.insert
 						local t297 = { method = method2, index = v451, constant = v452 }
 						table.insert(_restores3, t297)
 						v450 = true
@@ -111960,7 +112135,10 @@ local function f7069()
 			),
 			29
 		) - p353)
-
+		local _ = bit32.bxor
+		local _ = bit32.rrotate
+		local _ = bit32.rrotate
+		local _ = bit32.bnot
 		local v468
 		v468 = p355 <= v467
 		v468 = v468 and p350 or p353
@@ -111971,7 +112149,10 @@ local function f7069()
 		) - p351) + v467 < p354
 		v469 = v469 and p352 or p350
 		local v470 = -1012143220 + v469
-
+		local _ = bit32.bxor
+		local _ = bit32.lshift
+		local _ = bit32.bnot
+		local _ = bit32.bnot
 		local v471
 		v471 = p355 <= bit32.countlz(p353 + v470)
 		v471 = v471 and v467 or v467
@@ -111979,7 +112160,8 @@ local function f7069()
 		v472 = p351 < bit32.bnot(v471)
 		v472 = v472 and v466 or v466
 		local v473 = -1791394081 + bit32.bxor(bit32.lshift(bit32.bnot(v472) - p352, 1) + v470)
-
+		local _ = bit32.countlz
+		local _ = bit32.countlz
 		local v474
 		v474 = p354 < bit32.rshift(
 			v466 - p355 + v466,
@@ -111993,7 +112175,10 @@ local function f7069()
 		v476 = p354 <= v475
 		v476 = v476 and p354 or p351
 		local v477 = -1039376937 + bit32.countlz(v476 + p355)
-
+		local _ = bit32.countrz
+		local _ = bit32.rshift
+		local _ = bit32.lshift
+		local _ = bit32.bor
 		local v478
 		v478 = bit32.band(v470, v470, v477) == v477
 		v478 = v478 and v477 or v477
@@ -112016,7 +112201,9 @@ local function f7069()
 	end
 
 	local function f7426(p356, p357, p358, p359, p360, p361, p362)
-
+		local _ = bit32.bxor
+		local _ = bit32.lrotate
+		local _ = bit32.rshift
 		local v483
 		v483 = p359 == p356
 		v483 = v483 and p359 or p356
@@ -112032,7 +112219,9 @@ local function f7069()
 			p360,
 			p357
 		))) - p356 - p358)
-
+		local _ = bit32.bnot
+		local _ = bit32.bor
+		local _ = bit32.countlz
 		local v488
 		v488 = bit32.lrotate(p357 + p362, 9) - v486 == v486
 		v488 = v488 and p356 or p358
@@ -112044,12 +112233,20 @@ local function f7069()
 			bit32.rshift(bit32.band(v487), 13) - p362,
 			17
 		) - v490) + p358 + v486 - p359 - p361)
-
+		local _ = bit32.countrz
+		local _ = bit32.bnot
 		local v492
 		v492 = bit32.bxor(bit32.band(p356 + v490, v491, v487) - p360, p360) - p361 <= p356
 		v492 = v492 and v491 or p357
 		local v493 = bit32.countrz((bit32.bnot(v492 + v487 - p362)))
-
+		local _ = bit32.bnot
+		local _ = bit32.lshift
+		local _ = bit32.band
+		local _ = bit32.band
+		local _ = bit32.rshift
+		local _ = bit32.rrotate
+		local _ = bit32.bxor
+		local _ = bit32.bxor
 		local v494
 		v494 = bit32.rshift(p358, 31) + p358 - p356 <= v490
 		v494 = v494 and p359 or p356
@@ -112063,6 +112260,7 @@ local function f7069()
 	end
 
 	local function f7427(p363, p364, p365, p366, p367, p368, p369)
+		local _ = bit32.bor
 		local v496
 		v496 = p363 <= bit32.bnot((bit32.bnot(p365 + p368 + p368)))
 		v496 = v496 and p369 or p363
@@ -112076,7 +112274,9 @@ local function f7069()
 		v499 = p366 < v498
 		v499 = v499 and p366 or p363
 		local v500 = 2156365885 + v499
-
+		local _ = bit32.lshift
+		local _ = bit32.bor
+		local _ = bit32.band
 		local v501
 		v501 = v500 + p369 <= p366
 		v501 = v501 and p365 or p369
@@ -112088,10 +112288,17 @@ local function f7069()
 			bit32.countlz(bit32.bor(bit32.rrotate(p369, 30), p366, p366) + p365),
 			5
 		))) - v503))) - v500)
+		local _ = bit32.bxor
 		local v505
 		v505 = v500 < bit32.rshift(bit32.bnot(v504 + p366) + p368 + p368, 25)
 		v505 = v505 and v503 or p366
-
+		local _ = -3006507823 + (bit32.bxor(v505 + p368, v504) + v500 + p366)
+		local _ = bit32.band
+		local _ = bit32.countlz
+		local _ = bit32.bxor
+		local _ = bit32.bor
+		local _ = bit32.rshift
+		local _ = bit32.countrz
 		local v506
 		v506 = p364 == p368
 		v506 = v506 and v503 or p365
@@ -112103,7 +112310,13 @@ local function f7069()
 			),
 			p369
 		)))))
-
+		local _ = bit32.rshift
+		local _ = bit32.countrz
+		local _ = bit32.countlz
+		local _ = bit32.lshift
+		local _ = bit32.lshift
+		local _ = bit32.band
+		local _ = bit32.bxor
 		local v508
 		v508 = bit32.countrz(bit32.countrz(p364 + v503) - v503) == p367
 		v508 = v508 and v504 or p363
@@ -112140,7 +112353,8 @@ local function f7069()
 			p370,
 			p372
 		) + p374)
-
+		local _ = bit32.lshift
+		local _ = bit32.band
 		local v514
 		v514 = bit32.bxor(p372 - p374, p375) + v510 - p370 + p370 < p375
 		v514 = v514 and p373 or v513
@@ -112151,11 +112365,17 @@ local function f7069()
 			v515 - p370,
 			(string.unpack("<i8", "\31\0\0\0\0\0\0\0"))
 		)
+		local _ = bit32.bnot
 		local v517
 		v517 = not (bit32.bor(bit32.bnot(p374 + p374 + v510 + v516) + v516, p370) + p372 == p373)
 		v517 = v517 and p374 or p371
 		local v518 = bit32.bnot(v517 + p370)
-
+		local _ = bit32.band
+		local _ = bit32.bxor
+		local _ = bit32.countrz
+		local _ = bit32.bnot
+		local _ = bit32.rrotate
+		local _ = bit32.countlz
 		local v519
 		v519 = p372 <= bit32.bnot(bit32.countlz((bit32.countlz((bit32.lrotate(
 			bit32.band(bit32.countrz(-2911994352 + v518) - v512, p375),
@@ -112180,7 +112400,10 @@ local function f7069()
 			),
 			1
 		))) + p376)
-
+		local _ = bit32.band
+		local _ = bit32.bxor
+		local _ = bit32.band
+		local _ = bit32.band
 		local v523
 		v523 = bit32.lrotate(p376 - p376, 18) == p379
 		v523 = v523 and p377 or p380
@@ -112188,13 +112411,19 @@ local function f7069()
 		v524 = not (bit32.bxor(bit32.band(bit32.band(v523), v521) + p377, p378) == v521)
 		v524 = v524 and v522 or p378
 		local v525 = 307254569 + bit32.band(v524 + v522, v522, p378)
+		local _ = -1625146979 + (bit32.bxor(bit32.countlz(bit32.countlz(bit32.bxor(bit32.band(p376, p377, p379), p380, p377) + p378 - v522) + v525) + p376) - p380)
 		local v526
 		v526 = bit32.countrz((bit32.countlz(bit32.lshift(
 			p379 - v521,
 			(string.unpack("<i8", "\6\0\0\0\0\0\0\0"))
 		) - p378 + v521))) + v525 - v525 - p376 < v522
 		v526 = v526 and p380 or v525
-
+		local _ = bit32.lrotate
+		local _ = bit32.bxor
+		local _ = bit32.bnot
+		local _ = bit32.rshift
+		local _ = bit32.bor
+		local _ = bit32.countlz
 		local v527
 		v527 = not (bit32.bxor(
 			bit32.lrotate(
@@ -112275,12 +112504,14 @@ local function f7069()
 			return p383
 		end
 		if not isfile(p383) then
+			local _ = error
 			string.format("custom fov asset file \"%s\" does not exist", tostring(p383))
 			error()
 		end
 		local v544, v545
 		v545, v544 = up0(getcustomasset, p383)
 		if not v545 then
+			local _ = error
 			string.format(
 				"failed to resolve custom fov asset \"%s\": %s",
 				tostring(p383),
@@ -112342,12 +112573,14 @@ local function f7069()
 				return p386
 			end
 			if not isfile(p386) then
+				local _ = error
 				string.format("custom fov asset file \"%s\" does not exist", tostring(p386))
 				error()
 			end
 			local v552, v553
 			v553, v552 = up0(getcustomasset, p386)
 			if not v553 then
+				local _ = error
 				string.format(
 					"failed to resolve custom fov asset \"%s\": %s",
 					tostring(p386),
@@ -112410,6 +112643,7 @@ local function f7069()
 			local t310, v561
 			v561, t310 = up1(f7443)
 			if not v561 then
+				local _ = error
 				string.format(
 					"failed to load custom fov asset \"%s\": %s",
 					tostring(p389),
@@ -112419,17 +112653,20 @@ local function f7069()
 			end
 			local v562 = t310[1]
 			if v562 == nil then
+				local _ = error
 				string.format("failed to load custom fov asset \"%s\"", tostring(p389))
 				error()
 			end
 
 			local function f7444(...)
 				if not v562:IsA("ScreenGui") then
+					local _ = error
 					string.format("custom fov asset \"%s\" is not a ScreenGui", tostring(p389))
 					error()
 				end
 				local check3 = v562:FindFirstChild("check")
 				if check3 == nil or not check3:IsA("GuiObject") then
+					local _ = error
 					string.format(
 						"custom fov asset \"%s\" is missing a top-level \"check\" GuiObject",
 						tostring(p389)
@@ -112438,6 +112675,7 @@ local function f7069()
 				end
 				local container5 = v562:FindFirstChild("container")
 				if container5 == nil or not container5:IsA("GuiObject") then
+					local _ = error
 					string.format(
 						"custom fov asset \"%s\" is missing a top-level \"container\" GuiObject",
 						tostring(p389)
@@ -112448,6 +112686,7 @@ local function f7069()
 				local v563, v564
 				v564, v563 = f7440(container5, t311)
 				if not v564 then
+					local _ = error
 					if not v563 then
 						v563 = string.format(
 							"failed to load custom fov asset \"%s\" callbacks",
@@ -112765,65 +113004,53 @@ local function f7452()
 
 	local function f7454()
 		if up0 then
-			up1(up2[up3("@", 8025391308082)] ..
+			up1("[" ..
 				up4() ..
-					up2[up3(
-						"\198\5\158\149\150H\31\14\31\12\163}g\158\31H\4\5\208[",
-						21377778372037
-					)] .. up5(up6) .. up2[up3("\229\215", 957806936956)])
+					"] Sending ticket...(" .. up5(up6) .. ")\n")
 		end
 		if up6 == false then
 			up7 = up8(up9)
 		else
 			local t1 = up6
 			local request3 = t1.request
-			local t2 = { [up2[up3("E\143\147", 17306025115381)]] = up9 }
+			local t2 = { ["Url"] = up9 }
 			up7 = request3(t1, t2)
 		end
 		if up0 then
-			up1(up2[up3("\136", 8205785439706)] ..
+			up1("[" ..
 				up4() ..
-					up2[up3("\20N\188+\204\18\227\131`OM\249P=\163n\206\2432", 6507074033580)])
+					"] Ticket responded\n")
 		end
 		if up7 and 3 < #up7 then
-			if up7 == up2[up3(",.[\"@+o>\223", 19626452010854)] then
+			if up7 == "NOT_FOUND" then
 				up10 = true
 				up11 = false
 				up12 = false
 				up13 = 1
 				up14 = 2
-				up15:GetService(up2[up3("K\26\21\0193\18\164", 34803182108316)])[up2[up3(
-					"\210\201\222Q\159{D\181\180\253d",
-					29684498623485
-				)]]:Kick(up2[up3(
-					"\3\174d\163\173\15\196\248\n\148\211g\189\226M\252,\146?T\145^m\161\29J\31mM\158n\1\176D\232\133\t\2291r*\138W\145\0190\29\152I\176\177\147X^3\153O\219\180",
-					33049708197947
-				)])
+				up15:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
 				up16()
 			end
-			if up7 == up2[up3("\198\137\162J", 30249304059403)] then
+			if up7 == "FAIL" then
 				up10 = true
 				up11 = false
 				up12 = false
 				up13 = 1
 				up14 = 2
 				writefile(
-					up2[up3(
-						"\231\151|(\168\248]\170\254\215\233V\231k\136M\172\129\168",
-						14824532030958
-					)],
-					up2[up3("s25z\154\234a\131\145", 15250820544379)]
+					"luarmor-dbgfail.txt",
+					"resp:fail"
 				)
 				while true do
 				end
 			end
 			up7 = up17(up7)[1]
-			if up7 == up18(up19 * up20 % 100000 + up21 + 18735) .. up2[up3("", 28489387501476)] then
+			if up7 == up18(up19 * up20 % 100000 + up21 + 18735) .. "" then
 				up22 = up22 + 1
 				up23 = true
 				up24 = true
 			elseif up7 == up25(up19 * up20 % 100000 + up21 + 18735 + 4919) ..
-				up2[up3("", 15233640150891)] then
+				"" then
 				up23 = true
 				up24 = true
 				up26 = true
@@ -112839,10 +113066,7 @@ local function f7452()
 				up12 = false
 				up13 = 1
 				up14 = 2
-				up15:GetService(up2[up3("\197>x\169\18fL", 29485850323780)])[up2[up3("\172\15\203V*\147lM\179R\26", 24838553885276)]]:Kick(up2[up3(
-					"\174\191bRRQ*\193\216\185'\25\154\n\158j\6\129\242\184\187\21\21D\245\225tL\179\160(",
-					22159486275741
-				)] .. up22)
+				up15:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. up22)
 			end
 		end
 	end
@@ -112862,86 +113086,70 @@ local function f7452()
 			up6(f7457)
 			local f7458 = up7
 			f7457 = up3
-			f7457 = f7457 .. up8[up9("", 15363566876644)]
+			f7457 = f7457 .. ""
 			local v4 = f7458(f7457)
 			f7457 = up7
-			f7457 = f7457(up10(up3 + up11) .. up8[up9("", 6862493423863)] .. up12(up2 + up13))
-			f7457 = f7457 .. up7(up2 .. up8[up9("", 13612240515461)])
+			f7457 = f7457(up10(up3 + up11) .. "" .. up12(up2 + up13))
+			f7457 = f7457 .. up7(up2 .. "")
 			local v5 = f7457
 			f7457 = up9
-			f7457 = f7457("", 26792823644536)
-			f7457 = up8[f7457]
-			local v6 = up14[up8[up9("\251k\3\137", 8239072452089)]] ..
-				up8[up9("\243", 6554320115672)] ..
+			f7457 = ""
+			local v6 = up14["Host"] ..
+				"/" ..
 					up15 ..
-						up8[up9("\1716y\6\132\215\1\133#\18\21'\12\146H\155\195\17", 8461343792840)] ..
-							(v4 .. v5) .. up8[up9("\224\212\238", 27556277380159)] .. up16
+						"/auth/heartbeat?t=" ..
+							(v4 .. v5) .. "&s=" .. up16
 
 			local function f7459()
 				if up0 then
-					up1(up2[up3("@", 8025391308082)] ..
+					up1("[" ..
 						up4() ..
-							up2[up3(
-								"\198\5\158\149\150H\31\14\31\12\163}g\158\31H\4\5\208[",
-								21377778372037
-							)] .. up5(up6) .. up2[up3("\229\215", 957806936956)])
+							"] Sending ticket...(" .. up5(up6) .. ")\n")
 				end
 				if up6 == false then
 					f7457 = up8(v6)
 				else
 					local t3 = up6
 					local request4 = t3.request
-					local t4 = { [up2[up3("E\143\147", 17306025115381)]] = v6 }
+					local t4 = { ["Url"] = v6 }
 					f7457 = request4(t3, t4)
 				end
 				if up0 then
-					up1(up2[up3("\136", 8205785439706)] ..
+					up1("[" ..
 						up4() ..
-							up2[up3(
-								"\20N\188+\204\18\227\131`OM\249P=\163n\206\2432",
-								6507074033580
-							)])
+							"] Ticket responded\n")
 				end
 				if f7457 and 3 < #f7457 then
-					if f7457 == up2[up3(",.[\"@+o>\223", 19626452010854)] then
+					if f7457 == "NOT_FOUND" then
 						up10 = true
 						up11 = false
 						up12 = false
 						up13 = 1
 						up14 = 2
-						up15:GetService(up2[up3("K\26\21\0193\18\164", 34803182108316)])[up2[up3(
-							"\210\201\222Q\159{D\181\180\253d",
-							29684498623485
-						)]]:Kick(up2[up3(
-							"\3\174d\163\173\15\196\248\n\148\211g\189\226M\252,\146?T\145^m\161\29J\31mM\158n\1\176D\232\133\t\2291r*\138W\145\0190\29\152I\176\177\147X^3\153O\219\180",
-							33049708197947
-						)])
+						up15:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
 						up16()
 					end
-					if f7457 == up2[up3("\198\137\162J", 30249304059403)] then
+					if f7457 == "FAIL" then
 						up10 = true
 						up11 = false
 						up12 = false
 						up13 = 1
 						up14 = 2
 						writefile(
-							up2[up3(
-								"\231\151|(\168\248]\170\254\215\233V\231k\136M\172\129\168",
-								14824532030958
-							)],
-							up2[up3("s25z\154\234a\131\145", 15250820544379)]
+							"luarmor-dbgfail.txt",
+							"resp:fail"
 						)
 						while true do
 						end
 					end
 					f7457 = up17(f7457)[1]
 					if f7457 == up18(up19 * up20 % 100000 + up21 + 18735) ..
-						up2[up3("", 28489387501476)] then
+						"" then
 						up22 = up22 + 1
 						up23 = true
 						up24 = true
 					elseif f7457 == up25(up19 * up20 % 100000 + up21 + 18735 + 4919) ..
-						up2[up3("", 15233640150891)] then
+						"" then
 						up23 = true
 						up24 = true
 						up26 = true
@@ -112957,10 +113165,7 @@ local function f7452()
 						up12 = false
 						up13 = 1
 						up14 = 2
-						up15:GetService(up2[up3("\197>x\169\18fL", 29485850323780)])[up2[up3("\172\15\203V*\147lM\179R\26", 24838553885276)]]:Kick(up2[up3(
-							"\174\191bRRQ*\193\216\185'\25\154\n\158j\6\129\242\184\187\21\21D\245\225tL\179\160(",
-							22159486275741
-						)] .. up22)
+						up15:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. up22)
 					end
 				end
 			end
@@ -113029,11 +113234,13 @@ local function f7452()
 		local v11, v12, f7465
 		local t7, v9, v10
 		repeat
+			local _ = bit32.band
 			v11 = "<i8"
 			v12 = "\184\1\0\0\0\0\0\0"
 			f7465 = string.unpack(v11, v12)
 			v10 = f7465 < 134
 		until v10
+		local _ = 24453 + bit32.band(v10, f7465(v11, v12), (string.len("\184\202"))) + -24349
 		if not up0.cache.ba then
 			t7 = {}
 			v9 = up1()
@@ -113071,6 +113278,7 @@ local function f7452()
 		local v13 = string.byte("\185\248`{\243", 4, 5) + 220
 		local v14 = 30
 		repeat
+			local _ = -3221199069 + f7471(v13, v14) + -26485
 			f7471 = nil
 			v13 = nil
 			v14 = nil
@@ -113091,6 +113299,7 @@ local function f7452()
 			local v18
 			v18 = not not false
 			if not v18 then
+				local _ = ipairs
 				_G["bit32.bxor"](nil, nil)
 				ipairs(nil)
 			end
@@ -113122,6 +113331,7 @@ local function f7452()
 				local v22
 				v22 = not not false
 				if not v22 then
+					local _ = ipairs
 					_G["bit32.bxor"](nil, nil)
 					ipairs(nil)
 				end
@@ -113216,7 +113426,7 @@ local function f7452()
 		local v32 = nil
 		local f7484 = assert
 		local v33
-		v33 = 2 <
+		v33 = 2 < bit32.rrotate(429, 17)
 		if not v33 then
 			v32 = up3
 			;(nil)((nil)(v32, "Promise.each"))
@@ -113374,6 +113584,7 @@ local function f7452()
 	local function f7500(...)
 		local v53, t23
 		t23, v53 = ...
+		local _ = assert
 		local v54
 		v54 = not (v53 == nil)
 		assert(v54, "Argument #2 to Promise.Error.isKind must not be nil")
@@ -113583,6 +113794,7 @@ local function f7452()
 		local t29, v83
 		v83, t29 = ...
 		ipairs(t29)
+		local _ = setmetatable
 		local t30 = {}
 
 		function t30.__index(_, p24)
@@ -113641,6 +113853,7 @@ local function f7452()
 				f7529 = f7529(nil, nil, f7530)
 				;(nil)[nil] = f7529
 			end
+			;(nil)()
 		end
 	end
 
@@ -113683,6 +113896,7 @@ local function f7452()
 	end
 
 	local function f7533(p27, p28)
+		local _ = assert
 		local v91
 		v91 = p28 == nil
 		if not v91 then
@@ -113693,6 +113907,7 @@ local function f7452()
 	end
 
 	local function f7534(...)
+		local _ = bit32.countrz
 		local v92 = string.len("")
 		while true do
 			local _continue235 = false
@@ -113706,6 +113921,7 @@ local function f7452()
 			if _continue235 then
 				continue
 			end
+			local _ = 773 + bit32.countrz(v92) + -771
 			local v93, v94
 			v94, v93 = ...
 			local _, v95
@@ -113726,6 +113942,7 @@ local function f7452()
 		repeat
 			f7538 = bit32.bxor
 		until false
+		local _ = 18612 + f7538(true, nil) + -18708
 		v97 = ...
 		f7537 = up0
 		return (f7537(v97:awaitStatus()))
@@ -113782,6 +113999,7 @@ local function f7452()
 	end
 
 	local function f7545(p34, p35)
+		local _ = assert
 		local v101
 		v101 = type(p35) == "number"
 		assert(v101, "Bad argument #2 to Promise.some: must be a number")
@@ -113955,6 +114173,7 @@ local function f7452()
 	local function f7567(...)
 		local v110, v111
 		v111, v110 = ...
+		local _ = assert
 		local v112
 		v112 = v110 == nil
 		while v112 do
@@ -113973,6 +114192,7 @@ local function f7452()
 
 	local function f7570(p46, _)
 		local f7571 = up0
+		local _ = xpcall
 		up1(p46)
 		xpcall()
 		return (f7571())
@@ -114038,13 +114258,15 @@ local function f7452()
 
 	local function f7578(p49)
 		local t39 = {}
+		local _ = string.format
 		local v118 = p49.kind
 		if not v118 then
 			v118 = "?"
 		end
 		t39[1] = (string.format("-- Promise.Error(%s) --", v118)) -- multiple values truncated
 		for _, t40 in ipairs(p49:getErrorChain()) do
-
+			local _ = table.insert
+			local _ = table.concat
 			local v119 = _G["table.create"](2)
 			if t40.trace then
 			end
@@ -114175,6 +114397,7 @@ local function f7452()
 			local t42, v136
 			v136, t42 = ...
 			ipairs(t42)
+			local _ = setmetatable
 			local t43 = {}
 
 			function t43.__index(_, p53)
@@ -114232,6 +114455,7 @@ local function f7452()
 		function v137.isKind(...)
 			local v142, t45
 			t45, v142 = ...
+			local _ = assert
 			local v143
 			v143 = not (v142 == nil)
 			assert(v143, "Argument #2 to Promise.Error.isKind must not be nil")
@@ -114269,13 +114493,15 @@ local function f7452()
 
 		function v137.__tostring(p57)
 			local t48 = {}
+			local _ = string.format
 			local v145 = p57.kind
 			if not v145 then
 				v145 = "?"
 			end
 			t48[1] = (string.format("-- Promise.Error(%s) --", v145)) -- multiple values truncated
 			for _, t49 in ipairs(p57:getErrorChain()) do
-
+				local _ = table.insert
+				local _ = table.concat
 				local v146 = _G["table.create"](2)
 				if t49.trace then
 				end
@@ -114293,6 +114519,7 @@ local function f7452()
 		end
 
 		local function f7601(p59)
+			local _ = assert
 			local v147
 			v147 = not (p59 == nil)
 			assert(v147, "traceback is nil")
@@ -114313,6 +114540,7 @@ local function f7452()
 
 		local function f7604(p61, _)
 			local f7605 = f7600
+			local _ = xpcall
 			f7601(p61)
 			xpcall()
 			return (f7605())
@@ -114506,6 +114734,7 @@ local function f7452()
 		f7597 = "_try"
 
 		v154 = function(...)
+			local _ = bit32.countrz
 			local v164 = string.len("")
 			while true do
 				local _continue244 = false
@@ -114519,6 +114748,7 @@ local function f7452()
 				if _continue244 then
 					continue
 				end
+				local _ = 773 + bit32.countrz(v164) + -771
 				local v165, v166
 				v166, v165 = ...
 				local _, v167
@@ -114633,6 +114863,7 @@ local function f7452()
 		f7597 = "some"
 
 		v154 = function(p86, p87)
+			local _ = assert
 			local v173
 			v173 = type(p87) == "number"
 			assert(v173, "Bad argument #2 to Promise.some: must be a number")
@@ -114675,6 +114906,7 @@ local function f7452()
 					local v177
 					v177 = not not false
 					if not v177 then
+						local _ = ipairs
 						_G["bit32.bxor"](nil, nil)
 						ipairs(nil)
 					end
@@ -114691,6 +114923,7 @@ local function f7452()
 		f7597 = "race"
 
 		v154 = function(p93)
+			local _ = assert
 			local v178
 			v178 = type(p93) == up0
 			assert(v178, string.format(v133, "Promise.race"))
@@ -114734,7 +114967,7 @@ local function f7452()
 			local v182 = nil
 			local f7633 = assert
 			local v183
-			v183 = 2 <
+			v183 = 2 < bit32.rrotate(429, 17)
 			if not v183 then
 				v182 = v134
 				;(nil)((nil)(v182, "Promise.each"))
@@ -114864,6 +115097,7 @@ local function f7452()
 		v154 = nil
 
 		function t51.delay(p101)
+			local _ = assert
 			local v195
 			v195 = type(p101) == "number"
 			local _leave246 = false
@@ -114931,6 +115165,7 @@ local function f7452()
 						f7644 = bit32.band
 						v200 = 57
 					end
+					local _ = 18070 + f7645((f7644(
 						v200,
 						(string.unpack(">i8", "\0\0\0\0\0\0\0\165"))
 					))) + -18094
@@ -115013,12 +115248,14 @@ local function f7452()
 		v154 = "andThen"
 
 		local function f7652(p107, p108, p109)
+			local _ = assert
 			local v206
 			v206 = p108 == nil
 			if not v206 then
 				v206 = f7595(p108)
 			end
 			assert(v206, string.format(v134, "Promise:andThen"))
+			local _ = assert
 			local v207
 			v207 = p109 == nil
 			if not v207 then
@@ -115035,6 +115272,7 @@ local function f7452()
 		local function f7653(...)
 			local v208, v209
 			v209, v208 = ...
+			local _ = assert
 			local v210
 			v210 = v208 == nil
 			while v210 do
@@ -115091,6 +115329,7 @@ local function f7452()
 		local function f7659(...)
 			local v216, v217
 			v217, v216 = ...
+			local _ = assert
 			f7595(v216)
 			assert(select(3, ...))
 			local _, v218
@@ -115126,6 +115365,7 @@ local function f7452()
 
 		local function f7663(...)
 			while true do
+				local _ = -5759994 + (bit32.rrotate(
 					string.unpack(">i8", "\0\0\0\0\0\0\0\176"),
 					17
 				) + 357) + -7297
@@ -115235,6 +115475,7 @@ local function f7452()
 		v154 = "finally"
 
 		local function f7671(p119, p120)
+			local _ = assert
 			local v232
 			v232 = p120 == nil
 			if not v232 then
@@ -115251,6 +115492,7 @@ local function f7452()
 		local function f7672(...)
 			local v233, v234
 			v234, v233 = ...
+			local _ = assert
 			f7595(v233)
 			assert(select(3, ...))
 			local _, v235
@@ -115395,6 +115637,7 @@ local function f7452()
 			repeat
 				f7685 = bit32.bxor
 			until false
+			local _ = 18612 + f7685(true, nil) + -18708
 			v255 = ...
 			f7684 = v254
 			return (f7684(v255:awaitStatus()))
@@ -115489,7 +115732,7 @@ local function f7452()
 		function t51.prototype._reject(p122)
 			local Status2 = t51.Status
 			local v264
-			v264 = 275 <=
+			v264 = 275 <= math.modf(3.141592653589793)
 			if v264 then
 				p122._values = Status2
 				local t75 = p122._queuedReject
@@ -115574,6 +115817,7 @@ local function f7452()
 			local v270, f7693
 			f7693, v270 = ...
 			assert(f7595(f7693), "Parameter #1 to Promise.retry must be a function")
+			local _ = assert
 			local v271
 			v271 = type(v270) == "number"
 			assert(v271, "Parameter #2 to Promise.retry must be a number")
@@ -115591,9 +115835,11 @@ local function f7452()
 
 		function t51.retryWithDelay(p123, p124, p125, ...)
 			assert(f7595(p123), "Parameter #1 to Promise.retry must be a function")
+			local _ = assert
 			local v273
 			v273 = type(p124) == "number"
 			assert(v273, "Parameter #2 (times) to Promise.retry must be a number")
+			local _ = assert
 			local v274
 			v274 = type(p125) == "number"
 			assert(v274, "Parameter #3 (seconds) to Promise.retry must be a number")
@@ -115982,6 +116228,7 @@ local function f7452()
 
 	local function f7735(p142)
 		local function f7736(...)
+			local _ = 23950 + bit32.countlz((bit32.bxor(
 				math.modf(3.141592653589793),
 				string.unpack(">i8", "\0\0\0\0\0\0\0n"),
 				112
@@ -116033,6 +116280,7 @@ local function f7452()
 
 		function t112:_Initialize()
 			local function f7742(...)
+				local _ = 23950 + bit32.countlz((bit32.bxor(
 					math.modf(3.141592653589793),
 					string.unpack(">i8", "\0\0\0\0\0\0\0n"),
 					112
@@ -116144,6 +116392,7 @@ local function f7452()
 		if not _leave252 and not _leave253 then
 			local v314
 			v314, v310 = ...
+			local _ = up0[up1(v309, 1, 1)] * 16
 			v312 = up1(v314, 2, 2)
 		end
 		if not _leave252 then
@@ -116168,7 +116417,7 @@ local function f7452()
 		repeat
 			local v316 = up1(up2(p156, v315, v315 + 1), true)
 			v315 = v315 + 2
-			local v317 = up3[up4("", 13613314290054)]
+			local v317 = ""
 			for _ = 1, v316 do
 				v317 = v317 .. up1(up2(p156, v315, v315 + 1))
 				v315 = v315 + 2
@@ -116184,7 +116433,7 @@ local function f7452()
 			local v318 = "\144+17"
 			f7750 = string.byte(v318, 3, 4) <= 429
 			if f7750 then
-				local v319 =
+				local v319 = math.modf(3.141592653589793)
 				while v319 do
 				end
 			elseif not f7750(v318, "\0\0\0\0\0\0\1D") then
@@ -117112,6 +117361,7 @@ local function f7452()
 		up0.al()
 		up0.a4()
 		local v398 = up0.b()
+		local _ = up0.ao().Throwable
 		local v399 = up0.ah()
 		local v400 = _G["table.create"](1)
 
@@ -118348,8 +118598,6 @@ local function f7452()
 			end
 		end)({[0]=c0})
 		end)(v527)
-		local function f7873()
-		end
 		local t217 = { HitboxHead = true, Head = true }
 		local t218 = {}
 		t218.__index = t218
@@ -118360,7 +118608,8 @@ local function f7452()
 		end
 
 		function t218._SelectBestExhaustive(...)
-
+			(nil)()
+			;(nil)()
 		end
 
 		function t218:IsLockable(p314)
@@ -118375,11 +118624,10 @@ local function f7452()
 
 		function t218.SelectPlayer()
 		end
-		local function f7874()
-		end
 
 		function t218._SelectClosestFromState(...)
 			(nil)[0] = nil + nil
+			;(nil)()
 			up85 = nil
 		end
 
@@ -118818,6 +119066,7 @@ local function f7452()
 	end
 
 	local function f7899(p358, p359, p360)
+		local _ = table.insert
 		local hiddenDecals2 = p359.hiddenDecals
 		local t232 = { decal = p360, transparency = p360.Transparency }
 		table.insert(hiddenDecals2, t232)
@@ -118969,6 +119218,7 @@ local function f7452()
 		end
 
 		function t233:_HideDecal(p369, p370)
+			local _ = table.insert
 			local hiddenDecals4 = p369.hiddenDecals
 			local t236 = { decal = p370, transparency = p370.Transparency }
 			table.insert(hiddenDecals4, t236)
@@ -119331,6 +119581,7 @@ local function f7452()
 			local v586 = v584 + 1
 			buffer.writeu32(p383, v586, p385.wrap.hash)
 			local v587 = v586 + 4
+			local _ = buffer.writeu8
 			local v588 = p385.wrap.inverted
 			v588 = v588 and 1 or 0
 			buffer.writeu8(p383, v587, v588)
@@ -119744,6 +119995,7 @@ local function f7452()
 				local v661 = v659 + 1
 				buffer.writeu32(p415, v661, p417.wrap.hash)
 				local v662 = v661 + 4
+				local _ = buffer.writeu8
 				local v663 = p417.wrap.inverted
 				v663 = v663 and 1 or 0
 				buffer.writeu8(p415, v662, v663)
@@ -120955,8 +121207,6 @@ local function f7951()
 		up0.bh()
 		up0.bi()
 		local Workspace = game:GetService("Workspace")
-		local function f7978()
-		end
 		local t17 = {}
 		function t17.lookAtCamera()
 		end
@@ -123190,6 +123440,7 @@ local function f7951()
 			if row ~= nil then
 				local Label5 = row.Label
 				if not (Label5 == nil or Label5 == "") then
+					local _ = table.insert
 					local t96 = { Label = Label5, Crumb = p195, Open = p196 }
 					local v302 = row
 
@@ -123581,10 +123832,12 @@ local function f7951()
 		if p257._realized then
 			return
 		end
+		local _ = assert
 		local v338
 		v338 = p257._kind == "section"
 		assert(v338, "Container.Realize is for sections")
 		local _resolveParent = p257._resolveParent
+		local _ = assert
 		local v339
 		v339 = not (_resolveParent == nil)
 		assert(v339, "Container.Realize: section has no parent resolver")
@@ -123930,10 +124183,12 @@ local function f7951()
 			if self._realized then
 				return
 			end
+			local _ = assert
 			local v394
 			v394 = self._kind == "section"
 			assert(v394, "Container.Realize is for sections")
 			local _resolveParent2 = self._resolveParent
+			local _ = assert
 			local v395
 			v395 = not (_resolveParent2 == nil)
 			assert(v395, "Container.Realize: section has no parent resolver")
@@ -124387,6 +124642,7 @@ local function f7951()
 				if row2 ~= nil then
 					local Label6 = row2.Label
 					if not (Label6 == nil or Label6 == "") then
+						local _ = table.insert
 						local t152 = { Label = Label6, Crumb = p348, Open = p349 }
 						local v441 = row2
 
@@ -125077,6 +125333,7 @@ local function f7951()
 		local Extend78 = p396:Extend()
 		local v482 = up0.newBatch(Extend78)
 		local _subtabs = p394._subtabs
+		local _ = assert
 		local v483
 		v483 = not (_subtabs == nil)
 		assert(v483, "Page.new requires the tab's page header")
@@ -125274,6 +125531,7 @@ local function f7951()
 			local Extend79 = p408:Extend()
 			local v503 = v501.newBatch(Extend79)
 			local _subtabs2 = p406._subtabs
+			local _ = assert
 			local v504
 			v504 = not (_subtabs2 == nil)
 			assert(v504, "Page.new requires the tab's page header")
@@ -127061,6 +127319,7 @@ local function f8331()
 			_active = nil,
 			_captured = {}
 		}
+		local _ = setmetatable
 		local _captured = t1._captured
 		local t2 = { __mode = "k" }
 		setmetatable(_captured, t2)
@@ -127113,6 +127372,7 @@ local function f8331()
 				_active = nil,
 				_captured = {}
 			}
+			local _ = setmetatable
 			local _captured2 = t4._captured
 			local t5 = { __mode = "k" }
 			setmetatable(_captured2, t5)
@@ -128935,6 +129195,7 @@ local function f8331()
 			_G["table.create"](61)
 			_G["table.create"](141)
 			_G["table.create"](166)
+			;(nil)()
 			return true
 		end
 
@@ -129286,6 +129547,7 @@ local function f8331()
 							local v251 = up2.normalize(t80.soundId)
 							if v251 ~= nil then
 								t79[v250] = true
+								local _ = table.insert
 								local t81 = { name = v250, soundId = v251 }
 								table.insert(t78, t81)
 							end
@@ -129370,6 +129632,7 @@ local function f8331()
 		if v260 == nil then
 			return (up1.err("CustomSounds", "Add", "sound id cannot be empty"))
 		end
+		local _ = table.insert
 		local _data3 = p91._data
 		local t82 = { name = v259, soundId = v260 }
 		table.insert(_data3, t82)
@@ -129457,6 +129720,7 @@ local function f8331()
 								local v276 = v262.normalize(t85.soundId)
 								if v276 ~= nil then
 									t84[v275] = true
+									local _ = table.insert
 									local t86 = { name = v275, soundId = v276 }
 									table.insert(t83, t86)
 								end
@@ -129599,6 +129863,7 @@ local function f8331()
 				self._resolvedById[p105] = false
 				local ReportResult25 = self._errorReporter.ReportResult
 				local err52 = v266.err
+				local _ = string.format
 				tostring(p105)
 				tostring(tostring(p107))
 				string.format()
@@ -129693,6 +129958,7 @@ local function f8331()
 			if v288 == nil then
 				return (v266.err("CustomSounds", "Add", "sound id cannot be empty"))
 			end
+			local _ = table.insert
 			local _data5 = self._data
 			local t93 = { name = v287, soundId = v288 }
 			table.insert(_data5, t93)
@@ -130758,6 +131024,7 @@ local function f8331()
 	end
 
 	local function f8555()
+		local _ = -220970 + bit32.bxor(
 			bit32.lrotate(
 				string.unpack(">i8", "\0\0\0\0\0\0\0007"),
 				(string.unpack("<i8", "\12\0\0\0\0\0\0\0"))
@@ -130797,6 +131064,7 @@ local function f8331()
 	end
 
 	local function f8559(...)
+		local _ = -1704080 + bit32.rshift(
 			bit32.lrotate(string.unpack(">i8", "\0\0\0\0\0\0\0005"), 17),
 			2
 		) + -32435
@@ -130826,6 +131094,7 @@ local function f8331()
 		end
 
 		local function f8563(...)
+			local _ = -1704080 + bit32.rshift(
 				bit32.lrotate(string.unpack(">i8", "\0\0\0\0\0\0\0005"), 17),
 				2
 			) + -32435
@@ -130846,6 +131115,7 @@ local function f8331()
 				table.remove(p207._events, 1)
 			end
 		end
+
 		local v358 = 10
 		local v359 = 256
 
@@ -131081,6 +131351,7 @@ local function f8331()
 		local v371 = _G["table.create"](4)
 		local v372 = _G["table.create"](5)
 		local v373 = f8582(v371)
+		local _ = table.freeze
 		local t161 = { all = v372, item = v371 }
 
 		function t161.isItemCosmeticType(p219)
@@ -132937,6 +133208,7 @@ local function f8331()
 				table.remove(t339, v609)
 			end
 		end
+		local _ = table.insert
 		local v611 = math.clamp(p312.rank, 1, #t339 + 1)
 		local t340 = { key = v608, value = p312.value }
 		table.insert(t339, v611, t340)
@@ -133003,6 +133275,7 @@ local function f8331()
 					table.remove(t342, v624)
 				end
 			end
+			local _ = table.insert
 			local v626 = math.clamp(p320.rank, 1, #t342 + 1)
 			local t343 = { key = v623, value = p320.value }
 			table.insert(t342, v626, t343)
@@ -133088,6 +133361,7 @@ local function f8331()
 				).error)
 				return
 			end
+			local _ = setmetatable
 			local t346 = {}
 
 			function t346.__index(_, p324)
@@ -134998,6 +135272,7 @@ local function f8876()
 		if GetOriginal8 == nil then
 			return nil
 		end
+		local _ = next
 		local v77 = nil
 		while true do
 			local v78
@@ -135146,6 +135421,7 @@ local function f8876()
 			if GetOriginal9 == nil then
 				return nil
 			end
+			local _ = next
 			local v94 = nil
 			while true do
 				local v95
@@ -137153,6 +137429,7 @@ local function f8876()
 		local f9079 = bit32.lshift
 		local f9080 = string.len
 		repeat
+			local _ = -921038 + f9079(f9080("") + 225, 12) + -458
 			f9079 = nil
 			f9080 = nil
 		until not up0.cache.I
@@ -137817,6 +138094,7 @@ local function f8876()
 
 	local function f9136()
 		local v278 = Color3.fromRGB(238, 246, 255)
+		local _ = table.freeze
 		local t109 = {
 			DEFAULT_MAX_SPARKS = 18,
 			DEFAULT_MIN_SPEED = 10,
@@ -137942,6 +138220,7 @@ local function f8876()
 
 		function t116.new()
 			local v281 = up1(PlayerModule4:GetControls(), "activeController")
+			local _ = assert
 			local v282
 			v282 = not (v281 == nil)
 			assert(v282, "no active controller to hook")
@@ -139550,6 +139829,7 @@ local function f8876()
 				v406, v405 = up1(f9285)
 				v404 = false
 				if not v406 then
+					local _ = warn
 					string.format(
 						"Binding.bind('%s') -> failed to apply config value: %s",
 						tostring(table.concat(p412, "/")),
@@ -143156,6 +143436,7 @@ local function f9336()
 				f9535 = 363 <= f9535(3.141592653589793)
 			until f9535
 		end
+		local _ = 18532 + f9536((f9535("6\218\164\222\30", 1, nil))) + -18532
 		local t168 = { c = up1() }
 		up0.cache.l = t168
 		return t168.c
@@ -143166,6 +143447,7 @@ local function f9336()
 		local v224 = math.cos(math.rad(90))
 		local pi14 = math.pi
 		local pi15 = math.pi
+		local _ = table.freeze
 		local t169 = {
 			X_INVERSE = Inverse3,
 			OFFSET_ANGLE = v224,
@@ -147182,6 +147464,7 @@ local function f9336()
 			local v604 = 283
 			local v605, v606
 			repeat
+				local _ = 2227 + f9755(v604, 2) + -3358
 				f9755 = nil
 				v604 = nil
 				v607 = ...
@@ -147564,6 +147847,7 @@ local function f9336()
 				v643 = string.packsize(f9786)
 				if v643 then
 					local clock = os.clock
+					local _ = setmetatable
 					local t322 = {
 						_clock = clock,
 						_time0 = os.clock(),
@@ -147596,6 +147880,7 @@ local function f9336()
 					v644 = string.packsize(f9788)
 					if v644 then
 						local clock2 = os.clock
+						local _ = setmetatable
 						local t324 = {
 							_clock = clock2,
 							_time0 = os.clock(),
@@ -147701,6 +147986,7 @@ local function f9336()
 		end
 
 		function t326.Set(...)
+			local _ = 17496 + bit32.bor(
 				math.modf(3.141592653589793) + 268,
 				4,
 				(string.len("\233\248"))
@@ -148974,7 +149260,8 @@ local function f9797()
 		local f9844 = bit32.countrz
 		local f9845 = string.packsize
 		while true do
-			f9845 =
+			local _ = f9844((f9845("n=")))
+			f9845 = math.modf(3.141592653589793)
 			repeat
 				f9844 = 185
 			until f9844
@@ -149033,7 +149320,8 @@ local function f9797()
 			local f9851 = bit32.countrz
 			local f9852 = string.packsize
 			while true do
-				f9852 =
+				local _ = f9851((f9852("n=")))
+				f9852 = math.modf(3.141592653589793)
 				repeat
 					f9851 = 185
 				until f9851
@@ -149166,6 +149454,7 @@ local function f9797()
 		local v152
 		v152.texture = t61.Rain
 		local t62 = { Snow = v141, Rain = v145, Blizzard = v148 }
+		local _ = table.freeze
 		local t63 = {
 			LIGHTNING_PRESETS = t60,
 			LIGHTNING_RADIUS_MIN = 18,
@@ -149230,6 +149519,7 @@ local function f9797()
 		local f9861 = bit32.rrotate
 		local v157
 		repeat
+			local _ = -906564 + f9861(114, 19) + -27320
 			f9861 = nil
 			local v158 = ...
 			v157 = { keybind = up0.keybind }
@@ -149354,6 +149644,7 @@ local function f9797()
 			local f9871 = bit32.rrotate
 			local v168
 			repeat
+				local _ = -906564 + f9871(114, 19) + -27320
 				f9871 = nil
 				local v169 = ...
 				v168 = { keybind = t71.keybind }
@@ -150208,6 +150499,7 @@ local function f9797()
 			local v232 = p106
 			local v233 = v231
 			if v231 ~= nil then
+				local _ = debug.setupvalue
 				local t138 = {}
 
 				function t138.__index(_, p107)
@@ -150362,6 +150654,7 @@ local function f9797()
 				local v250 = self
 				local v251 = v249
 				if v249 ~= nil then
+					local _ = debug.setupvalue
 					local t146 = {}
 
 					function t146.__index(_, p122)
@@ -150777,6 +151070,7 @@ local function f9797()
 					"EmoteController upvalue not found at index 1 of PickEmote._PickByKey"
 				))
 			end
+			local _ = setmetatable
 			local t163 = {}
 
 			function t163.UseEmote(_, p159)
@@ -150852,6 +151146,7 @@ local function f9797()
 	local function f9958(p165)
 		local v290 = buffer.create(2)
 		buffer.writeu8(v290, 0, 1)
+		local _ = buffer.writeu8
 		p165 = p165 and 1 or 0
 		buffer.writeu8(v290, 1, p165)
 		return (buffer.tostring(v290))
@@ -150873,6 +151168,7 @@ local function f9797()
 			local v298 = buffer.create(v296)
 			buffer.copy(v298, 0, v291, v297, v296)
 			v293 = v297 + v296
+			local _ = table.insert
 			local t167 = { userIdHash = v294, payload = buffer.tostring(v298) }
 			table.insert(t166, t167)
 		end
@@ -150901,6 +151197,7 @@ local function f9797()
 		function t168.encodeShowActiveEvent(p171)
 			local v304 = buffer.create(2)
 			buffer.writeu8(v304, 0, 1)
+			local _ = buffer.writeu8
 			p171 = p171 and 1 or 0
 			buffer.writeu8(v304, 1, p171)
 			return (buffer.tostring(v304))
@@ -150922,6 +151219,7 @@ local function f9797()
 				local v312 = buffer.create(v310)
 				buffer.copy(v312, 0, v305, v311, v310)
 				v307 = v311 + v310
+				local _ = table.insert
 				local t170 = { userIdHash = v308, payload = buffer.tostring(v312) }
 				table.insert(t169, t170)
 			end
@@ -150972,6 +151270,7 @@ local function f9797()
 		local v313 = ">i8"
 		local v314 = "\0\0\0\0\0\0\0\188"
 		repeat
+			local _ = 15097 + (1 - f9966(v313, v314) - string.byte("w\0\174", 2, 3)) + -14801
 			f9966 = nil
 			v313 = nil
 			v314 = nil
@@ -150994,6 +151293,7 @@ local function f9797()
 		local f9969 = bit32.bxor
 		local t178
 		repeat
+			local _ = -4294955358 + f9969(-109, 390, (string.len(""))) + -11445
 			f9969 = nil
 			local t179 = ...
 			t178 = t179._fov
@@ -151168,6 +151468,7 @@ local function f9797()
 			local f9977 = bit32.bxor
 			local t193
 			repeat
+				local _ = -4294955358 + f9977(-109, 390, (string.len(""))) + -11445
 				f9977 = nil
 				local t194 = ...
 				t193 = t194._fov
@@ -151708,6 +152009,7 @@ local function f9797()
 							break
 						end
 						if v363 == CameraController5 then
+							local _ = setmetatable
 							local t219 = {}
 
 							function t219.GetPublicState()
@@ -154522,6 +154824,7 @@ local function f10149()
 			if v15 == nil then
 				break
 			end
+			local _ = table.insert
 			local t35 = { Time = t34.Time, Value = t34.Value }
 			table.insert(t33, t35)
 		end
@@ -154601,12 +154904,14 @@ local function f10149()
 		up4:SetAnimationSpeed(v24, true)
 		local v25, v26
 		if type(BreathingMin) == "number" or type(BreathingMax) == "number" then
+			local _ = math.floor
 			if BreathingMax then
 				v26 = BreathingMax
 			else
 				v26 = 1
 			end
 			local v27 = math.floor((1 - v26) * 100 + 0.5)
+			local _ = math.floor
 			if BreathingMin then
 				v25 = BreathingMin
 			else
@@ -154666,12 +154971,14 @@ local function f10149()
 			p30:SetAnimationSpeed(v41, true)
 			local v42, v43
 			if type(BreathingMin2) == "number" or type(BreathingMax2) == "number" then
+				local _ = math.floor
 				if BreathingMax2 then
 					v43 = BreathingMax2
 				else
 					v43 = 1
 				end
 				local v44 = math.floor((1 - v43) * 100 + 0.5)
+				local _ = math.floor
 				if BreathingMin2 then
 					v42 = BreathingMin2
 				else
@@ -154759,6 +155066,7 @@ local function f10149()
 				if v53 == nil then
 					break
 				end
+				local _ = table.insert
 				local t53 = { Time = t52.Time, Value = t52.Value }
 				table.insert(t51, t53)
 			end
@@ -154808,12 +155116,14 @@ local function f10149()
 				p42:SetAnimationSpeed(v64, true)
 				local v65, v66
 				if type(BreathingMin3) == "number" or type(BreathingMax3) == "number" then
+					local _ = math.floor
 					if BreathingMax3 then
 						v66 = BreathingMax3
 					else
 						v66 = 1
 					end
 					local v67 = math.floor((1 - v66) * 100 + 0.5)
+					local _ = math.floor
 					if BreathingMin3 then
 						v65 = BreathingMin3
 					else
@@ -156054,6 +156364,7 @@ local function f10149()
 		end
 
 		p110:Add(fighterState30:OnItemRemovedSignal(f10323))
+		local _ = next
 		local v119, v120
 		v120, v119 = fighterState30:GetItems()
 		while true do
@@ -156088,6 +156399,7 @@ local function f10149()
 			end
 
 			p115:Add(fighterState31:OnItemRemovedSignal(f10327))
+			local _ = next
 			local v122, v123
 			v123, v122 = fighterState31:GetItems()
 			while true do
@@ -156130,6 +156442,7 @@ local function f10149()
 		if _fighterState6 == nil then
 			return
 		end
+		local _ = next
 		local v126, v127
 		v127, v126 = _fighterState6:GetItems()
 		while true do
@@ -156339,6 +156652,7 @@ local function f10149()
 				end
 
 				p155:Add(fighterState32:OnItemRemovedSignal(f10338))
+				local _ = next
 				local v147, v148
 				v148, v147 = fighterState32:GetItems()
 				while true do
@@ -156439,6 +156753,7 @@ local function f10149()
 			if _fighterState7 == nil then
 				return
 			end
+			local _ = next
 			local v159, v160
 			v160, v159 = _fighterState7:GetItems()
 			while true do
@@ -156456,6 +156771,7 @@ local function f10149()
 			if _fighterState8 == nil then
 				return
 			end
+			local _ = next
 			local v162, v163
 			v163, v162 = _fighterState8:GetItems()
 			while true do
@@ -156490,6 +156806,7 @@ local function f10149()
 		if v165 == nil then
 			return
 		end
+		local _ = next
 		local v166 = up1
 		local v167 = nil
 		while true do
@@ -156507,6 +156824,7 @@ local function f10149()
 		if v169 == nil then
 			return
 		end
+		local _ = next
 		local v170 = up1
 		local v171 = nil
 		while true do
@@ -156557,6 +156875,7 @@ local function f10149()
 		end
 
 		p171:Add(fighterState33:OnItemRemovedSignal(f10348))
+		local _ = next
 		local v173, v174
 		v174, v173 = fighterState33:GetItems()
 		while true do
@@ -156590,6 +156909,7 @@ local function f10149()
 			end
 
 			p176:Add(fighterState34:OnItemRemovedSignal(f10352))
+			local _ = next
 			local v176, v177
 			v177, v176 = fighterState34:GetItems()
 			while true do
@@ -156626,6 +156946,7 @@ local function f10149()
 		if _fighterState9 == nil then
 			return
 		end
+		local _ = next
 		local v179, v180
 		v180, v179 = _fighterState9:GetItems()
 		while true do
@@ -156639,6 +156960,7 @@ local function f10149()
 	end
 
 	local function f10356(p182)
+		local _ = next
 		local _disabledItems = p182._disabledItems
 		local v182 = nil
 		while true do
@@ -156682,6 +157004,7 @@ local function f10149()
 			if v186 == nil then
 				return
 			end
+			local _ = next
 			local v187 = t239
 			local v188 = nil
 			while true do
@@ -156699,6 +157022,7 @@ local function f10149()
 			if v190 == nil then
 				return
 			end
+			local _ = next
 			local v191 = t239
 			local v192 = nil
 			while true do
@@ -156733,6 +157057,7 @@ local function f10149()
 			if _fighterState10 == nil then
 				return
 			end
+			local _ = next
 			local v193, v194
 			v194, v193 = _fighterState10:GetItems()
 			while true do
@@ -156766,6 +157091,7 @@ local function f10149()
 				end
 
 				p189:Add(fighterState35:OnItemRemovedSignal(f10363))
+				local _ = next
 				local v196, v197
 				v197, v196 = fighterState35:GetItems()
 				while true do
@@ -156810,6 +157136,7 @@ local function f10149()
 		end
 
 		function t240:_RevertItemMotion()
+			local _ = next
 			local _disabledItems2 = self._disabledItems
 			local v200 = nil
 			while true do
@@ -157899,7 +158226,9 @@ local function f10149()
 		if t298 and t298[1] then
 		end
 		local floor = math.floor
-
+		local _ = math.random
+		local _ = table.remove
+		local _ = string.char
 		local t299 = {}
 		local t300 = {}
 		for v302 = 1, 256 do
@@ -157924,6 +158253,7 @@ local function f10149()
 				until f10419 ~= 1
 				local v305 = f10419 % 32
 				local v306 = floor(f10420 / 2 ^ (13 - (f10419 - v305) / 32)) % 4294967296 / 2 ^ v305
+				local _ = floor(v306 % 1 * 4294967296) + floor(v306)
 				f10418 = _G["table.create"](4)
 			end
 			return (table.remove(f10418))
@@ -157954,23 +158284,24 @@ local function f10149()
 		if v309 then
 			f10420 = "\172"
 			f10419 = 31126577901884
-			v309 = ff97f23b97f93792992999() == t301[f10422(f10420, f10419)]
+			v309 = ff97f23b97f93792992999() == "j"
 		end
 		if not v309 then
 			v309 = false
 		end
 		f10420 = "6\143K\188=\r\226\146\248&\176;\3\231\195\134\133\143\248\204_\184\222\229\157\254\25"
 		f10419 = 2340828612740
-		local v310 = t301[f10422(f10420, f10419)]
+		local v310 = "eu1-roblox-auth.luarmor.net"
 		f10420 = USE_NON_SSL_NODE
 		f10419 = l_fastload_enabled
 		f10418 = 12971197083440
 		local v311 = f10418
 		f10418 = 33012126087192
-		local v312 = os[t301[f10422("(\204\6\168", 4882453074371)]](os[t301[f10422("UC\178}", v311)]](t301[f10422("\139L", f10418)]))
+		local v312 = os["time"](os["date"]("*t"))
 		f10418 = 5436520764359
-		local f10423 = os[t301[f10422("v\220\162\204", f10418)]]
+		local f10423 = os["time"]
 		f10418 = "f\150\187#"
+		local _ = os["date"]
 		f10418 = "\209\6D"
 		local v313 = v312 - f10423(select(2, ...))
 		local v314
@@ -157985,15 +158316,10 @@ local function f10149()
 			local t304 = _G["table.create"](2)
 			f10418 = "\226XO\140q\210K\180:%\205B\254\182.y\229\163\245\219v$\209Y\171\6f"
 			f10418 = f10422
-			f10418 = f10418(
-				"N\235X\233G\12\243\241\203\163@s\250\190\137\214\t\2267j\174\247\195\241\237\1\160",
-				16047561292385
-			)
-			f10418 = t301[f10418]
+			f10418 = "eu2-roblox-auth.luarmor.net"
 			local math2 = math
 			f10418 = f10422
-			f10418 = f10418("\195K\\\173\155:", 14086848885567)
-			f10418 = t301[f10418]
+			f10418 = "random"
 			local f10427 = math2[f10418]
 			f10418 = 1
 			f10426 = f10422
@@ -158003,42 +158329,10 @@ local function f10149()
 			local t305 = _G["table.create"](11)
 			f10418 = "\136M\165r\0017j\254\186\147Ds\224x\241\151\231]k\137\28\184\17f,\138\149"
 			f10418 = f10422
-			f10418 = f10418(
-				"\211:<?S\222\17[!\164Yl\240F\230\"\193\251\128\220a\29\252\133\194\135\163",
-				2297877629020
-			)
-			f10418 = t301[f10418]
-				"s\146p: \167\177_\228\255\136kW\246\245\253e\146M\245\19T\169IP\21\187",
-				2572763924828
-			)]
-				"'\26L\252\146.\25c\151\208\248\207\149\154\r\229I\243\26\149\181\139k`+\16\2",
-				19333311546965
-			)]
-				"$\1C\213\234\205?\169\200\"\188@\0\188\128\27C\244\12\203l\224\3p\245\187\233",
-				21697763200751
-			)]
-				"\30\197\216\\\25\163\155i\1304i\2af\14\181\15\174MD\174\131\206\208Z\195\163",
-				15465575462979
-			)]
-				"\5\218\157_\154\171yf\184\193\138\26T\188\11\16#K\128\144:\7\197m\210\14\252",
-				30187025133009
-			)]
-				"\182\186\142\199\t\163\189V 8\195g\230w\148\228\193v\199\\\186\212\246\174\130H\254",
-				19714501527480
-			)]
-				"\248~\133\207\196r\178\244G\251 /\n\30\169\154%m\187W\141{\235\246\179\243\240",
-				7900833455294
-			)]
-				"*\211\203v\129\12j\218\209A\222\15\186[S\135\165w\1725[tI\n \212\199",
-				17090196422188
-			)]
-				"y\193\242QA\127\235\22\"\3\134\159.\0\5\224\130\236\239\27\254.\224\194\197\188\188",
-				25925213773392
-			)]
+			f10418 = "as2-roblox-auth.luarmor.net"
 			local math3 = math
 			f10418 = f10422
-			f10418 = f10418("x\212\179\192\182-", 34852575739594)
-			f10418 = t301[f10418]
+			f10418 = "random"
 			local f10428 = math3[f10418]
 			f10418 = 1
 			f10426 = f10422
@@ -158048,18 +158342,10 @@ local function f10149()
 			local t306 = _G["table.create"](3)
 			f10418 = "\240\230R\240>\184pcy\16\164\25JH\231\14\235b\3\8\138b\1\249\194\4\255"
 			f10418 = f10422
-			f10418 = f10418(
-				"\132\141w\195|l\143>'\247n\175\248+\249\226\144<C!*\177\160\233\21\2I",
-				27390916092837
-			)
-			f10418 = t301[f10418]
-				"\rl\1903\128\248l\136-%\192js\153c\179\238b\157\207\209#\200;\238Nt",
-				14158791783298
-			)]
+			f10418 = "us2-roblox-auth.luarmor.net"
 			local math4 = math
 			f10418 = f10422
-			f10418 = f10418("\237\238q\243\0025", 446690230688)
-			f10418 = t301[f10418]
+			f10418 = "random"
 			local f10429 = math4[f10418]
 			f10418 = 1
 			f10426 = f10422
@@ -158069,18 +158355,13 @@ local function f10149()
 			local game2 = game
 			local GetService = game2.GetService
 			f10418 = f10422
-			f10418 = f10418("\11\19\5\4\2527\137", 10601376556689)
-			f10418 = t301[f10418]
+			f10418 = "Players"
 			local v316 = f10418
 			f10418 = "6\164p?\177pjs'\184]"
-			local t307 = GetService(game2, v316)[t301[f10422(f10418, 30941888671888)]]
+			local t307 = GetService(game2, v316)["LocalPlayer"]
 			local Kick = t307.Kick
 			f10418 = f10422
-			f10418 = f10418(
-				"X\208\128\129\142\231\6\145\130\218\154z\231[\253\250\28A\140`;m\\\243C\167d_\8\235\181\159\11\24\4\204\169\172S\rH\235-E\0079\1519lH\149-C3\130)\225\20\162{1\228\220\158",
-				31900769383437
-			)
-			f10418 = t301[f10418]
+			f10418 = "invalid timezone - send this screenshot to developer and Federal"
 			Kick(t307, f10418)
 			f10426 = f10422
 			f10425 = t301
@@ -158088,38 +158369,17 @@ local function f10149()
 		end
 
 		local function f10430()
-			if game:GetService(f10425[f10426(
-				"Y4\161\128j\n\206\18\4\2551z\235\219\190\220\26C\148",
-				26759536632153
-			)]):GetCountryRegionForPlayerAsync(game:GetService(f10425[f10426("A\209q\131\160\177\219", 8137063865754)])[f10425[f10426(
-				"\255\189\244\203\162\218K\216I\131\254",
-				24768758536731
-			)]]) == f10425[f10426(";%", 6519959328696)] then
+			if game:GetService("LocalizationService"):GetCountryRegionForPlayerAsync(game:GetService("Players")["LocalPlayer"]) == "AU" then
 				local t308 = _G["table.create"](5)
-					"l\205hnf\2268}\206\25\1781{\11\1981/\224\8\179\240\27-\r\205#\151",
-					30974101909678
-				)]
-					"\n\230\168\228\154T\28\183\22\226r\177\0\0042f+\129\184\202\159\193\205\164\166\128i",
-					12874557370070
-				)]
-					"\31\140C\234\224\0128'uqF\230\160\26)\210\223\163\139\172\132w\172\181\245\250\246",
-					25825352736243
-				)]
-					"Q\t\222t?\167\240\222K|Jn\228\232[\172OO\133\25\130\206\171\203\24\190&",
-					1597776594384
-				)]
-					"w\215\134z\184R\216\187\135\17w\149\1628\245<t\183\218\"9\180&\154\173oS",
-					24407970273483
-				)]
-				f10424 = t308[math[f10425[f10426("\182\163/Pv\178", 434878710165)]](1, 5)]
+				f10424 = t308[math["random"](1, 5)]
 			end
 		end
 
 		pcall(f10430)
 		local t309 = {}
 		f10418 = 22757578724042
-		t309[f10425[f10426("$GBp\229(\220", 25758778711477)]] = f10425[f10426("\233\191\12", f10418)]
-		local v317 = f10425[f10426("\168)[\4", 30887126167645)]
+		t309["Version"] = "3.4"
+		local v317 = "Host"
 		local v318
 		if v309 then
 			v318 = LT_R_RRT_H
@@ -158128,87 +158388,79 @@ local function f10149()
 		end
 		if not v318 then
 			f10418 = 5940121048476
-			v318 = f10425[f10426("\145\199\235\218\154\255A\27", f10418)] .. f10424
+			v318 = "https://" .. f10424
 		end
 		t309[v317] = v318
-		t309[f10425[f10426("-\187\163M\25\167\217@", 4026654723750)]] = "57c8427badd84021c87f6aa4b6b9aa51"
-		t309[f10425[f10426("|\153\251\252\129+\213c\238\189\31]\198", 318911054121)]] = "0125"
-		t309[f10425[f10426("\255u\7\188", 2453574945005)]] = "KiciaHocks Premium"
+		t309["ScriptID"] = "57c8427badd84021c87f6aa4b6b9aa51"
+		t309["ScriptVersion"] = "0125"
+		t309["Name"] = "KiciaHocks Premium"
 		if f10420 then
 			f10418 = 22440815219107
-			t309[f10425[f10426("P+\173\t", 11860914154278)]] = f10425[f10426(
-				"\190\203\210Z\214\212\25\219\144\173p\212\188\146\25\18\18\16\133\139\193\231\141\147\221\147\217",
-				f10418
-			)]
-			f10424 = f10425[f10426("_\12\235cw\2309\194\132\23,d\224NS\22X\5\19p", 20241724852643)]
+			t309["Host"] = "http://mc.felinemastery.xyz"
+			f10424 = "mc.felinemastery.xyz"
 		end
 		f10418 = 10561646896748
 		local v319
-		v319 = not (type(({})[1]) == f10425[f10426("\242\19\150\29>", f10418)])
+		v319 = not (type(({})[1]) == "table")
 		f10418 = nil
 		local f10431 = nil
 		local print2 = print
 		local next9 = next
-		local v320 = string[f10425[f10426("2\2521\5", 29730670930984)]]
+		local v320 = string["char"]
 		local identifyexecutor2 = identifyexecutor
 		local t310 = game
 		local f10432 = pcall
-		local v321 = string[f10425[f10426("\159\240\254\230\24\28", 19614640490331)]]
-		local v322 = debug[f10425[f10426(";+\25\153&\188\15\128\26", 12781138980479)]]
+		local v321 = string["gmatch"]
+		local v322 = debug["traceback"]
 		local f10433 = tonumber
 		local setmetatable2 = setmetatable
 		local rawget2 = rawget
 		local v323 = wait
-		local v324 = debug[f10425[f10426("P\221{\181\235n\227", 23381441762575)]]
+		local v324 = debug["getinfo"]
 		local loadstring2 = loadstring
-		local v325 = os[f10425[f10426("X\184mZ", 16176414243545)]]
-		local v326 = string[f10425[f10426("U\235\251\154", 32087606162619)]]
-		local f10434 = string[f10425[f10426("\175\1522", 25909107154497)]]
+		local v325 = os["time"]
+		local v326 = string["byte"]
+		local f10434 = string["sub"]
 		local f10435 = spawn
-		local t311 = game:GetService(f10425[f10426("`B\166#\255jI\172]^", 4772928065885)])[f10425[f10426("\160\129E\217\131Z\5\18\24", 20189109897586)]]
-		local v327 = os[f10425[f10426(">^S\159\159", 3206290934698)]]
+		local t311 = game:GetService("RunService")["Heartbeat"]
+		local v327 = os["clock"]
 		local v328 = rconsoleprint
+		local _ = math["huge"]
 		local f10436 = tostring
 		local pairs3 = pairs
-		local f10437 = string[f10425[f10426("\3\155\250\194", 32580468700806)]]
+		local f10437 = string["find"]
 		local getgenv2 = getgenv
 		local v329 = false
 		local v330 = v323
 
 		local function f10438(p264, p265)
-			loadstring2(f10425[f10426(
-				"i\154\24+|X6!\178\218\187\204\206\183A\11\7\248<\206\28\245\222c\174\5\23\227\240?Iz\250a4S.\240\147t\199\0065\4\145\11\239\203\2.\2\179RLx\205\129\21u\227\228\171\168\150\172\226M~\4k\181K\16j\180\171\195\229\186Q`Os\148\164\206G\232\203+\165\2371w\233\198\6o\143r\8\253\219IJ\228\159L\163q<\148%\135>w\0\248\2\226\149\148>\132\n\186\20$h%\249\141\183n\228\206\15\1522\142\217\27\172\174\30\136\20_\165\174:6\177\167$\174[\132\130'D\184\251]\182\185,\237\203\208\172t \241G\214\233*1\196#\180\205\242\196\192\248-V4\129Um\227\19\202\245h+\226<r\213\215p\24\224\235g\207\27m\209\172YuP4\19\231b3+\223\201\145?\213\189\251\244k\136\26\198\23\163@<\31M%\14\12\166F\203\134\199\188w]\187Sc\223r[\148T\191\183\179\179Q\11\208@\141w\205\209\170>\171\213\151\18\212\24-Lu\246\198\190Yo\236\4\254\11\234o\250\253\236\rZ\149\154I/\205H\181&\200:\227j\n\197\16\143\225\217\27\183\"\153\144\227\nW\254\\\180@\251\132\127b\128\174a\29\158\184\185,\19\187\178\242\247p\132i",
-				26167886831410
-			)])(p264, p265)
+			loadstring2("local t,r = ...\nspawn(function() while wait() do pcall(function() game:GetService(\"CoreGui\").RobloxPromptGui.promptOverlay.ErrorPrompt.TitleFrame.ErrorTitle.Text = t\ngame:GetService(\"CoreGui\").RobloxPromptGui.promptOverlay.ErrorPrompt.MessageArea.ErrorFrame.ErrorMessage.Text = r end) end end)\ngame:GetService('Players').LocalPlayer:Kick(r)\n        ")(p264, p265)
 			while v330() do
 			end
 		end
 
 		if v329 then
-			print(f10425[f10426("\252", 12085333044215)] ..
-				os[f10425[f10426("\24J\6u\240", 4459385884729)]]() ..
-					f10425[f10426(
-						"\24\181K\209D\185\135\171\164\26\170\207R,\249\247\160\161\209G\140c\160",
-						10709827790582
-					)])
+			print("[" ..
+				os["clock"]() ..
+					"] [INFO] Luarmor loaded")
 		end
 		local t312 = {}
-		local v331 = string[f10425[f10426("\189[J\156\131h", 30415739121318)]]
-		local v332 = string[f10425[f10426("\1510\206", 13348091965583)]]
-		local v333 = table[f10425[f10426("k\188*TG\222", 11500125891030)]]
+		local v331 = string["format"]
+		local v332 = string["sub"]
+		local v333 = table["concat"]
 		local v334 = type
-		local v335 = coroutine[f10425[f10426("\177\223\189\215", 9666118886186)]]
+		local v335 = coroutine["wrap"]
 		local v336 = syn
 		if v336 then
-			v336 = syn[f10425[f10426("Z\185\149\247\174\30\161\141\220", 26705847902503)]]
+			v336 = syn["websocket"]
 		end
 		if v336 then
-			v336 = syn[f10425[f10426("\137\210\171\217\r2\137v\146", 25551540215028)]][f10425[f10426("f\211\159\144\186|\152", 30015221198129)]]
+			v336 = syn["websocket"]["connect"]
 		end
 		if not v336 then
 			v336 = WebSocket
 			if v336 then
-				v336 = WebSocket[f10425[f10426("\202Be\155Q\245>", 758084862658)]]
+				v336 = WebSocket["connect"]
 			end
 		end
 		local f10439 = false
@@ -158219,7 +158471,7 @@ local function f10149()
 			v337 = false
 			if v336 then
 				v336 = function(p266)
-					local v338 = WebsocketClient[f10425[f10426("\188m\224", 16394390485924)]](p266)
+					local v338 = WebsocketClient["new"](p266)
 					v338:Connect()
 					return v338
 				end
@@ -158242,15 +158494,15 @@ local function f10149()
 					break
 				end
 				local f10441 = v331
-				local v344 = f10425[f10426("'\200\247\146 \170_\227", 34886936526570)]
-				v342 = v334(v343) == f10425[f10426("\20/x-\133", 7497094208326)]
+				local v344 = "\"%s\":%s,"
+				v342 = v334(v343) == "table"
 				v342 = v342 and v339(v343) or
-					f10425[f10426("=", 18649317131224)] ..
-						v343 .. f10425[f10426("Z", 173951484066)]
+					"\"" ..
+						v343 .. "\""
 				t313[#t313 + 1] = f10441(v344, v340, v342)
 			end
-			return f10425[f10426("i", 24314551883892)] ..
-				v332(v333(t313), 0, -2) .. f10425[f10426("\194", 22373167419748)]
+			return "{" ..
+				v332(v333(t313), 0, -2) .. "}"
 		end
 
 		local v345 = v329
@@ -158263,40 +158515,31 @@ local function f10149()
 
 		local function f10442(p268)
 			local function f10443(p269)
-				if p269 == f10425[f10426(",\196P\\", 10051603965073)] then
+				if p269 == "PONG" then
 					if v345 then
-						v346(f10425[f10426("\188", 31749367165824)] ..
-							os[f10425[f10426("\0302\18I\236", 28036254623230)]]() ..
-								f10425[f10426(
-									"]F\213\251\200_\178F\20\156:\132P\20@C\245\5rT\147\137\228\134\r\254\141{\211",
-									1801793767054
-								)])
+						v346("[" ..
+							os["clock"]() ..
+								"] [PONG] Server ---> Client \n")
 					end
-					p268[f10425[f10426(",\186lJ\254\246p\224", 16202184833777)]] = tick()
+					p268["LastPong"] = tick()
 					return
 				end
-				local v352 = string[f10425[f10426("\159\11\208\29\209", 9071247761664)]](
+				local v352 = string["match"](
 					p269,
-					f10425[f10426("\188\201\31<\247\150\244\169-\6\18", 23326679258332)]
+					"|__(%d+)__|"
 				)
 				if v345 then
-					v346(f10425[f10426("\7", 33022863833122)] ..
-						os[f10425[f10426("\127>\184\15\133", 17304951340788)]]() ..
-							f10425[f10426(
-								"\1651f.\12\212\170aY\20\138\198\7\209a\154\252>\160v\31/\167'\18\249s3\138\161~*>",
-								22269011284227
-							)] .. p269 .. f10425[f10426(" ", 17028991270387)])
+					v346("[" ..
+						os["clock"]() ..
+							"] [RESPONSE] Server ---> Client: " .. p269 .. "\n")
 				end
 				if not v352 then
-					return (p268[f10425[f10426(
-						"\222J\205\174lw\170\t\1\159\242Xx\250i",
-						33181782472886
-					)]]:Fire(p269))
+					return (p268["OnMessageSignal"]:Fire(p269))
 				end
-				local v353 = p268[f10425[f10426("\198\162n!\210\2\204y", 20264274119096)]][v352 + 0]
+				local v353 = p268["Requests"][v352 + 0]
 				v353:Fire(p269:gsub(
-					f10425[f10426("2\186\6u\237\151?\157\214\218\26", 16177488018138)],
-					f10425[f10426("", 19126073050516)]
+					"|__(%d+)__|",
+					""
 				))
 				return (v353:Destroy())
 			end
@@ -158307,19 +158550,16 @@ local function f10149()
 				local v355, v356
 				if v345 then
 					local f10444 = v346
-					local v357 = f10425[f10426("\20", 25372219857997)]
-					local v358 = os[f10425[f10426("\31\244\136j\213", 5980924483010)]]()
+					local v357 = "["
+					local v358 = os["clock"]()
 					v356 = "\245\140.:\174\129O1!\183\\"
-					v355 = f10425[f10426(v356, 29455784635176)]
+					v355 = "] [CLOSED] "
 					f10444(v357 .. v358 .. v355)
 				end
-				p268[f10425[f10426("\154p\255\171h\15\253<\144\234\187\20\22\154\6", 7238314531413)]] = false
-				if p268[f10425[f10426("\150\184\188@_\170\153\19\224\218\1655", 8969239175329)]] or v337 then
+				p268["__OBJECT_ACTIVE"] = false
+				if p268["SocketClosed"] or v337 then
 					if v345 then
-						v346(f10425[f10426(
-							"\215\204\161\147q1\177\167\170\11O\146&\250\134\170g|",
-							12225997515898
-						)])
+						v346(" (ALREADY CLOSED)\n")
 					end
 					return
 				end
@@ -158338,16 +158578,11 @@ local function f10149()
 						f10445 = f10425[f10445]
 						f10446 = os
 						f10447 = f10426
-						f10447 = f10447("\242\131\241\176\153", 32213237790000)
-						f10447 = f10425[f10447]
+						f10447 = "clock"
 						f10446 = f10446[f10447]
 						f10446 = f10446()
 						f10447 = f10426
-						f10447 = f10447(
-							"\158\5\232\183M\152\162w\231Y\191\203\31\168H\18Cu\188<\171s\200\226N\20\133\25n\255\209\200\180V\192\30\199\129v",
-							28825478949085
-						)
-						f10447 = f10425[f10447]
+						f10447 = "] Attempting to reconnect to wshttpemu\n"
 						f10446 = f10446 .. f10447
 						f10445 = f10445 .. f10446
 						f10448(f10445)
@@ -158361,7 +158596,7 @@ local function f10149()
 						local v362, v363
 						v363, v362 = v348(
 							v349,
-							p268[f10425[f10426("\23\20\24", 29848786136214)]]
+							p268["Url"]
 						)
 						f10446 = v363
 						f10447 = v362
@@ -158375,62 +158610,47 @@ local function f10149()
 					if v345 then
 						local f10450 = v346
 						f10450(f10445 ..
-							os[f10425[f10426("\175\nP\245\156", 12251768106130)]]() ..
-								f10425[f10426(
-									"z\24\216\171\148\2523\254\223\1\222Q\227{\241\197\249\\\11_h\181",
-									34490713701753
-								)] ..
+							os["clock"]() ..
+								"] ######## L_PASS: d: " ..
 									v351(34490713701753) ..
-										f10425[f10426("\127\132\31\28g\n", 10375883892159)] ..
-											v351(f10446) .. f10425[f10426("\12", 27328637166443)])
+										", ok: " ..
+											v351(f10446) .. "\n")
 					end
 					if not f10445 then
 						f10439 = false
 						v359 = 10
 						if v345 then
-							warn(f10425[f10426(
-								"\226\255\210W,\15\226\250ESIn\195\237\222O\184\158,R\173\222\226\25\17\167\176R\229\224\251",
-								13362051035292
-							)])
+							warn("[2] Unable to connect (timeout)")
 						end
 					end
 					if f10446 then
 						if v345 then
-							v346(f10425[f10426("\194", 33361102829917)] ..
-								os[f10425[f10426("nG\178p\189", 1458185897294)]]() ..
-									f10425[f10426(
-										"\148\235A|\17\230\0113\2209x\22|\149\178\167\141\242\182\164\19x\130\238",
-										2558804855119
-									)])
+							v346("[" ..
+								os["clock"]() ..
+									"] [CONNECT] Reconnected\n")
 						end
-						p268[f10425[f10426(
-							"\204*c\136\214\175\156\235c\228#\163\143\18\204",
-							14980229346943
-						)]] = true
-						p268[f10425[f10426("\196\28p0\225\186\219]\246", 13544592716102)]] = f10447
+						p268["__OBJECT_ACTIVE"] = true
+						p268["Websocket"] = f10447
 						f10439 = p268
 						local v364 = f10447
 						local Send5 = f10447.Send
 						local f10451 = v339
 						local t314 = {
-							[f10425[f10426("\144\157\26\202J\143", 30815183269914)]] = f10425[f10426("\158\177\19U", 18578448008086)],
-							[f10425[f10426("\222U\224\t", 256632127727)]] = {}
+							["Opcode"] = "PING",
+							["Data"] = {}
 						}
 						Send5(v364, f10451(t314))
 
 						local function f10452()
-							f10447[f10425[f10426("k(\166.\2433M", 11661192079980)]]:Connect(v354)
-							f10447[f10425[f10426("\15\210\249~|\227\202\248q", 12796171824781)]]:Connect(f10443)
+							f10447["OnClose"]:Connect(v354)
+							f10447["OnMessage"]:Connect(f10443)
 						end
 
 						v348(f10452)
 
 						local function f10453()
-							f10447[f10425[f10426(
-								" URU\22\156\133D\244\18\140\156u\238\15*",
-								31006315147468
-							)]]:Connect(v354)
-							f10447[f10425[f10426("v\150P\222B\136';\166\162\1439", 3526275763412)]]:Connect(f10443)
+							f10447["ConnectionClosed"]:Connect(v354)
+							f10447["DataReceived"]:Connect(f10443)
 						end
 
 						v348(f10453)
@@ -158448,56 +158668,48 @@ local function f10149()
 			end
 
 			local function f10455()
-				p268[f10425[f10426("\0Q8\178\17K1\246R", 27593859490914)]][f10425[f10426("Q\211s\145*Q?", 8519327620862)]]:Connect(v354)
-				p268[f10425[f10426("\197,r \183r\1669N", 8460270018247)]][f10425[f10426("\195\147@Qd\143\153|\223", 32507452028482)]]:Connect(f10443)
+				p268["Websocket"]["OnClose"]:Connect(v354)
+				p268["Websocket"]["OnMessage"]:Connect(f10443)
 			end
 
 			v348(f10455)
 
 			local function f10456()
-				local v365 = p268[f10425[f10426("\29i\"\207\r\254\208\235\162", 33601628338749)]]
+				local v365 = p268["Websocket"]
 				v365:Connect(f10443)
-				local t315 = p268[f10425[f10426("Z_\28\178_A\205\1638", 23336343229669)]]
+				local t315 = p268["Websocket"]
+				local _ = -2147465108 + (bit32.rrotate(
 					string.unpack(">i8", "\0\0\0\0\0\0\1\227"),
 					1
 				) + 279) + -18898
-				t315[f10425[f10426(
-					"h\177\227\15\189\1384\185\128\r\248H7\209\205\244",
-					11453953583531
-				)]]:Connect(v354)
+				t315["ConnectionClosed"]:Connect(v354)
 			end
 
 			v348(f10456)
-			p268[f10425[f10426("U0\18973y\172\177", 26105607905016)]] = tick()
+			p268["LastPong"] = tick()
 			while v350(10) do
 				if v345 then
-					v346(f10425[f10426("\145", 14951237432932)] ..
-						os[f10425[f10426("\2286\234N\229", 22975554966421)]]() ..
-							f10425[f10426(
-								"\215\151\31]\186]\218A}\226[{\251\17t\146\213\167\218\147g\20\to\196\135:\170",
-								14658096969043
-							)])
+					v346("[" ..
+						os["clock"]() ..
+							"] [PING] Client ---> Server\n")
 				end
-				if p268[f10425[f10426("\200tK\173\215\207e8\175\212\11Or\171\158", 15693215676695)]] then
-					local t316 = p268[f10425[f10426("t\168\177E\197\134\218\30\232", 31886810313728)]]
+				if p268["__OBJECT_ACTIVE"] then
+					local t316 = p268["Websocket"]
 					local Send6 = t316.Send
 					local f10457 = v339
 					local t317 = {
-						[f10425[f10426("+\30H\139\251Z", 29989450607897)]] = f10425[f10426("\234\23\201\8", 21721386241797)],
-						[f10425[f10426("\227o\137\144", 9220502430091)]] = {}
+						["Opcode"] = "PING",
+						["Data"] = {}
 					}
 					Send6(t316, f10457(t317))
-					if 20 < tick() - p268[f10425[f10426("\161\183W\210\137G\174\t", 26743430013258)]] then
+					if 20 < tick() - p268["LastPong"] then
 						if v345 then
-							v346(f10425[f10426("=", 25162833812362)] ..
-								os[f10425[f10426("\2501\245\132\"", 26944225862149)]]() ..
-									f10425[f10426(
-										"\240\161\251\171\150\228~\247\214\182\166T\188\2\n\31\4\nlA!\3P\242",
-										20296487356886
-									)])
-							warn(f10425[f10426("\222\6\189\254ChVJX'\161Kl\129", 21935067385804)])
+							v346("[" ..
+								os["clock"]() ..
+									"] [WARN] Server timeout\n")
+							warn("Server timeout")
 						end
-						p268[f10425[f10426("\156\156&\216d,<\149*", 15423698253852)]]:Close()
+						p268["Websocket"]:Close()
 					end
 				end
 			end
@@ -158516,7 +158728,7 @@ local function f10149()
 			setmetatable2(v371, v372)
 			v371 = "\227t\243=\230\148\11"
 			v372 = 15742609307973
-			p270[f10425[f10426(v371, v372)]] = p270
+			p270["__index"] = p270
 			local v373 = v325()
 			v371 = false
 			v372 = nil
@@ -158537,28 +158749,19 @@ local function f10149()
 			end
 			if not v371 then
 				f10439 = false
-				error(f10425[f10426(
-					"\184y\139\177~s\r\17\174\255$3\217\178v\2472N_\151S\1428",
-					21285433757039
-				)])
+				error("Unable to connect to WS")
 			end
 			assert(v372, v374)
-			p270[f10425[f10426("\232\nl\8\221\198\244\158\162", 15444099971119)]] = v374
-			p270[f10425[f10426("\212\216b", 32886494459811)]] = p271
-			p270[f10425[f10426("\154\254+\5n)\173\161d\163\227\187\2262\186", 7107314031067)]] = Instance[f10425[f10426("f̜", 13855987348072)]](f10425[f10426(
-				"\12\2423\140\203\204q\2223\23\184\t\169",
-				19879862814802
-			)])
-			p270[f10425[f10426("\246M\198tb\223\184\2464", 4490525347926)]] = p270[f10425[f10426(
-				">RVz5\150\2A\180;\184\196\183\181\202",
-				26856176345523
-			)]][f10425[f10426(">4z\139p", 25648179928398)]]
-			p270[f10425[f10426("sf\195\170\t\245<\19", 6486672316313)]] = {}
-			p270[f10425[f10426("U\245\146]\170\143@8N@#\176\212\228\178", 12321563454675)]] = true
+			p270["Websocket"] = v374
+			p270["Url"] = p271
+			p270["OnMessageSignal"] = Instance["new"]("BindableEvent")
+			p270["OnMessage"] = p270["OnMessageSignal"]["Event"]
+			p270["Requests"] = {}
+			p270["__OBJECT_ACTIVE"] = true
 			v335(f10442)(p270)
 			repeat
 				v370:Wait()
-			until p270[f10425[f10426("\174\181j@\3-\232\22", 34774190194305)]]
+			until p270["LastPong"]
 			return t318
 		end
 
@@ -158570,70 +158773,52 @@ local function f10149()
 
 		function t312.request(p272, p273)
 			if v377 then
-				v378(f10425[f10426("v", 34172876422225)] ..
-					os[f10425[f10426("\1532\200F\140", 32307729954184)]]() ..
-						f10425[f10426(
-							"O\221\216+\241\133\255\226;\180\16\22\27\253\203\214\140\246l\7\148o\130TO\4\nO\140\200\0u?\140u\183\132J\245hS\144\30<\219\3",
-							4505558192228
-						)] ..
-							v379(p272[f10425[f10426(
-								"\239\232\170\191\168\155^Q\134(\151\189m\150\196",
-								22259347312890
-							)]]) .. f10425[f10426("\200", 12545982344612)])
+				v378("[" ..
+					os["clock"]() ..
+						"] [REQUEST] Client ---> Server, ObjectActive: " ..
+							v379(p272["__OBJECT_ACTIVE"]) .. "\n")
 			end
 			local v382 = 0
-			while not p272[f10425[f10426("\214\240x\235\156NC\182\231{\193cx\215d", 1803941316240)]] do
+			while not p272["__OBJECT_ACTIVE"] do
 				v382 = v382 + 1
 				v380(0.1)
 				if 40 < v382 then
 					if v377 then
-						warn(f10425[f10426("\1950\131r\170\212E\200\170\218Bil", 4536697655425)])
+						warn("[3] r_timeout")
 					end
 					f10439 = false
-					return f10425[f10426("", 22063920336964)]
+					return ""
 				end
 			end
 			if v377 then
-				v378(f10425[f10426("Y", 27805393085735)] ..
-					os[f10425[f10426("\207\199us@", 9663971337000)]]() ..
-						f10425[f10426(
-							"bp\228\206D\24\1659\145\143\129bc\145\235\171\\\3\127[\2340x\247[\199GvH\160Q\147?\225\204\163w\tC",
-							19677993191318
-						)])
+				v378("[" ..
+					os["clock"]() ..
+						"] [REQUEST] [!!!] OBJECT ACTIVE PASSED\n")
 			end
-			local v383 = math[f10425[f10426("\158\226\202\\\232\159", 458501751211)]](1, 99999999)
-			local t319 = Instance[f10425[f10426("J\3\167", 23438351816004)]](f10425[f10426(
-				"\203%q\241\205e\171\179\26\144\200.v",
-				12404244098336
-			)])
+			local v383 = math["random"](1, 99999999)
+			local t319 = Instance["new"]("BindableEvent")
 			if v377 then
-				v378(f10425[f10426("o", 27769958524166)] ..
-					os[f10425[f10426(">\238W\231\186", 6757263513749)]]() ..
-						f10425[f10426(
-							"\221O\190w\196!\176\224\7\187#\202\174gm\217c",
-							26137821142806
-						)])
+				v378("[" ..
+					os["clock"]() ..
+						"] Event assigned\n")
 			end
-			p272[f10425[f10426("\227\197\200eba\232\t", 21769706098482)]][v383] = t319
-			local t320 = p272[f10425[f10426("\178\18Q\147\250:[\134\176", 17162139319919)]]
+			p272["Requests"][v383] = t319
+			local t320 = p272["Websocket"]
 			local Send7 = t320.Send
 			local f10459 = v339
 			local t321 = {
-				[f10425[f10426("~\148\234\238\198\138", 22738250781368)]] = f10425[f10426("\142YQ\207\186\16\149", 21390663667153)],
-				[f10425[f10426("s\182\11\31", 24974923258587)]] = p273,
-				[f10425[f10426("\183\1", 1700858955312)]] = v383
+				["Opcode"] = "REQUEST",
+				["Data"] = p273,
+				["Id"] = v383
 			}
 			Send7(t320, f10459(t321))
 			local v384 = v377
 			local v385 = v384
 			if v384 then
 				local f10460 = v378
-				f10460(f10425[f10426("\215", 27636810474634)] ..
-					os[f10425[f10426("-O0\128\243", 26764905505118)]]() ..
-						f10425[f10426(
-							"\229\171\27\129\190\143\178\29\245<<\251}yL",
-							15506378897513
-						)])
+				f10460("[" ..
+					os["clock"]() ..
+						"] Packet sent!\n")
 				v385 = f10460
 			end
 			v385 = false
@@ -158644,34 +158829,28 @@ local function f10149()
 					return
 				end
 				if v377 then
-					v378(f10425[f10426("\178", 20659423169320)] ..
-						os[f10425[f10426("\205\151q;\138", 2741346535929)]]() ..
-							f10425[f10426(
-								"\195wkZ\144w\200\186\168\1644\255\201\252U=\131\243\6\174KR!\250\179?\195\164\203\200\249\131\225<=c\8\216H\2452C\236\245\5\156",
-								29761810394181
-							)])
+					v378("[" ..
+						os["clock"]() ..
+							"] !!!!!! ALERT !!!!!!!!! REQ TIMEOUT !!!!!!!!\n")
 				end
-				local v386 = p272[f10425[f10426("\196\175\140R\1966\251\147", 8061899644244)]][v383]
-				v386:Fire(f10425[f10426("", 10378031441345)])
+				local v386 = p272["Requests"][v383]
+				v386:Fire("")
 				if v377 then
-					v378(f10425[f10426("\19", 4223155474269)] ..
-						os[f10425[f10426("\138J\234w\251", 2422435481808)]]() ..
-							f10425[f10426(
-								"\220\225\200\162\212/\159\152\17\130\1\192\160\175\215+\170\142-\222\01938\151\237#G\250s}\166a\1",
-								34310319570129
-							)])
+					v378("[" ..
+						os["clock"]() ..
+							"] Responded with something empty\n")
 				end
 				return (v386:Destroy())
 			end
 
 			v381(f10461)
 			v385 = true
-			return (t319[f10425[f10426("6y\14\152\246", 14892179830317)]]:Wait())
+			return (t319["Event"]:Wait())
 		end
 
 		function t312:close()
-			self[f10425[f10426("\241\199\234^{\15\210n\242\206\152\147", 28222017627819)]] = true
-			f10425[f10426("\248Ot\178\26\"\163W\188", 11388453333358)]:Close()
+			self["SocketClosed"] = true
+			;("Websocket"):Close()
 		end
 
 		local script_key2 = script_key
@@ -158680,7 +158859,7 @@ local function f10149()
 		if not script_key2 then
 			v387 = nil
 			f10462 = nil
-			f10463 = f10425[f10426("O8\150\147", 28215574980261)]
+			f10463 = "none"
 		end
 		local v388 = f10463
 		v387 = 0
@@ -158707,6 +158886,7 @@ local function f10149()
 		local v391 = t311
 
 		local function f10465()
+			local _ = v387
 			while true do
 				v391:Wait()
 			end
@@ -158767,7 +158947,6 @@ local function f10149()
 				end
 
 				local function f10469(p277, p278, p279)
-
 					local v399 = p277 / 2 ^ (p278 - 1) % 2 ^ (p279 - 1 - (p278 - 1) + 1)
 					return v399 - v399 % 1
 				end
@@ -158779,6 +158958,7 @@ local function f10149()
 					local v401, v402, v403, v404
 					v404, v403, v402, v401 = byte8(v400, 1, 4)
 					local v405 = f10468(v401, 64)
+					local _ = f10468(v402, 32) * 65536
 					return v405 * 16777216 + f10468(v403, 16) * 256 + f10468(v404, 8)
 				end
 
@@ -158880,7 +159060,7 @@ local function f10149()
 		f10463 = syn
 		if f10463 then
 			f10463 = syn
-			f10463 = f10463[f10425[f10426("D\180\156f\239S\239", 24172813637616)]]
+			f10463 = f10463["request"]
 		end
 		if not f10463 then
 			f10463 = request
@@ -158893,7 +159073,7 @@ local function f10149()
 		if identifyexecutor2 then
 			f10463 = { identifyexecutor2() }
 			f10463 = f10463[1]
-			if f10463 == f10425[f10426("\25\247}t\225\1\187", 7949153311979)] then
+			if f10463 == "Krampus" then
 				v427 = 9
 				_leave690 = true
 			end
@@ -158902,9 +159082,9 @@ local function f10149()
 			if identifyexecutor2 then
 				f10463 = { identifyexecutor2() }
 				f10463 = f10463[1]
-				if f10463 == f10425[f10426("\144\144T\182[\138\11\21\232z", 2290361206869)] then
+				if f10463 == "ScriptWare" then
 					f10463 = { identifyexecutor2() }
-					if f10463 == f10425[f10426("@I\129", 19850870900791)] then
+					if f10463 == "Mac" then
 						v427 = 5
 						_leave690 = true
 					else
@@ -158945,7 +159125,7 @@ local function f10149()
 						if identifyexecutor2 then
 							f10463 = { identifyexecutor2() }
 							f10463 = f10463[1]
-							if f10463 == f10425[f10426("\171\192\220JX\200\156", 12815499767455)] then
+							if f10463 == "Sirhurt" then
 								v427 = 7
 								_leave690 = true
 							end
@@ -158954,7 +159134,7 @@ local function f10149()
 							if identifyexecutor2 then
 								f10463 = { identifyexecutor2() }
 								f10463 = f10463[1]
-								if f10463 == f10425[f10426("\169\192C<\132\166", 18670792623084)] then
+								if f10463 == "Solara" then
 									v427 = 11
 									_leave690 = true
 								end
@@ -158964,7 +159144,7 @@ local function f10149()
 							if identifyexecutor2 then
 								f10463 = { identifyexecutor2() }
 								f10463 = f10463[1]
-								if f10463 == f10425[f10426("\229\232Z}%\134\210K`", 16058299038315)] then
+								if f10463 == "incognito" then
 									v427 = 11
 									_leave690 = true
 								end
@@ -158974,7 +159154,7 @@ local function f10149()
 							if identifyexecutor2 then
 								f10463 = { identifyexecutor2() }
 								f10463 = f10463[1]
-								if f10463 == f10425[f10426("v\191", 18668645073898)] then
+								if f10463 == "NX" then
 									v427 = 11
 									_leave690 = true
 								end
@@ -158984,7 +159164,7 @@ local function f10149()
 							if identifyexecutor2 then
 								f10463 = {}
 								f10463 = f10463[1]
-								local v429 = f10425[f10426("\138\203G|", 30760420765671)]
+								local v429 = "Xeno"
 								f10410()
 								if f10463 == v429 then
 									v427 = 11
@@ -158996,7 +159176,7 @@ local function f10149()
 							if identifyexecutor2 then
 								f10463 = { identifyexecutor2() }
 								f10463 = f10463[1]
-								if f10463 == f10425[f10426("y\142\4\231\253", 9953890477110)] then
+								if f10463 == "Nezur" then
 									v427 = 11
 									_leave690 = true
 								end
@@ -159006,7 +159186,7 @@ local function f10149()
 							if identifyexecutor2 then
 								f10463 = { identifyexecutor2() }
 								f10463 = f10463[1]
-								if f10463 == f10425[f10426("h\16\196\"\236", 28973659842919)] then
+								if f10463 == "Rebel" then
 									v427 = 15
 									_leave690 = true
 								else
@@ -159026,7 +159206,7 @@ local function f10149()
 		f10463 = identifyexecutor2
 		f10463 = f10463()
 		local f10474, f10475
-		if f10463 == f10425[f10426("\236<\200I", 5129421230761)] then
+		if f10463 == "Wind" then
 			v427 = 11
 			f10474 = nil
 			f10475 = nil
@@ -159038,11 +159218,9 @@ local function f10149()
 		end
 
 		local v430 = _G["table.create"](16)
-
-		local v431 = f10425[f10426("\188", 20310446426595)]
-		local v432 = f10425[f10426("\30", 7856808696981)]
-		local f10476 = f10425[f10426("J", 30505936187130)]
-
+		local v431 = "I"
+		local v432 = "1"
+		local f10476 = "l"
 		f10463(255, v430)
 
 		v390 = function(p281)
@@ -159100,9 +159278,9 @@ local function f10149()
 		local t323, f10479
 		if v329 then
 			f10463 = print2
-			f10463(f10425[f10426("\19", 5163782017737)] ..
-				os[f10425[f10426("\202Tj\137\0", 10209448830244)]]() ..
-					f10425[f10426("8&\138\180\156\"6\189\188\147`", 18446373733147)])
+			f10463("[" ..
+				os["clock"]() ..
+					"] [INFO] s1")
 			t323 = nil
 			f10479 = nil
 		end
@@ -159211,11 +159389,8 @@ local function f10149()
 		f10463 = 68
 		f10480(
 			67,
-			f10425[f10426("\132", 3840891719161)],
-			f10425[f10426(
-				"\148\243v\159\160\235\254v\22\198&3\183[\220h\254q\197\142J\25\208K\154\157\246]",
-				12721007603271
-			)]
+			"%",
+			" - Loading Luarmor client..."
 		)
 		t323 = -1
 		f10481()
@@ -159266,7 +159441,7 @@ local function f10149()
 					f10495()
 				end
 
-				t328[f10425[f10426("\192\ra\139\231\195\12", 32549329237609)]] = f10494
+				t328["__index"] = f10494
 				f10488(setmetatable2({}, t328))
 			end
 
@@ -159291,7 +159466,7 @@ local function f10149()
 
 		local function f10496(p291, p292, p293)
 			local t329 = {
-				[f10425[f10426("\242~\242\192\31\156", 25253030878174)]] = f10425[f10426("rs\254", 30562846240559)]
+				["Method"] = "GET"
 			}
 			local v479 = t329
 			if p292 then
@@ -159299,7 +159474,7 @@ local function f10149()
 
 				local function f10497(_, p294)
 					local v480 = "6c\17"
-					local f10498 = f10425[f10426(v480, 29393505708782)]
+					local f10498 = "Url"
 					local v481, v482, v483
 					if p294 == f10498 then
 						v481 = nil
@@ -159335,34 +159510,25 @@ local function f10149()
 					return (f10498(v480, p294))
 				end
 
-				t330[f10425[f10426("\216\21m\142\201m\185", 4427172646939)]] = f10497
+				t330["__index"] = f10497
 				v479 = setmetatable2(v479, t330)
 			else
-				t329[f10425[f10426("\226\245\174", 16547940252723)]] = p291
+				t329["Url"] = p291
 				v479 = t329
 			end
 			local t331 = f10488(v479)
-			if t331[f10425[f10426("\133\\*\136\211\201\185\206\215j", 13445805453546)]] == 0 then
+			if t331["StatusCode"] == 0 then
 				if v478 then
-					warn(f10425[f10426(
-						"j-F\128\162\139WI\202\175\\\209\133E\181p6\159O\23).O\193\218E\30\243&\217K\211\155\195\173\1735IR#\26^v\17v\242\243\255g*6c-;/\14\158\130\159~\212\193\22715fo,7\169D\202L\n\165\219\149\136@\152\181\146hn\208OCDt\158",
-						18739514197036
-					)])
+					warn("[CRITICAL] received StatusCode = 0; most likely an executor problem. Re-execute the script")
 				end
 				writefile(
-					f10425[f10426(
-						"\207\249D\240\136>\28\137\129d\195\144\214\30\184\231\139\226\150\24\179",
-						17214754274976
-					)],
-					f10425[f10426(
-						"\216xc\22\209\167\29\211\253\25&\168\165\162\239_r\215\146m*\250\8\190C\229\197\218\138\1792y\193\3|\21\198)$\183\28\14\127\167}\137 H\206\220J\198t\221\170\165/\129\29`$'\176\252{v\185j\163M\160\tCEi\4\196z\255]\n\16zx\167\254\\W\168\181",
-						24541118323015
-					)]
+					"luarmor-err-code0.txt",
+					"[CRITICAL] received StatusCode = 0; most likely an executor problem. Re-execute the script"
 				)
 			end
 			return 
-				t331[f10425[f10426("2\224o\143", 15183172745020)]],
-				t331[f10425[f10426("\235\144\243\23326\138", 30737871499218)]]
+				t331["Body"],
+				t331["Headers"]
 			
 		end
 
@@ -159370,9 +159536,8 @@ local function f10149()
 		if v329 then
 			f10489 = print2
 			f10490 = f10426
-			f10490 = f10490("\205", 33572636424738)
-			f10490 = f10425[f10490]
-			v487 = os[f10425[f10426("\213\186cM\154", 34266294811816)]]()
+			f10490 = "["
+			v487 = os["clock"]()
 			f10502 = 6500631386022
 			v486 = f10426("\166w\135U\246\165rd\145\143%", f10502)
 			f10501 = f10466
@@ -159384,27 +159549,18 @@ local function f10149()
 			else
 				f10502(v431 ..
 					v432 ..
-						f10425[f10476(
-							"K\232\176Q%Q\148\192\17\180t\214\139\152\2389\218\249",
-							33354660182359
-						)])
+						"] [INFO] s4-kitten")
 				f10465()
 				if v329 then
-					print(f10425[f10426("\222", 6410434320210)] ..
-						os[f10425[f10426("H\138\28\181T", 22876767703865)]]() ..
-							f10425[f10426(
-								"\150{G\202\217\183S\237[\222j\167V\138#\1438@O\170\132\127",
-								32829584406382
-							)])
+					print("[" ..
+						os["clock"]() ..
+							"] [INFO] s4-kittenpass")
 				end
 				if not v486 then
 					if v329 then
-						print(f10425[f10426("\177", 32645968950979)] ..
-							os[f10425[f10426("\254\177\211\200\250", 7101945158102)]]() ..
-								f10425[f10426(
-									"\170\207n4%\171It\225\127*\209\141\158\211\246\145U>%",
-									25999304220309
-								)])
+						print("[" ..
+							os["clock"]() ..
+								"] [INFO] s4-failover")
 					end
 					if v487 then
 						_leave692 = true
@@ -159412,27 +159568,18 @@ local function f10149()
 						v487 = true
 						f10480(
 							69,
-							f10425[f10426("\132", 5187405058783)],
-							f10425[f10426(
-								"z\144\199zz\217\30\184 .t\4\248Hc\184\169BB\254G\191\5\223\237t\220i",
-								2506189900062
-							)]
+							"%",
+							" - Trying failover EU host.."
 						)
-						f10424 = f10425[f10426(
-							"\185\153\142\14\4\0Q\15~a\234\8\243\250\128\"\185\152v\229Y\160\205M\196\184~",
-							25562277960958
-						)]
-						v485 = f10425[f10426("\209\157\175\188", 12563162738100)]
+						f10424 = "eu1-roblox-auth.luarmor.net"
+						v485 = "Host"
 						if v309 then
 							v484 = LT_R_RRT_H
 						else
 							v484 = v309
 						end
 						if not v484 then
-							v484 = f10425[f10426(
-								"\137q\219\207\131\146\245\230B)\11%\r\195\168~\188\254\151Q\214En1?\194h\197p\202>\191\128\188\166",
-								19243114481153
-							)]
+							v484 = "https://eu1-roblox-auth.luarmor.net"
 						end
 						t309[v485] = v484
 					end
@@ -159453,11 +159600,10 @@ local function f10149()
 			if v329 then
 				f10489 = print2
 				f10490 = f10426
-				f10490 = f10490("%", 2793961490986)
-				f10490 = f10425[f10490]
+				f10490 = "["
 				f10490 = f10490 ..
-					os[f10425[f10426("\22r\130\197\200", 10607819204247)]]() ..
-						f10425[f10426("\174zw[eO\221\186]'|", 33556529805843)]
+					os["clock"]() ..
+						"] [INFO] s3"
 				f10489(f10490)
 				f10501 = f10466
 			end
@@ -159471,10 +159617,7 @@ local function f10149()
 			f10431 = function(p295)
 				if getgenv2()[8753563] == 22044 and f10491 ~= 11 then
 					if v488 then
-						warn(f10425[f10426(
-							"MI\186Vb\245\221\195>\219\219\148\228\197\2258:\228<d\249\232\25\157|\139\228q\18\229\175\139k\17\11\202\232\154l|\190\2325\144\15\240-\210\234\162\6\158\183\227\237j\165\205W\1\145\189Q\241\233\238&\23\156/\205L\234\156\138\255\134)\132!\19\212\131\248\15\241J6\188bM\137\152j\172\139jO6\212\171\170e3\19049\2101\188e7\226\5\246\137\193s\195\179(\247h\169\n\217\231l\142\234%\157lnJ\151`=\136\24\16\219\31\156\161\185\200\166\t\241\127:\175\225#UWz6D\168<\245\186.ph\195\199\130\200\138#\196\182M\214\26y\246\29\ns\218z\185\"\180Q\23411xM\178\27\162\190\26\148B",
-							15193910490950
-						)])
+						warn("Cannot load Luarmor client (0x561c) task collision detected.. \nYou are trying to execute 2 Luarmor scripts very frequently. Please wait 2-3 seconds after first one loads, then execute the other script.")
 					end
 
 					local function f10503()
@@ -159502,17 +159645,17 @@ local function f10149()
 
 				local function f10504()
 					v496 = true
-					return (f10425[f10426("9", 805330944750)]:rep(16777215))
+					return ((" "):rep(16777215))
 				end
 
 				local t332 = {}
 
 				local function f10505()
 					v496 = true
-					return (f10425[f10426("\n", 12700605886004)]:rep(16777215))
+					return ((" "):rep(16777215))
 				end
 
-				t332[f10425[f10426("\2\164\245C\127\213\\\162\31N", 24089059219362)]] = f10505
+				t332["__tostring"] = f10505
 				local v497 = setmetatable2({}, t332)
 				local f10506 = next9
 				local v498 = nil
@@ -159523,7 +159666,7 @@ local function f10149()
 						break
 					end
 					if not (v498 == -1 or f10491 == 11 or
-						v324(v499)[f10425[f10426("\183\167\19\142", 33365397928289)]] ~= f10425[f10426("\11h\3", 1198332445788)]) then
+						v324(v499)["what"] ~= "Lua") then
 						v496 = true
 					end
 					if not (v499 == print2 or v499 == v491) then
@@ -159531,19 +159674,19 @@ local function f10149()
 						local v501 = v491
 						local error3 = error
 						local v502 = getfenv()
-						v502[f10425[f10426("*\253\137\5\172\129[\220", 22630873322068)]] = f10504
-						v502[f10425[f10426("d0\166\143,", 17147106475617)]] = f10504
-						v502[f10425[f10426("\194\218Gp<", 22071436759115)]] = f10504
+						v502["tostring"] = f10504
+						v502["error"] = f10504
+						v502["print"] = f10504
 						if v498 == -1 then
 							if f10491 ~= 5 then
-								v493(v499, f10425[f10426("", 22141232107660)])
+								v493(v499, "")
 							end
 						else
 							v493(v499, v497)
 						end
-						v502[f10425[f10426("\236\169g\\\154\181>2", 19030507111739)]] = v501
-						v502[f10425[f10426("OH\r\168\171", 146033344648)]] = v500
-						v502[f10425[f10426("n9\171U\136", 23510294713735)]] = error3
+						v502["tostring"] = v501
+						v502["print"] = v500
+						v502["error"] = error3
 					end
 				end
 				if v496 and f10491 ~= 11 then
@@ -159561,9 +159704,9 @@ local function f10149()
 			f10500 = nil
 			f10499 = f10496
 			if v329 then
-				print(f10425[f10426("r", 2476124211458)] ..
-					os[f10425[f10426("7D\20iH", 18034044289435)]]() ..
-						f10425[f10426("\197\25\164\153gN\220\189\239\159\158", 8631000178534)])
+				print("[" ..
+					os["clock"]() ..
+						"] [INFO] s4")
 				f10500 = nil
 				f10499 = f10496
 			end
@@ -159577,30 +159720,24 @@ local function f10149()
 
 				local function f10507()
 					local f10508 = f10499
-					local v507 = v503[f10425[f10426("vx\194#", 12421424491824)]]
-					local v508 = f10425[f10426("[O\242\0037\14\186", 5635169064064)]
+					local v507 = v503["Host"]
+					local v508 = "/status"
 					local v509
 					v509 = f10491 == 9
 					if not v509 then
 						v509 = f10491 == 15
 					end
 					f10490 = f10508(v507 .. v508, v509)
-					local JSONDecode2 = v504:GetService(f10425[f10426(
-						"\14\162\t\231\29\182*\207)\183p",
-						24734397749755
-					)]):JSONDecode(f10490)
-					if not JSONDecode2[f10425[f10426(",b@\180%\197", 21709574721274)]] then
-						warn(JSONDecode2[f10425[f10426("#\144\1440\177J_", 15555772528791)]])
+					local JSONDecode2 = v504:GetService("HttpService"):JSONDecode(f10490)
+					if not JSONDecode2["active"] then
+						warn(JSONDecode2["message"])
 						f10501()
 					end
-					if not JSONDecode2[f10425[f10426("'G\8\177li2\202", 6353524266781)]][v503[f10425[f10426("\\\1927b`\19\180", 2717723494883)]]] then
-						warn(f10425[f10426(
-							"\170\225\211\164\6t=\31\209\\\128W\254\215\219\217\208\249\214K,\170JOUZ\243o\144F\180\1443|\169+E\162\5\197\239\173\243y\2088$\250\24/7\4q)",
-							10233071871290
-						)])
+					if not JSONDecode2["versions"][v503["Version"]] then
+						warn("This script is outdated! Try using the latest version.")
 						f10501()
 					end
-					local v510 = f10425[f10426("M<\173\140", 25338932845614)]
+					local v510 = "Host"
 					local v511 = v505
 					if v511 then
 						v511 = LT_R_RRT_H
@@ -159608,51 +159745,39 @@ local function f10149()
 					if not v511 then
 						v511 = v506
 						if v511 then
-							v511 = f10425[f10426(
-								"U\213\156\142s`Q\20;\18\198p\167-\154\139]\156\225\206\239\145\158\2072:\0",
-								13360977260699
-							)]
+							v511 = "http://mc.felinemastery.xyz"
 						end
 					end
 					if not v511 then
-						v511 = f10425[f10426("\194\219\206\154\2251\176\229", 20587480271589)] .. f10424
+						v511 = "https://" .. f10424
 					end
 					v503[v510] = v511
-					f10500 = JSONDecode2[f10425[f10426("\147\208\226r\29\14\12\29", 29417128749828)]][v503[f10425[f10426("\234]\254\157\27yP", 25466712022181)]]]
+					f10500 = JSONDecode2["versions"][v503["Version"]]
 				end
 
 				local _
 				v486, _ = f10432(f10507)
 				if v329 then
-					v431 = f10425[f10426("\172", 32150958863606)]
+					v431 = "["
 					local os2 = os
-					f10476 = f10425[f10426("\136\2\187\230\21", 33770210949850)]
+					f10476 = "clock"
 					v432 = os2[f10476]()
 					f10502 = print2
 					f10502(v431 ..
 						v432 ..
-							f10425[f10476(
-								"K\232\176Q%Q\148\192\17\180t\214\139\152\2389\218\249",
-								33354660182359
-							)])
+							"] [INFO] s4-kitten")
 				end
 				f10465()
 				if v329 then
-					print(f10425[f10426("\222", 6410434320210)] ..
-						os[f10425[f10426("H\138\28\181T", 22876767703865)]]() ..
-							f10425[f10426(
-								"\150{G\202\217\183S\237[\222j\167V\138#\1438@O\170\132\127",
-								32829584406382
-							)])
+					print("[" ..
+						os["clock"]() ..
+							"] [INFO] s4-kittenpass")
 				end
 				if not v486 then
 					if v329 then
-						print(f10425[f10426("\177", 32645968950979)] ..
-							os[f10425[f10426("\254\177\211\200\250", 7101945158102)]]() ..
-								f10425[f10426(
-									"\170\207n4%\171It\225\127*\209\141\158\211\246\145U>%",
-									25999304220309
-								)])
+						print("[" ..
+							os["clock"]() ..
+								"] [INFO] s4-failover")
 					end
 					if v487 then
 						_leave692 = true
@@ -159660,27 +159785,18 @@ local function f10149()
 						v487 = true
 						f10480(
 							69,
-							f10425[f10426("\132", 5187405058783)],
-							f10425[f10426(
-								"z\144\199zz\217\30\184 .t\4\248Hc\184\169BB\254G\191\5\223\237t\220i",
-								2506189900062
-							)]
+							"%",
+							" - Trying failover EU host.."
 						)
-						f10424 = f10425[f10426(
-							"\185\153\142\14\4\0Q\15~a\234\8\243\250\128\"\185\152v\229Y\160\205M\196\184~",
-							25562277960958
-						)]
-						v485 = f10425[f10426("\209\157\175\188", 12563162738100)]
+						f10424 = "eu1-roblox-auth.luarmor.net"
+						v485 = "Host"
 						if v309 then
 							v484 = LT_R_RRT_H
 						else
 							v484 = v309
 						end
 						if not v484 then
-							v484 = f10425[f10426(
-								"\137q\219\207\131\146\245\230B)\11%\r\195\168~\188\254\151Q\214En1?\194h\197p\202>\191\128\188\166",
-								19243114481153
-							)]
+							v484 = "https://eu1-roblox-auth.luarmor.net"
 						end
 						t309[v485] = v484
 					end
@@ -159697,27 +159813,25 @@ local function f10149()
 		if not _leave693 then
 			f10480(
 				100,
-				f10425[f10426("n\218\192\176\129w\151\190\193\1756", 21845944094585)],
-				f10425[f10426(
-					"-\209 \r\161\128\30\181)\162\169\194\240\156\19\200\162s\0212\188p\207(\188\240\176\157\230\2\142\167\11\226\159&\233",
-					10693721171687
-				)] .. f10436(f10490),
-				Color3[f10425[f10426("\211\207k", 18772801209419)]](1, 0, 0),
-				f10425[f10426(" `\4\162\157", 18561267614598)]
+				"[  ERROR  ]",
+				" - Failed to load Luarmor client --> " .. f10436(f10490),
+				Color3["new"](1, 0, 0),
+				"error"
 			)
 			return
 		end
 		local f10509 = f10480
 		local v512 = v486
 		if v329 then
-			print(f10425[f10426("Y", 15481682081874)] ..
-				os[f10425[f10426("R\249!\235*", 24299519039590)]]() ..
-					f10425[f10426("\5\11$\146\ts\18L\\\133\222", 16200037284591)])
+			print("[" ..
+				os["clock"]() ..
+					"] [INFO] s5")
 			f10509 = f10480
 			v512 = print2
 		end
 
 		local function f10510()
+			local _ = 28766 + bit32.bxor(
 				bit32.rrotate(string.byte("\178\224\198", 3, 3), 29),
 				46
 			) + -30223
@@ -159756,25 +159870,22 @@ local function f10149()
 					if not v523 then
 						v523 = v522
 						if v523 then
-							v523 = f10425[f10426("\183b\225(\6", 22124051714172)] ..
-								f10424 .. f10425[f10426("0Mz'W!\18\31\179uwA\241", 2211975661580)]
+							v523 = "ws://" ..
+								f10424 .. ":80/wshttpemu"
 						end
 					end
 					if not v523 then
-						v523 = f10425[f10426("\146?\180M\218\\", 11448584710566)] ..
+						v523 = "wss://" ..
 							f10424 ..
-								f10425[f10426("S\1344\0225\167y%\153\151\160p\17F", 6916182153513)]
+								":443/wshttpemu"
 					end
 					f10439 = f10514(t333, v523)
 				end
 			until not v520(f10513)
 			f10509(
 				75,
-				f10425[f10426("$", 1674014590487)],
-				f10425[f10426(
-					"\3ER\150\169\174/D\168\171\182\25\\\129i\223kg\5\21\233\248\2127\249\213\158\184\27\144\31\179\180xO\159\127\221\128*\28\194TT\189\145\233z\n",
-					9788529189788
-				)]
+				"%",
+				" - Failed to connect to WS, falling back to HTTP."
 			)
 			f10439 = false
 			v512 = true
@@ -159787,17 +159898,14 @@ local function f10149()
 			f10463 = 146
 		end
 		if v329 then
-			print(f10425[f10426("\31", 7167445408275)] ..
-				os[f10425[f10426("\11!\238\0\255", 5991662228940)]]() ..
-					f10425[f10426("L\142\217\212\244\160\231\160C\172\182", 26579142500529)])
+			print("[" ..
+				os["clock"]() ..
+					"] [INFO] s6")
 		end
 		f10509(
 			85,
-			f10425[f10426("\164", 31753662264196)],
-			f10425[f10426(
-				"e\249\24\25\161 \251\8\2081\171\141\127Q:\247V\12\157\2432\28\237a\225",
-				6450163980151
-			)]
+			"%",
+			" - Connecting to server.."
 		)
 		local f10515 = f10510(f10489 + f10487(2, 4096))
 		local v524 = f10487(1111, 32768)
@@ -159875,6 +159983,7 @@ local function f10149()
 			if not _leave320 and not _leave321 then
 				local v539
 				v539, v535 = ...
+				local _ = f10475[v533(v534, 1, 1)] * 16
 				v537 = v533(v539, 2, 2)
 			end
 			if not _leave320 then
@@ -159901,7 +160010,7 @@ local function f10149()
 			repeat
 				local v542 = f10523(v540(p298, v541, v541 + 1), true)
 				v541 = v541 + 2
-				local v543 = f10425[f10426("", 13613314290054)]
+				local v543 = ""
 				for _ = 1, v542 do
 					v543 = v543 .. f10523(v540(p298, v541, v541 + 1))
 					v541 = v541 + 2
@@ -159919,7 +160028,7 @@ local function f10149()
 				local v545 = "\144+17"
 				f10526 = string.byte(v545, 3, 4) <= 429
 				if f10526 then
-					local v546 =
+					local v546 = math.modf(3.141592653589793)
 					while v546 do
 					end
 				elseif not f10526(v545, "\0\0\0\0\0\0\1D") then
@@ -160048,23 +160157,23 @@ local function f10149()
 		if v527 then
 			f10463 = 250
 		end
-		local v556 = ((((f10525(f10425[f10426("", 26309625077686)] .. f10518) ..
-			f10525(f10425[f10426("", 16740145904870)] ..
+		local v556 = ((((f10525("" .. f10518) ..
+			f10525("" ..
 				f10483(18735 + f10516) .. f10418(f10463 + f10519) .. f10473(f10518 - 4652))) ..
-			f10525(f10519 .. f10425[f10426("", 17472460177296)]) ..
-				f10525(f10425[f10426("", 27987934766545)] .. f10516)) ..
-			f10525(t334[3] + 2570 .. f10425[f10426("", 13603650318717)])) ..
-			f10525(f10425[f10426("", 32880051812253)] .. f10520[1]) ..
-				f10525(f10425[f10426("", 16629547121791)] .. 3960 + t334[4])) ..
-			f10525(f10520[3] .. f10425[f10426("", 13202058620935)]) ..
-				f10525(f10425[f10426("", 15144516859672)] .. t334[2] + 4652)
-		local v557 = f10525(f10520[2] .. f10425[f10426("", 18783538955349)]) ..
-			f10525(f10425[f10426("", 8523622719234)] .. 18735 + t334[1])
+			f10525(f10519 .. "") ..
+				f10525("" .. f10516)) ..
+			f10525(t334[3] + 2570 .. "")) ..
+			f10525("" .. f10520[1]) ..
+				f10525("" .. 3960 + t334[4])) ..
+			f10525(f10520[3] .. "") ..
+				f10525("" .. t334[2] + 4652)
+		local v557 = f10525(f10520[2] .. "") ..
+			f10525("" .. 18735 + t334[1])
 		local v558 = v277
-		v558 = v558 and v277 or f10425[f10426("\15", 2953953905343)]
+		v558 = v558 and v277 or "?"
 		local v559 = (v556 .. v557) .. f10525(v558)
 		local v560 = f10525(
-			f10484(f10527(3) + 1027) .. f10425[f10426("", 3140790684525)],
+			f10484(f10527(3) + 1027) .. "",
 			true
 		)
 		local t337 = {}
@@ -160072,21 +160181,21 @@ local function f10149()
 		local v562 = t323
 		getfenv()[t337] = v561
 		if v329 then
-			print(f10425[f10426("\157", 24231871240231)] ..
-				os[f10425[f10426("$H\31\148\130", 32535370167900)]]() ..
-					f10425[f10426("\204\187\185\234\208\246\162\181.M\251", 34227638926468)])
+			print("[" ..
+				os["clock"]() ..
+					"] [INFO] s8")
 		end
 		local f10530 = f10499
-		local v563 = t309[f10425[f10426("\209\30p\238", 17011810876899)]]
-		local v564 = f10425[f10426("V", 25199342148524)] ..
+		local v563 = t309["Host"]
+		local v564 = "/" ..
 			f10500 ..
-				f10425[f10426("\221\209\n=o\17", 1184373376079)] ..
-					t309[f10425[f10426("p<\196O\205\0158s", 21268253363551)]] ..
-						f10425[f10426("c>\6\3F\162+y", 3976187317879)] ..
+				"/auth/" ..
+					t309["ScriptID"] ..
+						"/init?t=" ..
 							(v560 .. v559) ..
-								f10425[f10426("\167Q\174", 1858703820483)] ..
-									t309[f10425[f10426("\15s )\130R\2366K\160\146G\162", 33488882006484)]] ..
-										f10425[f10426("\142\229\173", 8988567118003)] .. v388
+								"&v=" ..
+									t309["ScriptVersion"] ..
+										"&k=" .. v388
 		local v565
 		v565 = f10491 == 9
 		if not v565 then
@@ -160095,12 +160204,9 @@ local function f10149()
 		local t338, v566
 		v566, t338 = f10530(v563 .. v564, v565)
 		if v329 then
-			print(f10425[f10426("$", 13208501268493)] ..
-				os[f10425[f10426("\r\21\240\18\225", 11422814120334)]]() ..
-					f10425[f10426(
-						"\1514\254\208R\184\208nR\151\220\193\2\191\1547",
-						29704900340752
-					)])
+			print("[" ..
+				os["clock"]() ..
+					"] [INFO] s8-pass")
 		end
 		t323 = -1
 		f10481(f10479)
@@ -160134,51 +160240,45 @@ local function f10149()
 			v567 = true
 			f10463 = 100
 		end
-		if v566 == f10425[f10426("\196\205X", 28147927180902)] then
+		if v566 == "err" then
 			while true do
 			end
 		end
 		if f10437(
 			v566,
-			f10425[f10426(
-				"\166\222\202\158\1593\166ye\241v\251\148W\162\200<\128\148(\221\175\180\233/p\147\233F\232\165\163\136\185\170\1\172\250\235\173k",
-				1377652802819
-			)]
+			"Old script, please use the latest version"
 		) and f10419 then
-			f10419(f10425[f10426("\210\148~E\164", 19446057879230)])
+			f10419("flush")
 			return
 		end
 		local v571
-		if f10434(v566, 1, 1) == f10425[f10426("\138", 5914350458244)] then
-			local v572 = f10425[f10426("l\24\178\25+\175\tY\29B\234\176\150X\23", 28383083816769)]
-			if string[f10425[f10426("\220eg'", 2761748253196)]](
+		if f10434(v566, 1, 1) == "!" then
+			local v572 = "Whitelist Error"
+			if string["find"](
 				v566,
-				f10425[f10426("\23GB\147\212y\236\24\167&\219\243@y\205\190\217", 9639274521361)]
+				";;lrm_is_diff_msg"
 			) then
-				v572 = f10425[f10426("LY\1333\11w\134\174FP\194 \4\177,y7\5y", 15260484515716)]
+				v572 = "You are blacklisted"
 				v571 = f10434(v566, 2, #v566 - 17)
 			else
 				v571 = f10434(v566, 2, #v566)
 			end
 			f10509(
 				100,
-				f10425[f10426("\244\159\237\201L\217X\239\180\245$\181G?", 30952626417818)],
-				f10425[f10426(
-					"N=1MT {!\211Z\191R\207'\140\200\253|3\169\178\183\150U\25c",
-					27278169760572
-				)],
-				Color3[f10425[f10426("\189o`", 30263263129112)]](1, 0, 0),
-				f10425[f10426("4\226\14\232\14", 13170919157738)]
+				"[ AUTH ERROR ]",
+				" - Unable to authenticate.",
+				Color3["new"](1, 0, 0),
+				"error"
 			)
 			f10438(v572, v571)
 			f10501()
 		end
 		if t338 then
-			local v573 = t338[f10425[f10426("\2\209\252\2074\186vTX\135", 27265284465456)]]
+			local v573 = t338["Argwhudata"]
 			if v573 then
 				t338 = v573
 			else
-				t338 = t338[f10425[f10426("\212/tO\130\27\16\196\169\177", 17419845222239)]]
+				t338 = t338["argwhudata"]
 			end
 		end
 		if not t338 then
@@ -160279,7 +160379,7 @@ local function f10149()
 			end
 			if not _leave695 then
 				f10542 = 6334196324107
-				local v599 = f10425[f10426("", f10542)]
+				local v599 = ""
 				f10542 = f10520[3]
 				f10542 = f10542 + 12271
 				local v600 = f10539(f10542)
@@ -160302,7 +160402,7 @@ local function f10149()
 				end
 				if not v602 then
 					f10542 = "\230v"
-					v602 = f10425[f10426(f10542, 11362682743126)]
+					v602 = "-1"
 				end
 				if f10433(v602) == -1 then
 				end
@@ -160312,7 +160412,7 @@ local function f10149()
 				end
 				if not v603 then
 					f10542 = "\8"
-					v603 = f10425[f10426(f10542, 1527981245839)]
+					v603 = "0"
 				end
 				f10433(v603)
 			end
@@ -160336,8 +160436,7 @@ local function f10149()
 			local v605 = t340[10]
 			local f10550 = f10535
 			f10542 = f10426
-			f10542 = f10542("", 11551667071494)
-			f10542 = f10425[f10542]
+			f10542 = ""
 			local v606 = f10418(t340[13] + 10751)
 			local v607 = f10540(v604 + f10463)
 			v590 = t340[10]
@@ -160346,13 +160445,13 @@ local function f10149()
 			local v608 = f10550(f10542)
 			f10542 = f10535
 			v590 = 33512505047530
-			f10542 = f10542(f10520[5] .. f10425[f10426("", v590)])
+			f10542 = f10542(f10520[5] .. "")
 			v590 = 24280191096916
-			local v609 = f10535(f10425[f10426("", v590)] .. v604)
+			local v609 = f10535("" .. v604)
 			local f10551 = f10535
 			v590 = ""
 			f10543 = 281328943366
-			local v610 = f10425[f10426(v590, f10543)]
+			local v610 = ""
 			v590 = f10520[6]
 			local v611 = f10551(v610 .. v590)
 			local f10552 = f10535
@@ -160370,16 +160469,16 @@ local function f10149()
 			local f10553 = f10535
 			f10542 = f10418
 			f10542 = f10542(f10537(v613) + 1027)
-			f10542 = f10542 .. f10425[f10426("", 1284234413228)]
+			f10542 = f10542 .. ""
 			local v614 = f10553(f10542, true)
 			f10542 = t310
 			local HttpGet = t310.HttpGet
-			local v615 = t309[f10425[f10426("\204=\165,", 285624041738)]]
+			local v615 = t309["Host"]
 			v590 = 34962100748080
-			local v616 = f10425[f10426("\215", v590)]
+			local v616 = "/"
 			v590 = "\180T}\144E`\233N0\18\159\197"
 			f10543 = 5342028600175
-			local v617 = f10425[f10426(v590, f10543)]
+			local v617 = "/auth/start/"
 			v590 = t340[12]
 			f10543 = f10426
 			f10544 = "l4\190"
@@ -160393,22 +160492,18 @@ local function f10149()
 				f10542 = t341[6]
 			until v582 == f10542
 			f10542 = f10426
-			f10542 = f10542("-\n+", 31841711780822)
-			f10542 = f10425[f10542]
+			f10542 = "err"
 			if v618 == f10542 then
 				while true do
 				end
 			else
 				f10542 = f10434
 				f10542 = f10542(v618, 1, 1)
-				if f10542 == f10425[f10426("\231", 5502021014532)] then
+				if f10542 == "!" then
 					f10542 = t310.GetService
 					v590 = 2067016091525
-					f10542 = f10542(t310, f10425[f10426("<\165\18]\1795\142", v590)])
-					f10542 = f10542[f10425[f10426(
-						"\135\2218q\250\240\249wO\197\186",
-						21595754614416
-					)]]
+					f10542 = f10542(t310, "Players")
+					f10542 = f10542["LocalPlayer"]
 					local v619 = f10542
 					f10542 = f10542.Kick
 					f10542(v619, v618)
@@ -160447,12 +160542,12 @@ local function f10149()
 					f10548 = f10418
 					f10549 = f10520[4]
 					if v623 then
-						v594 = f10425[f10426("\177", 34008588909496)]
+						v594 = "?"
 					else
 						v594 = v623
 					end
 					if not v594 then
-						v594 = t310[f10425[f10426("\5fw\137\244", 33146347911317)]]
+						v594 = t310["JobId"]
 					end
 					f10549 = f10549 + f10522(v594)
 					f10548 = f10548(f10549)
@@ -160470,8 +160565,7 @@ local function f10149()
 							if f10548 then
 								f10548 = t344[8]
 								f10549 = f10426
-								f10549 = f10549("C", 5343102374768)
-								f10549 = f10425[f10549]
+								f10549 = "?"
 								f10548 = not (f10548 == f10549)
 							end
 							if f10548 then
@@ -160623,93 +160717,74 @@ local function f10149()
 						f10537(f10556)
 						local f10557 = f10535
 						f10556 = f10549
-						f10556 = f10556 .. f10425[f10426("", 15363566876644)]
+						f10556 = f10556 .. ""
 						local v654 = f10557(f10556)
 						f10556 = f10535
 						f10556 = f10556(f10540(f10549 + v639) ..
-							f10425[f10426("", 6862493423863)] .. f10538(f10548 + v640))
-						f10556 = f10556 .. f10535(f10548 .. f10425[f10426("", 13612240515461)])
+							"" .. f10538(f10548 + v640))
+						f10556 = f10556 .. f10535(f10548 .. "")
 						local v655 = f10556
 						f10556 = f10426
-						f10556 = f10556("", 26792823644536)
-						f10556 = f10425[f10556]
-						local v656 = v641[f10425[f10426("\251k\3\137", 8239072452089)]] ..
-							f10425[f10426("\243", 6554320115672)] ..
+						f10556 = ""
+						local v656 = v641["Host"] ..
+							"/" ..
 								f10500 ..
-									f10425[f10426(
-										"\1716y\6\132\215\1\133#\18\21'\12\146H\155\195\17",
-										8461343792840
-									)] ..
+									"/auth/heartbeat?t=" ..
 										(v654 .. v655) ..
-											f10425[f10426("\224\212\238", 27556277380159)] .. v642
+											"&s=" .. v642
 
 						local function f10558()
 							if v644 then
-								v645(f10425[f10426("@", 8025391308082)] ..
+								v645("[" ..
 									v646() ..
-										f10425[f10426(
-											"\198\5\158\149\150H\31\14\31\12\163}g\158\31H\4\5\208[",
-											21377778372037
-										)] ..
+										"] Sending ticket...(" ..
 											v647(f10439) ..
-												f10425[f10426("\229\215", 957806936956)])
+												")\n")
 							end
 							if f10439 == false then
 								f10556 = f10499(v656)
 							else
 								local t345 = f10439
 								local request5 = t345.request
-								local t346 = { [f10425[f10426("E\143\147", 17306025115381)]] = v656 }
+								local t346 = { ["Url"] = v656 }
 								f10556 = request5(t345, t346)
 							end
 							if v644 then
-								v645(f10425[f10426("\136", 8205785439706)] ..
+								v645("[" ..
 									v646() ..
-										f10425[f10426(
-											"\20N\188+\204\18\227\131`OM\249P=\163n\206\2432",
-											6507074033580
-										)])
+										"] Ticket responded\n")
 							end
 							if f10556 and 3 < #f10556 then
-								if f10556 == f10425[f10426(",.[\"@+o>\223", 19626452010854)] then
+								if f10556 == "NOT_FOUND" then
 									v590 = true
 									v584 = false
 									v585 = false
 									v586 = 1
 									v587 = 2
-									v648:GetService(f10425[f10426("K\26\21\0193\18\164", 34803182108316)])[f10425[f10426(
-										"\210\201\222Q\159{D\181\180\253d",
-										29684498623485
-									)]]:Kick(f10425[f10426(
-										"\3\174d\163\173\15\196\248\n\148\211g\189\226M\252,\146?T\145^m\161\29J\31mM\158n\1\176D\232\133\t\2291r*\138W\145\0190\29\152I\176\177\147X^3\153O\219\180",
-										33049708197947
-									)])
+									v648:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
 									f10501()
 								end
-								if f10556 == f10425[f10426("\198\137\162J", 30249304059403)] then
+								if f10556 == "FAIL" then
 									v590 = true
 									v584 = false
 									v585 = false
 									v586 = 1
 									v587 = 2
 									writefile(
-										f10425[f10426(
-											"\231\151|(\168\248]\170\254\215\233V\231k\136M\172\129\168",
-											14824532030958
-										)],
-										f10425[f10426("s25z\154\234a\131\145", 15250820544379)]
+										"luarmor-dbgfail.txt",
+										"resp:fail"
 									)
 									while true do
 									end
 								end
 								f10556 = f10536(f10556)[1]
 								if f10556 == f10418(f10548 * f10549 % 100000 + v649 + 18735) ..
-									f10425[f10426("", 28489387501476)] then
+									"" then
 									v592 = v592 + 1
 									f10547 = true
 									f10544 = true
 								elseif f10556 == f10539(f10548 * f10549 % 100000 + v649 + 18735 + 4919) ..
-									f10425[f10426("", 15233640150891)] then
+									"" then
 									f10547 = true
 									f10544 = true
 									v337 = true
@@ -160725,10 +160800,7 @@ local function f10149()
 									v585 = false
 									v586 = 1
 									v587 = 2
-									v648:GetService(f10425[f10426("\197>x\169\18fL", 29485850323780)])[f10425[f10426("\172\15\203V*\147lM\179R\26", 24838553885276)]]:Kick(f10425[f10426(
-										"\174\191bRRQ*\193\216\185'\25\154\n\158j\6\129\242\184\187\21\21D\245\225tL\179\160(",
-										22159486275741
-									)] .. v592)
+									v648:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. v592)
 								end
 							end
 						end
@@ -160771,13 +160843,10 @@ local function f10149()
 									v586 = 1
 									v587 = 2
 									writefile(
-										f10425[f10426(
-											"\rq\227\197\150\196C\12d5\169P\130\23\225R%\162/\160\157",
-											15647043369196
-										)],
-										f10425[f10426("\226\254\178K\216\255Z+Z", 8167129554358)] ..
+										"luarmor-error-log.txt",
+										"[0x2001] " ..
 											v592 ..
-												f10425[f10426("\250\193X\28", 24571184011619)] .. v657(f10439)
+												" v: " .. v657(f10439)
 									)
 								end
 							end
@@ -160792,13 +160861,10 @@ local function f10149()
 							v586 = 1
 							v587 = 2
 							writefile(
-								f10425[f10426(
-									"\221aK\192\216\12q\174n\167\"\232\6\199\17:\166y\t=)",
-									26022927261355
-								)],
-								f10425[f10426("\206\224\168?\226v\231\19\29", 709765005973)] ..
+								"luarmor-error-log.txt",
+								"[0x2022] " ..
 									v592 ..
-										f10425[f10426("\169d\175m", 10312531191172)] .. v657(f10439)
+										" v: " .. v657(f10439)
 							)
 						end
 					end
@@ -160838,20 +160904,17 @@ local function f10149()
 				f10548 = f10548()
 				f10548 = f10548 - f10412
 				f10549 = f10426
-				f10549 = f10549("\252", 21953321553885)
-				f10549 = f10425[f10549]
+				f10549 = "s"
 				f10548 = f10548 .. f10549
 				f10547 = f10547 .. f10548
 				f10548 = Color3
 				f10549 = f10426
-				f10549 = f10549("wܽ", 20447889574499)
-				f10549 = f10425[f10549]
+				f10549 = "new"
 				f10548 = f10548[f10549]
 				f10549 = 0
 				f10548 = f10548(f10549, 1, 0)
 				f10549 = f10426
-				f10549 = f10549("\211\225\215\163", 11135042529410)
-				f10549 = f10425[f10549]
+				f10549 = "done"
 				f10545(v592, f10546, f10547, f10548, f10549)
 				f10426 = v586 + 7341
 				if f10426 ~= 16781 then
@@ -182549,6 +182612,7 @@ local function f10149()
 							end
 
 							local t454 = {}
+							local _ = setmetatable
 							local t455 = { __tostring = f11100 }
 							t454[setmetatable({}, t455)] = 1
 							f11097(f10426, t454)
@@ -182798,6 +182862,7 @@ local function f10149()
 							end
 
 							local t457 = {}
+							local _ = setmetatable
 							local t458 = { __tostring = f11100 }
 							t457[setmetatable({}, t458)] = 1
 							f11106(f10425, t457)
@@ -183016,15 +183081,20 @@ local function f10149()
 							end
 
 							f11100 = rawget3
+							local _ = setmetatable
 							local t460 = { __tostring = f11099 }
 							local v3731 = setmetatable({}, t460)
+							local _ = setmetatable
 							local t461 = { __tostring = f11099 }
 							f11100(v3731, setmetatable({}, t461))
 							f11100 = v387
+							local _ = setmetatable
 							local t462 = { __tostring = f11099 }
 							local v3732 = setmetatable({}, t462)
+							local _ = setmetatable
 							local t463 = { __tostring = f11099 }
 							local v3733 = setmetatable({}, t463)
+							local _ = setmetatable
 							local t464 = { __tostring = f11099 }
 							f11100(v3732, v3733, setmetatable({}, t464))
 							if f10499 then
@@ -184403,6 +184473,7 @@ local function f10149()
 							f10536.cache = f10537
 
 							f10537 = function()
+								local _ = -3306262 + (bit32.rrotate(
 									string.unpack("<i8", "\203\0\0\0\0\0\0\0"),
 									18
 								) + 104) + -19793
@@ -184416,6 +184487,7 @@ local function f10149()
 							f11098 = function()
 								local t471 = { c = v3919() }
 								v3918.cache.a = t471
+								local _ = -3221205701 + bit32.rrotate(
 									bit32.lrotate(string.byte("\27", 1, nil), 1),
 									3
 								) + -19775
@@ -184443,6 +184515,7 @@ local function f10149()
 							local v3921 = f10537
 
 							f11098 = function()
+								local _ = -220970 + bit32.bxor(
 									bit32.lrotate(
 										string.unpack(">i8", "\0\0\0\0\0\0\0007"),
 										(string.unpack("<i8", "\12\0\0\0\0\0\0\0"))
@@ -184469,6 +184542,7 @@ local function f10149()
 								end
 
 								local function f11154(...)
+									local _ = -1704080 + bit32.rshift(
 										bit32.lrotate(
 											string.unpack(">i8", "\0\0\0\0\0\0\0005"),
 											17
@@ -184492,6 +184566,7 @@ local function f10149()
 										table.remove(p868._events, 1)
 									end
 								end
+
 								local v3924 = 10
 								local v3925 = 256
 
@@ -184696,6 +184771,7 @@ local function f10149()
 								end
 
 								function t483.new(p877)
+									local _ = assert
 									local v3947
 									v3947 = type(p877.currentVersion) == "number"
 									if v3947 then
@@ -185167,6 +185243,7 @@ local function f10149()
 										f11167 = 363 <= f11167(3.141592653589793)
 									until f11167
 								end
+								local _ = 18532 + f11168((f11167("6\218\164\222\30", 1, nil))) + -18532
 								local t524 = { c = v3986() }
 								v3985.cache.l = t524
 								return t524.c
@@ -185196,6 +185273,7 @@ local function f10149()
 							f10536[f10500] = f11098
 
 							f10537 = function()
+								local _ = table.freeze
 								local t526 = {
 									Desktop = "MouseKeyboard",
 									Mobile = "Touch",
@@ -185286,6 +185364,7 @@ local function f10149()
 								end
 
 								function t530.new(p894)
+									local _ = setmetatable
 									local t531 = {
 										_objs = {},
 										_name = p894
@@ -185311,6 +185390,7 @@ local function f10149()
 								end
 
 								function t530:Extend()
+									local _ = setmetatable
 									local t532 = {
 										_objs = {},
 										_name = self._name
@@ -185329,6 +185409,7 @@ local function f10149()
 									repeat
 										local _, t533
 										t533, _ = ...
+										local _ = setmetatable
 										local t534 = {
 											_objs = {},
 											_name = t533._name
@@ -185615,6 +185696,7 @@ local function f10149()
 								function t540.Disconnect()
 								end
 								t540.Destroy = t540.Disconnect
+								local _ = setmetatable
 								local t541 = {}
 
 								function t541.__index(_, p902)
@@ -185636,6 +185718,7 @@ local function f10149()
 								t542.__index = t542
 
 								function t542.new()
+									local _ = setmetatable
 									local t543 = { _handlerListHead = false, _proxyHandler = nil, _yieldedThreads = nil }
 									return (setmetatable(t543, t542))
 								end
@@ -185788,6 +185871,7 @@ local function f10149()
 									end
 								end)({[0]=c0})
 								end)(v4024)
+								local _ = table.freeze
 								local t547 = { new = t542.new, Wrap = t542.Wrap, Is = t542.Is }
 								return (table.freeze(t547))
 							end
@@ -186268,6 +186352,7 @@ local function f10149()
 							local v4065 = f10537
 
 							f11098 = function()
+								local _ = -216097 + bit32.rrotate(
 									439,
 									(string.unpack("<i8", "\23\0\0\0\0\0\0\0"))
 								) + -8437
@@ -187374,6 +187459,7 @@ local function f10149()
 									local f11193 = bit32.countrz
 									local v4079, v4080, v4081
 									while true do
+										local _ = 29612 + (f11193((string.len("\212(8"))) + 231) + -29840
 										while true do
 											f11193 = nil
 											local t826, t827
@@ -187441,16 +187527,19 @@ local function f10149()
 									if not (p923.Type == "Linear" and p923.Strength ~= nil) then
 										return
 									end
+									local _ = math.max
 									local v4088 = tonumber(p923.Speed)
 									if not v4088 then
 										v4088 = 0
 									end
 									local v4089 = math.max(0.01, v4088)
+									local _ = math.max
 									local v4090 = tonumber(p923.Smoothing)
 									if not v4090 then
 										v4090 = 1
 									end
 									local v4091 = math.max(0.01, v4090)
+									local _ = math.max
 									local v4092 = tonumber(p923.Strength)
 									if not v4092 then
 										v4092 = 0
@@ -187548,6 +187637,7 @@ local function f10149()
 								local v4109 = v4102.d()
 								local v4110 = v4102.w()
 								local v4111 = v4102.x()
+								local _ = setmetatable
 								local t830 = { __index = v4105 }
 								local t831 = setmetatable({}, t830)
 								t831.__index = t831
@@ -187978,6 +188068,7 @@ local function f10149()
 									local t839, v4128
 									v4128, t839 = ...
 									ipairs(t839)
+									local _ = setmetatable
 									local t840 = {}
 
 									function t840.__index(_, p934)
@@ -188044,6 +188135,7 @@ local function f10149()
 								function v4129.isKind(...)
 									local v4134, t842
 									t842, v4134 = ...
+									local _ = assert
 									local v4135
 									v4135 = not (v4134 == nil)
 									assert(
@@ -188084,13 +188176,15 @@ local function f10149()
 
 								function v4129.__tostring(p938)
 									local t845 = {}
+									local _ = string.format
 									local v4137 = p938.kind
 									if not v4137 then
 										v4137 = "?"
 									end
 									t845[1] = (string.format("-- Promise.Error(%s) --", v4137)) -- multiple values truncated
 									for _, t846 in ipairs(p938:getErrorChain()) do
-
+										local _ = table.insert
+										local _ = table.concat
 										local v4138 = _G["table.create"](2)
 										if t846.trace then
 										end
@@ -188108,6 +188202,7 @@ local function f10149()
 								end
 
 								local function f11207(p940)
+									local _ = assert
 									local v4139
 									v4139 = not (p940 == nil)
 									assert(v4139, "traceback is nil")
@@ -188128,6 +188223,7 @@ local function f10149()
 
 								local function f11210(p942, _)
 									local f11211 = f11206
+									local _ = xpcall
 									f11207(p942)
 									xpcall()
 									return (f11211())
@@ -188295,6 +188391,7 @@ local function f10149()
 									v4152, _ = f11205(...)
 									local v4153 = ...
 									local _new17 = t848._new
+									local _ = 25975 + bit32.lrotate(
 										55 + string.byte("\205\249\252\224\31", 2, 4),
 										4
 									) + -30649
@@ -188327,6 +188424,7 @@ local function f10149()
 								f11203 = "_try"
 
 								v4146 = function(...)
+									local _ = bit32.countrz
 									local v4156 = string.len("")
 									while true do
 										local _continue562 = false
@@ -188340,6 +188438,7 @@ local function f10149()
 										if _continue562 then
 											continue
 										end
+										local _ = 773 + bit32.countrz(v4156) + -771
 										local v4157, v4158
 										v4158, v4157 = ...
 										local _, v4159
@@ -188463,6 +188562,7 @@ local function f10149()
 								f11203 = "some"
 
 								v4146 = function(p967, p968)
+									local _ = assert
 									local v4165
 									v4165 = type(p968) == "number"
 									assert(
@@ -188511,6 +188611,7 @@ local function f10149()
 											local v4169
 											v4169 = not not false
 											if not v4169 then
+												local _ = ipairs
 												_G["bit32.bxor"](nil, nil)
 												ipairs(nil)
 											end
@@ -188527,6 +188628,7 @@ local function f10149()
 								f11203 = "race"
 
 								v4146 = function(p974)
+									local _ = assert
 									local v4170
 									v4170 = type(p974) == v3885
 									assert(v4170, string.format(v4125, "Promise.race"))
@@ -188570,7 +188672,7 @@ local function f10149()
 									local v4174 = nil
 									local f11239 = assert
 									local v4175
-									v4175 = 2 <
+									v4175 = 2 < bit32.rrotate(429, 17)
 									if not v4175 then
 										v4174 = v4126
 										;(nil)((nil)(v4174, "Promise.each"))
@@ -188700,6 +188802,7 @@ local function f10149()
 								v4146 = nil
 
 								function t848.delay(p982)
+									local _ = assert
 									local v4187
 									v4187 = type(p982) == "number"
 									local _leave564 = false
@@ -188772,6 +188875,7 @@ local function f10149()
 												f11250 = bit32.band
 												v4192 = 57
 											end
+											local _ = 18070 + f11251((f11250(
 												v4192,
 												(string.unpack(">i8", "\0\0\0\0\0\0\0\165"))
 											))) + -18094
@@ -188854,12 +188958,14 @@ local function f10149()
 								v4146 = "andThen"
 
 								local function f11258(p988, p989, p990)
+									local _ = assert
 									local v4198
 									v4198 = p989 == nil
 									if not v4198 then
 										v4198 = f11201(p989)
 									end
 									assert(v4198, string.format(v4126, "Promise:andThen"))
+									local _ = assert
 									local v4199
 									v4199 = p990 == nil
 									if not v4199 then
@@ -188876,6 +188982,7 @@ local function f10149()
 								local function f11259(...)
 									local v4200, v4201
 									v4201, v4200 = ...
+									local _ = assert
 									local v4202
 									v4202 = v4200 == nil
 									while v4202 do
@@ -188938,6 +189045,7 @@ local function f10149()
 								local function f11265(...)
 									local v4208, v4209
 									v4209, v4208 = ...
+									local _ = assert
 									f11201(v4208)
 									assert(select(3, ...))
 									local _, v4210
@@ -188973,6 +189081,7 @@ local function f10149()
 
 								local function f11269(...)
 									while true do
+										local _ = -5759994 + (bit32.rrotate(
 											string.unpack(">i8", "\0\0\0\0\0\0\0\176"),
 											17
 										) + 357) + -7297
@@ -189082,6 +189191,7 @@ local function f10149()
 								v4146 = "finally"
 
 								local function f11277(p1000, p1001)
+									local _ = assert
 									local v4224
 									v4224 = p1001 == nil
 									if not v4224 then
@@ -189098,6 +189208,7 @@ local function f10149()
 								local function f11278(...)
 									local v4225, v4226
 									v4226, v4225 = ...
+									local _ = assert
 									f11201(v4225)
 									assert(select(3, ...))
 									local _, v4227
@@ -189242,6 +189353,7 @@ local function f10149()
 									repeat
 										f11291 = bit32.bxor
 									until false
+									local _ = 18612 + f11291(true, nil) + -18708
 									v4247 = ...
 									f11290 = v4246
 									return (f11290(v4247:awaitStatus()))
@@ -189336,7 +189448,7 @@ local function f10149()
 								function t848.prototype._reject(p1003)
 									local Status3 = t848.Status
 									local v4256
-									v4256 = 275 <=
+									v4256 = 275 <= math.modf(3.141592653589793)
 									if v4256 then
 										p1003._values = Status3
 										local t872 = p1003._queuedReject
@@ -189424,6 +189536,7 @@ local function f10149()
 										f11201(f11299),
 										"Parameter #1 to Promise.retry must be a function"
 									)
+									local _ = assert
 									local v4263
 									v4263 = type(v4262) == "number"
 									assert(v4263, "Parameter #2 to Promise.retry must be a number")
@@ -189444,12 +189557,14 @@ local function f10149()
 										f11201(p1004),
 										"Parameter #1 to Promise.retry must be a function"
 									)
+									local _ = assert
 									local v4265
 									v4265 = type(p1005) == "number"
 									assert(
 										v4265,
 										"Parameter #2 (times) to Promise.retry must be a number"
 									)
+									local _ = assert
 									local v4266
 									v4266 = type(p1006) == "number"
 									assert(
@@ -189586,6 +189701,7 @@ local function f10149()
 							local v4282 = f10537
 
 							f11098 = function()
+								local _ = -4162042346 + bit32.rrotate(
 									-508,
 									(string.unpack(">i8", "\0\0\0\0\0\0\0\14"))
 								) + -17832
@@ -189692,6 +189808,7 @@ local function f10149()
 									local f11313 = bit32.rrotate
 									local v4292
 									repeat
+										local _ = -906564 + f11313(114, 19) + -27320
 										f11313 = nil
 										local v4293 = ...
 										v4292 = { keybind = t881.keybind }
@@ -189764,6 +189881,7 @@ local function f10149()
 
 								function t889:_Initialize()
 									local function f11316(...)
+										local _ = 23950 + bit32.countlz((bit32.bxor(
 											math.modf(3.141592653589793),
 											string.unpack(">i8", "\0\0\0\0\0\0\0n"),
 											112
@@ -189877,6 +189995,7 @@ local function f10149()
 										local v4315 = 382
 										local v4316 = 37
 										repeat
+											local _ = 19700 + f11320((f11321(v4314, v4315, v4316))) + -19527
 											f11320 = nil
 											f11321 = nil
 											v4314 = nil
@@ -190051,6 +190170,7 @@ local function f10149()
 								local f11326 = math.ceil
 								local v4341 = 3.141592653589793
 								repeat
+									local _ = -4294964773 + f11325(v4340 + f11326(v4341)) + -2384
 									f11325 = nil
 									v4340 = nil
 									f11326 = nil
@@ -190108,6 +190228,7 @@ local function f10149()
 								local f11328 = bit32.lshift
 								local f11329 = string.len
 								repeat
+									local _ = -921038 + f11328(f11329("") + 225, 12) + -458
 									f11328 = nil
 									f11329 = nil
 								until not v4346.cache.I
@@ -190362,6 +190483,7 @@ local function f10149()
 									v4382 = not not false
 									if v4382 then
 										while t924._resolved[v4381] do
+											local _ = -4294956281 + f11338(386) + -10625
 											f11338 = nil
 											t924, v4381 = ...
 										end
@@ -190958,14 +191080,17 @@ local function f10149()
 									local v4449 = 0
 									for v4450, v4451 in p1051:gmatch("([^%%]*)%%(%w+)%%") do
 										if v4450 ~= "" then
+											local _ = table.insert
 											local t962 = { Text = v4450 }
 											table.insert(t961, t962)
 										end
 										local v4452 = p1052[v4451]
 										if v4452 == nil then
+											local _ = table.insert
 											local t963 = { Text = "%" .. v4451 .. "%" }
 											table.insert(t961, t963)
 										else
+											local _ = table.insert
 											local t964 = { Text = v4452, Accent = true }
 											table.insert(t961, t964)
 										end
@@ -190973,6 +191098,7 @@ local function f10149()
 									end
 									local sub3 = p1051:sub(v4449 + 1)
 									if sub3 ~= "" then
+										local _ = table.insert
 										local t965 = { Text = sub3 }
 										table.insert(t961, t965)
 									end
@@ -190990,6 +191116,7 @@ local function f10149()
 									local f11362 = bit32.band
 									local f11363 = string.byte
 									repeat
+										local _ = 2022 + f11362(f11363("@", 1, nil) + 153) + -2237
 										f11362 = nil
 										f11363 = nil
 										f11361 = t957[f11361(self, "Side")]
@@ -191006,6 +191133,7 @@ local function f10149()
 										f11364 = bit32.band
 										v4453 = 34
 									end
+									local _ = 16070 + f11364(v4453, string.byte("\252g\8", 3, 3), 244) + -16067
 									t966.Accent = v4454
 									t966.Background = self:_Get("ThemeBackground")
 									t966.TextColor = self:_Get("ThemeText")
@@ -191068,6 +191196,7 @@ local function f10149()
 									local t968 = v4447.new(t967, p1055, self:_ResolveTheme(p1056), v4460)
 
 									local function f11365()
+										local _ = table.find
 										local f11366 = self._stack
 										local v4461 = t968
 										local v4462 = table.find(f11366, v4461)
@@ -191174,7 +191303,6 @@ local function f10149()
 									local v4478 = p1063
 
 									local function f11370(...)
-
 										local f11371, f11372, _
 										_, f11372, f11371 = ...
 										local v4479 = nil
@@ -191270,7 +191398,8 @@ local function f10149()
 									local function f11379()
 
 										local function f11380(p1065)
-
+											local _ = string.format
+											local _ = tostring
 											local v4497 = v4488
 
 											local function f11381(p1066)
@@ -191520,6 +191649,7 @@ local function f10149()
 									local v4522 = "\0\0\0\0\0\0\0x"
 									local f11398, v4523, t986
 									repeat
+										local _ = 14858 + (f11396(v4519, v4520, (f11397(v4521, v4522))) - 138) + -14486
 										f11396 = nil
 										v4519 = nil
 										v4520 = nil
@@ -191848,6 +191978,7 @@ local function f10149()
 
 								function t1000:BindGradient(p1088, p1089, p1090)
 									p1088.Color = f11403(p1089, p1090)
+									local _ = table.insert
 									local _gradients3 = self._gradients
 									local t1006 = { gradient = p1088, tokens = p1089, times = p1090 }
 									table.insert(_gradients3, t1006)
@@ -191967,6 +192098,7 @@ local function f10149()
 								local v4566 = ">i8"
 								local v4567 = "\0\0\0\0\0\0\0\188"
 								repeat
+									local _ = 15097 + (1 - f11409(v4566, v4567) - string.byte("w\0\174", 2, 3)) + -14801
 									f11409 = nil
 									v4566 = nil
 									v4567 = nil
@@ -191989,6 +192121,7 @@ local function f10149()
 								end
 
 								function t1012.Set(...)
+									local _ = 17496 + bit32.bor(
 										math.modf(3.141592653589793) + 268,
 										4,
 										(string.len("\233\248"))
@@ -192592,6 +192725,7 @@ local function f10149()
 									local v4631 = 283
 									local v4632, v4633
 									repeat
+										local _ = 2227 + f11430(v4631, 2) + -3358
 										f11430 = nil
 										v4631 = nil
 										v4634 = ...
@@ -193182,6 +193316,7 @@ local function f10149()
 								local f11463 = string.byte
 								local v4688 = "U"
 								repeat
+									local _ = -750780201 + f11462(94 + f11463(v4688, 1, nil), 22) + -214
 									f11462 = nil
 									f11463 = nil
 									v4688 = nil
@@ -193269,6 +193404,7 @@ local function f10149()
 											local f11467 = bit32.bnot
 											local f11468 = string.len
 											repeat
+												local _ = -4294961389 + f11466((f11467((f11468("\n"))))) + -5716
 												f11466 = nil
 												f11467 = nil
 												f11468 = nil
@@ -193475,9 +193611,11 @@ local function f10149()
 									repeat
 										local v4726 = getthreadidentity()
 										setthreadidentity(2)
+										local _ = table.pack
 										f10501(select(2, ...))
 										t1067 = table.pack()
 										local setthreadidentity6 = setthreadidentity
+										local _ = 13996 + bit32.rrotate(
 											bit32.lrotate(string.unpack(">i8", "\0\0\0\0\0\0\0s"), 14),
 											12
 										) + -14452
@@ -193587,6 +193725,7 @@ local function f10149()
 									f11478 = bit32.band
 									v4741 = string.unpack("<i8", "\134\1\0\0\0\0\0\0")
 								end
+								local _ = 25346 + (f11478(v4741, 436, 278) + string.byte("&\145O\221", 1, 2)) + -25640
 								local t1072 = { c = v4740() }
 								v4739.cache.am = t1072
 								return t1072.c
@@ -193844,6 +193983,7 @@ local function f10149()
 										return
 									end
 								end
+
 
 								function t1077:_Load()
 									if not (self._isArmed and self._restore == nil) then
@@ -194541,6 +194681,7 @@ local function f10149()
 									local v4907 = false
 									local v4908 = false
 									while not (v4906 + 10 <= tick()) do
+										local _ = setmetatable
 										local v4909 = getgc()
 										local t1105 = { __mode = "kv" }
 										local v4910 = setmetatable(v4909, t1105)
@@ -194829,6 +194970,7 @@ local function f10149()
 											v4937 = string.packsize(f11511)
 											if v4937 then
 												local clock3 = os.clock
+												local _ = setmetatable
 												local t1114 = {
 													_clock = clock3,
 													_time0 = os.clock(),
@@ -195000,6 +195142,7 @@ local function f10149()
 										return p1164
 									end
 									if not isfile(p1164) then
+										local _ = error
 										string.format(
 											"custom fov asset file \"%s\" does not exist",
 											tostring(p1164)
@@ -195009,6 +195152,7 @@ local function f10149()
 									local v4955, v4956
 									v4956, v4955 = f10501(getcustomasset, p1164)
 									if not v4956 then
+										local _ = error
 										string.format(
 											"failed to resolve custom fov asset \"%s\": %s",
 											tostring(p1164),
@@ -195074,6 +195218,7 @@ local function f10149()
 									local t1121, v4964
 									v4964, t1121 = f10501(f11517)
 									if not v4964 then
+										local _ = error
 										string.format(
 											"failed to load custom fov asset \"%s\": %s",
 											tostring(p1167),
@@ -195083,6 +195228,7 @@ local function f10149()
 									end
 									local v4965 = t1121[1]
 									if v4965 == nil then
+										local _ = error
 										string.format(
 											"failed to load custom fov asset \"%s\"",
 											tostring(p1167)
@@ -195092,6 +195238,7 @@ local function f10149()
 
 									local function f11518(...)
 										if not v4965:IsA("ScreenGui") then
+											local _ = error
 											string.format(
 												"custom fov asset \"%s\" is not a ScreenGui",
 												tostring(p1167)
@@ -195100,6 +195247,7 @@ local function f10149()
 										end
 										local check4 = v4965:FindFirstChild("check")
 										if check4 == nil or not check4:IsA("GuiObject") then
+											local _ = error
 											string.format(
 												"custom fov asset \"%s\" is missing a top-level \"check\" GuiObject",
 												tostring(p1167)
@@ -195108,6 +195256,7 @@ local function f10149()
 										end
 										local container6 = v4965:FindFirstChild("container")
 										if container6 == nil or not container6:IsA("GuiObject") then
+											local _ = error
 											string.format(
 												"custom fov asset \"%s\" is missing a top-level \"container\" GuiObject",
 												tostring(p1167)
@@ -195118,6 +195267,7 @@ local function f10149()
 										local v4966, v4967
 										v4967, v4966 = f11514(container6, t1122)
 										if not v4967 then
+											local _ = error
 											if not v4966 then
 												v4966 = string.format(
 													"failed to load custom fov asset \"%s\" callbacks",
@@ -195235,6 +195385,7 @@ local function f10149()
 										v4980, v4979 = f10501(v4978, _callbackData3)
 										if not v4980 then
 											local err64 = v4973.err
+											local _ = string.format
 											tostring(v4977)
 											tostring(tostring(v4979))
 											string.format()
@@ -195749,6 +195900,7 @@ local function f10149()
 											"Utility upvalue index not found"
 										))
 									end
+									local _ = debug.setupvalue
 									local t1143 = {}
 
 									function t1143.EncodeCameraRotation(_, p1192)
@@ -195773,6 +195925,7 @@ local function f10149()
 								end
 
 								function t1141._Resolve(...)
+									local _ = 31377 + bit32.bxor(
 										bit32.rshift(string.byte(">dY\18\215", 1, 4), 9),
 										4
 									) + -31272
@@ -195901,10 +196054,12 @@ local function f10149()
 
 								function t1146._Initialize(...)
 									local t1148, f11530, t1149, v5038, f11531
+									local _ = bit32.countrz
 									local v5039
 									v5039 = not not false
 									if not v5039 then
 										bit32.countrz(v5039)
+										local _ = 27700 + (bit32.bor(
 											math.modf(3.141592653589793),
 											(string.byte("\131\197", 1, 1))
 										) + 430) + -28169
@@ -196050,6 +196205,7 @@ local function f10149()
 									local f11534 = string.len
 									local v5052 = "\156B"
 									repeat
+										local _ = 23929 + (v5051 + f11534(v5052)) + -24122
 										v5051 = nil
 										f11534 = nil
 										v5052 = nil
@@ -196242,6 +196398,7 @@ local function f10149()
 										if _continue599 then
 											continue
 										end
+										local _ = 29082 + (v5080 + f11543(v5081)) + -29337
 										local t1159 = ...
 										return (v5072(t1159.inner, "Entity"))
 									end
@@ -196257,6 +196414,7 @@ local function f10149()
 								end
 
 								function t1156:GetItemById(p1207)
+									local _ = next
 									local v5082, v5083
 									v5083, v5082 = self:GetItems()
 									while true do
@@ -196678,6 +196836,7 @@ local function f10149()
 								end
 
 								function t1177._GetViewByInner()
+									local _ = 24744 + bit32.countrz((bit32.bxor(
 										string.len("H"),
 										(math.modf(3.141592653589793))
 									))) + -24741
@@ -196717,6 +196876,7 @@ local function f10149()
 										f11554 = bit32.countlz
 									end
 									repeat
+										local _ = 10059 + f11555((f11554(183))) + -10043
 										f11555 = nil
 										f11554 = nil
 									until _equippedItem7.__type == "GunView"
@@ -197015,6 +197175,7 @@ local function f10149()
 
 									self._trove:Add(v5170(v5173, f11561))
 									self._trove:Add(v5170(v5174, f11563))
+									local _ = next
 									local v5182 = nil
 									while true do
 										local v5183
@@ -197166,6 +197327,7 @@ local function f10149()
 
 							f11098 = function(...)
 								local v5199 = nil
+								local _ = 17169 + bit32.bor(
 									string.byte("\rGך", 2, 4) + math.modf(3.141592653589793),
 									string.unpack("<i8", "\253\1\0\0\0\0\0\0"),
 									112
@@ -197310,7 +197472,8 @@ local function f10149()
 									local f11571 = bit32.countrz
 									local f11572 = string.packsize
 									while true do
-										f11572 =
+										local _ = f11571((f11572("n=")))
+										f11572 = math.modf(3.141592653589793)
 										repeat
 											f11571 = 185
 										until f11571
@@ -198525,6 +198688,7 @@ local function f10149()
 										if v5372 == nil then
 											break
 										end
+										local _ = table.insert
 										local t1244 = { source = v5373 }
 										local t1245 = {
 											spring = v5367.new(v5368(), v5370, v5371),
@@ -198625,7 +198789,6 @@ local function f10149()
 								end
 
 								function t1242.Destroy()
-
 								end
 
 								return t1242
@@ -198832,11 +198995,13 @@ local function f10149()
 								local v5406, v5407, f11597
 								local t1263, v5404, v5405
 								repeat
+									local _ = bit32.band
 									v5406 = "<i8"
 									v5407 = "\184\1\0\0\0\0\0\0"
 									f11597 = string.unpack(v5406, v5407)
 									v5405 = f11597 < 134
 								until v5405
+								local _ = 24453 + bit32.band(
 									v5405,
 									f11597(v5406, v5407),
 									(string.len("\184\202"))
@@ -198947,6 +199112,7 @@ local function f10149()
 									local f11600 = bit32.bxor
 									local t1272
 									repeat
+										local _ = -4294955358 + f11600(-109, 390, (string.len(""))) + -11445
 										f11600 = nil
 										local t1273 = ...
 										t1272 = t1273._fov
@@ -199324,6 +199490,7 @@ local function f10149()
 											self._correction_sigma_max
 										)
 										local v5472 = f11611(0.12, 0.18)
+										local _ = table.insert
 										local t1285 = {
 											D = v5470,
 											t0 = v5461 * f11611(0.55, 0.68),
@@ -199342,6 +199509,7 @@ local function f10149()
 											local v5475 = f11611(0.85, 1.05)
 											local v5476 = f11611(0.1, 0.16)
 											local v5477 = f11611(0.08, 0.12)
+											local _ = table.insert
 											local t1286 = {
 												D = v5474 * v5475,
 												t0 = v5461 * f11611(0.78, 0.88),
@@ -199430,6 +199598,7 @@ local function f10149()
 										local v5502 = f11612(0, 1)
 										local _sdn_k6 = self._sdn_k
 										local v5503 = f11612(0, 1)
+										local _ = table.insert
 										local t1290 = {
 											x = v5492 + v5483 + v5480 * v5499 * v5500 + _sdn_k5 * v5496 * v5502,
 											y = v5493 + v5484 + v5480 * v5499 * v5501 + _sdn_k6 * v5496 * v5503,
@@ -199647,8 +199816,6 @@ local function f10149()
 							f10537 = function()
 								v5537.p()
 								v5537.ay()
-								local function f11615()
-								end
 								local v5538 = v5537.a5()
 								local function f11616()
 								end
@@ -199679,8 +199846,6 @@ local function f10149()
 								v5541.bh()
 								v5541.bi()
 								local Workspace2 = game:GetService("Workspace")
-								local function f11617()
-								end
 								local t1302 = {}
 								function t1302.lookAtCamera()
 								end
@@ -200709,8 +200874,6 @@ local function f10149()
 									end
 								end)({[0]=c0})
 								end)(v5632)
-								local function f11648()
-								end
 								local t1331 = { HitboxHead = true, Head = true }
 								local t1332 = {}
 								t1332.__index = t1332
@@ -200725,7 +200888,8 @@ local function f10149()
 								end
 
 								function t1332._SelectBestExhaustive(...)
-
+									(nil)()
+									;(nil)()
 								end
 
 								function t1332:IsLockable(p1449)
@@ -200740,11 +200904,10 @@ local function f10149()
 
 								function t1332.SelectPlayer()
 								end
-								local function f11649()
-								end
 
 								function t1332._SelectClosestFromState(...)
 									(nil)[0] = nil + nil
+									;(nil)()
 									up85 = nil
 								end
 
@@ -203241,6 +203404,7 @@ local function f10149()
 								end
 
 								function t1418:_HideDecal(p1571, p1572)
+									local _ = table.insert
 									local hiddenDecals6 = p1571.hiddenDecals
 									local t1421 = { decal = p1572, transparency = p1572.Transparency }
 									table.insert(hiddenDecals6, t1421)
@@ -205557,6 +205721,7 @@ local function f10149()
 									local t1482 = self._attachments[1]
 									local v6072 = t1482.build(p1682, p1684)
 									t1482.widget = v6072
+									local _ = assert
 									local v6073
 									v6073 = not (v6072 == nil)
 									assert(v6073, "Row: bare row builder returned no root")
@@ -206206,7 +206371,9 @@ local function f10149()
 											if type(t1522) == v3885 then
 												local Value69 = t1522.Value
 												if typeof(Value69) == "Color3" then
+													local _ = table.insert
 													local t1523 = {}
+													local _ = math.clamp
 													local v6147 = tonumber(t1522.Time)
 													if not v6147 then
 														v6147 = 0
@@ -207530,6 +207697,7 @@ local function f10149()
 										v6297 = 300
 									end
 									t1586.MaxWidth = v6297
+									local _ = table.clone
 									local v6298 = p1777.Options
 									if not v6298 then
 										v6298 = {}
@@ -210406,6 +210574,7 @@ local function f10149()
 										v6669, v6668 = f10501(f11963)
 										v6667 = false
 										if not v6669 then
+											local _ = warn
 											string.format(
 												"Binding.bind('%s') -> failed to apply config value: %s",
 												tostring(table.concat(p1947, "/")),
@@ -212139,6 +212308,7 @@ local function f10149()
 										v6827 = 150
 									end
 									t1739.Height = v6827
+									local _ = table.clone
 									local v6828 = p2096.Options
 									if not v6828 then
 										v6828 = {}
@@ -212242,6 +212412,7 @@ local function f10149()
 								end
 
 								function t1727:SetOptions(p2114)
+									local _ = table.clone
 									if not p2114 then
 										p2114 = {}
 									end
@@ -214472,10 +214643,12 @@ local function f10149()
 									if self._realized then
 										return
 									end
+									local _ = assert
 									local v7099
 									v7099 = self._kind == "section"
 									assert(v7099, "Container.Realize is for sections")
 									local _resolveParent3 = self._resolveParent
+									local _ = assert
 									local v7100
 									v7100 = not (_resolveParent3 == nil)
 									assert(
@@ -214947,6 +215120,7 @@ local function f10149()
 										if row3 ~= nil then
 											local Label12 = row3.Label
 											if not (Label12 == nil or Label12 == "") then
+												local _ = table.insert
 												local t1848 = { Label = Label12, Crumb = p2342, Open = p2343 }
 												local v7160 = row3
 
@@ -215344,6 +215518,7 @@ local function f10149()
 										_active = nil,
 										_captured = {}
 									}
+									local _ = setmetatable
 									local _captured3 = t1859._captured
 									local t1860 = { __mode = "k" }
 									setmetatable(_captured3, t1860)
@@ -217074,6 +217249,7 @@ local function f10149()
 								end
 
 								function t1916:Register(p2467, p2468, p2469)
+									local _ = table.insert
 									local _registrations7 = self._registrations
 									local t1928 = { host = p2467, section = p2468, collect = p2469 }
 									table.insert(_registrations7, t1928)
@@ -217128,6 +217304,7 @@ local function f10149()
 											end
 										end
 										if v7347 ~= nil then
+											local _ = table.insert
 											local t1934 = { hit = t1933, score = v7347 }
 											table.insert(t1932, t1934)
 										end
@@ -217330,6 +217507,7 @@ local function f10149()
 									local v7373 = p2481:Extend()
 									local v7374 = v7371.newBatch(v7373)
 									local _subtabs3 = p2479._subtabs
+									local _ = assert
 									local v7375
 									v7375 = not (_subtabs3 == nil)
 									assert(v7375, "Page.new requires the tab's page header")
@@ -218408,6 +218586,7 @@ local function f10149()
 								end
 
 								function t1989:AddTab(p2524)
+									local _ = assert
 									local v7484
 									v7484 = self._grid == nil
 									assert(
@@ -220153,6 +220332,7 @@ local function f10149()
 
 								local function f12274(p2614)
 									local _chrome3 = p2614._chrome
+									local _ = assert
 									local v7659
 									v7659 = not (_chrome3 == nil)
 									assert(v7659, "menu chrome accessed during construction")
@@ -220404,6 +220584,7 @@ local function f10149()
 								end
 
 								function t2083:SetTitle(p2624)
+									local _ = assert
 									local v7681
 									v7681 = type(p2624) == "string"
 									assert(v7681, "Menu.SetTitle(title) -> expected string")
@@ -220415,6 +220596,7 @@ local function f10149()
 								end
 
 								function t2083:SetWatermarkUsername(p2625)
+									local _ = assert
 									local v7682
 									v7682 = type(p2625) == "string"
 									assert(
@@ -220518,6 +220700,7 @@ local function f10149()
 								end
 
 								function t2083:SetVisible(p2641, p2642)
+									local _ = assert
 									local v7685
 									v7685 = type(p2641) == "boolean"
 									assert(v7685, "Menu.SetVisible(state) -> expected boolean")
@@ -220687,6 +220870,7 @@ local function f10149()
 								end
 
 								local t2094 = {}
+								local _ = setmetatable
 								local t2095 = { __mode = "k" }
 								setmetatable(t2094, t2095)
 
@@ -221064,6 +221248,7 @@ local function f10149()
 										if v7716 == nil then
 											break
 										end
+										local _ = table.insert
 										local t2109 = { Time = t2108.Time, Value = t2108.Value }
 										table.insert(t2107, t2109)
 									end
@@ -221117,12 +221302,14 @@ local function f10149()
 										local v7728, v7729
 										if type(BreathingMin4) == "number" or
 											type(BreathingMax4) == "number" then
+											local _ = math.floor
 											if BreathingMax4 then
 												v7729 = BreathingMax4
 											else
 												v7729 = 1
 											end
 											local v7730 = math.floor((1 - v7729) * 100 + 0.5)
+											local _ = math.floor
 											if BreathingMin4 then
 												v7728 = BreathingMin4
 											else
@@ -222247,6 +222434,7 @@ local function f10149()
 								local v7840 = _G["table.create"](4)
 								local v7841 = _G["table.create"](5)
 								local v7842 = f12343(v7840)
+								local _ = table.freeze
 								local t2179 = { all = v7841, item = v7840 }
 
 								function t2179.isItemCosmeticType(p2771)
@@ -222829,6 +223017,7 @@ local function f10149()
 											"EmoteController upvalue not found at index 1 of PickEmote._PickByKey"
 										))
 									end
+									local _ = setmetatable
 									local t2206 = {}
 
 									function t2206.UseEmote(_, p2796)
@@ -223455,6 +223644,7 @@ local function f10149()
 										end
 										local v7974 = v7964(f12363, v7973)
 										local v7975 = "Season " .. v7973
+										local _ = table.insert
 										local t2243 = { charmName = v7975, seasonName = v7964(v7974, "Name"), version = v7973 }
 										table.insert(t2241, t2243)
 										table.insert(t2242, v7975)
@@ -224046,6 +224236,7 @@ local function f10149()
 								function t2272:IsNonEmpty(p2882)
 									local v8032
 									if p2882 ~= nil then
+										local _ = next
 										local v8033 = self._storage[p2882]
 										if not v8033 then
 											v8033 = {}
@@ -224579,6 +224770,7 @@ local function f10149()
 									if GetOriginal11 == nil then
 										return nil
 									end
+									local _ = next
 									local v8103 = nil
 									while true do
 										local v8104
@@ -226226,6 +226418,7 @@ local function f10149()
 									local _store5 = self._store
 									local _errorReporter7 = self._errorReporter
 									local v8270 = getmetatable(f12417)
+									local _ = setmetatable
 									local t2361 = {}
 
 									function t2361.__newindex(p3019, p3020, p3021)
@@ -226551,6 +226744,7 @@ local function f10149()
 											if p3043.Parent ~= nil then
 												local ReportResult29 = p3042.ReportResult
 												local err66 = v8310.err
+												local _ = string.format
 												tostring(p3043:GetFullName())
 												string.format()
 												err66()
@@ -227333,6 +227527,7 @@ local function f10149()
 										local v8407 = self
 										local v8408 = v8406
 										if v8406 ~= nil then
+											local _ = debug.setupvalue
 											local t2398 = {}
 
 											function t2398.__index(_, p3093)
@@ -227475,6 +227670,7 @@ local function f10149()
 
 								local function f12454(p3104)
 									local t2405 = {}
+									local _ = next
 									local v8419, v8420
 									while true do
 										local v8421
@@ -228645,6 +228841,7 @@ local function f10149()
 								function t2440.normalizeImport(p3178)
 									if type(p3178) ~= v3885 then
 										local t2454 = { success = false }
+										local _ = string.format
 										tostring(type(p3178))
 										t2454.message = string.format()
 										t2454.state = nil
@@ -228797,6 +228994,7 @@ local function f10149()
 											"EmoteController upvalue not found"
 										))
 									end
+									local _ = debug.setupvalue
 									local t2465 = {}
 
 									function t2465.EquipEmote(_, p3181, p3182)
@@ -229132,6 +229330,7 @@ local function f10149()
 										))
 									end
 									v8610(v8615, "CosmeticInverted", nil)
+									local _ = setmetatable
 									local t2479 = {}
 
 									function t2479.__index(_, p3190)
@@ -229253,6 +229452,7 @@ local function f10149()
 										if v8633 ~= nil then
 											for v8634, v8635 in debug.getconstants(v8633) do
 												if v8635 == "FireServer" then
+													local _ = table.insert
 													local t2484 = { func = v8633, constantIndex = v8634 }
 													table.insert(t2483, t2484)
 													debug.setconstant(v8633, v8634, "GetChildren")
@@ -229348,6 +229548,7 @@ local function f10149()
 											"CosmeticSlot prototype not found"
 										))
 									end
+									local _ = debug.setupvalue
 									local t2489 = {}
 
 									function t2489.__index(p3194, p3195)
@@ -230199,6 +230400,7 @@ local function f10149()
 										local v8770 = v8768 + 1
 										buffer.writeu32(p3232, v8770, p3234.wrap.hash)
 										local v8771 = v8770 + 4
+										local _ = buffer.writeu8
 										local v8772 = p3234.wrap.inverted
 										v8772 = v8772 and 1 or 0
 										buffer.writeu8(p3232, v8771, v8772)
@@ -230519,6 +230721,7 @@ local function f10149()
 								function t2539.encodeShowActiveEvent(p3261)
 									local v8841 = buffer.create(2)
 									buffer.writeu8(v8841, 0, 1)
+									local _ = buffer.writeu8
 									p3261 = p3261 and 1 or 0
 									buffer.writeu8(v8841, 1, p3261)
 									return (buffer.tostring(v8841))
@@ -230540,6 +230743,7 @@ local function f10149()
 										local v8849 = buffer.create(v8847)
 										buffer.copy(v8849, 0, v8842, v8848, v8847)
 										v8844 = v8848 + v8847
+										local _ = table.insert
 										local t2541 = { userIdHash = v8845, payload = buffer.tostring(v8849) }
 										table.insert(t2540, t2541)
 									end
@@ -230765,6 +230969,7 @@ local function f10149()
 									local t2553 = f12520(t2551)
 									if not t2553.ok then
 										local _Report17 = self._Report
+										local _ = string.format
 										tostring(v8877.formatError(t2553.error))
 										string.format()
 										_Report17()
@@ -230848,6 +231053,7 @@ local function f10149()
 										local t2555 = f12522(t2554)
 										if not t2555.ok then
 											local _Report19 = self._Report
+											local _ = string.format
 											tostring(tostring(t2555.error))
 											string.format()
 											_Report19()
@@ -232451,6 +232657,7 @@ local function f10149()
 											break
 										end
 										if v9028 + v9022 < v9030 then
+											local _ = table.insert
 											local f12566 = ColorSequenceKeypoint.new
 											p3403:Lerp(p3404, f12559(v9030, p3405, (1 - p3405) % 1))
 											f12566()
@@ -232718,6 +232925,7 @@ local function f10149()
 										v9069 = #p3415 < v9068 + v9070
 										v9069 = v9069 and 1 or 0
 										table.insert(v9067, string.char(v9069))
+										local _ = table.insert
 										string.pack(
 											"<I2I2",
 											v9070,
@@ -232730,6 +232938,7 @@ local function f10149()
 										)
 										v9068 = v9068 + v9070
 									until #p3415 < v9068
+									local _ = table.insert
 									string.pack(">I4", f12570(p3415))
 									table.insert()
 									return (table.concat(v9067))
@@ -233936,6 +234145,7 @@ local function f10149()
 											local v9208, v9209
 											v9209, v9208 = f10501(f12604)
 											if not (v9209 and type(v9208) == "string") then
+												local _ = string.format
 												tostring(p3468)
 												tostring(tostring(v9208))
 												string.format()
@@ -233952,6 +234162,7 @@ local function f10149()
 											local v9210, v9211
 											v9211, v9210 = f10501(writefile, v9207, v9208)
 											if not v9211 then
+												local _ = string.format
 												tostring(v9207)
 												tostring(tostring(v9210))
 												string.format()
@@ -233964,6 +234175,7 @@ local function f10149()
 											p3469(v9212)
 											return
 										end
+										local _ = string.format
 										tostring(v9207)
 										tostring(tostring(v9212))
 										string.format()
@@ -234077,6 +234289,7 @@ local function f10149()
 														local v9233 = v9219.normalize(t2674.soundId)
 														if v9233 ~= nil then
 															t2673[v9232] = true
+															local _ = table.insert
 															local t2675 = { name = v9232, soundId = v9233 }
 															table.insert(t2672, t2675)
 														end
@@ -234222,6 +234435,7 @@ local function f10149()
 										self._resolvedById[p3479] = false
 										local ReportResult33 = self._errorReporter.ReportResult
 										local err73 = v9223.err
+										local _ = string.format
 										tostring(p3479)
 										tostring(tostring(p3481))
 										string.format()
@@ -234331,6 +234545,7 @@ local function f10149()
 											"sound id cannot be empty"
 										))
 									end
+									local _ = table.insert
 									local _data13 = self._data
 									local t2682 = { name = v9244, soundId = v9245 }
 									table.insert(_data13, t2682)
@@ -234539,7 +234754,8 @@ local function f10149()
 										return
 									end
 									local v9261 = debug.getupvalue(v9257, v9259)
-
+									local _ = debug.setupvalue
+									local _ = setmetatable
 									local t2687 = {}
 
 									function t2687.__index(_, p3494)
@@ -238488,7 +238704,9 @@ local function f10149()
 
 								function t2813.WinstreakRefresh(...)
 									v9658[nil] = nil - nil
-
+									;(nil)()
+									;(nil)()
+									;(nil)()
 								end
 
 								t2813.WinstreakTick = t2813.RankTick
@@ -238975,6 +239193,7 @@ local function f10149()
 									_G["table.create"](61)
 									_G["table.create"](141)
 									_G["table.create"](166)
+									;(nil)()
 									return true
 								end
 
@@ -239334,8 +239553,6 @@ local function f10149()
 								local v9735 = v9733.O()
 								v9733.G()
 								local v9736 = v9733.q()
-								local function f12720()
-								end
 								local t2853 = {}
 								t2853.__index = t2853
 
@@ -239498,6 +239715,7 @@ local function f10149()
 											string.format("Failed to find '%s'", tostring(t2860.name))
 											return (err75())
 										end
+										local _ = table.insert
 										local t2861 = { method = v9750, source = t2860 }
 										table.insert(f12725, t2861)
 									end
@@ -239517,6 +239735,7 @@ local function f10149()
 										for v9754, v9755 in debug.getconstants(method3) do
 											if v9755 == target9 then
 												debug.setconstant(method3, v9754, v9752)
+												local _ = table.insert
 												local t2863 = { method = method3, index = v9754, constant = v9755 }
 												table.insert(_restores5, t2863)
 												v9753 = true
@@ -239832,6 +240051,7 @@ local function f10149()
 											)
 											return (err77())
 										end
+										local _ = table.insert
 										local t2876 = { method = v9783, index = v9784, constant = "_camera_shaker" }
 										table.insert(t2874, t2876)
 									end
@@ -239971,6 +240191,7 @@ local function f10149()
 													break
 												end
 												if v9797 == CameraController8 then
+													local _ = setmetatable
 													local t2885 = {}
 
 													function t2885.GetPublicState()
@@ -240081,6 +240302,7 @@ local function f10149()
 										end
 
 										p3729:Add(fighterState41:OnItemRemovedSignal(f12734))
+										local _ = next
 										local v9804, v9805
 										v9805, v9804 = fighterState41:GetItems()
 										while true do
@@ -240119,6 +240341,7 @@ local function f10149()
 									f12736 = self._hookRestores
 									f12736[p3732] = t2892
 									f12736 = t2892.equipCooldown
+									local _ = setmetatable
 									local t2893 = {}
 
 									function t2893.__index(_, p3733)
@@ -240191,6 +240414,7 @@ local function f10149()
 								v9813.al()
 								v9813.a4()
 								local v9816 = v9813.b()
+								local _ = v9813.ao().Throwable
 								local v9817 = v9813.ah()
 								local v9818 = _G["table.create"](1)
 
@@ -240482,6 +240706,7 @@ local function f10149()
 										end
 
 										p3768:Add(fighterState42:OnItemRemovedSignal(f12742))
+										local _ = next
 										local v9842, v9843
 										v9843, v9842 = fighterState42:GetItems()
 										while true do
@@ -240582,6 +240807,7 @@ local function f10149()
 									if _fighterState13 == nil then
 										return
 									end
+									local _ = next
 									local v9854, v9855
 									v9855, v9854 = _fighterState13:GetItems()
 									while true do
@@ -240599,6 +240825,7 @@ local function f10149()
 									if _fighterState14 == nil then
 										return
 									end
+									local _ = next
 									local v9857, v9858
 									v9858, v9857 = _fighterState14:GetItems()
 									while true do
@@ -240661,6 +240888,7 @@ local function f10149()
 									if v9867 == nil then
 										return
 									end
+									local _ = next
 									local v9868 = t2906
 									local v9869 = nil
 									while true do
@@ -240678,6 +240906,7 @@ local function f10149()
 									if v9871 == nil then
 										return
 									end
+									local _ = next
 									local v9872 = t2906
 									local v9873 = nil
 									while true do
@@ -240712,6 +240941,7 @@ local function f10149()
 									if _fighterState15 == nil then
 										return
 									end
+									local _ = next
 									local v9874, v9875
 									v9875, v9874 = _fighterState15:GetItems()
 									while true do
@@ -240745,6 +240975,7 @@ local function f10149()
 										end
 
 										p3783:Add(fighterState43:OnItemRemovedSignal(f12748))
+										local _ = next
 										local v9877, v9878
 										v9878, v9877 = fighterState43:GetItems()
 										while true do
@@ -240789,6 +241020,7 @@ local function f10149()
 								end
 
 								function t2907:_RevertItemMotion()
+									local _ = next
 									local _disabledItems3 = self._disabledItems
 									local v9881 = nil
 									while true do
@@ -241585,6 +241817,7 @@ local function f10149()
 												if v9955 then
 													v9954 = t2928[v9951]
 												end
+												local _ = setmetatable
 												local t2929 = {}
 												local v9958 = v9953
 
@@ -244384,7 +244617,8 @@ local function f10149()
 								end
 
 								function t3021.Update(...)
-
+									(nil)()
+									;(nil)()
 								end
 
 								function t3021.ShouldRun()
@@ -247290,6 +247524,7 @@ local function f10149()
 											end
 											local Cross11 = (t3174[2] - t3174[1]):Cross(t3174[3] - t3174[1])
 											if not (Cross11.Magnitude < 1e-06) then
+												local _ = table.insert
 												local t3175 = {
 													faceId = v10459,
 													verts = GetFaceVertices3,
@@ -247869,6 +248104,7 @@ local function f10149()
 										end
 
 										p4086:Add(fighterState45:OnItemRemovedSignal(f12939))
+										local _ = next
 										local v10534, v10535
 										v10535, v10534 = fighterState45:GetItems()
 										while true do
@@ -248242,7 +248478,8 @@ local function f10149()
 									self._upvalueIndex = v10570
 									local v10572 = debug.getupvalue(v10569, v10570)
 									self._oldUpvalue = v10572
-
+									local _ = debug.setupvalue
+									local _ = setmetatable
 									local t3212 = {}
 
 									function t3212.__index(_, p4105)
@@ -248450,6 +248687,7 @@ local function f10149()
 										local function f12962(p4112)
 											local ReportResult34 = self._errorReporter.ReportResult
 											local err80 = v10584.err
+											local _ = string.format
 											tostring(v10593)
 											tostring(tostring(p4112))
 											string.format()
@@ -248474,6 +248712,7 @@ local function f10149()
 									end
 									local ReportResult35 = self._errorReporter.ReportResult
 									local err81 = v10584.err
+									local _ = string.format
 									tostring(v10593)
 									tostring(tostring(v10597))
 									string.format()
@@ -248934,6 +249173,7 @@ local function f10149()
 
 							f10537 = function()
 								local v10656 = Color3.fromRGB(214, 230, 255)
+								local _ = table.freeze
 								local t3231 = {
 									PARTS_PRECREATE = 480,
 									PARTS_EXPANSION = 32,
@@ -248983,6 +249223,7 @@ local function f10149()
 								local v10659 = math.cos(math.rad(90))
 								local pi19 = math.pi
 								local pi20 = math.pi
+								local _ = table.freeze
 								local t3233 = {
 									X_INVERSE = Inverse4,
 									OFFSET_ANGLE = v10659,
@@ -249419,6 +249660,7 @@ local function f10149()
 								}
 								local v10698 = _G["table.create"](2)
 								local v10699 = _G["table.create"](3)
+								local _ = table.freeze
 								local t3245 = {
 									DEFAULT_MIN_BRANCHES = 3,
 									DEFAULT_MAX_BRANCHES = 4,
@@ -249778,6 +250020,7 @@ local function f10149()
 								local v10754 = math.rad(80)
 								local v10755 = math.rad(70)
 								local v10756 = math.rad(110)
+								local _ = table.freeze
 								local t3255 = {
 									BRIGHTSPOT_TEXTURE = "rbxassetid://243098098",
 									GLARE_TEXTURE = "rbxassetid://243660364",
@@ -249855,6 +250098,7 @@ local function f10149()
 										p4161 = {}
 									end
 									local t3259 = {}
+									local _ = math.clamp
 									local v10767 = p4161.size
 									if not v10767 then
 										v10767 = 1
@@ -250024,6 +250268,7 @@ local function f10149()
 									v10791.minThicknessMultiplier = 0.7
 									v10791.maxThicknessMultiplier = 1
 									_host14.addBolt(v10791, t3257.BOLT_PART_COUNT)
+									local _ = table.insert
 									local _bolts8 = self._bolts
 									local t3263 = {
 										bolt = v10791,
@@ -250091,6 +250336,7 @@ local function f10149()
 
 							f10537 = function()
 								local v10795 = Color3.fromRGB(238, 246, 255)
+								local _ = table.freeze
 								local t3266 = {
 									DEFAULT_MAX_SPARKS = 18,
 									DEFAULT_MIN_SPEED = 10,
@@ -251112,9 +251358,11 @@ local function f10149()
 											break
 										end
 										if type(t3298) == "string" then
+											local _ = table.insert
 											local t3299 = { name = t3298, path = _G["table.create"](2), transform = f13007 }
 											table.insert(v10919, t3299)
 										else
+											local _ = table.insert
 											local t3300 = { name = t3298.name }
 											local v10921 = _G["table.create"](2)
 											if t3298.subKey then
@@ -251418,6 +251666,7 @@ local function f10149()
 								local v10960
 								v10960.texture = t3310.Rain
 								local t3311 = { Snow = v10949, Rain = v10953, Blizzard = v10956 }
+								local _ = table.freeze
 								local t3312 = {
 									LIGHTNING_PRESETS = t3309,
 									LIGHTNING_RADIUS_MIN = 18,
@@ -251636,6 +251885,7 @@ local function f10149()
 										end
 										v10988.Parent = self._part
 										v10985:Add(v10988)
+										local _ = table.insert
 										local t3318 = { emitter = v10988, spec = t3317 }
 										table.insert(v10986, t3318)
 									end
@@ -252366,6 +252616,7 @@ local function f10149()
 								function t3333.decode(p4266)
 									local t3348 = { buf = buffer.fromstring(v11043.decode(p4266)), off = 0 }
 									local v11070 = f13041(t3348)
+									local _ = assert
 									string.format(
 										"unsupported recording format version %s",
 										tostring(v11070)
@@ -252848,6 +253099,7 @@ local function f10149()
 										return
 									end
 									self._lastPositionSampleTime = v11128
+									local _ = table.insert
 									local positions6 = self._recording.positions
 									local t3377 = {
 										offset = self:_GetOffset(),
@@ -252954,6 +253206,7 @@ local function f10149()
 								end
 
 								function t3370._Record(p4293, p4294)
+									local _ = table.insert
 									local keypoints6 = p4293._recording.keypoints
 									local t3385 = { offset = p4293:_GetOffset(), action = p4294 }
 									table.insert(keypoints6, t3385)
@@ -252998,6 +253251,7 @@ local function f10149()
 
 								function t3387.new()
 									local v11140 = v11138(PlayerModule8:GetControls(), "activeController")
+									local _ = assert
 									local v11141
 									v11141 = not (v11140 == nil)
 									assert(v11141, "no active controller to hook")
@@ -260799,6 +261053,7 @@ local function f10149()
 										if v11873 == nil then
 											break
 										end
+										local _ = table.insert
 										local t4245 = { Name = v11875, Image = f13670(v11875) }
 										if p4597 then
 											v11874 = p4597(v11875)
@@ -261023,6 +261278,7 @@ local function f10149()
 									local f13694 = t4264.AddDropdown
 									local t4266 = { Label = "Weapon" }
 									local v11901 = _G["table.create"](1)
+									local _ = unpack
 									local v11902 = v11861
 									t4266.Options = v11901
 									t4266.Default = v11861[1]
@@ -263550,6 +263806,7 @@ local function f10149()
 											table.remove(t4660, v12086)
 										end
 									end
+									local _ = table.insert
 									local v12088 = math.clamp(p4662.rank, 1, #t4660 + 1)
 									local t4661 = { key = v12085, value = p4662.value }
 									table.insert(t4660, v12088, t4661)
@@ -263638,6 +263895,7 @@ local function f10149()
 										).error)
 										return
 									end
+									local _ = setmetatable
 									local t4664 = {}
 
 									function t4664.__index(_, p4666)
@@ -264375,16 +264633,19 @@ local function f10149()
 									local v12149 = v12146(SeasonLibrary6, "UNIVERSAL_ELO_NAME")
 									local Value93 = v12145.data.Misc.PlayerSpoofer.LocalPlayer.RankedElo.Value
 									local v12150 = table.clone(GetOriginal13)
+									local _ = table.clone
 									local v12151 = v12146(v12150, v12148)
 									if not v12151 then
 										v12151 = {}
 									end
 									local v12152 = table.clone(v12151)
+									local _ = table.clone
 									local v12153 = v12146(v12152, "RankedPerformances")
 									if not v12153 then
 										v12153 = {}
 									end
 									local v12154 = table.clone(v12153)
+									local _ = table.clone
 									local v12155 = v12146(v12154, v12149)
 									if not v12155 then
 										v12155 = {}
@@ -265639,10 +265900,6 @@ local function f10149()
 								v12303.FilterDescendantsInstances = {}
 								v12303.BruteForceAllSlow = true
 								local v12304 = 0.05
-								local function f14039()
-								end
-								local function f14040()
-								end
 
 								local function f14041(p4772, p4773)
 									return p4772.Min + (p4772.Max - p4772.Min) * ((math.sin(os.clock() * (2 * math.pi * p4773)) + 1) * 0.5)
