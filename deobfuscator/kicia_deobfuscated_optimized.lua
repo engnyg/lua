@@ -139105,42 +139105,42 @@ local function f8876()
 	end
 
 	local function tostring_tamperCheck()
-		if up0 and up0() then
-			up1 = "hook_thread"
+		if hookCheck and hookCheck() then
+			tamperResult = "hook_thread"
 			return ""
 		end
-		if up2 and up2() ~= nil then
-			up1 = "root_callback"
+		if rootCallbackCheck and rootCallbackCheck() ~= nil then
+			tamperResult = "root_callback"
 			return ""
 		end
-		if up3 and up3() ~= nil then
-			up1 = "original_thread"
+		if originalThreadCheck and originalThreadCheck() ~= nil then
+			tamperResult = "original_thread"
 			return ""
 		end
 		local isActive1, lineNum1, funcName1, _, _
-		_, _, funcName1, lineNum1, isActive1 = up4(1, "snfa")
-		if not (funcName1 == up5 and lineNum1 == 0 and isActive1 == true) then
-			up1 = "frame1"
+		_, _, funcName1, lineNum1, isActive1 = debugInfo(1, "snfa")
+		if not (funcName1 == expectedFuncName and lineNum1 == 0 and isActive1 == true) then
+			tamperResult = "frame1"
 			return ""
 		end
 		local isActive2, lineNum2, funcName2, source2, func2
-		func2, source2, funcName2, lineNum2, isActive2 = up4(2, "fsna")
+		func2, source2, funcName2, lineNum2, isActive2 = debugInfo(2, "fsna")
 		if not (func2 == tostring and source2 == "[C]" and (funcName2 == "tostring" and lineNum2 == 0) and isActive2 == true) then
-			up1 = "frame2"
+			tamperResult = "frame2"
 			return ""
 		end
 		local isActive3, lineNum3, funcName3, func3, source3
-		source3, func3, funcName3, lineNum3, isActive3 = up4(3, "sfna")
-		if not (source3 == "[C]" and func3 == up6 and (funcName3 == "FireServer" and lineNum3 == 0) and isActive3 == true) then
-			up1 = "frame3"
+		source3, func3, funcName3, lineNum3, isActive3 = debugInfo(3, "sfna")
+		if not (source3 == "[C]" and func3 == fireServerRef and (funcName3 == "FireServer" and lineNum3 == 0) and isActive3 == true) then
+			tamperResult = "frame3"
 			return ""
 		end
 		local isActive4, lineNum4, funcName4, func4, _
-		_, func4, funcName4, lineNum4, isActive4 = up4(4, "sfna")
-		if func4 == up7 and funcName4 == "" and (lineNum4 == 0 and isActive4 == true) then
+		_, func4, funcName4, lineNum4, isActive4 = debugInfo(4, "sfna")
+		if func4 == expectedFunc4 and funcName4 == "" and (lineNum4 == 0 and isActive4 == true) then
 			return ""
 		end
-		up1 = "frame4"
+		tamperResult = "frame4"
 		return ""
 	end
 

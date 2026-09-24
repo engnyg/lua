@@ -25566,7 +25566,15 @@
     "v357": "isActive4",
     "v358": "lineNum4",
     "v359": "funcName4",
-    "v360": "func4"
+    "v360": "func4",
+    "up0": "hookCheck",
+    "up1": "tamperResult",
+    "up2": "rootCallbackCheck",
+    "up3": "originalThreadCheck",
+    "up4": "debugInfo",
+    "up5": "expectedFuncName",
+    "up6": "fireServerRef",
+    "up7": "expectedFunc4"
   },
   "f9799": {
     "up0": "modules",
