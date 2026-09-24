@@ -13565,9 +13565,9 @@ local function f940()
 	end
 
 	local function clearNotifiedMod(player)
-		up0._notified.Moderator[player] = nil
-		up0._notified.ModFriend[player] = nil
-		up0:_CancelPlayer(player)
+		modTracker._notified.Moderator[player] = nil
+		modTracker._notified.ModFriend[player] = nil
+		modTracker:_CancelPlayer(player)
 	end
 
 	local function f1043(...)
