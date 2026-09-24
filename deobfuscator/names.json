@@ -25828,5 +25828,27 @@
     "up25": "toNumStrB",
     "up26": "shouldClose",
     "up27": "runDeferred"
+  },
+  "f5139": {
+    "up0": "erf",
+    "up1": "sqrt2"
+  },
+  "f5140": {
+    "up0": "normalCdf"
+  },
+  "f5141": {
+    "up0": "sqrt2Pi"
+  },
+  "f5142": {
+    "up0": "curvatureNorm"
+  },
+  "f5144": {
+    "up0": "pi"
+  },
+  "f5145": {
+    "up0": "gaussianFn"
+  },
+  "f5146": {
+    "up0": "humanizerClass"
   }
 }

@@ -74592,14 +74592,14 @@ local function f5042()
 	end
 
 	local function normalCdfHelper(normalZ)
-		return 0.5 * (1 + up0(normalZ / up1))
+		return 0.5 * (1 + erf(normalZ / sqrt2))
 	end
 
 	local function lognormalCdfHelper(lognormTime, lognormOnset, lognormMu, lognormSigma)
 		if lognormTime <= lognormOnset then
 			return 0
 		end
-		return (up0((math.log(lognormTime - lognormOnset) - lognormMu) / lognormSigma))
+		return (normalCdf((math.log(lognormTime - lognormOnset) - lognormMu) / lognormSigma))
 	end
 
 	local function lognormalPdfHelper(pdfTime, pdfOnset, pdfMu, pdfSigma)
@@ -74608,14 +74608,14 @@ local function f5042()
 		end
 		local sinceOnset = pdfTime - pdfOnset
 		local standardized = (math.log(sinceOnset) - pdfMu) / pdfSigma
-		return 1 / (pdfSigma * up0 * sinceOnset) * math.exp(-0.5 * standardized * standardized)
+		return 1 / (pdfSigma * sqrt2Pi * sinceOnset) * math.exp(-0.5 * standardized * standardized)
 	end
 
 	local function curvatureProfileHelper(curvProgress)
 		if curvProgress <= 0 or 1 <= curvProgress then
 			return 0
 		end
-		return curvProgress * curvProgress * (1 - curvProgress) * (1 - curvProgress) * (1 - curvProgress) / up0
+		return curvProgress * curvProgress * (1 - curvProgress) * (1 - curvProgress) * (1 - curvProgress) / curvatureNorm
 	end
 
 	local function directionCurvatureHelper(curvAngle)
@@ -74628,7 +74628,7 @@ local function f5042()
 		if gaussU1 < 1e-15 then
 			gaussU1 = 1e-15
 		end
-		return gaussMean + gaussStdDev * (math.sqrt(-2 * math.log(gaussU1)) * math.cos(2 * up0 * NextNumber3))
+		return gaussMean + gaussStdDev * (math.sqrt(-2 * math.log(gaussU1)) * math.cos(2 * pi * NextNumber3))
 	end
 
 	local function gammaSampleHelper(gammaRng2, gammaShape, gammaScale)
@@ -74640,7 +74640,7 @@ local function f5042()
 		local gammaD = gammaShape - 0.3333333333333333
 		local gammaC = math.sqrt(9 * gammaD)
 		while true do
-			local normalDraw = up0(gammaRng2, 0, 1)
+			local normalDraw = gaussianFn(gammaRng2, 0, 1)
 			local gammaCube = (1 + 1 / gammaC * normalDraw) ^ 3
 			if 0 < gammaCube then
 				local uniformDraw = gammaRng2:NextNumber()
@@ -74688,7 +74688,7 @@ local function f5042()
 			_lastTargetY = 0,
 			_rng = Random.new()
 		}
-		return (setmetatable(defaults, up0))
+		return (setmetatable(defaults, humanizerClass))
 	end
 
 	local function loadMouseHumanizer()
