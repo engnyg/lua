@@ -1,9 +1,10 @@
 -- kicia_deobfuscated_no_luarmor.lua
 -- Derived from kicia_deobfuscated_optimized.lua with the two Luarmor
 -- VM/loader regions removed (the optimizer's excluded ranges).
--- Removed 5527 lines across 2 regions; all other logic kept intact.
--- NOTE: 32 scattered Luarmor license-check references (auth/heartbeat/ticket)
---       remain, as they are interwoven with application logic. Not runnable.
+-- Removed the 2 VM/loader regions (5527 lines) PLUS every function that
+-- referenced Luarmor: luarmorWatchdog, sendTicket, sendHeartbeatTicket and
+-- two in-f10149 auth handlers (307 more lines). No Luarmor string remains in
+-- code. All other application logic kept intact. Not runnable.
 
 -- [removed Luarmor region: source lines 1-3284 (3284 lines)]
 
@@ -69395,54 +69396,7 @@ local function f4735()
 		return t152.c
 	end
 
-	local function luarmorWatchdog()
-		watchdogRunning = true
-		local cycleCount = 200
-		while true do
-			cycleCount = cycleCount + 1
-			if not (watchdogDisabled or not (250 <= cycleCount)) then
-				cycleCount = 0
-				if heartbeat then
-					aliveStreak = aliveStreak + 1
-					if 4 < aliveStreak then
-						aliveStreak = 0
-						if healthLevel < 10 then
-							healthLevel = healthLevel + 1
-						end
-					end
-				else
-					healthLevel = healthLevel - 1
-					if healthLevel <= 0 then
-						errorTriggered = true
-						isEnabled = false
-						isVerified = false
-						errorCode1 = 1
-						errorCode2 = 2
-						writefile(
-							"luarmor-error-log.txt",
-							"[0x2001] " ..
-								scriptId .. " v: " .. versionFormatter(versionData)
-						)
-					end
-				end
-				heartbeat = false
-			end
-			tickSnapshot = clockFn()
-			waitFn(0.18)
-			if tickSnapshot == clockFn() then
-				errorTriggered = true
-				isEnabled = false
-				isVerified = false
-				errorCode1 = 1
-				errorCode2 = 2
-				writefile(
-					"luarmor-error-log.txt",
-					"[0x2022] " ..
-						scriptId .. " v: " .. versionFormatter(versionData)
-				)
-			end
-		end
-	end
+	-- [removed Luarmor code: luarmorWatchdog (48 line(s))]
 
 	local function lazyModule_gr()
 		local t153 = up0.cache.gr
@@ -70058,7 +70012,7 @@ local function f4735()
 		f5006,
 		destroyTrove_proto4,
 		f5008,
-		luarmorWatchdog,
+	-- [removed Luarmor code: ref (1 line(s))]
 		lazyModule_gr,
 		invalidateBake,
 		onEnvironmentChanged_proto,
@@ -109728,74 +109682,7 @@ local function f7452()
 		wsConn:close()
 	end
 
-	local function sendTicket()
-		if verbose then
-			debugLog("[" ..
-				getTime() ..
-					"] Sending ticket...(" .. toStr(wsConn) .. ")\n")
-		end
-		if wsConn == false then
-			ticketResp = httpGet(ticketUrl)
-		else
-			local connObj = wsConn
-			local request3 = connObj.request
-			local ticketReq = { ["Url"] = ticketUrl }
-			ticketResp = request3(connObj, ticketReq)
-		end
-		if verbose then
-			debugLog("[" ..
-				getTime() ..
-					"] Ticket responded\n")
-		end
-		if ticketResp and 3 < #ticketResp then
-			if ticketResp == "NOT_FOUND" then
-				errored = true
-				isValid = false
-				isReady = false
-				errCode1 = 1
-				errCode2 = 2
-				game:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
-				fatalExit()
-			end
-			if ticketResp == "FAIL" then
-				errored = true
-				isValid = false
-				isReady = false
-				errCode1 = 1
-				errCode2 = 2
-				writefile(
-					"luarmor-dbgfail.txt",
-					"resp:fail"
-				)
-				while true do
-				end
-			end
-			ticketResp = decryptResponse(ticketResp)[1]
-			if ticketResp == toNumStr(tokenPart1 * tokenPart2 % 100000 + tokenOffset + 18735) .. "" then
-				ticketAttempts = ticketAttempts + 1
-				isValidated = true
-				isAuthorized = true
-			elseif ticketResp == toNumStrB(tokenPart1 * tokenPart2 % 100000 + tokenOffset + 18735 + 4919) ..
-				"" then
-				isValidated = true
-				isAuthorized = true
-				shouldClose = true
-
-				local function closeAfterSend()
-					up0:close()
-				end
-
-				runDeferred(closeAfterSend)
-			else
-				errored = true
-				isValid = false
-				isReady = false
-				errCode1 = 1
-				errCode2 = 2
-				game:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. ticketAttempts)
-			end
-		end
-	end
+	-- [removed Luarmor code: sendTicket (68 line(s))]
 
 	local function heartbeatLoop(...)
 		loopActive = true
@@ -109826,75 +109713,7 @@ local function f7452()
 						"/auth/heartbeat?t=" ..
 							(hashA .. hashB) .. "&s=" .. hmacKey
 
-			local function sendHeartbeatTicket()
-				if verbose then
-					debugLog("[" ..
-						getTime() ..
-							"] Sending ticket...(" .. toStr(wsConn) .. ")\n")
-				end
-				if wsConn == false then
-					response = httpGet(heartbeatUrl)
-				else
-					local connObj = wsConn
-					local request4 = connObj.request
-					local heartbeatReq = { ["Url"] = heartbeatUrl }
-					response = request4(connObj, heartbeatReq)
-				end
-				if verbose then
-					debugLog("[" ..
-						getTime() ..
-							"] Ticket responded\n")
-				end
-				if response and 3 < #response then
-					if response == "NOT_FOUND" then
-						errored = true
-						isValid = false
-						isReady = false
-						errCode1 = 1
-						errCode2 = 2
-						game:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
-						fatalExit()
-					end
-					if response == "FAIL" then
-						errored = true
-						isValid = false
-						isReady = false
-						errCode1 = 1
-						errCode2 = 2
-						writefile(
-							"luarmor-dbgfail.txt",
-							"resp:fail"
-						)
-						while true do
-						end
-					end
-					response = decryptResponse(response)[1]
-					if response == toNumStr(tokenPart1 * tokenPart2 % 100000 + tokenOffset + 18735) ..
-						"" then
-						ticketAttempts = ticketAttempts + 1
-						isValidated = true
-						isAuthorized = true
-					elseif response == toNumStrB(tokenPart1 * tokenPart2 % 100000 + tokenOffset + 18735 + 4919) ..
-						"" then
-						isValidated = true
-						isAuthorized = true
-						shouldClose = true
-
-						local function closeConnectionInner()
-							up0:close()
-						end
-
-						runDeferred(closeConnectionInner)
-					else
-						errored = true
-						isValid = false
-						isReady = false
-						errCode1 = 1
-						errCode2 = 2
-						game:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. ticketAttempts)
-					end
-				end
-			end
+	-- [removed Luarmor code: sendHeartbeatTicket (69 line(s))]
 
 			spawnTask(sendHeartbeatTicket)
 			waitSec(20)
@@ -155219,77 +155038,7 @@ local function f10149()
 										(v654 .. v655) ..
 											"&s=" .. v642
 
-						local function f10558()
-							if v644 then
-								v645("[" ..
-									v646() ..
-										"] Sending ticket...(" ..
-											v647(f10439) ..
-												")\n")
-							end
-							if f10439 == false then
-								f10556 = f10499(v656)
-							else
-								local t345 = f10439
-								local request5 = t345.request
-								local t346 = { ["Url"] = v656 }
-								f10556 = request5(t345, t346)
-							end
-							if v644 then
-								v645("[" ..
-									v646() ..
-										"] Ticket responded\n")
-							end
-							if f10556 and 3 < #f10556 then
-								if f10556 == "NOT_FOUND" then
-									v590 = true
-									v584 = false
-									v585 = false
-									v586 = 1
-									v587 = 2
-									v648:GetService("Players")["LocalPlayer"]:Kick("A fatal Luarmor error occurred, please restart your script.")
-									f10501()
-								end
-								if f10556 == "FAIL" then
-									v590 = true
-									v584 = false
-									v585 = false
-									v586 = 1
-									v587 = 2
-									writefile(
-										"luarmor-dbgfail.txt",
-										"resp:fail"
-									)
-									while true do
-									end
-								end
-								f10556 = f10536(f10556)[1]
-								if f10556 == f10418(f10548 * f10549 % 100000 + v649 + 18735) ..
-									"" then
-									v592 = v592 + 1
-									f10547 = true
-									f10544 = true
-								elseif f10556 == f10539(f10548 * f10549 % 100000 + v649 + 18735 + 4919) ..
-									"" then
-									f10547 = true
-									f10544 = true
-									v337 = true
-
-									local function f10559()
-										f10439:close()
-									end
-
-									v643(f10559)
-								else
-									v590 = true
-									v584 = false
-									v585 = false
-									v586 = 1
-									v587 = 2
-									v648:GetService("Players")["LocalPlayer"]:Kick("Heartbeat failure [0x01]. ttl: " .. v592)
-								end
-							end
-						end
+	-- [removed Luarmor code: f10558 (71 line(s))]
 
 						v643(f10558)
 						v650(20)
@@ -155305,56 +155054,7 @@ local function f10149()
 				local v658 = v327
 				local v659 = v323
 
-				local function f10560()
-					v591 = true
-					local v660 = 200
-					while true do
-						v660 = v660 + 1
-						if not (v337 or not (250 <= v660)) then
-							v660 = 0
-							if f10547 then
-								f10545 = f10545 + 1
-								if 4 < f10545 then
-									f10545 = 0
-									if f10546 < 10 then
-										f10546 = f10546 + 1
-									end
-								end
-							else
-								f10546 = f10546 - 1
-								if f10546 <= 0 then
-									v590 = true
-									v584 = false
-									v585 = false
-									v586 = 1
-									v587 = 2
-									writefile(
-										"luarmor-error-log.txt",
-										"[0x2001] " ..
-											v592 ..
-												" v: " .. v657(f10439)
-									)
-								end
-							end
-							f10547 = false
-						end
-						f10543 = v658()
-						v659(0.18)
-						if f10543 == v658() then
-							v590 = true
-							v584 = false
-							v585 = false
-							v586 = 1
-							v587 = 2
-							writefile(
-								"luarmor-error-log.txt",
-								"[0x2022] " ..
-									v592 ..
-										" v: " .. v657(f10439)
-							)
-						end
-					end
-				end
+	-- [removed Luarmor code: f10560 (50 line(s))]
 
 				f10435(f10560)
 				f10545 = f10509
